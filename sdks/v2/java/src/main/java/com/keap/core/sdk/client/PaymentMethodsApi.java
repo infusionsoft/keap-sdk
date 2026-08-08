@@ -405,14 +405,14 @@ import io.github.resilience4j.retry.Retry;
    * Retrieves a list of Contact Payment Methods
    * @param contactId ID of the contact to which the payment method belongs. (required)
    * @param filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   (optional)
+   * @param pageToken Page token (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
-   * @param pageToken Page token (optional)
    * @return ListContactPaymentMethodsResponse
    * @throws ApiException if fails to make API call
    */
-  public ListContactPaymentMethodsResponse listPaymentMethods_0(String contactId, String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
-    ApiResponse<ListContactPaymentMethodsResponse> localVarResponse = listPaymentMethods_0WithHttpInfo(contactId, filter, orderBy, pageSize, pageToken);
+  public ListContactPaymentMethodsResponse listPaymentMethods1(String contactId, String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+    ApiResponse<ListContactPaymentMethodsResponse> localVarResponse = listPaymentMethods1WithHttpInfo(contactId, filter, pageToken, orderBy, pageSize);
     return localVarResponse.getData();
   }
 
@@ -421,14 +421,14 @@ import io.github.resilience4j.retry.Retry;
    * Retrieves a list of Contact Payment Methods
    * @param contactId ID of the contact to which the payment method belongs. (required)
    * @param filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   (optional)
+   * @param pageToken Page token (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
-   * @param pageToken Page token (optional)
    * @return ApiResponse&lt;ListContactPaymentMethodsResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<ListContactPaymentMethodsResponse> listPaymentMethods_0WithHttpInfo(String contactId, String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = listPaymentMethods_0RequestBuilder(contactId, filter, orderBy, pageSize, pageToken);
+  public ApiResponse<ListContactPaymentMethodsResponse> listPaymentMethods1WithHttpInfo(String contactId, String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listPaymentMethods1RequestBuilder(contactId, filter, pageToken, orderBy, pageSize);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -444,7 +444,7 @@ import io.github.resilience4j.retry.Retry;
       }
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("listPaymentMethods_0", localVarResponse);
+          throw getApiException("listPaymentMethods1", localVarResponse);
         }
         return new ApiResponse<ListContactPaymentMethodsResponse>(
           localVarResponse.statusCode(),
@@ -468,10 +468,10 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder listPaymentMethods_0RequestBuilder(String contactId, String filter, String orderBy, Integer pageSize, String pageToken) throws ApiException {
+  private HttpRequest.Builder listPaymentMethods1RequestBuilder(String contactId, String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
     // verify the required parameter 'contactId' is set
     if (contactId == null) {
-      throw new ApiException(400, "Missing the required parameter 'contactId' when calling listPaymentMethods_0");
+      throw new ApiException(400, "Missing the required parameter 'contactId' when calling listPaymentMethods1");
     }
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
@@ -484,12 +484,12 @@ import io.github.resilience4j.retry.Retry;
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "filter";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("filter", filter));
+    localVarQueryParameterBaseName = "page_token";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_token", pageToken));
     localVarQueryParameterBaseName = "order_by";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("order_by", orderBy));
     localVarQueryParameterBaseName = "page_size";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("page_size", pageSize));
-    localVarQueryParameterBaseName = "page_token";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_token", pageToken));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

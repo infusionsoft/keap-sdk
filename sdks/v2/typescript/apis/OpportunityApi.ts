@@ -10,11 +10,14 @@ import {SecurityAuthentication} from '../auth/auth';
 
 import { CreateCustomFieldGroupRequest } from '../models/CreateCustomFieldGroupRequest';
 import { CreateCustomFieldRequest } from '../models/CreateCustomFieldRequest';
+import { CreateCustomFieldTabRequest } from '../models/CreateCustomFieldTabRequest';
 import { CreateOpportunityRequest } from '../models/CreateOpportunityRequest';
 import { CreateOpportunityStageRequest } from '../models/CreateOpportunityStageRequest';
 import { CustomFieldGroup } from '../models/CustomFieldGroup';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
+import { CustomFieldTab } from '../models/CustomFieldTab';
 import { ListCustomFieldGroupsResponse } from '../models/ListCustomFieldGroupsResponse';
+import { ListCustomFieldTabsResponse } from '../models/ListCustomFieldTabsResponse';
 import { ListOpportunitiesResponse } from '../models/ListOpportunitiesResponse';
 import { ListOpportunityStageMoveResponse } from '../models/ListOpportunityStageMoveResponse';
 import { ListOpportunityStagesResponse } from '../models/ListOpportunityStagesResponse';
@@ -24,6 +27,7 @@ import { RestOpportunityStage } from '../models/RestOpportunityStage';
 import { RestV2Opportunity } from '../models/RestV2Opportunity';
 import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
+import { UpdateCustomFieldTabRequest } from '../models/UpdateCustomFieldTabRequest';
 import { UpdateOpportunityRequestV2 } from '../models/UpdateOpportunityRequestV2';
 import { UpdateOpportunityStageRequest } from '../models/UpdateOpportunityStageRequest';
 
@@ -119,6 +123,54 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(createCustomFieldGroupRequest, "CreateCustomFieldGroupRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Creates a new custom field tab for the Opportunity record type.
+     * Create an Opportunity Custom Field Tab
+     * @param createCustomFieldTabRequest 
+     */
+    public async createOpportunityCustomFieldTab(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'createCustomFieldTabRequest' is not null or undefined
+        if (createCustomFieldTabRequest === null || createCustomFieldTabRequest === undefined) {
+            throw new RequiredError("OpportunityApi", "createOpportunityCustomFieldTab", "createCustomFieldTabRequest");
+        }
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/opportunities/model/customFields/tabs';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(createCustomFieldTabRequest, "CreateCustomFieldTabRequest", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -349,6 +401,44 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * Delete an Opportunity Custom Field Tab
+     * @param tabId 
+     */
+    public async deleteOpportunityCustomFieldTab(tabId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'tabId' is not null or undefined
+        if (tabId === null || tabId === undefined) {
+            throw new RequiredError("OpportunityApi", "deleteOpportunityCustomFieldTab", "tabId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/opportunities/model/customFields/tabs/{tab_id}'
+            .replace('{' + 'tab_id' + '}', encodeURIComponent(String(tabId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Deletes the specified Opportunity Stage
      * Delete an Opportunity Stage
      * @param stageId 
@@ -473,6 +563,44 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Retrieves a single custom field tab by id for the Opportunity record type.
+     * Retrieve an Opportunity Custom Field Tab
+     * @param tabId 
+     */
+    public async getOpportunityCustomFieldTab(tabId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'tabId' is not null or undefined
+        if (tabId === null || tabId === undefined) {
+            throw new RequiredError("OpportunityApi", "getOpportunityCustomFieldTab", "tabId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/opportunities/model/customFields/tabs/{tab_id}'
+            .replace('{' + 'tab_id' + '}', encodeURIComponent(String(tabId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Retrieves the specified Opportunity Stage
      * Retrieve an Opportunity Stage
      * @param stageId 
@@ -552,7 +680,7 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieves a list of all Opportunities.
      * List Opportunities
      * @param fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
-     * @param filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. 
+     * @param filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact\&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact\&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact\&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field\&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field\&#39;s type, or a value that does not match the field\&#39;s type returns &#x60;400 Bad Request&#x60;. 
      * @param orderBy Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
@@ -636,6 +764,36 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
         if (tabId !== undefined) {
             requestContext.setQueryParam("tab_id", ObjectSerializer.serialize(tabId, "string", ""));
         }
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Retrieves a list of custom field tabs for the Opportunity record type.
+     * List Opportunity Custom Field Tabs
+     */
+    public async listOpportunityCustomFieldTabs(_options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // Path Params
+        const localVarPath = '/rest/v2/opportunities/model/customFields/tabs';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1013,6 +1171,77 @@ export class OpportunityApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * Update an Opportunity Custom Field Tab
+     * @param tabId 
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest 
+     */
+    public async updateOpportunityCustomFieldTab(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'tabId' is not null or undefined
+        if (tabId === null || tabId === undefined) {
+            throw new RequiredError("OpportunityApi", "updateOpportunityCustomFieldTab", "tabId");
+        }
+
+
+        // verify required parameter 'updateMask' is not null or undefined
+        if (updateMask === null || updateMask === undefined) {
+            throw new RequiredError("OpportunityApi", "updateOpportunityCustomFieldTab", "updateMask");
+        }
+
+
+        // verify required parameter 'updateCustomFieldTabRequest' is not null or undefined
+        if (updateCustomFieldTabRequest === null || updateCustomFieldTabRequest === undefined) {
+            throw new RequiredError("OpportunityApi", "updateOpportunityCustomFieldTab", "updateCustomFieldTabRequest");
+        }
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/opportunities/model/customFields/tabs/{tab_id}'
+            .replace('{' + 'tab_id' + '}', encodeURIComponent(String(tabId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (updateMask !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'name' | 'order'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
+            }
+        }
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(updateCustomFieldTabRequest, "UpdateCustomFieldTabRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Updates specified values of a given Opportunity Stage
      * Update an Opportunity Stage
      * @param stageId 
@@ -1246,6 +1475,91 @@ export class OpportunityApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "CustomFieldGroup", ""
             ) as CustomFieldGroup;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to createOpportunityCustomFieldTab
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async createOpportunityCustomFieldTabWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldTab >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1669,6 +1983,87 @@ export class OpportunityApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to deleteOpportunityCustomFieldTab
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async deleteOpportunityCustomFieldTabWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("204", response.httpStatusCode)) {
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: void = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "void", ""
+            ) as void;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to deleteOpportunityStage
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -1910,6 +2305,91 @@ export class OpportunityApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "CustomFieldGroup", ""
             ) as CustomFieldGroup;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to getOpportunityCustomFieldTab
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getOpportunityCustomFieldTabWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldTab >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -2250,6 +2730,91 @@ export class OpportunityApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "ListCustomFieldGroupsResponse", ""
             ) as ListCustomFieldGroupsResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to listOpportunityCustomFieldTabs
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async listOpportunityCustomFieldTabsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListCustomFieldTabsResponse >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: ListCustomFieldTabsResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListCustomFieldTabsResponse", ""
+            ) as ListCustomFieldTabsResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: ListCustomFieldTabsResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListCustomFieldTabsResponse", ""
+            ) as ListCustomFieldTabsResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -2760,6 +3325,91 @@ export class OpportunityApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "CustomFieldGroup", ""
             ) as CustomFieldGroup;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to updateOpportunityCustomFieldTab
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async updateOpportunityCustomFieldTabWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldTab >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

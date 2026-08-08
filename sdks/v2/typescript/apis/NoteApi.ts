@@ -10,17 +10,21 @@ import {SecurityAuthentication} from '../auth/auth';
 
 import { CreateCustomFieldGroupRequest } from '../models/CreateCustomFieldGroupRequest';
 import { CreateCustomFieldRequest } from '../models/CreateCustomFieldRequest';
+import { CreateCustomFieldTabRequest } from '../models/CreateCustomFieldTabRequest';
 import { CreateNoteRequest } from '../models/CreateNoteRequest';
 import { CustomFieldGroup } from '../models/CustomFieldGroup';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
+import { CustomFieldTab } from '../models/CustomFieldTab';
 import { GetNoteResponse } from '../models/GetNoteResponse';
 import { ListCustomFieldGroupsResponse } from '../models/ListCustomFieldGroupsResponse';
+import { ListCustomFieldTabsResponse } from '../models/ListCustomFieldTabsResponse';
 import { ListNoteTemplateResponse } from '../models/ListNoteTemplateResponse';
 import { ListNotesResponse } from '../models/ListNotesResponse';
 import { Note } from '../models/Note';
 import { ObjectModel } from '../models/ObjectModel';
 import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
+import { UpdateCustomFieldTabRequest } from '../models/UpdateCustomFieldTabRequest';
 import { UpdateNoteRequest } from '../models/UpdateNoteRequest';
 import { UpdateNoteResponse } from '../models/UpdateNoteResponse';
 
@@ -189,6 +193,54 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Creates a new custom field tab for the Note record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Create a Note Custom Field Tab
+     * @param createCustomFieldTabRequest 
+     */
+    public async createNoteCustomFieldTab(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'createCustomFieldTabRequest' is not null or undefined
+        if (createCustomFieldTabRequest === null || createCustomFieldTabRequest === undefined) {
+            throw new RequiredError("NoteApi", "createNoteCustomFieldTab", "createCustomFieldTabRequest");
+        }
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/notes/model/customFields/tabs';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(createCustomFieldTabRequest, "CreateCustomFieldTabRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Deletes the specified Note
      * Delete a Note
      * @param contactId 
@@ -251,6 +303,44 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
         // Path Params
         const localVarPath = '/rest/v2/notes/model/customFields/groups/{group_id}'
             .replace('{' + 'group_id' + '}', encodeURIComponent(String(groupId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Note Custom Field Tab
+     * @param tabId 
+     */
+    public async deleteNoteCustomFieldTab(tabId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'tabId' is not null or undefined
+        if (tabId === null || tabId === undefined) {
+            throw new RequiredError("NoteApi", "deleteNoteCustomFieldTab", "tabId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/notes/model/customFields/tabs/{tab_id}'
+            .replace('{' + 'tab_id' + '}', encodeURIComponent(String(tabId)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
@@ -402,9 +492,47 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Retrieves a single custom field tab by id for the Note record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Note Custom Field Tab
+     * @param tabId 
+     */
+    public async getNoteCustomFieldTab(tabId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'tabId' is not null or undefined
+        if (tabId === null || tabId === undefined) {
+            throw new RequiredError("NoteApi", "getNoteCustomFieldTab", "tabId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/notes/model/customFields/tabs/{tab_id}'
+            .replace('{' + 'tab_id' + '}', encodeURIComponent(String(tabId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Retrieves a list of all notes
      * List All Notes
-     * @param filter Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons. 
+     * @param filter Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Custom fields (when enabled) can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. Supported operators depend on the custom field\&#39;s type: - Text-like fields and single-value choice fields with text options (dropdown, radio, state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;Priority%3D%3DHigh%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (including user, month, day of week): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Example (for a custom field named &#x60;Priority&#x60;): &#x60;filter&#x3D;Priority%3D%3DHigh&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons. 
      * @param pageToken Page token
      * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
@@ -504,6 +632,36 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Retrieves a list of custom field tabs for the Note record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * List Note Custom Field Tabs
+     */
+    public async listNoteCustomFieldTabs(_options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // Path Params
+        const localVarPath = '/rest/v2/notes/model/customFields/tabs';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Retrieves a list of Note Templates
      * Retrieve Note Templates
      * @param filter Search filter to apply to results
@@ -565,7 +723,7 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieves a list of Notes for a given contact
      * List Notes
      * @param contactId 
-     * @param filter Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons. 
+     * @param filter Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Custom fields (when enabled) can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. Supported operators depend on the custom field\&#39;s type: - Text-like fields and single-value choice fields with text options (dropdown, radio, state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;Priority%3D%3DHigh%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (including user, month, day of week): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Example (for a custom field named &#x60;Priority&#x60;): &#x60;filter&#x3D;Priority%3D%3DHigh&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons. 
      * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
@@ -797,6 +955,77 @@ export class NoteApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(updateCustomFieldGroupRequest, "UpdateCustomFieldGroupRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Update a Note Custom Field Tab
+     * @param tabId 
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest 
+     */
+    public async updateNoteCustomFieldTab(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'tabId' is not null or undefined
+        if (tabId === null || tabId === undefined) {
+            throw new RequiredError("NoteApi", "updateNoteCustomFieldTab", "tabId");
+        }
+
+
+        // verify required parameter 'updateMask' is not null or undefined
+        if (updateMask === null || updateMask === undefined) {
+            throw new RequiredError("NoteApi", "updateNoteCustomFieldTab", "updateMask");
+        }
+
+
+        // verify required parameter 'updateCustomFieldTabRequest' is not null or undefined
+        if (updateCustomFieldTabRequest === null || updateCustomFieldTabRequest === undefined) {
+            throw new RequiredError("NoteApi", "updateNoteCustomFieldTab", "updateCustomFieldTabRequest");
+        }
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/notes/model/customFields/tabs/{tab_id}'
+            .replace('{' + 'tab_id' + '}', encodeURIComponent(String(tabId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (updateMask !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'name' | 'order'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
+            }
+        }
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(updateCustomFieldTabRequest, "UpdateCustomFieldTabRequest", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -1145,6 +1374,91 @@ export class NoteApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to createNoteCustomFieldTab
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async createNoteCustomFieldTabWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldTab >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to deleteNote
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -1230,6 +1544,87 @@ export class NoteApiResponseProcessor {
      * @throws ApiException if the response code was not in [200, 299]
      */
      public async deleteNoteCustomFieldGroupWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("204", response.httpStatusCode)) {
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: void = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "void", ""
+            ) as void;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to deleteNoteCustomFieldTab
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async deleteNoteCustomFieldTabWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -1558,6 +1953,91 @@ export class NoteApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to getNoteCustomFieldTab
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getNoteCustomFieldTabWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldTab >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to listAllNotes
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -1718,6 +2198,91 @@ export class NoteApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "ListCustomFieldGroupsResponse", ""
             ) as ListCustomFieldGroupsResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to listNoteCustomFieldTabs
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async listNoteCustomFieldTabsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListCustomFieldTabsResponse >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: ListCustomFieldTabsResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListCustomFieldTabsResponse", ""
+            ) as ListCustomFieldTabsResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: ListCustomFieldTabsResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListCustomFieldTabsResponse", ""
+            ) as ListCustomFieldTabsResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -2143,6 +2708,91 @@ export class NoteApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "CustomFieldGroup", ""
             ) as CustomFieldGroup;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to updateNoteCustomFieldTab
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async updateNoteCustomFieldTabWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldTab >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

@@ -362,6 +362,12 @@ class CreateOpportunityRequest implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['opportunity_title'] === null) {
             $invalidProperties[] = "'opportunity_title' can't be null";
         }
+        if ($this->container['contact_id'] === null) {
+            $invalidProperties[] = "'contact_id' can't be null";
+        }
+        if ($this->container['stage_id'] === null) {
+            $invalidProperties[] = "'stage_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -596,7 +602,7 @@ class CreateOpportunityRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets contact_id
      *
-     * @return string|null
+     * @return string
      */
     public function getContactId()
     {
@@ -606,7 +612,7 @@ class CreateOpportunityRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets contact_id
      *
-     * @param string|null $contact_id Associated contact ID
+     * @param string $contact_id Associated contact ID
      *
      * @return self
      */
@@ -623,7 +629,7 @@ class CreateOpportunityRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets stage_id
      *
-     * @return string|null
+     * @return string
      */
     public function getStageId()
     {
@@ -633,7 +639,7 @@ class CreateOpportunityRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets stage_id
      *
-     * @param string|null $stage_id Pipeline stage ID
+     * @param string $stage_id Pipeline stage ID
      *
      * @return self
      */

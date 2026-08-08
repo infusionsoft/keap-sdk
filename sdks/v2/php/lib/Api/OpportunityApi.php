@@ -80,6 +80,9 @@ class OpportunityApi
         'createOpportunityCustomFieldGroup' => [
             'application/json',
         ],
+        'createOpportunityCustomFieldTab' => [
+            'application/json',
+        ],
         'createOpportunityCustomFields' => [
             'application/json',
         ],
@@ -95,6 +98,9 @@ class OpportunityApi
         'deleteOpportunityCustomFieldGroup' => [
             'application/json',
         ],
+        'deleteOpportunityCustomFieldTab' => [
+            'application/json',
+        ],
         'deleteOpportunityStage' => [
             'application/json',
         ],
@@ -102,6 +108,9 @@ class OpportunityApi
             'application/json',
         ],
         'getOpportunityCustomFieldGroup' => [
+            'application/json',
+        ],
+        'getOpportunityCustomFieldTab' => [
             'application/json',
         ],
         'getOpportunityStage' => [
@@ -114,6 +123,9 @@ class OpportunityApi
             'application/json',
         ],
         'listOpportunityCustomFieldGroups' => [
+            'application/json',
+        ],
+        'listOpportunityCustomFieldTabs' => [
             'application/json',
         ],
         'listOpportunityStageMoves' => [
@@ -132,6 +144,9 @@ class OpportunityApi
             'application/json',
         ],
         'updateOpportunityCustomFieldGroup' => [
+            'application/json',
+        ],
+        'updateOpportunityCustomFieldTab' => [
             'application/json',
         ],
         'updateOpportunityStage' => [
@@ -915,6 +930,389 @@ class OpportunityApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_custom_field_group_request));
             } else {
                 $httpBody = $create_custom_field_group_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createOpportunityCustomFieldTab
+     *
+     * Create an Opportunity Custom Field Tab
+     *
+     * @param  \Keap\Core\V2\Model\CreateCustomFieldTabRequest $create_custom_field_tab_request create_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function createOpportunityCustomFieldTab($create_custom_field_tab_request, string $contentType = self::contentTypes['createOpportunityCustomFieldTab'][0])
+    {
+        list($response) = $this->createOpportunityCustomFieldTabWithHttpInfo($create_custom_field_tab_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createOpportunityCustomFieldTabWithHttpInfo
+     *
+     * Create an Opportunity Custom Field Tab
+     *
+     * @param  \Keap\Core\V2\Model\CreateCustomFieldTabRequest $create_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createOpportunityCustomFieldTabWithHttpInfo($create_custom_field_tab_request, string $contentType = self::contentTypes['createOpportunityCustomFieldTab'][0])
+    {
+        $request = $this->createOpportunityCustomFieldTabRequest($create_custom_field_tab_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\CustomFieldTab',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createOpportunityCustomFieldTabAsync
+     *
+     * Create an Opportunity Custom Field Tab
+     *
+     * @param  \Keap\Core\V2\Model\CreateCustomFieldTabRequest $create_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createOpportunityCustomFieldTabAsync($create_custom_field_tab_request, string $contentType = self::contentTypes['createOpportunityCustomFieldTab'][0])
+    {
+        return $this->createOpportunityCustomFieldTabAsyncWithHttpInfo($create_custom_field_tab_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createOpportunityCustomFieldTabAsyncWithHttpInfo
+     *
+     * Create an Opportunity Custom Field Tab
+     *
+     * @param  \Keap\Core\V2\Model\CreateCustomFieldTabRequest $create_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createOpportunityCustomFieldTabAsyncWithHttpInfo($create_custom_field_tab_request, string $contentType = self::contentTypes['createOpportunityCustomFieldTab'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\CustomFieldTab';
+        $request = $this->createOpportunityCustomFieldTabRequest($create_custom_field_tab_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createOpportunityCustomFieldTab'
+     *
+     * @param  \Keap\Core\V2\Model\CreateCustomFieldTabRequest $create_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createOpportunityCustomFieldTabRequest($create_custom_field_tab_request, string $contentType = self::contentTypes['createOpportunityCustomFieldTab'][0])
+    {
+
+        // verify the required parameter 'create_custom_field_tab_request' is set
+        if ($create_custom_field_tab_request === null || (is_array($create_custom_field_tab_request) && count($create_custom_field_tab_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_custom_field_tab_request when calling createOpportunityCustomFieldTab'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/opportunities/model/customFields/tabs';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_custom_field_tab_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_custom_field_tab_request));
+            } else {
+                $httpBody = $create_custom_field_tab_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2591,6 +2989,292 @@ class OpportunityApi
     }
 
     /**
+     * Operation deleteOpportunityCustomFieldTab
+     *
+     * Delete an Opportunity Custom Field Tab
+     *
+     * @param  string $tab_id tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteOpportunityCustomFieldTab($tab_id, string $contentType = self::contentTypes['deleteOpportunityCustomFieldTab'][0])
+    {
+        $this->deleteOpportunityCustomFieldTabWithHttpInfo($tab_id, $contentType);
+    }
+
+    /**
+     * Operation deleteOpportunityCustomFieldTabWithHttpInfo
+     *
+     * Delete an Opportunity Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteOpportunityCustomFieldTabWithHttpInfo($tab_id, string $contentType = self::contentTypes['deleteOpportunityCustomFieldTab'][0])
+    {
+        $request = $this->deleteOpportunityCustomFieldTabRequest($tab_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteOpportunityCustomFieldTabAsync
+     *
+     * Delete an Opportunity Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteOpportunityCustomFieldTabAsync($tab_id, string $contentType = self::contentTypes['deleteOpportunityCustomFieldTab'][0])
+    {
+        return $this->deleteOpportunityCustomFieldTabAsyncWithHttpInfo($tab_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteOpportunityCustomFieldTabAsyncWithHttpInfo
+     *
+     * Delete an Opportunity Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteOpportunityCustomFieldTabAsyncWithHttpInfo($tab_id, string $contentType = self::contentTypes['deleteOpportunityCustomFieldTab'][0])
+    {
+        $returnType = '';
+        $request = $this->deleteOpportunityCustomFieldTabRequest($tab_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteOpportunityCustomFieldTab'
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteOpportunityCustomFieldTabRequest($tab_id, string $contentType = self::contentTypes['deleteOpportunityCustomFieldTab'][0])
+    {
+
+        // verify the required parameter 'tab_id' is set
+        if ($tab_id === null || (is_array($tab_id) && count($tab_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tab_id when calling deleteOpportunityCustomFieldTab'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/opportunities/model/customFields/tabs/{tab_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($tab_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tab_id' . '}',
+                ObjectSerializer::toPathValue($tab_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation deleteOpportunityStage
      *
      * Delete an Opportunity Stage
@@ -3660,6 +4344,390 @@ class OpportunityApi
     }
 
     /**
+     * Operation getOpportunityCustomFieldTab
+     *
+     * Retrieve an Opportunity Custom Field Tab
+     *
+     * @param  string $tab_id tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function getOpportunityCustomFieldTab($tab_id, string $contentType = self::contentTypes['getOpportunityCustomFieldTab'][0])
+    {
+        list($response) = $this->getOpportunityCustomFieldTabWithHttpInfo($tab_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getOpportunityCustomFieldTabWithHttpInfo
+     *
+     * Retrieve an Opportunity Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getOpportunityCustomFieldTabWithHttpInfo($tab_id, string $contentType = self::contentTypes['getOpportunityCustomFieldTab'][0])
+    {
+        $request = $this->getOpportunityCustomFieldTabRequest($tab_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\CustomFieldTab',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getOpportunityCustomFieldTabAsync
+     *
+     * Retrieve an Opportunity Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getOpportunityCustomFieldTabAsync($tab_id, string $contentType = self::contentTypes['getOpportunityCustomFieldTab'][0])
+    {
+        return $this->getOpportunityCustomFieldTabAsyncWithHttpInfo($tab_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getOpportunityCustomFieldTabAsyncWithHttpInfo
+     *
+     * Retrieve an Opportunity Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getOpportunityCustomFieldTabAsyncWithHttpInfo($tab_id, string $contentType = self::contentTypes['getOpportunityCustomFieldTab'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\CustomFieldTab';
+        $request = $this->getOpportunityCustomFieldTabRequest($tab_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getOpportunityCustomFieldTab'
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getOpportunityCustomFieldTabRequest($tab_id, string $contentType = self::contentTypes['getOpportunityCustomFieldTab'][0])
+    {
+
+        // verify the required parameter 'tab_id' is set
+        if ($tab_id === null || (is_array($tab_id) && count($tab_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tab_id when calling getOpportunityCustomFieldTab'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/opportunities/model/customFields/tabs/{tab_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($tab_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tab_id' . '}',
+                ObjectSerializer::toPathValue($tab_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getOpportunityStage
      *
      * Retrieve an Opportunity Stage
@@ -4433,7 +5501,7 @@ class OpportunityApi
      * List Opportunities
      *
      * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;. (optional)
      * @param  string|null $order_by Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -4455,7 +5523,7 @@ class OpportunityApi
      * List Opportunities
      *
      * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;. (optional)
      * @param  string|null $order_by Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -4656,7 +5724,7 @@ class OpportunityApi
      * List Opportunities
      *
      * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;. (optional)
      * @param  string|null $order_by Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -4681,7 +5749,7 @@ class OpportunityApi
      * List Opportunities
      *
      * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;. (optional)
      * @param  string|null $order_by Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -4735,7 +5803,7 @@ class OpportunityApi
      * Create request for operation 'listOpportunities'
      *
      * @param  string[]|null $fields Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;. (optional)
      * @param  string|null $order_by Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -5190,6 +6258,370 @@ class OpportunityApi
             true, // explode
             false // required
         ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listOpportunityCustomFieldTabs
+     *
+     * List Opportunity Custom Field Tabs
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOpportunityCustomFieldTabs'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\ListCustomFieldTabsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function listOpportunityCustomFieldTabs(string $contentType = self::contentTypes['listOpportunityCustomFieldTabs'][0])
+    {
+        list($response) = $this->listOpportunityCustomFieldTabsWithHttpInfo($contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listOpportunityCustomFieldTabsWithHttpInfo
+     *
+     * List Opportunity Custom Field Tabs
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOpportunityCustomFieldTabs'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\ListCustomFieldTabsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listOpportunityCustomFieldTabsWithHttpInfo(string $contentType = self::contentTypes['listOpportunityCustomFieldTabs'][0])
+    {
+        $request = $this->listOpportunityCustomFieldTabsRequest($contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\ListCustomFieldTabsResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\ListCustomFieldTabsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\ListCustomFieldTabsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listOpportunityCustomFieldTabsAsync
+     *
+     * List Opportunity Custom Field Tabs
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOpportunityCustomFieldTabs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listOpportunityCustomFieldTabsAsync(string $contentType = self::contentTypes['listOpportunityCustomFieldTabs'][0])
+    {
+        return $this->listOpportunityCustomFieldTabsAsyncWithHttpInfo($contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listOpportunityCustomFieldTabsAsyncWithHttpInfo
+     *
+     * List Opportunity Custom Field Tabs
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOpportunityCustomFieldTabs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listOpportunityCustomFieldTabsAsyncWithHttpInfo(string $contentType = self::contentTypes['listOpportunityCustomFieldTabs'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\ListCustomFieldTabsResponse';
+        $request = $this->listOpportunityCustomFieldTabsRequest($contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listOpportunityCustomFieldTabs'
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOpportunityCustomFieldTabs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listOpportunityCustomFieldTabsRequest(string $contentType = self::contentTypes['listOpportunityCustomFieldTabs'][0])
+    {
+
+
+        $resourcePath = '/rest/v2/opportunities/model/customFields/tabs';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
 
 
 
@@ -7699,6 +9131,430 @@ class OpportunityApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_custom_field_group_request));
             } else {
                 $httpBody = $update_custom_field_group_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateOpportunityCustomFieldTab
+     *
+     * Update an Opportunity Custom Field Tab
+     *
+     * @param  string $tab_id tab_id (required)
+     * @param  string[] $update_mask Comma-separated list of fields to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldTabRequest $update_custom_field_tab_request update_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function updateOpportunityCustomFieldTab($tab_id, $update_mask, $update_custom_field_tab_request, string $contentType = self::contentTypes['updateOpportunityCustomFieldTab'][0])
+    {
+        list($response) = $this->updateOpportunityCustomFieldTabWithHttpInfo($tab_id, $update_mask, $update_custom_field_tab_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateOpportunityCustomFieldTabWithHttpInfo
+     *
+     * Update an Opportunity Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string[] $update_mask Comma-separated list of fields to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldTabRequest $update_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateOpportunityCustomFieldTabWithHttpInfo($tab_id, $update_mask, $update_custom_field_tab_request, string $contentType = self::contentTypes['updateOpportunityCustomFieldTab'][0])
+    {
+        $request = $this->updateOpportunityCustomFieldTabRequest($tab_id, $update_mask, $update_custom_field_tab_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\CustomFieldTab',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateOpportunityCustomFieldTabAsync
+     *
+     * Update an Opportunity Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string[] $update_mask Comma-separated list of fields to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldTabRequest $update_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateOpportunityCustomFieldTabAsync($tab_id, $update_mask, $update_custom_field_tab_request, string $contentType = self::contentTypes['updateOpportunityCustomFieldTab'][0])
+    {
+        return $this->updateOpportunityCustomFieldTabAsyncWithHttpInfo($tab_id, $update_mask, $update_custom_field_tab_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateOpportunityCustomFieldTabAsyncWithHttpInfo
+     *
+     * Update an Opportunity Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string[] $update_mask Comma-separated list of fields to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldTabRequest $update_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateOpportunityCustomFieldTabAsyncWithHttpInfo($tab_id, $update_mask, $update_custom_field_tab_request, string $contentType = self::contentTypes['updateOpportunityCustomFieldTab'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\CustomFieldTab';
+        $request = $this->updateOpportunityCustomFieldTabRequest($tab_id, $update_mask, $update_custom_field_tab_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateOpportunityCustomFieldTab'
+     *
+     * @param  string $tab_id (required)
+     * @param  string[] $update_mask Comma-separated list of fields to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldTabRequest $update_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOpportunityCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateOpportunityCustomFieldTabRequest($tab_id, $update_mask, $update_custom_field_tab_request, string $contentType = self::contentTypes['updateOpportunityCustomFieldTab'][0])
+    {
+
+        // verify the required parameter 'tab_id' is set
+        if ($tab_id === null || (is_array($tab_id) && count($tab_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tab_id when calling updateOpportunityCustomFieldTab'
+            );
+        }
+
+        // verify the required parameter 'update_mask' is set
+        if ($update_mask === null || (is_array($update_mask) && count($update_mask) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_mask when calling updateOpportunityCustomFieldTab'
+            );
+        }
+        
+        // verify the required parameter 'update_custom_field_tab_request' is set
+        if ($update_custom_field_tab_request === null || (is_array($update_custom_field_tab_request) && count($update_custom_field_tab_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_custom_field_tab_request when calling updateOpportunityCustomFieldTab'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/opportunities/model/customFields/tabs/{tab_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $update_mask,
+            'update_mask', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($tab_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tab_id' . '}',
+                ObjectSerializer::toPathValue($tab_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_custom_field_tab_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_custom_field_tab_request));
+            } else {
+                $httpBody = $update_custom_field_tab_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

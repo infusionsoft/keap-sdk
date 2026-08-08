@@ -8,17 +8,22 @@ Method | HTTP request | Description
 [**createSubscription**](SubscriptionsApi.md#createSubscription) | **POST** /rest/v2/subscriptions | Create Subscription
 [**createSubscriptionCustomField**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /rest/v2/subscriptions/model/customFields | Create a Subscription Custom Field
 [**createSubscriptionCustomFieldGroup**](SubscriptionsApi.md#createSubscriptionCustomFieldGroup) | **POST** /rest/v2/subscriptions/model/customFields/groups | Create a Subscription Custom Field Group
+[**createSubscriptionCustomFieldTab**](SubscriptionsApi.md#createSubscriptionCustomFieldTab) | **POST** /rest/v2/subscriptions/model/customFields/tabs | Create a Subscription Custom Field Tab
 [**deleteSubscriptionCustomField**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
 [**deleteSubscriptionCustomFieldGroup**](SubscriptionsApi.md#deleteSubscriptionCustomFieldGroup) | **DELETE** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Delete a Subscription Custom Field Group
+[**deleteSubscriptionCustomFieldTab**](SubscriptionsApi.md#deleteSubscriptionCustomFieldTab) | **DELETE** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Delete a Subscription Custom Field Tab
 [**getSubscription**](SubscriptionsApi.md#getSubscription) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription
 [**getSubscriptionCustomFieldGroup**](SubscriptionsApi.md#getSubscriptionCustomFieldGroup) | **GET** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Retrieve a Subscription Custom Field Group
+[**getSubscriptionCustomFieldTab**](SubscriptionsApi.md#getSubscriptionCustomFieldTab) | **GET** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Retrieve a Subscription Custom Field Tab
 [**invoiceSubscription**](SubscriptionsApi.md#invoiceSubscription) | **POST** /rest/v2/subscriptions/{subscription_id}:invoice | Invoice a Subscription
 [**listSubscriptionCustomFieldGroups**](SubscriptionsApi.md#listSubscriptionCustomFieldGroups) | **GET** /rest/v2/subscriptions/model/customFields/groups | List Subscription Custom Field Groups
+[**listSubscriptionCustomFieldTabs**](SubscriptionsApi.md#listSubscriptionCustomFieldTabs) | **GET** /rest/v2/subscriptions/model/customFields/tabs | List Subscription Custom Field Tabs
 [**listSubscriptions**](SubscriptionsApi.md#listSubscriptions) | **GET** /rest/v2/subscriptions | List Subscriptions
 [**retrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model
 [**updateSubscription**](SubscriptionsApi.md#updateSubscription) | **PATCH** /rest/v2/subscriptions/{subscription_id} | Update a Subscription
 [**updateSubscriptionCustomField**](SubscriptionsApi.md#updateSubscriptionCustomField) | **PATCH** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
 [**updateSubscriptionCustomFieldGroup**](SubscriptionsApi.md#updateSubscriptionCustomFieldGroup) | **PATCH** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Update a Subscription Custom Field Group
+[**updateSubscriptionCustomFieldTab**](SubscriptionsApi.md#updateSubscriptionCustomFieldTab) | **PATCH** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Update a Subscription Custom Field Tab
 
 
 # **cancelSubscription**
@@ -316,6 +321,69 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **createSubscriptionCustomFieldTab**
+> CustomFieldTab createSubscriptionCustomFieldTab(createCustomFieldTabRequest)
+
+Creates a new custom field tab for the Subscription record type.
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+import type { SubscriptionsApiCreateSubscriptionCustomFieldTabRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request: SubscriptionsApiCreateSubscriptionCustomFieldTabRequest = {
+  
+  createCustomFieldTabRequest: {
+    name: "name_example",
+  },
+};
+
+const data = await apiInstance.createSubscriptionCustomFieldTab(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomFieldTabRequest** | **CreateCustomFieldTabRequest**|  |
+
+
+### Return type
+
+**CustomFieldTab**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **deleteSubscriptionCustomField**
 > void deleteSubscriptionCustomField()
 
@@ -407,6 +475,67 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **deleteSubscriptionCustomFieldTab**
+> void deleteSubscriptionCustomFieldTab()
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+import type { SubscriptionsApiDeleteSubscriptionCustomFieldTabRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request: SubscriptionsApiDeleteSubscriptionCustomFieldTabRequest = {
+  
+  tabId: "tab_id_example",
+};
+
+const data = await apiInstance.deleteSubscriptionCustomFieldTab(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tabId** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -560,6 +689,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getSubscriptionCustomFieldTab**
+> CustomFieldTab getSubscriptionCustomFieldTab()
+
+Retrieves a single custom field tab by id for the Subscription record type.
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+import type { SubscriptionsApiGetSubscriptionCustomFieldTabRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request: SubscriptionsApiGetSubscriptionCustomFieldTabRequest = {
+  
+  tabId: "tab_id_example",
+};
+
+const data = await apiInstance.getSubscriptionCustomFieldTab(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tabId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**CustomFieldTab**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **invoiceSubscription**
 > OrderV2 invoiceSubscription()
 
@@ -682,6 +872,60 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **listSubscriptionCustomFieldTabs**
+> ListCustomFieldTabsResponse listSubscriptionCustomFieldTabs()
+
+Retrieves a list of custom field tabs for the Subscription record type.
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request = {};
+
+const data = await apiInstance.listSubscriptionCustomFieldTabs(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+
+### Return type
+
+**ListCustomFieldTabsResponse**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **listSubscriptions**
 > ListSubscriptionsResponse listSubscriptions()
 
@@ -698,7 +942,7 @@ const configuration = createConfiguration();
 const apiInstance = new SubscriptionsApi(configuration);
 
 const request: SubscriptionsApiListSubscriptionsRequest = {
-    // Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive`  (optional)
+    // Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/subscriptions/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\'s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `_SubscriptionNote0%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive`  Custom field examples (for custom fields with field_name `_SubscriptionNote0` and `_SubscriptionCount1`): - `filter=_SubscriptionNote0%3D%3DTest` (custom field exact match) - `filter=_SubscriptionNote0%3D%3DTest%2A` (custom field prefix wildcard) - `filter=_SubscriptionCount1%3E100` (custom field numeric comparison) - `filter=contact_id%3D%3D123%3B_SubscriptionNote0%3D%3DActive` (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  (optional)
   filter: "filter_example",
     // Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc` (optional)
   orderBy: "order_by_example",
@@ -717,7 +961,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  | (optional) defaults to undefined
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/subscriptions/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_SubscriptionNote0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  Custom field examples (for custom fields with field_name &#x60;_SubscriptionNote0&#x60; and &#x60;_SubscriptionCount1&#x60;): - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_SubscriptionCount1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;contact_id%3D%3D123%3B_SubscriptionNote0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
@@ -1035,6 +1279,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CustomFieldGroup**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **updateSubscriptionCustomFieldTab**
+> CustomFieldTab updateSubscriptionCustomFieldTab(updateCustomFieldTabRequest)
+
+Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+
+### Example
+
+
+```typescript
+import { createConfiguration, SubscriptionsApi } from '';
+import type { SubscriptionsApiUpdateSubscriptionCustomFieldTabRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new SubscriptionsApi(configuration);
+
+const request: SubscriptionsApiUpdateSubscriptionCustomFieldTabRequest = {
+  
+  tabId: "tab_id_example",
+    // Comma-separated list of fields to update
+  updateMask: [
+    "name",
+  ],
+  
+  updateCustomFieldTabRequest: {
+    name: "name_example",
+    order: 1,
+  },
+};
+
+const data = await apiInstance.updateSubscriptionCustomFieldTab(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateCustomFieldTabRequest** | **UpdateCustomFieldTabRequest**|  |
+ **tabId** | [**string**] |  | defaults to undefined
+ **updateMask** | **Array<&#39;name&#39; &#124; &#39;order&#39;>** | Comma-separated list of fields to update | defaults to undefined
+
+
+### Return type
+
+**CustomFieldTab**
 
 ### Authorization
 

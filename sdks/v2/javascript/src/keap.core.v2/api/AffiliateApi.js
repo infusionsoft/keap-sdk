@@ -23,6 +23,7 @@ import CreateAffiliateRequest from '../model/CreateAffiliateRequest';
 import CreateCommissionProgramRequest from '../model/CreateCommissionProgramRequest';
 import CreateCustomFieldGroupRequest from '../model/CreateCustomFieldGroupRequest';
 import CreateCustomFieldRequest from '../model/CreateCustomFieldRequest';
+import CreateCustomFieldTabRequest from '../model/CreateCustomFieldTabRequest';
 import CreateDefaultCommissionProgramRequest from '../model/CreateDefaultCommissionProgramRequest';
 import CreateOrUpdateAffiliateLinkRequest from '../model/CreateOrUpdateAffiliateLinkRequest';
 import CreateProductCommissionProgramRequest from '../model/CreateProductCommissionProgramRequest';
@@ -30,6 +31,7 @@ import CreateProgramResourceRequest from '../model/CreateProgramResourceRequest'
 import CreateSubscriptionCommissionProgramRequest from '../model/CreateSubscriptionCommissionProgramRequest';
 import CustomFieldGroup from '../model/CustomFieldGroup';
 import CustomFieldMetaData from '../model/CustomFieldMetaData';
+import CustomFieldTab from '../model/CustomFieldTab';
 import DeleteProgramCommissionRequest from '../model/DeleteProgramCommissionRequest';
 import DeleteSubscriptionPlanCommissionRequest from '../model/DeleteSubscriptionPlanCommissionRequest';
 import Error from '../model/Error';
@@ -42,6 +44,7 @@ import ListAffiliateReferralsResponse from '../model/ListAffiliateReferralsRespo
 import ListAffiliateSummariesResponse from '../model/ListAffiliateSummariesResponse';
 import ListAffiliatesResponse from '../model/ListAffiliatesResponse';
 import ListCustomFieldGroupsResponse from '../model/ListCustomFieldGroupsResponse';
+import ListCustomFieldTabsResponse from '../model/ListCustomFieldTabsResponse';
 import ListProgramResourcesResponse from '../model/ListProgramResourcesResponse';
 import ObjectModel from '../model/ObjectModel';
 import RestAffiliate from '../model/RestAffiliate';
@@ -49,6 +52,7 @@ import UpdateAffiliateRequest from '../model/UpdateAffiliateRequest';
 import UpdateCommissionProgramRequest from '../model/UpdateCommissionProgramRequest';
 import UpdateCustomFieldGroupRequest from '../model/UpdateCustomFieldGroupRequest';
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
+import UpdateCustomFieldTabRequest from '../model/UpdateCustomFieldTabRequest';
 import UpdateDefaultCommissionProgramRequest from '../model/UpdateDefaultCommissionProgramRequest';
 import UpdateProductCommissionProgramRequest from '../model/UpdateProductCommissionProgramRequest';
 import UpdateProgramResourceRequest from '../model/UpdateProgramResourceRequest';
@@ -471,6 +475,53 @@ export default class AffiliateApi {
 
 
     /**
+     * Create an Affiliate Custom Field Tab
+     * Creates a new custom field tab for the Affiliate record type.
+     * @param {module:keap.core.v2/model/CreateCustomFieldTabRequest} createCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    createAffiliateCustomFieldTabWithHttpInfo(createCustomFieldTabRequest) {
+      let postBody = createCustomFieldTabRequest;
+      // verify the required parameter 'createCustomFieldTabRequest' is set
+      if (createCustomFieldTabRequest === undefined || createCustomFieldTabRequest === null) {
+        throw new Error("Missing the required parameter 'createCustomFieldTabRequest' when calling createAffiliateCustomFieldTab");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/affiliates/model/customFields/tabs', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create an Affiliate Custom Field Tab
+     * Creates a new custom field tab for the Affiliate record type.
+     * @param {module:keap.core.v2/model/CreateCustomFieldTabRequest} createCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    createAffiliateCustomFieldTab(createCustomFieldTabRequest) {
+      return this.createAffiliateCustomFieldTabWithHttpInfo(createCustomFieldTabRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Create a Default Commission Program
      * Creates a Default Commission Program
      * @param {String} commissionProgramId 
@@ -757,6 +808,54 @@ export default class AffiliateApi {
      */
     deleteAffiliateCustomFieldGroup(groupId) {
       return this.deleteAffiliateCustomFieldGroupWithHttpInfo(groupId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Delete an Affiliate Custom Field Tab
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteAffiliateCustomFieldTabWithHttpInfo(tabId) {
+      let postBody = null;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling deleteAffiliateCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/affiliates/model/customFields/tabs/{tab_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete an Affiliate Custom Field Tab
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteAffiliateCustomFieldTab(tabId) {
+      return this.deleteAffiliateCustomFieldTabWithHttpInfo(tabId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1067,6 +1166,54 @@ export default class AffiliateApi {
 
 
     /**
+     * Retrieve an Affiliate Custom Field Tab
+     * Retrieves a single custom field tab by id for the Affiliate record type.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    getAffiliateCustomFieldTabWithHttpInfo(tabId) {
+      let postBody = null;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling getAffiliateCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/affiliates/model/customFields/tabs/{tab_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve an Affiliate Custom Field Tab
+     * Retrieves a single custom field tab by id for the Affiliate record type.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    getAffiliateCustomFieldTab(tabId) {
+      return this.getAffiliateCustomFieldTabWithHttpInfo(tabId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Retrieve Affiliate Model
      * Get the custom fields and optional properties for the Affiliate object
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ObjectModel} and HTTP response
@@ -1270,7 +1417,7 @@ export default class AffiliateApi {
      * List Affiliates
      * Retrieves a list of Affiliates
      * @param {Object} opts Optional parameters
-     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: ==, and wildcard support (e.g., `value*`) - Numeric fields: ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Choice/Select fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. 
+     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): ==, and wildcard support (e.g., `value*`) - Numeric fields (including user, month, day of week): ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Yes/No and drilldown fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. 
      * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` - `date_created` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc` 
      * @param {Number} [pageSize] Total number of items to return per page
      * @param {String} [pageToken] Page token
@@ -1308,7 +1455,7 @@ export default class AffiliateApi {
      * List Affiliates
      * Retrieves a list of Affiliates
      * @param {Object} opts Optional parameters
-     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: ==, and wildcard support (e.g., `value*`) - Numeric fields: ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Choice/Select fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. 
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): ==, and wildcard support (e.g., `value*`) - Numeric fields (including user, month, day of week): ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Yes/No and drilldown fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. 
      * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` - `date_created` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc` 
      * @param {Number} opts.pageSize Total number of items to return per page
      * @param {String} opts.pageToken Page token
@@ -1419,6 +1566,47 @@ export default class AffiliateApi {
      */
     listAffiliateCustomFieldGroups(opts) {
       return this.listAffiliateCustomFieldGroupsWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List Affiliate Custom Field Tabs
+     * Retrieves a list of custom field tabs for the Affiliate record type.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListCustomFieldTabsResponse} and HTTP response
+     */
+    listAffiliateCustomFieldTabsWithHttpInfo() {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListCustomFieldTabsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/affiliates/model/customFields/tabs', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List Affiliate Custom Field Tabs
+     * Retrieves a list of custom field tabs for the Affiliate record type.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListCustomFieldTabsResponse}
+     */
+    listAffiliateCustomFieldTabs() {
+      return this.listAffiliateCustomFieldTabsWithHttpInfo()
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1985,6 +2173,67 @@ export default class AffiliateApi {
      */
     updateAffiliateCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest) {
       return this.updateAffiliateCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update an Affiliate Custom Field Tab
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * @param {String} tabId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldTabRequest} updateCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    updateAffiliateCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest) {
+      let postBody = updateCustomFieldTabRequest;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling updateAffiliateCustomFieldTab");
+      }
+      // verify the required parameter 'updateMask' is set
+      if (updateMask === undefined || updateMask === null) {
+        throw new Error("Missing the required parameter 'updateMask' when calling updateAffiliateCustomFieldTab");
+      }
+      // verify the required parameter 'updateCustomFieldTabRequest' is set
+      if (updateCustomFieldTabRequest === undefined || updateCustomFieldTabRequest === null) {
+        throw new Error("Missing the required parameter 'updateCustomFieldTabRequest' when calling updateAffiliateCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+        'update_mask': this.apiClient.buildCollectionParam(updateMask, 'multi')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/affiliates/model/customFields/tabs/{tab_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update an Affiliate Custom Field Tab
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * @param {String} tabId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldTabRequest} updateCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    updateAffiliateCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest) {
+      return this.updateAffiliateCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

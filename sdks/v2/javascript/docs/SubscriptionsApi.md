@@ -8,17 +8,22 @@ Method | HTTP request | Description
 [**createSubscription**](SubscriptionsApi.md#createSubscription) | **POST** /rest/v2/subscriptions | Create Subscription
 [**createSubscriptionCustomField**](SubscriptionsApi.md#createSubscriptionCustomField) | **POST** /rest/v2/subscriptions/model/customFields | Create a Subscription Custom Field
 [**createSubscriptionCustomFieldGroup**](SubscriptionsApi.md#createSubscriptionCustomFieldGroup) | **POST** /rest/v2/subscriptions/model/customFields/groups | Create a Subscription Custom Field Group
+[**createSubscriptionCustomFieldTab**](SubscriptionsApi.md#createSubscriptionCustomFieldTab) | **POST** /rest/v2/subscriptions/model/customFields/tabs | Create a Subscription Custom Field Tab
 [**deleteSubscriptionCustomField**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
 [**deleteSubscriptionCustomFieldGroup**](SubscriptionsApi.md#deleteSubscriptionCustomFieldGroup) | **DELETE** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Delete a Subscription Custom Field Group
+[**deleteSubscriptionCustomFieldTab**](SubscriptionsApi.md#deleteSubscriptionCustomFieldTab) | **DELETE** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Delete a Subscription Custom Field Tab
 [**getSubscription**](SubscriptionsApi.md#getSubscription) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription
 [**getSubscriptionCustomFieldGroup**](SubscriptionsApi.md#getSubscriptionCustomFieldGroup) | **GET** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Retrieve a Subscription Custom Field Group
+[**getSubscriptionCustomFieldTab**](SubscriptionsApi.md#getSubscriptionCustomFieldTab) | **GET** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Retrieve a Subscription Custom Field Tab
 [**invoiceSubscription**](SubscriptionsApi.md#invoiceSubscription) | **POST** /rest/v2/subscriptions/{subscription_id}:invoice | Invoice a Subscription
 [**listSubscriptionCustomFieldGroups**](SubscriptionsApi.md#listSubscriptionCustomFieldGroups) | **GET** /rest/v2/subscriptions/model/customFields/groups | List Subscription Custom Field Groups
+[**listSubscriptionCustomFieldTabs**](SubscriptionsApi.md#listSubscriptionCustomFieldTabs) | **GET** /rest/v2/subscriptions/model/customFields/tabs | List Subscription Custom Field Tabs
 [**listSubscriptions**](SubscriptionsApi.md#listSubscriptions) | **GET** /rest/v2/subscriptions | List Subscriptions
 [**retrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model
 [**updateSubscription**](SubscriptionsApi.md#updateSubscription) | **PATCH** /rest/v2/subscriptions/{subscription_id} | Update a Subscription
 [**updateSubscriptionCustomField**](SubscriptionsApi.md#updateSubscriptionCustomField) | **PATCH** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
 [**updateSubscriptionCustomFieldGroup**](SubscriptionsApi.md#updateSubscriptionCustomFieldGroup) | **PATCH** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Update a Subscription Custom Field Group
+[**updateSubscriptionCustomFieldTab**](SubscriptionsApi.md#updateSubscriptionCustomFieldTab) | **PATCH** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Update a Subscription Custom Field Tab
 
 
 
@@ -216,6 +221,54 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## createSubscriptionCustomFieldTab
+
+> CustomFieldTab createSubscriptionCustomFieldTab(createCustomFieldTabRequest)
+
+Create a Subscription Custom Field Tab
+
+Creates a new custom field tab for the Subscription record type.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
+let createCustomFieldTabRequest = new KeapCoreServiceV2Sdk.CreateCustomFieldTabRequest(); // CreateCustomFieldTabRequest | 
+apiInstance.createSubscriptionCustomFieldTab(createCustomFieldTabRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomFieldTabRequest** | [**CreateCustomFieldTabRequest**](CreateCustomFieldTabRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## deleteSubscriptionCustomField
 
 > deleteSubscriptionCustomField(customFieldId)
@@ -297,6 +350,54 @@ apiInstance.deleteSubscriptionCustomFieldGroup(groupId).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **String**|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## deleteSubscriptionCustomFieldTab
+
+> deleteSubscriptionCustomFieldTab(tabId)
+
+Delete a Subscription Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
+let tabId = "tabId_example"; // String | 
+apiInstance.deleteSubscriptionCustomFieldTab(tabId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tabId** | **String**|  | 
 
 ### Return type
 
@@ -408,6 +509,54 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## getSubscriptionCustomFieldTab
+
+> CustomFieldTab getSubscriptionCustomFieldTab(tabId)
+
+Retrieve a Subscription Custom Field Tab
+
+Retrieves a single custom field tab by id for the Subscription record type.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
+let tabId = "tabId_example"; // String | 
+apiInstance.getSubscriptionCustomFieldTab(tabId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tabId** | **String**|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## invoiceSubscription
 
 > OrderV2 invoiceSubscription(subscriptionId)
@@ -506,6 +655,50 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## listSubscriptionCustomFieldTabs
+
+> ListCustomFieldTabsResponse listSubscriptionCustomFieldTabs()
+
+List Subscription Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Subscription record type.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
+apiInstance.listSubscriptionCustomFieldTabs().then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListCustomFieldTabsResponse**](ListCustomFieldTabsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## listSubscriptions
 
 > ListSubscriptionsResponse listSubscriptions(opts)
@@ -525,7 +718,7 @@ oauth2.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
 let opts = {
-  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive` 
+  'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/subscriptions/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `_SubscriptionNote0%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive`  Custom field examples (for custom fields with field_name `_SubscriptionNote0` and `_SubscriptionCount1`): - `filter=_SubscriptionNote0%3D%3DTest` (custom field exact match) - `filter=_SubscriptionNote0%3D%3DTest%2A` (custom field prefix wildcard) - `filter=_SubscriptionCount1%3E100` (custom field numeric comparison) - `filter=contact_id%3D%3D123%3B_SubscriptionNote0%3D%3DActive` (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo` 
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc`
   'pageSize': 0, // Number | Total number of items to return per page
   'pageToken': "pageToken_example" // String | Page token
@@ -543,7 +736,7 @@ apiInstance.listSubscriptions(opts).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  | [optional] 
+ **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/subscriptions/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_SubscriptionNote0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  Custom field examples (for custom fields with field_name &#x60;_SubscriptionNote0&#x60; and &#x60;_SubscriptionCount1&#x60;): - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_SubscriptionCount1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;contact_id%3D%3D123%3B_SubscriptionNote0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  | [optional] 
  **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
  **pageToken** | **String**| Page token | [optional] 
@@ -755,6 +948,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## updateSubscriptionCustomFieldTab
+
+> CustomFieldTab updateSubscriptionCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest)
+
+Update a Subscription Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.SubscriptionsApi();
+let tabId = "tabId_example"; // String | 
+let updateMask = ["null"]; // [String] | Comma-separated list of fields to update
+let updateCustomFieldTabRequest = new KeapCoreServiceV2Sdk.UpdateCustomFieldTabRequest(); // UpdateCustomFieldTabRequest | 
+apiInstance.updateSubscriptionCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tabId** | **String**|  | 
+ **updateMask** | [**[String]**](String.md)| Comma-separated list of fields to update | 
+ **updateCustomFieldTabRequest** | [**UpdateCustomFieldTabRequest**](UpdateCustomFieldTabRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
 
 ### Authorization
 

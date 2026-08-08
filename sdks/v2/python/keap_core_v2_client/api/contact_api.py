@@ -25,19 +25,23 @@ from keap_core_v2_client.models.contact_link_type import ContactLinkType
 from keap_core_v2_client.models.create_contact_link_type_request import CreateContactLinkTypeRequest
 from keap_core_v2_client.models.create_custom_field_group_request import CreateCustomFieldGroupRequest
 from keap_core_v2_client.models.create_custom_field_request import CreateCustomFieldRequest
+from keap_core_v2_client.models.create_custom_field_tab_request import CreateCustomFieldTabRequest
 from keap_core_v2_client.models.create_update_contact_request import CreateUpdateContactRequest
 from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
 from keap_core_v2_client.models.custom_field_meta_data import CustomFieldMetaData
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
 from keap_core_v2_client.models.link_contacts_request import LinkContactsRequest
 from keap_core_v2_client.models.list_contact_link_types_response import ListContactLinkTypesResponse
 from keap_core_v2_client.models.list_contact_links_response import ListContactLinksResponse
 from keap_core_v2_client.models.list_contact_tags_response import ListContactTagsResponse
 from keap_core_v2_client.models.list_contacts_response import ListContactsResponse
 from keap_core_v2_client.models.list_custom_field_groups_response import ListCustomFieldGroupsResponse
+from keap_core_v2_client.models.list_custom_field_tabs_response import ListCustomFieldTabsResponse
 from keap_core_v2_client.models.merge_contact_request import MergeContactRequest
 from keap_core_v2_client.models.object_model import ObjectModel
 from keap_core_v2_client.models.update_contact_link_type_request import UpdateContactLinkTypeRequest
 from keap_core_v2_client.models.update_custom_field_group_request import UpdateCustomFieldGroupRequest
+from keap_core_v2_client.models.update_custom_field_tab_request import UpdateCustomFieldTabRequest
 
 from keap_core_v2_client.api_client import ApiClient, RequestSerialized
 from keap_core_v2_client.api_response import ApiResponse
@@ -974,6 +978,304 @@ class ContactApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/rest/v2/contacts/model/customFields/groups',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def create_contact_custom_field_tab(
+        self,
+        create_custom_field_tab_request: CreateCustomFieldTabRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> CustomFieldTab:
+        """Create a Contact Custom Field Tab
+
+        Creates a new custom field tab for the Contact record type.
+
+        :param create_custom_field_tab_request: (required)
+        :type create_custom_field_tab_request: CreateCustomFieldTabRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_contact_custom_field_tab_serialize(
+            create_custom_field_tab_request=create_custom_field_tab_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def create_contact_custom_field_tab_with_http_info(
+        self,
+        create_custom_field_tab_request: CreateCustomFieldTabRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[CustomFieldTab]:
+        """Create a Contact Custom Field Tab
+
+        Creates a new custom field tab for the Contact record type.
+
+        :param create_custom_field_tab_request: (required)
+        :type create_custom_field_tab_request: CreateCustomFieldTabRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_contact_custom_field_tab_serialize(
+            create_custom_field_tab_request=create_custom_field_tab_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def create_contact_custom_field_tab_without_preload_content(
+        self,
+        create_custom_field_tab_request: CreateCustomFieldTabRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Create a Contact Custom Field Tab
+
+        Creates a new custom field tab for the Contact record type.
+
+        :param create_custom_field_tab_request: (required)
+        :type create_custom_field_tab_request: CreateCustomFieldTabRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_contact_custom_field_tab_serialize(
+            create_custom_field_tab_request=create_custom_field_tab_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _create_contact_custom_field_tab_serialize(
+        self,
+        create_custom_field_tab_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if create_custom_field_tab_request is not None:
+            _body_params = create_custom_field_tab_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/rest/v2/contacts/model/customFields/tabs',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2143,6 +2445,291 @@ class ContactApi:
 
 
     @validate_call
+    def delete_contact_custom_field_tab(
+        self,
+        tab_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete a Contact Custom Field Tab
+
+        Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_contact_custom_field_tab_serialize(
+            tab_id=tab_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_contact_custom_field_tab_with_http_info(
+        self,
+        tab_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Delete a Contact Custom Field Tab
+
+        Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_contact_custom_field_tab_serialize(
+            tab_id=tab_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_contact_custom_field_tab_without_preload_content(
+        self,
+        tab_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Delete a Contact Custom Field Tab
+
+        Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_contact_custom_field_tab_serialize(
+            tab_id=tab_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_contact_custom_field_tab_serialize(
+        self,
+        tab_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tab_id is not None:
+            _path_params['tab_id'] = tab_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/rest/v2/contacts/model/customFields/tabs/{tab_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def delete_contact_link_type(
         self,
         link_type_id: Annotated[StrictStr, Field(description="Contact Link type identifier")],
@@ -3016,6 +3603,291 @@ class ContactApi:
 
 
     @validate_call
+    def get_contact_custom_field_tab(
+        self,
+        tab_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> CustomFieldTab:
+        """Retrieve a Contact Custom Field Tab
+
+        Retrieves a single custom field tab by id for the Contact record type.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_contact_custom_field_tab_serialize(
+            tab_id=tab_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_contact_custom_field_tab_with_http_info(
+        self,
+        tab_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[CustomFieldTab]:
+        """Retrieve a Contact Custom Field Tab
+
+        Retrieves a single custom field tab by id for the Contact record type.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_contact_custom_field_tab_serialize(
+            tab_id=tab_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_contact_custom_field_tab_without_preload_content(
+        self,
+        tab_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Retrieve a Contact Custom Field Tab
+
+        Retrieves a single custom field tab by id for the Contact record type.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_contact_custom_field_tab_serialize(
+            tab_id=tab_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_contact_custom_field_tab_serialize(
+        self,
+        tab_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tab_id is not None:
+            _path_params['tab_id'] = tab_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/rest/v2/contacts/model/customFields/tabs/{tab_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def link_contacts(
         self,
         link_contacts_request: LinkContactsRequest,
@@ -3585,6 +4457,276 @@ class ContactApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/rest/v2/contacts/model/customFields/groups',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def list_contact_custom_field_tabs(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ListCustomFieldTabsResponse:
+        """List Contact Custom Field Tabs
+
+        Retrieves a list of custom field tabs for the Contact record type.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_contact_custom_field_tabs_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListCustomFieldTabsResponse",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def list_contact_custom_field_tabs_with_http_info(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ListCustomFieldTabsResponse]:
+        """List Contact Custom Field Tabs
+
+        Retrieves a list of custom field tabs for the Contact record type.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_contact_custom_field_tabs_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListCustomFieldTabsResponse",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def list_contact_custom_field_tabs_without_preload_content(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List Contact Custom Field Tabs
+
+        Retrieves a list of custom field tabs for the Contact record type.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_contact_custom_field_tabs_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListCustomFieldTabsResponse",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _list_contact_custom_field_tabs_serialize(
+        self,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/rest/v2/contacts/model/customFields/tabs',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -4227,7 +5369,7 @@ class ContactApi:
     def list_contacts(
         self,
         fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)")] = None,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, name, email, phone, website): `==` only, with optional   trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Choice fields (dropdown, radio, yes/no, user, state): `==` only - Numeric fields: `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `start_update_time`/`end_update_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) ")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `city` — primary-address city (Contact.City); supports prefix wildcard (e.g. `city==Chan*`, \"starts with\") - (String) `state` — primary-address state/region (Contact.State); supports prefix wildcard (e.g. `state==Ar*`, \"starts with\") - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=`; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `2026-01-01T00:00:00.000Z`), the same format as `start_update_time`/`end_update_time`. Date-only values such as `2026-01-01` are rejected - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=city%3D%3DChandler` (city exact match) - `filter=city%3D%3DChan%2A` (city prefix wildcard: starts with \"Chan\") - `filter=city%3D%3DChandler%3Bstate%3D%3DArizona` (combined city + state filter) - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `email` - `update_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -4250,7 +5392,7 @@ class ContactApi:
 
         :param fields: Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
         :type fields: List[str]
-        :param filter: Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, name, email, phone, website): `==` only, with optional   trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Choice fields (dropdown, radio, yes/no, user, state): `==` only - Numeric fields: `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `start_update_time`/`end_update_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) 
+        :param filter: Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `city` — primary-address city (Contact.City); supports prefix wildcard (e.g. `city==Chan*`, \"starts with\") - (String) `state` — primary-address state/region (Contact.State); supports prefix wildcard (e.g. `state==Ar*`, \"starts with\") - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=`; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `2026-01-01T00:00:00.000Z`), the same format as `start_update_time`/`end_update_time`. Date-only values such as `2026-01-01` are rejected - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=city%3D%3DChandler` (city exact match) - `filter=city%3D%3DChan%2A` (city prefix wildcard: starts with \"Chan\") - `filter=city%3D%3DChandler%3Bstate%3D%3DArizona` (combined city + state filter) - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) 
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `email` - `update_time`  One of the following directions: - `asc` - `desc`
         :type order_by: str
@@ -4318,7 +5460,7 @@ class ContactApi:
     def list_contacts_with_http_info(
         self,
         fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)")] = None,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, name, email, phone, website): `==` only, with optional   trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Choice fields (dropdown, radio, yes/no, user, state): `==` only - Numeric fields: `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `start_update_time`/`end_update_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) ")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `city` — primary-address city (Contact.City); supports prefix wildcard (e.g. `city==Chan*`, \"starts with\") - (String) `state` — primary-address state/region (Contact.State); supports prefix wildcard (e.g. `state==Ar*`, \"starts with\") - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=`; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `2026-01-01T00:00:00.000Z`), the same format as `start_update_time`/`end_update_time`. Date-only values such as `2026-01-01` are rejected - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=city%3D%3DChandler` (city exact match) - `filter=city%3D%3DChan%2A` (city prefix wildcard: starts with \"Chan\") - `filter=city%3D%3DChandler%3Bstate%3D%3DArizona` (combined city + state filter) - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `email` - `update_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -4341,7 +5483,7 @@ class ContactApi:
 
         :param fields: Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
         :type fields: List[str]
-        :param filter: Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, name, email, phone, website): `==` only, with optional   trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Choice fields (dropdown, radio, yes/no, user, state): `==` only - Numeric fields: `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `start_update_time`/`end_update_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) 
+        :param filter: Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `city` — primary-address city (Contact.City); supports prefix wildcard (e.g. `city==Chan*`, \"starts with\") - (String) `state` — primary-address state/region (Contact.State); supports prefix wildcard (e.g. `state==Ar*`, \"starts with\") - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=`; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `2026-01-01T00:00:00.000Z`), the same format as `start_update_time`/`end_update_time`. Date-only values such as `2026-01-01` are rejected - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=city%3D%3DChandler` (city exact match) - `filter=city%3D%3DChan%2A` (city prefix wildcard: starts with \"Chan\") - `filter=city%3D%3DChandler%3Bstate%3D%3DArizona` (combined city + state filter) - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) 
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `email` - `update_time`  One of the following directions: - `asc` - `desc`
         :type order_by: str
@@ -4409,7 +5551,7 @@ class ContactApi:
     def list_contacts_without_preload_content(
         self,
         fields: Annotated[Optional[List[StrictStr]], Field(description="Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)")] = None,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, name, email, phone, website): `==` only, with optional   trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Choice fields (dropdown, radio, yes/no, user, state): `==` only - Numeric fields: `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `start_update_time`/`end_update_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) ")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `city` — primary-address city (Contact.City); supports prefix wildcard (e.g. `city==Chan*`, \"starts with\") - (String) `state` — primary-address state/region (Contact.State); supports prefix wildcard (e.g. `state==Ar*`, \"starts with\") - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=`; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `2026-01-01T00:00:00.000Z`), the same format as `start_update_time`/`end_update_time`. Date-only values such as `2026-01-01` are rejected - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=city%3D%3DChandler` (city exact match) - `filter=city%3D%3DChan%2A` (city prefix wildcard: starts with \"Chan\") - `filter=city%3D%3DChandler%3Bstate%3D%3DArizona` (combined city + state filter) - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `email` - `update_time`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -4432,7 +5574,7 @@ class ContactApi:
 
         :param fields: Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
         :type fields: List[str]
-        :param filter: Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, name, email, phone, website): `==` only, with optional   trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Choice fields (dropdown, radio, yes/no, user, state): `==` only - Numeric fields: `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `start_update_time`/`end_update_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) 
+        :param filter: Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `city` — primary-address city (Contact.City); supports prefix wildcard (e.g. `city==Chan*`, \"starts with\") - (String) `state` — primary-address state/region (Contact.State); supports prefix wildcard (e.g. `state==Ar*`, \"starts with\") - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=`; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `2026-01-01T00:00:00.000Z`), the same format as `start_update_time`/`end_update_time`. Date-only values such as `2026-01-01` are rejected - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=city%3D%3DChandler` (city exact match) - `filter=city%3D%3DChan%2A` (city prefix wildcard: starts with \"Chan\") - `filter=city%3D%3DChandler%3Bstate%3D%3DArizona` (combined city + state filter) - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) 
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `email` - `update_time`  One of the following directions: - `asc` - `desc`
         :type order_by: str
@@ -6481,6 +7623,337 @@ class ContactApi:
         return self.api_client.param_serialize(
             method='PATCH',
             resource_path='/rest/v2/contacts/model/customFields/groups/{group_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_contact_custom_field_tab(
+        self,
+        tab_id: StrictStr,
+        update_mask: Annotated[List[StrictStr], Field(description="Comma-separated list of fields to update")],
+        update_custom_field_tab_request: UpdateCustomFieldTabRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> CustomFieldTab:
+        """Update a Contact Custom Field Tab
+
+        Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param update_mask: Comma-separated list of fields to update (required)
+        :type update_mask: List[str]
+        :param update_custom_field_tab_request: (required)
+        :type update_custom_field_tab_request: UpdateCustomFieldTabRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_contact_custom_field_tab_serialize(
+            tab_id=tab_id,
+            update_mask=update_mask,
+            update_custom_field_tab_request=update_custom_field_tab_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_contact_custom_field_tab_with_http_info(
+        self,
+        tab_id: StrictStr,
+        update_mask: Annotated[List[StrictStr], Field(description="Comma-separated list of fields to update")],
+        update_custom_field_tab_request: UpdateCustomFieldTabRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[CustomFieldTab]:
+        """Update a Contact Custom Field Tab
+
+        Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param update_mask: Comma-separated list of fields to update (required)
+        :type update_mask: List[str]
+        :param update_custom_field_tab_request: (required)
+        :type update_custom_field_tab_request: UpdateCustomFieldTabRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_contact_custom_field_tab_serialize(
+            tab_id=tab_id,
+            update_mask=update_mask,
+            update_custom_field_tab_request=update_custom_field_tab_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_contact_custom_field_tab_without_preload_content(
+        self,
+        tab_id: StrictStr,
+        update_mask: Annotated[List[StrictStr], Field(description="Comma-separated list of fields to update")],
+        update_custom_field_tab_request: UpdateCustomFieldTabRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update a Contact Custom Field Tab
+
+        Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param update_mask: Comma-separated list of fields to update (required)
+        :type update_mask: List[str]
+        :param update_custom_field_tab_request: (required)
+        :type update_custom_field_tab_request: UpdateCustomFieldTabRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_contact_custom_field_tab_serialize(
+            tab_id=tab_id,
+            update_mask=update_mask,
+            update_custom_field_tab_request=update_custom_field_tab_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_contact_custom_field_tab_serialize(
+        self,
+        tab_id,
+        update_mask,
+        update_custom_field_tab_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'update_mask': 'multi',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tab_id is not None:
+            _path_params['tab_id'] = tab_id
+        # process the query parameters
+        if update_mask is not None:
+            
+            _query_params.append(('update_mask', update_mask))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if update_custom_field_tab_request is not None:
+            _body_params = update_custom_field_tab_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/rest/v2/contacts/model/customFields/tabs/{tab_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

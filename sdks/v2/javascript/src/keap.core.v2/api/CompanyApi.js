@@ -17,16 +17,20 @@ import Company from '../model/Company';
 import CreateCompanyRequest from '../model/CreateCompanyRequest';
 import CreateCustomFieldGroupRequest from '../model/CreateCustomFieldGroupRequest';
 import CreateCustomFieldRequest from '../model/CreateCustomFieldRequest';
+import CreateCustomFieldTabRequest from '../model/CreateCustomFieldTabRequest';
 import CustomFieldGroup from '../model/CustomFieldGroup';
 import CustomFieldMetaData from '../model/CustomFieldMetaData';
+import CustomFieldTab from '../model/CustomFieldTab';
 import Error from '../model/Error';
 import ListCompaniesResponse from '../model/ListCompaniesResponse';
 import ListCompanyTagsResponse from '../model/ListCompanyTagsResponse';
 import ListCustomFieldGroupsResponse from '../model/ListCustomFieldGroupsResponse';
+import ListCustomFieldTabsResponse from '../model/ListCustomFieldTabsResponse';
 import ObjectModel from '../model/ObjectModel';
 import UpdateCompanyRequest from '../model/UpdateCompanyRequest';
 import UpdateCustomFieldGroupRequest from '../model/UpdateCustomFieldGroupRequest';
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
+import UpdateCustomFieldTabRequest from '../model/UpdateCustomFieldTabRequest';
 
 /**
 * Company service.
@@ -244,6 +248,53 @@ export default class CompanyApi {
 
 
     /**
+     * Create a Company Custom Field Tab
+     * Creates a new custom field tab for the Company record type.
+     * @param {module:keap.core.v2/model/CreateCustomFieldTabRequest} createCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    createCompanyCustomFieldTabWithHttpInfo(createCustomFieldTabRequest) {
+      let postBody = createCustomFieldTabRequest;
+      // verify the required parameter 'createCustomFieldTabRequest' is set
+      if (createCustomFieldTabRequest === undefined || createCustomFieldTabRequest === null) {
+        throw new Error("Missing the required parameter 'createCustomFieldTabRequest' when calling createCompanyCustomFieldTab");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/companies/model/customFields/tabs', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create a Company Custom Field Tab
+     * Creates a new custom field tab for the Company record type.
+     * @param {module:keap.core.v2/model/CreateCustomFieldTabRequest} createCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    createCompanyCustomFieldTab(createCustomFieldTabRequest) {
+      return this.createCompanyCustomFieldTabWithHttpInfo(createCustomFieldTabRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Delete a Company
      * Deletes the specified Company
      * @param {String} companyId 
@@ -388,6 +439,54 @@ export default class CompanyApi {
 
 
     /**
+     * Delete a Company Custom Field Tab
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteCompanyCustomFieldTabWithHttpInfo(tabId) {
+      let postBody = null;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling deleteCompanyCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/companies/model/customFields/tabs/{tab_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete a Company Custom Field Tab
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteCompanyCustomFieldTab(tabId) {
+      return this.deleteCompanyCustomFieldTabWithHttpInfo(tabId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Retrieve a Company
      * Retrieves a single Company
      * @param {String} companyId 
@@ -490,11 +589,59 @@ export default class CompanyApi {
 
 
     /**
+     * Retrieve a Company Custom Field Tab
+     * Retrieves a single custom field tab by id for the Company record type.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    getCompanyCustomFieldTabWithHttpInfo(tabId) {
+      let postBody = null;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling getCompanyCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/companies/model/customFields/tabs/{tab_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve a Company Custom Field Tab
+     * Retrieves a single custom field tab by id for the Company record type.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    getCompanyCustomFieldTab(tabId) {
+      return this.getCompanyCustomFieldTabWithHttpInfo(tabId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * List Companies
      * Retrieves a list of all Companies.<br/><br/>
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} [fields] Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number`, `address`, `email_address`, `phone_number`, `update_time`, `create_time` and `custom_fields` aren't included, by default.)
-     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `company_name` - exact match on company name (equality only) - (String) `name` - company name with support for a wildcard at the end (e.g. `smith*`) - (String) `email` - exact match on email - (String) `since_time` - companies updated on or after this time - (String) `until_time` - companies updated on or before this time - (Number) `company_id` - supports comparison operators: `==`, `>`, `<`, `>=`, `<=`  For equality filters, use the `==` operator in encoded form `%3D%3D`: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  For wildcard name search (prefix only, case-insensitive): - `filter=name%3D%3DAcme%2A` (starts with \"Acme\")  For company_id comparison: - `filter=company_id%3E5` (company_id > 5) - `filter=company_id%3E%3D10` (company_id >= 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, name, email, phone, website): `==` only, with optional   trailing wildcard (e.g. `Industry%3D%3DTech%2A`) - Choice fields (dropdown, radio, yes/no, user, state): `==` only - Numeric fields: `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `since_time`/`until_time`) - Multi-select fields: `==` matches records that contain the given option Examples (for a custom field named `Height`): - `filter=Height%3D%3DTall` - `filter=Height%3E100` Custom field filtering on non-indexed fields is supported but may be slower. 
+     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `company_name` - exact match on company name (equality only) - (String) `name` - company name with support for a wildcard at the end (e.g. `smith*`) - (String) `email` - exact match on email - (String) `city` - company city (Contact.City) with support for a prefix wildcard at the end (e.g. `Chan*`) - (String) `state` - company state/region (Contact.State) with support for a prefix wildcard at the end (e.g. `Ar*`) - (String) `since_time` - companies updated on or after this time - (String) `until_time` - companies updated on or before this time - (Number) `company_id` - supports comparison operators: `==`, `>`, `<`, `>=`, `<=`  For equality filters, use the `==` operator in encoded form `%3D%3D`: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=city%3D%3DChandler` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  For wildcard name/city/state search (prefix only, case-insensitive): - `filter=name%3D%3DAcme%2A` (starts with \"Acme\") - `filter=city%3D%3DChan%2A` (city starts with \"Chan\") - `filter=city%3D%3DChandler%3Bstate%3D%3DArizona` (combined city + state filter)  For company_id comparison: - `filter=company_id%3E5` (company_id > 5) - `filter=company_id%3E%3D10` (company_id >= 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `Industry%3D%3DTech%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `since_time`/`until_time`) - Multi-select fields: `==` matches records that contain the given option Examples (for a custom field named `Height`): - `filter=Height%3D%3DTall` - `filter=Height%3E100` Custom field filtering on non-indexed fields is supported but may be slower. 
      * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc`
      * @param {Number} [pageSize] Total number of items to return per page
      * @param {String} [pageToken] Page token
@@ -534,7 +681,7 @@ export default class CompanyApi {
      * Retrieves a list of all Companies.<br/><br/>
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} opts.fields Comma-delimited list of Company properties to include in the response. (Fields such as `notes`, `fax_number`, `address`, `email_address`, `phone_number`, `update_time`, `create_time` and `custom_fields` aren't included, by default.)
-     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `company_name` - exact match on company name (equality only) - (String) `name` - company name with support for a wildcard at the end (e.g. `smith*`) - (String) `email` - exact match on email - (String) `since_time` - companies updated on or after this time - (String) `until_time` - companies updated on or before this time - (Number) `company_id` - supports comparison operators: `==`, `>`, `<`, `>=`, `<=`  For equality filters, use the `==` operator in encoded form `%3D%3D`: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  For wildcard name search (prefix only, case-insensitive): - `filter=name%3D%3DAcme%2A` (starts with \"Acme\")  For company_id comparison: - `filter=company_id%3E5` (company_id > 5) - `filter=company_id%3E%3D10` (company_id >= 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, name, email, phone, website): `==` only, with optional   trailing wildcard (e.g. `Industry%3D%3DTech%2A`) - Choice fields (dropdown, radio, yes/no, user, state): `==` only - Numeric fields: `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `since_time`/`until_time`) - Multi-select fields: `==` matches records that contain the given option Examples (for a custom field named `Height`): - `filter=Height%3D%3DTall` - `filter=Height%3E100` Custom field filtering on non-indexed fields is supported but may be slower. 
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `company_name` - exact match on company name (equality only) - (String) `name` - company name with support for a wildcard at the end (e.g. `smith*`) - (String) `email` - exact match on email - (String) `city` - company city (Contact.City) with support for a prefix wildcard at the end (e.g. `Chan*`) - (String) `state` - company state/region (Contact.State) with support for a prefix wildcard at the end (e.g. `Ar*`) - (String) `since_time` - companies updated on or after this time - (String) `until_time` - companies updated on or before this time - (Number) `company_id` - supports comparison operators: `==`, `>`, `<`, `>=`, `<=`  For equality filters, use the `==` operator in encoded form `%3D%3D`: - `filter=company_name%3D%3DCompany` - `filter=email%3D%3Dtest@gmail.com` - `filter=city%3D%3DChandler` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  For wildcard name/city/state search (prefix only, case-insensitive): - `filter=name%3D%3DAcme%2A` (starts with \"Acme\") - `filter=city%3D%3DChan%2A` (city starts with \"Chan\") - `filter=city%3D%3DChandler%3Bstate%3D%3DArizona` (combined city + state filter)  For company_id comparison: - `filter=company_id%3E5` (company_id > 5) - `filter=company_id%3E%3D10` (company_id >= 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `Industry%3D%3DTech%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `since_time`/`until_time`) - Multi-select fields: `==` matches records that contain the given option Examples (for a custom field named `Height`): - `filter=Height%3D%3DTall` - `filter=Height%3E100` Custom field filtering on non-indexed fields is supported but may be slower. 
      * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `name` - `email`  One of the following directions: - `asc` - `desc`
      * @param {Number} opts.pageSize Total number of items to return per page
      * @param {String} opts.pageToken Page token
@@ -589,6 +736,47 @@ export default class CompanyApi {
      */
     listCompanyCustomFieldGroups(opts) {
       return this.listCompanyCustomFieldGroupsWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List Company Custom Field Tabs
+     * Retrieves a list of custom field tabs for the Company record type.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListCustomFieldTabsResponse} and HTTP response
+     */
+    listCompanyCustomFieldTabsWithHttpInfo() {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListCustomFieldTabsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/companies/model/customFields/tabs', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List Company Custom Field Tabs
+     * Retrieves a list of custom field tabs for the Company record type.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListCustomFieldTabsResponse}
+     */
+    listCompanyCustomFieldTabs() {
+      return this.listCompanyCustomFieldTabsWithHttpInfo()
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -929,6 +1117,67 @@ export default class CompanyApi {
      */
     updateCompanyCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest) {
       return this.updateCompanyCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update a Company Custom Field Tab
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * @param {String} tabId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldTabRequest} updateCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    updateCompanyCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest) {
+      let postBody = updateCustomFieldTabRequest;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling updateCompanyCustomFieldTab");
+      }
+      // verify the required parameter 'updateMask' is set
+      if (updateMask === undefined || updateMask === null) {
+        throw new Error("Missing the required parameter 'updateMask' when calling updateCompanyCustomFieldTab");
+      }
+      // verify the required parameter 'updateCustomFieldTabRequest' is set
+      if (updateCustomFieldTabRequest === undefined || updateCustomFieldTabRequest === null) {
+        throw new Error("Missing the required parameter 'updateCustomFieldTabRequest' when calling updateCompanyCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+        'update_mask': this.apiClient.buildCollectionParam(updateMask, 'multi')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/companies/model/customFields/tabs/{tab_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update a Company Custom Field Tab
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * @param {String} tabId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldTabRequest} updateCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    updateCompanyCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest) {
+      return this.updateCompanyCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

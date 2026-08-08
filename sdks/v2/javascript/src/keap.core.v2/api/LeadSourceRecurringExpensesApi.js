@@ -276,7 +276,7 @@ export default class LeadSourceRecurringExpensesApi {
     /**
      * Retrieves a list of lead source recurring expenses
      * Retrieves a list of recurring expenses with lead_source_id and optional 'filter' query param
-     * @param {String} leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param {String} leadSourceId The ID of the lead source this recurring expense belongs to. Use '-' as a wildcard to list recurring expenses across all lead sources.
      * @param {Object} opts Optional parameters
      * @param {String} [filter] Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `start_time` - (String) `end_time` - (String) `next_expense_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=next_expense_time%3D%3D2024-12-22T01:00:00.000Z`
      * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `title` - `amount` - `start_time` - `end_time` - `next_expense_time` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
@@ -320,7 +320,7 @@ export default class LeadSourceRecurringExpensesApi {
     /**
      * Retrieves a list of lead source recurring expenses
      * Retrieves a list of recurring expenses with lead_source_id and optional 'filter' query param
-     * @param {String} leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param {String} leadSourceId The ID of the lead source this recurring expense belongs to. Use '-' as a wildcard to list recurring expenses across all lead sources.
      * @param {Object} opts Optional parameters
      * @param {String} opts.filter Filter to apply, allowed fields are:  - (String) `title` - (Long) `amount` - (String) `start_time` - (String) `end_time` - (String) `next_expense_time` - (String) `create_time` - (String) `update_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:  - `filter=amount%3D%3D2500` - `filter=next_expense_time%3D%3D2024-12-22T01:00:00.000Z`
      * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `title` - `amount` - `start_time` - `end_time` - `next_expense_time` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`

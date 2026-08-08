@@ -19,9 +19,11 @@ import ContactLinkType from '../model/ContactLinkType';
 import CreateContactLinkTypeRequest from '../model/CreateContactLinkTypeRequest';
 import CreateCustomFieldGroupRequest from '../model/CreateCustomFieldGroupRequest';
 import CreateCustomFieldRequest from '../model/CreateCustomFieldRequest';
+import CreateCustomFieldTabRequest from '../model/CreateCustomFieldTabRequest';
 import CreateUpdateContactRequest from '../model/CreateUpdateContactRequest';
 import CustomFieldGroup from '../model/CustomFieldGroup';
 import CustomFieldMetaData from '../model/CustomFieldMetaData';
+import CustomFieldTab from '../model/CustomFieldTab';
 import Error from '../model/Error';
 import LinkContactsRequest from '../model/LinkContactsRequest';
 import ListContactLinkTypesResponse from '../model/ListContactLinkTypesResponse';
@@ -29,10 +31,12 @@ import ListContactLinksResponse from '../model/ListContactLinksResponse';
 import ListContactTagsResponse from '../model/ListContactTagsResponse';
 import ListContactsResponse from '../model/ListContactsResponse';
 import ListCustomFieldGroupsResponse from '../model/ListCustomFieldGroupsResponse';
+import ListCustomFieldTabsResponse from '../model/ListCustomFieldTabsResponse';
 import MergeContactRequest from '../model/MergeContactRequest';
 import ObjectModel from '../model/ObjectModel';
 import UpdateContactLinkTypeRequest from '../model/UpdateContactLinkTypeRequest';
 import UpdateCustomFieldGroupRequest from '../model/UpdateCustomFieldGroupRequest';
+import UpdateCustomFieldTabRequest from '../model/UpdateCustomFieldTabRequest';
 
 /**
 * Contact service.
@@ -197,6 +201,53 @@ export default class ContactApi {
      */
     createContactCustomFieldGroup(createCustomFieldGroupRequest) {
       return this.createContactCustomFieldGroupWithHttpInfo(createCustomFieldGroupRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Create a Contact Custom Field Tab
+     * Creates a new custom field tab for the Contact record type.
+     * @param {module:keap.core.v2/model/CreateCustomFieldTabRequest} createCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    createContactCustomFieldTabWithHttpInfo(createCustomFieldTabRequest) {
+      let postBody = createCustomFieldTabRequest;
+      // verify the required parameter 'createCustomFieldTabRequest' is set
+      if (createCustomFieldTabRequest === undefined || createCustomFieldTabRequest === null) {
+        throw new Error("Missing the required parameter 'createCustomFieldTabRequest' when calling createContactCustomFieldTab");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts/model/customFields/tabs', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create a Contact Custom Field Tab
+     * Creates a new custom field tab for the Contact record type.
+     * @param {module:keap.core.v2/model/CreateCustomFieldTabRequest} createCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    createContactCustomFieldTab(createCustomFieldTabRequest) {
+      return this.createContactCustomFieldTabWithHttpInfo(createCustomFieldTabRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -395,6 +446,54 @@ export default class ContactApi {
 
 
     /**
+     * Delete a Contact Custom Field Tab
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteContactCustomFieldTabWithHttpInfo(tabId) {
+      let postBody = null;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling deleteContactCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts/model/customFields/tabs/{tab_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete a Contact Custom Field Tab
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteContactCustomFieldTab(tabId) {
+      return this.deleteContactCustomFieldTabWithHttpInfo(tabId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Delete a Contact Link type
      * Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
      * @param {String} linkTypeId Contact Link type identifier
@@ -545,6 +644,54 @@ export default class ContactApi {
 
 
     /**
+     * Retrieve a Contact Custom Field Tab
+     * Retrieves a single custom field tab by id for the Contact record type.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    getContactCustomFieldTabWithHttpInfo(tabId) {
+      let postBody = null;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling getContactCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts/model/customFields/tabs/{tab_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve a Contact Custom Field Tab
+     * Retrieves a single custom field tab by id for the Contact record type.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    getContactCustomFieldTab(tabId) {
+      return this.getContactCustomFieldTabWithHttpInfo(tabId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Link Contacts
      * Links two Contacts together using the provided Link type
      * @param {module:keap.core.v2/model/LinkContactsRequest} linkContactsRequest 
@@ -632,6 +779,47 @@ export default class ContactApi {
      */
     listContactCustomFieldGroups(opts) {
       return this.listContactCustomFieldGroupsWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List Contact Custom Field Tabs
+     * Retrieves a list of custom field tabs for the Contact record type.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListCustomFieldTabsResponse} and HTTP response
+     */
+    listContactCustomFieldTabsWithHttpInfo() {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListCustomFieldTabsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts/model/customFields/tabs', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List Contact Custom Field Tabs
+     * Retrieves a list of custom field tabs for the Contact record type.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListCustomFieldTabsResponse}
+     */
+    listContactCustomFieldTabs() {
+      return this.listContactCustomFieldTabsWithHttpInfo()
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -747,7 +935,7 @@ export default class ContactApi {
      * Retrieves a list of Contacts
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
-     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, name, email, phone, website): `==` only, with optional   trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Choice fields (dropdown, radio, yes/no, user, state): `==` only - Numeric fields: `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `start_update_time`/`end_update_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) 
+     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `city` — primary-address city (Contact.City); supports prefix wildcard (e.g. `city==Chan*`, \"starts with\") - (String) `state` — primary-address state/region (Contact.State); supports prefix wildcard (e.g. `state==Ar*`, \"starts with\") - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=`; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `2026-01-01T00:00:00.000Z`), the same format as `start_update_time`/`end_update_time`. Date-only values such as `2026-01-01` are rejected - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=city%3D%3DChandler` (city exact match) - `filter=city%3D%3DChan%2A` (city prefix wildcard: starts with \"Chan\") - `filter=city%3D%3DChandler%3Bstate%3D%3DArizona` (combined city + state filter) - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) 
      * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `email` - `update_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} [pageSize] Total number of items to return per page
      * @param {String} [pageToken] Page token
@@ -787,7 +975,7 @@ export default class ContactApi {
      * Retrieves a list of Contacts
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} opts.fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
-     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, name, email, phone, website): `==` only, with optional   trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Choice fields (dropdown, radio, yes/no, user, state): `==` only - Numeric fields: `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `start_update_time`/`end_update_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) 
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `city` — primary-address city (Contact.City); supports prefix wildcard (e.g. `city==Chan*`, \"starts with\") - (String) `state` — primary-address state/region (Contact.State); supports prefix wildcard (e.g. `state==Ar*`, \"starts with\") - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=`; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `2026-01-01T00:00:00.000Z`), the same format as `start_update_time`/`end_update_time`. Date-only values such as `2026-01-01` are rejected - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=city%3D%3DChandler` (city exact match) - `filter=city%3D%3DChan%2A` (city prefix wildcard: starts with \"Chan\") - `filter=city%3D%3DChandler%3Bstate%3D%3DArizona` (combined city + state filter) - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter) 
      * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `email` - `update_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} opts.pageSize Total number of items to return per page
      * @param {String} opts.pageToken Page token
@@ -1123,6 +1311,67 @@ export default class ContactApi {
      */
     updateContactCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest) {
       return this.updateContactCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update a Contact Custom Field Tab
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * @param {String} tabId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldTabRequest} updateCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    updateContactCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest) {
+      let postBody = updateCustomFieldTabRequest;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling updateContactCustomFieldTab");
+      }
+      // verify the required parameter 'updateMask' is set
+      if (updateMask === undefined || updateMask === null) {
+        throw new Error("Missing the required parameter 'updateMask' when calling updateContactCustomFieldTab");
+      }
+      // verify the required parameter 'updateCustomFieldTabRequest' is set
+      if (updateCustomFieldTabRequest === undefined || updateCustomFieldTabRequest === null) {
+        throw new Error("Missing the required parameter 'updateCustomFieldTabRequest' when calling updateContactCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+        'update_mask': this.apiClient.buildCollectionParam(updateMask, 'multi')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts/model/customFields/tabs/{tab_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update a Contact Custom Field Tab
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * @param {String} tabId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldTabRequest} updateCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    updateContactCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest) {
+      return this.updateContactCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

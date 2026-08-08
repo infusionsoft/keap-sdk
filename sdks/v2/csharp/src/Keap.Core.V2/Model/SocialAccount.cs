@@ -105,7 +105,7 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SocialAccount" /> class.
         /// </summary>
-        /// <param name="name">Social account username or handle.</param>
+        /// <param name="name">Social account username or handle. Maximum length is 255 characters..</param>
         /// <param name="type">Social account type (required).</param>
         public SocialAccount(string name = default, TypeEnum type = default)
         {
@@ -114,9 +114,9 @@ namespace Keap.Core.V2.Model
         }
 
         /// <summary>
-        /// Social account username or handle
+        /// Social account username or handle. Maximum length is 255 characters.
         /// </summary>
-        /// <value>Social account username or handle</value>
+        /// <value>Social account username or handle. Maximum length is 255 characters.</value>
         /*
         <example>@thryv</example>
         */

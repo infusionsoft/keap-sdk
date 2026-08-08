@@ -1728,7 +1728,7 @@ class LeadSourceRecurringExpensesApi
      *
      * Retrieves a list of lead source recurring expenses
      *
-     * @param  string $lead_source_id The ID of the lead source this recurring expense belongs to (required)
+     * @param  string $lead_source_id The ID of the lead source this recurring expense belongs to. Use &#39;-&#39; as a wildcard to list recurring expenses across all lead sources. (required)
      * @param  string|null $filter Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60; - (String) &#x60;next_expense_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;next_expense_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;next_expense_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
@@ -1750,7 +1750,7 @@ class LeadSourceRecurringExpensesApi
      *
      * Retrieves a list of lead source recurring expenses
      *
-     * @param  string $lead_source_id The ID of the lead source this recurring expense belongs to (required)
+     * @param  string $lead_source_id The ID of the lead source this recurring expense belongs to. Use &#39;-&#39; as a wildcard to list recurring expenses across all lead sources. (required)
      * @param  string|null $filter Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60; - (String) &#x60;next_expense_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;next_expense_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;next_expense_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
@@ -1951,7 +1951,7 @@ class LeadSourceRecurringExpensesApi
      *
      * Retrieves a list of lead source recurring expenses
      *
-     * @param  string $lead_source_id The ID of the lead source this recurring expense belongs to (required)
+     * @param  string $lead_source_id The ID of the lead source this recurring expense belongs to. Use &#39;-&#39; as a wildcard to list recurring expenses across all lead sources. (required)
      * @param  string|null $filter Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60; - (String) &#x60;next_expense_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;next_expense_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;next_expense_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
@@ -1976,7 +1976,7 @@ class LeadSourceRecurringExpensesApi
      *
      * Retrieves a list of lead source recurring expenses
      *
-     * @param  string $lead_source_id The ID of the lead source this recurring expense belongs to (required)
+     * @param  string $lead_source_id The ID of the lead source this recurring expense belongs to. Use &#39;-&#39; as a wildcard to list recurring expenses across all lead sources. (required)
      * @param  string|null $filter Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60; - (String) &#x60;next_expense_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;next_expense_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;next_expense_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
@@ -2030,7 +2030,7 @@ class LeadSourceRecurringExpensesApi
     /**
      * Create request for operation 'listLeadSourceRecurringExpenses'
      *
-     * @param  string $lead_source_id The ID of the lead source this recurring expense belongs to (required)
+     * @param  string $lead_source_id The ID of the lead source this recurring expense belongs to. Use &#39;-&#39; as a wildcard to list recurring expenses across all lead sources. (required)
      * @param  string|null $filter Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60; - (String) &#x60;next_expense_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;next_expense_time%3D%3D2024-12-22T01:00:00.000Z&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;next_expense_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)

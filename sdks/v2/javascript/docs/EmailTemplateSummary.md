@@ -1,0 +1,33 @@
+# KeapCoreServiceV2Sdk.EmailTemplateSummary
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **Number** | The id of the template | [optional] 
+**pieceTitle** | **String** | The title of the template | [optional] 
+**categories** | **[String]** | The categories associated with the email | [optional] 
+**fromAddress** | **String** | The from address of the email | [optional] 
+**toAddress** | **String** | The to address of the email | [optional] 
+**ccAddress** | **String** | The cc address of the email | [optional] 
+**bccAddress** | **String** | The bcc address of the email | [optional] 
+**subject** | **String** | The subject of the email | [optional] 
+**contentType** | **String** | The content type of the email | [optional] 
+**mergeContext** | **String** | The merge context of the email | [optional] 
+
+
+
+## Enum: ContentTypeEnum
+
+
+* `TEXT` (value: `"TEXT"`)
+
+* `HTML` (value: `"HTML"`)
+
+* `MULTIPART` (value: `"MULTIPART"`)
+
+* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
+
+
+
+

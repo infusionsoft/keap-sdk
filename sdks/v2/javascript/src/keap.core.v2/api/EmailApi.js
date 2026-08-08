@@ -23,6 +23,7 @@ import EmailSentWithContent from '../model/EmailSentWithContent';
 import EmailTemplate from '../model/EmailTemplate';
 import EmailsSentList from '../model/EmailsSentList';
 import Error from '../model/Error';
+import ListEmailTemplatesResponse from '../model/ListEmailTemplatesResponse';
 import ListEmailsSentResponse from '../model/ListEmailsSentResponse';
 
 /**
@@ -323,6 +324,62 @@ export default class EmailApi {
      */
     getEmailTemplate(emailTemplateId) {
       return this.getEmailTemplateWithHttpInfo(emailTemplateId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List email templates
+     * Retrieves a paginated list of email templates
+     * @param {Object} opts Optional parameters
+     * @param {String} [filter] Search filter to apply to results
+     * @param {String} [pageToken] Page token
+     * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` One of the following directions: - `asc` - `desc`
+     * @param {Number} [pageSize] Total number of items to return per page
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListEmailTemplatesResponse} and HTTP response
+     */
+    listEmailTemplatesWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'filter': opts['filter'],
+        'page_token': opts['pageToken'],
+        'order_by': opts['orderBy'],
+        'page_size': opts['pageSize']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListEmailTemplatesResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/emails/templates', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List email templates
+     * Retrieves a paginated list of email templates
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.filter Search filter to apply to results
+     * @param {String} opts.pageToken Page token
+     * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` One of the following directions: - `asc` - `desc`
+     * @param {Number} opts.pageSize Total number of items to return per page
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListEmailTemplatesResponse}
+     */
+    listEmailTemplates(opts) {
+      return this.listEmailTemplatesWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

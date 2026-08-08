@@ -8,17 +8,22 @@ Method | HTTP request | Description
 [**create_subscription**](SubscriptionsApi.md#create_subscription) | **POST** /rest/v2/subscriptions | Create Subscription
 [**create_subscription_custom_field**](SubscriptionsApi.md#create_subscription_custom_field) | **POST** /rest/v2/subscriptions/model/customFields | Create a Subscription Custom Field
 [**create_subscription_custom_field_group**](SubscriptionsApi.md#create_subscription_custom_field_group) | **POST** /rest/v2/subscriptions/model/customFields/groups | Create a Subscription Custom Field Group
+[**create_subscription_custom_field_tab**](SubscriptionsApi.md#create_subscription_custom_field_tab) | **POST** /rest/v2/subscriptions/model/customFields/tabs | Create a Subscription Custom Field Tab
 [**delete_subscription_custom_field**](SubscriptionsApi.md#delete_subscription_custom_field) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
 [**delete_subscription_custom_field_group**](SubscriptionsApi.md#delete_subscription_custom_field_group) | **DELETE** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Delete a Subscription Custom Field Group
+[**delete_subscription_custom_field_tab**](SubscriptionsApi.md#delete_subscription_custom_field_tab) | **DELETE** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Delete a Subscription Custom Field Tab
 [**get_subscription**](SubscriptionsApi.md#get_subscription) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription
 [**get_subscription_custom_field_group**](SubscriptionsApi.md#get_subscription_custom_field_group) | **GET** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Retrieve a Subscription Custom Field Group
+[**get_subscription_custom_field_tab**](SubscriptionsApi.md#get_subscription_custom_field_tab) | **GET** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Retrieve a Subscription Custom Field Tab
 [**invoice_subscription**](SubscriptionsApi.md#invoice_subscription) | **POST** /rest/v2/subscriptions/{subscription_id}:invoice | Invoice a Subscription
 [**list_subscription_custom_field_groups**](SubscriptionsApi.md#list_subscription_custom_field_groups) | **GET** /rest/v2/subscriptions/model/customFields/groups | List Subscription Custom Field Groups
+[**list_subscription_custom_field_tabs**](SubscriptionsApi.md#list_subscription_custom_field_tabs) | **GET** /rest/v2/subscriptions/model/customFields/tabs | List Subscription Custom Field Tabs
 [**list_subscriptions**](SubscriptionsApi.md#list_subscriptions) | **GET** /rest/v2/subscriptions | List Subscriptions
 [**retrieve_subscription_custom_field_model**](SubscriptionsApi.md#retrieve_subscription_custom_field_model) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model
 [**update_subscription**](SubscriptionsApi.md#update_subscription) | **PATCH** /rest/v2/subscriptions/{subscription_id} | Update a Subscription
 [**update_subscription_custom_field**](SubscriptionsApi.md#update_subscription_custom_field) | **PATCH** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
 [**update_subscription_custom_field_group**](SubscriptionsApi.md#update_subscription_custom_field_group) | **PATCH** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Update a Subscription Custom Field Group
+[**update_subscription_custom_field_tab**](SubscriptionsApi.md#update_subscription_custom_field_tab) | **PATCH** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Update a Subscription Custom Field Tab
 
 
 # **cancel_subscription**
@@ -348,6 +353,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_subscription_custom_field_tab**
+> CustomFieldTab create_subscription_custom_field_tab(create_custom_field_tab_request)
+
+Create a Subscription Custom Field Tab
+
+Creates a new custom field tab for the Subscription record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.create_custom_field_tab_request import CreateCustomFieldTabRequest
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
+    create_custom_field_tab_request = keap_core_v2_client.CreateCustomFieldTabRequest() # CreateCustomFieldTabRequest | 
+
+    try:
+        # Create a Subscription Custom Field Tab
+        api_response = api_instance.create_subscription_custom_field_tab(create_custom_field_tab_request)
+        print("The response of SubscriptionsApi->create_subscription_custom_field_tab:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SubscriptionsApi->create_subscription_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_custom_field_tab_request** | [**CreateCustomFieldTabRequest**](CreateCustomFieldTabRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_subscription_custom_field**
 > delete_subscription_custom_field(custom_field_id)
 
@@ -474,6 +561,84 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **group_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_subscription_custom_field_tab**
+> delete_subscription_custom_field_tab(tab_id)
+
+Delete a Subscription Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
+    tab_id = 'tab_id_example' # str | 
+
+    try:
+        # Delete a Subscription Custom Field Tab
+        api_instance.delete_subscription_custom_field_tab(tab_id)
+    except Exception as e:
+        print("Exception when calling SubscriptionsApi->delete_subscription_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**|  | 
 
 ### Return type
 
@@ -666,6 +831,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_subscription_custom_field_tab**
+> CustomFieldTab get_subscription_custom_field_tab(tab_id)
+
+Retrieve a Subscription Custom Field Tab
+
+Retrieves a single custom field tab by id for the Subscription record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
+    tab_id = 'tab_id_example' # str | 
+
+    try:
+        # Retrieve a Subscription Custom Field Tab
+        api_response = api_instance.get_subscription_custom_field_tab(tab_id)
+        print("The response of SubscriptionsApi->get_subscription_custom_field_tab:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SubscriptionsApi->get_subscription_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **invoice_subscription**
 > OrderV2 invoice_subscription(subscription_id)
 
@@ -828,6 +1074,83 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **list_subscription_custom_field_tabs**
+> ListCustomFieldTabsResponse list_subscription_custom_field_tabs()
+
+List Subscription Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Subscription record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_custom_field_tabs_response import ListCustomFieldTabsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
+
+    try:
+        # List Subscription Custom Field Tabs
+        api_response = api_instance.list_subscription_custom_field_tabs()
+        print("The response of SubscriptionsApi->list_subscription_custom_field_tabs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SubscriptionsApi->list_subscription_custom_field_tabs: %s\n" % e)
+```
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListCustomFieldTabsResponse**](ListCustomFieldTabsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_subscriptions**
 > ListSubscriptionsResponse list_subscriptions(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
@@ -861,7 +1184,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
-    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive`  (optional)
+    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/subscriptions/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `_SubscriptionNote0%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive`  Custom field examples (for custom fields with field_name `_SubscriptionNote0` and `_SubscriptionCount1`): - `filter=_SubscriptionNote0%3D%3DTest` (custom field exact match) - `filter=_SubscriptionNote0%3D%3DTest%2A` (custom field prefix wildcard) - `filter=_SubscriptionCount1%3E100` (custom field numeric comparison) - `filter=contact_id%3D%3D123%3B_SubscriptionNote0%3D%3DActive` (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  (optional)
     order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
@@ -881,7 +1204,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  | [optional] 
+ **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/subscriptions/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_SubscriptionNote0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  Custom field examples (for custom fields with field_name &#x60;_SubscriptionNote0&#x60; and &#x60;_SubscriptionCount1&#x60;): - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_SubscriptionCount1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;contact_id%3D%3D123%3B_SubscriptionNote0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  | [optional] 
  **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
@@ -1224,6 +1547,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_subscription_custom_field_tab**
+> CustomFieldTab update_subscription_custom_field_tab(tab_id, update_mask, update_custom_field_tab_request)
+
+Update a Subscription Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
+from keap_core_v2_client.models.update_custom_field_tab_request import UpdateCustomFieldTabRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.SubscriptionsApi(api_client)
+    tab_id = 'tab_id_example' # str | 
+    update_mask = ['update_mask_example'] # List[str] | Comma-separated list of fields to update
+    update_custom_field_tab_request = keap_core_v2_client.UpdateCustomFieldTabRequest() # UpdateCustomFieldTabRequest | 
+
+    try:
+        # Update a Subscription Custom Field Tab
+        api_response = api_instance.update_subscription_custom_field_tab(tab_id, update_mask, update_custom_field_tab_request)
+        print("The response of SubscriptionsApi->update_subscription_custom_field_tab:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SubscriptionsApi->update_subscription_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**|  | 
+ **update_mask** | [**List[str]**](str.md)| Comma-separated list of fields to update | 
+ **update_custom_field_tab_request** | [**UpdateCustomFieldTabRequest**](UpdateCustomFieldTabRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
 
 ### Authorization
 

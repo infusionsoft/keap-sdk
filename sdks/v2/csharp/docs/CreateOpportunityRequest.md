@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **IncludeInForecast** | **bool** | Include in sales forecast | [optional] 
 **ProjectedRevenueLow** | **double** | Low revenue estimate | [optional] 
 **ProjectedRevenueHigh** | **double** | High revenue estimate | [optional] 
-**ContactId** | **string** | Associated contact ID | [optional] 
-**StageId** | **string** | Pipeline stage ID | [optional] 
+**ContactId** | **string** | Associated contact ID | 
+**StageId** | **string** | Pipeline stage ID | 
 **UserId** | **string** | Assigned user ID | [optional] 
 **CustomFields** | [**List&lt;CustomField&gt;**](CustomField.md) |  | [optional] 
 **AffiliateId** | **string** | Affiliate ID | [optional] 

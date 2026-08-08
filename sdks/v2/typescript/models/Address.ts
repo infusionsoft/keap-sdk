@@ -14,23 +14,23 @@ import { HttpFile } from '../http/http';
 
 export class Address {
     /**
-    * Deprecated. The long-name descriptive version of the Country Code. Please use \'country_code\' for POST/PATCH operations.
+    * Deprecated. The long-name descriptive version of the Country Code. Please use \'country_code\' for POST/PATCH operations. Maximum length is 100 characters.
     */
     'country'?: string;
     /**
-    * Street address line 1
+    * Street address line 1. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
     */
     'line1'?: string;
     /**
-    * Street address line 2
+    * Street address line 2. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
     */
     'line2'?: string;
     /**
-    * The municipality to which the address belongs
+    * The municipality to which the address belongs. Maximum length is 50 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
     */
     'locality'?: string;
     /**
-    * The long-name descriptive version of the Region Code. Please use \'region_code\' for POST/PATCH operations.
+    * The long-name descriptive version of the Region Code. Please use \'region_code\' for POST/PATCH operations. Maximum length is 50 characters.
     */
     'region'?: string;
     /**
@@ -42,7 +42,7 @@ export class Address {
     */
     'countryCode'?: string;
     /**
-    * Postal or ZIP code
+    * Postal or ZIP code. Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.
     */
     'postalCode'?: string;
     /**
@@ -50,11 +50,11 @@ export class Address {
     */
     'regionCode'?: string;
     /**
-    * ZIP code (US)
+    * ZIP code (US). Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.
     */
     'zipCode'?: string;
     /**
-    * ZIP+4 extension
+    * ZIP+4 extension. Maximum length is 10 characters.
     */
     'zipFour'?: string;
 

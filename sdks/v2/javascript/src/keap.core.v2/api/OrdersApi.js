@@ -16,12 +16,15 @@ import ApiClient from "../ApiClient";
 import ApplyCommissionRequest from '../model/ApplyCommissionRequest';
 import CreateCustomFieldGroupRequest from '../model/CreateCustomFieldGroupRequest';
 import CreateCustomFieldRequest from '../model/CreateCustomFieldRequest';
+import CreateCustomFieldTabRequest from '../model/CreateCustomFieldTabRequest';
 import CreateOrderItemRequest from '../model/CreateOrderItemRequest';
 import CustomFieldGroup from '../model/CustomFieldGroup';
 import CustomFieldMetaData from '../model/CustomFieldMetaData';
+import CustomFieldTab from '../model/CustomFieldTab';
 import Error from '../model/Error';
 import FileOperationRequest from '../model/FileOperationRequest';
 import ListCustomFieldGroupsResponse from '../model/ListCustomFieldGroupsResponse';
+import ListCustomFieldTabsResponse from '../model/ListCustomFieldTabsResponse';
 import ListOrderPaymentsResponse from '../model/ListOrderPaymentsResponse';
 import ListOrders from '../model/ListOrders';
 import ObjectModel from '../model/ObjectModel';
@@ -32,6 +35,7 @@ import RestCreateOrderRequest from '../model/RestCreateOrderRequest';
 import RestCreatePaymentRequest from '../model/RestCreatePaymentRequest';
 import UpdateCustomFieldGroupRequest from '../model/UpdateCustomFieldGroupRequest';
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
+import UpdateCustomFieldTabRequest from '../model/UpdateCustomFieldTabRequest';
 import UpdateOrderItemRequest from '../model/UpdateOrderItemRequest';
 import UpdateOrderRequest from '../model/UpdateOrderRequest';
 
@@ -359,6 +363,53 @@ export default class OrdersApi {
 
 
     /**
+     * Create an Order Custom Field Tab
+     * Creates a new custom field tab for the Order record type.
+     * @param {module:keap.core.v2/model/CreateCustomFieldTabRequest} createCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    createOrderCustomFieldTabWithHttpInfo(createCustomFieldTabRequest) {
+      let postBody = createCustomFieldTabRequest;
+      // verify the required parameter 'createCustomFieldTabRequest' is set
+      if (createCustomFieldTabRequest === undefined || createCustomFieldTabRequest === null) {
+        throw new Error("Missing the required parameter 'createCustomFieldTabRequest' when calling createOrderCustomFieldTab");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/orders/model/customFields/tabs', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create an Order Custom Field Tab
+     * Creates a new custom field tab for the Order record type.
+     * @param {module:keap.core.v2/model/CreateCustomFieldTabRequest} createCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    createOrderCustomFieldTab(createCustomFieldTabRequest) {
+      return this.createOrderCustomFieldTabWithHttpInfo(createCustomFieldTabRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Create an Order Item
      * Creates an order item on an existing order
      * @param {String} orderId 
@@ -611,6 +662,54 @@ export default class OrdersApi {
 
 
     /**
+     * Delete an Order Custom Field Tab
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteOrderCustomFieldTabWithHttpInfo(tabId) {
+      let postBody = null;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling deleteOrderCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/orders/model/customFields/tabs/{tab_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete an Order Custom Field Tab
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteOrderCustomFieldTab(tabId) {
+      return this.deleteOrderCustomFieldTabWithHttpInfo(tabId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Delete an Order Item
      * Deletes an order item on an existing order
      * @param {String} orderId 
@@ -816,6 +915,54 @@ export default class OrdersApi {
 
 
     /**
+     * Retrieve an Order Custom Field Tab
+     * Retrieves a single custom field tab by id for the Order record type.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    getOrderCustomFieldTabWithHttpInfo(tabId) {
+      let postBody = null;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling getOrderCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/orders/model/customFields/tabs/{tab_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve an Order Custom Field Tab
+     * Retrieves a single custom field tab by id for the Order record type.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    getOrderCustomFieldTab(tabId) {
+      return this.getOrderCustomFieldTabWithHttpInfo(tabId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Retrieve an Order Item
      * Retrieves a single order item from an existing order
      * @param {String} orderId 
@@ -918,6 +1065,47 @@ export default class OrdersApi {
 
 
     /**
+     * List Order Custom Field Tabs
+     * Retrieves a list of custom field tabs for the Order record type.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListCustomFieldTabsResponse} and HTTP response
+     */
+    listOrderCustomFieldTabsWithHttpInfo() {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListCustomFieldTabsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/orders/model/customFields/tabs', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List Order Custom Field Tabs
+     * Retrieves a list of custom field tabs for the Order record type.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListCustomFieldTabsResponse}
+     */
+    listOrderCustomFieldTabs() {
+      return this.listOrderCustomFieldTabsWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Retrieve Order Payments
      * Retrieves a list of payments made against a given order, including historical or external payments of cash or credit card
      * @param {String} orderId 
@@ -984,7 +1172,7 @@ export default class OrdersApi {
      * List orders
      * Retrieves a list of orders
      * @param {Object} opts Optional parameters
-     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (String) `product_id` - (String) `contact_id` - (String) `invoice_id` - (String) `invoice_xid` - (Boolean) `paid` - (String) `created_since_time` - (String) `created_until_time` - (String) `modified_since_time` - (String) `modified_until_time` - (String) `title` - Wildcard matching allowed - (String) `order_type` (Allowed values: `ONLINE`, `OFFLINE`) - (String) `shipping_locality` - (String) `shipping_region_code` - (String) `shipping_postal_code` - (String) `shipping_country_code`  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, name, email, phone, website): `==` only, with optional   trailing wildcard (e.g. `_OrderTitle0%3D%3DValue%2A`) - Choice fields (dropdown, radio, yes/no, user, state): `==` only - Numeric fields: `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `created_since_time`/`created_until_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D123` - `filter=id%3C123` - `filter=ids%3D%3D1,10,4,24` - `filter=invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8` - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567` - `filter=shipping_locality%3D%3DPhoenix` - `filter=shipping_region_code%3D%3DIN-MH` - `filter=shipping_postal_code%3D%3D85001` - `filter=shipping_country_code%3D%3DIND`  Custom field examples (for custom fields with field_name `_OrderTitle0` and `_OrderValue1`): - `filter=_OrderTitle0%3D%3DTest` (custom field exact match) - `filter=_OrderTitle0%3D%3DTest%2A` (custom field prefix wildcard) - `filter=_OrderValue1%3E100` (custom field numeric comparison) - `filter=product_id%3D%3D123%3B_OrderStatus0%3D%3DActive` (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo` 
+     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (String) `product_id` - (String) `contact_id` - (String) `invoice_id` - (String) `invoice_xid` - (Boolean) `paid` - (String) `created_since_time` - (String) `created_until_time` - (String) `modified_since_time` - (String) `modified_until_time` - (String) `title` - Wildcard matching allowed - (String) `order_type` (Allowed values: `ONLINE`, `OFFLINE`) - (String) `shipping_locality` - (String) `shipping_region_code` - (String) `shipping_postal_code` - (String) `shipping_country_code`  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `_OrderTitle0%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `created_since_time`/`created_until_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D123` - `filter=id%3C123` - `filter=ids%3D%3D1,10,4,24` - `filter=invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8` - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567` - `filter=shipping_locality%3D%3DPhoenix` - `filter=shipping_region_code%3D%3DIN-MH` - `filter=shipping_postal_code%3D%3D85001` - `filter=shipping_country_code%3D%3DIND`  Custom field examples (for custom fields with field_name `_OrderTitle0` and `_OrderValue1`): - `filter=_OrderTitle0%3D%3DTest` (custom field exact match) - `filter=_OrderTitle0%3D%3DTest%2A` (custom field prefix wildcard) - `filter=_OrderValue1%3E100` (custom field numeric comparison) - `filter=product_id%3D%3D123%3B_OrderStatus0%3D%3DActive` (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo` 
      * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` - `order_time` - `modification_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} [pageSize] Total number of items to return per page
      * @param {String} [pageToken] Page token
@@ -1022,7 +1210,7 @@ export default class OrdersApi {
      * List orders
      * Retrieves a list of orders
      * @param {Object} opts Optional parameters
-     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (String) `product_id` - (String) `contact_id` - (String) `invoice_id` - (String) `invoice_xid` - (Boolean) `paid` - (String) `created_since_time` - (String) `created_until_time` - (String) `modified_since_time` - (String) `modified_until_time` - (String) `title` - Wildcard matching allowed - (String) `order_type` (Allowed values: `ONLINE`, `OFFLINE`) - (String) `shipping_locality` - (String) `shipping_region_code` - (String) `shipping_postal_code` - (String) `shipping_country_code`  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, name, email, phone, website): `==` only, with optional   trailing wildcard (e.g. `_OrderTitle0%3D%3DValue%2A`) - Choice fields (dropdown, radio, yes/no, user, state): `==` only - Numeric fields: `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `created_since_time`/`created_until_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D123` - `filter=id%3C123` - `filter=ids%3D%3D1,10,4,24` - `filter=invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8` - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567` - `filter=shipping_locality%3D%3DPhoenix` - `filter=shipping_region_code%3D%3DIN-MH` - `filter=shipping_postal_code%3D%3D85001` - `filter=shipping_country_code%3D%3DIND`  Custom field examples (for custom fields with field_name `_OrderTitle0` and `_OrderValue1`): - `filter=_OrderTitle0%3D%3DTest` (custom field exact match) - `filter=_OrderTitle0%3D%3DTest%2A` (custom field prefix wildcard) - `filter=_OrderValue1%3E100` (custom field numeric comparison) - `filter=product_id%3D%3D123%3B_OrderStatus0%3D%3DActive` (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo` 
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (String) `product_id` - (String) `contact_id` - (String) `invoice_id` - (String) `invoice_xid` - (Boolean) `paid` - (String) `created_since_time` - (String) `created_until_time` - (String) `modified_since_time` - (String) `modified_until_time` - (String) `title` - Wildcard matching allowed - (String) `order_type` (Allowed values: `ONLINE`, `OFFLINE`) - (String) `shipping_locality` - (String) `shipping_region_code` - (String) `shipping_postal_code` - (String) `shipping_country_code`  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `_OrderTitle0%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `created_since_time`/`created_until_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D123` - `filter=id%3C123` - `filter=ids%3D%3D1,10,4,24` - `filter=invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8` - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567` - `filter=shipping_locality%3D%3DPhoenix` - `filter=shipping_region_code%3D%3DIN-MH` - `filter=shipping_postal_code%3D%3D85001` - `filter=shipping_country_code%3D%3DIND`  Custom field examples (for custom fields with field_name `_OrderTitle0` and `_OrderValue1`): - `filter=_OrderTitle0%3D%3DTest` (custom field exact match) - `filter=_OrderTitle0%3D%3DTest%2A` (custom field prefix wildcard) - `filter=_OrderValue1%3E100` (custom field numeric comparison) - `filter=product_id%3D%3D123%3B_OrderStatus0%3D%3DActive` (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo` 
      * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` - `order_time` - `modification_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} opts.pageSize Total number of items to return per page
      * @param {String} opts.pageToken Page token
@@ -1252,6 +1440,67 @@ export default class OrdersApi {
      */
     updateOrderCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest) {
       return this.updateOrderCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update an Order Custom Field Tab
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * @param {String} tabId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldTabRequest} updateCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    updateOrderCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest) {
+      let postBody = updateCustomFieldTabRequest;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling updateOrderCustomFieldTab");
+      }
+      // verify the required parameter 'updateMask' is set
+      if (updateMask === undefined || updateMask === null) {
+        throw new Error("Missing the required parameter 'updateMask' when calling updateOrderCustomFieldTab");
+      }
+      // verify the required parameter 'updateCustomFieldTabRequest' is set
+      if (updateCustomFieldTabRequest === undefined || updateCustomFieldTabRequest === null) {
+        throw new Error("Missing the required parameter 'updateCustomFieldTabRequest' when calling updateOrderCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+        'update_mask': this.apiClient.buildCollectionParam(updateMask, 'multi')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/orders/model/customFields/tabs/{tab_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update an Order Custom Field Tab
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * @param {String} tabId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldTabRequest} updateCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    updateOrderCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest) {
+      return this.updateOrderCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

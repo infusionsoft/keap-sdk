@@ -119,7 +119,7 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateUpdateContactRequest" /> class.
         /// </summary>
-        /// <param name="addresses">Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed..</param>
+        /// <param name="addresses">Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed..</param>
         /// <param name="company">company.</param>
         /// <param name="origin">origin.</param>
         /// <param name="prefix">Name prefix.</param>
@@ -128,27 +128,27 @@ namespace Keap.Core.V2.Model
         /// <param name="anniversaryDate">The anniversary date.</param>
         /// <param name="birthDate">The birth date.</param>
         /// <param name="contactType">Type of contact.</param>
-        /// <param name="customFields">Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed..</param>
-        /// <param name="emailAddresses">Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed..</param>
+        /// <param name="customFields">Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed..</param>
+        /// <param name="emailAddresses">Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed..</param>
         /// <param name="familyName">Last name / surname.</param>
-        /// <param name="faxNumbers">Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed..</param>
+        /// <param name="faxNumbers">Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed..</param>
         /// <param name="givenName">First name.</param>
         /// <param name="jobTitle">Job title.</param>
         /// <param name="leadsourceId">Lead source identifier.</param>
         /// <param name="middleName">Middle name.</param>
         /// <param name="ownerId">ID of the user who owns this contact.</param>
-        /// <param name="phoneNumbers">Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed..</param>
+        /// <param name="phoneNumbers">Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed..</param>
         /// <param name="preferredLocale">Preferred locale.</param>
         /// <param name="preferredName">Preferred name or nickname.</param>
         /// <param name="referralCode">Referral code.</param>
-        /// <param name="socialAccounts">Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed..</param>
+        /// <param name="socialAccounts">Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed..</param>
         /// <param name="sourceType">sourceType.</param>
         /// <param name="spouseName">Spouse&#39;s name.</param>
         /// <param name="varTimeZone">Contact&#39;s timezone.</param>
         /// <param name="utmParameters">utmParameters.</param>
-        /// <param name="assistantName">assistantName.</param>
-        /// <param name="assistantPhone">assistantPhone.</param>
-        /// <param name="billingInformation">billingInformation.</param>
+        /// <param name="assistantName">Assistant&#39;s name.</param>
+        /// <param name="assistantPhone">Assistant&#39;s phone number.</param>
+        /// <param name="billingInformation">Billing information.</param>
         public CreateUpdateContactRequest(List<Address> addresses = default, BasicCompany company = default, OriginRequest origin = default, string prefix = default, string suffix = default, string website = default, string anniversaryDate = default, string birthDate = default, string contactType = default, List<CustomFieldValue> customFields = default, List<EmailAddressRequest> emailAddresses = default, string familyName = default, List<FaxNumber> faxNumbers = default, string givenName = default, string jobTitle = default, string leadsourceId = default, string middleName = default, string ownerId = default, List<PhoneNumber> phoneNumbers = default, string preferredLocale = default, string preferredName = default, string referralCode = default, List<SocialAccount> socialAccounts = default, SourceTypeEnum? sourceType = default, string spouseName = default, string varTimeZone = default, CreateContactUtmPropertiesRequest utmParameters = default, string assistantName = default, string assistantPhone = default, string billingInformation = default)
         {
             this.Addresses = addresses;
@@ -184,9 +184,9 @@ namespace Keap.Core.V2.Model
         }
 
         /// <summary>
-        /// Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+        /// Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
         /// </summary>
-        /// <value>Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.</value>
+        /// <value>Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.</value>
         [DataMember(Name = "addresses", EmitDefaultValue = false)]
         public List<Address> Addresses { get; set; }
 
@@ -263,16 +263,16 @@ namespace Keap.Core.V2.Model
         public string ContactType { get; set; }
 
         /// <summary>
-        /// Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+        /// Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
         /// </summary>
-        /// <value>Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.</value>
+        /// <value>Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.</value>
         [DataMember(Name = "custom_fields", EmitDefaultValue = false)]
         public List<CustomFieldValue> CustomFields { get; set; }
 
         /// <summary>
-        /// Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+        /// Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
         /// </summary>
-        /// <value>Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.</value>
+        /// <value>Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.</value>
         [DataMember(Name = "email_addresses", EmitDefaultValue = false)]
         public List<EmailAddressRequest> EmailAddresses { get; set; }
 
@@ -287,9 +287,9 @@ namespace Keap.Core.V2.Model
         public string FamilyName { get; set; }
 
         /// <summary>
-        /// Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+        /// Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
         /// </summary>
-        /// <value>Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.</value>
+        /// <value>Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.</value>
         [DataMember(Name = "fax_numbers", EmitDefaultValue = false)]
         public List<FaxNumber> FaxNumbers { get; set; }
 
@@ -344,9 +344,9 @@ namespace Keap.Core.V2.Model
         public string OwnerId { get; set; }
 
         /// <summary>
-        /// Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+        /// Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
         /// </summary>
-        /// <value>Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.</value>
+        /// <value>Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.</value>
         [DataMember(Name = "phone_numbers", EmitDefaultValue = false)]
         public List<PhoneNumber> PhoneNumbers { get; set; }
 
@@ -381,9 +381,9 @@ namespace Keap.Core.V2.Model
         public string ReferralCode { get; set; }
 
         /// <summary>
-        /// Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+        /// Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
         /// </summary>
-        /// <value>Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.</value>
+        /// <value>Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.</value>
         [DataMember(Name = "social_accounts", EmitDefaultValue = false)]
         public List<SocialAccount> SocialAccounts { get; set; }
 
@@ -414,20 +414,29 @@ namespace Keap.Core.V2.Model
         public CreateContactUtmPropertiesRequest UtmParameters { get; set; }
 
         /// <summary>
-        /// Gets or Sets AssistantName
+        /// Assistant&#39;s name
         /// </summary>
+        /// <value>Assistant&#39;s name</value>
+        /*
+        <example>Pat Doe</example>
+        */
         [DataMember(Name = "assistant_name", EmitDefaultValue = false)]
         public string AssistantName { get; set; }
 
         /// <summary>
-        /// Gets or Sets AssistantPhone
+        /// Assistant&#39;s phone number
         /// </summary>
+        /// <value>Assistant&#39;s phone number</value>
+        /*
+        <example>5551234567</example>
+        */
         [DataMember(Name = "assistant_phone", EmitDefaultValue = false)]
         public string AssistantPhone { get; set; }
 
         /// <summary>
-        /// Gets or Sets BillingInformation
+        /// Billing information
         /// </summary>
+        /// <value>Billing information</value>
         [DataMember(Name = "billing_information", EmitDefaultValue = false)]
         public string BillingInformation { get; set; }
 
@@ -489,6 +498,66 @@ namespace Keap.Core.V2.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // Website (string) maxLength
+            if (this.Website != null && this.Website.Length > 100)
+            {
+                yield return new ValidationResult("Invalid value for Website, length must be less than 100.", new [] { "Website" });
+            }
+
+            // FamilyName (string) maxLength
+            if (this.FamilyName != null && this.FamilyName.Length > 40)
+            {
+                yield return new ValidationResult("Invalid value for FamilyName, length must be less than 40.", new [] { "FamilyName" });
+            }
+
+            // GivenName (string) maxLength
+            if (this.GivenName != null && this.GivenName.Length > 40)
+            {
+                yield return new ValidationResult("Invalid value for GivenName, length must be less than 40.", new [] { "GivenName" });
+            }
+
+            // JobTitle (string) maxLength
+            if (this.JobTitle != null && this.JobTitle.Length > 255)
+            {
+                yield return new ValidationResult("Invalid value for JobTitle, length must be less than 255.", new [] { "JobTitle" });
+            }
+
+            // MiddleName (string) maxLength
+            if (this.MiddleName != null && this.MiddleName.Length > 100)
+            {
+                yield return new ValidationResult("Invalid value for MiddleName, length must be less than 100.", new [] { "MiddleName" });
+            }
+
+            // PreferredName (string) maxLength
+            if (this.PreferredName != null && this.PreferredName.Length > 100)
+            {
+                yield return new ValidationResult("Invalid value for PreferredName, length must be less than 100.", new [] { "PreferredName" });
+            }
+
+            // SpouseName (string) maxLength
+            if (this.SpouseName != null && this.SpouseName.Length > 100)
+            {
+                yield return new ValidationResult("Invalid value for SpouseName, length must be less than 100.", new [] { "SpouseName" });
+            }
+
+            // AssistantName (string) maxLength
+            if (this.AssistantName != null && this.AssistantName.Length > 20)
+            {
+                yield return new ValidationResult("Invalid value for AssistantName, length must be less than 20.", new [] { "AssistantName" });
+            }
+
+            // AssistantPhone (string) maxLength
+            if (this.AssistantPhone != null && this.AssistantPhone.Length > 15)
+            {
+                yield return new ValidationResult("Invalid value for AssistantPhone, length must be less than 15.", new [] { "AssistantPhone" });
+            }
+
+            // BillingInformation (string) maxLength
+            if (this.BillingInformation != null && this.BillingInformation.Length > 100)
+            {
+                yield return new ValidationResult("Invalid value for BillingInformation, length must be less than 100.", new [] { "BillingInformation" });
+            }
+
             yield break;
         }    }
 

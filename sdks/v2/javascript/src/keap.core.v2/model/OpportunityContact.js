@@ -54,6 +54,12 @@ class OpportunityContact {
             if (data.hasOwnProperty('email')) {
                 obj['email'] = ApiClient.convertToType(data['email'], 'String');
             }
+            if (data.hasOwnProperty('city')) {
+                obj['city'] = ApiClient.convertToType(data['city'], 'String');
+            }
+            if (data.hasOwnProperty('state')) {
+                obj['state'] = ApiClient.convertToType(data['state'], 'String');
+            }
             if (data.hasOwnProperty('first_name')) {
                 obj['first_name'] = ApiClient.convertToType(data['first_name'], 'String');
             }
@@ -92,6 +98,14 @@ class OpportunityContact {
         // ensure the json data is a string
         if (data['email'] && !(typeof data['email'] === 'string' || data['email'] instanceof String)) {
             throw new Error("Expected the field `email` to be a primitive type in the JSON string but got " + data['email']);
+        }
+        // ensure the json data is a string
+        if (data['city'] && !(typeof data['city'] === 'string' || data['city'] instanceof String)) {
+            throw new Error("Expected the field `city` to be a primitive type in the JSON string but got " + data['city']);
+        }
+        // ensure the json data is a string
+        if (data['state'] && !(typeof data['state'] === 'string' || data['state'] instanceof String)) {
+            throw new Error("Expected the field `state` to be a primitive type in the JSON string but got " + data['state']);
         }
         // ensure the json data is a string
         if (data['first_name'] && !(typeof data['first_name'] === 'string' || data['first_name'] instanceof String)) {
@@ -133,6 +147,18 @@ OpportunityContact.prototype['id'] = undefined;
  * @member {String} email
  */
 OpportunityContact.prototype['email'] = undefined;
+
+/**
+ * City
+ * @member {String} city
+ */
+OpportunityContact.prototype['city'] = undefined;
+
+/**
+ * State
+ * @member {String} state
+ */
+OpportunityContact.prototype['state'] = undefined;
 
 /**
  * First name

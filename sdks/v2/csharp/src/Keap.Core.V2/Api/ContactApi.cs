@@ -102,6 +102,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of CustomFieldGroup</returns>
         ApiResponse<CustomFieldGroup> CreateContactCustomFieldGroupWithHttpInfo(CreateCustomFieldGroupRequest createCustomFieldGroupRequest, int operationIndex = 0);
         /// <summary>
+        /// Create a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Contact record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        CustomFieldTab CreateContactCustomFieldTab(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Create a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Contact record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        ApiResponse<CustomFieldTab> CreateContactCustomFieldTabWithHttpInfo(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0);
+        /// <summary>
         /// Create a Contact Link type
         /// </summary>
         /// <remarks>
@@ -194,6 +217,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteContactCustomFieldGroupWithHttpInfo(string groupId, int operationIndex = 0);
         /// <summary>
+        /// Delete a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        void DeleteContactCustomFieldTab(string tabId, int operationIndex = 0);
+
+        /// <summary>
+        /// Delete a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteContactCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0);
+        /// <summary>
         /// Delete a Contact Link type
         /// </summary>
         /// <remarks>
@@ -265,6 +311,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of CustomFieldGroup</returns>
         ApiResponse<CustomFieldGroup> GetContactCustomFieldGroupWithHttpInfo(string groupId, int operationIndex = 0);
         /// <summary>
+        /// Retrieve a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Contact record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        CustomFieldTab GetContactCustomFieldTab(string tabId, int operationIndex = 0);
+
+        /// <summary>
+        /// Retrieve a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Contact record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        ApiResponse<CustomFieldTab> GetContactCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0);
+        /// <summary>
         /// Link Contacts
         /// </summary>
         /// <remarks>
@@ -310,6 +379,27 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ListCustomFieldGroupsResponse</returns>
         ApiResponse<ListCustomFieldGroupsResponse> ListContactCustomFieldGroupsWithHttpInfo(string? tabId = default, int operationIndex = 0);
+        /// <summary>
+        /// List Contact Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Contact record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListCustomFieldTabsResponse</returns>
+        ListCustomFieldTabsResponse ListContactCustomFieldTabs(int operationIndex = 0);
+
+        /// <summary>
+        /// List Contact Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Contact record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListCustomFieldTabsResponse</returns>
+        ApiResponse<ListCustomFieldTabsResponse> ListContactCustomFieldTabsWithHttpInfo(int operationIndex = 0);
         /// <summary>
         /// List Contact Link types
         /// </summary>
@@ -370,7 +460,7 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -386,7 +476,7 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -550,6 +640,33 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of CustomFieldGroup</returns>
         ApiResponse<CustomFieldGroup> UpdateContactCustomFieldGroupWithHttpInfo(string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest, int operationIndex = 0);
         /// <summary>
+        /// Update a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        CustomFieldTab UpdateContactCustomFieldTab(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Update a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        ApiResponse<CustomFieldTab> UpdateContactCustomFieldTabWithHttpInfo(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0);
+        /// <summary>
         /// Update a Contact Link type
         /// </summary>
         /// <remarks>
@@ -665,6 +782,31 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse (CustomFieldGroup)</returns>
         System.Threading.Tasks.Task<ApiResponse<CustomFieldGroup>> CreateContactCustomFieldGroupWithHttpInfoAsync(CreateCustomFieldGroupRequest createCustomFieldGroupRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Create a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Contact record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        System.Threading.Tasks.Task<CustomFieldTab> CreateContactCustomFieldTabAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Create a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Contact record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldTab>> CreateContactCustomFieldTabWithHttpInfoAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Create a Contact Link type
         /// </summary>
         /// <remarks>
@@ -765,6 +907,31 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteContactCustomFieldGroupWithHttpInfoAsync(string groupId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Delete a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteContactCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Delete a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteContactCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Delete a Contact Link type
         /// </summary>
         /// <remarks>
@@ -842,6 +1009,31 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse (CustomFieldGroup)</returns>
         System.Threading.Tasks.Task<ApiResponse<CustomFieldGroup>> GetContactCustomFieldGroupWithHttpInfoAsync(string groupId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Retrieve a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Contact record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        System.Threading.Tasks.Task<CustomFieldTab> GetContactCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Retrieve a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Contact record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldTab>> GetContactCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Link Contacts
         /// </summary>
         /// <remarks>
@@ -891,6 +1083,29 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCustomFieldGroupsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListCustomFieldGroupsResponse>> ListContactCustomFieldGroupsWithHttpInfoAsync(string? tabId = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// List Contact Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Contact record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCustomFieldTabsResponse</returns>
+        System.Threading.Tasks.Task<ListCustomFieldTabsResponse> ListContactCustomFieldTabsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// List Contact Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Contact record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCustomFieldTabsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListCustomFieldTabsResponse>> ListContactCustomFieldTabsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List Contact Link types
         /// </summary>
@@ -955,7 +1170,7 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -972,7 +1187,7 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -1148,6 +1363,35 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldGroup)</returns>
         System.Threading.Tasks.Task<ApiResponse<CustomFieldGroup>> UpdateContactCustomFieldGroupWithHttpInfoAsync(string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Update a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        System.Threading.Tasks.Task<CustomFieldTab> UpdateContactCustomFieldTabAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Update a Contact Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldTab>> UpdateContactCustomFieldTabWithHttpInfoAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a Contact Link type
         /// </summary>
@@ -1849,6 +2093,185 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateContactCustomFieldGroup", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create a Contact Custom Field Tab Creates a new custom field tab for the Contact record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        public CustomFieldTab CreateContactCustomFieldTab(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = CreateContactCustomFieldTabWithHttpInfo(createCustomFieldTabRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a Contact Custom Field Tab Creates a new custom field tab for the Contact record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldTab> CreateContactCustomFieldTabWithHttpInfo(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'createCustomFieldTabRequest' is set
+            if (createCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createCustomFieldTabRequest' when calling ContactApi->CreateContactCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "ContactApi.CreateContactCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CustomFieldTab>("/rest/v2/contacts/model/customFields/tabs", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateContactCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create a Contact Custom Field Tab Creates a new custom field tab for the Contact record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        public async System.Threading.Tasks.Task<CustomFieldTab> CreateContactCustomFieldTabAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = await CreateContactCustomFieldTabWithHttpInfoAsync(createCustomFieldTabRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a Contact Custom Field Tab Creates a new custom field tab for the Contact record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldTab>> CreateContactCustomFieldTabWithHttpInfoAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'createCustomFieldTabRequest' is set
+            if (createCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createCustomFieldTabRequest' when calling ContactApi->CreateContactCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "ContactApi.CreateContactCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CustomFieldTab>("/rest/v2/contacts/model/customFields/tabs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateContactCustomFieldTab", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -2563,6 +2986,181 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// Delete a Contact Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        public void DeleteContactCustomFieldTab(string tabId, int operationIndex = 0)
+        {
+            DeleteContactCustomFieldTabWithHttpInfo(tabId);
+        }
+
+        /// <summary>
+        /// Delete a Contact Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Keap.Core.V2.Client.ApiResponse<Object> DeleteContactCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling ContactApi->DeleteContactCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "ContactApi.DeleteContactCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<Object>("/rest/v2/contacts/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteContactCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete a Contact Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteContactCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            await DeleteContactCustomFieldTabWithHttpInfoAsync(tabId, operationIndex, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Delete a Contact Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Object>> DeleteContactCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling ContactApi->DeleteContactCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "ContactApi.DeleteContactCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/rest/v2/contacts/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteContactCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Delete a Contact Link type Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -3104,6 +3702,183 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// Retrieve a Contact Custom Field Tab Retrieves a single custom field tab by id for the Contact record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        public CustomFieldTab GetContactCustomFieldTab(string tabId, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = GetContactCustomFieldTabWithHttpInfo(tabId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve a Contact Custom Field Tab Retrieves a single custom field tab by id for the Contact record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldTab> GetContactCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling ContactApi->GetContactCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "ContactApi.GetContactCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<CustomFieldTab>("/rest/v2/contacts/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetContactCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Retrieve a Contact Custom Field Tab Retrieves a single custom field tab by id for the Contact record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        public async System.Threading.Tasks.Task<CustomFieldTab> GetContactCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = await GetContactCustomFieldTabWithHttpInfoAsync(tabId, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve a Contact Custom Field Tab Retrieves a single custom field tab by id for the Contact record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldTab>> GetContactCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling ContactApi->GetContactCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "ContactApi.GetContactCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<CustomFieldTab>("/rest/v2/contacts/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetContactCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Link Contacts Links two Contacts together using the provided Link type
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -3444,6 +4219,165 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListContactCustomFieldGroups", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List Contact Custom Field Tabs Retrieves a list of custom field tabs for the Contact record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListCustomFieldTabsResponse</returns>
+        public ListCustomFieldTabsResponse ListContactCustomFieldTabs(int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse> localVarResponse = ListContactCustomFieldTabsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Contact Custom Field Tabs Retrieves a list of custom field tabs for the Contact record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListCustomFieldTabsResponse</returns>
+        public Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse> ListContactCustomFieldTabsWithHttpInfo(int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "ContactApi.ListContactCustomFieldTabs";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListCustomFieldTabsResponse>("/rest/v2/contacts/model/customFields/tabs", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListContactCustomFieldTabs", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List Contact Custom Field Tabs Retrieves a list of custom field tabs for the Contact record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCustomFieldTabsResponse</returns>
+        public async System.Threading.Tasks.Task<ListCustomFieldTabsResponse> ListContactCustomFieldTabsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse> localVarResponse = await ListContactCustomFieldTabsWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Contact Custom Field Tabs Retrieves a list of custom field tabs for the Contact record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCustomFieldTabsResponse)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse>> ListContactCustomFieldTabsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "ContactApi.ListContactCustomFieldTabs";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListCustomFieldTabsResponse>("/rest/v2/contacts/model/customFields/tabs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListContactCustomFieldTabs", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -3842,7 +4776,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -3859,7 +4793,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -3950,7 +4884,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -3968,7 +4902,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -5235,6 +6169,221 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateContactCustomFieldGroup", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update a Contact Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        public CustomFieldTab UpdateContactCustomFieldTab(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = UpdateContactCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update a Contact Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldTab> UpdateContactCustomFieldTabWithHttpInfo(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling ContactApi->UpdateContactCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateMask' is set
+            if (updateMask == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateMask' when calling ContactApi->UpdateContactCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateCustomFieldTabRequest' is set
+            if (updateCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateCustomFieldTabRequest' when calling ContactApi->UpdateContactCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+            localVarRequestOptions.Data = updateCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "ContactApi.UpdateContactCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<CustomFieldTab>("/rest/v2/contacts/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateContactCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update a Contact Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        public async System.Threading.Tasks.Task<CustomFieldTab> UpdateContactCustomFieldTabAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = await UpdateContactCustomFieldTabWithHttpInfoAsync(tabId, updateMask, updateCustomFieldTabRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update a Contact Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldTab>> UpdateContactCustomFieldTabWithHttpInfoAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling ContactApi->UpdateContactCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateMask' is set
+            if (updateMask == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateMask' when calling ContactApi->UpdateContactCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateCustomFieldTabRequest' is set
+            if (updateCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateCustomFieldTabRequest' when calling ContactApi->UpdateContactCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+            localVarRequestOptions.Data = updateCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "ContactApi.UpdateContactCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<CustomFieldTab>("/rest/v2/contacts/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateContactCustomFieldTab", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

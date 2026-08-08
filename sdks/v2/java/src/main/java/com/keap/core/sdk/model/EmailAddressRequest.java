@@ -99,10 +99,10 @@ public class EmailAddressRequest implements Serializable {
   }
 
   /**
-   * Email address
+   * Email address. Maximum length is 75 characters for EMAIL1 and 100 characters for EMAIL2 and EMAIL3.
    * @return email
    */
-  @jakarta.annotation.Nullable  @Schema(example = "john.smith@example.com", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Email address")
+  @jakarta.annotation.Nullable  @Schema(example = "john.smith@example.com", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Email address. Maximum length is 75 characters for EMAIL1 and 100 characters for EMAIL2 and EMAIL3.")
   @JsonProperty(JSON_PROPERTY_EMAIL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEmail() {

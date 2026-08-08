@@ -6,24 +6,29 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createOpportunity**](OpportunityApi.md#createOpportunity) | **POST** /rest/v2/opportunities | Create an Opportunity
 [**createOpportunityCustomFieldGroup**](OpportunityApi.md#createOpportunityCustomFieldGroup) | **POST** /rest/v2/opportunities/model/customFields/groups | Create an Opportunity Custom Field Group
+[**createOpportunityCustomFieldTab**](OpportunityApi.md#createOpportunityCustomFieldTab) | **POST** /rest/v2/opportunities/model/customFields/tabs | Create an Opportunity Custom Field Tab
 [**createOpportunityCustomFields**](OpportunityApi.md#createOpportunityCustomFields) | **POST** /rest/v2/opportunities/model/customFields | Create an Opportunity Custom Field
 [**createOpportunityStage**](OpportunityApi.md#createOpportunityStage) | **POST** /rest/v2/opportunities/stages | Create an Opportunity Stage
 [**deleteOpportunitiesCustomField**](OpportunityApi.md#deleteOpportunitiesCustomField) | **DELETE** /rest/v2/opportunities/model/customFields/{custom_field_id} | Delete an Opportunity Custom Field
 [**deleteOpportunity**](OpportunityApi.md#deleteOpportunity) | **DELETE** /rest/v2/opportunities/{opportunity_id} | Delete an Opportunity
 [**deleteOpportunityCustomFieldGroup**](OpportunityApi.md#deleteOpportunityCustomFieldGroup) | **DELETE** /rest/v2/opportunities/model/customFields/groups/{group_id} | Delete an Opportunity Custom Field Group
+[**deleteOpportunityCustomFieldTab**](OpportunityApi.md#deleteOpportunityCustomFieldTab) | **DELETE** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Delete an Opportunity Custom Field Tab
 [**deleteOpportunityStage**](OpportunityApi.md#deleteOpportunityStage) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
 [**getOpportunity**](OpportunityApi.md#getOpportunity) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity
 [**getOpportunityCustomFieldGroup**](OpportunityApi.md#getOpportunityCustomFieldGroup) | **GET** /rest/v2/opportunities/model/customFields/groups/{group_id} | Retrieve an Opportunity Custom Field Group
+[**getOpportunityCustomFieldTab**](OpportunityApi.md#getOpportunityCustomFieldTab) | **GET** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Retrieve an Opportunity Custom Field Tab
 [**getOpportunityStage**](OpportunityApi.md#getOpportunityStage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
 [**getOpportunityStageMove**](OpportunityApi.md#getOpportunityStageMove) | **GET** /rest/v2/opportunities/stageMoves/{stage_move_id} | Retrieve an Opportunity Stage Move
 [**listOpportunities**](OpportunityApi.md#listOpportunities) | **GET** /rest/v2/opportunities | List Opportunities
 [**listOpportunityCustomFieldGroups**](OpportunityApi.md#listOpportunityCustomFieldGroups) | **GET** /rest/v2/opportunities/model/customFields/groups | List Opportunity Custom Field Groups
+[**listOpportunityCustomFieldTabs**](OpportunityApi.md#listOpportunityCustomFieldTabs) | **GET** /rest/v2/opportunities/model/customFields/tabs | List Opportunity Custom Field Tabs
 [**listOpportunityStageMoves**](OpportunityApi.md#listOpportunityStageMoves) | **GET** /rest/v2/opportunities/stageMoves | List Opportunity Stage Moves
 [**listOpportunityStages**](OpportunityApi.md#listOpportunityStages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages
 [**retrieveOpportunityCustomFieldModel**](OpportunityApi.md#retrieveOpportunityCustomFieldModel) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model
 [**updateOpportunity**](OpportunityApi.md#updateOpportunity) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity
 [**updateOpportunityCustomField**](OpportunityApi.md#updateOpportunityCustomField) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity\&#39;s Custom Field
 [**updateOpportunityCustomFieldGroup**](OpportunityApi.md#updateOpportunityCustomFieldGroup) | **PATCH** /rest/v2/opportunities/model/customFields/groups/{group_id} | Update an Opportunity Custom Field Group
+[**updateOpportunityCustomFieldTab**](OpportunityApi.md#updateOpportunityCustomFieldTab) | **PATCH** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Update an Opportunity Custom Field Tab
 [**updateOpportunityStage**](OpportunityApi.md#updateOpportunityStage) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
 
 
@@ -58,8 +63,8 @@ const request: OpportunityApiCreateOpportunityRequest = {
     userId: "456",
     customFields: [
       {
-        id: "id_example",
         content: null,
+        id: "id_example",
       },
     ],
     affiliateId: "789",
@@ -150,6 +155,69 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CustomFieldGroup**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **createOpportunityCustomFieldTab**
+> CustomFieldTab createOpportunityCustomFieldTab(createCustomFieldTabRequest)
+
+Creates a new custom field tab for the Opportunity record type.
+
+### Example
+
+
+```typescript
+import { createConfiguration, OpportunityApi } from '';
+import type { OpportunityApiCreateOpportunityCustomFieldTabRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OpportunityApi(configuration);
+
+const request: OpportunityApiCreateOpportunityCustomFieldTabRequest = {
+  
+  createCustomFieldTabRequest: {
+    name: "name_example",
+  },
+};
+
+const data = await apiInstance.createOpportunityCustomFieldTab(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomFieldTabRequest** | **CreateCustomFieldTabRequest**|  |
+
+
+### Return type
+
+**CustomFieldTab**
 
 ### Authorization
 
@@ -503,6 +571,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **deleteOpportunityCustomFieldTab**
+> void deleteOpportunityCustomFieldTab()
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+
+
+```typescript
+import { createConfiguration, OpportunityApi } from '';
+import type { OpportunityApiDeleteOpportunityCustomFieldTabRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OpportunityApi(configuration);
+
+const request: OpportunityApiDeleteOpportunityCustomFieldTabRequest = {
+  
+  tabId: "tab_id_example",
+};
+
+const data = await apiInstance.deleteOpportunityCustomFieldTab(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tabId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **deleteOpportunityStage**
 > void deleteOpportunityStage()
 
@@ -691,6 +820,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getOpportunityCustomFieldTab**
+> CustomFieldTab getOpportunityCustomFieldTab()
+
+Retrieves a single custom field tab by id for the Opportunity record type.
+
+### Example
+
+
+```typescript
+import { createConfiguration, OpportunityApi } from '';
+import type { OpportunityApiGetOpportunityCustomFieldTabRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OpportunityApi(configuration);
+
+const request: OpportunityApiGetOpportunityCustomFieldTabRequest = {
+  
+  tabId: "tab_id_example",
+};
+
+const data = await apiInstance.getOpportunityCustomFieldTab(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tabId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**CustomFieldTab**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **getOpportunityStage**
 > RestOpportunityStage getOpportunityStage()
 
@@ -833,7 +1023,7 @@ const request: OpportunityApiListOpportunitiesRequest = {
   fields: [
     "custom_fields",
   ],
-    // Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request.  (optional)
+    // Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs - (String) `contact_phone` — matches the contact\'s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. `contact_phone==(480) 123-4567`); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. `contact_phone==480*`) - (String) `contact_city` — matches the contact\'s city; supports wildcard prefix search (e.g. `contact_city==Chand*`) - (String) `contact_state` — matches the contact\'s state; supports wildcard prefix search (e.g. `contact_state==AZ*`) - (String) `projected_revenue_high` — projected revenue high; supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `projected_revenue_high>=1000`) - (String) `projected_revenue_low` — projected revenue low; supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `projected_revenue_low<=500`) Note: `opportunity_id` and `ids` cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. `cf_priority==10`). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field\'s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (`==`) and prefix wildcard (e.g. `cf_company==Acme*`) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (`==`, `>`, `<`, `>=`, `<=`) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `cf_renewDate<=2026-01-01T00:00:00.000Z`). Date-only values such as `2026-01-01` are rejected - Yes/No fields — equals only, value `0` (No) or `1` (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. `cf_tags==red`) A custom field that does not exist, an operator unsupported for the field\'s type, or a value that does not match the field\'s type returns `400 Bad Request`.  (optional)
   filter: "filter_example",
     // Attribute and direction to opportunities items. One of the following fields: - `next_action_time` - `contact_name` - `opportunity_title` - `created_time` - `update_time`  One of the following directions: - `asc` - `desc` (optional)
   orderBy: "order_by_example",
@@ -853,7 +1043,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fields** | **Array<&#39;custom_fields&#39; &#124; &#39;created_by&#39; &#124; &#39;last_updated_by&#39; &#124; &#39;status_id&#39; &#124; &#39;monthly_revenue&#39; &#124; &#39;order_revenue&#39; &#124; &#39;objection&#39; &#124; &#39;status&#39; &#124; &#39;stage_entrance_time&#39;>** | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | (optional) defaults to undefined
- **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  | (optional) defaults to undefined
+ **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact\&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact\&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact\&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field\&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field\&#39;s type, or a value that does not match the field\&#39;s type returns &#x60;400 Bad Request&#x60;.  | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
  **pageToken** | [**string**] | Page token | (optional) defaults to undefined
@@ -923,6 +1113,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 **ListCustomFieldGroupsResponse**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listOpportunityCustomFieldTabs**
+> ListCustomFieldTabsResponse listOpportunityCustomFieldTabs()
+
+Retrieves a list of custom field tabs for the Opportunity record type.
+
+### Example
+
+
+```typescript
+import { createConfiguration, OpportunityApi } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OpportunityApi(configuration);
+
+const request = {};
+
+const data = await apiInstance.listOpportunityCustomFieldTabs(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+
+### Return type
+
+**ListCustomFieldTabsResponse**
 
 ### Authorization
 
@@ -1176,8 +1420,8 @@ const request: OpportunityApiUpdateOpportunityRequest = {
     userId: "456",
     customFields: [
       {
-        id: "id_example",
         content: null,
+        id: "id_example",
       },
     ],
     affiliateId: "789",
@@ -1361,6 +1605,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CustomFieldGroup**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **updateOpportunityCustomFieldTab**
+> CustomFieldTab updateOpportunityCustomFieldTab(updateCustomFieldTabRequest)
+
+Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+
+### Example
+
+
+```typescript
+import { createConfiguration, OpportunityApi } from '';
+import type { OpportunityApiUpdateOpportunityCustomFieldTabRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OpportunityApi(configuration);
+
+const request: OpportunityApiUpdateOpportunityCustomFieldTabRequest = {
+  
+  tabId: "tab_id_example",
+    // Comma-separated list of fields to update
+  updateMask: [
+    "name",
+  ],
+  
+  updateCustomFieldTabRequest: {
+    name: "name_example",
+    order: 1,
+  },
+};
+
+const data = await apiInstance.updateOpportunityCustomFieldTab(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateCustomFieldTabRequest** | **UpdateCustomFieldTabRequest**|  |
+ **tabId** | [**string**] |  | defaults to undefined
+ **updateMask** | **Array<&#39;name&#39; &#124; &#39;order&#39;>** | Comma-separated list of fields to update | defaults to undefined
+
+
+### Return type
+
+**CustomFieldTab**
 
 ### Authorization
 

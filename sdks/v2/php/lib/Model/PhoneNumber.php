@@ -389,7 +389,7 @@ class PhoneNumber implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets number
      *
-     * @param string|null $number Phone number
+     * @param string|null $number Phone number. Maximum length is 40 characters for PHONE1-PHONE3 and 20 characters for PHONE4-PHONE5.
      *
      * @return self
      */

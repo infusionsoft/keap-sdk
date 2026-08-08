@@ -12,15 +12,19 @@ import { Company } from '../models/Company';
 import { CreateCompanyRequest } from '../models/CreateCompanyRequest';
 import { CreateCustomFieldGroupRequest } from '../models/CreateCustomFieldGroupRequest';
 import { CreateCustomFieldRequest } from '../models/CreateCustomFieldRequest';
+import { CreateCustomFieldTabRequest } from '../models/CreateCustomFieldTabRequest';
 import { CustomFieldGroup } from '../models/CustomFieldGroup';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
+import { CustomFieldTab } from '../models/CustomFieldTab';
 import { ListCompaniesResponse } from '../models/ListCompaniesResponse';
 import { ListCompanyTagsResponse } from '../models/ListCompanyTagsResponse';
 import { ListCustomFieldGroupsResponse } from '../models/ListCustomFieldGroupsResponse';
+import { ListCustomFieldTabsResponse } from '../models/ListCustomFieldTabsResponse';
 import { ObjectModel } from '../models/ObjectModel';
 import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
 import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
+import { UpdateCustomFieldTabRequest } from '../models/UpdateCustomFieldTabRequest';
 
 /**
  * no description
@@ -218,6 +222,54 @@ export class CompanyApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Creates a new custom field tab for the Company record type.
+     * Create a Company Custom Field Tab
+     * @param createCustomFieldTabRequest 
+     */
+    public async createCompanyCustomFieldTab(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'createCustomFieldTabRequest' is not null or undefined
+        if (createCustomFieldTabRequest === null || createCustomFieldTabRequest === undefined) {
+            throw new RequiredError("CompanyApi", "createCompanyCustomFieldTab", "createCustomFieldTabRequest");
+        }
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/companies/model/customFields/tabs';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(createCustomFieldTabRequest, "CreateCustomFieldTabRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Deletes the specified Company
      * Delete a Company
      * @param companyId 
@@ -332,6 +384,44 @@ export class CompanyApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * Delete a Company Custom Field Tab
+     * @param tabId 
+     */
+    public async deleteCompanyCustomFieldTab(tabId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'tabId' is not null or undefined
+        if (tabId === null || tabId === undefined) {
+            throw new RequiredError("CompanyApi", "deleteCompanyCustomFieldTab", "tabId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/companies/model/customFields/tabs/{tab_id}'
+            .replace('{' + 'tab_id' + '}', encodeURIComponent(String(tabId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Retrieves a single Company
      * Retrieve a Company
      * @param companyId 
@@ -415,10 +505,48 @@ export class CompanyApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Retrieves a single custom field tab by id for the Company record type.
+     * Retrieve a Company Custom Field Tab
+     * @param tabId 
+     */
+    public async getCompanyCustomFieldTab(tabId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'tabId' is not null or undefined
+        if (tabId === null || tabId === undefined) {
+            throw new RequiredError("CompanyApi", "getCompanyCustomFieldTab", "tabId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/companies/model/customFields/tabs/{tab_id}'
+            .replace('{' + 'tab_id' + '}', encodeURIComponent(String(tabId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Retrieves a list of all Companies.<br/><br/>
      * List Companies
      * @param fields Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren\&#39;t included, by default.)
-     * @param filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;Industry%3D%3DTech%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;since_time&#x60;/&#x60;until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Examples (for a custom field named &#x60;Height&#x60;): - &#x60;filter&#x3D;Height%3D%3DTall&#x60; - &#x60;filter&#x3D;Height%3E100&#x60; Custom field filtering on non-indexed fields is supported but may be slower. 
+     * @param filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;city&#x60; - company city (Contact.City) with support for a prefix wildcard at the end (e.g. &#x60;Chan*&#x60;) - (String) &#x60;state&#x60; - company state/region (Contact.State) with support for a prefix wildcard at the end (e.g. &#x60;Ar*&#x60;) - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name/city/state search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;Industry%3D%3DTech%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;since_time&#x60;/&#x60;until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Examples (for a custom field named &#x60;Height&#x60;): - &#x60;filter&#x3D;Height%3D%3DTall&#x60; - &#x60;filter&#x3D;Height%3E100&#x60; Custom field filtering on non-indexed fields is supported but may be slower. 
      * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param pageSize Total number of items to return per page
      * @param pageToken Page token
@@ -499,6 +627,36 @@ export class CompanyApiRequestFactory extends BaseAPIRequestFactory {
         if (tabId !== undefined) {
             requestContext.setQueryParam("tab_id", ObjectSerializer.serialize(tabId, "string", ""));
         }
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Retrieves a list of custom field tabs for the Company record type.
+     * List Company Custom Field Tabs
+     */
+    public async listCompanyCustomFieldTabs(_options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // Path Params
+        const localVarPath = '/rest/v2/companies/model/customFields/tabs';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -842,6 +1000,77 @@ export class CompanyApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(updateCustomFieldGroupRequest, "UpdateCustomFieldGroupRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * Update a Company Custom Field Tab
+     * @param tabId 
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest 
+     */
+    public async updateCompanyCustomFieldTab(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'tabId' is not null or undefined
+        if (tabId === null || tabId === undefined) {
+            throw new RequiredError("CompanyApi", "updateCompanyCustomFieldTab", "tabId");
+        }
+
+
+        // verify required parameter 'updateMask' is not null or undefined
+        if (updateMask === null || updateMask === undefined) {
+            throw new RequiredError("CompanyApi", "updateCompanyCustomFieldTab", "updateMask");
+        }
+
+
+        // verify required parameter 'updateCustomFieldTabRequest' is not null or undefined
+        if (updateCustomFieldTabRequest === null || updateCustomFieldTabRequest === undefined) {
+            throw new RequiredError("CompanyApi", "updateCompanyCustomFieldTab", "updateCustomFieldTabRequest");
+        }
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/companies/model/customFields/tabs/{tab_id}'
+            .replace('{' + 'tab_id' + '}', encodeURIComponent(String(tabId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (updateMask !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'name' | 'order'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
+            }
+        }
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(updateCustomFieldTabRequest, "UpdateCustomFieldTabRequest", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -1205,6 +1434,91 @@ export class CompanyApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to createCompanyCustomFieldTab
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async createCompanyCustomFieldTabWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldTab >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to deleteCompany
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -1371,6 +1685,87 @@ export class CompanyApiResponseProcessor {
      * @throws ApiException if the response code was not in [200, 299]
      */
      public async deleteCompanyCustomFieldGroupWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("204", response.httpStatusCode)) {
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: void = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "void", ""
+            ) as void;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to deleteCompanyCustomFieldTab
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async deleteCompanyCustomFieldTabWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -1618,6 +2013,91 @@ export class CompanyApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to getCompanyCustomFieldTab
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getCompanyCustomFieldTabWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldTab >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to listCompanies
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -1778,6 +2258,91 @@ export class CompanyApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "ListCustomFieldGroupsResponse", ""
             ) as ListCustomFieldGroupsResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to listCompanyCustomFieldTabs
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async listCompanyCustomFieldTabsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListCustomFieldTabsResponse >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: ListCustomFieldTabsResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListCustomFieldTabsResponse", ""
+            ) as ListCustomFieldTabsResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: ListCustomFieldTabsResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListCustomFieldTabsResponse", ""
+            ) as ListCustomFieldTabsResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -2284,6 +2849,91 @@ export class CompanyApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "CustomFieldGroup", ""
             ) as CustomFieldGroup;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to updateCompanyCustomFieldTab
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async updateCompanyCustomFieldTabWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CustomFieldTab >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: CustomFieldTab = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CustomFieldTab", ""
+            ) as CustomFieldTab;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

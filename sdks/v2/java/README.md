@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.18</version>
+  <version>2.0.19</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.18"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.19"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.18.jar`
+- `target/core-service-v2-java-sdk-2.0.19.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -124,6 +124,8 @@ Class | Method | HTTP request | Description
 *AffiliateApi* | [**createAffiliateCustomFieldWithHttpInfo**](docs/AffiliateApi.md#createAffiliateCustomFieldWithHttpInfo) | **POST** /rest/v2/affiliates/model/customFields | Create an Affiliate Custom Field
 *AffiliateApi* | [**createAffiliateCustomFieldGroup**](docs/AffiliateApi.md#createAffiliateCustomFieldGroup) | **POST** /rest/v2/affiliates/model/customFields/groups | Create an Affiliate Custom Field Group
 *AffiliateApi* | [**createAffiliateCustomFieldGroupWithHttpInfo**](docs/AffiliateApi.md#createAffiliateCustomFieldGroupWithHttpInfo) | **POST** /rest/v2/affiliates/model/customFields/groups | Create an Affiliate Custom Field Group
+*AffiliateApi* | [**createAffiliateCustomFieldTab**](docs/AffiliateApi.md#createAffiliateCustomFieldTab) | **POST** /rest/v2/affiliates/model/customFields/tabs | Create an Affiliate Custom Field Tab
+*AffiliateApi* | [**createAffiliateCustomFieldTabWithHttpInfo**](docs/AffiliateApi.md#createAffiliateCustomFieldTabWithHttpInfo) | **POST** /rest/v2/affiliates/model/customFields/tabs | Create an Affiliate Custom Field Tab
 *AffiliateApi* | [**createDefaultCommissionProgram**](docs/AffiliateApi.md#createDefaultCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program
 *AffiliateApi* | [**createDefaultCommissionProgramWithHttpInfo**](docs/AffiliateApi.md#createDefaultCommissionProgramWithHttpInfo) | **POST** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program
 *AffiliateApi* | [**createRedirectLink**](docs/AffiliateApi.md#createRedirectLink) | **POST** /rest/v2/affiliates/redirects | Create an Affiliate Link
@@ -136,6 +138,8 @@ Class | Method | HTTP request | Description
 *AffiliateApi* | [**deleteAffiliateCustomFieldWithHttpInfo**](docs/AffiliateApi.md#deleteAffiliateCustomFieldWithHttpInfo) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field
 *AffiliateApi* | [**deleteAffiliateCustomFieldGroup**](docs/AffiliateApi.md#deleteAffiliateCustomFieldGroup) | **DELETE** /rest/v2/affiliates/model/customFields/groups/{group_id} | Delete an Affiliate Custom Field Group
 *AffiliateApi* | [**deleteAffiliateCustomFieldGroupWithHttpInfo**](docs/AffiliateApi.md#deleteAffiliateCustomFieldGroupWithHttpInfo) | **DELETE** /rest/v2/affiliates/model/customFields/groups/{group_id} | Delete an Affiliate Custom Field Group
+*AffiliateApi* | [**deleteAffiliateCustomFieldTab**](docs/AffiliateApi.md#deleteAffiliateCustomFieldTab) | **DELETE** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Delete an Affiliate Custom Field Tab
+*AffiliateApi* | [**deleteAffiliateCustomFieldTabWithHttpInfo**](docs/AffiliateApi.md#deleteAffiliateCustomFieldTabWithHttpInfo) | **DELETE** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Delete an Affiliate Custom Field Tab
 *AffiliateApi* | [**deleteCommissionProgramResource**](docs/AffiliateApi.md#deleteCommissionProgramResource) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource
 *AffiliateApi* | [**deleteCommissionProgramResourceWithHttpInfo**](docs/AffiliateApi.md#deleteCommissionProgramResourceWithHttpInfo) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource
 *AffiliateApi* | [**deleteRedirectLink**](docs/AffiliateApi.md#deleteRedirectLink) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link
@@ -148,6 +152,8 @@ Class | Method | HTTP request | Description
 *AffiliateApi* | [**getAffiliateCommissionsWithHttpInfo**](docs/AffiliateApi.md#getAffiliateCommissionsWithHttpInfo) | **GET** /rest/v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commissions
 *AffiliateApi* | [**getAffiliateCustomFieldGroup**](docs/AffiliateApi.md#getAffiliateCustomFieldGroup) | **GET** /rest/v2/affiliates/model/customFields/groups/{group_id} | Retrieve an Affiliate Custom Field Group
 *AffiliateApi* | [**getAffiliateCustomFieldGroupWithHttpInfo**](docs/AffiliateApi.md#getAffiliateCustomFieldGroupWithHttpInfo) | **GET** /rest/v2/affiliates/model/customFields/groups/{group_id} | Retrieve an Affiliate Custom Field Group
+*AffiliateApi* | [**getAffiliateCustomFieldTab**](docs/AffiliateApi.md#getAffiliateCustomFieldTab) | **GET** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Retrieve an Affiliate Custom Field Tab
+*AffiliateApi* | [**getAffiliateCustomFieldTabWithHttpInfo**](docs/AffiliateApi.md#getAffiliateCustomFieldTabWithHttpInfo) | **GET** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Retrieve an Affiliate Custom Field Tab
 *AffiliateApi* | [**getAffiliateCustomFields**](docs/AffiliateApi.md#getAffiliateCustomFields) | **GET** /rest/v2/affiliates/model | Retrieve Affiliate Model
 *AffiliateApi* | [**getAffiliateCustomFieldsWithHttpInfo**](docs/AffiliateApi.md#getAffiliateCustomFieldsWithHttpInfo) | **GET** /rest/v2/affiliates/model | Retrieve Affiliate Model
 *AffiliateApi* | [**getCommissionProgram**](docs/AffiliateApi.md#getCommissionProgram) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program
@@ -162,6 +168,8 @@ Class | Method | HTTP request | Description
 *AffiliateApi* | [**listAffiliateCommissionProgramsWithHttpInfo**](docs/AffiliateApi.md#listAffiliateCommissionProgramsWithHttpInfo) | **GET** /rest/v2/affiliates/commissionPrograms | List Affiliate Commission Programs
 *AffiliateApi* | [**listAffiliateCustomFieldGroups**](docs/AffiliateApi.md#listAffiliateCustomFieldGroups) | **GET** /rest/v2/affiliates/model/customFields/groups | List Affiliate Custom Field Groups
 *AffiliateApi* | [**listAffiliateCustomFieldGroupsWithHttpInfo**](docs/AffiliateApi.md#listAffiliateCustomFieldGroupsWithHttpInfo) | **GET** /rest/v2/affiliates/model/customFields/groups | List Affiliate Custom Field Groups
+*AffiliateApi* | [**listAffiliateCustomFieldTabs**](docs/AffiliateApi.md#listAffiliateCustomFieldTabs) | **GET** /rest/v2/affiliates/model/customFields/tabs | List Affiliate Custom Field Tabs
+*AffiliateApi* | [**listAffiliateCustomFieldTabsWithHttpInfo**](docs/AffiliateApi.md#listAffiliateCustomFieldTabsWithHttpInfo) | **GET** /rest/v2/affiliates/model/customFields/tabs | List Affiliate Custom Field Tabs
 *AffiliateApi* | [**listAffiliateLinks**](docs/AffiliateApi.md#listAffiliateLinks) | **GET** /rest/v2/affiliates/redirects | List Affiliate Links
 *AffiliateApi* | [**listAffiliateLinksWithHttpInfo**](docs/AffiliateApi.md#listAffiliateLinksWithHttpInfo) | **GET** /rest/v2/affiliates/redirects | List Affiliate Links
 *AffiliateApi* | [**listAffiliatePayments**](docs/AffiliateApi.md#listAffiliatePayments) | **GET** /rest/v2/affiliates/{affiliate_id}/payments | List Affiliate Payments
@@ -182,6 +190,8 @@ Class | Method | HTTP request | Description
 *AffiliateApi* | [**updateAffiliateCustomFieldWithHttpInfo**](docs/AffiliateApi.md#updateAffiliateCustomFieldWithHttpInfo) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field
 *AffiliateApi* | [**updateAffiliateCustomFieldGroup**](docs/AffiliateApi.md#updateAffiliateCustomFieldGroup) | **PATCH** /rest/v2/affiliates/model/customFields/groups/{group_id} | Update an Affiliate Custom Field Group
 *AffiliateApi* | [**updateAffiliateCustomFieldGroupWithHttpInfo**](docs/AffiliateApi.md#updateAffiliateCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/affiliates/model/customFields/groups/{group_id} | Update an Affiliate Custom Field Group
+*AffiliateApi* | [**updateAffiliateCustomFieldTab**](docs/AffiliateApi.md#updateAffiliateCustomFieldTab) | **PATCH** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Update an Affiliate Custom Field Tab
+*AffiliateApi* | [**updateAffiliateCustomFieldTabWithHttpInfo**](docs/AffiliateApi.md#updateAffiliateCustomFieldTabWithHttpInfo) | **PATCH** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Update an Affiliate Custom Field Tab
 *AffiliateApi* | [**updateCommissionProgram**](docs/AffiliateApi.md#updateCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
 *AffiliateApi* | [**updateCommissionProgramWithHttpInfo**](docs/AffiliateApi.md#updateCommissionProgramWithHttpInfo) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
 *AffiliateApi* | [**updateCommissionProgramResource**](docs/AffiliateApi.md#updateCommissionProgramResource) | **PATCH** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Update Commission Program Resource
@@ -256,20 +266,28 @@ Class | Method | HTTP request | Description
 *CompanyApi* | [**createCompanyCustomFieldWithHttpInfo**](docs/CompanyApi.md#createCompanyCustomFieldWithHttpInfo) | **POST** /rest/v2/companies/model/customFields | Create a Company Custom Field
 *CompanyApi* | [**createCompanyCustomFieldGroup**](docs/CompanyApi.md#createCompanyCustomFieldGroup) | **POST** /rest/v2/companies/model/customFields/groups | Create a Company Custom Field Group
 *CompanyApi* | [**createCompanyCustomFieldGroupWithHttpInfo**](docs/CompanyApi.md#createCompanyCustomFieldGroupWithHttpInfo) | **POST** /rest/v2/companies/model/customFields/groups | Create a Company Custom Field Group
+*CompanyApi* | [**createCompanyCustomFieldTab**](docs/CompanyApi.md#createCompanyCustomFieldTab) | **POST** /rest/v2/companies/model/customFields/tabs | Create a Company Custom Field Tab
+*CompanyApi* | [**createCompanyCustomFieldTabWithHttpInfo**](docs/CompanyApi.md#createCompanyCustomFieldTabWithHttpInfo) | **POST** /rest/v2/companies/model/customFields/tabs | Create a Company Custom Field Tab
 *CompanyApi* | [**deleteCompany**](docs/CompanyApi.md#deleteCompany) | **DELETE** /rest/v2/companies/{company_id} | Delete a Company
 *CompanyApi* | [**deleteCompanyWithHttpInfo**](docs/CompanyApi.md#deleteCompanyWithHttpInfo) | **DELETE** /rest/v2/companies/{company_id} | Delete a Company
 *CompanyApi* | [**deleteCompanyCustomField**](docs/CompanyApi.md#deleteCompanyCustomField) | **DELETE** /rest/v2/companies/model/customFields/{custom_field_id} | Delete a Company Custom Field
 *CompanyApi* | [**deleteCompanyCustomFieldWithHttpInfo**](docs/CompanyApi.md#deleteCompanyCustomFieldWithHttpInfo) | **DELETE** /rest/v2/companies/model/customFields/{custom_field_id} | Delete a Company Custom Field
 *CompanyApi* | [**deleteCompanyCustomFieldGroup**](docs/CompanyApi.md#deleteCompanyCustomFieldGroup) | **DELETE** /rest/v2/companies/model/customFields/groups/{group_id} | Delete a Company Custom Field Group
 *CompanyApi* | [**deleteCompanyCustomFieldGroupWithHttpInfo**](docs/CompanyApi.md#deleteCompanyCustomFieldGroupWithHttpInfo) | **DELETE** /rest/v2/companies/model/customFields/groups/{group_id} | Delete a Company Custom Field Group
+*CompanyApi* | [**deleteCompanyCustomFieldTab**](docs/CompanyApi.md#deleteCompanyCustomFieldTab) | **DELETE** /rest/v2/companies/model/customFields/tabs/{tab_id} | Delete a Company Custom Field Tab
+*CompanyApi* | [**deleteCompanyCustomFieldTabWithHttpInfo**](docs/CompanyApi.md#deleteCompanyCustomFieldTabWithHttpInfo) | **DELETE** /rest/v2/companies/model/customFields/tabs/{tab_id} | Delete a Company Custom Field Tab
 *CompanyApi* | [**getCompany**](docs/CompanyApi.md#getCompany) | **GET** /rest/v2/companies/{company_id} | Retrieve a Company
 *CompanyApi* | [**getCompanyWithHttpInfo**](docs/CompanyApi.md#getCompanyWithHttpInfo) | **GET** /rest/v2/companies/{company_id} | Retrieve a Company
 *CompanyApi* | [**getCompanyCustomFieldGroup**](docs/CompanyApi.md#getCompanyCustomFieldGroup) | **GET** /rest/v2/companies/model/customFields/groups/{group_id} | Retrieve a Company Custom Field Group
 *CompanyApi* | [**getCompanyCustomFieldGroupWithHttpInfo**](docs/CompanyApi.md#getCompanyCustomFieldGroupWithHttpInfo) | **GET** /rest/v2/companies/model/customFields/groups/{group_id} | Retrieve a Company Custom Field Group
+*CompanyApi* | [**getCompanyCustomFieldTab**](docs/CompanyApi.md#getCompanyCustomFieldTab) | **GET** /rest/v2/companies/model/customFields/tabs/{tab_id} | Retrieve a Company Custom Field Tab
+*CompanyApi* | [**getCompanyCustomFieldTabWithHttpInfo**](docs/CompanyApi.md#getCompanyCustomFieldTabWithHttpInfo) | **GET** /rest/v2/companies/model/customFields/tabs/{tab_id} | Retrieve a Company Custom Field Tab
 *CompanyApi* | [**listCompanies**](docs/CompanyApi.md#listCompanies) | **GET** /rest/v2/companies | List Companies
 *CompanyApi* | [**listCompaniesWithHttpInfo**](docs/CompanyApi.md#listCompaniesWithHttpInfo) | **GET** /rest/v2/companies | List Companies
 *CompanyApi* | [**listCompanyCustomFieldGroups**](docs/CompanyApi.md#listCompanyCustomFieldGroups) | **GET** /rest/v2/companies/model/customFields/groups | List Company Custom Field Groups
 *CompanyApi* | [**listCompanyCustomFieldGroupsWithHttpInfo**](docs/CompanyApi.md#listCompanyCustomFieldGroupsWithHttpInfo) | **GET** /rest/v2/companies/model/customFields/groups | List Company Custom Field Groups
+*CompanyApi* | [**listCompanyCustomFieldTabs**](docs/CompanyApi.md#listCompanyCustomFieldTabs) | **GET** /rest/v2/companies/model/customFields/tabs | List Company Custom Field Tabs
+*CompanyApi* | [**listCompanyCustomFieldTabsWithHttpInfo**](docs/CompanyApi.md#listCompanyCustomFieldTabsWithHttpInfo) | **GET** /rest/v2/companies/model/customFields/tabs | List Company Custom Field Tabs
 *CompanyApi* | [**listTagsForCompany**](docs/CompanyApi.md#listTagsForCompany) | **GET** /rest/v2/companies/{company_id}/tags | List Applied Tags
 *CompanyApi* | [**listTagsForCompanyWithHttpInfo**](docs/CompanyApi.md#listTagsForCompanyWithHttpInfo) | **GET** /rest/v2/companies/{company_id}/tags | List Applied Tags
 *CompanyApi* | [**removeTagFromCompany**](docs/CompanyApi.md#removeTagFromCompany) | **DELETE** /rest/v2/companies/{company_id}/tags/{tag_id} | Remove Tag
@@ -282,12 +300,16 @@ Class | Method | HTTP request | Description
 *CompanyApi* | [**updateCompanyCustomFieldWithHttpInfo**](docs/CompanyApi.md#updateCompanyCustomFieldWithHttpInfo) | **PATCH** /rest/v2/companies/model/customFields/{custom_field_id} | Update a Company Custom Field
 *CompanyApi* | [**updateCompanyCustomFieldGroup**](docs/CompanyApi.md#updateCompanyCustomFieldGroup) | **PATCH** /rest/v2/companies/model/customFields/groups/{group_id} | Update a Company Custom Field Group
 *CompanyApi* | [**updateCompanyCustomFieldGroupWithHttpInfo**](docs/CompanyApi.md#updateCompanyCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/companies/model/customFields/groups/{group_id} | Update a Company Custom Field Group
+*CompanyApi* | [**updateCompanyCustomFieldTab**](docs/CompanyApi.md#updateCompanyCustomFieldTab) | **PATCH** /rest/v2/companies/model/customFields/tabs/{tab_id} | Update a Company Custom Field Tab
+*CompanyApi* | [**updateCompanyCustomFieldTabWithHttpInfo**](docs/CompanyApi.md#updateCompanyCustomFieldTabWithHttpInfo) | **PATCH** /rest/v2/companies/model/customFields/tabs/{tab_id} | Update a Company Custom Field Tab
 *ContactApi* | [**createContact**](docs/ContactApi.md#createContact) | **POST** /rest/v2/contacts | Create a Contact
 *ContactApi* | [**createContactWithHttpInfo**](docs/ContactApi.md#createContactWithHttpInfo) | **POST** /rest/v2/contacts | Create a Contact
 *ContactApi* | [**createContactCustomField**](docs/ContactApi.md#createContactCustomField) | **POST** /rest/v2/contacts/model/customFields | Create a Contact Custom Field
 *ContactApi* | [**createContactCustomFieldWithHttpInfo**](docs/ContactApi.md#createContactCustomFieldWithHttpInfo) | **POST** /rest/v2/contacts/model/customFields | Create a Contact Custom Field
 *ContactApi* | [**createContactCustomFieldGroup**](docs/ContactApi.md#createContactCustomFieldGroup) | **POST** /rest/v2/contacts/model/customFields/groups | Create a Contact Custom Field Group
 *ContactApi* | [**createContactCustomFieldGroupWithHttpInfo**](docs/ContactApi.md#createContactCustomFieldGroupWithHttpInfo) | **POST** /rest/v2/contacts/model/customFields/groups | Create a Contact Custom Field Group
+*ContactApi* | [**createContactCustomFieldTab**](docs/ContactApi.md#createContactCustomFieldTab) | **POST** /rest/v2/contacts/model/customFields/tabs | Create a Contact Custom Field Tab
+*ContactApi* | [**createContactCustomFieldTabWithHttpInfo**](docs/ContactApi.md#createContactCustomFieldTabWithHttpInfo) | **POST** /rest/v2/contacts/model/customFields/tabs | Create a Contact Custom Field Tab
 *ContactApi* | [**createContactLinkType**](docs/ContactApi.md#createContactLinkType) | **POST** /rest/v2/contacts/links/types | Create a Contact Link type
 *ContactApi* | [**createContactLinkTypeWithHttpInfo**](docs/ContactApi.md#createContactLinkTypeWithHttpInfo) | **POST** /rest/v2/contacts/links/types | Create a Contact Link type
 *ContactApi* | [**deleteContact**](docs/ContactApi.md#deleteContact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact
@@ -296,16 +318,22 @@ Class | Method | HTTP request | Description
 *ContactApi* | [**deleteContactCustomFieldWithHttpInfo**](docs/ContactApi.md#deleteContactCustomFieldWithHttpInfo) | **DELETE** /rest/v2/contacts/model/customFields/{custom_field_id} | Delete a Contact Custom Field
 *ContactApi* | [**deleteContactCustomFieldGroup**](docs/ContactApi.md#deleteContactCustomFieldGroup) | **DELETE** /rest/v2/contacts/model/customFields/groups/{group_id} | Delete a Contact Custom Field Group
 *ContactApi* | [**deleteContactCustomFieldGroupWithHttpInfo**](docs/ContactApi.md#deleteContactCustomFieldGroupWithHttpInfo) | **DELETE** /rest/v2/contacts/model/customFields/groups/{group_id} | Delete a Contact Custom Field Group
+*ContactApi* | [**deleteContactCustomFieldTab**](docs/ContactApi.md#deleteContactCustomFieldTab) | **DELETE** /rest/v2/contacts/model/customFields/tabs/{tab_id} | Delete a Contact Custom Field Tab
+*ContactApi* | [**deleteContactCustomFieldTabWithHttpInfo**](docs/ContactApi.md#deleteContactCustomFieldTabWithHttpInfo) | **DELETE** /rest/v2/contacts/model/customFields/tabs/{tab_id} | Delete a Contact Custom Field Tab
 *ContactApi* | [**deleteContactLinkType**](docs/ContactApi.md#deleteContactLinkType) | **DELETE** /rest/v2/contacts/links/types/{link_type_id} | Delete a Contact Link type
 *ContactApi* | [**deleteContactLinkTypeWithHttpInfo**](docs/ContactApi.md#deleteContactLinkTypeWithHttpInfo) | **DELETE** /rest/v2/contacts/links/types/{link_type_id} | Delete a Contact Link type
 *ContactApi* | [**getContact**](docs/ContactApi.md#getContact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact
 *ContactApi* | [**getContactWithHttpInfo**](docs/ContactApi.md#getContactWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact
 *ContactApi* | [**getContactCustomFieldGroup**](docs/ContactApi.md#getContactCustomFieldGroup) | **GET** /rest/v2/contacts/model/customFields/groups/{group_id} | Retrieve a Contact Custom Field Group
 *ContactApi* | [**getContactCustomFieldGroupWithHttpInfo**](docs/ContactApi.md#getContactCustomFieldGroupWithHttpInfo) | **GET** /rest/v2/contacts/model/customFields/groups/{group_id} | Retrieve a Contact Custom Field Group
+*ContactApi* | [**getContactCustomFieldTab**](docs/ContactApi.md#getContactCustomFieldTab) | **GET** /rest/v2/contacts/model/customFields/tabs/{tab_id} | Retrieve a Contact Custom Field Tab
+*ContactApi* | [**getContactCustomFieldTabWithHttpInfo**](docs/ContactApi.md#getContactCustomFieldTabWithHttpInfo) | **GET** /rest/v2/contacts/model/customFields/tabs/{tab_id} | Retrieve a Contact Custom Field Tab
 *ContactApi* | [**linkContacts**](docs/ContactApi.md#linkContacts) | **POST** /rest/v2/contacts:link | Link Contacts
 *ContactApi* | [**linkContactsWithHttpInfo**](docs/ContactApi.md#linkContactsWithHttpInfo) | **POST** /rest/v2/contacts:link | Link Contacts
 *ContactApi* | [**listContactCustomFieldGroups**](docs/ContactApi.md#listContactCustomFieldGroups) | **GET** /rest/v2/contacts/model/customFields/groups | List Contact Custom Field Groups
 *ContactApi* | [**listContactCustomFieldGroupsWithHttpInfo**](docs/ContactApi.md#listContactCustomFieldGroupsWithHttpInfo) | **GET** /rest/v2/contacts/model/customFields/groups | List Contact Custom Field Groups
+*ContactApi* | [**listContactCustomFieldTabs**](docs/ContactApi.md#listContactCustomFieldTabs) | **GET** /rest/v2/contacts/model/customFields/tabs | List Contact Custom Field Tabs
+*ContactApi* | [**listContactCustomFieldTabsWithHttpInfo**](docs/ContactApi.md#listContactCustomFieldTabsWithHttpInfo) | **GET** /rest/v2/contacts/model/customFields/tabs | List Contact Custom Field Tabs
 *ContactApi* | [**listContactLinkTypes**](docs/ContactApi.md#listContactLinkTypes) | **GET** /rest/v2/contacts/links/types | List Contact Link types
 *ContactApi* | [**listContactLinkTypesWithHttpInfo**](docs/ContactApi.md#listContactLinkTypesWithHttpInfo) | **GET** /rest/v2/contacts/links/types | List Contact Link types
 *ContactApi* | [**listContactLinks**](docs/ContactApi.md#listContactLinks) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts
@@ -324,6 +352,8 @@ Class | Method | HTTP request | Description
 *ContactApi* | [**updateContactWithHttpInfo**](docs/ContactApi.md#updateContactWithHttpInfo) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact
 *ContactApi* | [**updateContactCustomFieldGroup**](docs/ContactApi.md#updateContactCustomFieldGroup) | **PATCH** /rest/v2/contacts/model/customFields/groups/{group_id} | Update a Contact Custom Field Group
 *ContactApi* | [**updateContactCustomFieldGroupWithHttpInfo**](docs/ContactApi.md#updateContactCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/contacts/model/customFields/groups/{group_id} | Update a Contact Custom Field Group
+*ContactApi* | [**updateContactCustomFieldTab**](docs/ContactApi.md#updateContactCustomFieldTab) | **PATCH** /rest/v2/contacts/model/customFields/tabs/{tab_id} | Update a Contact Custom Field Tab
+*ContactApi* | [**updateContactCustomFieldTabWithHttpInfo**](docs/ContactApi.md#updateContactCustomFieldTabWithHttpInfo) | **PATCH** /rest/v2/contacts/model/customFields/tabs/{tab_id} | Update a Contact Custom Field Tab
 *ContactApi* | [**updateContactLinkType**](docs/ContactApi.md#updateContactLinkType) | **PATCH** /rest/v2/contacts/links/types/{link_type_id} | Update a Contact Link type
 *ContactApi* | [**updateContactLinkTypeWithHttpInfo**](docs/ContactApi.md#updateContactLinkTypeWithHttpInfo) | **PATCH** /rest/v2/contacts/links/types/{link_type_id} | Update a Contact Link type
 *EmailApi* | [**createEmail**](docs/EmailApi.md#createEmail) | **POST** /rest/v2/emails | Create an Email Record
@@ -338,6 +368,8 @@ Class | Method | HTTP request | Description
 *EmailApi* | [**getEmailWithHttpInfo**](docs/EmailApi.md#getEmailWithHttpInfo) | **GET** /rest/v2/emails/{id} | Retrieve an Email
 *EmailApi* | [**getEmailTemplate**](docs/EmailApi.md#getEmailTemplate) | **GET** /rest/v2/emails/templates/{email_template_id} | Retrieve an email template
 *EmailApi* | [**getEmailTemplateWithHttpInfo**](docs/EmailApi.md#getEmailTemplateWithHttpInfo) | **GET** /rest/v2/emails/templates/{email_template_id} | Retrieve an email template
+*EmailApi* | [**listEmailTemplates**](docs/EmailApi.md#listEmailTemplates) | **GET** /rest/v2/emails/templates | List email templates
+*EmailApi* | [**listEmailTemplatesWithHttpInfo**](docs/EmailApi.md#listEmailTemplatesWithHttpInfo) | **GET** /rest/v2/emails/templates | List email templates
 *EmailApi* | [**listEmails**](docs/EmailApi.md#listEmails) | **GET** /rest/v2/emails | List Emails
 *EmailApi* | [**listEmailsWithHttpInfo**](docs/EmailApi.md#listEmailsWithHttpInfo) | **GET** /rest/v2/emails | List Emails
 *EmailApi* | [**sendEmail**](docs/EmailApi.md#sendEmail) | **POST** /rest/v2/emails:send | Send an Email
@@ -356,8 +388,8 @@ Class | Method | HTTP request | Description
 *FilesApi* | [**deleteFileWithHttpInfo**](docs/FilesApi.md#deleteFileWithHttpInfo) | **DELETE** /rest/v2/files/{file_id} | Delete a file
 *FilesApi* | [**getFile**](docs/FilesApi.md#getFile) | **GET** /rest/v2/files/{file_id} | Retrieve a file
 *FilesApi* | [**getFileWithHttpInfo**](docs/FilesApi.md#getFileWithHttpInfo) | **GET** /rest/v2/files/{file_id} | Retrieve a file
-*FilesApi* | [**getFileData**](docs/FilesApi.md#getFileData) | **GET** /rest/v2/files/{file_id}:data | Retrieve a file&#39;s data
-*FilesApi* | [**getFileDataWithHttpInfo**](docs/FilesApi.md#getFileDataWithHttpInfo) | **GET** /rest/v2/files/{file_id}:data | Retrieve a file&#39;s data
+*FilesApi* | [**getFileData1**](docs/FilesApi.md#getFileData1) | **GET** /rest/v2/files/{file_id}:data | Retrieve a file&#39;s data
+*FilesApi* | [**getFileData1WithHttpInfo**](docs/FilesApi.md#getFileData1WithHttpInfo) | **GET** /rest/v2/files/{file_id}:data | Retrieve a file&#39;s data
 *FilesApi* | [**listFiles**](docs/FilesApi.md#listFiles) | **GET** /rest/v2/files | List all files
 *FilesApi* | [**listFilesWithHttpInfo**](docs/FilesApi.md#listFilesWithHttpInfo) | **GET** /rest/v2/files | List all files
 *FilesApi* | [**updateFile**](docs/FilesApi.md#updateFile) | **POST** /rest/v2/files/{file_id} | Update a file
@@ -444,20 +476,28 @@ Class | Method | HTTP request | Description
 *NoteApi* | [**createNoteCustomFieldWithHttpInfo**](docs/NoteApi.md#createNoteCustomFieldWithHttpInfo) | **POST** /rest/v2/notes/model/customFields | Create a Custom Field
 *NoteApi* | [**createNoteCustomFieldGroup**](docs/NoteApi.md#createNoteCustomFieldGroup) | **POST** /rest/v2/notes/model/customFields/groups | Create a Note Custom Field Group
 *NoteApi* | [**createNoteCustomFieldGroupWithHttpInfo**](docs/NoteApi.md#createNoteCustomFieldGroupWithHttpInfo) | **POST** /rest/v2/notes/model/customFields/groups | Create a Note Custom Field Group
+*NoteApi* | [**createNoteCustomFieldTab**](docs/NoteApi.md#createNoteCustomFieldTab) | **POST** /rest/v2/notes/model/customFields/tabs | Create a Note Custom Field Tab
+*NoteApi* | [**createNoteCustomFieldTabWithHttpInfo**](docs/NoteApi.md#createNoteCustomFieldTabWithHttpInfo) | **POST** /rest/v2/notes/model/customFields/tabs | Create a Note Custom Field Tab
 *NoteApi* | [**deleteNote**](docs/NoteApi.md#deleteNote) | **DELETE** /rest/v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
 *NoteApi* | [**deleteNoteWithHttpInfo**](docs/NoteApi.md#deleteNoteWithHttpInfo) | **DELETE** /rest/v2/contacts/{contact_id}/notes/{note_id} | Delete a Note
 *NoteApi* | [**deleteNoteCustomFieldGroup**](docs/NoteApi.md#deleteNoteCustomFieldGroup) | **DELETE** /rest/v2/notes/model/customFields/groups/{group_id} | Delete a Note Custom Field Group
 *NoteApi* | [**deleteNoteCustomFieldGroupWithHttpInfo**](docs/NoteApi.md#deleteNoteCustomFieldGroupWithHttpInfo) | **DELETE** /rest/v2/notes/model/customFields/groups/{group_id} | Delete a Note Custom Field Group
+*NoteApi* | [**deleteNoteCustomFieldTab**](docs/NoteApi.md#deleteNoteCustomFieldTab) | **DELETE** /rest/v2/notes/model/customFields/tabs/{tab_id} | Delete a Note Custom Field Tab
+*NoteApi* | [**deleteNoteCustomFieldTabWithHttpInfo**](docs/NoteApi.md#deleteNoteCustomFieldTabWithHttpInfo) | **DELETE** /rest/v2/notes/model/customFields/tabs/{tab_id} | Delete a Note Custom Field Tab
 *NoteApi* | [**deleteNotesCustomField**](docs/NoteApi.md#deleteNotesCustomField) | **DELETE** /rest/v2/notes/model/customFields/{custom_field_id} | Delete a Note Custom Field
 *NoteApi* | [**deleteNotesCustomFieldWithHttpInfo**](docs/NoteApi.md#deleteNotesCustomFieldWithHttpInfo) | **DELETE** /rest/v2/notes/model/customFields/{custom_field_id} | Delete a Note Custom Field
 *NoteApi* | [**getNote**](docs/NoteApi.md#getNote) | **GET** /rest/v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
 *NoteApi* | [**getNoteWithHttpInfo**](docs/NoteApi.md#getNoteWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/notes/{note_id} | Retrieve a Note
 *NoteApi* | [**getNoteCustomFieldGroup**](docs/NoteApi.md#getNoteCustomFieldGroup) | **GET** /rest/v2/notes/model/customFields/groups/{group_id} | Retrieve a Note Custom Field Group
 *NoteApi* | [**getNoteCustomFieldGroupWithHttpInfo**](docs/NoteApi.md#getNoteCustomFieldGroupWithHttpInfo) | **GET** /rest/v2/notes/model/customFields/groups/{group_id} | Retrieve a Note Custom Field Group
+*NoteApi* | [**getNoteCustomFieldTab**](docs/NoteApi.md#getNoteCustomFieldTab) | **GET** /rest/v2/notes/model/customFields/tabs/{tab_id} | Retrieve a Note Custom Field Tab
+*NoteApi* | [**getNoteCustomFieldTabWithHttpInfo**](docs/NoteApi.md#getNoteCustomFieldTabWithHttpInfo) | **GET** /rest/v2/notes/model/customFields/tabs/{tab_id} | Retrieve a Note Custom Field Tab
 *NoteApi* | [**listAllNotes**](docs/NoteApi.md#listAllNotes) | **GET** /rest/v2/notes | List All Notes
 *NoteApi* | [**listAllNotesWithHttpInfo**](docs/NoteApi.md#listAllNotesWithHttpInfo) | **GET** /rest/v2/notes | List All Notes
 *NoteApi* | [**listNoteCustomFieldGroups**](docs/NoteApi.md#listNoteCustomFieldGroups) | **GET** /rest/v2/notes/model/customFields/groups | List Note Custom Field Groups
 *NoteApi* | [**listNoteCustomFieldGroupsWithHttpInfo**](docs/NoteApi.md#listNoteCustomFieldGroupsWithHttpInfo) | **GET** /rest/v2/notes/model/customFields/groups | List Note Custom Field Groups
+*NoteApi* | [**listNoteCustomFieldTabs**](docs/NoteApi.md#listNoteCustomFieldTabs) | **GET** /rest/v2/notes/model/customFields/tabs | List Note Custom Field Tabs
+*NoteApi* | [**listNoteCustomFieldTabsWithHttpInfo**](docs/NoteApi.md#listNoteCustomFieldTabsWithHttpInfo) | **GET** /rest/v2/notes/model/customFields/tabs | List Note Custom Field Tabs
 *NoteApi* | [**listNoteTemplates**](docs/NoteApi.md#listNoteTemplates) | **GET** /rest/v2/notes/templates | Retrieve Note Templates
 *NoteApi* | [**listNoteTemplatesWithHttpInfo**](docs/NoteApi.md#listNoteTemplatesWithHttpInfo) | **GET** /rest/v2/notes/templates | Retrieve Note Templates
 *NoteApi* | [**listNotes**](docs/NoteApi.md#listNotes) | **GET** /rest/v2/contacts/{contact_id}/notes | List Notes
@@ -468,12 +508,16 @@ Class | Method | HTTP request | Description
 *NoteApi* | [**updateNoteWithHttpInfo**](docs/NoteApi.md#updateNoteWithHttpInfo) | **PATCH** /rest/v2/contacts/{contact_id}/notes/{note_id} | Update a Note
 *NoteApi* | [**updateNoteCustomFieldGroup**](docs/NoteApi.md#updateNoteCustomFieldGroup) | **PATCH** /rest/v2/notes/model/customFields/groups/{group_id} | Update a Note Custom Field Group
 *NoteApi* | [**updateNoteCustomFieldGroupWithHttpInfo**](docs/NoteApi.md#updateNoteCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/notes/model/customFields/groups/{group_id} | Update a Note Custom Field Group
+*NoteApi* | [**updateNoteCustomFieldTab**](docs/NoteApi.md#updateNoteCustomFieldTab) | **PATCH** /rest/v2/notes/model/customFields/tabs/{tab_id} | Update a Note Custom Field Tab
+*NoteApi* | [**updateNoteCustomFieldTabWithHttpInfo**](docs/NoteApi.md#updateNoteCustomFieldTabWithHttpInfo) | **PATCH** /rest/v2/notes/model/customFields/tabs/{tab_id} | Update a Note Custom Field Tab
 *NoteApi* | [**updateNotesCustomField**](docs/NoteApi.md#updateNotesCustomField) | **PATCH** /rest/v2/notes/model/customFields/{custom_field_id} | Update a Custom Field
 *NoteApi* | [**updateNotesCustomFieldWithHttpInfo**](docs/NoteApi.md#updateNotesCustomFieldWithHttpInfo) | **PATCH** /rest/v2/notes/model/customFields/{custom_field_id} | Update a Custom Field
 *OpportunityApi* | [**createOpportunity**](docs/OpportunityApi.md#createOpportunity) | **POST** /rest/v2/opportunities | Create an Opportunity
 *OpportunityApi* | [**createOpportunityWithHttpInfo**](docs/OpportunityApi.md#createOpportunityWithHttpInfo) | **POST** /rest/v2/opportunities | Create an Opportunity
 *OpportunityApi* | [**createOpportunityCustomFieldGroup**](docs/OpportunityApi.md#createOpportunityCustomFieldGroup) | **POST** /rest/v2/opportunities/model/customFields/groups | Create an Opportunity Custom Field Group
 *OpportunityApi* | [**createOpportunityCustomFieldGroupWithHttpInfo**](docs/OpportunityApi.md#createOpportunityCustomFieldGroupWithHttpInfo) | **POST** /rest/v2/opportunities/model/customFields/groups | Create an Opportunity Custom Field Group
+*OpportunityApi* | [**createOpportunityCustomFieldTab**](docs/OpportunityApi.md#createOpportunityCustomFieldTab) | **POST** /rest/v2/opportunities/model/customFields/tabs | Create an Opportunity Custom Field Tab
+*OpportunityApi* | [**createOpportunityCustomFieldTabWithHttpInfo**](docs/OpportunityApi.md#createOpportunityCustomFieldTabWithHttpInfo) | **POST** /rest/v2/opportunities/model/customFields/tabs | Create an Opportunity Custom Field Tab
 *OpportunityApi* | [**createOpportunityCustomFields**](docs/OpportunityApi.md#createOpportunityCustomFields) | **POST** /rest/v2/opportunities/model/customFields | Create an Opportunity Custom Field
 *OpportunityApi* | [**createOpportunityCustomFieldsWithHttpInfo**](docs/OpportunityApi.md#createOpportunityCustomFieldsWithHttpInfo) | **POST** /rest/v2/opportunities/model/customFields | Create an Opportunity Custom Field
 *OpportunityApi* | [**createOpportunityStage**](docs/OpportunityApi.md#createOpportunityStage) | **POST** /rest/v2/opportunities/stages | Create an Opportunity Stage
@@ -484,12 +528,16 @@ Class | Method | HTTP request | Description
 *OpportunityApi* | [**deleteOpportunityWithHttpInfo**](docs/OpportunityApi.md#deleteOpportunityWithHttpInfo) | **DELETE** /rest/v2/opportunities/{opportunity_id} | Delete an Opportunity
 *OpportunityApi* | [**deleteOpportunityCustomFieldGroup**](docs/OpportunityApi.md#deleteOpportunityCustomFieldGroup) | **DELETE** /rest/v2/opportunities/model/customFields/groups/{group_id} | Delete an Opportunity Custom Field Group
 *OpportunityApi* | [**deleteOpportunityCustomFieldGroupWithHttpInfo**](docs/OpportunityApi.md#deleteOpportunityCustomFieldGroupWithHttpInfo) | **DELETE** /rest/v2/opportunities/model/customFields/groups/{group_id} | Delete an Opportunity Custom Field Group
+*OpportunityApi* | [**deleteOpportunityCustomFieldTab**](docs/OpportunityApi.md#deleteOpportunityCustomFieldTab) | **DELETE** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Delete an Opportunity Custom Field Tab
+*OpportunityApi* | [**deleteOpportunityCustomFieldTabWithHttpInfo**](docs/OpportunityApi.md#deleteOpportunityCustomFieldTabWithHttpInfo) | **DELETE** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Delete an Opportunity Custom Field Tab
 *OpportunityApi* | [**deleteOpportunityStage**](docs/OpportunityApi.md#deleteOpportunityStage) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
 *OpportunityApi* | [**deleteOpportunityStageWithHttpInfo**](docs/OpportunityApi.md#deleteOpportunityStageWithHttpInfo) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage
 *OpportunityApi* | [**getOpportunity**](docs/OpportunityApi.md#getOpportunity) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity
 *OpportunityApi* | [**getOpportunityWithHttpInfo**](docs/OpportunityApi.md#getOpportunityWithHttpInfo) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity
 *OpportunityApi* | [**getOpportunityCustomFieldGroup**](docs/OpportunityApi.md#getOpportunityCustomFieldGroup) | **GET** /rest/v2/opportunities/model/customFields/groups/{group_id} | Retrieve an Opportunity Custom Field Group
 *OpportunityApi* | [**getOpportunityCustomFieldGroupWithHttpInfo**](docs/OpportunityApi.md#getOpportunityCustomFieldGroupWithHttpInfo) | **GET** /rest/v2/opportunities/model/customFields/groups/{group_id} | Retrieve an Opportunity Custom Field Group
+*OpportunityApi* | [**getOpportunityCustomFieldTab**](docs/OpportunityApi.md#getOpportunityCustomFieldTab) | **GET** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Retrieve an Opportunity Custom Field Tab
+*OpportunityApi* | [**getOpportunityCustomFieldTabWithHttpInfo**](docs/OpportunityApi.md#getOpportunityCustomFieldTabWithHttpInfo) | **GET** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Retrieve an Opportunity Custom Field Tab
 *OpportunityApi* | [**getOpportunityStage**](docs/OpportunityApi.md#getOpportunityStage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
 *OpportunityApi* | [**getOpportunityStageWithHttpInfo**](docs/OpportunityApi.md#getOpportunityStageWithHttpInfo) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage
 *OpportunityApi* | [**getOpportunityStageMove**](docs/OpportunityApi.md#getOpportunityStageMove) | **GET** /rest/v2/opportunities/stageMoves/{stage_move_id} | Retrieve an Opportunity Stage Move
@@ -498,6 +546,8 @@ Class | Method | HTTP request | Description
 *OpportunityApi* | [**listOpportunitiesWithHttpInfo**](docs/OpportunityApi.md#listOpportunitiesWithHttpInfo) | **GET** /rest/v2/opportunities | List Opportunities
 *OpportunityApi* | [**listOpportunityCustomFieldGroups**](docs/OpportunityApi.md#listOpportunityCustomFieldGroups) | **GET** /rest/v2/opportunities/model/customFields/groups | List Opportunity Custom Field Groups
 *OpportunityApi* | [**listOpportunityCustomFieldGroupsWithHttpInfo**](docs/OpportunityApi.md#listOpportunityCustomFieldGroupsWithHttpInfo) | **GET** /rest/v2/opportunities/model/customFields/groups | List Opportunity Custom Field Groups
+*OpportunityApi* | [**listOpportunityCustomFieldTabs**](docs/OpportunityApi.md#listOpportunityCustomFieldTabs) | **GET** /rest/v2/opportunities/model/customFields/tabs | List Opportunity Custom Field Tabs
+*OpportunityApi* | [**listOpportunityCustomFieldTabsWithHttpInfo**](docs/OpportunityApi.md#listOpportunityCustomFieldTabsWithHttpInfo) | **GET** /rest/v2/opportunities/model/customFields/tabs | List Opportunity Custom Field Tabs
 *OpportunityApi* | [**listOpportunityStageMoves**](docs/OpportunityApi.md#listOpportunityStageMoves) | **GET** /rest/v2/opportunities/stageMoves | List Opportunity Stage Moves
 *OpportunityApi* | [**listOpportunityStageMovesWithHttpInfo**](docs/OpportunityApi.md#listOpportunityStageMovesWithHttpInfo) | **GET** /rest/v2/opportunities/stageMoves | List Opportunity Stage Moves
 *OpportunityApi* | [**listOpportunityStages**](docs/OpportunityApi.md#listOpportunityStages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages
@@ -510,6 +560,8 @@ Class | Method | HTTP request | Description
 *OpportunityApi* | [**updateOpportunityCustomFieldWithHttpInfo**](docs/OpportunityApi.md#updateOpportunityCustomFieldWithHttpInfo) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field
 *OpportunityApi* | [**updateOpportunityCustomFieldGroup**](docs/OpportunityApi.md#updateOpportunityCustomFieldGroup) | **PATCH** /rest/v2/opportunities/model/customFields/groups/{group_id} | Update an Opportunity Custom Field Group
 *OpportunityApi* | [**updateOpportunityCustomFieldGroupWithHttpInfo**](docs/OpportunityApi.md#updateOpportunityCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/opportunities/model/customFields/groups/{group_id} | Update an Opportunity Custom Field Group
+*OpportunityApi* | [**updateOpportunityCustomFieldTab**](docs/OpportunityApi.md#updateOpportunityCustomFieldTab) | **PATCH** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Update an Opportunity Custom Field Tab
+*OpportunityApi* | [**updateOpportunityCustomFieldTabWithHttpInfo**](docs/OpportunityApi.md#updateOpportunityCustomFieldTabWithHttpInfo) | **PATCH** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Update an Opportunity Custom Field Tab
 *OpportunityApi* | [**updateOpportunityStage**](docs/OpportunityApi.md#updateOpportunityStage) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
 *OpportunityApi* | [**updateOpportunityStageWithHttpInfo**](docs/OpportunityApi.md#updateOpportunityStageWithHttpInfo) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage
 *OrderTotalDiscountsApi* | [**createOrderTotalDiscount**](docs/OrderTotalDiscountsApi.md#createOrderTotalDiscount) | **POST** /rest/v2/discounts/orderTotals | Create an Order Total Discount
@@ -538,6 +590,8 @@ Class | Method | HTTP request | Description
 *OrdersApi* | [**createOrderCustomFieldWithHttpInfo**](docs/OrdersApi.md#createOrderCustomFieldWithHttpInfo) | **POST** /rest/v2/orders/model/customFields | Create an Order Custom Field
 *OrdersApi* | [**createOrderCustomFieldGroup**](docs/OrdersApi.md#createOrderCustomFieldGroup) | **POST** /rest/v2/orders/model/customFields/groups | Create an Order Custom Field Group
 *OrdersApi* | [**createOrderCustomFieldGroupWithHttpInfo**](docs/OrdersApi.md#createOrderCustomFieldGroupWithHttpInfo) | **POST** /rest/v2/orders/model/customFields/groups | Create an Order Custom Field Group
+*OrdersApi* | [**createOrderCustomFieldTab**](docs/OrdersApi.md#createOrderCustomFieldTab) | **POST** /rest/v2/orders/model/customFields/tabs | Create an Order Custom Field Tab
+*OrdersApi* | [**createOrderCustomFieldTabWithHttpInfo**](docs/OrdersApi.md#createOrderCustomFieldTabWithHttpInfo) | **POST** /rest/v2/orders/model/customFields/tabs | Create an Order Custom Field Tab
 *OrdersApi* | [**createOrderItem**](docs/OrdersApi.md#createOrderItem) | **POST** /rest/v2/orders/{order_id}/items | Create an Order Item
 *OrdersApi* | [**createOrderItemWithHttpInfo**](docs/OrdersApi.md#createOrderItemWithHttpInfo) | **POST** /rest/v2/orders/{order_id}/items | Create an Order Item
 *OrdersApi* | [**createPaymentForAnOrder**](docs/OrdersApi.md#createPaymentForAnOrder) | **POST** /rest/v2/orders/{order_id}/payments | Create a Payment
@@ -548,6 +602,8 @@ Class | Method | HTTP request | Description
 *OrdersApi* | [**deleteOrderCustomFieldWithHttpInfo**](docs/OrdersApi.md#deleteOrderCustomFieldWithHttpInfo) | **DELETE** /rest/v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
 *OrdersApi* | [**deleteOrderCustomFieldGroup**](docs/OrdersApi.md#deleteOrderCustomFieldGroup) | **DELETE** /rest/v2/orders/model/customFields/groups/{group_id} | Delete an Order Custom Field Group
 *OrdersApi* | [**deleteOrderCustomFieldGroupWithHttpInfo**](docs/OrdersApi.md#deleteOrderCustomFieldGroupWithHttpInfo) | **DELETE** /rest/v2/orders/model/customFields/groups/{group_id} | Delete an Order Custom Field Group
+*OrdersApi* | [**deleteOrderCustomFieldTab**](docs/OrdersApi.md#deleteOrderCustomFieldTab) | **DELETE** /rest/v2/orders/model/customFields/tabs/{tab_id} | Delete an Order Custom Field Tab
+*OrdersApi* | [**deleteOrderCustomFieldTabWithHttpInfo**](docs/OrdersApi.md#deleteOrderCustomFieldTabWithHttpInfo) | **DELETE** /rest/v2/orders/model/customFields/tabs/{tab_id} | Delete an Order Custom Field Tab
 *OrdersApi* | [**deleteOrderItem**](docs/OrdersApi.md#deleteOrderItem) | **DELETE** /rest/v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item
 *OrdersApi* | [**deleteOrderItemWithHttpInfo**](docs/OrdersApi.md#deleteOrderItemWithHttpInfo) | **DELETE** /rest/v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item
 *OrdersApi* | [**detachFileFromOrder**](docs/OrdersApi.md#detachFileFromOrder) | **POST** /rest/v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice
@@ -556,10 +612,14 @@ Class | Method | HTTP request | Description
 *OrdersApi* | [**getOrderWithHttpInfo**](docs/OrdersApi.md#getOrderWithHttpInfo) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order
 *OrdersApi* | [**getOrderCustomFieldGroup**](docs/OrdersApi.md#getOrderCustomFieldGroup) | **GET** /rest/v2/orders/model/customFields/groups/{group_id} | Retrieve an Order Custom Field Group
 *OrdersApi* | [**getOrderCustomFieldGroupWithHttpInfo**](docs/OrdersApi.md#getOrderCustomFieldGroupWithHttpInfo) | **GET** /rest/v2/orders/model/customFields/groups/{group_id} | Retrieve an Order Custom Field Group
+*OrdersApi* | [**getOrderCustomFieldTab**](docs/OrdersApi.md#getOrderCustomFieldTab) | **GET** /rest/v2/orders/model/customFields/tabs/{tab_id} | Retrieve an Order Custom Field Tab
+*OrdersApi* | [**getOrderCustomFieldTabWithHttpInfo**](docs/OrdersApi.md#getOrderCustomFieldTabWithHttpInfo) | **GET** /rest/v2/orders/model/customFields/tabs/{tab_id} | Retrieve an Order Custom Field Tab
 *OrdersApi* | [**getOrderItem**](docs/OrdersApi.md#getOrderItem) | **GET** /rest/v2/orders/{order_id}/items/{order_item_id} | Retrieve an Order Item
 *OrdersApi* | [**getOrderItemWithHttpInfo**](docs/OrdersApi.md#getOrderItemWithHttpInfo) | **GET** /rest/v2/orders/{order_id}/items/{order_item_id} | Retrieve an Order Item
 *OrdersApi* | [**listOrderCustomFieldGroups**](docs/OrdersApi.md#listOrderCustomFieldGroups) | **GET** /rest/v2/orders/model/customFields/groups | List Order Custom Field Groups
 *OrdersApi* | [**listOrderCustomFieldGroupsWithHttpInfo**](docs/OrdersApi.md#listOrderCustomFieldGroupsWithHttpInfo) | **GET** /rest/v2/orders/model/customFields/groups | List Order Custom Field Groups
+*OrdersApi* | [**listOrderCustomFieldTabs**](docs/OrdersApi.md#listOrderCustomFieldTabs) | **GET** /rest/v2/orders/model/customFields/tabs | List Order Custom Field Tabs
+*OrdersApi* | [**listOrderCustomFieldTabsWithHttpInfo**](docs/OrdersApi.md#listOrderCustomFieldTabsWithHttpInfo) | **GET** /rest/v2/orders/model/customFields/tabs | List Order Custom Field Tabs
 *OrdersApi* | [**listOrderPayments**](docs/OrdersApi.md#listOrderPayments) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments
 *OrdersApi* | [**listOrderPaymentsWithHttpInfo**](docs/OrdersApi.md#listOrderPaymentsWithHttpInfo) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments
 *OrdersApi* | [**listOrders**](docs/OrdersApi.md#listOrders) | **GET** /rest/v2/orders | List orders
@@ -572,6 +632,8 @@ Class | Method | HTTP request | Description
 *OrdersApi* | [**updateOrderCustomFieldWithHttpInfo**](docs/OrdersApi.md#updateOrderCustomFieldWithHttpInfo) | **PATCH** /rest/v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
 *OrdersApi* | [**updateOrderCustomFieldGroup**](docs/OrdersApi.md#updateOrderCustomFieldGroup) | **PATCH** /rest/v2/orders/model/customFields/groups/{group_id} | Update an Order Custom Field Group
 *OrdersApi* | [**updateOrderCustomFieldGroupWithHttpInfo**](docs/OrdersApi.md#updateOrderCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/orders/model/customFields/groups/{group_id} | Update an Order Custom Field Group
+*OrdersApi* | [**updateOrderCustomFieldTab**](docs/OrdersApi.md#updateOrderCustomFieldTab) | **PATCH** /rest/v2/orders/model/customFields/tabs/{tab_id} | Update an Order Custom Field Tab
+*OrdersApi* | [**updateOrderCustomFieldTabWithHttpInfo**](docs/OrdersApi.md#updateOrderCustomFieldTabWithHttpInfo) | **PATCH** /rest/v2/orders/model/customFields/tabs/{tab_id} | Update an Order Custom Field Tab
 *OrdersApi* | [**updateOrderItem**](docs/OrdersApi.md#updateOrderItem) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item
 *OrdersApi* | [**updateOrderItemWithHttpInfo**](docs/OrdersApi.md#updateOrderItemWithHttpInfo) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item
 *PaymentMethodConfigsApi* | [**createPaymentMethodConfig**](docs/PaymentMethodConfigsApi.md#createPaymentMethodConfig) | **POST** /rest/v2/paymentMethodConfigs | Create Payment Method Configuration
@@ -582,8 +644,8 @@ Class | Method | HTTP request | Description
 *PaymentMethodsApi* | [**deletePaymentMethodWithHttpInfo**](docs/PaymentMethodsApi.md#deletePaymentMethodWithHttpInfo) | **DELETE** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Contact Payment Method
 *PaymentMethodsApi* | [**listPaymentMethods**](docs/PaymentMethodsApi.md#listPaymentMethods) | **GET** /rest/v2/paymentMethods | List of Payment Methods
 *PaymentMethodsApi* | [**listPaymentMethodsWithHttpInfo**](docs/PaymentMethodsApi.md#listPaymentMethodsWithHttpInfo) | **GET** /rest/v2/paymentMethods | List of Payment Methods
-*PaymentMethodsApi* | [**listPaymentMethods_0**](docs/PaymentMethodsApi.md#listPaymentMethods_0) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods
-*PaymentMethodsApi* | [**listPaymentMethods_0WithHttpInfo**](docs/PaymentMethodsApi.md#listPaymentMethods_0WithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods
+*PaymentMethodsApi* | [**listPaymentMethods1**](docs/PaymentMethodsApi.md#listPaymentMethods1) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods
+*PaymentMethodsApi* | [**listPaymentMethods1WithHttpInfo**](docs/PaymentMethodsApi.md#listPaymentMethods1WithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods
 *ProductCategoriesApi* | [**assignProductsToCategory**](docs/ProductCategoriesApi.md#assignProductsToCategory) | **POST** /rest/v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category
 *ProductCategoriesApi* | [**assignProductsToCategoryWithHttpInfo**](docs/ProductCategoriesApi.md#assignProductsToCategoryWithHttpInfo) | **POST** /rest/v2/productCategories/{category_id}:assignProducts | Assign Products to a Product Category
 *ProductCategoriesApi* | [**createImageFile**](docs/ProductCategoriesApi.md#createImageFile) | **POST** /rest/v2/productCategories/{category_id}/images | Create the product category image file
@@ -724,18 +786,26 @@ Class | Method | HTTP request | Description
 *SubscriptionsApi* | [**createSubscriptionCustomFieldWithHttpInfo**](docs/SubscriptionsApi.md#createSubscriptionCustomFieldWithHttpInfo) | **POST** /rest/v2/subscriptions/model/customFields | Create a Subscription Custom Field
 *SubscriptionsApi* | [**createSubscriptionCustomFieldGroup**](docs/SubscriptionsApi.md#createSubscriptionCustomFieldGroup) | **POST** /rest/v2/subscriptions/model/customFields/groups | Create a Subscription Custom Field Group
 *SubscriptionsApi* | [**createSubscriptionCustomFieldGroupWithHttpInfo**](docs/SubscriptionsApi.md#createSubscriptionCustomFieldGroupWithHttpInfo) | **POST** /rest/v2/subscriptions/model/customFields/groups | Create a Subscription Custom Field Group
+*SubscriptionsApi* | [**createSubscriptionCustomFieldTab**](docs/SubscriptionsApi.md#createSubscriptionCustomFieldTab) | **POST** /rest/v2/subscriptions/model/customFields/tabs | Create a Subscription Custom Field Tab
+*SubscriptionsApi* | [**createSubscriptionCustomFieldTabWithHttpInfo**](docs/SubscriptionsApi.md#createSubscriptionCustomFieldTabWithHttpInfo) | **POST** /rest/v2/subscriptions/model/customFields/tabs | Create a Subscription Custom Field Tab
 *SubscriptionsApi* | [**deleteSubscriptionCustomField**](docs/SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
 *SubscriptionsApi* | [**deleteSubscriptionCustomFieldWithHttpInfo**](docs/SubscriptionsApi.md#deleteSubscriptionCustomFieldWithHttpInfo) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field
 *SubscriptionsApi* | [**deleteSubscriptionCustomFieldGroup**](docs/SubscriptionsApi.md#deleteSubscriptionCustomFieldGroup) | **DELETE** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Delete a Subscription Custom Field Group
 *SubscriptionsApi* | [**deleteSubscriptionCustomFieldGroupWithHttpInfo**](docs/SubscriptionsApi.md#deleteSubscriptionCustomFieldGroupWithHttpInfo) | **DELETE** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Delete a Subscription Custom Field Group
+*SubscriptionsApi* | [**deleteSubscriptionCustomFieldTab**](docs/SubscriptionsApi.md#deleteSubscriptionCustomFieldTab) | **DELETE** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Delete a Subscription Custom Field Tab
+*SubscriptionsApi* | [**deleteSubscriptionCustomFieldTabWithHttpInfo**](docs/SubscriptionsApi.md#deleteSubscriptionCustomFieldTabWithHttpInfo) | **DELETE** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Delete a Subscription Custom Field Tab
 *SubscriptionsApi* | [**getSubscription**](docs/SubscriptionsApi.md#getSubscription) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription
 *SubscriptionsApi* | [**getSubscriptionWithHttpInfo**](docs/SubscriptionsApi.md#getSubscriptionWithHttpInfo) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription
 *SubscriptionsApi* | [**getSubscriptionCustomFieldGroup**](docs/SubscriptionsApi.md#getSubscriptionCustomFieldGroup) | **GET** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Retrieve a Subscription Custom Field Group
 *SubscriptionsApi* | [**getSubscriptionCustomFieldGroupWithHttpInfo**](docs/SubscriptionsApi.md#getSubscriptionCustomFieldGroupWithHttpInfo) | **GET** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Retrieve a Subscription Custom Field Group
+*SubscriptionsApi* | [**getSubscriptionCustomFieldTab**](docs/SubscriptionsApi.md#getSubscriptionCustomFieldTab) | **GET** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Retrieve a Subscription Custom Field Tab
+*SubscriptionsApi* | [**getSubscriptionCustomFieldTabWithHttpInfo**](docs/SubscriptionsApi.md#getSubscriptionCustomFieldTabWithHttpInfo) | **GET** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Retrieve a Subscription Custom Field Tab
 *SubscriptionsApi* | [**invoiceSubscription**](docs/SubscriptionsApi.md#invoiceSubscription) | **POST** /rest/v2/subscriptions/{subscription_id}:invoice | Invoice a Subscription
 *SubscriptionsApi* | [**invoiceSubscriptionWithHttpInfo**](docs/SubscriptionsApi.md#invoiceSubscriptionWithHttpInfo) | **POST** /rest/v2/subscriptions/{subscription_id}:invoice | Invoice a Subscription
 *SubscriptionsApi* | [**listSubscriptionCustomFieldGroups**](docs/SubscriptionsApi.md#listSubscriptionCustomFieldGroups) | **GET** /rest/v2/subscriptions/model/customFields/groups | List Subscription Custom Field Groups
 *SubscriptionsApi* | [**listSubscriptionCustomFieldGroupsWithHttpInfo**](docs/SubscriptionsApi.md#listSubscriptionCustomFieldGroupsWithHttpInfo) | **GET** /rest/v2/subscriptions/model/customFields/groups | List Subscription Custom Field Groups
+*SubscriptionsApi* | [**listSubscriptionCustomFieldTabs**](docs/SubscriptionsApi.md#listSubscriptionCustomFieldTabs) | **GET** /rest/v2/subscriptions/model/customFields/tabs | List Subscription Custom Field Tabs
+*SubscriptionsApi* | [**listSubscriptionCustomFieldTabsWithHttpInfo**](docs/SubscriptionsApi.md#listSubscriptionCustomFieldTabsWithHttpInfo) | **GET** /rest/v2/subscriptions/model/customFields/tabs | List Subscription Custom Field Tabs
 *SubscriptionsApi* | [**listSubscriptions**](docs/SubscriptionsApi.md#listSubscriptions) | **GET** /rest/v2/subscriptions | List Subscriptions
 *SubscriptionsApi* | [**listSubscriptionsWithHttpInfo**](docs/SubscriptionsApi.md#listSubscriptionsWithHttpInfo) | **GET** /rest/v2/subscriptions | List Subscriptions
 *SubscriptionsApi* | [**retrieveSubscriptionCustomFieldModel**](docs/SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model
@@ -746,6 +816,8 @@ Class | Method | HTTP request | Description
 *SubscriptionsApi* | [**updateSubscriptionCustomFieldWithHttpInfo**](docs/SubscriptionsApi.md#updateSubscriptionCustomFieldWithHttpInfo) | **PATCH** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field
 *SubscriptionsApi* | [**updateSubscriptionCustomFieldGroup**](docs/SubscriptionsApi.md#updateSubscriptionCustomFieldGroup) | **PATCH** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Update a Subscription Custom Field Group
 *SubscriptionsApi* | [**updateSubscriptionCustomFieldGroupWithHttpInfo**](docs/SubscriptionsApi.md#updateSubscriptionCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Update a Subscription Custom Field Group
+*SubscriptionsApi* | [**updateSubscriptionCustomFieldTab**](docs/SubscriptionsApi.md#updateSubscriptionCustomFieldTab) | **PATCH** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Update a Subscription Custom Field Tab
+*SubscriptionsApi* | [**updateSubscriptionCustomFieldTabWithHttpInfo**](docs/SubscriptionsApi.md#updateSubscriptionCustomFieldTabWithHttpInfo) | **PATCH** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Update a Subscription Custom Field Tab
 *TagsApi* | [**applyTags**](docs/TagsApi.md#applyTags) | **POST** /rest/v2/tags/{tag_id}/contacts:applyTags | Apply Tag
 *TagsApi* | [**applyTagsWithHttpInfo**](docs/TagsApi.md#applyTagsWithHttpInfo) | **POST** /rest/v2/tags/{tag_id}/contacts:applyTags | Apply Tag
 *TagsApi* | [**createTag**](docs/TagsApi.md#createTag) | **POST** /rest/v2/tags | Create Tag
@@ -762,6 +834,8 @@ Class | Method | HTTP request | Description
 *TagsApi* | [**getTagWithHttpInfo**](docs/TagsApi.md#getTagWithHttpInfo) | **GET** /rest/v2/tags/{tag_id} | Retrieve a Tag
 *TagsApi* | [**listCompaniesForTagId**](docs/TagsApi.md#listCompaniesForTagId) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies
 *TagsApi* | [**listCompaniesForTagIdWithHttpInfo**](docs/TagsApi.md#listCompaniesForTagIdWithHttpInfo) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies
+*TagsApi* | [**listContactsAcrossTags**](docs/TagsApi.md#listContactsAcrossTags) | **GET** /rest/v2/tags/-/contacts | List Contacts Across Tags
+*TagsApi* | [**listContactsAcrossTagsWithHttpInfo**](docs/TagsApi.md#listContactsAcrossTagsWithHttpInfo) | **GET** /rest/v2/tags/-/contacts | List Contacts Across Tags
 *TagsApi* | [**listContactsWithTagId**](docs/TagsApi.md#listContactsWithTagId) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts
 *TagsApi* | [**listContactsWithTagIdWithHttpInfo**](docs/TagsApi.md#listContactsWithTagIdWithHttpInfo) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts
 *TagsApi* | [**listTagCategories**](docs/TagsApi.md#listTagCategories) | **GET** /rest/v2/tags/categories | List Tag Categories
@@ -780,18 +854,26 @@ Class | Method | HTTP request | Description
 *TaskApi* | [**createTaskCustomFieldWithHttpInfo**](docs/TaskApi.md#createTaskCustomFieldWithHttpInfo) | **POST** /rest/v2/tasks/model/customFields | Create a Custom Field
 *TaskApi* | [**createTaskCustomFieldGroup**](docs/TaskApi.md#createTaskCustomFieldGroup) | **POST** /rest/v2/tasks/model/customFields/groups | Create a Task Custom Field Group
 *TaskApi* | [**createTaskCustomFieldGroupWithHttpInfo**](docs/TaskApi.md#createTaskCustomFieldGroupWithHttpInfo) | **POST** /rest/v2/tasks/model/customFields/groups | Create a Task Custom Field Group
+*TaskApi* | [**createTaskCustomFieldTab**](docs/TaskApi.md#createTaskCustomFieldTab) | **POST** /rest/v2/tasks/model/customFields/tabs | Create a Task Custom Field Tab
+*TaskApi* | [**createTaskCustomFieldTabWithHttpInfo**](docs/TaskApi.md#createTaskCustomFieldTabWithHttpInfo) | **POST** /rest/v2/tasks/model/customFields/tabs | Create a Task Custom Field Tab
 *TaskApi* | [**deleteTask**](docs/TaskApi.md#deleteTask) | **DELETE** /rest/v2/tasks/{task_id} | Delete a Task
 *TaskApi* | [**deleteTaskWithHttpInfo**](docs/TaskApi.md#deleteTaskWithHttpInfo) | **DELETE** /rest/v2/tasks/{task_id} | Delete a Task
 *TaskApi* | [**deleteTaskCustomField**](docs/TaskApi.md#deleteTaskCustomField) | **DELETE** /rest/v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field
 *TaskApi* | [**deleteTaskCustomFieldWithHttpInfo**](docs/TaskApi.md#deleteTaskCustomFieldWithHttpInfo) | **DELETE** /rest/v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field
 *TaskApi* | [**deleteTaskCustomFieldGroup**](docs/TaskApi.md#deleteTaskCustomFieldGroup) | **DELETE** /rest/v2/tasks/model/customFields/groups/{group_id} | Delete a Task Custom Field Group
 *TaskApi* | [**deleteTaskCustomFieldGroupWithHttpInfo**](docs/TaskApi.md#deleteTaskCustomFieldGroupWithHttpInfo) | **DELETE** /rest/v2/tasks/model/customFields/groups/{group_id} | Delete a Task Custom Field Group
+*TaskApi* | [**deleteTaskCustomFieldTab**](docs/TaskApi.md#deleteTaskCustomFieldTab) | **DELETE** /rest/v2/tasks/model/customFields/tabs/{tab_id} | Delete a Task Custom Field Tab
+*TaskApi* | [**deleteTaskCustomFieldTabWithHttpInfo**](docs/TaskApi.md#deleteTaskCustomFieldTabWithHttpInfo) | **DELETE** /rest/v2/tasks/model/customFields/tabs/{tab_id} | Delete a Task Custom Field Tab
 *TaskApi* | [**getTask**](docs/TaskApi.md#getTask) | **GET** /rest/v2/tasks/{task_id} | Retrieve a Task
 *TaskApi* | [**getTaskWithHttpInfo**](docs/TaskApi.md#getTaskWithHttpInfo) | **GET** /rest/v2/tasks/{task_id} | Retrieve a Task
 *TaskApi* | [**getTaskCustomFieldGroup**](docs/TaskApi.md#getTaskCustomFieldGroup) | **GET** /rest/v2/tasks/model/customFields/groups/{group_id} | Retrieve a Task Custom Field Group
 *TaskApi* | [**getTaskCustomFieldGroupWithHttpInfo**](docs/TaskApi.md#getTaskCustomFieldGroupWithHttpInfo) | **GET** /rest/v2/tasks/model/customFields/groups/{group_id} | Retrieve a Task Custom Field Group
+*TaskApi* | [**getTaskCustomFieldTab**](docs/TaskApi.md#getTaskCustomFieldTab) | **GET** /rest/v2/tasks/model/customFields/tabs/{tab_id} | Retrieve a Task Custom Field Tab
+*TaskApi* | [**getTaskCustomFieldTabWithHttpInfo**](docs/TaskApi.md#getTaskCustomFieldTabWithHttpInfo) | **GET** /rest/v2/tasks/model/customFields/tabs/{tab_id} | Retrieve a Task Custom Field Tab
 *TaskApi* | [**listTaskCustomFieldGroups**](docs/TaskApi.md#listTaskCustomFieldGroups) | **GET** /rest/v2/tasks/model/customFields/groups | List Task Custom Field Groups
 *TaskApi* | [**listTaskCustomFieldGroupsWithHttpInfo**](docs/TaskApi.md#listTaskCustomFieldGroupsWithHttpInfo) | **GET** /rest/v2/tasks/model/customFields/groups | List Task Custom Field Groups
+*TaskApi* | [**listTaskCustomFieldTabs**](docs/TaskApi.md#listTaskCustomFieldTabs) | **GET** /rest/v2/tasks/model/customFields/tabs | List Task Custom Field Tabs
+*TaskApi* | [**listTaskCustomFieldTabsWithHttpInfo**](docs/TaskApi.md#listTaskCustomFieldTabsWithHttpInfo) | **GET** /rest/v2/tasks/model/customFields/tabs | List Task Custom Field Tabs
 *TaskApi* | [**listTasks**](docs/TaskApi.md#listTasks) | **GET** /rest/v2/tasks | List Tasks
 *TaskApi* | [**listTasksWithHttpInfo**](docs/TaskApi.md#listTasksWithHttpInfo) | **GET** /rest/v2/tasks | List Tasks
 *TaskApi* | [**retrieveTaskModel**](docs/TaskApi.md#retrieveTaskModel) | **GET** /rest/v2/tasks/model | Retrieve Task Model
@@ -802,6 +884,8 @@ Class | Method | HTTP request | Description
 *TaskApi* | [**updateTaskCustomFieldWithHttpInfo**](docs/TaskApi.md#updateTaskCustomFieldWithHttpInfo) | **PATCH** /rest/v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field
 *TaskApi* | [**updateTaskCustomFieldGroup**](docs/TaskApi.md#updateTaskCustomFieldGroup) | **PATCH** /rest/v2/tasks/model/customFields/groups/{group_id} | Update a Task Custom Field Group
 *TaskApi* | [**updateTaskCustomFieldGroupWithHttpInfo**](docs/TaskApi.md#updateTaskCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/tasks/model/customFields/groups/{group_id} | Update a Task Custom Field Group
+*TaskApi* | [**updateTaskCustomFieldTab**](docs/TaskApi.md#updateTaskCustomFieldTab) | **PATCH** /rest/v2/tasks/model/customFields/tabs/{tab_id} | Update a Task Custom Field Tab
+*TaskApi* | [**updateTaskCustomFieldTabWithHttpInfo**](docs/TaskApi.md#updateTaskCustomFieldTabWithHttpInfo) | **PATCH** /rest/v2/tasks/model/customFields/tabs/{tab_id} | Update a Task Custom Field Tab
 *UserGroupsApi* | [**getUserGroup**](docs/UserGroupsApi.md#getUserGroup) | **GET** /rest/v2/userGroups/{user_group_id} | Retrieve a User Group
 *UserGroupsApi* | [**getUserGroupWithHttpInfo**](docs/UserGroupsApi.md#getUserGroupWithHttpInfo) | **GET** /rest/v2/userGroups/{user_group_id} | Retrieve a User Group
 *UserGroupsApi* | [**listUserGroups**](docs/UserGroupsApi.md#listUserGroups) | **GET** /rest/v2/userGroups | List User Groups
@@ -912,6 +996,7 @@ Class | Method | HTTP request | Description
  - [CreateCustomFieldOptionRequest](docs/CreateCustomFieldOptionRequest.md)
  - [CreateCustomFieldRequest](docs/CreateCustomFieldRequest.md)
  - [CreateCustomFieldResponse](docs/CreateCustomFieldResponse.md)
+ - [CreateCustomFieldTabRequest](docs/CreateCustomFieldTabRequest.md)
  - [CreateDefaultCommissionProgramRequest](docs/CreateDefaultCommissionProgramRequest.md)
  - [CreateEmailSentRequest](docs/CreateEmailSentRequest.md)
  - [CreateEmailsSentRequest](docs/CreateEmailsSentRequest.md)
@@ -959,6 +1044,7 @@ Class | Method | HTTP request | Description
  - [CustomFieldGroup](docs/CustomFieldGroup.md)
  - [CustomFieldMetaData](docs/CustomFieldMetaData.md)
  - [CustomFieldOption](docs/CustomFieldOption.md)
+ - [CustomFieldTab](docs/CustomFieldTab.md)
  - [CustomFieldValue](docs/CustomFieldValue.md)
  - [CustomFieldValueObject](docs/CustomFieldValueObject.md)
  - [DefaultCommission](docs/DefaultCommission.md)
@@ -977,6 +1063,7 @@ Class | Method | HTTP request | Description
  - [EmailSentCreateError](docs/EmailSentCreateError.md)
  - [EmailSentWithContent](docs/EmailSentWithContent.md)
  - [EmailTemplate](docs/EmailTemplate.md)
+ - [EmailTemplateSummary](docs/EmailTemplateSummary.md)
  - [EmailsSentList](docs/EmailsSentList.md)
  - [Error](docs/Error.md)
  - [ErrorDetails](docs/ErrorDetails.md)
@@ -1032,7 +1119,9 @@ Class | Method | HTTP request | Description
  - [ListContactsResponse](docs/ListContactsResponse.md)
  - [ListCountriesResponse](docs/ListCountriesResponse.md)
  - [ListCustomFieldGroupsResponse](docs/ListCustomFieldGroupsResponse.md)
+ - [ListCustomFieldTabsResponse](docs/ListCustomFieldTabsResponse.md)
  - [ListEmailAddressStatusResponse](docs/ListEmailAddressStatusResponse.md)
+ - [ListEmailTemplatesResponse](docs/ListEmailTemplatesResponse.md)
  - [ListEmailsSentResponse](docs/ListEmailsSentResponse.md)
  - [ListFilesResponse](docs/ListFilesResponse.md)
  - [ListFreeTrialDiscountsResponse](docs/ListFreeTrialDiscountsResponse.md)
@@ -1067,6 +1156,7 @@ Class | Method | HTTP request | Description
  - [ListSubscriptionPlansResponse](docs/ListSubscriptionPlansResponse.md)
  - [ListSubscriptionsResponse](docs/ListSubscriptionsResponse.md)
  - [ListTagCategoriesResponse](docs/ListTagCategoriesResponse.md)
+ - [ListTagContactAssociationsResponse](docs/ListTagContactAssociationsResponse.md)
  - [ListTaggedCompaniesResponse](docs/ListTaggedCompaniesResponse.md)
  - [ListTaggedContactsResponse](docs/ListTaggedContactsResponse.md)
  - [ListTagsResponse](docs/ListTagsResponse.md)
@@ -1147,6 +1237,7 @@ Class | Method | HTTP request | Description
  - [SubscriptionPlanList](docs/SubscriptionPlanList.md)
  - [Tag](docs/Tag.md)
  - [TagCategory](docs/TagCategory.md)
+ - [TagContactAssociation](docs/TagContactAssociation.md)
  - [TaggedCompany](docs/TaggedCompany.md)
  - [TaggedContact](docs/TaggedContact.md)
  - [Task](docs/Task.md)
@@ -1161,6 +1252,7 @@ Class | Method | HTTP request | Description
  - [UpdateContactLinkTypeRequest](docs/UpdateContactLinkTypeRequest.md)
  - [UpdateCustomFieldGroupRequest](docs/UpdateCustomFieldGroupRequest.md)
  - [UpdateCustomFieldMetaDataRequest](docs/UpdateCustomFieldMetaDataRequest.md)
+ - [UpdateCustomFieldTabRequest](docs/UpdateCustomFieldTabRequest.md)
  - [UpdateDefaultCommissionProgramRequest](docs/UpdateDefaultCommissionProgramRequest.md)
  - [UpdateEmailAddress](docs/UpdateEmailAddress.md)
  - [UpdateFreeTrialDiscountCriteria](docs/UpdateFreeTrialDiscountCriteria.md)

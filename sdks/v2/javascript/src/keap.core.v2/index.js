@@ -101,6 +101,7 @@ import CreateCustomFieldGroupRequest from './model/CreateCustomFieldGroupRequest
 import CreateCustomFieldOptionRequest from './model/CreateCustomFieldOptionRequest';
 import CreateCustomFieldRequest from './model/CreateCustomFieldRequest';
 import CreateCustomFieldResponse from './model/CreateCustomFieldResponse';
+import CreateCustomFieldTabRequest from './model/CreateCustomFieldTabRequest';
 import CreateDefaultCommissionProgramRequest from './model/CreateDefaultCommissionProgramRequest';
 import CreateEmailSentRequest from './model/CreateEmailSentRequest';
 import CreateEmailsSentRequest from './model/CreateEmailsSentRequest';
@@ -148,6 +149,7 @@ import CustomField from './model/CustomField';
 import CustomFieldGroup from './model/CustomFieldGroup';
 import CustomFieldMetaData from './model/CustomFieldMetaData';
 import CustomFieldOption from './model/CustomFieldOption';
+import CustomFieldTab from './model/CustomFieldTab';
 import CustomFieldValue from './model/CustomFieldValue';
 import CustomFieldValueObject from './model/CustomFieldValueObject';
 import DefaultCommission from './model/DefaultCommission';
@@ -166,6 +168,7 @@ import EmailSent from './model/EmailSent';
 import EmailSentCreateError from './model/EmailSentCreateError';
 import EmailSentWithContent from './model/EmailSentWithContent';
 import EmailTemplate from './model/EmailTemplate';
+import EmailTemplateSummary from './model/EmailTemplateSummary';
 import EmailsSentList from './model/EmailsSentList';
 import Error from './model/Error';
 import ErrorDetails from './model/ErrorDetails';
@@ -221,7 +224,9 @@ import ListContactTagsResponse from './model/ListContactTagsResponse';
 import ListContactsResponse from './model/ListContactsResponse';
 import ListCountriesResponse from './model/ListCountriesResponse';
 import ListCustomFieldGroupsResponse from './model/ListCustomFieldGroupsResponse';
+import ListCustomFieldTabsResponse from './model/ListCustomFieldTabsResponse';
 import ListEmailAddressStatusResponse from './model/ListEmailAddressStatusResponse';
+import ListEmailTemplatesResponse from './model/ListEmailTemplatesResponse';
 import ListEmailsSentResponse from './model/ListEmailsSentResponse';
 import ListFilesResponse from './model/ListFilesResponse';
 import ListFreeTrialDiscountsResponse from './model/ListFreeTrialDiscountsResponse';
@@ -256,6 +261,7 @@ import ListShippingDiscountsResponse from './model/ListShippingDiscountsResponse
 import ListSubscriptionPlansResponse from './model/ListSubscriptionPlansResponse';
 import ListSubscriptionsResponse from './model/ListSubscriptionsResponse';
 import ListTagCategoriesResponse from './model/ListTagCategoriesResponse';
+import ListTagContactAssociationsResponse from './model/ListTagContactAssociationsResponse';
 import ListTaggedCompaniesResponse from './model/ListTaggedCompaniesResponse';
 import ListTaggedContactsResponse from './model/ListTaggedContactsResponse';
 import ListTagsResponse from './model/ListTagsResponse';
@@ -336,6 +342,7 @@ import SubscriptionPlanDetail from './model/SubscriptionPlanDetail';
 import SubscriptionPlanList from './model/SubscriptionPlanList';
 import Tag from './model/Tag';
 import TagCategory from './model/TagCategory';
+import TagContactAssociation from './model/TagContactAssociation';
 import TaggedCompany from './model/TaggedCompany';
 import TaggedContact from './model/TaggedContact';
 import Task from './model/Task';
@@ -350,6 +357,7 @@ import UpdateCompanyRequest from './model/UpdateCompanyRequest';
 import UpdateContactLinkTypeRequest from './model/UpdateContactLinkTypeRequest';
 import UpdateCustomFieldGroupRequest from './model/UpdateCustomFieldGroupRequest';
 import UpdateCustomFieldMetaDataRequest from './model/UpdateCustomFieldMetaDataRequest';
+import UpdateCustomFieldTabRequest from './model/UpdateCustomFieldTabRequest';
 import UpdateDefaultCommissionProgramRequest from './model/UpdateDefaultCommissionProgramRequest';
 import UpdateEmailAddress from './model/UpdateEmailAddress';
 import UpdateFreeTrialDiscountCriteria from './model/UpdateFreeTrialDiscountCriteria';
@@ -463,7 +471,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.18
+* @version 2.0.19
 */
 export {
     /**
@@ -1001,6 +1009,12 @@ export {
     CreateCustomFieldResponse,
 
     /**
+     * The CreateCustomFieldTabRequest model constructor.
+     * @property {module:keap.core.v2/model/CreateCustomFieldTabRequest}
+     */
+    CreateCustomFieldTabRequest,
+
+    /**
      * The CreateDefaultCommissionProgramRequest model constructor.
      * @property {module:keap.core.v2/model/CreateDefaultCommissionProgramRequest}
      */
@@ -1283,6 +1297,12 @@ export {
     CustomFieldOption,
 
     /**
+     * The CustomFieldTab model constructor.
+     * @property {module:keap.core.v2/model/CustomFieldTab}
+     */
+    CustomFieldTab,
+
+    /**
      * The CustomFieldValue model constructor.
      * @property {module:keap.core.v2/model/CustomFieldValue}
      */
@@ -1389,6 +1409,12 @@ export {
      * @property {module:keap.core.v2/model/EmailTemplate}
      */
     EmailTemplate,
+
+    /**
+     * The EmailTemplateSummary model constructor.
+     * @property {module:keap.core.v2/model/EmailTemplateSummary}
+     */
+    EmailTemplateSummary,
 
     /**
      * The EmailsSentList model constructor.
@@ -1721,10 +1747,22 @@ export {
     ListCustomFieldGroupsResponse,
 
     /**
+     * The ListCustomFieldTabsResponse model constructor.
+     * @property {module:keap.core.v2/model/ListCustomFieldTabsResponse}
+     */
+    ListCustomFieldTabsResponse,
+
+    /**
      * The ListEmailAddressStatusResponse model constructor.
      * @property {module:keap.core.v2/model/ListEmailAddressStatusResponse}
      */
     ListEmailAddressStatusResponse,
+
+    /**
+     * The ListEmailTemplatesResponse model constructor.
+     * @property {module:keap.core.v2/model/ListEmailTemplatesResponse}
+     */
+    ListEmailTemplatesResponse,
 
     /**
      * The ListEmailsSentResponse model constructor.
@@ -1929,6 +1967,12 @@ export {
      * @property {module:keap.core.v2/model/ListTagCategoriesResponse}
      */
     ListTagCategoriesResponse,
+
+    /**
+     * The ListTagContactAssociationsResponse model constructor.
+     * @property {module:keap.core.v2/model/ListTagContactAssociationsResponse}
+     */
+    ListTagContactAssociationsResponse,
 
     /**
      * The ListTaggedCompaniesResponse model constructor.
@@ -2411,6 +2455,12 @@ export {
     TagCategory,
 
     /**
+     * The TagContactAssociation model constructor.
+     * @property {module:keap.core.v2/model/TagContactAssociation}
+     */
+    TagContactAssociation,
+
+    /**
      * The TaggedCompany model constructor.
      * @property {module:keap.core.v2/model/TaggedCompany}
      */
@@ -2493,6 +2543,12 @@ export {
      * @property {module:keap.core.v2/model/UpdateCustomFieldMetaDataRequest}
      */
     UpdateCustomFieldMetaDataRequest,
+
+    /**
+     * The UpdateCustomFieldTabRequest model constructor.
+     * @property {module:keap.core.v2/model/UpdateCustomFieldTabRequest}
+     */
+    UpdateCustomFieldTabRequest,
 
     /**
      * The UpdateDefaultCommissionProgramRequest model constructor.

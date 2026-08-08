@@ -20,6 +20,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**createAffiliateCustomFieldWithHttpInfo**](AffiliateApi.md#createAffiliateCustomFieldWithHttpInfo) | **POST** /rest/v2/affiliates/model/customFields | Create an Affiliate Custom Field |
 | [**createAffiliateCustomFieldGroup**](AffiliateApi.md#createAffiliateCustomFieldGroup) | **POST** /rest/v2/affiliates/model/customFields/groups | Create an Affiliate Custom Field Group |
 | [**createAffiliateCustomFieldGroupWithHttpInfo**](AffiliateApi.md#createAffiliateCustomFieldGroupWithHttpInfo) | **POST** /rest/v2/affiliates/model/customFields/groups | Create an Affiliate Custom Field Group |
+| [**createAffiliateCustomFieldTab**](AffiliateApi.md#createAffiliateCustomFieldTab) | **POST** /rest/v2/affiliates/model/customFields/tabs | Create an Affiliate Custom Field Tab |
+| [**createAffiliateCustomFieldTabWithHttpInfo**](AffiliateApi.md#createAffiliateCustomFieldTabWithHttpInfo) | **POST** /rest/v2/affiliates/model/customFields/tabs | Create an Affiliate Custom Field Tab |
 | [**createDefaultCommissionProgram**](AffiliateApi.md#createDefaultCommissionProgram) | **POST** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program |
 | [**createDefaultCommissionProgramWithHttpInfo**](AffiliateApi.md#createDefaultCommissionProgramWithHttpInfo) | **POST** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program |
 | [**createRedirectLink**](AffiliateApi.md#createRedirectLink) | **POST** /rest/v2/affiliates/redirects | Create an Affiliate Link |
@@ -32,6 +34,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**deleteAffiliateCustomFieldWithHttpInfo**](AffiliateApi.md#deleteAffiliateCustomFieldWithHttpInfo) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field |
 | [**deleteAffiliateCustomFieldGroup**](AffiliateApi.md#deleteAffiliateCustomFieldGroup) | **DELETE** /rest/v2/affiliates/model/customFields/groups/{group_id} | Delete an Affiliate Custom Field Group |
 | [**deleteAffiliateCustomFieldGroupWithHttpInfo**](AffiliateApi.md#deleteAffiliateCustomFieldGroupWithHttpInfo) | **DELETE** /rest/v2/affiliates/model/customFields/groups/{group_id} | Delete an Affiliate Custom Field Group |
+| [**deleteAffiliateCustomFieldTab**](AffiliateApi.md#deleteAffiliateCustomFieldTab) | **DELETE** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Delete an Affiliate Custom Field Tab |
+| [**deleteAffiliateCustomFieldTabWithHttpInfo**](AffiliateApi.md#deleteAffiliateCustomFieldTabWithHttpInfo) | **DELETE** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Delete an Affiliate Custom Field Tab |
 | [**deleteCommissionProgramResource**](AffiliateApi.md#deleteCommissionProgramResource) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource |
 | [**deleteCommissionProgramResourceWithHttpInfo**](AffiliateApi.md#deleteCommissionProgramResourceWithHttpInfo) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource |
 | [**deleteRedirectLink**](AffiliateApi.md#deleteRedirectLink) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
@@ -44,6 +48,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**getAffiliateCommissionsWithHttpInfo**](AffiliateApi.md#getAffiliateCommissionsWithHttpInfo) | **GET** /rest/v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commissions |
 | [**getAffiliateCustomFieldGroup**](AffiliateApi.md#getAffiliateCustomFieldGroup) | **GET** /rest/v2/affiliates/model/customFields/groups/{group_id} | Retrieve an Affiliate Custom Field Group |
 | [**getAffiliateCustomFieldGroupWithHttpInfo**](AffiliateApi.md#getAffiliateCustomFieldGroupWithHttpInfo) | **GET** /rest/v2/affiliates/model/customFields/groups/{group_id} | Retrieve an Affiliate Custom Field Group |
+| [**getAffiliateCustomFieldTab**](AffiliateApi.md#getAffiliateCustomFieldTab) | **GET** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Retrieve an Affiliate Custom Field Tab |
+| [**getAffiliateCustomFieldTabWithHttpInfo**](AffiliateApi.md#getAffiliateCustomFieldTabWithHttpInfo) | **GET** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Retrieve an Affiliate Custom Field Tab |
 | [**getAffiliateCustomFields**](AffiliateApi.md#getAffiliateCustomFields) | **GET** /rest/v2/affiliates/model | Retrieve Affiliate Model |
 | [**getAffiliateCustomFieldsWithHttpInfo**](AffiliateApi.md#getAffiliateCustomFieldsWithHttpInfo) | **GET** /rest/v2/affiliates/model | Retrieve Affiliate Model |
 | [**getCommissionProgram**](AffiliateApi.md#getCommissionProgram) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
@@ -58,6 +64,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**listAffiliateCommissionProgramsWithHttpInfo**](AffiliateApi.md#listAffiliateCommissionProgramsWithHttpInfo) | **GET** /rest/v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
 | [**listAffiliateCustomFieldGroups**](AffiliateApi.md#listAffiliateCustomFieldGroups) | **GET** /rest/v2/affiliates/model/customFields/groups | List Affiliate Custom Field Groups |
 | [**listAffiliateCustomFieldGroupsWithHttpInfo**](AffiliateApi.md#listAffiliateCustomFieldGroupsWithHttpInfo) | **GET** /rest/v2/affiliates/model/customFields/groups | List Affiliate Custom Field Groups |
+| [**listAffiliateCustomFieldTabs**](AffiliateApi.md#listAffiliateCustomFieldTabs) | **GET** /rest/v2/affiliates/model/customFields/tabs | List Affiliate Custom Field Tabs |
+| [**listAffiliateCustomFieldTabsWithHttpInfo**](AffiliateApi.md#listAffiliateCustomFieldTabsWithHttpInfo) | **GET** /rest/v2/affiliates/model/customFields/tabs | List Affiliate Custom Field Tabs |
 | [**listAffiliateLinks**](AffiliateApi.md#listAffiliateLinks) | **GET** /rest/v2/affiliates/redirects | List Affiliate Links |
 | [**listAffiliateLinksWithHttpInfo**](AffiliateApi.md#listAffiliateLinksWithHttpInfo) | **GET** /rest/v2/affiliates/redirects | List Affiliate Links |
 | [**listAffiliatePayments**](AffiliateApi.md#listAffiliatePayments) | **GET** /rest/v2/affiliates/{affiliate_id}/payments | List Affiliate Payments |
@@ -78,6 +86,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**updateAffiliateCustomFieldWithHttpInfo**](AffiliateApi.md#updateAffiliateCustomFieldWithHttpInfo) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field |
 | [**updateAffiliateCustomFieldGroup**](AffiliateApi.md#updateAffiliateCustomFieldGroup) | **PATCH** /rest/v2/affiliates/model/customFields/groups/{group_id} | Update an Affiliate Custom Field Group |
 | [**updateAffiliateCustomFieldGroupWithHttpInfo**](AffiliateApi.md#updateAffiliateCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/affiliates/model/customFields/groups/{group_id} | Update an Affiliate Custom Field Group |
+| [**updateAffiliateCustomFieldTab**](AffiliateApi.md#updateAffiliateCustomFieldTab) | **PATCH** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Update an Affiliate Custom Field Tab |
+| [**updateAffiliateCustomFieldTabWithHttpInfo**](AffiliateApi.md#updateAffiliateCustomFieldTabWithHttpInfo) | **PATCH** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Update an Affiliate Custom Field Tab |
 | [**updateCommissionProgram**](AffiliateApi.md#updateCommissionProgram) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
 | [**updateCommissionProgramWithHttpInfo**](AffiliateApi.md#updateCommissionProgramWithHttpInfo) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
 | [**updateCommissionProgramResource**](AffiliateApi.md#updateCommissionProgramResource) | **PATCH** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Update Commission Program Resource |
@@ -1383,6 +1393,166 @@ ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
 | **501** | Method Not Implemented |  -  |
 
 
+## createAffiliateCustomFieldTab
+
+> CustomFieldTab createAffiliateCustomFieldTab(createCustomFieldTabRequest)
+
+Create an Affiliate Custom Field Tab
+
+Creates a new custom field tab for the Affiliate record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        CreateCustomFieldTabRequest createCustomFieldTabRequest = new CreateCustomFieldTabRequest(); // CreateCustomFieldTabRequest | 
+        try {
+            CustomFieldTab result = apiInstance.createAffiliateCustomFieldTab(createCustomFieldTabRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#createAffiliateCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCustomFieldTabRequest** | [**CreateCustomFieldTabRequest**](CreateCustomFieldTabRequest.md)|  | |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## createAffiliateCustomFieldTabWithHttpInfo
+
+> ApiResponse<CustomFieldTab> createAffiliateCustomFieldTab createAffiliateCustomFieldTabWithHttpInfo(createCustomFieldTabRequest)
+
+Create an Affiliate Custom Field Tab
+
+Creates a new custom field tab for the Affiliate record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        CreateCustomFieldTabRequest createCustomFieldTabRequest = new CreateCustomFieldTabRequest(); // CreateCustomFieldTabRequest | 
+        try {
+            ApiResponse<CustomFieldTab> response = apiInstance.createAffiliateCustomFieldTabWithHttpInfo(createCustomFieldTabRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#createAffiliateCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCustomFieldTabRequest** | [**CreateCustomFieldTabRequest**](CreateCustomFieldTabRequest.md)|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldTab**](CustomFieldTab.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## createDefaultCommissionProgram
 
 > GetRestCommissionProgram createDefaultCommissionProgram(commissionProgramId, createDefaultCommissionProgramRequest)
@@ -2310,6 +2480,164 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **groupId** | **String**|  | |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## deleteAffiliateCustomFieldTab
+
+> void deleteAffiliateCustomFieldTab(tabId)
+
+Delete an Affiliate Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        try {
+            apiInstance.deleteAffiliateCustomFieldTab(tabId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#deleteAffiliateCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## deleteAffiliateCustomFieldTabWithHttpInfo
+
+> ApiResponse<Void> deleteAffiliateCustomFieldTab deleteAffiliateCustomFieldTabWithHttpInfo(tabId)
+
+Delete an Affiliate Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        try {
+            ApiResponse<Void> response = apiInstance.deleteAffiliateCustomFieldTabWithHttpInfo(tabId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#deleteAffiliateCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
 
 ### Return type
 
@@ -3311,6 +3639,166 @@ ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
 | **501** | Method Not Implemented |  -  |
 
 
+## getAffiliateCustomFieldTab
+
+> CustomFieldTab getAffiliateCustomFieldTab(tabId)
+
+Retrieve an Affiliate Custom Field Tab
+
+Retrieves a single custom field tab by id for the Affiliate record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        try {
+            CustomFieldTab result = apiInstance.getAffiliateCustomFieldTab(tabId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#getAffiliateCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## getAffiliateCustomFieldTabWithHttpInfo
+
+> ApiResponse<CustomFieldTab> getAffiliateCustomFieldTab getAffiliateCustomFieldTabWithHttpInfo(tabId)
+
+Retrieve an Affiliate Custom Field Tab
+
+Retrieves a single custom field tab by id for the Affiliate record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        try {
+            ApiResponse<CustomFieldTab> response = apiInstance.getAffiliateCustomFieldTabWithHttpInfo(tabId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#getAffiliateCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldTab**](CustomFieldTab.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## getAffiliateCustomFields
 
 > ObjectModel getAffiliateCustomFields()
@@ -3988,7 +4476,7 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: ==, and wildcard support (e.g., `value*`) - Numeric fields: ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Choice/Select fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): ==, and wildcard support (e.g., `value*`) - Numeric fields (including user, month, day of week): ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Yes/No and drilldown fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `date_created` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc` 
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -4011,7 +4499,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Choice/Select fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed.  | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields (including user, month, day of week): &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Yes/No and drilldown fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed.  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -4073,7 +4561,7 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         AffiliateApi apiInstance = new AffiliateApi(defaultClient);
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: ==, and wildcard support (e.g., `value*`) - Numeric fields: ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Choice/Select fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): ==, and wildcard support (e.g., `value*`) - Numeric fields (including user, month, day of week): ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Yes/No and drilldown fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `date_created` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc` 
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -4098,7 +4586,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Choice/Select fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed.  | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields (including user, month, day of week): &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Yes/No and drilldown fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed.  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -4438,6 +4926,158 @@ public class Example {
 ### Return type
 
 ApiResponse<[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## listAffiliateCustomFieldTabs
+
+> ListCustomFieldTabsResponse listAffiliateCustomFieldTabs()
+
+List Affiliate Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Affiliate record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        try {
+            ListCustomFieldTabsResponse result = apiInstance.listAffiliateCustomFieldTabs();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#listAffiliateCustomFieldTabs");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListCustomFieldTabsResponse**](ListCustomFieldTabsResponse.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## listAffiliateCustomFieldTabsWithHttpInfo
+
+> ApiResponse<ListCustomFieldTabsResponse> listAffiliateCustomFieldTabs listAffiliateCustomFieldTabsWithHttpInfo()
+
+List Affiliate Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Affiliate record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        try {
+            ApiResponse<ListCustomFieldTabsResponse> response = apiInstance.listAffiliateCustomFieldTabsWithHttpInfo();
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#listAffiliateCustomFieldTabs");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+ApiResponse<[**ListCustomFieldTabsResponse**](ListCustomFieldTabsResponse.md)>
 
 
 ### Authorization
@@ -6108,6 +6748,174 @@ public class Example {
 ### Return type
 
 ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## updateAffiliateCustomFieldTab
+
+> CustomFieldTab updateAffiliateCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest)
+
+Update an Affiliate Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        Set<String> updateMask = Arrays.asList(); // Set<String> | Comma-separated list of fields to update
+        UpdateCustomFieldTabRequest updateCustomFieldTabRequest = new UpdateCustomFieldTabRequest(); // UpdateCustomFieldTabRequest | 
+        try {
+            CustomFieldTab result = apiInstance.updateAffiliateCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#updateAffiliateCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| Comma-separated list of fields to update | [enum: name, order] |
+| **updateCustomFieldTabRequest** | [**UpdateCustomFieldTabRequest**](UpdateCustomFieldTabRequest.md)|  | |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## updateAffiliateCustomFieldTabWithHttpInfo
+
+> ApiResponse<CustomFieldTab> updateAffiliateCustomFieldTab updateAffiliateCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest)
+
+Update an Affiliate Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AffiliateApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AffiliateApi apiInstance = new AffiliateApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        Set<String> updateMask = Arrays.asList(); // Set<String> | Comma-separated list of fields to update
+        UpdateCustomFieldTabRequest updateCustomFieldTabRequest = new UpdateCustomFieldTabRequest(); // UpdateCustomFieldTabRequest | 
+        try {
+            ApiResponse<CustomFieldTab> response = apiInstance.updateAffiliateCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AffiliateApi#updateAffiliateCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| Comma-separated list of fields to update | [enum: name, order] |
+| **updateCustomFieldTabRequest** | [**UpdateCustomFieldTabRequest**](UpdateCustomFieldTabRequest.md)|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldTab**](CustomFieldTab.md)>
 
 
 ### Authorization

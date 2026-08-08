@@ -7,7 +7,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**CreateFile**](FilesApi.md#createfile) | **POST** /rest/v2/files | Create a file |
 | [**DeleteFile**](FilesApi.md#deletefile) | **DELETE** /rest/v2/files/{file_id} | Delete a file |
 | [**GetFile**](FilesApi.md#getfile) | **GET** /rest/v2/files/{file_id} | Retrieve a file |
-| [**GetFileData**](FilesApi.md#getfiledata) | **GET** /rest/v2/files/{file_id}:data | Retrieve a file&#39;s data |
+| [**GetFileData1**](FilesApi.md#getfiledata1) | **GET** /rest/v2/files/{file_id}:data | Retrieve a file&#39;s data |
 | [**ListFiles**](FilesApi.md#listfiles) | **GET** /rest/v2/files | List all files |
 | [**UpdateFile**](FilesApi.md#updatefile) | **POST** /rest/v2/files/{file_id} | Update a file |
 
@@ -321,9 +321,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getfiledata"></a>
-# **GetFileData**
-> byte[] GetFileData (string fileId)
+<a id="getfiledata1"></a>
+# **GetFileData1**
+> byte[] GetFileData1 (string fileId)
 
 Retrieve a file's data
 
@@ -339,7 +339,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class GetFileDataExample
+    public class GetFileData1Example
     {
         public static void Main()
         {
@@ -354,12 +354,12 @@ namespace Example
             try
             {
                 // Retrieve a file's data
-                byte[] result = apiInstance.GetFileData(fileId);
+                byte[] result = apiInstance.GetFileData1(fileId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling FilesApi.GetFileData: " + e.Message);
+                Debug.Print("Exception when calling FilesApi.GetFileData1: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -368,21 +368,21 @@ namespace Example
 }
 ```
 
-#### Using the GetFileDataWithHttpInfo variant
+#### Using the GetFileData1WithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // Retrieve a file's data
-    ApiResponse<byte[]> response = apiInstance.GetFileDataWithHttpInfo(fileId);
+    ApiResponse<byte[]> response = apiInstance.GetFileData1WithHttpInfo(fileId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling FilesApi.GetFileDataWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling FilesApi.GetFileData1WithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -451,7 +451,7 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new FilesApi(config);
-            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (Boolean) `is_public` - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` - (FileBoxType) `file_box_type`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=category%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS`  (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (Boolean) `is_public` — `true` (public) or `false` (private) - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` — one of: `ATTACHMENTS`, `CART`, `DOCUMENTS`, `HIDDEN`, `INVOICE`, `LOGO`, `TICKETS`, `WEB_FORM`, `FUNNEL` - (FileBoxType) `file_box_type` — one of: `APPLICATION`, `IMAGE`, `FAX`, `ATTACHMENT`, `TICKET`, `CONTACT`, `DIGITAL_PRODUCT`, `IMPORT`, `HIDDEN`, `WEB_FORM`, `STYLED_CART`, `RESAMPLED_IMAGE`, `TEMPLATE_THUMBNAIL`, `FUNNEL`, `LOGO_THUMBNAIL`, `UNLAYER`, `BRANDING_CENTER_LOGO` - (String) `file_name` - (String) `created_time` - (String) `updated_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. Multiple filters are combined with a semicolon (`;`, encoded `%3B`) and are ANDed together. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=is_public%3D%3Dfalse` - `filter=category%3D%3DDOCUMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse`  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `file_name` - `updated_time` - ...  One of the following directions: - `asc` - `desc`  (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
@@ -497,7 +497,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **filter** | **string?** | Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60;  | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; — &#x60;true&#x60; (public) or &#x60;false&#x60; (private) - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; — one of: &#x60;ATTACHMENTS&#x60;, &#x60;CART&#x60;, &#x60;DOCUMENTS&#x60;, &#x60;HIDDEN&#x60;, &#x60;INVOICE&#x60;, &#x60;LOGO&#x60;, &#x60;TICKETS&#x60;, &#x60;WEB_FORM&#x60;, &#x60;FUNNEL&#x60; - (FileBoxType) &#x60;file_box_type&#x60; — one of: &#x60;APPLICATION&#x60;, &#x60;IMAGE&#x60;, &#x60;FAX&#x60;, &#x60;ATTACHMENT&#x60;, &#x60;TICKET&#x60;, &#x60;CONTACT&#x60;, &#x60;DIGITAL_PRODUCT&#x60;, &#x60;IMPORT&#x60;, &#x60;HIDDEN&#x60;, &#x60;WEB_FORM&#x60;, &#x60;STYLED_CART&#x60;, &#x60;RESAMPLED_IMAGE&#x60;, &#x60;TEMPLATE_THUMBNAIL&#x60;, &#x60;FUNNEL&#x60;, &#x60;LOGO_THUMBNAIL&#x60;, &#x60;UNLAYER&#x60;, &#x60;BRANDING_CENTER_LOGO&#x60; - (String) &#x60;file_name&#x60; - (String) &#x60;created_time&#x60; - (String) &#x60;updated_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. Multiple filters are combined with a semicolon (&#x60;;&#x60;, encoded &#x60;%3B&#x60;) and are ANDed together. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;is_public%3D%3Dfalse&#x60; - &#x60;filter&#x3D;category%3D%3DDOCUMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse&#x60;  | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |

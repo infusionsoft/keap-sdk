@@ -103,10 +103,10 @@ public class SocialAccount implements Serializable {
   }
 
   /**
-   * Social account username or handle
+   * Social account username or handle. Maximum length is 255 characters.
    * @return name
    */
-  @jakarta.annotation.Nullable  @Schema(example = "@thryv", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Social account username or handle")
+  @jakarta.annotation.Nullable  @Schema(example = "@thryv", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Social account username or handle. Maximum length is 255 characters.")
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {

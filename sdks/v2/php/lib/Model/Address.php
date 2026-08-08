@@ -401,7 +401,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets country
      *
-     * @param string|null $country Deprecated. The long-name descriptive version of the Country Code. Please use 'country_code' for POST/PATCH operations.
+     * @param string|null $country Deprecated. The long-name descriptive version of the Country Code. Please use 'country_code' for POST/PATCH operations. Maximum length is 100 characters.
      *
      * @return self
      * @deprecated
@@ -429,7 +429,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets line1
      *
-     * @param string|null $line1 Street address line 1
+     * @param string|null $line1 Street address line 1. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
      *
      * @return self
      */
@@ -456,7 +456,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets line2
      *
-     * @param string|null $line2 Street address line 2
+     * @param string|null $line2 Street address line 2. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
      *
      * @return self
      */
@@ -483,7 +483,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets locality
      *
-     * @param string|null $locality The municipality to which the address belongs
+     * @param string|null $locality The municipality to which the address belongs. Maximum length is 50 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
      *
      * @return self
      */
@@ -511,7 +511,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets region
      *
-     * @param string|null $region The long-name descriptive version of the Region Code. Please use 'region_code' for POST/PATCH operations.
+     * @param string|null $region The long-name descriptive version of the Region Code. Please use 'region_code' for POST/PATCH operations. Maximum length is 50 characters.
      *
      * @return self
      * @deprecated
@@ -603,7 +603,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets postal_code
      *
-     * @param string|null $postal_code Postal or ZIP code
+     * @param string|null $postal_code Postal or ZIP code. Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.
      *
      * @return self
      */
@@ -657,7 +657,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets zip_code
      *
-     * @param string|null $zip_code ZIP code (US)
+     * @param string|null $zip_code ZIP code (US). Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.
      *
      * @return self
      */
@@ -684,7 +684,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets zip_four
      *
-     * @param string|null $zip_four ZIP+4 extension
+     * @param string|null $zip_four ZIP+4 extension. Maximum length is 10 characters.
      *
      * @return self
      */

@@ -92,6 +92,9 @@ class OrdersApi
         'createOrderCustomFieldGroup' => [
             'application/json',
         ],
+        'createOrderCustomFieldTab' => [
+            'application/json',
+        ],
         'createOrderItem' => [
             'application/json',
         ],
@@ -107,6 +110,9 @@ class OrdersApi
         'deleteOrderCustomFieldGroup' => [
             'application/json',
         ],
+        'deleteOrderCustomFieldTab' => [
+            'application/json',
+        ],
         'deleteOrderItem' => [
             'application/json',
         ],
@@ -119,10 +125,16 @@ class OrdersApi
         'getOrderCustomFieldGroup' => [
             'application/json',
         ],
+        'getOrderCustomFieldTab' => [
+            'application/json',
+        ],
         'getOrderItem' => [
             'application/json',
         ],
         'listOrderCustomFieldGroups' => [
+            'application/json',
+        ],
+        'listOrderCustomFieldTabs' => [
             'application/json',
         ],
         'listOrderPayments' => [
@@ -141,6 +153,9 @@ class OrdersApi
             'application/json',
         ],
         'updateOrderCustomFieldGroup' => [
+            'application/json',
+        ],
+        'updateOrderCustomFieldTab' => [
             'application/json',
         ],
         'updateOrderItem' => [
@@ -2554,6 +2569,389 @@ class OrdersApi
     }
 
     /**
+     * Operation createOrderCustomFieldTab
+     *
+     * Create an Order Custom Field Tab
+     *
+     * @param  \Keap\Core\V2\Model\CreateCustomFieldTabRequest $create_custom_field_tab_request create_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function createOrderCustomFieldTab($create_custom_field_tab_request, string $contentType = self::contentTypes['createOrderCustomFieldTab'][0])
+    {
+        list($response) = $this->createOrderCustomFieldTabWithHttpInfo($create_custom_field_tab_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createOrderCustomFieldTabWithHttpInfo
+     *
+     * Create an Order Custom Field Tab
+     *
+     * @param  \Keap\Core\V2\Model\CreateCustomFieldTabRequest $create_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createOrderCustomFieldTabWithHttpInfo($create_custom_field_tab_request, string $contentType = self::contentTypes['createOrderCustomFieldTab'][0])
+    {
+        $request = $this->createOrderCustomFieldTabRequest($create_custom_field_tab_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\CustomFieldTab',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createOrderCustomFieldTabAsync
+     *
+     * Create an Order Custom Field Tab
+     *
+     * @param  \Keap\Core\V2\Model\CreateCustomFieldTabRequest $create_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createOrderCustomFieldTabAsync($create_custom_field_tab_request, string $contentType = self::contentTypes['createOrderCustomFieldTab'][0])
+    {
+        return $this->createOrderCustomFieldTabAsyncWithHttpInfo($create_custom_field_tab_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createOrderCustomFieldTabAsyncWithHttpInfo
+     *
+     * Create an Order Custom Field Tab
+     *
+     * @param  \Keap\Core\V2\Model\CreateCustomFieldTabRequest $create_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createOrderCustomFieldTabAsyncWithHttpInfo($create_custom_field_tab_request, string $contentType = self::contentTypes['createOrderCustomFieldTab'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\CustomFieldTab';
+        $request = $this->createOrderCustomFieldTabRequest($create_custom_field_tab_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createOrderCustomFieldTab'
+     *
+     * @param  \Keap\Core\V2\Model\CreateCustomFieldTabRequest $create_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createOrderCustomFieldTabRequest($create_custom_field_tab_request, string $contentType = self::contentTypes['createOrderCustomFieldTab'][0])
+    {
+
+        // verify the required parameter 'create_custom_field_tab_request' is set
+        if ($create_custom_field_tab_request === null || (is_array($create_custom_field_tab_request) && count($create_custom_field_tab_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_custom_field_tab_request when calling createOrderCustomFieldTab'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/orders/model/customFields/tabs';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_custom_field_tab_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_custom_field_tab_request));
+            } else {
+                $httpBody = $create_custom_field_tab_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation createOrderItem
      *
      * Create an Order Item
@@ -4218,6 +4616,292 @@ class OrdersApi
     }
 
     /**
+     * Operation deleteOrderCustomFieldTab
+     *
+     * Delete an Order Custom Field Tab
+     *
+     * @param  string $tab_id tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteOrderCustomFieldTab($tab_id, string $contentType = self::contentTypes['deleteOrderCustomFieldTab'][0])
+    {
+        $this->deleteOrderCustomFieldTabWithHttpInfo($tab_id, $contentType);
+    }
+
+    /**
+     * Operation deleteOrderCustomFieldTabWithHttpInfo
+     *
+     * Delete an Order Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteOrderCustomFieldTabWithHttpInfo($tab_id, string $contentType = self::contentTypes['deleteOrderCustomFieldTab'][0])
+    {
+        $request = $this->deleteOrderCustomFieldTabRequest($tab_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteOrderCustomFieldTabAsync
+     *
+     * Delete an Order Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteOrderCustomFieldTabAsync($tab_id, string $contentType = self::contentTypes['deleteOrderCustomFieldTab'][0])
+    {
+        return $this->deleteOrderCustomFieldTabAsyncWithHttpInfo($tab_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteOrderCustomFieldTabAsyncWithHttpInfo
+     *
+     * Delete an Order Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteOrderCustomFieldTabAsyncWithHttpInfo($tab_id, string $contentType = self::contentTypes['deleteOrderCustomFieldTab'][0])
+    {
+        $returnType = '';
+        $request = $this->deleteOrderCustomFieldTabRequest($tab_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteOrderCustomFieldTab'
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteOrderCustomFieldTabRequest($tab_id, string $contentType = self::contentTypes['deleteOrderCustomFieldTab'][0])
+    {
+
+        // verify the required parameter 'tab_id' is set
+        if ($tab_id === null || (is_array($tab_id) && count($tab_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tab_id when calling deleteOrderCustomFieldTab'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/orders/model/customFields/tabs/{tab_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($tab_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tab_id' . '}',
+                ObjectSerializer::toPathValue($tab_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation deleteOrderItem
      *
      * Delete an Order Item
@@ -5695,6 +6379,390 @@ class OrdersApi
     }
 
     /**
+     * Operation getOrderCustomFieldTab
+     *
+     * Retrieve an Order Custom Field Tab
+     *
+     * @param  string $tab_id tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function getOrderCustomFieldTab($tab_id, string $contentType = self::contentTypes['getOrderCustomFieldTab'][0])
+    {
+        list($response) = $this->getOrderCustomFieldTabWithHttpInfo($tab_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getOrderCustomFieldTabWithHttpInfo
+     *
+     * Retrieve an Order Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getOrderCustomFieldTabWithHttpInfo($tab_id, string $contentType = self::contentTypes['getOrderCustomFieldTab'][0])
+    {
+        $request = $this->getOrderCustomFieldTabRequest($tab_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\CustomFieldTab',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getOrderCustomFieldTabAsync
+     *
+     * Retrieve an Order Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getOrderCustomFieldTabAsync($tab_id, string $contentType = self::contentTypes['getOrderCustomFieldTab'][0])
+    {
+        return $this->getOrderCustomFieldTabAsyncWithHttpInfo($tab_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getOrderCustomFieldTabAsyncWithHttpInfo
+     *
+     * Retrieve an Order Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getOrderCustomFieldTabAsyncWithHttpInfo($tab_id, string $contentType = self::contentTypes['getOrderCustomFieldTab'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\CustomFieldTab';
+        $request = $this->getOrderCustomFieldTabRequest($tab_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getOrderCustomFieldTab'
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getOrderCustomFieldTabRequest($tab_id, string $contentType = self::contentTypes['getOrderCustomFieldTab'][0])
+    {
+
+        // verify the required parameter 'tab_id' is set
+        if ($tab_id === null || (is_array($tab_id) && count($tab_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tab_id when calling getOrderCustomFieldTab'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/orders/model/customFields/tabs/{tab_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($tab_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tab_id' . '}',
+                ObjectSerializer::toPathValue($tab_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getOrderItem
      *
      * Retrieve an Order Item
@@ -6478,6 +7546,370 @@ class OrdersApi
     }
 
     /**
+     * Operation listOrderCustomFieldTabs
+     *
+     * List Order Custom Field Tabs
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOrderCustomFieldTabs'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\ListCustomFieldTabsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function listOrderCustomFieldTabs(string $contentType = self::contentTypes['listOrderCustomFieldTabs'][0])
+    {
+        list($response) = $this->listOrderCustomFieldTabsWithHttpInfo($contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listOrderCustomFieldTabsWithHttpInfo
+     *
+     * List Order Custom Field Tabs
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOrderCustomFieldTabs'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\ListCustomFieldTabsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listOrderCustomFieldTabsWithHttpInfo(string $contentType = self::contentTypes['listOrderCustomFieldTabs'][0])
+    {
+        $request = $this->listOrderCustomFieldTabsRequest($contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\ListCustomFieldTabsResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\ListCustomFieldTabsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\ListCustomFieldTabsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listOrderCustomFieldTabsAsync
+     *
+     * List Order Custom Field Tabs
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOrderCustomFieldTabs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listOrderCustomFieldTabsAsync(string $contentType = self::contentTypes['listOrderCustomFieldTabs'][0])
+    {
+        return $this->listOrderCustomFieldTabsAsyncWithHttpInfo($contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listOrderCustomFieldTabsAsyncWithHttpInfo
+     *
+     * List Order Custom Field Tabs
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOrderCustomFieldTabs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listOrderCustomFieldTabsAsyncWithHttpInfo(string $contentType = self::contentTypes['listOrderCustomFieldTabs'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\ListCustomFieldTabsResponse';
+        $request = $this->listOrderCustomFieldTabsRequest($contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listOrderCustomFieldTabs'
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listOrderCustomFieldTabs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listOrderCustomFieldTabsRequest(string $contentType = self::contentTypes['listOrderCustomFieldTabs'][0])
+    {
+
+
+        $resourcePath = '/rest/v2/orders/model/customFields/tabs';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listOrderPayments
      *
      * Retrieve Order Payments
@@ -6932,7 +8364,7 @@ class OrdersApi
      *
      * List orders
      *
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -6953,7 +8385,7 @@ class OrdersApi
      *
      * List orders
      *
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -7153,7 +8585,7 @@ class OrdersApi
      *
      * List orders
      *
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -7177,7 +8609,7 @@ class OrdersApi
      *
      * List orders
      *
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -7230,7 +8662,7 @@ class OrdersApi
     /**
      * Create request for operation 'listOrders'
      *
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -8930,6 +10362,430 @@ class OrdersApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_custom_field_group_request));
             } else {
                 $httpBody = $update_custom_field_group_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateOrderCustomFieldTab
+     *
+     * Update an Order Custom Field Tab
+     *
+     * @param  string $tab_id tab_id (required)
+     * @param  string[] $update_mask Comma-separated list of fields to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldTabRequest $update_custom_field_tab_request update_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function updateOrderCustomFieldTab($tab_id, $update_mask, $update_custom_field_tab_request, string $contentType = self::contentTypes['updateOrderCustomFieldTab'][0])
+    {
+        list($response) = $this->updateOrderCustomFieldTabWithHttpInfo($tab_id, $update_mask, $update_custom_field_tab_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateOrderCustomFieldTabWithHttpInfo
+     *
+     * Update an Order Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string[] $update_mask Comma-separated list of fields to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldTabRequest $update_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateOrderCustomFieldTabWithHttpInfo($tab_id, $update_mask, $update_custom_field_tab_request, string $contentType = self::contentTypes['updateOrderCustomFieldTab'][0])
+    {
+        $request = $this->updateOrderCustomFieldTabRequest($tab_id, $update_mask, $update_custom_field_tab_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\CustomFieldTab',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateOrderCustomFieldTabAsync
+     *
+     * Update an Order Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string[] $update_mask Comma-separated list of fields to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldTabRequest $update_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateOrderCustomFieldTabAsync($tab_id, $update_mask, $update_custom_field_tab_request, string $contentType = self::contentTypes['updateOrderCustomFieldTab'][0])
+    {
+        return $this->updateOrderCustomFieldTabAsyncWithHttpInfo($tab_id, $update_mask, $update_custom_field_tab_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateOrderCustomFieldTabAsyncWithHttpInfo
+     *
+     * Update an Order Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string[] $update_mask Comma-separated list of fields to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldTabRequest $update_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateOrderCustomFieldTabAsyncWithHttpInfo($tab_id, $update_mask, $update_custom_field_tab_request, string $contentType = self::contentTypes['updateOrderCustomFieldTab'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\CustomFieldTab';
+        $request = $this->updateOrderCustomFieldTabRequest($tab_id, $update_mask, $update_custom_field_tab_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateOrderCustomFieldTab'
+     *
+     * @param  string $tab_id (required)
+     * @param  string[] $update_mask Comma-separated list of fields to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldTabRequest $update_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrderCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateOrderCustomFieldTabRequest($tab_id, $update_mask, $update_custom_field_tab_request, string $contentType = self::contentTypes['updateOrderCustomFieldTab'][0])
+    {
+
+        // verify the required parameter 'tab_id' is set
+        if ($tab_id === null || (is_array($tab_id) && count($tab_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tab_id when calling updateOrderCustomFieldTab'
+            );
+        }
+
+        // verify the required parameter 'update_mask' is set
+        if ($update_mask === null || (is_array($update_mask) && count($update_mask) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_mask when calling updateOrderCustomFieldTab'
+            );
+        }
+        
+        // verify the required parameter 'update_custom_field_tab_request' is set
+        if ($update_custom_field_tab_request === null || (is_array($update_custom_field_tab_request) && count($update_custom_field_tab_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_custom_field_tab_request when calling updateOrderCustomFieldTab'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/orders/model/customFields/tabs/{tab_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $update_mask,
+            'update_mask', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($tab_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tab_id' . '}',
+                ObjectSerializer::toPathValue($tab_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_custom_field_tab_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_custom_field_tab_request));
+            } else {
+                $httpBody = $update_custom_field_tab_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

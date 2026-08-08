@@ -86,6 +86,7 @@ export * from '../models/CreateCustomFieldGroupRequest';
 export * from '../models/CreateCustomFieldOptionRequest';
 export * from '../models/CreateCustomFieldRequest';
 export * from '../models/CreateCustomFieldResponse';
+export * from '../models/CreateCustomFieldTabRequest';
 export * from '../models/CreateDefaultCommissionProgramRequest';
 export * from '../models/CreateEmailSentRequest';
 export * from '../models/CreateEmailsSentRequest';
@@ -133,6 +134,7 @@ export * from '../models/CustomField';
 export * from '../models/CustomFieldGroup';
 export * from '../models/CustomFieldMetaData';
 export * from '../models/CustomFieldOption';
+export * from '../models/CustomFieldTab';
 export * from '../models/CustomFieldValue';
 export * from '../models/CustomFieldValueObject';
 export * from '../models/DefaultCommission';
@@ -151,6 +153,7 @@ export * from '../models/EmailSent';
 export * from '../models/EmailSentCreateError';
 export * from '../models/EmailSentWithContent';
 export * from '../models/EmailTemplate';
+export * from '../models/EmailTemplateSummary';
 export * from '../models/EmailsSentList';
 export * from '../models/ErrorDetails';
 export * from '../models/FaxNumber';
@@ -205,7 +208,9 @@ export * from '../models/ListContactTagsResponse';
 export * from '../models/ListContactsResponse';
 export * from '../models/ListCountriesResponse';
 export * from '../models/ListCustomFieldGroupsResponse';
+export * from '../models/ListCustomFieldTabsResponse';
 export * from '../models/ListEmailAddressStatusResponse';
+export * from '../models/ListEmailTemplatesResponse';
 export * from '../models/ListEmailsSentResponse';
 export * from '../models/ListFilesResponse';
 export * from '../models/ListFreeTrialDiscountsResponse';
@@ -240,6 +245,7 @@ export * from '../models/ListShippingDiscountsResponse';
 export * from '../models/ListSubscriptionPlansResponse';
 export * from '../models/ListSubscriptionsResponse';
 export * from '../models/ListTagCategoriesResponse';
+export * from '../models/ListTagContactAssociationsResponse';
 export * from '../models/ListTaggedCompaniesResponse';
 export * from '../models/ListTaggedContactsResponse';
 export * from '../models/ListTagsResponse';
@@ -321,6 +327,7 @@ export * from '../models/SubscriptionPlanDetail';
 export * from '../models/SubscriptionPlanList';
 export * from '../models/Tag';
 export * from '../models/TagCategory';
+export * from '../models/TagContactAssociation';
 export * from '../models/TaggedCompany';
 export * from '../models/TaggedContact';
 export * from '../models/Task';
@@ -335,6 +342,7 @@ export * from '../models/UpdateCompanyRequest';
 export * from '../models/UpdateContactLinkTypeRequest';
 export * from '../models/UpdateCustomFieldGroupRequest';
 export * from '../models/UpdateCustomFieldMetaDataRequest';
+export * from '../models/UpdateCustomFieldTabRequest';
 export * from '../models/UpdateDefaultCommissionProgramRequest';
 export * from '../models/UpdateEmailAddress';
 export * from '../models/UpdateFreeTrialDiscountCriteria';
@@ -463,6 +471,7 @@ import { CreateCustomFieldGroupRequest } from '../models/CreateCustomFieldGroupR
 import { CreateCustomFieldOptionRequest } from '../models/CreateCustomFieldOptionRequest';
 import { CreateCustomFieldRequest  , CreateCustomFieldRequestFieldTypeEnum     } from '../models/CreateCustomFieldRequest';
 import { CreateCustomFieldResponse } from '../models/CreateCustomFieldResponse';
+import { CreateCustomFieldTabRequest } from '../models/CreateCustomFieldTabRequest';
 import { CreateDefaultCommissionProgramRequest     , CreateDefaultCommissionProgramRequestPayoutTypeEnum   } from '../models/CreateDefaultCommissionProgramRequest';
 import { CreateEmailSentRequest              , CreateEmailSentRequestOriginalProviderEnum     } from '../models/CreateEmailSentRequest';
 import { CreateEmailsSentRequest } from '../models/CreateEmailsSentRequest';
@@ -510,6 +519,7 @@ import { CustomField } from '../models/CustomField';
 import { CustomFieldGroup    , CustomFieldGroupRecordTypeEnum   } from '../models/CustomFieldGroup';
 import { CustomFieldMetaData   , CustomFieldMetaDataRecordTypeEnum  , CustomFieldMetaDataFieldTypeEnum       } from '../models/CustomFieldMetaData';
 import { CustomFieldOption } from '../models/CustomFieldOption';
+import { CustomFieldTab   , CustomFieldTabRecordTypeEnum   } from '../models/CustomFieldTab';
 import { CustomFieldValue } from '../models/CustomFieldValue';
 import { CustomFieldValueObject } from '../models/CustomFieldValueObject';
 import { DefaultCommission, DefaultCommissionPayoutTypeEnum        } from '../models/DefaultCommission';
@@ -528,6 +538,7 @@ import { EmailSent              , EmailSentOriginalProviderEnum    } from '../mo
 import { EmailSentCreateError } from '../models/EmailSentCreateError';
 import { EmailSentWithContent              , EmailSentWithContentOriginalProviderEnum      } from '../models/EmailSentWithContent';
 import { EmailTemplate          , EmailTemplateContentTypeEnum    } from '../models/EmailTemplate';
+import { EmailTemplateSummary        , EmailTemplateSummaryContentTypeEnum    } from '../models/EmailTemplateSummary';
 import { EmailsSentList } from '../models/EmailsSentList';
 import { ErrorDetails } from '../models/ErrorDetails';
 import { FaxNumber  , FaxNumberFieldEnum   } from '../models/FaxNumber';
@@ -582,7 +593,9 @@ import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
 import { ListCustomFieldGroupsResponse } from '../models/ListCustomFieldGroupsResponse';
+import { ListCustomFieldTabsResponse } from '../models/ListCustomFieldTabsResponse';
 import { ListEmailAddressStatusResponse } from '../models/ListEmailAddressStatusResponse';
+import { ListEmailTemplatesResponse } from '../models/ListEmailTemplatesResponse';
 import { ListEmailsSentResponse } from '../models/ListEmailsSentResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListFreeTrialDiscountsResponse } from '../models/ListFreeTrialDiscountsResponse';
@@ -617,6 +630,7 @@ import { ListShippingDiscountsResponse } from '../models/ListShippingDiscountsRe
 import { ListSubscriptionPlansResponse } from '../models/ListSubscriptionPlansResponse';
 import { ListSubscriptionsResponse } from '../models/ListSubscriptionsResponse';
 import { ListTagCategoriesResponse } from '../models/ListTagCategoriesResponse';
+import { ListTagContactAssociationsResponse } from '../models/ListTagContactAssociationsResponse';
 import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesResponse';
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
@@ -698,6 +712,7 @@ import { SubscriptionPlanDetail   , SubscriptionPlanDetailBillingCycleEnum      
 import { SubscriptionPlanList   , SubscriptionPlanListBillingCycleEnum       } from '../models/SubscriptionPlanList';
 import { Tag } from '../models/Tag';
 import { TagCategory } from '../models/TagCategory';
+import { TagContactAssociation } from '../models/TagContactAssociation';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { TaggedContact } from '../models/TaggedContact';
 import { Task    , TaskPriorityEnum       , TaskRemindTimeMinsEnum          } from '../models/Task';
@@ -712,6 +727,7 @@ import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
 import { UpdateContactLinkTypeRequest } from '../models/UpdateContactLinkTypeRequest';
 import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
+import { UpdateCustomFieldTabRequest } from '../models/UpdateCustomFieldTabRequest';
 import { UpdateDefaultCommissionProgramRequest     , UpdateDefaultCommissionProgramRequestPayoutTypeEnum   } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
 import { UpdateFreeTrialDiscountCriteria, UpdateFreeTrialDiscountCriteriaTypeEnum            , UpdateFreeTrialDiscountCriteriaOperatorEnum   } from '../models/UpdateFreeTrialDiscountCriteria';
@@ -813,6 +829,7 @@ let enumsMap: Set<string> = new Set<string>([
     "CustomFieldGroupRecordTypeEnum",
     "CustomFieldMetaDataRecordTypeEnum",
     "CustomFieldMetaDataFieldTypeEnum",
+    "CustomFieldTabRecordTypeEnum",
     "DefaultCommissionPayoutTypeEnum",
     "DiscountDiscountMethodEnum",
     "DiscountCriteriaTypeEnum",
@@ -823,6 +840,7 @@ let enumsMap: Set<string> = new Set<string>([
     "EmailSentOriginalProviderEnum",
     "EmailSentWithContentOriginalProviderEnum",
     "EmailTemplateContentTypeEnum",
+    "EmailTemplateSummaryContentTypeEnum",
     "FaxNumberFieldEnum",
     "FileMetadataCategoryEnum",
     "FileMetadataFileBoxTypeEnum",
@@ -996,6 +1014,7 @@ let typeMap: {[index: string]: any} = {
     "CreateCustomFieldOptionRequest": CreateCustomFieldOptionRequest,
     "CreateCustomFieldRequest": CreateCustomFieldRequest,
     "CreateCustomFieldResponse": CreateCustomFieldResponse,
+    "CreateCustomFieldTabRequest": CreateCustomFieldTabRequest,
     "CreateDefaultCommissionProgramRequest": CreateDefaultCommissionProgramRequest,
     "CreateEmailSentRequest": CreateEmailSentRequest,
     "CreateEmailsSentRequest": CreateEmailsSentRequest,
@@ -1043,6 +1062,7 @@ let typeMap: {[index: string]: any} = {
     "CustomFieldGroup": CustomFieldGroup,
     "CustomFieldMetaData": CustomFieldMetaData,
     "CustomFieldOption": CustomFieldOption,
+    "CustomFieldTab": CustomFieldTab,
     "CustomFieldValue": CustomFieldValue,
     "CustomFieldValueObject": CustomFieldValueObject,
     "DefaultCommission": DefaultCommission,
@@ -1061,6 +1081,7 @@ let typeMap: {[index: string]: any} = {
     "EmailSentCreateError": EmailSentCreateError,
     "EmailSentWithContent": EmailSentWithContent,
     "EmailTemplate": EmailTemplate,
+    "EmailTemplateSummary": EmailTemplateSummary,
     "EmailsSentList": EmailsSentList,
     "ErrorDetails": ErrorDetails,
     "FaxNumber": FaxNumber,
@@ -1115,7 +1136,9 @@ let typeMap: {[index: string]: any} = {
     "ListContactsResponse": ListContactsResponse,
     "ListCountriesResponse": ListCountriesResponse,
     "ListCustomFieldGroupsResponse": ListCustomFieldGroupsResponse,
+    "ListCustomFieldTabsResponse": ListCustomFieldTabsResponse,
     "ListEmailAddressStatusResponse": ListEmailAddressStatusResponse,
+    "ListEmailTemplatesResponse": ListEmailTemplatesResponse,
     "ListEmailsSentResponse": ListEmailsSentResponse,
     "ListFilesResponse": ListFilesResponse,
     "ListFreeTrialDiscountsResponse": ListFreeTrialDiscountsResponse,
@@ -1150,6 +1173,7 @@ let typeMap: {[index: string]: any} = {
     "ListSubscriptionPlansResponse": ListSubscriptionPlansResponse,
     "ListSubscriptionsResponse": ListSubscriptionsResponse,
     "ListTagCategoriesResponse": ListTagCategoriesResponse,
+    "ListTagContactAssociationsResponse": ListTagContactAssociationsResponse,
     "ListTaggedCompaniesResponse": ListTaggedCompaniesResponse,
     "ListTaggedContactsResponse": ListTaggedContactsResponse,
     "ListTagsResponse": ListTagsResponse,
@@ -1231,6 +1255,7 @@ let typeMap: {[index: string]: any} = {
     "SubscriptionPlanList": SubscriptionPlanList,
     "Tag": Tag,
     "TagCategory": TagCategory,
+    "TagContactAssociation": TagContactAssociation,
     "TaggedCompany": TaggedCompany,
     "TaggedContact": TaggedContact,
     "Task": Task,
@@ -1245,6 +1270,7 @@ let typeMap: {[index: string]: any} = {
     "UpdateContactLinkTypeRequest": UpdateContactLinkTypeRequest,
     "UpdateCustomFieldGroupRequest": UpdateCustomFieldGroupRequest,
     "UpdateCustomFieldMetaDataRequest": UpdateCustomFieldMetaDataRequest,
+    "UpdateCustomFieldTabRequest": UpdateCustomFieldTabRequest,
     "UpdateDefaultCommissionProgramRequest": UpdateDefaultCommissionProgramRequest,
     "UpdateEmailAddress": UpdateEmailAddress,
     "UpdateFreeTrialDiscountCriteria": UpdateFreeTrialDiscountCriteria,

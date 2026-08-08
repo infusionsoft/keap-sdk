@@ -15,18 +15,22 @@
 import ApiClient from "../ApiClient";
 import CreateCustomFieldGroupRequest from '../model/CreateCustomFieldGroupRequest';
 import CreateCustomFieldRequest from '../model/CreateCustomFieldRequest';
+import CreateCustomFieldTabRequest from '../model/CreateCustomFieldTabRequest';
 import CreateNoteRequest from '../model/CreateNoteRequest';
 import CustomFieldGroup from '../model/CustomFieldGroup';
 import CustomFieldMetaData from '../model/CustomFieldMetaData';
+import CustomFieldTab from '../model/CustomFieldTab';
 import Error from '../model/Error';
 import GetNoteResponse from '../model/GetNoteResponse';
 import ListCustomFieldGroupsResponse from '../model/ListCustomFieldGroupsResponse';
+import ListCustomFieldTabsResponse from '../model/ListCustomFieldTabsResponse';
 import ListNoteTemplateResponse from '../model/ListNoteTemplateResponse';
 import ListNotesResponse from '../model/ListNotesResponse';
 import Note from '../model/Note';
 import ObjectModel from '../model/ObjectModel';
 import UpdateCustomFieldGroupRequest from '../model/UpdateCustomFieldGroupRequest';
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
+import UpdateCustomFieldTabRequest from '../model/UpdateCustomFieldTabRequest';
 import UpdateNoteRequest from '../model/UpdateNoteRequest';
 import UpdateNoteResponse from '../model/UpdateNoteResponse';
 
@@ -204,6 +208,53 @@ export default class NoteApi {
 
 
     /**
+     * Create a Note Custom Field Tab
+     * Creates a new custom field tab for the Note record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {module:keap.core.v2/model/CreateCustomFieldTabRequest} createCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    createNoteCustomFieldTabWithHttpInfo(createCustomFieldTabRequest) {
+      let postBody = createCustomFieldTabRequest;
+      // verify the required parameter 'createCustomFieldTabRequest' is set
+      if (createCustomFieldTabRequest === undefined || createCustomFieldTabRequest === null) {
+        throw new Error("Missing the required parameter 'createCustomFieldTabRequest' when calling createNoteCustomFieldTab");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/notes/model/customFields/tabs', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create a Note Custom Field Tab
+     * Creates a new custom field tab for the Note record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {module:keap.core.v2/model/CreateCustomFieldTabRequest} createCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    createNoteCustomFieldTab(createCustomFieldTabRequest) {
+      return this.createNoteCustomFieldTabWithHttpInfo(createCustomFieldTabRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Delete a Note
      * Deletes the specified Note
      * @param {String} contactId 
@@ -300,6 +351,54 @@ export default class NoteApi {
      */
     deleteNoteCustomFieldGroup(groupId) {
       return this.deleteNoteCustomFieldGroupWithHttpInfo(groupId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Delete a Note Custom Field Tab
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteNoteCustomFieldTabWithHttpInfo(tabId) {
+      let postBody = null;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling deleteNoteCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/notes/model/customFields/tabs/{tab_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete a Note Custom Field Tab
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteNoteCustomFieldTab(tabId) {
+      return this.deleteNoteCustomFieldTabWithHttpInfo(tabId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -464,10 +563,58 @@ export default class NoteApi {
 
 
     /**
+     * Retrieve a Note Custom Field Tab
+     * Retrieves a single custom field tab by id for the Note record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    getNoteCustomFieldTabWithHttpInfo(tabId) {
+      let postBody = null;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling getNoteCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/notes/model/customFields/tabs/{tab_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve a Note Custom Field Tab
+     * Retrieves a single custom field tab by id for the Note record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    getNoteCustomFieldTab(tabId) {
+      return this.getNoteCustomFieldTabWithHttpInfo(tabId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * List All Notes
      * Retrieves a list of all notes
      * @param {Object} opts Optional parameters
-     * @param {String} [filter] Filter to apply. Allowed fields and operators: - (String) `id` — supports `==`, `!=`, `>`, `<`, `>=`, `<=` - (String list) `ids` — comma-separated note ids, supports `==` only (e.g. `ids==1,2,3`) - (String) `title` — supports `==`. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. `title==Follow*`) - (String) `contact_id` - (String) `assigned_to_user_id` - (String) `since_time` — ISO-8601 date/time - (String) `until_time` — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: `==` → `%3D%3D`, `!=` → `!%3D`, `>` → `%3E`, `<` → `%3C`, `>=` → `%3E%3D`, `<=` → `%3C%3D`, `*` → `%2A`.  Multiple filters are combined with AND using `;`.  Examples: - `filter=contact_id%3D%3D1001` - `filter=id%3E5` - `filter=ids%3D%3D1,2,3` - `filter=title%3D%3DFollow%2A` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  Notes: - `id` and `ids` cannot be combined in the same request. - Wildcard `*` may only appear at the end of the value (prefix match).    Leading wildcards (`*foo`, `*foo*`) are rejected for performance reasons. 
+     * @param {String} [filter] Filter to apply. Allowed fields and operators: - (String) `id` — supports `==`, `!=`, `>`, `<`, `>=`, `<=` - (String list) `ids` — comma-separated note ids, supports `==` only (e.g. `ids==1,2,3`) - (String) `title` — supports `==`. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. `title==Follow*`) - (String) `contact_id` - (String) `assigned_to_user_id` - (String) `since_time` — ISO-8601 date/time - (String) `until_time` — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: `==` → `%3D%3D`, `!=` → `!%3D`, `>` → `%3E`, `<` → `%3C`, `>=` → `%3E%3D`, `<=` → `%3C%3D`, `*` → `%2A`.  Multiple filters are combined with AND using `;`.  Examples: - `filter=contact_id%3D%3D1001` - `filter=id%3E5` - `filter=ids%3D%3D1,2,3` - `filter=title%3D%3DFollow%2A` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  Custom fields (when enabled) can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. Supported operators depend on the custom field's type: - Text-like fields and single-value choice fields with text options (dropdown, radio, state): `==` only, with optional trailing wildcard (e.g. `Priority%3D%3DHigh%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (including user, month, day of week): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 - Multi-select fields: `==` matches records that contain the given option Example (for a custom field named `Priority`): `filter=Priority%3D%3DHigh`  Notes: - `id` and `ids` cannot be combined in the same request. - Wildcard `*` may only appear at the end of the value (prefix match).    Leading wildcards (`*foo`, `*foo*`) are rejected for performance reasons. 
      * @param {String} [pageToken] Page token
      * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} [pageSize] Total number of items to return per page
@@ -507,7 +654,7 @@ export default class NoteApi {
      * List All Notes
      * Retrieves a list of all notes
      * @param {Object} opts Optional parameters
-     * @param {String} opts.filter Filter to apply. Allowed fields and operators: - (String) `id` — supports `==`, `!=`, `>`, `<`, `>=`, `<=` - (String list) `ids` — comma-separated note ids, supports `==` only (e.g. `ids==1,2,3`) - (String) `title` — supports `==`. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. `title==Follow*`) - (String) `contact_id` - (String) `assigned_to_user_id` - (String) `since_time` — ISO-8601 date/time - (String) `until_time` — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: `==` → `%3D%3D`, `!=` → `!%3D`, `>` → `%3E`, `<` → `%3C`, `>=` → `%3E%3D`, `<=` → `%3C%3D`, `*` → `%2A`.  Multiple filters are combined with AND using `;`.  Examples: - `filter=contact_id%3D%3D1001` - `filter=id%3E5` - `filter=ids%3D%3D1,2,3` - `filter=title%3D%3DFollow%2A` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  Notes: - `id` and `ids` cannot be combined in the same request. - Wildcard `*` may only appear at the end of the value (prefix match).    Leading wildcards (`*foo`, `*foo*`) are rejected for performance reasons. 
+     * @param {String} opts.filter Filter to apply. Allowed fields and operators: - (String) `id` — supports `==`, `!=`, `>`, `<`, `>=`, `<=` - (String list) `ids` — comma-separated note ids, supports `==` only (e.g. `ids==1,2,3`) - (String) `title` — supports `==`. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. `title==Follow*`) - (String) `contact_id` - (String) `assigned_to_user_id` - (String) `since_time` — ISO-8601 date/time - (String) `until_time` — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: `==` → `%3D%3D`, `!=` → `!%3D`, `>` → `%3E`, `<` → `%3C`, `>=` → `%3E%3D`, `<=` → `%3C%3D`, `*` → `%2A`.  Multiple filters are combined with AND using `;`.  Examples: - `filter=contact_id%3D%3D1001` - `filter=id%3E5` - `filter=ids%3D%3D1,2,3` - `filter=title%3D%3DFollow%2A` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  Custom fields (when enabled) can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. Supported operators depend on the custom field's type: - Text-like fields and single-value choice fields with text options (dropdown, radio, state): `==` only, with optional trailing wildcard (e.g. `Priority%3D%3DHigh%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (including user, month, day of week): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 - Multi-select fields: `==` matches records that contain the given option Example (for a custom field named `Priority`): `filter=Priority%3D%3DHigh`  Notes: - `id` and `ids` cannot be combined in the same request. - Wildcard `*` may only appear at the end of the value (prefix match).    Leading wildcards (`*foo`, `*foo*`) are rejected for performance reasons. 
      * @param {String} opts.pageToken Page token
      * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} opts.pageSize Total number of items to return per page
@@ -563,6 +710,47 @@ export default class NoteApi {
      */
     listNoteCustomFieldGroups(opts) {
       return this.listNoteCustomFieldGroupsWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List Note Custom Field Tabs
+     * Retrieves a list of custom field tabs for the Note record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListCustomFieldTabsResponse} and HTTP response
+     */
+    listNoteCustomFieldTabsWithHttpInfo() {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListCustomFieldTabsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/notes/model/customFields/tabs', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List Note Custom Field Tabs
+     * Retrieves a list of custom field tabs for the Note record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListCustomFieldTabsResponse}
+     */
+    listNoteCustomFieldTabs() {
+      return this.listNoteCustomFieldTabsWithHttpInfo()
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -630,7 +818,7 @@ export default class NoteApi {
      * Retrieves a list of Notes for a given contact
      * @param {String} contactId 
      * @param {Object} opts Optional parameters
-     * @param {String} [filter] Filter to apply. Allowed fields and operators: - (String) `id` — supports `==`, `!=`, `>`, `<`, `>=`, `<=` - (String list) `ids` — comma-separated note ids, supports `==` only (e.g. `ids==1,2,3`) - (String) `title` — supports `==`. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. `title==Follow*`) - (String) `contact_id` - (String) `assigned_to_user_id` - (String) `since_time` — ISO-8601 date/time - (String) `until_time` — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: `==` → `%3D%3D`, `!=` → `!%3D`, `>` → `%3E`, `<` → `%3C`, `>=` → `%3E%3D`, `<=` → `%3C%3D`, `*` → `%2A`.  Multiple filters are combined with AND using `;`.  Examples: - `filter=contact_id%3D%3D1001` - `filter=id%3E5` - `filter=ids%3D%3D1,2,3` - `filter=title%3D%3DFollow%2A` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  Notes: - `id` and `ids` cannot be combined in the same request. - Wildcard `*` may only appear at the end of the value (prefix match).    Leading wildcards (`*foo`, `*foo*`) are rejected for performance reasons. 
+     * @param {String} [filter] Filter to apply. Allowed fields and operators: - (String) `id` — supports `==`, `!=`, `>`, `<`, `>=`, `<=` - (String list) `ids` — comma-separated note ids, supports `==` only (e.g. `ids==1,2,3`) - (String) `title` — supports `==`. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. `title==Follow*`) - (String) `contact_id` - (String) `assigned_to_user_id` - (String) `since_time` — ISO-8601 date/time - (String) `until_time` — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: `==` → `%3D%3D`, `!=` → `!%3D`, `>` → `%3E`, `<` → `%3C`, `>=` → `%3E%3D`, `<=` → `%3C%3D`, `*` → `%2A`.  Multiple filters are combined with AND using `;`.  Examples: - `filter=contact_id%3D%3D1001` - `filter=id%3E5` - `filter=ids%3D%3D1,2,3` - `filter=title%3D%3DFollow%2A` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  Custom fields (when enabled) can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. Supported operators depend on the custom field's type: - Text-like fields and single-value choice fields with text options (dropdown, radio, state): `==` only, with optional trailing wildcard (e.g. `Priority%3D%3DHigh%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (including user, month, day of week): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 - Multi-select fields: `==` matches records that contain the given option Example (for a custom field named `Priority`): `filter=Priority%3D%3DHigh`  Notes: - `id` and `ids` cannot be combined in the same request. - Wildcard `*` may only appear at the end of the value (prefix match).    Leading wildcards (`*foo`, `*foo*`) are rejected for performance reasons. 
      * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} [pageSize] Total number of items to return per page
      * @param {String} [pageToken] Page token
@@ -676,7 +864,7 @@ export default class NoteApi {
      * Retrieves a list of Notes for a given contact
      * @param {String} contactId 
      * @param {Object} opts Optional parameters
-     * @param {String} opts.filter Filter to apply. Allowed fields and operators: - (String) `id` — supports `==`, `!=`, `>`, `<`, `>=`, `<=` - (String list) `ids` — comma-separated note ids, supports `==` only (e.g. `ids==1,2,3`) - (String) `title` — supports `==`. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. `title==Follow*`) - (String) `contact_id` - (String) `assigned_to_user_id` - (String) `since_time` — ISO-8601 date/time - (String) `until_time` — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: `==` → `%3D%3D`, `!=` → `!%3D`, `>` → `%3E`, `<` → `%3C`, `>=` → `%3E%3D`, `<=` → `%3C%3D`, `*` → `%2A`.  Multiple filters are combined with AND using `;`.  Examples: - `filter=contact_id%3D%3D1001` - `filter=id%3E5` - `filter=ids%3D%3D1,2,3` - `filter=title%3D%3DFollow%2A` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  Notes: - `id` and `ids` cannot be combined in the same request. - Wildcard `*` may only appear at the end of the value (prefix match).    Leading wildcards (`*foo`, `*foo*`) are rejected for performance reasons. 
+     * @param {String} opts.filter Filter to apply. Allowed fields and operators: - (String) `id` — supports `==`, `!=`, `>`, `<`, `>=`, `<=` - (String list) `ids` — comma-separated note ids, supports `==` only (e.g. `ids==1,2,3`) - (String) `title` — supports `==`. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. `title==Follow*`) - (String) `contact_id` - (String) `assigned_to_user_id` - (String) `since_time` — ISO-8601 date/time - (String) `until_time` — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: `==` → `%3D%3D`, `!=` → `!%3D`, `>` → `%3E`, `<` → `%3C`, `>=` → `%3E%3D`, `<=` → `%3C%3D`, `*` → `%2A`.  Multiple filters are combined with AND using `;`.  Examples: - `filter=contact_id%3D%3D1001` - `filter=id%3E5` - `filter=ids%3D%3D1,2,3` - `filter=title%3D%3DFollow%2A` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`  Custom fields (when enabled) can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. Supported operators depend on the custom field's type: - Text-like fields and single-value choice fields with text options (dropdown, radio, state): `==` only, with optional trailing wildcard (e.g. `Priority%3D%3DHigh%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (including user, month, day of week): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 - Multi-select fields: `==` matches records that contain the given option Example (for a custom field named `Priority`): `filter=Priority%3D%3DHigh`  Notes: - `id` and `ids` cannot be combined in the same request. - Wildcard `*` may only appear at the end of the value (prefix match).    Leading wildcards (`*foo`, `*foo*`) are rejected for performance reasons. 
      * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `update_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} opts.pageSize Total number of items to return per page
      * @param {String} opts.pageToken Page token
@@ -857,6 +1045,67 @@ export default class NoteApi {
      */
     updateNoteCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest) {
       return this.updateNoteCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update a Note Custom Field Tab
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} tabId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldTabRequest} updateCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    updateNoteCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest) {
+      let postBody = updateCustomFieldTabRequest;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling updateNoteCustomFieldTab");
+      }
+      // verify the required parameter 'updateMask' is set
+      if (updateMask === undefined || updateMask === null) {
+        throw new Error("Missing the required parameter 'updateMask' when calling updateNoteCustomFieldTab");
+      }
+      // verify the required parameter 'updateCustomFieldTabRequest' is set
+      if (updateCustomFieldTabRequest === undefined || updateCustomFieldTabRequest === null) {
+        throw new Error("Missing the required parameter 'updateCustomFieldTabRequest' when calling updateNoteCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+        'update_mask': this.apiClient.buildCollectionParam(updateMask, 'multi')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/notes/model/customFields/tabs/{tab_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update a Note Custom Field Tab
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} tabId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldTabRequest} updateCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    updateNoteCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest) {
+      return this.updateNoteCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

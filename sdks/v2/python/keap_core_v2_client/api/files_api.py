@@ -969,7 +969,7 @@ class FilesApi:
 
 
     @validate_call
-    def get_file_data(
+    def get_file_data1(
         self,
         file_id: StrictStr,
         _request_timeout: Union[
@@ -1013,7 +1013,7 @@ class FilesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_file_data_serialize(
+        _param = self._get_file_data1_serialize(
             file_id=file_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1044,7 +1044,7 @@ class FilesApi:
 
 
     @validate_call
-    def get_file_data_with_http_info(
+    def get_file_data1_with_http_info(
         self,
         file_id: StrictStr,
         _request_timeout: Union[
@@ -1088,7 +1088,7 @@ class FilesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_file_data_serialize(
+        _param = self._get_file_data1_serialize(
             file_id=file_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1119,7 +1119,7 @@ class FilesApi:
 
 
     @validate_call
-    def get_file_data_without_preload_content(
+    def get_file_data1_without_preload_content(
         self,
         file_id: StrictStr,
         _request_timeout: Union[
@@ -1163,7 +1163,7 @@ class FilesApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._get_file_data_serialize(
+        _param = self._get_file_data1_serialize(
             file_id=file_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1189,7 +1189,7 @@ class FilesApi:
         return response_data.response
 
 
-    def _get_file_data_serialize(
+    def _get_file_data1_serialize(
         self,
         file_id,
         _request_auth,
@@ -1256,7 +1256,7 @@ class FilesApi:
     @validate_call
     def list_files(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (Boolean) `is_public` - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` - (FileBoxType) `file_box_type`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=category%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` ")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (Boolean) `is_public` — `true` (public) or `false` (private) - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` — one of: `ATTACHMENTS`, `CART`, `DOCUMENTS`, `HIDDEN`, `INVOICE`, `LOGO`, `TICKETS`, `WEB_FORM`, `FUNNEL` - (FileBoxType) `file_box_type` — one of: `APPLICATION`, `IMAGE`, `FAX`, `ATTACHMENT`, `TICKET`, `CONTACT`, `DIGITAL_PRODUCT`, `IMPORT`, `HIDDEN`, `WEB_FORM`, `STYLED_CART`, `RESAMPLED_IMAGE`, `TEMPLATE_THUMBNAIL`, `FUNNEL`, `LOGO_THUMBNAIL`, `UNLAYER`, `BRANDING_CENTER_LOGO` - (String) `file_name` - (String) `created_time` - (String) `updated_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. Multiple filters are combined with a semicolon (`;`, encoded `%3B`) and are ANDed together. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=is_public%3D%3Dfalse` - `filter=category%3D%3DDOCUMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse` ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `file_name` - `updated_time` - ...  One of the following directions: - `asc` - `desc` ")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -1277,7 +1277,7 @@ class FilesApi:
 
         Retrieves a list of files
 
-        :param filter: Filter to apply, allowed fields are: - (Boolean) `is_public` - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` - (FileBoxType) `file_box_type`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=category%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` 
+        :param filter: Filter to apply, allowed fields are: - (Boolean) `is_public` — `true` (public) or `false` (private) - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` — one of: `ATTACHMENTS`, `CART`, `DOCUMENTS`, `HIDDEN`, `INVOICE`, `LOGO`, `TICKETS`, `WEB_FORM`, `FUNNEL` - (FileBoxType) `file_box_type` — one of: `APPLICATION`, `IMAGE`, `FAX`, `ATTACHMENT`, `TICKET`, `CONTACT`, `DIGITAL_PRODUCT`, `IMPORT`, `HIDDEN`, `WEB_FORM`, `STYLED_CART`, `RESAMPLED_IMAGE`, `TEMPLATE_THUMBNAIL`, `FUNNEL`, `LOGO_THUMBNAIL`, `UNLAYER`, `BRANDING_CENTER_LOGO` - (String) `file_name` - (String) `created_time` - (String) `updated_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. Multiple filters are combined with a semicolon (`;`, encoded `%3B`) and are ANDed together. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=is_public%3D%3Dfalse` - `filter=category%3D%3DDOCUMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse` 
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `file_name` - `updated_time` - ...  One of the following directions: - `asc` - `desc` 
         :type order_by: str
@@ -1343,7 +1343,7 @@ class FilesApi:
     @validate_call
     def list_files_with_http_info(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (Boolean) `is_public` - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` - (FileBoxType) `file_box_type`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=category%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` ")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (Boolean) `is_public` — `true` (public) or `false` (private) - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` — one of: `ATTACHMENTS`, `CART`, `DOCUMENTS`, `HIDDEN`, `INVOICE`, `LOGO`, `TICKETS`, `WEB_FORM`, `FUNNEL` - (FileBoxType) `file_box_type` — one of: `APPLICATION`, `IMAGE`, `FAX`, `ATTACHMENT`, `TICKET`, `CONTACT`, `DIGITAL_PRODUCT`, `IMPORT`, `HIDDEN`, `WEB_FORM`, `STYLED_CART`, `RESAMPLED_IMAGE`, `TEMPLATE_THUMBNAIL`, `FUNNEL`, `LOGO_THUMBNAIL`, `UNLAYER`, `BRANDING_CENTER_LOGO` - (String) `file_name` - (String) `created_time` - (String) `updated_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. Multiple filters are combined with a semicolon (`;`, encoded `%3B`) and are ANDed together. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=is_public%3D%3Dfalse` - `filter=category%3D%3DDOCUMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse` ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `file_name` - `updated_time` - ...  One of the following directions: - `asc` - `desc` ")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -1364,7 +1364,7 @@ class FilesApi:
 
         Retrieves a list of files
 
-        :param filter: Filter to apply, allowed fields are: - (Boolean) `is_public` - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` - (FileBoxType) `file_box_type`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=category%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` 
+        :param filter: Filter to apply, allowed fields are: - (Boolean) `is_public` — `true` (public) or `false` (private) - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` — one of: `ATTACHMENTS`, `CART`, `DOCUMENTS`, `HIDDEN`, `INVOICE`, `LOGO`, `TICKETS`, `WEB_FORM`, `FUNNEL` - (FileBoxType) `file_box_type` — one of: `APPLICATION`, `IMAGE`, `FAX`, `ATTACHMENT`, `TICKET`, `CONTACT`, `DIGITAL_PRODUCT`, `IMPORT`, `HIDDEN`, `WEB_FORM`, `STYLED_CART`, `RESAMPLED_IMAGE`, `TEMPLATE_THUMBNAIL`, `FUNNEL`, `LOGO_THUMBNAIL`, `UNLAYER`, `BRANDING_CENTER_LOGO` - (String) `file_name` - (String) `created_time` - (String) `updated_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. Multiple filters are combined with a semicolon (`;`, encoded `%3B`) and are ANDed together. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=is_public%3D%3Dfalse` - `filter=category%3D%3DDOCUMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse` 
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `file_name` - `updated_time` - ...  One of the following directions: - `asc` - `desc` 
         :type order_by: str
@@ -1430,7 +1430,7 @@ class FilesApi:
     @validate_call
     def list_files_without_preload_content(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (Boolean) `is_public` - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` - (FileBoxType) `file_box_type`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=category%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` ")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (Boolean) `is_public` — `true` (public) or `false` (private) - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` — one of: `ATTACHMENTS`, `CART`, `DOCUMENTS`, `HIDDEN`, `INVOICE`, `LOGO`, `TICKETS`, `WEB_FORM`, `FUNNEL` - (FileBoxType) `file_box_type` — one of: `APPLICATION`, `IMAGE`, `FAX`, `ATTACHMENT`, `TICKET`, `CONTACT`, `DIGITAL_PRODUCT`, `IMPORT`, `HIDDEN`, `WEB_FORM`, `STYLED_CART`, `RESAMPLED_IMAGE`, `TEMPLATE_THUMBNAIL`, `FUNNEL`, `LOGO_THUMBNAIL`, `UNLAYER`, `BRANDING_CENTER_LOGO` - (String) `file_name` - (String) `created_time` - (String) `updated_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. Multiple filters are combined with a semicolon (`;`, encoded `%3B`) and are ANDed together. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=is_public%3D%3Dfalse` - `filter=category%3D%3DDOCUMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse` ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `file_name` - `updated_time` - ...  One of the following directions: - `asc` - `desc` ")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -1451,7 +1451,7 @@ class FilesApi:
 
         Retrieves a list of files
 
-        :param filter: Filter to apply, allowed fields are: - (Boolean) `is_public` - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` - (FileBoxType) `file_box_type`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=category%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` 
+        :param filter: Filter to apply, allowed fields are: - (Boolean) `is_public` — `true` (public) or `false` (private) - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` — one of: `ATTACHMENTS`, `CART`, `DOCUMENTS`, `HIDDEN`, `INVOICE`, `LOGO`, `TICKETS`, `WEB_FORM`, `FUNNEL` - (FileBoxType) `file_box_type` — one of: `APPLICATION`, `IMAGE`, `FAX`, `ATTACHMENT`, `TICKET`, `CONTACT`, `DIGITAL_PRODUCT`, `IMPORT`, `HIDDEN`, `WEB_FORM`, `STYLED_CART`, `RESAMPLED_IMAGE`, `TEMPLATE_THUMBNAIL`, `FUNNEL`, `LOGO_THUMBNAIL`, `UNLAYER`, `BRANDING_CENTER_LOGO` - (String) `file_name` - (String) `created_time` - (String) `updated_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. Multiple filters are combined with a semicolon (`;`, encoded `%3B`) and are ANDed together. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=is_public%3D%3Dfalse` - `filter=category%3D%3DDOCUMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse` 
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `file_name` - `updated_time` - ...  One of the following directions: - `asc` - `desc` 
         :type order_by: str

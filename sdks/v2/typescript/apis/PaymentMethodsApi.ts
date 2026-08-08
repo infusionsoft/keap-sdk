@@ -171,16 +171,16 @@ export class PaymentMethodsApiRequestFactory extends BaseAPIRequestFactory {
      * List of Contact Payment Methods
      * @param contactId ID of the contact to which the payment method belongs.
      * @param filter Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  
+     * @param pageToken Page token
      * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
      * @param pageSize Total number of items to return per page
-     * @param pageToken Page token
      */
-    public async listPaymentMethods_1(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: Configuration): Promise<RequestContext> {
+    public async listPaymentMethods1(contactId: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'contactId' is not null or undefined
         if (contactId === null || contactId === undefined) {
-            throw new RequiredError("PaymentMethodsApi", "listPaymentMethods_1", "contactId");
+            throw new RequiredError("PaymentMethodsApi", "listPaymentMethods1", "contactId");
         }
 
 
@@ -202,6 +202,11 @@ export class PaymentMethodsApiRequestFactory extends BaseAPIRequestFactory {
         }
 
         // Query Params
+        if (pageToken !== undefined) {
+            requestContext.setQueryParam("page_token", ObjectSerializer.serialize(pageToken, "string", ""));
+        }
+
+        // Query Params
         if (orderBy !== undefined) {
             requestContext.setQueryParam("order_by", ObjectSerializer.serialize(orderBy, "string", ""));
         }
@@ -209,11 +214,6 @@ export class PaymentMethodsApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (pageSize !== undefined) {
             requestContext.setQueryParam("page_size", ObjectSerializer.serialize(pageSize, "number", "int32"));
-        }
-
-        // Query Params
-        if (pageToken !== undefined) {
-            requestContext.setQueryParam("page_token", ObjectSerializer.serialize(pageToken, "string", ""));
         }
 
 
@@ -487,10 +487,10 @@ export class PaymentMethodsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to listPaymentMethods_1
+     * @params response Response returned by the server for a request to listPaymentMethods1
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async listPaymentMethods_1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListContactPaymentMethodsResponse >> {
+     public async listPaymentMethods1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListContactPaymentMethodsResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListContactPaymentMethodsResponse = ObjectSerializer.deserialize(

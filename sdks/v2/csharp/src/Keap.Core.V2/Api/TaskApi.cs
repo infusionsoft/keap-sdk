@@ -100,6 +100,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of CustomFieldGroup</returns>
         ApiResponse<CustomFieldGroup> CreateTaskCustomFieldGroupWithHttpInfo(CreateCustomFieldGroupRequest createCustomFieldGroupRequest, int operationIndex = 0);
         /// <summary>
+        /// Create a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        CustomFieldTab CreateTaskCustomFieldTab(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Create a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        ApiResponse<CustomFieldTab> CreateTaskCustomFieldTabWithHttpInfo(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0);
+        /// <summary>
         /// Delete a Task
         /// </summary>
         /// <remarks>
@@ -169,6 +192,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteTaskCustomFieldGroupWithHttpInfo(string groupId, int operationIndex = 0);
         /// <summary>
+        /// Delete a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        void DeleteTaskCustomFieldTab(string tabId, int operationIndex = 0);
+
+        /// <summary>
+        /// Delete a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteTaskCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0);
+        /// <summary>
         /// Retrieve a Task
         /// </summary>
         /// <remarks>
@@ -217,6 +263,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of CustomFieldGroup</returns>
         ApiResponse<CustomFieldGroup> GetTaskCustomFieldGroupWithHttpInfo(string groupId, int operationIndex = 0);
         /// <summary>
+        /// Retrieve a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        CustomFieldTab GetTaskCustomFieldTab(string tabId, int operationIndex = 0);
+
+        /// <summary>
+        /// Retrieve a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        ApiResponse<CustomFieldTab> GetTaskCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0);
+        /// <summary>
         /// List Task Custom Field Groups
         /// </summary>
         /// <remarks>
@@ -240,13 +309,34 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of ListCustomFieldGroupsResponse</returns>
         ApiResponse<ListCustomFieldGroupsResponse> ListTaskCustomFieldGroupsWithHttpInfo(string? tabId = default, int operationIndex = 0);
         /// <summary>
+        /// List Task Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListCustomFieldTabsResponse</returns>
+        ListCustomFieldTabsResponse ListTaskCustomFieldTabs(int operationIndex = 0);
+
+        /// <summary>
+        /// List Task Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListCustomFieldTabsResponse</returns>
+        ApiResponse<ListCustomFieldTabsResponse> ListTaskCustomFieldTabsWithHttpInfo(int operationIndex = 0);
+        /// <summary>
         /// List Tasks
         /// </summary>
         /// <remarks>
         /// Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id&#x3D;&#x3D;UNASSIGNED.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;priority&#x60;  — one of &#x60;CRITICAL&#x60;, &#x60;ESSENTIAL&#x60;, &#x60;NONESSENTIAL&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;priority%3D%3DCRITICAL&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. &#x60;filter&#x3D;cf_priority%3D%3D10&#x60;). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company%3D%3DAcme%2A&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate%3C%3D2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags%3D%3Dred&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -262,7 +352,7 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id&#x3D;&#x3D;UNASSIGNED.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;priority&#x60;  — one of &#x60;CRITICAL&#x60;, &#x60;ESSENTIAL&#x60;, &#x60;NONESSENTIAL&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;priority%3D%3DCRITICAL&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. &#x60;filter&#x3D;cf_priority%3D%3D10&#x60;). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company%3D%3DAcme%2A&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate%3C%3D2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags%3D%3Dred&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -374,6 +464,33 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomFieldGroup</returns>
         ApiResponse<CustomFieldGroup> UpdateTaskCustomFieldGroupWithHttpInfo(string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest, int operationIndex = 0);
+        /// <summary>
+        /// Update a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        CustomFieldTab UpdateTaskCustomFieldTab(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Update a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        ApiResponse<CustomFieldTab> UpdateTaskCustomFieldTabWithHttpInfo(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -461,6 +578,31 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse (CustomFieldGroup)</returns>
         System.Threading.Tasks.Task<ApiResponse<CustomFieldGroup>> CreateTaskCustomFieldGroupWithHttpInfoAsync(CreateCustomFieldGroupRequest createCustomFieldGroupRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Create a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        System.Threading.Tasks.Task<CustomFieldTab> CreateTaskCustomFieldTabAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Create a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldTab>> CreateTaskCustomFieldTabWithHttpInfoAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Delete a Task
         /// </summary>
         /// <remarks>
@@ -536,6 +678,31 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTaskCustomFieldGroupWithHttpInfoAsync(string groupId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Delete a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteTaskCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Delete a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTaskCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Retrieve a Task
         /// </summary>
         /// <remarks>
@@ -588,6 +755,31 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse (CustomFieldGroup)</returns>
         System.Threading.Tasks.Task<ApiResponse<CustomFieldGroup>> GetTaskCustomFieldGroupWithHttpInfoAsync(string groupId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Retrieve a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        System.Threading.Tasks.Task<CustomFieldTab> GetTaskCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Retrieve a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldTab>> GetTaskCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// List Task Custom Field Groups
         /// </summary>
         /// <remarks>
@@ -613,13 +805,36 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse (ListCustomFieldGroupsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListCustomFieldGroupsResponse>> ListTaskCustomFieldGroupsWithHttpInfoAsync(string? tabId = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// List Task Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCustomFieldTabsResponse</returns>
+        System.Threading.Tasks.Task<ListCustomFieldTabsResponse> ListTaskCustomFieldTabsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// List Task Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCustomFieldTabsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListCustomFieldTabsResponse>> ListTaskCustomFieldTabsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// List Tasks
         /// </summary>
         /// <remarks>
         /// Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id&#x3D;&#x3D;UNASSIGNED.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;priority&#x60;  — one of &#x60;CRITICAL&#x60;, &#x60;ESSENTIAL&#x60;, &#x60;NONESSENTIAL&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;priority%3D%3DCRITICAL&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. &#x60;filter&#x3D;cf_priority%3D%3D10&#x60;). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company%3D%3DAcme%2A&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate%3C%3D2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags%3D%3Dred&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -636,7 +851,7 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id&#x3D;&#x3D;UNASSIGNED.
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;priority&#x60;  — one of &#x60;CRITICAL&#x60;, &#x60;ESSENTIAL&#x60;, &#x60;NONESSENTIAL&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;priority%3D%3DCRITICAL&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. &#x60;filter&#x3D;cf_priority%3D%3D10&#x60;). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company%3D%3DAcme%2A&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate%3C%3D2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags%3D%3Dred&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -757,6 +972,35 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldGroup)</returns>
         System.Threading.Tasks.Task<ApiResponse<CustomFieldGroup>> UpdateTaskCustomFieldGroupWithHttpInfoAsync(string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Update a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        System.Threading.Tasks.Task<CustomFieldTab> UpdateTaskCustomFieldTabAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Update a Task Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldTab>> UpdateTaskCustomFieldTabWithHttpInfoAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1427,6 +1671,185 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// Create a Task Custom Field Tab Creates a new custom field tab for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        public CustomFieldTab CreateTaskCustomFieldTab(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = CreateTaskCustomFieldTabWithHttpInfo(createCustomFieldTabRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a Task Custom Field Tab Creates a new custom field tab for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldTab> CreateTaskCustomFieldTabWithHttpInfo(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'createCustomFieldTabRequest' is set
+            if (createCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createCustomFieldTabRequest' when calling TaskApi->CreateTaskCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "TaskApi.CreateTaskCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CustomFieldTab>("/rest/v2/tasks/model/customFields/tabs", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateTaskCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create a Task Custom Field Tab Creates a new custom field tab for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        public async System.Threading.Tasks.Task<CustomFieldTab> CreateTaskCustomFieldTabAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = await CreateTaskCustomFieldTabWithHttpInfoAsync(createCustomFieldTabRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a Task Custom Field Tab Creates a new custom field tab for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldTab>> CreateTaskCustomFieldTabWithHttpInfoAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'createCustomFieldTabRequest' is set
+            if (createCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createCustomFieldTabRequest' when calling TaskApi->CreateTaskCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "TaskApi.CreateTaskCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CustomFieldTab>("/rest/v2/tasks/model/customFields/tabs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateTaskCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Delete a Task Deletes a single task
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1952,6 +2375,181 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// Delete a Task Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        public void DeleteTaskCustomFieldTab(string tabId, int operationIndex = 0)
+        {
+            DeleteTaskCustomFieldTabWithHttpInfo(tabId);
+        }
+
+        /// <summary>
+        /// Delete a Task Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Keap.Core.V2.Client.ApiResponse<Object> DeleteTaskCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling TaskApi->DeleteTaskCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "TaskApi.DeleteTaskCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<Object>("/rest/v2/tasks/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteTaskCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete a Task Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteTaskCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            await DeleteTaskCustomFieldTabWithHttpInfoAsync(tabId, operationIndex, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Delete a Task Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Object>> DeleteTaskCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling TaskApi->DeleteTaskCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "TaskApi.DeleteTaskCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/rest/v2/tasks/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteTaskCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Retrieve a Task Retrieves a single task
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -2318,6 +2916,183 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// Retrieve a Task Custom Field Tab Retrieves a single custom field tab by id for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        public CustomFieldTab GetTaskCustomFieldTab(string tabId, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = GetTaskCustomFieldTabWithHttpInfo(tabId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve a Task Custom Field Tab Retrieves a single custom field tab by id for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldTab> GetTaskCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling TaskApi->GetTaskCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "TaskApi.GetTaskCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<CustomFieldTab>("/rest/v2/tasks/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaskCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Retrieve a Task Custom Field Tab Retrieves a single custom field tab by id for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        public async System.Threading.Tasks.Task<CustomFieldTab> GetTaskCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = await GetTaskCustomFieldTabWithHttpInfoAsync(tabId, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve a Task Custom Field Tab Retrieves a single custom field tab by id for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldTab>> GetTaskCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling TaskApi->GetTaskCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "TaskApi.GetTaskCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<CustomFieldTab>("/rest/v2/tasks/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTaskCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// List Task Custom Field Groups Retrieves a list of custom field groups for the Task record type. Optionally filter by tab_id to scope to a specific tab.&lt;br/&gt;Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -2489,10 +3264,169 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// List Task Custom Field Tabs Retrieves a list of custom field tabs for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListCustomFieldTabsResponse</returns>
+        public ListCustomFieldTabsResponse ListTaskCustomFieldTabs(int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse> localVarResponse = ListTaskCustomFieldTabsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Task Custom Field Tabs Retrieves a list of custom field tabs for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListCustomFieldTabsResponse</returns>
+        public Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse> ListTaskCustomFieldTabsWithHttpInfo(int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "TaskApi.ListTaskCustomFieldTabs";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListCustomFieldTabsResponse>("/rest/v2/tasks/model/customFields/tabs", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTaskCustomFieldTabs", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List Task Custom Field Tabs Retrieves a list of custom field tabs for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCustomFieldTabsResponse</returns>
+        public async System.Threading.Tasks.Task<ListCustomFieldTabsResponse> ListTaskCustomFieldTabsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse> localVarResponse = await ListTaskCustomFieldTabsWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Task Custom Field Tabs Retrieves a list of custom field tabs for the Task record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCustomFieldTabsResponse)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse>> ListTaskCustomFieldTabsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "TaskApi.ListTaskCustomFieldTabs";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListCustomFieldTabsResponse>("/rest/v2/tasks/model/customFields/tabs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTaskCustomFieldTabs", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// List Tasks Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id&#x3D;&#x3D;UNASSIGNED.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;priority&#x60;  — one of &#x60;CRITICAL&#x60;, &#x60;ESSENTIAL&#x60;, &#x60;NONESSENTIAL&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;priority%3D%3DCRITICAL&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. &#x60;filter&#x3D;cf_priority%3D%3D10&#x60;). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company%3D%3DAcme%2A&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate%3C%3D2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags%3D%3Dred&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -2509,7 +3443,7 @@ namespace Keap.Core.V2.Api
         /// List Tasks Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id&#x3D;&#x3D;UNASSIGNED.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;priority&#x60;  — one of &#x60;CRITICAL&#x60;, &#x60;ESSENTIAL&#x60;, &#x60;NONESSENTIAL&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;priority%3D%3DCRITICAL&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. &#x60;filter&#x3D;cf_priority%3D%3D10&#x60;). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company%3D%3DAcme%2A&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate%3C%3D2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags%3D%3Dred&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -2600,7 +3534,7 @@ namespace Keap.Core.V2.Api
         /// List Tasks Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id&#x3D;&#x3D;UNASSIGNED.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;priority&#x60;  — one of &#x60;CRITICAL&#x60;, &#x60;ESSENTIAL&#x60;, &#x60;NONESSENTIAL&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;priority%3D%3DCRITICAL&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. &#x60;filter&#x3D;cf_priority%3D%3D10&#x60;). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company%3D%3DAcme%2A&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate%3C%3D2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags%3D%3Dred&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -2618,7 +3552,7 @@ namespace Keap.Core.V2.Api
         /// List Tasks Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id&#x3D;&#x3D;UNASSIGNED.
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;priority&#x60;  — one of &#x60;CRITICAL&#x60;, &#x60;ESSENTIAL&#x60;, &#x60;NONESSENTIAL&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;priority%3D%3DCRITICAL&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. &#x60;filter&#x3D;cf_priority%3D%3D10&#x60;). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company%3D%3DAcme%2A&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate%3C%3D2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags%3D%3Dred&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -3502,6 +4436,221 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateTaskCustomFieldGroup", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update a Task Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        public CustomFieldTab UpdateTaskCustomFieldTab(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = UpdateTaskCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update a Task Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldTab> UpdateTaskCustomFieldTabWithHttpInfo(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling TaskApi->UpdateTaskCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateMask' is set
+            if (updateMask == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateMask' when calling TaskApi->UpdateTaskCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateCustomFieldTabRequest' is set
+            if (updateCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateCustomFieldTabRequest' when calling TaskApi->UpdateTaskCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+            localVarRequestOptions.Data = updateCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "TaskApi.UpdateTaskCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<CustomFieldTab>("/rest/v2/tasks/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateTaskCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update a Task Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        public async System.Threading.Tasks.Task<CustomFieldTab> UpdateTaskCustomFieldTabAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = await UpdateTaskCustomFieldTabWithHttpInfoAsync(tabId, updateMask, updateCustomFieldTabRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update a Task Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldTab>> UpdateTaskCustomFieldTabWithHttpInfoAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling TaskApi->UpdateTaskCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateMask' is set
+            if (updateMask == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateMask' when calling TaskApi->UpdateTaskCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateCustomFieldTabRequest' is set
+            if (updateCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateCustomFieldTabRequest' when calling TaskApi->UpdateTaskCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+            localVarRequestOptions.Data = updateCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "TaskApi.UpdateTaskCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<CustomFieldTab>("/rest/v2/tasks/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateTaskCustomFieldTab", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

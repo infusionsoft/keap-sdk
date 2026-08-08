@@ -48,8 +48,8 @@ namespace Keap.Core.V2.Model
         /// <param name="includeInForecast">Include in sales forecast.</param>
         /// <param name="projectedRevenueLow">Low revenue estimate.</param>
         /// <param name="projectedRevenueHigh">High revenue estimate.</param>
-        /// <param name="contactId">Associated contact ID.</param>
-        /// <param name="stageId">Pipeline stage ID.</param>
+        /// <param name="contactId">Associated contact ID (required).</param>
+        /// <param name="stageId">Pipeline stage ID (required).</param>
         /// <param name="userId">Assigned user ID.</param>
         /// <param name="customFields">customFields.</param>
         /// <param name="affiliateId">Affiliate ID.</param>
@@ -61,6 +61,18 @@ namespace Keap.Core.V2.Model
                 throw new ArgumentNullException("opportunityTitle is a required property for CreateOpportunityRequest and cannot be null");
             }
             this.OpportunityTitle = opportunityTitle;
+            // to ensure "contactId" is required (not null)
+            if (contactId == null)
+            {
+                throw new ArgumentNullException("contactId is a required property for CreateOpportunityRequest and cannot be null");
+            }
+            this.ContactId = contactId;
+            // to ensure "stageId" is required (not null)
+            if (stageId == null)
+            {
+                throw new ArgumentNullException("stageId is a required property for CreateOpportunityRequest and cannot be null");
+            }
+            this.StageId = stageId;
             this.NextActionTime = nextActionTime;
             this.NextActionNotes = nextActionNotes;
             this.OpportunityNotes = opportunityNotes;
@@ -68,8 +80,6 @@ namespace Keap.Core.V2.Model
             this.IncludeInForecast = includeInForecast;
             this.ProjectedRevenueLow = projectedRevenueLow;
             this.ProjectedRevenueHigh = projectedRevenueHigh;
-            this.ContactId = contactId;
-            this.StageId = stageId;
             this.UserId = userId;
             this.CustomFields = customFields;
             this.AffiliateId = affiliateId;
@@ -162,7 +172,7 @@ namespace Keap.Core.V2.Model
         /*
         <example>1001</example>
         */
-        [DataMember(Name = "contact_id", EmitDefaultValue = false)]
+        [DataMember(Name = "contact_id", IsRequired = true, EmitDefaultValue = true)]
         public string ContactId { get; set; }
 
         /// <summary>
@@ -172,7 +182,7 @@ namespace Keap.Core.V2.Model
         /*
         <example>2</example>
         */
-        [DataMember(Name = "stage_id", EmitDefaultValue = false)]
+        [DataMember(Name = "stage_id", IsRequired = true, EmitDefaultValue = true)]
         public string StageId { get; set; }
 
         /// <summary>

@@ -14,7 +14,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-__version__ = "2.0.18"
+__version__ = "2.0.19"
 
 # import apis into sdk package
 from keap_core_v2_client.api.affiliate_api import AffiliateApi
@@ -161,6 +161,7 @@ from keap_core_v2_client.models.create_custom_field_group_request import CreateC
 from keap_core_v2_client.models.create_custom_field_option_request import CreateCustomFieldOptionRequest
 from keap_core_v2_client.models.create_custom_field_request import CreateCustomFieldRequest
 from keap_core_v2_client.models.create_custom_field_response import CreateCustomFieldResponse
+from keap_core_v2_client.models.create_custom_field_tab_request import CreateCustomFieldTabRequest
 from keap_core_v2_client.models.create_default_commission_program_request import CreateDefaultCommissionProgramRequest
 from keap_core_v2_client.models.create_email_sent_request import CreateEmailSentRequest
 from keap_core_v2_client.models.create_emails_sent_request import CreateEmailsSentRequest
@@ -208,6 +209,7 @@ from keap_core_v2_client.models.custom_field import CustomField
 from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
 from keap_core_v2_client.models.custom_field_meta_data import CustomFieldMetaData
 from keap_core_v2_client.models.custom_field_option import CustomFieldOption
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
 from keap_core_v2_client.models.custom_field_value import CustomFieldValue
 from keap_core_v2_client.models.custom_field_value_object import CustomFieldValueObject
 from keap_core_v2_client.models.default_commission import DefaultCommission
@@ -226,6 +228,7 @@ from keap_core_v2_client.models.email_sent import EmailSent
 from keap_core_v2_client.models.email_sent_create_error import EmailSentCreateError
 from keap_core_v2_client.models.email_sent_with_content import EmailSentWithContent
 from keap_core_v2_client.models.email_template import EmailTemplate
+from keap_core_v2_client.models.email_template_summary import EmailTemplateSummary
 from keap_core_v2_client.models.emails_sent_list import EmailsSentList
 from keap_core_v2_client.models.error import Error
 from keap_core_v2_client.models.error_details import ErrorDetails
@@ -281,7 +284,9 @@ from keap_core_v2_client.models.list_contact_tags_response import ListContactTag
 from keap_core_v2_client.models.list_contacts_response import ListContactsResponse
 from keap_core_v2_client.models.list_countries_response import ListCountriesResponse
 from keap_core_v2_client.models.list_custom_field_groups_response import ListCustomFieldGroupsResponse
+from keap_core_v2_client.models.list_custom_field_tabs_response import ListCustomFieldTabsResponse
 from keap_core_v2_client.models.list_email_address_status_response import ListEmailAddressStatusResponse
+from keap_core_v2_client.models.list_email_templates_response import ListEmailTemplatesResponse
 from keap_core_v2_client.models.list_emails_sent_response import ListEmailsSentResponse
 from keap_core_v2_client.models.list_files_response import ListFilesResponse
 from keap_core_v2_client.models.list_free_trial_discounts_response import ListFreeTrialDiscountsResponse
@@ -316,6 +321,7 @@ from keap_core_v2_client.models.list_shipping_discounts_response import ListShip
 from keap_core_v2_client.models.list_subscription_plans_response import ListSubscriptionPlansResponse
 from keap_core_v2_client.models.list_subscriptions_response import ListSubscriptionsResponse
 from keap_core_v2_client.models.list_tag_categories_response import ListTagCategoriesResponse
+from keap_core_v2_client.models.list_tag_contact_associations_response import ListTagContactAssociationsResponse
 from keap_core_v2_client.models.list_tagged_companies_response import ListTaggedCompaniesResponse
 from keap_core_v2_client.models.list_tagged_contacts_response import ListTaggedContactsResponse
 from keap_core_v2_client.models.list_tags_response import ListTagsResponse
@@ -396,6 +402,7 @@ from keap_core_v2_client.models.subscription_plan_detail import SubscriptionPlan
 from keap_core_v2_client.models.subscription_plan_list import SubscriptionPlanList
 from keap_core_v2_client.models.tag import Tag
 from keap_core_v2_client.models.tag_category import TagCategory
+from keap_core_v2_client.models.tag_contact_association import TagContactAssociation
 from keap_core_v2_client.models.tagged_company import TaggedCompany
 from keap_core_v2_client.models.tagged_contact import TaggedContact
 from keap_core_v2_client.models.task import Task
@@ -410,6 +417,7 @@ from keap_core_v2_client.models.update_company_request import UpdateCompanyReque
 from keap_core_v2_client.models.update_contact_link_type_request import UpdateContactLinkTypeRequest
 from keap_core_v2_client.models.update_custom_field_group_request import UpdateCustomFieldGroupRequest
 from keap_core_v2_client.models.update_custom_field_meta_data_request import UpdateCustomFieldMetaDataRequest
+from keap_core_v2_client.models.update_custom_field_tab_request import UpdateCustomFieldTabRequest
 from keap_core_v2_client.models.update_default_commission_program_request import UpdateDefaultCommissionProgramRequest
 from keap_core_v2_client.models.update_email_address import UpdateEmailAddress
 from keap_core_v2_client.models.update_free_trial_discount_criteria import UpdateFreeTrialDiscountCriteria

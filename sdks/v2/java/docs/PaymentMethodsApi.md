@@ -10,8 +10,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**deletePaymentMethodWithHttpInfo**](PaymentMethodsApi.md#deletePaymentMethodWithHttpInfo) | **DELETE** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Contact Payment Method |
 | [**listPaymentMethods**](PaymentMethodsApi.md#listPaymentMethods) | **GET** /rest/v2/paymentMethods | List of Payment Methods |
 | [**listPaymentMethodsWithHttpInfo**](PaymentMethodsApi.md#listPaymentMethodsWithHttpInfo) | **GET** /rest/v2/paymentMethods | List of Payment Methods |
-| [**listPaymentMethods_0**](PaymentMethodsApi.md#listPaymentMethods_0) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods |
-| [**listPaymentMethods_0WithHttpInfo**](PaymentMethodsApi.md#listPaymentMethods_0WithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods |
+| [**listPaymentMethods1**](PaymentMethodsApi.md#listPaymentMethods1) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods |
+| [**listPaymentMethods1WithHttpInfo**](PaymentMethodsApi.md#listPaymentMethods1WithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods |
 
 
 
@@ -511,9 +511,9 @@ ApiResponse<[**ListPaymentMethodsResponse**](ListPaymentMethodsResponse.md)>
 | **501** | Method Not Implemented |  -  |
 
 
-## listPaymentMethods_0
+## listPaymentMethods1
 
-> ListContactPaymentMethodsResponse listPaymentMethods_0(contactId, filter, orderBy, pageSize, pageToken)
+> ListContactPaymentMethodsResponse listPaymentMethods1(contactId, filter, pageToken, orderBy, pageSize)
 
 List of Contact Payment Methods
 
@@ -542,14 +542,14 @@ public class Example {
         PaymentMethodsApi apiInstance = new PaymentMethodsApi(defaultClient);
         String contactId = "contactId_example"; // String | ID of the contact to which the payment method belongs.
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`  
+        String pageToken = "pageToken_example"; // String | Page token
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `desc` - `asc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
-        String pageToken = "pageToken_example"; // String | Page token
         try {
-            ListContactPaymentMethodsResponse result = apiInstance.listPaymentMethods_0(contactId, filter, orderBy, pageSize, pageToken);
+            ListContactPaymentMethodsResponse result = apiInstance.listPaymentMethods1(contactId, filter, pageToken, orderBy, pageSize);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling PaymentMethodsApi#listPaymentMethods_0");
+            System.err.println("Exception when calling PaymentMethodsApi#listPaymentMethods1");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -566,9 +566,9 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **contactId** | **String**| ID of the contact to which the payment method belongs. | |
 | **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   | [optional] |
+| **pageToken** | **String**| Page token | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
-| **pageToken** | **String**| Page token | [optional] |
 
 ### Return type
 
@@ -597,9 +597,9 @@ public class Example {
 | **500** | Internal Server Error |  -  |
 | **501** | Method Not Implemented |  -  |
 
-## listPaymentMethods_0WithHttpInfo
+## listPaymentMethods1WithHttpInfo
 
-> ApiResponse<ListContactPaymentMethodsResponse> listPaymentMethods_0 listPaymentMethods_0WithHttpInfo(contactId, filter, orderBy, pageSize, pageToken)
+> ApiResponse<ListContactPaymentMethodsResponse> listPaymentMethods1 listPaymentMethods1WithHttpInfo(contactId, filter, pageToken, orderBy, pageSize)
 
 List of Contact Payment Methods
 
@@ -629,16 +629,16 @@ public class Example {
         PaymentMethodsApi apiInstance = new PaymentMethodsApi(defaultClient);
         String contactId = "contactId_example"; // String | ID of the contact to which the payment method belongs.
         String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`  
+        String pageToken = "pageToken_example"; // String | Page token
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `desc` - `asc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
-        String pageToken = "pageToken_example"; // String | Page token
         try {
-            ApiResponse<ListContactPaymentMethodsResponse> response = apiInstance.listPaymentMethods_0WithHttpInfo(contactId, filter, orderBy, pageSize, pageToken);
+            ApiResponse<ListContactPaymentMethodsResponse> response = apiInstance.listPaymentMethods1WithHttpInfo(contactId, filter, pageToken, orderBy, pageSize);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling PaymentMethodsApi#listPaymentMethods_0");
+            System.err.println("Exception when calling PaymentMethodsApi#listPaymentMethods1");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -655,9 +655,9 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **contactId** | **String**| ID of the contact to which the payment method belongs. | |
 | **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   | [optional] |
+| **pageToken** | **String**| Page token | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
-| **pageToken** | **String**| Page token | [optional] |
 
 ### Return type
 

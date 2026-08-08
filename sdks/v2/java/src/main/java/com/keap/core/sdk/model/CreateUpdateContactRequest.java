@@ -243,11 +243,11 @@ public class CreateUpdateContactRequest implements Serializable {
   }
 
   /**
-   * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+   * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
    * @return addresses
    */
   @jakarta.annotation.Nullable  @Valid
-  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
   @JsonProperty(JSON_PROPERTY_ADDRESSES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<@Valid Address> getAddresses() {
@@ -369,7 +369,7 @@ public class CreateUpdateContactRequest implements Serializable {
    * Personal website URL
    * @return website
    */
-  @jakarta.annotation.Nullable  @Schema(example = "https://thryv.com", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Personal website URL")
+  @jakarta.annotation.Nullable @Size(max=100)  @Schema(example = "https://thryv.com", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Personal website URL")
   @JsonProperty(JSON_PROPERTY_WEBSITE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getWebsite() {
@@ -470,11 +470,11 @@ public class CreateUpdateContactRequest implements Serializable {
   }
 
   /**
-   * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+   * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
    * @return customFields
    */
   @jakarta.annotation.Nullable  @Valid
-  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
   @JsonProperty(JSON_PROPERTY_CUSTOM_FIELDS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<@Valid CustomFieldValue> getCustomFields() {
@@ -503,11 +503,11 @@ public class CreateUpdateContactRequest implements Serializable {
   }
 
   /**
-   * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+   * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
    * @return emailAddresses
    */
   @jakarta.annotation.Nullable  @Valid
-  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
   @JsonProperty(JSON_PROPERTY_EMAIL_ADDRESSES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<@Valid EmailAddressRequest> getEmailAddresses() {
@@ -531,7 +531,7 @@ public class CreateUpdateContactRequest implements Serializable {
    * Last name / surname
    * @return familyName
    */
-  @jakarta.annotation.Nullable  @Schema(example = "Smith", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Last name / surname")
+  @jakarta.annotation.Nullable @Size(max=40)  @Schema(example = "Smith", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Last name / surname")
   @JsonProperty(JSON_PROPERTY_FAMILY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFamilyName() {
@@ -560,11 +560,11 @@ public class CreateUpdateContactRequest implements Serializable {
   }
 
   /**
-   * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+   * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
    * @return faxNumbers
    */
   @jakarta.annotation.Nullable  @Valid
-  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
   @JsonProperty(JSON_PROPERTY_FAX_NUMBERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<@Valid FaxNumber> getFaxNumbers() {
@@ -588,7 +588,7 @@ public class CreateUpdateContactRequest implements Serializable {
    * First name
    * @return givenName
    */
-  @jakarta.annotation.Nullable  @Schema(example = "John", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "First name")
+  @jakarta.annotation.Nullable @Size(max=40)  @Schema(example = "John", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "First name")
   @JsonProperty(JSON_PROPERTY_GIVEN_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getGivenName() {
@@ -612,7 +612,7 @@ public class CreateUpdateContactRequest implements Serializable {
    * Job title
    * @return jobTitle
    */
-  @jakarta.annotation.Nullable  @Schema(example = "Senior Software Engineer", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Job title")
+  @jakarta.annotation.Nullable @Size(max=255)  @Schema(example = "Senior Software Engineer", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Job title")
   @JsonProperty(JSON_PROPERTY_JOB_TITLE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getJobTitle() {
@@ -660,7 +660,7 @@ public class CreateUpdateContactRequest implements Serializable {
    * Middle name
    * @return middleName
    */
-  @jakarta.annotation.Nullable  @Schema(example = "Robert", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Middle name")
+  @jakarta.annotation.Nullable @Size(max=100)  @Schema(example = "Robert", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Middle name")
   @JsonProperty(JSON_PROPERTY_MIDDLE_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getMiddleName() {
@@ -713,11 +713,11 @@ public class CreateUpdateContactRequest implements Serializable {
   }
 
   /**
-   * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+   * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
    * @return phoneNumbers
    */
   @jakarta.annotation.Nullable  @Valid
-  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
   @JsonProperty(JSON_PROPERTY_PHONE_NUMBERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<@Valid PhoneNumber> getPhoneNumbers() {
@@ -765,7 +765,7 @@ public class CreateUpdateContactRequest implements Serializable {
    * Preferred name or nickname
    * @return preferredName
    */
-  @jakarta.annotation.Nullable  @Schema(example = "Johnny", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Preferred name or nickname")
+  @jakarta.annotation.Nullable @Size(max=100)  @Schema(example = "Johnny", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Preferred name or nickname")
   @JsonProperty(JSON_PROPERTY_PREFERRED_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPreferredName() {
@@ -818,11 +818,11 @@ public class CreateUpdateContactRequest implements Serializable {
   }
 
   /**
-   * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+   * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
    * @return socialAccounts
    */
   @jakarta.annotation.Nullable  @Valid
-  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
   @JsonProperty(JSON_PROPERTY_SOCIAL_ACCOUNTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<@Valid SocialAccount> getSocialAccounts() {
@@ -870,7 +870,7 @@ public class CreateUpdateContactRequest implements Serializable {
    * Spouse&#39;s name
    * @return spouseName
    */
-  @jakarta.annotation.Nullable  @Schema(example = "Jane Smith", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Spouse's name")
+  @jakarta.annotation.Nullable @Size(max=100)  @Schema(example = "Jane Smith", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Spouse's name")
   @JsonProperty(JSON_PROPERTY_SPOUSE_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getSpouseName() {
@@ -940,10 +940,10 @@ public class CreateUpdateContactRequest implements Serializable {
   }
 
   /**
-   * Get assistantName
+   * Assistant&#39;s name
    * @return assistantName
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable @Size(max=20)  @Schema(example = "Pat Doe", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Assistant's name")
   @JsonProperty(JSON_PROPERTY_ASSISTANT_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAssistantName() {
@@ -964,10 +964,10 @@ public class CreateUpdateContactRequest implements Serializable {
   }
 
   /**
-   * Get assistantPhone
+   * Assistant&#39;s phone number
    * @return assistantPhone
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable @Size(max=15)  @Schema(example = "5551234567", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Assistant's phone number")
   @JsonProperty(JSON_PROPERTY_ASSISTANT_PHONE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAssistantPhone() {
@@ -988,10 +988,10 @@ public class CreateUpdateContactRequest implements Serializable {
   }
 
   /**
-   * Get billingInformation
+   * Billing information
    * @return billingInformation
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @jakarta.annotation.Nullable @Size(max=100)  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Billing information")
   @JsonProperty(JSON_PROPERTY_BILLING_INFORMATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getBillingInformation() {

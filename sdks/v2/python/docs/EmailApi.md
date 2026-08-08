@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**delete_emails**](EmailApi.md#delete_emails) | **POST** /rest/v2/emails:batchRemove | Remove a set of Email Records
 [**get_email**](EmailApi.md#get_email) | **GET** /rest/v2/emails/{id} | Retrieve an Email
 [**get_email_template**](EmailApi.md#get_email_template) | **GET** /rest/v2/emails/templates/{email_template_id} | Retrieve an email template
+[**list_email_templates**](EmailApi.md#list_email_templates) | **GET** /rest/v2/emails/templates | List email templates
 [**list_emails**](EmailApi.md#list_emails) | **GET** /rest/v2/emails | List Emails
 [**send_email**](EmailApi.md#send_email) | **POST** /rest/v2/emails:send | Send an Email
 [**send_email_template**](EmailApi.md#send_email_template) | **POST** /rest/v2/emails/templates:send | Send an email based on a template
@@ -475,6 +476,93 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmailTemplate**](EmailTemplate.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_email_templates**
+> ListEmailTemplatesResponse list_email_templates(filter=filter, page_token=page_token, order_by=order_by, page_size=page_size)
+
+List email templates
+
+Retrieves a paginated list of email templates
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_email_templates_response import ListEmailTemplatesResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.EmailApi(api_client)
+    filter = 'filter_example' # str | Search filter to apply to results (optional)
+    page_token = 'page_token_example' # str | Page token (optional)
+    order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id` One of the following directions: - `asc` - `desc` (optional)
+    page_size = 0 # int | Total number of items to return per page (optional)
+
+    try:
+        # List email templates
+        api_response = api_instance.list_email_templates(filter=filter, page_token=page_token, order_by=order_by, page_size=page_size)
+        print("The response of EmailApi->list_email_templates:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling EmailApi->list_email_templates: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | **str**| Search filter to apply to results | [optional] 
+ **page_token** | **str**| Page token | [optional] 
+ **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
+ **page_size** | **int**| Total number of items to return per page | [optional] 
+
+### Return type
+
+[**ListEmailTemplatesResponse**](ListEmailTemplatesResponse.md)
 
 ### Authorization
 

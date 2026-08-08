@@ -131,12 +131,12 @@ public class Address implements Serializable {
   }
 
   /**
-   * Deprecated. The long-name descriptive version of the Country Code. Please use &#39;country_code&#39; for POST/PATCH operations.
+   * Deprecated. The long-name descriptive version of the Country Code. Please use &#39;country_code&#39; for POST/PATCH operations. Maximum length is 100 characters.
    * @return country
    * @deprecated
    */
   @Deprecated
-  @jakarta.annotation.Nullable  @Schema(example = "United States of America", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Deprecated. The long-name descriptive version of the Country Code. Please use 'country_code' for POST/PATCH operations.")
+  @jakarta.annotation.Nullable  @Schema(example = "United States of America", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Deprecated. The long-name descriptive version of the Country Code. Please use 'country_code' for POST/PATCH operations. Maximum length is 100 characters.")
   @JsonProperty(JSON_PROPERTY_COUNTRY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCountry() {
@@ -157,10 +157,10 @@ public class Address implements Serializable {
   }
 
   /**
-   * Street address line 1
+   * Street address line 1. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
    * @return line1
    */
-  @jakarta.annotation.Nullable  @Schema(example = "123", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Street address line 1")
+  @jakarta.annotation.Nullable  @Schema(example = "123", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Street address line 1. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.")
   @JsonProperty(JSON_PROPERTY_LINE1)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLine1() {
@@ -181,10 +181,10 @@ public class Address implements Serializable {
   }
 
   /**
-   * Street address line 2
+   * Street address line 2. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
    * @return line2
    */
-  @jakarta.annotation.Nullable  @Schema(example = "Suite 100", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Street address line 2")
+  @jakarta.annotation.Nullable  @Schema(example = "Suite 100", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Street address line 2. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.")
   @JsonProperty(JSON_PROPERTY_LINE2)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLine2() {
@@ -205,10 +205,10 @@ public class Address implements Serializable {
   }
 
   /**
-   * The municipality to which the address belongs
+   * The municipality to which the address belongs. Maximum length is 50 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
    * @return locality
    */
-  @jakarta.annotation.Nullable  @Schema(example = "Phoenix", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The municipality to which the address belongs")
+  @jakarta.annotation.Nullable  @Schema(example = "Phoenix", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The municipality to which the address belongs. Maximum length is 50 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.")
   @JsonProperty(JSON_PROPERTY_LOCALITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLocality() {
@@ -229,12 +229,12 @@ public class Address implements Serializable {
   }
 
   /**
-   * The long-name descriptive version of the Region Code. Please use &#39;region_code&#39; for POST/PATCH operations.
+   * The long-name descriptive version of the Region Code. Please use &#39;region_code&#39; for POST/PATCH operations. Maximum length is 50 characters.
    * @return region
    * @deprecated
    */
   @Deprecated
-  @jakarta.annotation.Nullable  @Schema(example = "Arizona", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The long-name descriptive version of the Region Code. Please use 'region_code' for POST/PATCH operations.")
+  @jakarta.annotation.Nullable  @Schema(example = "Arizona", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The long-name descriptive version of the Region Code. Please use 'region_code' for POST/PATCH operations. Maximum length is 50 characters.")
   @JsonProperty(JSON_PROPERTY_REGION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getRegion() {
@@ -303,10 +303,10 @@ public class Address implements Serializable {
   }
 
   /**
-   * Postal or ZIP code
+   * Postal or ZIP code. Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.
    * @return postalCode
    */
-  @jakarta.annotation.Nullable  @Schema(example = "85001", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Postal or ZIP code")
+  @jakarta.annotation.Nullable  @Schema(example = "85001", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Postal or ZIP code. Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.")
   @JsonProperty(JSON_PROPERTY_POSTAL_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPostalCode() {
@@ -351,10 +351,10 @@ public class Address implements Serializable {
   }
 
   /**
-   * ZIP code (US)
+   * ZIP code (US). Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.
    * @return zipCode
    */
-  @jakarta.annotation.Nullable  @Schema(example = "85001", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "ZIP code (US)")
+  @jakarta.annotation.Nullable  @Schema(example = "85001", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "ZIP code (US). Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.")
   @JsonProperty(JSON_PROPERTY_ZIP_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getZipCode() {
@@ -375,10 +375,10 @@ public class Address implements Serializable {
   }
 
   /**
-   * ZIP+4 extension
+   * ZIP+4 extension. Maximum length is 10 characters.
    * @return zipFour
    */
-  @jakarta.annotation.Nullable  @Schema(example = "1234", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "ZIP+4 extension")
+  @jakarta.annotation.Nullable  @Schema(example = "1234", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "ZIP+4 extension. Maximum length is 10 characters.")
   @JsonProperty(JSON_PROPERTY_ZIP_FOUR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getZipFour() {

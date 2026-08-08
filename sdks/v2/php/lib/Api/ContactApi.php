@@ -83,6 +83,9 @@ class ContactApi
         'createContactCustomFieldGroup' => [
             'application/json',
         ],
+        'createContactCustomFieldTab' => [
+            'application/json',
+        ],
         'createContactLinkType' => [
             'application/json',
         ],
@@ -95,6 +98,9 @@ class ContactApi
         'deleteContactCustomFieldGroup' => [
             'application/json',
         ],
+        'deleteContactCustomFieldTab' => [
+            'application/json',
+        ],
         'deleteContactLinkType' => [
             'application/json',
         ],
@@ -104,10 +110,16 @@ class ContactApi
         'getContactCustomFieldGroup' => [
             'application/json',
         ],
+        'getContactCustomFieldTab' => [
+            'application/json',
+        ],
         'linkContacts' => [
             'application/json',
         ],
         'listContactCustomFieldGroups' => [
+            'application/json',
+        ],
+        'listContactCustomFieldTabs' => [
             'application/json',
         ],
         'listContactLinkTypes' => [
@@ -135,6 +147,9 @@ class ContactApi
             'application/json',
         ],
         'updateContactCustomFieldGroup' => [
+            'application/json',
+        ],
+        'updateContactCustomFieldTab' => [
             'application/json',
         ],
         'updateContactLinkType' => [
@@ -1330,6 +1345,389 @@ class ContactApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_custom_field_group_request));
             } else {
                 $httpBody = $create_custom_field_group_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createContactCustomFieldTab
+     *
+     * Create a Contact Custom Field Tab
+     *
+     * @param  \Keap\Core\V2\Model\CreateCustomFieldTabRequest $create_custom_field_tab_request create_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function createContactCustomFieldTab($create_custom_field_tab_request, string $contentType = self::contentTypes['createContactCustomFieldTab'][0])
+    {
+        list($response) = $this->createContactCustomFieldTabWithHttpInfo($create_custom_field_tab_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createContactCustomFieldTabWithHttpInfo
+     *
+     * Create a Contact Custom Field Tab
+     *
+     * @param  \Keap\Core\V2\Model\CreateCustomFieldTabRequest $create_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createContactCustomFieldTabWithHttpInfo($create_custom_field_tab_request, string $contentType = self::contentTypes['createContactCustomFieldTab'][0])
+    {
+        $request = $this->createContactCustomFieldTabRequest($create_custom_field_tab_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\CustomFieldTab',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createContactCustomFieldTabAsync
+     *
+     * Create a Contact Custom Field Tab
+     *
+     * @param  \Keap\Core\V2\Model\CreateCustomFieldTabRequest $create_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createContactCustomFieldTabAsync($create_custom_field_tab_request, string $contentType = self::contentTypes['createContactCustomFieldTab'][0])
+    {
+        return $this->createContactCustomFieldTabAsyncWithHttpInfo($create_custom_field_tab_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createContactCustomFieldTabAsyncWithHttpInfo
+     *
+     * Create a Contact Custom Field Tab
+     *
+     * @param  \Keap\Core\V2\Model\CreateCustomFieldTabRequest $create_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createContactCustomFieldTabAsyncWithHttpInfo($create_custom_field_tab_request, string $contentType = self::contentTypes['createContactCustomFieldTab'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\CustomFieldTab';
+        $request = $this->createContactCustomFieldTabRequest($create_custom_field_tab_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createContactCustomFieldTab'
+     *
+     * @param  \Keap\Core\V2\Model\CreateCustomFieldTabRequest $create_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createContactCustomFieldTabRequest($create_custom_field_tab_request, string $contentType = self::contentTypes['createContactCustomFieldTab'][0])
+    {
+
+        // verify the required parameter 'create_custom_field_tab_request' is set
+        if ($create_custom_field_tab_request === null || (is_array($create_custom_field_tab_request) && count($create_custom_field_tab_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_custom_field_tab_request when calling createContactCustomFieldTab'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/contacts/model/customFields/tabs';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_custom_field_tab_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_custom_field_tab_request));
+            } else {
+                $httpBody = $create_custom_field_tab_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2623,6 +3021,292 @@ class ContactApi
     }
 
     /**
+     * Operation deleteContactCustomFieldTab
+     *
+     * Delete a Contact Custom Field Tab
+     *
+     * @param  string $tab_id tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteContactCustomFieldTab($tab_id, string $contentType = self::contentTypes['deleteContactCustomFieldTab'][0])
+    {
+        $this->deleteContactCustomFieldTabWithHttpInfo($tab_id, $contentType);
+    }
+
+    /**
+     * Operation deleteContactCustomFieldTabWithHttpInfo
+     *
+     * Delete a Contact Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteContactCustomFieldTabWithHttpInfo($tab_id, string $contentType = self::contentTypes['deleteContactCustomFieldTab'][0])
+    {
+        $request = $this->deleteContactCustomFieldTabRequest($tab_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteContactCustomFieldTabAsync
+     *
+     * Delete a Contact Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteContactCustomFieldTabAsync($tab_id, string $contentType = self::contentTypes['deleteContactCustomFieldTab'][0])
+    {
+        return $this->deleteContactCustomFieldTabAsyncWithHttpInfo($tab_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteContactCustomFieldTabAsyncWithHttpInfo
+     *
+     * Delete a Contact Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteContactCustomFieldTabAsyncWithHttpInfo($tab_id, string $contentType = self::contentTypes['deleteContactCustomFieldTab'][0])
+    {
+        $returnType = '';
+        $request = $this->deleteContactCustomFieldTabRequest($tab_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteContactCustomFieldTab'
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteContactCustomFieldTabRequest($tab_id, string $contentType = self::contentTypes['deleteContactCustomFieldTab'][0])
+    {
+
+        // verify the required parameter 'tab_id' is set
+        if ($tab_id === null || (is_array($tab_id) && count($tab_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tab_id when calling deleteContactCustomFieldTab'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/contacts/model/customFields/tabs/{tab_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($tab_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tab_id' . '}',
+                ObjectSerializer::toPathValue($tab_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation deleteContactLinkType
      *
      * Delete a Contact Link type
@@ -3692,6 +4376,390 @@ class ContactApi
     }
 
     /**
+     * Operation getContactCustomFieldTab
+     *
+     * Retrieve a Contact Custom Field Tab
+     *
+     * @param  string $tab_id tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function getContactCustomFieldTab($tab_id, string $contentType = self::contentTypes['getContactCustomFieldTab'][0])
+    {
+        list($response) = $this->getContactCustomFieldTabWithHttpInfo($tab_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getContactCustomFieldTabWithHttpInfo
+     *
+     * Retrieve a Contact Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getContactCustomFieldTabWithHttpInfo($tab_id, string $contentType = self::contentTypes['getContactCustomFieldTab'][0])
+    {
+        $request = $this->getContactCustomFieldTabRequest($tab_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\CustomFieldTab',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getContactCustomFieldTabAsync
+     *
+     * Retrieve a Contact Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getContactCustomFieldTabAsync($tab_id, string $contentType = self::contentTypes['getContactCustomFieldTab'][0])
+    {
+        return $this->getContactCustomFieldTabAsyncWithHttpInfo($tab_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getContactCustomFieldTabAsyncWithHttpInfo
+     *
+     * Retrieve a Contact Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getContactCustomFieldTabAsyncWithHttpInfo($tab_id, string $contentType = self::contentTypes['getContactCustomFieldTab'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\CustomFieldTab';
+        $request = $this->getContactCustomFieldTabRequest($tab_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getContactCustomFieldTab'
+     *
+     * @param  string $tab_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getContactCustomFieldTabRequest($tab_id, string $contentType = self::contentTypes['getContactCustomFieldTab'][0])
+    {
+
+        // verify the required parameter 'tab_id' is set
+        if ($tab_id === null || (is_array($tab_id) && count($tab_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tab_id when calling getContactCustomFieldTab'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/contacts/model/customFields/tabs/{tab_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($tab_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tab_id' . '}',
+                ObjectSerializer::toPathValue($tab_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation linkContacts
      *
      * Link Contacts
@@ -4392,6 +5460,370 @@ class ContactApi
             true, // explode
             false // required
         ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listContactCustomFieldTabs
+     *
+     * List Contact Custom Field Tabs
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listContactCustomFieldTabs'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\ListCustomFieldTabsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function listContactCustomFieldTabs(string $contentType = self::contentTypes['listContactCustomFieldTabs'][0])
+    {
+        list($response) = $this->listContactCustomFieldTabsWithHttpInfo($contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listContactCustomFieldTabsWithHttpInfo
+     *
+     * List Contact Custom Field Tabs
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listContactCustomFieldTabs'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\ListCustomFieldTabsResponse|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listContactCustomFieldTabsWithHttpInfo(string $contentType = self::contentTypes['listContactCustomFieldTabs'][0])
+    {
+        $request = $this->listContactCustomFieldTabsRequest($contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\ListCustomFieldTabsResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\ListCustomFieldTabsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\ListCustomFieldTabsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listContactCustomFieldTabsAsync
+     *
+     * List Contact Custom Field Tabs
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listContactCustomFieldTabs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listContactCustomFieldTabsAsync(string $contentType = self::contentTypes['listContactCustomFieldTabs'][0])
+    {
+        return $this->listContactCustomFieldTabsAsyncWithHttpInfo($contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listContactCustomFieldTabsAsyncWithHttpInfo
+     *
+     * List Contact Custom Field Tabs
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listContactCustomFieldTabs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listContactCustomFieldTabsAsyncWithHttpInfo(string $contentType = self::contentTypes['listContactCustomFieldTabs'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\ListCustomFieldTabsResponse';
+        $request = $this->listContactCustomFieldTabsRequest($contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listContactCustomFieldTabs'
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listContactCustomFieldTabs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listContactCustomFieldTabsRequest(string $contentType = self::contentTypes['listContactCustomFieldTabs'][0])
+    {
+
+
+        $resourcePath = '/rest/v2/contacts/model/customFields/tabs';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
 
 
 
@@ -5273,7 +6705,7 @@ class ContactApi
      * List Contacts
      *
      * @param  string[]|null $fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter) (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter) (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -5295,7 +6727,7 @@ class ContactApi
      * List Contacts
      *
      * @param  string[]|null $fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter) (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter) (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -5496,7 +6928,7 @@ class ContactApi
      * List Contacts
      *
      * @param  string[]|null $fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter) (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter) (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -5521,7 +6953,7 @@ class ContactApi
      * List Contacts
      *
      * @param  string[]|null $fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter) (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter) (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -5575,7 +7007,7 @@ class ContactApi
      * Create request for operation 'listContacts'
      *
      * @param  string[]|null $fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)
-     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter) (optional)
+     * @param  string|null $filter Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter) (optional)
      * @param  string|null $order_by Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
      * @param  int|null $page_size Total number of items to return per page (optional)
      * @param  string|null $page_token Page token (optional)
@@ -8015,6 +9447,430 @@ class ContactApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_custom_field_group_request));
             } else {
                 $httpBody = $update_custom_field_group_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateContactCustomFieldTab
+     *
+     * Update a Contact Custom Field Tab
+     *
+     * @param  string $tab_id tab_id (required)
+     * @param  string[] $update_mask Comma-separated list of fields to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldTabRequest $update_custom_field_tab_request update_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error
+     */
+    public function updateContactCustomFieldTab($tab_id, $update_mask, $update_custom_field_tab_request, string $contentType = self::contentTypes['updateContactCustomFieldTab'][0])
+    {
+        list($response) = $this->updateContactCustomFieldTabWithHttpInfo($tab_id, $update_mask, $update_custom_field_tab_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateContactCustomFieldTabWithHttpInfo
+     *
+     * Update a Contact Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string[] $update_mask Comma-separated list of fields to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldTabRequest $update_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \Keap\Core\V2\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Keap\Core\V2\Model\CustomFieldTab|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error|\Keap\Core\V2\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateContactCustomFieldTabWithHttpInfo($tab_id, $update_mask, $update_custom_field_tab_request, string $contentType = self::contentTypes['updateContactCustomFieldTab'][0])
+    {
+        $request = $this->updateContactCustomFieldTabRequest($tab_id, $update_mask, $update_custom_field_tab_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 501:
+                    return $this->handleResponseWithDataType(
+                        '\Keap\Core\V2\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Keap\Core\V2\Model\CustomFieldTab',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\CustomFieldTab',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 501:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Keap\Core\V2\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateContactCustomFieldTabAsync
+     *
+     * Update a Contact Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string[] $update_mask Comma-separated list of fields to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldTabRequest $update_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateContactCustomFieldTabAsync($tab_id, $update_mask, $update_custom_field_tab_request, string $contentType = self::contentTypes['updateContactCustomFieldTab'][0])
+    {
+        return $this->updateContactCustomFieldTabAsyncWithHttpInfo($tab_id, $update_mask, $update_custom_field_tab_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateContactCustomFieldTabAsyncWithHttpInfo
+     *
+     * Update a Contact Custom Field Tab
+     *
+     * @param  string $tab_id (required)
+     * @param  string[] $update_mask Comma-separated list of fields to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldTabRequest $update_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateContactCustomFieldTabAsyncWithHttpInfo($tab_id, $update_mask, $update_custom_field_tab_request, string $contentType = self::contentTypes['updateContactCustomFieldTab'][0])
+    {
+        $returnType = '\Keap\Core\V2\Model\CustomFieldTab';
+        $request = $this->updateContactCustomFieldTabRequest($tab_id, $update_mask, $update_custom_field_tab_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateContactCustomFieldTab'
+     *
+     * @param  string $tab_id (required)
+     * @param  string[] $update_mask Comma-separated list of fields to update (required)
+     * @param  \Keap\Core\V2\Model\UpdateCustomFieldTabRequest $update_custom_field_tab_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactCustomFieldTab'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateContactCustomFieldTabRequest($tab_id, $update_mask, $update_custom_field_tab_request, string $contentType = self::contentTypes['updateContactCustomFieldTab'][0])
+    {
+
+        // verify the required parameter 'tab_id' is set
+        if ($tab_id === null || (is_array($tab_id) && count($tab_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tab_id when calling updateContactCustomFieldTab'
+            );
+        }
+
+        // verify the required parameter 'update_mask' is set
+        if ($update_mask === null || (is_array($update_mask) && count($update_mask) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_mask when calling updateContactCustomFieldTab'
+            );
+        }
+        
+        // verify the required parameter 'update_custom_field_tab_request' is set
+        if ($update_custom_field_tab_request === null || (is_array($update_custom_field_tab_request) && count($update_custom_field_tab_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_custom_field_tab_request when calling updateContactCustomFieldTab'
+            );
+        }
+
+
+        $resourcePath = '/rest/v2/contacts/model/customFields/tabs/{tab_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $update_mask,
+            'update_mask', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($tab_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tab_id' . '}',
+                ObjectSerializer::toPathValue($tab_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_custom_field_tab_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_custom_field_tab_request));
+            } else {
+                $httpBody = $update_custom_field_tab_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

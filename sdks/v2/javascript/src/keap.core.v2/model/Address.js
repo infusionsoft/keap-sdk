@@ -143,31 +143,31 @@ class Address {
 
 
 /**
- * Deprecated. The long-name descriptive version of the Country Code. Please use 'country_code' for POST/PATCH operations.
+ * Deprecated. The long-name descriptive version of the Country Code. Please use 'country_code' for POST/PATCH operations. Maximum length is 100 characters.
  * @member {String} country
  */
 Address.prototype['country'] = undefined;
 
 /**
- * Street address line 1
+ * Street address line 1. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
  * @member {String} line1
  */
 Address.prototype['line1'] = undefined;
 
 /**
- * Street address line 2
+ * Street address line 2. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
  * @member {String} line2
  */
 Address.prototype['line2'] = undefined;
 
 /**
- * The municipality to which the address belongs
+ * The municipality to which the address belongs. Maximum length is 50 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
  * @member {String} locality
  */
 Address.prototype['locality'] = undefined;
 
 /**
- * The long-name descriptive version of the Region Code. Please use 'region_code' for POST/PATCH operations.
+ * The long-name descriptive version of the Region Code. Please use 'region_code' for POST/PATCH operations. Maximum length is 50 characters.
  * @member {String} region
  */
 Address.prototype['region'] = undefined;
@@ -185,7 +185,7 @@ Address.prototype['field'] = undefined;
 Address.prototype['country_code'] = undefined;
 
 /**
- * Postal or ZIP code
+ * Postal or ZIP code. Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.
  * @member {String} postal_code
  */
 Address.prototype['postal_code'] = undefined;
@@ -197,13 +197,13 @@ Address.prototype['postal_code'] = undefined;
 Address.prototype['region_code'] = undefined;
 
 /**
- * ZIP code (US)
+ * ZIP code (US). Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.
  * @member {String} zip_code
  */
 Address.prototype['zip_code'] = undefined;
 
 /**
- * ZIP+4 extension
+ * ZIP+4 extension. Maximum length is 10 characters.
  * @member {String} zip_four
  */
 Address.prototype['zip_four'] = undefined;

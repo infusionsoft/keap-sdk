@@ -28,13 +28,15 @@ class OpportunityContact(BaseModel):
     """ # noqa: E501
     id: StrictStr = Field(description="Contact ID")
     email: Optional[StrictStr] = Field(default=None, description="Email address")
+    city: Optional[StrictStr] = Field(default=None, description="City")
+    state: Optional[StrictStr] = Field(default=None, description="State")
     first_name: Optional[StrictStr] = Field(default=None, description="First name")
     last_name: Optional[StrictStr] = Field(default=None, description="Last name")
     company_name: Optional[StrictStr] = Field(default=None, description="Company name")
     job_title: Optional[StrictStr] = Field(default=None, description="Job title")
     phone_number: Optional[StrictStr] = Field(default=None, description="Phone number")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "email", "first_name", "last_name", "company_name", "job_title", "phone_number"]
+    __properties: ClassVar[List[str]] = ["id", "email", "city", "state", "first_name", "last_name", "company_name", "job_title", "phone_number"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,6 +98,8 @@ class OpportunityContact(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "email": obj.get("email"),
+            "city": obj.get("city"),
+            "state": obj.get("state"),
             "first_name": obj.get("first_name"),
             "last_name": obj.get("last_name"),
             "company_name": obj.get("company_name"),

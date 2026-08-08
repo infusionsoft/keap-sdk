@@ -57,8 +57,8 @@ class CustomField implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'content' => 'mixed'
+        'content' => 'mixed',
+        'id' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class CustomField implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'content' => null
+        'content' => null,
+        'id' => null
     ];
 
     /**
@@ -79,8 +79,8 @@ class CustomField implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'content' => true
+        'content' => true,
+        'id' => false
     ];
 
     /**
@@ -169,8 +169,8 @@ class CustomField implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'content' => 'content'
+        'content' => 'content',
+        'id' => 'id'
     ];
 
     /**
@@ -179,8 +179,8 @@ class CustomField implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'content' => 'setContent'
+        'content' => 'setContent',
+        'id' => 'setId'
     ];
 
     /**
@@ -189,8 +189,8 @@ class CustomField implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'content' => 'getContent'
+        'content' => 'getContent',
+        'id' => 'getId'
     ];
 
     /**
@@ -250,8 +250,8 @@ class CustomField implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('content', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -297,33 +297,6 @@ class CustomField implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets content
      *
      * @return mixed|null
@@ -353,6 +326,33 @@ class CustomField implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['content'] = $content;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

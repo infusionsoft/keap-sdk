@@ -16,6 +16,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**getEmailWithHttpInfo**](EmailApi.md#getEmailWithHttpInfo) | **GET** /rest/v2/emails/{id} | Retrieve an Email |
 | [**getEmailTemplate**](EmailApi.md#getEmailTemplate) | **GET** /rest/v2/emails/templates/{email_template_id} | Retrieve an email template |
 | [**getEmailTemplateWithHttpInfo**](EmailApi.md#getEmailTemplateWithHttpInfo) | **GET** /rest/v2/emails/templates/{email_template_id} | Retrieve an email template |
+| [**listEmailTemplates**](EmailApi.md#listEmailTemplates) | **GET** /rest/v2/emails/templates | List email templates |
+| [**listEmailTemplatesWithHttpInfo**](EmailApi.md#listEmailTemplatesWithHttpInfo) | **GET** /rest/v2/emails/templates | List email templates |
 | [**listEmails**](EmailApi.md#listEmails) | **GET** /rest/v2/emails | List Emails |
 | [**listEmailsWithHttpInfo**](EmailApi.md#listEmailsWithHttpInfo) | **GET** /rest/v2/emails | List Emails |
 | [**sendEmail**](EmailApi.md#sendEmail) | **POST** /rest/v2/emails:send | Send an Email |
@@ -958,6 +960,178 @@ public class Example {
 ### Return type
 
 ApiResponse<[**EmailTemplate**](EmailTemplate.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## listEmailTemplates
+
+> ListEmailTemplatesResponse listEmailTemplates(filter, pageToken, orderBy, pageSize)
+
+List email templates
+
+Retrieves a paginated list of email templates
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.EmailApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        EmailApi apiInstance = new EmailApi(defaultClient);
+        String filter = "filter_example"; // String | Search filter to apply to results
+        String pageToken = "pageToken_example"; // String | Page token
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` One of the following directions: - `asc` - `desc`
+        Integer pageSize = 0; // Integer | Total number of items to return per page
+        try {
+            ListEmailTemplatesResponse result = apiInstance.listEmailTemplates(filter, pageToken, orderBy, pageSize);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling EmailApi#listEmailTemplates");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **filter** | **String**| Search filter to apply to results | [optional] |
+| **pageToken** | **String**| Page token | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **pageSize** | **Integer**| Total number of items to return per page | [optional] |
+
+### Return type
+
+[**ListEmailTemplatesResponse**](ListEmailTemplatesResponse.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## listEmailTemplatesWithHttpInfo
+
+> ApiResponse<ListEmailTemplatesResponse> listEmailTemplates listEmailTemplatesWithHttpInfo(filter, pageToken, orderBy, pageSize)
+
+List email templates
+
+Retrieves a paginated list of email templates
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.EmailApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        EmailApi apiInstance = new EmailApi(defaultClient);
+        String filter = "filter_example"; // String | Search filter to apply to results
+        String pageToken = "pageToken_example"; // String | Page token
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` One of the following directions: - `asc` - `desc`
+        Integer pageSize = 0; // Integer | Total number of items to return per page
+        try {
+            ApiResponse<ListEmailTemplatesResponse> response = apiInstance.listEmailTemplatesWithHttpInfo(filter, pageToken, orderBy, pageSize);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling EmailApi#listEmailTemplates");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **filter** | **String**| Search filter to apply to results | [optional] |
+| **pageToken** | **String**| Page token | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **pageSize** | **Integer**| Total number of items to return per page | [optional] |
+
+### Return type
+
+ApiResponse<[**ListEmailTemplatesResponse**](ListEmailTemplatesResponse.md)>
 
 
 ### Authorization

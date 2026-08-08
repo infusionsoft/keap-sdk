@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**email** | **String** | Email address |  [optional] |
+|**email** | **String** | Email address. Maximum length is 75 characters for EMAIL1 and 100 characters for EMAIL2 and EMAIL3. |  [optional] |
 |**field** | [**FieldEnum**](#FieldEnum) | Email address slot |  [optional] |
 |**optInReason** | **String** | Reason for opting in |  [optional] |
 |**isOptIn** | **Boolean** |  |  [optional] |

@@ -348,7 +348,7 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name Social account username or handle
+     * @param string|null $name Social account username or handle. Maximum length is 255 characters.
      *
      * @return self
      */

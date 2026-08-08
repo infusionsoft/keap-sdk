@@ -77,6 +77,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of CustomFieldGroup</returns>
         ApiResponse<CustomFieldGroup> CreateOpportunityCustomFieldGroupWithHttpInfo(CreateCustomFieldGroupRequest createCustomFieldGroupRequest, int operationIndex = 0);
         /// <summary>
+        /// Create an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Opportunity record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        CustomFieldTab CreateOpportunityCustomFieldTab(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Create an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Opportunity record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        ApiResponse<CustomFieldTab> CreateOpportunityCustomFieldTabWithHttpInfo(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0);
+        /// <summary>
         /// Create an Opportunity Custom Field
         /// </summary>
         /// <remarks>
@@ -192,6 +215,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteOpportunityCustomFieldGroupWithHttpInfo(string groupId, int operationIndex = 0);
         /// <summary>
+        /// Delete an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        void DeleteOpportunityCustomFieldTab(string tabId, int operationIndex = 0);
+
+        /// <summary>
+        /// Delete an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteOpportunityCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0);
+        /// <summary>
         /// Delete an Opportunity Stage
         /// </summary>
         /// <remarks>
@@ -263,6 +309,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of CustomFieldGroup</returns>
         ApiResponse<CustomFieldGroup> GetOpportunityCustomFieldGroupWithHttpInfo(string groupId, int operationIndex = 0);
         /// <summary>
+        /// Retrieve an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Opportunity record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        CustomFieldTab GetOpportunityCustomFieldTab(string tabId, int operationIndex = 0);
+
+        /// <summary>
+        /// Retrieve an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Opportunity record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        ApiResponse<CustomFieldTab> GetOpportunityCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0);
+        /// <summary>
         /// Retrieve an Opportunity Stage
         /// </summary>
         /// <remarks>
@@ -316,7 +385,7 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -332,7 +401,7 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -362,6 +431,27 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ListCustomFieldGroupsResponse</returns>
         ApiResponse<ListCustomFieldGroupsResponse> ListOpportunityCustomFieldGroupsWithHttpInfo(string? tabId = default, int operationIndex = 0);
+        /// <summary>
+        /// List Opportunity Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Opportunity record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListCustomFieldTabsResponse</returns>
+        ListCustomFieldTabsResponse ListOpportunityCustomFieldTabs(int operationIndex = 0);
+
+        /// <summary>
+        /// List Opportunity Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Opportunity record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListCustomFieldTabsResponse</returns>
+        ApiResponse<ListCustomFieldTabsResponse> ListOpportunityCustomFieldTabsWithHttpInfo(int operationIndex = 0);
         /// <summary>
         /// List Opportunity Stage Moves
         /// </summary>
@@ -525,6 +615,33 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of CustomFieldGroup</returns>
         ApiResponse<CustomFieldGroup> UpdateOpportunityCustomFieldGroupWithHttpInfo(string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest, int operationIndex = 0);
         /// <summary>
+        /// Update an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        CustomFieldTab UpdateOpportunityCustomFieldTab(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Update an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        ApiResponse<CustomFieldTab> UpdateOpportunityCustomFieldTabWithHttpInfo(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0);
+        /// <summary>
         /// Update an Opportunity Stage
         /// </summary>
         /// <remarks>
@@ -612,6 +729,31 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldGroup)</returns>
         System.Threading.Tasks.Task<ApiResponse<CustomFieldGroup>> CreateOpportunityCustomFieldGroupWithHttpInfoAsync(CreateCustomFieldGroupRequest createCustomFieldGroupRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Create an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Opportunity record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        System.Threading.Tasks.Task<CustomFieldTab> CreateOpportunityCustomFieldTabAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Create an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Opportunity record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldTab>> CreateOpportunityCustomFieldTabWithHttpInfoAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create an Opportunity Custom Field
         /// </summary>
@@ -738,6 +880,31 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteOpportunityCustomFieldGroupWithHttpInfoAsync(string groupId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Delete an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteOpportunityCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Delete an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteOpportunityCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Delete an Opportunity Stage
         /// </summary>
         /// <remarks>
@@ -815,6 +982,31 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse (CustomFieldGroup)</returns>
         System.Threading.Tasks.Task<ApiResponse<CustomFieldGroup>> GetOpportunityCustomFieldGroupWithHttpInfoAsync(string groupId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Retrieve an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Opportunity record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        System.Threading.Tasks.Task<CustomFieldTab> GetOpportunityCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Retrieve an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Opportunity record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldTab>> GetOpportunityCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Retrieve an Opportunity Stage
         /// </summary>
         /// <remarks>
@@ -872,7 +1064,7 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -889,7 +1081,7 @@ namespace Keap.Core.V2.Api
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -922,6 +1114,29 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCustomFieldGroupsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListCustomFieldGroupsResponse>> ListOpportunityCustomFieldGroupsWithHttpInfoAsync(string? tabId = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// List Opportunity Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Opportunity record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCustomFieldTabsResponse</returns>
+        System.Threading.Tasks.Task<ListCustomFieldTabsResponse> ListOpportunityCustomFieldTabsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// List Opportunity Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Opportunity record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCustomFieldTabsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListCustomFieldTabsResponse>> ListOpportunityCustomFieldTabsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List Opportunity Stage Moves
         /// </summary>
@@ -1096,6 +1311,35 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldGroup)</returns>
         System.Threading.Tasks.Task<ApiResponse<CustomFieldGroup>> UpdateOpportunityCustomFieldGroupWithHttpInfoAsync(string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Update an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        System.Threading.Tasks.Task<CustomFieldTab> UpdateOpportunityCustomFieldTabAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Update an Opportunity Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldTab>> UpdateOpportunityCustomFieldTabWithHttpInfoAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update an Opportunity Stage
         /// </summary>
@@ -1606,6 +1850,185 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateOpportunityCustomFieldGroup", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create an Opportunity Custom Field Tab Creates a new custom field tab for the Opportunity record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        public CustomFieldTab CreateOpportunityCustomFieldTab(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = CreateOpportunityCustomFieldTabWithHttpInfo(createCustomFieldTabRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create an Opportunity Custom Field Tab Creates a new custom field tab for the Opportunity record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldTab> CreateOpportunityCustomFieldTabWithHttpInfo(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'createCustomFieldTabRequest' is set
+            if (createCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createCustomFieldTabRequest' when calling OpportunityApi->CreateOpportunityCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "OpportunityApi.CreateOpportunityCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CustomFieldTab>("/rest/v2/opportunities/model/customFields/tabs", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOpportunityCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create an Opportunity Custom Field Tab Creates a new custom field tab for the Opportunity record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        public async System.Threading.Tasks.Task<CustomFieldTab> CreateOpportunityCustomFieldTabAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = await CreateOpportunityCustomFieldTabWithHttpInfoAsync(createCustomFieldTabRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create an Opportunity Custom Field Tab Creates a new custom field tab for the Opportunity record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldTab>> CreateOpportunityCustomFieldTabWithHttpInfoAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'createCustomFieldTabRequest' is set
+            if (createCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createCustomFieldTabRequest' when calling OpportunityApi->CreateOpportunityCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "OpportunityApi.CreateOpportunityCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CustomFieldTab>("/rest/v2/opportunities/model/customFields/tabs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOpportunityCustomFieldTab", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -2499,6 +2922,181 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// Delete an Opportunity Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        public void DeleteOpportunityCustomFieldTab(string tabId, int operationIndex = 0)
+        {
+            DeleteOpportunityCustomFieldTabWithHttpInfo(tabId);
+        }
+
+        /// <summary>
+        /// Delete an Opportunity Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Keap.Core.V2.Client.ApiResponse<Object> DeleteOpportunityCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling OpportunityApi->DeleteOpportunityCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "OpportunityApi.DeleteOpportunityCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<Object>("/rest/v2/opportunities/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteOpportunityCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete an Opportunity Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteOpportunityCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            await DeleteOpportunityCustomFieldTabWithHttpInfoAsync(tabId, operationIndex, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Delete an Opportunity Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Object>> DeleteOpportunityCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling OpportunityApi->DeleteOpportunityCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "OpportunityApi.DeleteOpportunityCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/rest/v2/opportunities/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteOpportunityCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Delete an Opportunity Stage Deletes the specified Opportunity Stage
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -3040,6 +3638,183 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// Retrieve an Opportunity Custom Field Tab Retrieves a single custom field tab by id for the Opportunity record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        public CustomFieldTab GetOpportunityCustomFieldTab(string tabId, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = GetOpportunityCustomFieldTabWithHttpInfo(tabId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve an Opportunity Custom Field Tab Retrieves a single custom field tab by id for the Opportunity record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldTab> GetOpportunityCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling OpportunityApi->GetOpportunityCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "OpportunityApi.GetOpportunityCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<CustomFieldTab>("/rest/v2/opportunities/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOpportunityCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Retrieve an Opportunity Custom Field Tab Retrieves a single custom field tab by id for the Opportunity record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        public async System.Threading.Tasks.Task<CustomFieldTab> GetOpportunityCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = await GetOpportunityCustomFieldTabWithHttpInfoAsync(tabId, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve an Opportunity Custom Field Tab Retrieves a single custom field tab by id for the Opportunity record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldTab>> GetOpportunityCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling OpportunityApi->GetOpportunityCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "OpportunityApi.GetOpportunityCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<CustomFieldTab>("/rest/v2/opportunities/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOpportunityCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Retrieve an Opportunity Stage Retrieves the specified Opportunity Stage
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -3398,7 +4173,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -3415,7 +4190,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -3506,7 +4281,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -3524,7 +4299,7 @@ namespace Keap.Core.V2.Api
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="fields">Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional)</param>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  (optional)</param>
         /// <param name="orderBy">Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -3774,6 +4549,165 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListOpportunityCustomFieldGroups", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List Opportunity Custom Field Tabs Retrieves a list of custom field tabs for the Opportunity record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListCustomFieldTabsResponse</returns>
+        public ListCustomFieldTabsResponse ListOpportunityCustomFieldTabs(int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse> localVarResponse = ListOpportunityCustomFieldTabsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Opportunity Custom Field Tabs Retrieves a list of custom field tabs for the Opportunity record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListCustomFieldTabsResponse</returns>
+        public Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse> ListOpportunityCustomFieldTabsWithHttpInfo(int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "OpportunityApi.ListOpportunityCustomFieldTabs";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListCustomFieldTabsResponse>("/rest/v2/opportunities/model/customFields/tabs", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListOpportunityCustomFieldTabs", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List Opportunity Custom Field Tabs Retrieves a list of custom field tabs for the Opportunity record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCustomFieldTabsResponse</returns>
+        public async System.Threading.Tasks.Task<ListCustomFieldTabsResponse> ListOpportunityCustomFieldTabsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse> localVarResponse = await ListOpportunityCustomFieldTabsWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Opportunity Custom Field Tabs Retrieves a list of custom field tabs for the Opportunity record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCustomFieldTabsResponse)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse>> ListOpportunityCustomFieldTabsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "OpportunityApi.ListOpportunityCustomFieldTabs";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListCustomFieldTabsResponse>("/rest/v2/opportunities/model/customFields/tabs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListOpportunityCustomFieldTabs", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -4992,6 +5926,221 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateOpportunityCustomFieldGroup", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update an Opportunity Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        public CustomFieldTab UpdateOpportunityCustomFieldTab(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = UpdateOpportunityCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update an Opportunity Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldTab> UpdateOpportunityCustomFieldTabWithHttpInfo(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling OpportunityApi->UpdateOpportunityCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateMask' is set
+            if (updateMask == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateMask' when calling OpportunityApi->UpdateOpportunityCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateCustomFieldTabRequest' is set
+            if (updateCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateCustomFieldTabRequest' when calling OpportunityApi->UpdateOpportunityCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+            localVarRequestOptions.Data = updateCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "OpportunityApi.UpdateOpportunityCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<CustomFieldTab>("/rest/v2/opportunities/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateOpportunityCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update an Opportunity Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        public async System.Threading.Tasks.Task<CustomFieldTab> UpdateOpportunityCustomFieldTabAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = await UpdateOpportunityCustomFieldTabWithHttpInfoAsync(tabId, updateMask, updateCustomFieldTabRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update an Opportunity Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldTab>> UpdateOpportunityCustomFieldTabWithHttpInfoAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling OpportunityApi->UpdateOpportunityCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateMask' is set
+            if (updateMask == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateMask' when calling OpportunityApi->UpdateOpportunityCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateCustomFieldTabRequest' is set
+            if (updateCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateCustomFieldTabRequest' when calling OpportunityApi->UpdateOpportunityCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+            localVarRequestOptions.Data = updateCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "OpportunityApi.UpdateOpportunityCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<CustomFieldTab>("/rest/v2/opportunities/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateOpportunityCustomFieldTab", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

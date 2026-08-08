@@ -19,12 +19,15 @@ import com.keap.core.sdk.Pair;
 
 import com.keap.core.sdk.model.CreateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.CreateCustomFieldRequest;
+import com.keap.core.sdk.model.CreateCustomFieldTabRequest;
 import com.keap.core.sdk.model.CreateNoteRequest;
 import com.keap.core.sdk.model.CustomFieldGroup;
 import com.keap.core.sdk.model.CustomFieldMetaData;
+import com.keap.core.sdk.model.CustomFieldTab;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.GetNoteResponse;
 import com.keap.core.sdk.model.ListCustomFieldGroupsResponse;
+import com.keap.core.sdk.model.ListCustomFieldTabsResponse;
 import com.keap.core.sdk.model.ListNoteTemplateResponse;
 import com.keap.core.sdk.model.ListNotesResponse;
 import com.keap.core.sdk.model.Note;
@@ -32,6 +35,7 @@ import com.keap.core.sdk.model.ObjectModel;
 import java.util.Set;
 import com.keap.core.sdk.model.UpdateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
+import com.keap.core.sdk.model.UpdateCustomFieldTabRequest;
 import com.keap.core.sdk.model.UpdateNoteRequest;
 import com.keap.core.sdk.model.UpdateNoteResponse;
 
@@ -412,6 +416,97 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Create a Note Custom Field Tab
+   * Creates a new custom field tab for the Note record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+   * @param createCustomFieldTabRequest  (required)
+   * @return CustomFieldTab
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldTab createNoteCustomFieldTab(CreateCustomFieldTabRequest createCustomFieldTabRequest) throws ApiException {
+    ApiResponse<CustomFieldTab> localVarResponse = createNoteCustomFieldTabWithHttpInfo(createCustomFieldTabRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create a Note Custom Field Tab
+   * Creates a new custom field tab for the Note record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+   * @param createCustomFieldTabRequest  (required)
+   * @return ApiResponse&lt;CustomFieldTab&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldTab> createNoteCustomFieldTabWithHttpInfo(CreateCustomFieldTabRequest createCustomFieldTabRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createNoteCustomFieldTabRequestBuilder(createCustomFieldTabRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("createNoteCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldTab>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldTab>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder createNoteCustomFieldTabRequestBuilder(CreateCustomFieldTabRequest createCustomFieldTabRequest) throws ApiException {
+    // verify the required parameter 'createCustomFieldTabRequest' is set
+    if (createCustomFieldTabRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'createCustomFieldTabRequest' when calling createNoteCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/notes/model/customFields/tabs";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createCustomFieldTabRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Delete a Note
    * Deletes the specified Note
    * @param contactId  (required)
@@ -580,6 +675,95 @@ import io.github.resilience4j.retry.Retry;
 
     String localVarPath = "/rest/v2/notes/model/customFields/groups/{group_id}"
         .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Delete a Note Custom Field Tab
+   * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+   * @param tabId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteNoteCustomFieldTab(String tabId) throws ApiException {
+    deleteNoteCustomFieldTabWithHttpInfo(tabId);
+  }
+
+  /**
+   * Delete a Note Custom Field Tab
+   * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+   * @param tabId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteNoteCustomFieldTabWithHttpInfo(String tabId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteNoteCustomFieldTabRequestBuilder(tabId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteNoteCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteNoteCustomFieldTabRequestBuilder(String tabId) throws ApiException {
+    // verify the required parameter 'tabId' is set
+    if (tabId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tabId' when calling deleteNoteCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/notes/model/customFields/tabs/{tab_id}"
+        .replace("{tab_id}", ApiClient.urlEncode(tabId.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 
@@ -882,9 +1066,95 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Retrieve a Note Custom Field Tab
+   * Retrieves a single custom field tab by id for the Note record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+   * @param tabId  (required)
+   * @return CustomFieldTab
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldTab getNoteCustomFieldTab(String tabId) throws ApiException {
+    ApiResponse<CustomFieldTab> localVarResponse = getNoteCustomFieldTabWithHttpInfo(tabId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Retrieve a Note Custom Field Tab
+   * Retrieves a single custom field tab by id for the Note record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+   * @param tabId  (required)
+   * @return ApiResponse&lt;CustomFieldTab&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldTab> getNoteCustomFieldTabWithHttpInfo(String tabId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getNoteCustomFieldTabRequestBuilder(tabId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getNoteCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldTab>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldTab>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getNoteCustomFieldTabRequestBuilder(String tabId) throws ApiException {
+    // verify the required parameter 'tabId' is set
+    if (tabId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tabId' when calling getNoteCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/notes/model/customFields/tabs/{tab_id}"
+        .replace("{tab_id}", ApiClient.urlEncode(tabId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * List All Notes
    * Retrieves a list of all notes
-   * @param filter Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons.  (optional)
+   * @param filter Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Custom fields (when enabled) can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. Supported operators depend on the custom field&#39;s type: - Text-like fields and single-value choice fields with text options (dropdown, radio, state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;Priority%3D%3DHigh%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (including user, month, day of week): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Example (for a custom field named &#x60;Priority&#x60;): &#x60;filter&#x3D;Priority%3D%3DHigh&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons.  (optional)
    * @param pageToken Page token (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
@@ -900,7 +1170,7 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List All Notes
    * Retrieves a list of all notes
-   * @param filter Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons.  (optional)
+   * @param filter Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Custom fields (when enabled) can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. Supported operators depend on the custom field&#39;s type: - Text-like fields and single-value choice fields with text options (dropdown, radio, state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;Priority%3D%3DHigh%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (including user, month, day of week): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Example (for a custom field named &#x60;Priority&#x60;): &#x60;filter&#x3D;Priority%3D%3DHigh&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons.  (optional)
    * @param pageToken Page token (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
@@ -1090,6 +1360,85 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * List Note Custom Field Tabs
+   * Retrieves a list of custom field tabs for the Note record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+   * @return ListCustomFieldTabsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListCustomFieldTabsResponse listNoteCustomFieldTabs() throws ApiException {
+    ApiResponse<ListCustomFieldTabsResponse> localVarResponse = listNoteCustomFieldTabsWithHttpInfo();
+    return localVarResponse.getData();
+  }
+
+  /**
+   * List Note Custom Field Tabs
+   * Retrieves a list of custom field tabs for the Note record type.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+   * @return ApiResponse&lt;ListCustomFieldTabsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ListCustomFieldTabsResponse> listNoteCustomFieldTabsWithHttpInfo() throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listNoteCustomFieldTabsRequestBuilder();
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listNoteCustomFieldTabs", localVarResponse);
+        }
+        return new ApiResponse<ListCustomFieldTabsResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListCustomFieldTabsResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listNoteCustomFieldTabsRequestBuilder() throws ApiException {
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/notes/model/customFields/tabs";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Retrieve Note Templates
    * Retrieves a list of Note Templates
    * @param filter Search filter to apply to results (optional)
@@ -1201,7 +1550,7 @@ import io.github.resilience4j.retry.Retry;
    * List Notes
    * Retrieves a list of Notes for a given contact
    * @param contactId  (required)
-   * @param filter Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons.  (optional)
+   * @param filter Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Custom fields (when enabled) can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. Supported operators depend on the custom field&#39;s type: - Text-like fields and single-value choice fields with text options (dropdown, radio, state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;Priority%3D%3DHigh%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (including user, month, day of week): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Example (for a custom field named &#x60;Priority&#x60;): &#x60;filter&#x3D;Priority%3D%3DHigh&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons.  (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -1218,7 +1567,7 @@ import io.github.resilience4j.retry.Retry;
    * List Notes
    * Retrieves a list of Notes for a given contact
    * @param contactId  (required)
-   * @param filter Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons.  (optional)
+   * @param filter Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Custom fields (when enabled) can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. Supported operators depend on the custom field&#39;s type: - Text-like fields and single-value choice fields with text options (dropdown, radio, state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;Priority%3D%3DHigh%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (including user, month, day of week): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Example (for a custom field named &#x60;Priority&#x60;): &#x60;filter&#x3D;Priority%3D%3DHigh&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons.  (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -1627,6 +1976,125 @@ import io.github.resilience4j.retry.Retry;
 
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldGroupRequest);
+      localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update a Note Custom Field Tab
+   * Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+   * @param tabId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldTabRequest  (required)
+   * @return CustomFieldTab
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldTab updateNoteCustomFieldTab(String tabId, Set<String> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest) throws ApiException {
+    ApiResponse<CustomFieldTab> localVarResponse = updateNoteCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Update a Note Custom Field Tab
+   * Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.&lt;br/&gt;Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+   * @param tabId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldTabRequest  (required)
+   * @return ApiResponse&lt;CustomFieldTab&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldTab> updateNoteCustomFieldTabWithHttpInfo(String tabId, Set<String> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateNoteCustomFieldTabRequestBuilder(tabId, updateMask, updateCustomFieldTabRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateNoteCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldTab>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldTab>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateNoteCustomFieldTabRequestBuilder(String tabId, Set<String> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest) throws ApiException {
+    // verify the required parameter 'tabId' is set
+    if (tabId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tabId' when calling updateNoteCustomFieldTab");
+    }
+    // verify the required parameter 'updateMask' is set
+    if (updateMask == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateMask' when calling updateNoteCustomFieldTab");
+    }
+    // verify the required parameter 'updateCustomFieldTabRequest' is set
+    if (updateCustomFieldTabRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateCustomFieldTabRequest' when calling updateNoteCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/notes/model/customFields/tabs/{tab_id}"
+        .replace("{tab_id}", ApiClient.urlEncode(tabId.toString()));
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "update_mask";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldTabRequest);
       localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

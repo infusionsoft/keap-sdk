@@ -26,7 +26,7 @@ class EmailAddressRequest(BaseModel):
     """
     EmailAddressRequest
     """ # noqa: E501
-    email: Optional[StrictStr] = Field(default=None, description="Email address")
+    email: Optional[StrictStr] = Field(default=None, description="Email address. Maximum length is 75 characters for EMAIL1 and 100 characters for EMAIL2 and EMAIL3.")
     var_field: Optional[StrictStr] = Field(default=None, description="Email address slot", alias="field")
     opt_in_reason: Optional[StrictStr] = Field(default=None, description="Reason for opting in")
     additional_properties: Dict[str, Any] = {}

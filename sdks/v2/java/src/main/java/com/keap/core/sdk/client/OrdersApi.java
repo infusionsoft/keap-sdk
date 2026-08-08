@@ -20,12 +20,15 @@ import com.keap.core.sdk.Pair;
 import com.keap.core.sdk.model.ApplyCommissionRequest;
 import com.keap.core.sdk.model.CreateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.CreateCustomFieldRequest;
+import com.keap.core.sdk.model.CreateCustomFieldTabRequest;
 import com.keap.core.sdk.model.CreateOrderItemRequest;
 import com.keap.core.sdk.model.CustomFieldGroup;
 import com.keap.core.sdk.model.CustomFieldMetaData;
+import com.keap.core.sdk.model.CustomFieldTab;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.FileOperationRequest;
 import com.keap.core.sdk.model.ListCustomFieldGroupsResponse;
+import com.keap.core.sdk.model.ListCustomFieldTabsResponse;
 import com.keap.core.sdk.model.ListOrderPaymentsResponse;
 import com.keap.core.sdk.model.ListOrders;
 import com.keap.core.sdk.model.ObjectModel;
@@ -37,6 +40,7 @@ import com.keap.core.sdk.model.RestCreatePaymentRequest;
 import java.util.Set;
 import com.keap.core.sdk.model.UpdateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
+import com.keap.core.sdk.model.UpdateCustomFieldTabRequest;
 import com.keap.core.sdk.model.UpdateOrderItemRequest;
 import com.keap.core.sdk.model.UpdateOrderRequest;
 
@@ -682,6 +686,97 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Create an Order Custom Field Tab
+   * Creates a new custom field tab for the Order record type.
+   * @param createCustomFieldTabRequest  (required)
+   * @return CustomFieldTab
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldTab createOrderCustomFieldTab(CreateCustomFieldTabRequest createCustomFieldTabRequest) throws ApiException {
+    ApiResponse<CustomFieldTab> localVarResponse = createOrderCustomFieldTabWithHttpInfo(createCustomFieldTabRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create an Order Custom Field Tab
+   * Creates a new custom field tab for the Order record type.
+   * @param createCustomFieldTabRequest  (required)
+   * @return ApiResponse&lt;CustomFieldTab&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldTab> createOrderCustomFieldTabWithHttpInfo(CreateCustomFieldTabRequest createCustomFieldTabRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createOrderCustomFieldTabRequestBuilder(createCustomFieldTabRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("createOrderCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldTab>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldTab>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder createOrderCustomFieldTabRequestBuilder(CreateCustomFieldTabRequest createCustomFieldTabRequest) throws ApiException {
+    // verify the required parameter 'createCustomFieldTabRequest' is set
+    if (createCustomFieldTabRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'createCustomFieldTabRequest' when calling createOrderCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/orders/model/customFields/tabs";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createCustomFieldTabRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Create an Order Item
    * Creates an order item on an existing order
    * @param orderId  (required)
@@ -1145,6 +1240,95 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Delete an Order Custom Field Tab
+   * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+   * @param tabId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteOrderCustomFieldTab(String tabId) throws ApiException {
+    deleteOrderCustomFieldTabWithHttpInfo(tabId);
+  }
+
+  /**
+   * Delete an Order Custom Field Tab
+   * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+   * @param tabId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteOrderCustomFieldTabWithHttpInfo(String tabId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteOrderCustomFieldTabRequestBuilder(tabId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteOrderCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteOrderCustomFieldTabRequestBuilder(String tabId) throws ApiException {
+    // verify the required parameter 'tabId' is set
+    if (tabId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tabId' when calling deleteOrderCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/orders/model/customFields/tabs/{tab_id}"
+        .replace("{tab_id}", ApiClient.urlEncode(tabId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Delete an Order Item
    * Deletes an order item on an existing order
    * @param orderId  (required)
@@ -1511,6 +1695,92 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Retrieve an Order Custom Field Tab
+   * Retrieves a single custom field tab by id for the Order record type.
+   * @param tabId  (required)
+   * @return CustomFieldTab
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldTab getOrderCustomFieldTab(String tabId) throws ApiException {
+    ApiResponse<CustomFieldTab> localVarResponse = getOrderCustomFieldTabWithHttpInfo(tabId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Retrieve an Order Custom Field Tab
+   * Retrieves a single custom field tab by id for the Order record type.
+   * @param tabId  (required)
+   * @return ApiResponse&lt;CustomFieldTab&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldTab> getOrderCustomFieldTabWithHttpInfo(String tabId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getOrderCustomFieldTabRequestBuilder(tabId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getOrderCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldTab>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldTab>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getOrderCustomFieldTabRequestBuilder(String tabId) throws ApiException {
+    // verify the required parameter 'tabId' is set
+    if (tabId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tabId' when calling getOrderCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/orders/model/customFields/tabs/{tab_id}"
+        .replace("{tab_id}", ApiClient.urlEncode(tabId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Retrieve an Order Item
    * Retrieves a single order item from an existing order
    * @param orderId  (required)
@@ -1700,6 +1970,85 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * List Order Custom Field Tabs
+   * Retrieves a list of custom field tabs for the Order record type.
+   * @return ListCustomFieldTabsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListCustomFieldTabsResponse listOrderCustomFieldTabs() throws ApiException {
+    ApiResponse<ListCustomFieldTabsResponse> localVarResponse = listOrderCustomFieldTabsWithHttpInfo();
+    return localVarResponse.getData();
+  }
+
+  /**
+   * List Order Custom Field Tabs
+   * Retrieves a list of custom field tabs for the Order record type.
+   * @return ApiResponse&lt;ListCustomFieldTabsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ListCustomFieldTabsResponse> listOrderCustomFieldTabsWithHttpInfo() throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listOrderCustomFieldTabsRequestBuilder();
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listOrderCustomFieldTabs", localVarResponse);
+        }
+        return new ApiResponse<ListCustomFieldTabsResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListCustomFieldTabsResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listOrderCustomFieldTabsRequestBuilder() throws ApiException {
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/orders/model/customFields/tabs";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Retrieve Order Payments
    * Retrieves a list of payments made against a given order, including historical or external payments of cash or credit card
    * @param orderId  (required)
@@ -1817,7 +2166,7 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List orders
    * Retrieves a list of orders
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -1832,7 +2181,7 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List orders
    * Retrieves a list of orders
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -2337,6 +2686,125 @@ import io.github.resilience4j.retry.Retry;
 
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldGroupRequest);
+      localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update an Order Custom Field Tab
+   * Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+   * @param tabId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldTabRequest  (required)
+   * @return CustomFieldTab
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldTab updateOrderCustomFieldTab(String tabId, Set<String> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest) throws ApiException {
+    ApiResponse<CustomFieldTab> localVarResponse = updateOrderCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Update an Order Custom Field Tab
+   * Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+   * @param tabId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldTabRequest  (required)
+   * @return ApiResponse&lt;CustomFieldTab&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldTab> updateOrderCustomFieldTabWithHttpInfo(String tabId, Set<String> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateOrderCustomFieldTabRequestBuilder(tabId, updateMask, updateCustomFieldTabRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateOrderCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldTab>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldTab>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateOrderCustomFieldTabRequestBuilder(String tabId, Set<String> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest) throws ApiException {
+    // verify the required parameter 'tabId' is set
+    if (tabId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tabId' when calling updateOrderCustomFieldTab");
+    }
+    // verify the required parameter 'updateMask' is set
+    if (updateMask == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateMask' when calling updateOrderCustomFieldTab");
+    }
+    // verify the required parameter 'updateCustomFieldTabRequest' is set
+    if (updateCustomFieldTabRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateCustomFieldTabRequest' when calling updateOrderCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/orders/model/customFields/tabs/{tab_id}"
+        .replace("{tab_id}", ApiClient.urlEncode(tabId.toString()));
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "update_mask";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldTabRequest);
       localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

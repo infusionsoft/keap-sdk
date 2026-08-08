@@ -27,6 +27,7 @@ import com.keap.core.sdk.model.CreateAffiliateRequest;
 import com.keap.core.sdk.model.CreateCommissionProgramRequest;
 import com.keap.core.sdk.model.CreateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.CreateCustomFieldRequest;
+import com.keap.core.sdk.model.CreateCustomFieldTabRequest;
 import com.keap.core.sdk.model.CreateDefaultCommissionProgramRequest;
 import com.keap.core.sdk.model.CreateOrUpdateAffiliateLinkRequest;
 import com.keap.core.sdk.model.CreateProductCommissionProgramRequest;
@@ -34,6 +35,7 @@ import com.keap.core.sdk.model.CreateProgramResourceRequest;
 import com.keap.core.sdk.model.CreateSubscriptionCommissionProgramRequest;
 import com.keap.core.sdk.model.CustomFieldGroup;
 import com.keap.core.sdk.model.CustomFieldMetaData;
+import com.keap.core.sdk.model.CustomFieldTab;
 import com.keap.core.sdk.model.DeleteProgramCommissionRequest;
 import com.keap.core.sdk.model.DeleteSubscriptionPlanCommissionRequest;
 import com.keap.core.sdk.model.Error;
@@ -46,6 +48,7 @@ import com.keap.core.sdk.model.ListAffiliateReferralsResponse;
 import com.keap.core.sdk.model.ListAffiliateSummariesResponse;
 import com.keap.core.sdk.model.ListAffiliatesResponse;
 import com.keap.core.sdk.model.ListCustomFieldGroupsResponse;
+import com.keap.core.sdk.model.ListCustomFieldTabsResponse;
 import com.keap.core.sdk.model.ListProgramResourcesResponse;
 import com.keap.core.sdk.model.ObjectModel;
 import com.keap.core.sdk.model.RestAffiliate;
@@ -54,6 +57,7 @@ import com.keap.core.sdk.model.UpdateAffiliateRequest;
 import com.keap.core.sdk.model.UpdateCommissionProgramRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
+import com.keap.core.sdk.model.UpdateCustomFieldTabRequest;
 import com.keap.core.sdk.model.UpdateDefaultCommissionProgramRequest;
 import com.keap.core.sdk.model.UpdateProductCommissionProgramRequest;
 import com.keap.core.sdk.model.UpdateProgramResourceRequest;
@@ -885,6 +889,97 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Create an Affiliate Custom Field Tab
+   * Creates a new custom field tab for the Affiliate record type.
+   * @param createCustomFieldTabRequest  (required)
+   * @return CustomFieldTab
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldTab createAffiliateCustomFieldTab(CreateCustomFieldTabRequest createCustomFieldTabRequest) throws ApiException {
+    ApiResponse<CustomFieldTab> localVarResponse = createAffiliateCustomFieldTabWithHttpInfo(createCustomFieldTabRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create an Affiliate Custom Field Tab
+   * Creates a new custom field tab for the Affiliate record type.
+   * @param createCustomFieldTabRequest  (required)
+   * @return ApiResponse&lt;CustomFieldTab&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldTab> createAffiliateCustomFieldTabWithHttpInfo(CreateCustomFieldTabRequest createCustomFieldTabRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createAffiliateCustomFieldTabRequestBuilder(createCustomFieldTabRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("createAffiliateCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldTab>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldTab>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder createAffiliateCustomFieldTabRequestBuilder(CreateCustomFieldTabRequest createCustomFieldTabRequest) throws ApiException {
+    // verify the required parameter 'createCustomFieldTabRequest' is set
+    if (createCustomFieldTabRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'createCustomFieldTabRequest' when calling createAffiliateCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/affiliates/model/customFields/tabs";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createCustomFieldTabRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Create a Default Commission Program
    * Creates a Default Commission Program
    * @param commissionProgramId  (required)
@@ -1413,6 +1508,95 @@ import io.github.resilience4j.retry.Retry;
 
     String localVarPath = "/rest/v2/affiliates/model/customFields/groups/{group_id}"
         .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Delete an Affiliate Custom Field Tab
+   * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+   * @param tabId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteAffiliateCustomFieldTab(String tabId) throws ApiException {
+    deleteAffiliateCustomFieldTabWithHttpInfo(tabId);
+  }
+
+  /**
+   * Delete an Affiliate Custom Field Tab
+   * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+   * @param tabId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteAffiliateCustomFieldTabWithHttpInfo(String tabId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteAffiliateCustomFieldTabRequestBuilder(tabId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteAffiliateCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteAffiliateCustomFieldTabRequestBuilder(String tabId) throws ApiException {
+    // verify the required parameter 'tabId' is set
+    if (tabId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tabId' when calling deleteAffiliateCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/affiliates/model/customFields/tabs/{tab_id}"
+        .replace("{tab_id}", ApiClient.urlEncode(tabId.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 
@@ -1981,6 +2165,92 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Retrieve an Affiliate Custom Field Tab
+   * Retrieves a single custom field tab by id for the Affiliate record type.
+   * @param tabId  (required)
+   * @return CustomFieldTab
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldTab getAffiliateCustomFieldTab(String tabId) throws ApiException {
+    ApiResponse<CustomFieldTab> localVarResponse = getAffiliateCustomFieldTabWithHttpInfo(tabId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Retrieve an Affiliate Custom Field Tab
+   * Retrieves a single custom field tab by id for the Affiliate record type.
+   * @param tabId  (required)
+   * @return ApiResponse&lt;CustomFieldTab&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldTab> getAffiliateCustomFieldTabWithHttpInfo(String tabId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAffiliateCustomFieldTabRequestBuilder(tabId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAffiliateCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldTab>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldTab>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAffiliateCustomFieldTabRequestBuilder(String tabId) throws ApiException {
+    // verify the required parameter 'tabId' is set
+    if (tabId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tabId' when calling getAffiliateCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/affiliates/model/customFields/tabs/{tab_id}"
+        .replace("{tab_id}", ApiClient.urlEncode(tabId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Retrieve Affiliate Model
    * Get the custom fields and optional properties for the Affiliate object
    * @return ObjectModel
@@ -2349,7 +2619,7 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List Affiliates
    * Retrieves a list of Affiliates
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Choice/Select fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed.  (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields (including user, month, day of week): &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Yes/No and drilldown fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed.  (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -2364,7 +2634,7 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List Affiliates
    * Retrieves a list of Affiliates
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Choice/Select fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed.  (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields (including user, month, day of week): &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Yes/No and drilldown fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed.  (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -2644,6 +2914,85 @@ import io.github.resilience4j.retry.Retry;
     } else {
       localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     }
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * List Affiliate Custom Field Tabs
+   * Retrieves a list of custom field tabs for the Affiliate record type.
+   * @return ListCustomFieldTabsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListCustomFieldTabsResponse listAffiliateCustomFieldTabs() throws ApiException {
+    ApiResponse<ListCustomFieldTabsResponse> localVarResponse = listAffiliateCustomFieldTabsWithHttpInfo();
+    return localVarResponse.getData();
+  }
+
+  /**
+   * List Affiliate Custom Field Tabs
+   * Retrieves a list of custom field tabs for the Affiliate record type.
+   * @return ApiResponse&lt;ListCustomFieldTabsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ListCustomFieldTabsResponse> listAffiliateCustomFieldTabsWithHttpInfo() throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listAffiliateCustomFieldTabsRequestBuilder();
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listAffiliateCustomFieldTabs", localVarResponse);
+        }
+        return new ApiResponse<ListCustomFieldTabsResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListCustomFieldTabsResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listAffiliateCustomFieldTabsRequestBuilder() throws ApiException {
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/affiliates/model/customFields/tabs";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
@@ -3714,6 +4063,125 @@ import io.github.resilience4j.retry.Retry;
 
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldGroupRequest);
+      localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update an Affiliate Custom Field Tab
+   * Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+   * @param tabId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldTabRequest  (required)
+   * @return CustomFieldTab
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldTab updateAffiliateCustomFieldTab(String tabId, Set<String> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest) throws ApiException {
+    ApiResponse<CustomFieldTab> localVarResponse = updateAffiliateCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Update an Affiliate Custom Field Tab
+   * Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+   * @param tabId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldTabRequest  (required)
+   * @return ApiResponse&lt;CustomFieldTab&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldTab> updateAffiliateCustomFieldTabWithHttpInfo(String tabId, Set<String> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateAffiliateCustomFieldTabRequestBuilder(tabId, updateMask, updateCustomFieldTabRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateAffiliateCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldTab>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldTab>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateAffiliateCustomFieldTabRequestBuilder(String tabId, Set<String> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest) throws ApiException {
+    // verify the required parameter 'tabId' is set
+    if (tabId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tabId' when calling updateAffiliateCustomFieldTab");
+    }
+    // verify the required parameter 'updateMask' is set
+    if (updateMask == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateMask' when calling updateAffiliateCustomFieldTab");
+    }
+    // verify the required parameter 'updateCustomFieldTabRequest' is set
+    if (updateCustomFieldTabRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateCustomFieldTabRequest' when calling updateAffiliateCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/affiliates/model/customFields/tabs/{tab_id}"
+        .replace("{tab_id}", ApiClient.urlEncode(tabId.toString()));
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "update_mask";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldTabRequest);
       localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

@@ -422,8 +422,8 @@ import io.github.resilience4j.retry.Retry;
    * @return byte[]
    * @throws ApiException if fails to make API call
    */
-  public byte[] getFileData(String fileId) throws ApiException {
-    ApiResponse<byte[]> localVarResponse = getFileDataWithHttpInfo(fileId);
+  public byte[] getFileData1(String fileId) throws ApiException {
+    ApiResponse<byte[]> localVarResponse = getFileData1WithHttpInfo(fileId);
     return localVarResponse.getData();
   }
 
@@ -434,8 +434,8 @@ import io.github.resilience4j.retry.Retry;
    * @return ApiResponse&lt;byte[]&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<byte[]> getFileDataWithHttpInfo(String fileId) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getFileDataRequestBuilder(fileId);
+  public ApiResponse<byte[]> getFileData1WithHttpInfo(String fileId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getFileData1RequestBuilder(fileId);
 
     CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
       memberVarHttpClient.send(
@@ -451,7 +451,7 @@ import io.github.resilience4j.retry.Retry;
       }
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("getFileData", localVarResponse);
+          throw getApiException("getFileData1", localVarResponse);
         }
         return new ApiResponse<byte[]>(
           localVarResponse.statusCode(),
@@ -475,10 +475,10 @@ import io.github.resilience4j.retry.Retry;
     }
   }
 
-  private HttpRequest.Builder getFileDataRequestBuilder(String fileId) throws ApiException {
+  private HttpRequest.Builder getFileData1RequestBuilder(String fileId) throws ApiException {
     // verify the required parameter 'fileId' is set
     if (fileId == null) {
-      throw new ApiException(400, "Missing the required parameter 'fileId' when calling getFileData");
+      throw new ApiException(400, "Missing the required parameter 'fileId' when calling getFileData1");
     }
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
@@ -504,7 +504,7 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List all files
    * Retrieves a list of files
-   * @param filter Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60;  (optional)
+   * @param filter Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; — &#x60;true&#x60; (public) or &#x60;false&#x60; (private) - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; — one of: &#x60;ATTACHMENTS&#x60;, &#x60;CART&#x60;, &#x60;DOCUMENTS&#x60;, &#x60;HIDDEN&#x60;, &#x60;INVOICE&#x60;, &#x60;LOGO&#x60;, &#x60;TICKETS&#x60;, &#x60;WEB_FORM&#x60;, &#x60;FUNNEL&#x60; - (FileBoxType) &#x60;file_box_type&#x60; — one of: &#x60;APPLICATION&#x60;, &#x60;IMAGE&#x60;, &#x60;FAX&#x60;, &#x60;ATTACHMENT&#x60;, &#x60;TICKET&#x60;, &#x60;CONTACT&#x60;, &#x60;DIGITAL_PRODUCT&#x60;, &#x60;IMPORT&#x60;, &#x60;HIDDEN&#x60;, &#x60;WEB_FORM&#x60;, &#x60;STYLED_CART&#x60;, &#x60;RESAMPLED_IMAGE&#x60;, &#x60;TEMPLATE_THUMBNAIL&#x60;, &#x60;FUNNEL&#x60;, &#x60;LOGO_THUMBNAIL&#x60;, &#x60;UNLAYER&#x60;, &#x60;BRANDING_CENTER_LOGO&#x60; - (String) &#x60;file_name&#x60; - (String) &#x60;created_time&#x60; - (String) &#x60;updated_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. Multiple filters are combined with a semicolon (&#x60;;&#x60;, encoded &#x60;%3B&#x60;) and are ANDed together. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;is_public%3D%3Dfalse&#x60; - &#x60;filter&#x3D;category%3D%3DDOCUMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse&#x60;  (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -519,7 +519,7 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List all files
    * Retrieves a list of files
-   * @param filter Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60;  (optional)
+   * @param filter Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; — &#x60;true&#x60; (public) or &#x60;false&#x60; (private) - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; — one of: &#x60;ATTACHMENTS&#x60;, &#x60;CART&#x60;, &#x60;DOCUMENTS&#x60;, &#x60;HIDDEN&#x60;, &#x60;INVOICE&#x60;, &#x60;LOGO&#x60;, &#x60;TICKETS&#x60;, &#x60;WEB_FORM&#x60;, &#x60;FUNNEL&#x60; - (FileBoxType) &#x60;file_box_type&#x60; — one of: &#x60;APPLICATION&#x60;, &#x60;IMAGE&#x60;, &#x60;FAX&#x60;, &#x60;ATTACHMENT&#x60;, &#x60;TICKET&#x60;, &#x60;CONTACT&#x60;, &#x60;DIGITAL_PRODUCT&#x60;, &#x60;IMPORT&#x60;, &#x60;HIDDEN&#x60;, &#x60;WEB_FORM&#x60;, &#x60;STYLED_CART&#x60;, &#x60;RESAMPLED_IMAGE&#x60;, &#x60;TEMPLATE_THUMBNAIL&#x60;, &#x60;FUNNEL&#x60;, &#x60;LOGO_THUMBNAIL&#x60;, &#x60;UNLAYER&#x60;, &#x60;BRANDING_CENTER_LOGO&#x60; - (String) &#x60;file_name&#x60; - (String) &#x60;created_time&#x60; - (String) &#x60;updated_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. Multiple filters are combined with a semicolon (&#x60;;&#x60;, encoded &#x60;%3B&#x60;) and are ANDed together. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;is_public%3D%3Dfalse&#x60; - &#x60;filter&#x3D;category%3D%3DDOCUMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse&#x60;  (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)

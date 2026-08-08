@@ -20,11 +20,14 @@ import com.keap.core.sdk.Pair;
 import com.keap.core.sdk.model.CancelSubscriptionRequest;
 import com.keap.core.sdk.model.CreateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.CreateCustomFieldRequest;
+import com.keap.core.sdk.model.CreateCustomFieldTabRequest;
 import com.keap.core.sdk.model.CreateSubscriptionRequest;
 import com.keap.core.sdk.model.CustomFieldGroup;
 import com.keap.core.sdk.model.CustomFieldMetaData;
+import com.keap.core.sdk.model.CustomFieldTab;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.ListCustomFieldGroupsResponse;
+import com.keap.core.sdk.model.ListCustomFieldTabsResponse;
 import com.keap.core.sdk.model.ListSubscriptionsResponse;
 import com.keap.core.sdk.model.ObjectModel;
 import com.keap.core.sdk.model.OrderV2;
@@ -32,6 +35,7 @@ import java.util.Set;
 import com.keap.core.sdk.model.Subscription;
 import com.keap.core.sdk.model.UpdateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
+import com.keap.core.sdk.model.UpdateCustomFieldTabRequest;
 import com.keap.core.sdk.model.UpdateSubscriptionRequest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -488,6 +492,97 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Create a Subscription Custom Field Tab
+   * Creates a new custom field tab for the Subscription record type.
+   * @param createCustomFieldTabRequest  (required)
+   * @return CustomFieldTab
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldTab createSubscriptionCustomFieldTab(CreateCustomFieldTabRequest createCustomFieldTabRequest) throws ApiException {
+    ApiResponse<CustomFieldTab> localVarResponse = createSubscriptionCustomFieldTabWithHttpInfo(createCustomFieldTabRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create a Subscription Custom Field Tab
+   * Creates a new custom field tab for the Subscription record type.
+   * @param createCustomFieldTabRequest  (required)
+   * @return ApiResponse&lt;CustomFieldTab&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldTab> createSubscriptionCustomFieldTabWithHttpInfo(CreateCustomFieldTabRequest createCustomFieldTabRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createSubscriptionCustomFieldTabRequestBuilder(createCustomFieldTabRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("createSubscriptionCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldTab>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldTab>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder createSubscriptionCustomFieldTabRequestBuilder(CreateCustomFieldTabRequest createCustomFieldTabRequest) throws ApiException {
+    // verify the required parameter 'createCustomFieldTabRequest' is set
+    if (createCustomFieldTabRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'createCustomFieldTabRequest' when calling createSubscriptionCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/subscriptions/model/customFields/tabs";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createCustomFieldTabRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Delete a Subscription Custom Field
    * Deletes a custom field from the Subscription object
    * @param customFieldId  (required)
@@ -666,6 +761,95 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Delete a Subscription Custom Field Tab
+   * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+   * @param tabId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteSubscriptionCustomFieldTab(String tabId) throws ApiException {
+    deleteSubscriptionCustomFieldTabWithHttpInfo(tabId);
+  }
+
+  /**
+   * Delete a Subscription Custom Field Tab
+   * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+   * @param tabId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteSubscriptionCustomFieldTabWithHttpInfo(String tabId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteSubscriptionCustomFieldTabRequestBuilder(tabId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteSubscriptionCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteSubscriptionCustomFieldTabRequestBuilder(String tabId) throws ApiException {
+    // verify the required parameter 'tabId' is set
+    if (tabId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tabId' when calling deleteSubscriptionCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/subscriptions/model/customFields/tabs/{tab_id}"
+        .replace("{tab_id}", ApiClient.urlEncode(tabId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Retrieve a Subscription
    * Retrieves a single subscription
    * @param subscriptionId  (required)
@@ -821,6 +1005,92 @@ import io.github.resilience4j.retry.Retry;
 
     String localVarPath = "/rest/v2/subscriptions/model/customFields/groups/{group_id}"
         .replace("{group_id}", ApiClient.urlEncode(groupId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Retrieve a Subscription Custom Field Tab
+   * Retrieves a single custom field tab by id for the Subscription record type.
+   * @param tabId  (required)
+   * @return CustomFieldTab
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldTab getSubscriptionCustomFieldTab(String tabId) throws ApiException {
+    ApiResponse<CustomFieldTab> localVarResponse = getSubscriptionCustomFieldTabWithHttpInfo(tabId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Retrieve a Subscription Custom Field Tab
+   * Retrieves a single custom field tab by id for the Subscription record type.
+   * @param tabId  (required)
+   * @return ApiResponse&lt;CustomFieldTab&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldTab> getSubscriptionCustomFieldTabWithHttpInfo(String tabId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getSubscriptionCustomFieldTabRequestBuilder(tabId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getSubscriptionCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldTab>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldTab>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getSubscriptionCustomFieldTabRequestBuilder(String tabId) throws ApiException {
+    // verify the required parameter 'tabId' is set
+    if (tabId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tabId' when calling getSubscriptionCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/subscriptions/model/customFields/tabs/{tab_id}"
+        .replace("{tab_id}", ApiClient.urlEncode(tabId.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 
@@ -1020,9 +1290,88 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * List Subscription Custom Field Tabs
+   * Retrieves a list of custom field tabs for the Subscription record type.
+   * @return ListCustomFieldTabsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListCustomFieldTabsResponse listSubscriptionCustomFieldTabs() throws ApiException {
+    ApiResponse<ListCustomFieldTabsResponse> localVarResponse = listSubscriptionCustomFieldTabsWithHttpInfo();
+    return localVarResponse.getData();
+  }
+
+  /**
+   * List Subscription Custom Field Tabs
+   * Retrieves a list of custom field tabs for the Subscription record type.
+   * @return ApiResponse&lt;ListCustomFieldTabsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ListCustomFieldTabsResponse> listSubscriptionCustomFieldTabsWithHttpInfo() throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listSubscriptionCustomFieldTabsRequestBuilder();
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listSubscriptionCustomFieldTabs", localVarResponse);
+        }
+        return new ApiResponse<ListCustomFieldTabsResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListCustomFieldTabsResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listSubscriptionCustomFieldTabsRequestBuilder() throws ApiException {
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/subscriptions/model/customFields/tabs";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * List Subscriptions
    * Retrieves a list of subscriptions using the specified search criteria.
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/subscriptions/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_SubscriptionNote0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  Custom field examples (for custom fields with field_name &#x60;_SubscriptionNote0&#x60; and &#x60;_SubscriptionCount1&#x60;): - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_SubscriptionCount1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;contact_id%3D%3D123%3B_SubscriptionNote0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -1037,7 +1386,7 @@ import io.github.resilience4j.retry.Retry;
   /**
    * List Subscriptions
    * Retrieves a list of subscriptions using the specified search criteria.
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/subscriptions/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_SubscriptionNote0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  Custom field examples (for custom fields with field_name &#x60;_SubscriptionNote0&#x60; and &#x60;_SubscriptionCount1&#x60;): - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_SubscriptionCount1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;contact_id%3D%3D123%3B_SubscriptionNote0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -1542,6 +1891,125 @@ import io.github.resilience4j.retry.Retry;
 
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldGroupRequest);
+      localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update a Subscription Custom Field Tab
+   * Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+   * @param tabId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldTabRequest  (required)
+   * @return CustomFieldTab
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldTab updateSubscriptionCustomFieldTab(String tabId, Set<String> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest) throws ApiException {
+    ApiResponse<CustomFieldTab> localVarResponse = updateSubscriptionCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Update a Subscription Custom Field Tab
+   * Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+   * @param tabId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldTabRequest  (required)
+   * @return ApiResponse&lt;CustomFieldTab&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldTab> updateSubscriptionCustomFieldTabWithHttpInfo(String tabId, Set<String> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateSubscriptionCustomFieldTabRequestBuilder(tabId, updateMask, updateCustomFieldTabRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateSubscriptionCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldTab>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldTab>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateSubscriptionCustomFieldTabRequestBuilder(String tabId, Set<String> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest) throws ApiException {
+    // verify the required parameter 'tabId' is set
+    if (tabId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tabId' when calling updateSubscriptionCustomFieldTab");
+    }
+    // verify the required parameter 'updateMask' is set
+    if (updateMask == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateMask' when calling updateSubscriptionCustomFieldTab");
+    }
+    // verify the required parameter 'updateCustomFieldTabRequest' is set
+    if (updateCustomFieldTabRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateCustomFieldTabRequest' when calling updateSubscriptionCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/subscriptions/model/customFields/tabs/{tab_id}"
+        .replace("{tab_id}", ApiClient.urlEncode(tabId.toString()));
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "update_mask";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldTabRequest);
       localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

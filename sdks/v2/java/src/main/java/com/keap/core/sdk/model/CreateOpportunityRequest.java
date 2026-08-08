@@ -80,10 +80,10 @@ public class CreateOpportunityRequest implements Serializable {
   @jakarta.annotation.Nullable  private Double projectedRevenueHigh;
 
   public static final String JSON_PROPERTY_CONTACT_ID = "contact_id";
-  @jakarta.annotation.Nullable  private String contactId;
+  @jakarta.annotation.Nonnull  private String contactId;
 
   public static final String JSON_PROPERTY_STAGE_ID = "stage_id";
-  @jakarta.annotation.Nullable  private String stageId;
+  @jakarta.annotation.Nonnull  private String stageId;
 
   public static final String JSON_PROPERTY_USER_ID = "user_id";
   @jakarta.annotation.Nullable  private String userId;
@@ -290,7 +290,7 @@ public class CreateOpportunityRequest implements Serializable {
   }
 
 
-  public CreateOpportunityRequest contactId(@jakarta.annotation.Nullable String contactId) {
+  public CreateOpportunityRequest contactId(@jakarta.annotation.Nonnull String contactId) {
     this.contactId = contactId;
     return this;
   }
@@ -299,22 +299,23 @@ public class CreateOpportunityRequest implements Serializable {
    * Associated contact ID
    * @return contactId
    */
-  @jakarta.annotation.Nullable  @Schema(example = "1001", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Associated contact ID")
+  @jakarta.annotation.Nonnull  @NotNull
+  @Schema(example = "1001", requiredMode = Schema.RequiredMode.REQUIRED, description = "Associated contact ID")
   @JsonProperty(JSON_PROPERTY_CONTACT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getContactId() {
     return contactId;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CONTACT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setContactId(@jakarta.annotation.Nullable String contactId) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setContactId(@jakarta.annotation.Nonnull String contactId) {
     this.contactId = contactId;
   }
 
 
-  public CreateOpportunityRequest stageId(@jakarta.annotation.Nullable String stageId) {
+  public CreateOpportunityRequest stageId(@jakarta.annotation.Nonnull String stageId) {
     this.stageId = stageId;
     return this;
   }
@@ -323,17 +324,18 @@ public class CreateOpportunityRequest implements Serializable {
    * Pipeline stage ID
    * @return stageId
    */
-  @jakarta.annotation.Nullable  @Schema(example = "2", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Pipeline stage ID")
+  @jakarta.annotation.Nonnull  @NotNull
+  @Schema(example = "2", requiredMode = Schema.RequiredMode.REQUIRED, description = "Pipeline stage ID")
   @JsonProperty(JSON_PROPERTY_STAGE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getStageId() {
     return stageId;
   }
 
 
   @JsonProperty(JSON_PROPERTY_STAGE_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStageId(@jakarta.annotation.Nullable String stageId) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setStageId(@jakarta.annotation.Nonnull String stageId) {
     this.stageId = stageId;
   }
 

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **str** | Email address | [optional] 
+**email** | **str** | Email address. Maximum length is 75 characters for EMAIL1 and 100 characters for EMAIL2 and EMAIL3. | [optional] 
 **var_field** | **str** | Email address slot | [optional] 
 **opt_in_reason** | **str** | Reason for opting in | [optional] 
 

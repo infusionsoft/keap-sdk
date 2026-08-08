@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **extension** | **str** | Phone extension | [optional] 
-**number** | **str** | Phone number | [optional] 
+**number** | **str** | Phone number. Maximum length is 40 characters for PHONE1-PHONE3 and 20 characters for PHONE4-PHONE5. | [optional] 
 **type** | **str** | Phone type | [optional] 
 **var_field** | **str** | Phone number slot | [optional] 
 **number_e164** | **str** | Phone number in E.164 format | [optional] 

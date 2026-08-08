@@ -26,17 +26,17 @@ class Address(BaseModel):
     """
     Address
     """ # noqa: E501
-    country: Optional[StrictStr] = Field(default=None, description="Deprecated. The long-name descriptive version of the Country Code. Please use 'country_code' for POST/PATCH operations.")
-    line1: Optional[StrictStr] = Field(default=None, description="Street address line 1")
-    line2: Optional[StrictStr] = Field(default=None, description="Street address line 2")
-    locality: Optional[StrictStr] = Field(default=None, description="The municipality to which the address belongs")
-    region: Optional[StrictStr] = Field(default=None, description="The long-name descriptive version of the Region Code. Please use 'region_code' for POST/PATCH operations.")
+    country: Optional[StrictStr] = Field(default=None, description="Deprecated. The long-name descriptive version of the Country Code. Please use 'country_code' for POST/PATCH operations. Maximum length is 100 characters.")
+    line1: Optional[StrictStr] = Field(default=None, description="Street address line 1. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.")
+    line2: Optional[StrictStr] = Field(default=None, description="Street address line 2. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.")
+    locality: Optional[StrictStr] = Field(default=None, description="The municipality to which the address belongs. Maximum length is 50 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.")
+    region: Optional[StrictStr] = Field(default=None, description="The long-name descriptive version of the Region Code. Please use 'region_code' for POST/PATCH operations. Maximum length is 50 characters.")
     var_field: Optional[StrictStr] = Field(default=None, description="Address type field", alias="field")
     country_code: Optional[StrictStr] = Field(default=None, description="An ISO 3166-2 Country Code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3)")
-    postal_code: Optional[StrictStr] = Field(default=None, description="Postal or ZIP code")
+    postal_code: Optional[StrictStr] = Field(default=None, description="Postal or ZIP code. Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.")
     region_code: Optional[StrictStr] = Field(default=None, description="An ISO 3166-2 Province Code, such as one of the US States (https://en.wikipedia.org/wiki/ISO_3166-2:US)")
-    zip_code: Optional[StrictStr] = Field(default=None, description="ZIP code (US)")
-    zip_four: Optional[StrictStr] = Field(default=None, description="ZIP+4 extension")
+    zip_code: Optional[StrictStr] = Field(default=None, description="ZIP code (US). Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.")
+    zip_four: Optional[StrictStr] = Field(default=None, description="ZIP+4 extension. Maximum length is 10 characters.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["country", "line1", "line2", "locality", "region", "field", "country_code", "postal_code", "region_code", "zip_code", "zip_four"]
 

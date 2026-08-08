@@ -12,6 +12,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**GetCategory**](TagsApi.md#getcategory) | **GET** /rest/v2/tags/categories/{tag_category_id} | Retrieve a Tag Category |
 | [**GetTag**](TagsApi.md#gettag) | **GET** /rest/v2/tags/{tag_id} | Retrieve a Tag |
 | [**ListCompaniesForTagId**](TagsApi.md#listcompaniesfortagid) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies |
+| [**ListContactsAcrossTags**](TagsApi.md#listcontactsacrosstags) | **GET** /rest/v2/tags/-/contacts | List Contacts Across Tags |
 | [**ListContactsWithTagId**](TagsApi.md#listcontactswithtagid) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts |
 | [**ListTagCategories**](TagsApi.md#listtagcategories) | **GET** /rest/v2/tags/categories | List Tag Categories |
 | [**ListTags**](TagsApi.md#listtags) | **GET** /rest/v2/tags | List Tags |
@@ -811,6 +812,114 @@ catch (ApiException e)
 ### Return type
 
 [**ListTaggedCompaniesResponse**](ListTaggedCompaniesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listcontactsacrosstags"></a>
+# **ListContactsAcrossTags**
+> ListTagContactAssociationsResponse ListContactsAcrossTags (string? filter = null, string? pageToken = null, string? orderBy = null, int? pageSize = null)
+
+List Contacts Across Tags
+
+Retrieves tag-contact associations across the tag collection (AEP-159), using the `-` wildcard in place of a single tag id. At least one filter is required. Returns association tuples (contact_id, tag_id, applied_at) only.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListContactsAcrossTagsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TagsApi(config);
+            var filter = "filter_example";  // string? | Filter to apply (at least one is required). Allowed fields: - (List[String]) `tag_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time`  (optional) 
+            var pageToken = "pageToken_example";  // string? | Page token (optional) 
+            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items (best-effort for cross-collection reads). Field: - `applied_time`  Direction: - `asc` - `desc` (optional) 
+            var pageSize = 0;  // int? | Total number of items to return per page (optional) 
+
+            try
+            {
+                // List Contacts Across Tags
+                ListTagContactAssociationsResponse result = apiInstance.ListContactsAcrossTags(filter, pageToken, orderBy, pageSize);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TagsApi.ListContactsAcrossTags: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListContactsAcrossTagsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Contacts Across Tags
+    ApiResponse<ListTagContactAssociationsResponse> response = apiInstance.ListContactsAcrossTagsWithHttpInfo(filter, pageToken, orderBy, pageSize);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TagsApi.ListContactsAcrossTagsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **filter** | **string?** | Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;tag_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  | [optional]  |
+| **pageToken** | **string?** | Page token | [optional]  |
+| **orderBy** | **string?** | Attribute and direction to order items (best-effort for cross-collection reads). Field: - &#x60;applied_time&#x60;  Direction: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
+| **pageSize** | **int?** | Total number of items to return per page | [optional]  |
+
+### Return type
+
+[**ListTagContactAssociationsResponse**](ListTagContactAssociationsResponse.md)
 
 ### Authorization
 

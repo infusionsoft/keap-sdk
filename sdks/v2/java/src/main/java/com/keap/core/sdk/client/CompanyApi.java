@@ -21,17 +21,21 @@ import com.keap.core.sdk.model.Company;
 import com.keap.core.sdk.model.CreateCompanyRequest;
 import com.keap.core.sdk.model.CreateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.CreateCustomFieldRequest;
+import com.keap.core.sdk.model.CreateCustomFieldTabRequest;
 import com.keap.core.sdk.model.CustomFieldGroup;
 import com.keap.core.sdk.model.CustomFieldMetaData;
+import com.keap.core.sdk.model.CustomFieldTab;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.ListCompaniesResponse;
 import com.keap.core.sdk.model.ListCompanyTagsResponse;
 import com.keap.core.sdk.model.ListCustomFieldGroupsResponse;
+import com.keap.core.sdk.model.ListCustomFieldTabsResponse;
 import com.keap.core.sdk.model.ObjectModel;
 import java.util.Set;
 import com.keap.core.sdk.model.UpdateCompanyRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
+import com.keap.core.sdk.model.UpdateCustomFieldTabRequest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -476,6 +480,97 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Create a Company Custom Field Tab
+   * Creates a new custom field tab for the Company record type.
+   * @param createCustomFieldTabRequest  (required)
+   * @return CustomFieldTab
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldTab createCompanyCustomFieldTab(CreateCustomFieldTabRequest createCustomFieldTabRequest) throws ApiException {
+    ApiResponse<CustomFieldTab> localVarResponse = createCompanyCustomFieldTabWithHttpInfo(createCustomFieldTabRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create a Company Custom Field Tab
+   * Creates a new custom field tab for the Company record type.
+   * @param createCustomFieldTabRequest  (required)
+   * @return ApiResponse&lt;CustomFieldTab&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldTab> createCompanyCustomFieldTabWithHttpInfo(CreateCustomFieldTabRequest createCustomFieldTabRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createCompanyCustomFieldTabRequestBuilder(createCustomFieldTabRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("createCompanyCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldTab>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldTab>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder createCompanyCustomFieldTabRequestBuilder(CreateCustomFieldTabRequest createCustomFieldTabRequest) throws ApiException {
+    // verify the required parameter 'createCustomFieldTabRequest' is set
+    if (createCustomFieldTabRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'createCustomFieldTabRequest' when calling createCompanyCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/companies/model/customFields/tabs";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createCustomFieldTabRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Delete a Company
    * Deletes the specified Company
    * @param companyId  (required)
@@ -743,6 +838,95 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Delete a Company Custom Field Tab
+   * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+   * @param tabId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteCompanyCustomFieldTab(String tabId) throws ApiException {
+    deleteCompanyCustomFieldTabWithHttpInfo(tabId);
+  }
+
+  /**
+   * Delete a Company Custom Field Tab
+   * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+   * @param tabId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteCompanyCustomFieldTabWithHttpInfo(String tabId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteCompanyCustomFieldTabRequestBuilder(tabId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteCompanyCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteCompanyCustomFieldTabRequestBuilder(String tabId) throws ApiException {
+    // verify the required parameter 'tabId' is set
+    if (tabId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tabId' when calling deleteCompanyCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/companies/model/customFields/tabs/{tab_id}"
+        .replace("{tab_id}", ApiClient.urlEncode(tabId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Retrieve a Company
    * Retrieves a single Company
    * @param companyId  (required)
@@ -932,10 +1116,96 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Retrieve a Company Custom Field Tab
+   * Retrieves a single custom field tab by id for the Company record type.
+   * @param tabId  (required)
+   * @return CustomFieldTab
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldTab getCompanyCustomFieldTab(String tabId) throws ApiException {
+    ApiResponse<CustomFieldTab> localVarResponse = getCompanyCustomFieldTabWithHttpInfo(tabId);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Retrieve a Company Custom Field Tab
+   * Retrieves a single custom field tab by id for the Company record type.
+   * @param tabId  (required)
+   * @return ApiResponse&lt;CustomFieldTab&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldTab> getCompanyCustomFieldTabWithHttpInfo(String tabId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getCompanyCustomFieldTabRequestBuilder(tabId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getCompanyCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldTab>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldTab>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getCompanyCustomFieldTabRequestBuilder(String tabId) throws ApiException {
+    // verify the required parameter 'tabId' is set
+    if (tabId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tabId' when calling getCompanyCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/companies/model/customFields/tabs/{tab_id}"
+        .replace("{tab_id}", ApiClient.urlEncode(tabId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * List Companies
    * Retrieves a list of all Companies.&lt;br/&gt;&lt;br/&gt;
    * @param fields Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;Industry%3D%3DTech%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;since_time&#x60;/&#x60;until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Examples (for a custom field named &#x60;Height&#x60;): - &#x60;filter&#x3D;Height%3D%3DTall&#x60; - &#x60;filter&#x3D;Height%3E100&#x60; Custom field filtering on non-indexed fields is supported but may be slower.  (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;city&#x60; - company city (Contact.City) with support for a prefix wildcard at the end (e.g. &#x60;Chan*&#x60;) - (String) &#x60;state&#x60; - company state/region (Contact.State) with support for a prefix wildcard at the end (e.g. &#x60;Ar*&#x60;) - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name/city/state search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;Industry%3D%3DTech%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;since_time&#x60;/&#x60;until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Examples (for a custom field named &#x60;Height&#x60;): - &#x60;filter&#x3D;Height%3D%3DTall&#x60; - &#x60;filter&#x3D;Height%3E100&#x60; Custom field filtering on non-indexed fields is supported but may be slower.  (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -951,7 +1221,7 @@ import io.github.resilience4j.retry.Retry;
    * List Companies
    * Retrieves a list of all Companies.&lt;br/&gt;&lt;br/&gt;
    * @param fields Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren&#39;t included, by default.) (optional)
-   * @param filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;Industry%3D%3DTech%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;since_time&#x60;/&#x60;until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Examples (for a custom field named &#x60;Height&#x60;): - &#x60;filter&#x3D;Height%3D%3DTall&#x60; - &#x60;filter&#x3D;Height%3E100&#x60; Custom field filtering on non-indexed fields is supported but may be slower.  (optional)
+   * @param filter Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;city&#x60; - company city (Contact.City) with support for a prefix wildcard at the end (e.g. &#x60;Chan*&#x60;) - (String) &#x60;state&#x60; - company state/region (Contact.State) with support for a prefix wildcard at the end (e.g. &#x60;Ar*&#x60;) - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name/city/state search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;Industry%3D%3DTech%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;since_time&#x60;/&#x60;until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Examples (for a custom field named &#x60;Height&#x60;): - &#x60;filter&#x3D;Height%3D%3DTall&#x60; - &#x60;filter&#x3D;Height%3E100&#x60; Custom field filtering on non-indexed fields is supported but may be slower.  (optional)
    * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
    * @param pageSize Total number of items to return per page (optional)
    * @param pageToken Page token (optional)
@@ -1125,6 +1395,85 @@ import io.github.resilience4j.retry.Retry;
     } else {
       localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     }
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * List Company Custom Field Tabs
+   * Retrieves a list of custom field tabs for the Company record type.
+   * @return ListCustomFieldTabsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListCustomFieldTabsResponse listCompanyCustomFieldTabs() throws ApiException {
+    ApiResponse<ListCustomFieldTabsResponse> localVarResponse = listCompanyCustomFieldTabsWithHttpInfo();
+    return localVarResponse.getData();
+  }
+
+  /**
+   * List Company Custom Field Tabs
+   * Retrieves a list of custom field tabs for the Company record type.
+   * @return ApiResponse&lt;ListCustomFieldTabsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ListCustomFieldTabsResponse> listCompanyCustomFieldTabsWithHttpInfo() throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listCompanyCustomFieldTabsRequestBuilder();
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listCompanyCustomFieldTabs", localVarResponse);
+        }
+        return new ApiResponse<ListCustomFieldTabsResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListCustomFieldTabsResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listCompanyCustomFieldTabsRequestBuilder() throws ApiException {
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/companies/model/customFields/tabs";
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
@@ -1765,6 +2114,125 @@ import io.github.resilience4j.retry.Retry;
 
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldGroupRequest);
+      localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update a Company Custom Field Tab
+   * Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+   * @param tabId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldTabRequest  (required)
+   * @return CustomFieldTab
+   * @throws ApiException if fails to make API call
+   */
+  public CustomFieldTab updateCompanyCustomFieldTab(String tabId, Set<String> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest) throws ApiException {
+    ApiResponse<CustomFieldTab> localVarResponse = updateCompanyCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Update a Company Custom Field Tab
+   * Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+   * @param tabId  (required)
+   * @param updateMask Comma-separated list of fields to update (required)
+   * @param updateCustomFieldTabRequest  (required)
+   * @return ApiResponse&lt;CustomFieldTab&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<CustomFieldTab> updateCompanyCustomFieldTabWithHttpInfo(String tabId, Set<String> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateCompanyCustomFieldTabRequestBuilder(tabId, updateMask, updateCustomFieldTabRequest);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateCompanyCustomFieldTab", localVarResponse);
+        }
+        return new ApiResponse<CustomFieldTab>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<CustomFieldTab>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateCompanyCustomFieldTabRequestBuilder(String tabId, Set<String> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest) throws ApiException {
+    // verify the required parameter 'tabId' is set
+    if (tabId == null) {
+      throw new ApiException(400, "Missing the required parameter 'tabId' when calling updateCompanyCustomFieldTab");
+    }
+    // verify the required parameter 'updateMask' is set
+    if (updateMask == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateMask' when calling updateCompanyCustomFieldTab");
+    }
+    // verify the required parameter 'updateCustomFieldTabRequest' is set
+    if (updateCustomFieldTabRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'updateCustomFieldTabRequest' when calling updateCompanyCustomFieldTab");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/companies/model/customFields/tabs/{tab_id}"
+        .replace("{tab_id}", ApiClient.urlEncode(tabId.toString()));
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "update_mask";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateCustomFieldTabRequest);
       localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

@@ -76,17 +76,17 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Address" /> class.
         /// </summary>
-        /// <param name="country">Deprecated. The long-name descriptive version of the Country Code. Please use &#39;country_code&#39; for POST/PATCH operations..</param>
-        /// <param name="line1">Street address line 1.</param>
-        /// <param name="line2">Street address line 2.</param>
-        /// <param name="locality">The municipality to which the address belongs.</param>
-        /// <param name="region">The long-name descriptive version of the Region Code. Please use &#39;region_code&#39; for POST/PATCH operations..</param>
+        /// <param name="country">Deprecated. The long-name descriptive version of the Country Code. Please use &#39;country_code&#39; for POST/PATCH operations. Maximum length is 100 characters..</param>
+        /// <param name="line1">Street address line 1. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses..</param>
+        /// <param name="line2">Street address line 2. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses..</param>
+        /// <param name="locality">The municipality to which the address belongs. Maximum length is 50 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses..</param>
+        /// <param name="region">The long-name descriptive version of the Region Code. Please use &#39;region_code&#39; for POST/PATCH operations. Maximum length is 50 characters..</param>
         /// <param name="field">Address type field.</param>
         /// <param name="countryCode">An ISO 3166-2 Country Code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3).</param>
-        /// <param name="postalCode">Postal or ZIP code.</param>
+        /// <param name="postalCode">Postal or ZIP code. Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address..</param>
         /// <param name="regionCode">An ISO 3166-2 Province Code, such as one of the US States (https://en.wikipedia.org/wiki/ISO_3166-2:US).</param>
-        /// <param name="zipCode">ZIP code (US).</param>
-        /// <param name="zipFour">ZIP+4 extension.</param>
+        /// <param name="zipCode">ZIP code (US). Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address..</param>
+        /// <param name="zipFour">ZIP+4 extension. Maximum length is 10 characters..</param>
         public Address(string country = default, string line1 = default, string line2 = default, string locality = default, string region = default, FieldEnum? field = default, string countryCode = default, string postalCode = default, string regionCode = default, string zipCode = default, string zipFour = default)
         {
             this.Country = country;
@@ -103,9 +103,9 @@ namespace Keap.Core.V2.Model
         }
 
         /// <summary>
-        /// Deprecated. The long-name descriptive version of the Country Code. Please use &#39;country_code&#39; for POST/PATCH operations.
+        /// Deprecated. The long-name descriptive version of the Country Code. Please use &#39;country_code&#39; for POST/PATCH operations. Maximum length is 100 characters.
         /// </summary>
-        /// <value>Deprecated. The long-name descriptive version of the Country Code. Please use &#39;country_code&#39; for POST/PATCH operations.</value>
+        /// <value>Deprecated. The long-name descriptive version of the Country Code. Please use &#39;country_code&#39; for POST/PATCH operations. Maximum length is 100 characters.</value>
         /*
         <example>United States of America</example>
         */
@@ -114,9 +114,9 @@ namespace Keap.Core.V2.Model
         public string Country { get; set; }
 
         /// <summary>
-        /// Street address line 1
+        /// Street address line 1. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
         /// </summary>
-        /// <value>Street address line 1</value>
+        /// <value>Street address line 1. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.</value>
         /*
         <example>123</example>
         */
@@ -124,9 +124,9 @@ namespace Keap.Core.V2.Model
         public string Line1 { get; set; }
 
         /// <summary>
-        /// Street address line 2
+        /// Street address line 2. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
         /// </summary>
-        /// <value>Street address line 2</value>
+        /// <value>Street address line 2. Maximum length is 75 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.</value>
         /*
         <example>Suite 100</example>
         */
@@ -134,9 +134,9 @@ namespace Keap.Core.V2.Model
         public string Line2 { get; set; }
 
         /// <summary>
-        /// The municipality to which the address belongs
+        /// The municipality to which the address belongs. Maximum length is 50 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
         /// </summary>
-        /// <value>The municipality to which the address belongs</value>
+        /// <value>The municipality to which the address belongs. Maximum length is 50 characters for the BILLING address and 100 characters for the SHIPPING and OTHER addresses.</value>
         /*
         <example>Phoenix</example>
         */
@@ -144,9 +144,9 @@ namespace Keap.Core.V2.Model
         public string Locality { get; set; }
 
         /// <summary>
-        /// The long-name descriptive version of the Region Code. Please use &#39;region_code&#39; for POST/PATCH operations.
+        /// The long-name descriptive version of the Region Code. Please use &#39;region_code&#39; for POST/PATCH operations. Maximum length is 50 characters.
         /// </summary>
-        /// <value>The long-name descriptive version of the Region Code. Please use &#39;region_code&#39; for POST/PATCH operations.</value>
+        /// <value>The long-name descriptive version of the Region Code. Please use &#39;region_code&#39; for POST/PATCH operations. Maximum length is 50 characters.</value>
         /*
         <example>Arizona</example>
         */
@@ -165,9 +165,9 @@ namespace Keap.Core.V2.Model
         public string CountryCode { get; set; }
 
         /// <summary>
-        /// Postal or ZIP code
+        /// Postal or ZIP code. Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.
         /// </summary>
-        /// <value>Postal or ZIP code</value>
+        /// <value>Postal or ZIP code. Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.</value>
         /*
         <example>85001</example>
         */
@@ -185,9 +185,9 @@ namespace Keap.Core.V2.Model
         public string RegionCode { get; set; }
 
         /// <summary>
-        /// ZIP code (US)
+        /// ZIP code (US). Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.
         /// </summary>
-        /// <value>ZIP code (US)</value>
+        /// <value>ZIP code (US). Maximum length is 15 characters for the BILLING and OTHER addresses and 20 characters for the SHIPPING address.</value>
         /*
         <example>85001</example>
         */
@@ -195,9 +195,9 @@ namespace Keap.Core.V2.Model
         public string ZipCode { get; set; }
 
         /// <summary>
-        /// ZIP+4 extension
+        /// ZIP+4 extension. Maximum length is 10 characters.
         /// </summary>
-        /// <value>ZIP+4 extension</value>
+        /// <value>ZIP+4 extension. Maximum length is 10 characters.</value>
         /*
         <example>1234</example>
         */

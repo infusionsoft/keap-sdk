@@ -27,7 +27,7 @@ class PhoneNumber(BaseModel):
     PhoneNumber
     """ # noqa: E501
     extension: Optional[StrictStr] = Field(default=None, description="Phone extension")
-    number: Optional[StrictStr] = Field(default=None, description="Phone number")
+    number: Optional[StrictStr] = Field(default=None, description="Phone number. Maximum length is 40 characters for PHONE1-PHONE3 and 20 characters for PHONE4-PHONE5.")
     type: Optional[StrictStr] = Field(default=None, description="Phone type")
     var_field: Optional[StrictStr] = Field(default=None, description="Phone number slot", alias="field")
     number_e164: Optional[StrictStr] = Field(default=None, description="Phone number in E.164 format")

@@ -35,6 +35,8 @@ import jakarta.validation.Valid;
 @JsonPropertyOrder({
   OpportunityContact.JSON_PROPERTY_ID,
   OpportunityContact.JSON_PROPERTY_EMAIL,
+  OpportunityContact.JSON_PROPERTY_CITY,
+  OpportunityContact.JSON_PROPERTY_STATE,
   OpportunityContact.JSON_PROPERTY_FIRST_NAME,
   OpportunityContact.JSON_PROPERTY_LAST_NAME,
   OpportunityContact.JSON_PROPERTY_COMPANY_NAME,
@@ -50,6 +52,12 @@ public class OpportunityContact implements Serializable {
 
   public static final String JSON_PROPERTY_EMAIL = "email";
   @jakarta.annotation.Nullable  private String email;
+
+  public static final String JSON_PROPERTY_CITY = "city";
+  @jakarta.annotation.Nullable  private String city;
+
+  public static final String JSON_PROPERTY_STATE = "state";
+  @jakarta.annotation.Nullable  private String state;
 
   public static final String JSON_PROPERTY_FIRST_NAME = "first_name";
   @jakarta.annotation.Nullable  private String firstName;
@@ -115,6 +123,54 @@ public class OpportunityContact implements Serializable {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEmail(@jakarta.annotation.Nullable String email) {
     this.email = email;
+  }
+
+
+  public OpportunityContact city(@jakarta.annotation.Nullable String city) {
+    this.city = city;
+    return this;
+  }
+
+  /**
+   * City
+   * @return city
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Chandler", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "City")
+  @JsonProperty(JSON_PROPERTY_CITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getCity() {
+    return city;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CITY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCity(@jakarta.annotation.Nullable String city) {
+    this.city = city;
+  }
+
+
+  public OpportunityContact state(@jakarta.annotation.Nullable String state) {
+    this.state = state;
+    return this;
+  }
+
+  /**
+   * State
+   * @return state
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "AZ", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "State")
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getState() {
+    return state;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setState(@jakarta.annotation.Nullable String state) {
+    this.state = state;
   }
 
 
@@ -251,6 +307,8 @@ public class OpportunityContact implements Serializable {
     OpportunityContact opportunityContact = (OpportunityContact) o;
     return Objects.equals(this.id, opportunityContact.id) &&
         Objects.equals(this.email, opportunityContact.email) &&
+        Objects.equals(this.city, opportunityContact.city) &&
+        Objects.equals(this.state, opportunityContact.state) &&
         Objects.equals(this.firstName, opportunityContact.firstName) &&
         Objects.equals(this.lastName, opportunityContact.lastName) &&
         Objects.equals(this.companyName, opportunityContact.companyName) &&
@@ -260,7 +318,7 @@ public class OpportunityContact implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, email, firstName, lastName, companyName, jobTitle, phoneNumber);
+    return Objects.hash(id, email, city, state, firstName, lastName, companyName, jobTitle, phoneNumber);
   }
 
   @Override
@@ -269,6 +327,8 @@ public class OpportunityContact implements Serializable {
     sb.append("class OpportunityContact {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    city: ").append(toIndentedString(city)).append("\n");
+    sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
@@ -307,6 +367,14 @@ public class OpportunityContact implements Serializable {
         }
             public OpportunityContact.Builder email(String email) {
               this.instance.email = email;
+          return this;
+        }
+            public OpportunityContact.Builder city(String city) {
+              this.instance.city = city;
+          return this;
+        }
+            public OpportunityContact.Builder state(String state) {
+              this.instance.state = state;
           return this;
         }
             public OpportunityContact.Builder firstName(String firstName) {
@@ -365,6 +433,8 @@ public class OpportunityContact implements Serializable {
         return new OpportunityContact.Builder()
           .id(getId())
           .email(getEmail())
+          .city(getCity())
+          .state(getState())
           .firstName(getFirstName())
           .lastName(getLastName())
           .companyName(getCompanyName())

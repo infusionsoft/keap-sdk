@@ -7,17 +7,22 @@ Method | HTTP request | Description
 [**create_task**](TaskApi.md#create_task) | **POST** /rest/v2/tasks | Create a Task
 [**create_task_custom_field**](TaskApi.md#create_task_custom_field) | **POST** /rest/v2/tasks/model/customFields | Create a Custom Field
 [**create_task_custom_field_group**](TaskApi.md#create_task_custom_field_group) | **POST** /rest/v2/tasks/model/customFields/groups | Create a Task Custom Field Group
+[**create_task_custom_field_tab**](TaskApi.md#create_task_custom_field_tab) | **POST** /rest/v2/tasks/model/customFields/tabs | Create a Task Custom Field Tab
 [**delete_task**](TaskApi.md#delete_task) | **DELETE** /rest/v2/tasks/{task_id} | Delete a Task
 [**delete_task_custom_field**](TaskApi.md#delete_task_custom_field) | **DELETE** /rest/v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field
 [**delete_task_custom_field_group**](TaskApi.md#delete_task_custom_field_group) | **DELETE** /rest/v2/tasks/model/customFields/groups/{group_id} | Delete a Task Custom Field Group
+[**delete_task_custom_field_tab**](TaskApi.md#delete_task_custom_field_tab) | **DELETE** /rest/v2/tasks/model/customFields/tabs/{tab_id} | Delete a Task Custom Field Tab
 [**get_task**](TaskApi.md#get_task) | **GET** /rest/v2/tasks/{task_id} | Retrieve a Task
 [**get_task_custom_field_group**](TaskApi.md#get_task_custom_field_group) | **GET** /rest/v2/tasks/model/customFields/groups/{group_id} | Retrieve a Task Custom Field Group
+[**get_task_custom_field_tab**](TaskApi.md#get_task_custom_field_tab) | **GET** /rest/v2/tasks/model/customFields/tabs/{tab_id} | Retrieve a Task Custom Field Tab
 [**list_task_custom_field_groups**](TaskApi.md#list_task_custom_field_groups) | **GET** /rest/v2/tasks/model/customFields/groups | List Task Custom Field Groups
+[**list_task_custom_field_tabs**](TaskApi.md#list_task_custom_field_tabs) | **GET** /rest/v2/tasks/model/customFields/tabs | List Task Custom Field Tabs
 [**list_tasks**](TaskApi.md#list_tasks) | **GET** /rest/v2/tasks | List Tasks
 [**retrieve_task_model**](TaskApi.md#retrieve_task_model) | **GET** /rest/v2/tasks/model | Retrieve Task Model
 [**update_task**](TaskApi.md#update_task) | **PATCH** /rest/v2/tasks/{task_id} | Update a Task
 [**update_task_custom_field**](TaskApi.md#update_task_custom_field) | **PATCH** /rest/v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field
 [**update_task_custom_field_group**](TaskApi.md#update_task_custom_field_group) | **PATCH** /rest/v2/tasks/model/customFields/groups/{group_id} | Update a Task Custom Field Group
+[**update_task_custom_field_tab**](TaskApi.md#update_task_custom_field_tab) | **PATCH** /rest/v2/tasks/model/customFields/tabs/{tab_id} | Update a Task Custom Field Tab
 
 
 # **create_task**
@@ -242,6 +247,88 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_task_custom_field_tab**
+> CustomFieldTab create_task_custom_field_tab(create_custom_field_tab_request)
+
+Create a Task Custom Field Tab
+
+Creates a new custom field tab for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.create_custom_field_tab_request import CreateCustomFieldTabRequest
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.TaskApi(api_client)
+    create_custom_field_tab_request = keap_core_v2_client.CreateCustomFieldTabRequest() # CreateCustomFieldTabRequest | 
+
+    try:
+        # Create a Task Custom Field Tab
+        api_response = api_instance.create_task_custom_field_tab(create_custom_field_tab_request)
+        print("The response of TaskApi->create_task_custom_field_tab:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TaskApi->create_task_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_custom_field_tab_request** | [**CreateCustomFieldTabRequest**](CreateCustomFieldTabRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
 
 ### Authorization
 
@@ -502,6 +589,84 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_task_custom_field_tab**
+> delete_task_custom_field_tab(tab_id)
+
+Delete a Task Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.TaskApi(api_client)
+    tab_id = 'tab_id_example' # str | 
+
+    try:
+        # Delete a Task Custom Field Tab
+        api_instance.delete_task_custom_field_tab(tab_id)
+    except Exception as e:
+        print("Exception when calling TaskApi->delete_task_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_task**
 > Task get_task(task_id, fields=fields)
 
@@ -666,6 +831,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_task_custom_field_tab**
+> CustomFieldTab get_task_custom_field_tab(tab_id)
+
+Retrieve a Task Custom Field Tab
+
+Retrieves a single custom field tab by id for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.TaskApi(api_client)
+    tab_id = 'tab_id_example' # str | 
+
+    try:
+        # Retrieve a Task Custom Field Tab
+        api_response = api_instance.get_task_custom_field_tab(tab_id)
+        print("The response of TaskApi->get_task_custom_field_tab:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TaskApi->get_task_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_task_custom_field_groups**
 > ListCustomFieldGroupsResponse list_task_custom_field_groups(tab_id=tab_id)
 
@@ -747,6 +993,83 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **list_task_custom_field_tabs**
+> ListCustomFieldTabsResponse list_task_custom_field_tabs()
+
+List Task Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_custom_field_tabs_response import ListCustomFieldTabsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.TaskApi(api_client)
+
+    try:
+        # List Task Custom Field Tabs
+        api_response = api_instance.list_task_custom_field_tabs()
+        print("The response of TaskApi->list_task_custom_field_tabs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TaskApi->list_task_custom_field_tabs: %s\n" % e)
+```
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListCustomFieldTabsResponse**](ListCustomFieldTabsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_tasks**
 > ListTasksResponse list_tasks(filter=filter, order_by=order_by, page_size=page_size, page_token=page_token, fields=fields)
 
@@ -780,7 +1103,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.TaskApi(api_client)
-    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `opportunity_id` - (String) `task_ids` - (String) `since_time` - (String) `until_time` - (String)   `id`     — supports `==`, `>`, `<`, `>=`, `<=` - (String) `title`  — supports prefix wildcard (`title==Foo*`)  Operators must be URL-encoded (`==` → `%3D%3D`, `>` → `%3E`, `<` → `%3C`). For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=opportunity_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` - `filter=id%3E5`                  (id > 5) - `filter=id%3C%3D100`              (id <= 100) - `filter=title%3D%3DFollow%2A`     (title starts with \"Follow\")  (optional)
+    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `opportunity_id` - (String) `task_ids` - (String) `priority`  — one of `CRITICAL`, `ESSENTIAL`, `NONESSENTIAL` - (String) `since_time` - (String) `until_time` - (String)   `id`     — supports `==`, `>`, `<`, `>=`, `<=` - (String) `title`  — supports prefix wildcard (`title==Foo*`)  Operators must be URL-encoded (`==` → `%3D%3D`, `>` → `%3E`, `<` → `%3C`). For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=opportunity_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=priority%3D%3DCRITICAL` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` - `filter=id%3E5`                  (id > 5) - `filter=id%3C%3D100`              (id <= 100) - `filter=title%3D%3DFollow%2A`     (title starts with \"Follow\")  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. `filter=cf_priority%3D%3D10`). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field's data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (`==`) and prefix wildcard (e.g. `cf_company%3D%3DAcme%2A`) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (`==`, `>`, `<`, `>=`, `<=`) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `cf_renewDate%3C%3D2026-01-01T00:00:00.000Z`). Date-only values such as `2026-01-01` are rejected - Yes/No fields — equals only, value `0` (No) or `1` (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. `cf_tags%3D%3Dred`) A custom field that does not exist, an operator unsupported for the field's type, or a value that does not match the field's type returns `400 Bad Request`.  (optional)
     order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time` - `update_time`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
@@ -801,7 +1124,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  | [optional] 
+ **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;priority&#x60;  — one of &#x60;CRITICAL&#x60;, &#x60;ESSENTIAL&#x60;, &#x60;NONESSENTIAL&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;priority%3D%3DCRITICAL&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. &#x60;filter&#x3D;cf_priority%3D%3D10&#x60;). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company%3D%3DAcme%2A&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate%3C%3D2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags%3D%3Dred&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  | [optional] 
  **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
@@ -1147,6 +1470,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_task_custom_field_tab**
+> CustomFieldTab update_task_custom_field_tab(tab_id, update_mask, update_custom_field_tab_request)
+
+Update a Task Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
+from keap_core_v2_client.models.update_custom_field_tab_request import UpdateCustomFieldTabRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.TaskApi(api_client)
+    tab_id = 'tab_id_example' # str | 
+    update_mask = ['update_mask_example'] # List[str] | Comma-separated list of fields to update
+    update_custom_field_tab_request = keap_core_v2_client.UpdateCustomFieldTabRequest() # UpdateCustomFieldTabRequest | 
+
+    try:
+        # Update a Task Custom Field Tab
+        api_response = api_instance.update_task_custom_field_tab(tab_id, update_mask, update_custom_field_tab_request)
+        print("The response of TaskApi->update_task_custom_field_tab:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TaskApi->update_task_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**|  | 
+ **update_mask** | [**List[str]**](str.md)| Comma-separated list of fields to update | 
+ **update_custom_field_tab_request** | [**UpdateCustomFieldTabRequest**](UpdateCustomFieldTabRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
 
 ### Authorization
 

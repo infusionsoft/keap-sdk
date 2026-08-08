@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **include_in_forecast** | **bool** | Include in sales forecast | [optional]
 **projected_revenue_low** | **float** | Low revenue estimate | [optional]
 **projected_revenue_high** | **float** | High revenue estimate | [optional]
-**contact_id** | **string** | Associated contact ID | [optional]
-**stage_id** | **string** | Pipeline stage ID | [optional]
+**contact_id** | **string** | Associated contact ID |
+**stage_id** | **string** | Pipeline stage ID |
 **user_id** | **string** | Assigned user ID | [optional]
 **custom_fields** | [**\Keap\Core\V2\Model\CustomField[]**](CustomField.md) |  | [optional]
 **affiliate_id** | **string** | Affiliate ID | [optional]

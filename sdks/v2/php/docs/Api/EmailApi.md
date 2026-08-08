@@ -10,6 +10,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**deleteEmails()**](EmailApi.md#deleteEmails) | **POST** /rest/v2/emails:batchRemove | Remove a set of Email Records |
 | [**getEmail()**](EmailApi.md#getEmail) | **GET** /rest/v2/emails/{id} | Retrieve an Email |
 | [**getEmailTemplate()**](EmailApi.md#getEmailTemplate) | **GET** /rest/v2/emails/templates/{email_template_id} | Retrieve an email template |
+| [**listEmailTemplates()**](EmailApi.md#listEmailTemplates) | **GET** /rest/v2/emails/templates | List email templates |
 | [**listEmails()**](EmailApi.md#listEmails) | **GET** /rest/v2/emails | List Emails |
 | [**sendEmail()**](EmailApi.md#sendEmail) | **POST** /rest/v2/emails:send | Send an Email |
 | [**sendEmailTemplate()**](EmailApi.md#sendEmailTemplate) | **POST** /rest/v2/emails/templates:send | Send an email based on a template |
@@ -354,6 +355,71 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\EmailTemplate**](../Model/EmailTemplate.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listEmailTemplates()`
+
+```php
+listEmailTemplates($filter, $page_token, $order_by, $page_size): \Keap\Core\V2\Model\ListEmailTemplatesResponse
+```
+
+List email templates
+
+Retrieves a paginated list of email templates
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\EmailApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$filter = 'filter_example'; // string | Search filter to apply to results
+$page_token = 'page_token_example'; // string | Page token
+$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `id` One of the following directions: - `asc` - `desc`
+$page_size = 0; // int | Total number of items to return per page
+
+try {
+    $result = $apiInstance->listEmailTemplates($filter, $page_token, $order_by, $page_size);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailApi->listEmailTemplates: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **filter** | **string**| Search filter to apply to results | [optional] |
+| **page_token** | **string**| Page token | [optional] |
+| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
+| **page_size** | **int**| Total number of items to return per page | [optional] |
+
+### Return type
+
+[**\Keap\Core\V2\Model\ListEmailTemplatesResponse**](../Model/ListEmailTemplatesResponse.md)
 
 ### Authorization
 

@@ -52,11 +52,11 @@ export class CreateOpportunityRequest {
     /**
     * Associated contact ID
     */
-    'contactId'?: string;
+    'contactId': string;
     /**
     * Pipeline stage ID
     */
-    'stageId'?: string;
+    'stageId': string;
     /**
     * Assigned user ID
     */

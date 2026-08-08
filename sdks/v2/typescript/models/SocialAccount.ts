@@ -14,7 +14,7 @@ import { HttpFile } from '../http/http';
 
 export class SocialAccount {
     /**
-    * Social account username or handle
+    * Social account username or handle. Maximum length is 255 characters.
     */
     'name'?: string;
     /**

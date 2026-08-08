@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**deleteEmails**](EmailApi.md#deleteEmails) | **POST** /rest/v2/emails:batchRemove | Remove a set of Email Records
 [**getEmail**](EmailApi.md#getEmail) | **GET** /rest/v2/emails/{id} | Retrieve an Email
 [**getEmailTemplate**](EmailApi.md#getEmailTemplate) | **GET** /rest/v2/emails/templates/{email_template_id} | Retrieve an email template
+[**listEmailTemplates**](EmailApi.md#listEmailTemplates) | **GET** /rest/v2/emails/templates | List email templates
 [**listEmails**](EmailApi.md#listEmails) | **GET** /rest/v2/emails | List Emails
 [**sendEmail**](EmailApi.md#sendEmail) | **POST** /rest/v2/emails:send | Send an Email
 [**sendEmailTemplate**](EmailApi.md#sendEmailTemplate) | **POST** /rest/v2/emails/templates:send | Send an email based on a template
@@ -293,6 +294,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmailTemplate**](EmailTemplate.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## listEmailTemplates
+
+> ListEmailTemplatesResponse listEmailTemplates(opts)
+
+List email templates
+
+Retrieves a paginated list of email templates
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.EmailApi();
+let opts = {
+  'filter': "filter_example", // String | Search filter to apply to results
+  'pageToken': "pageToken_example", // String | Page token
+  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `id` One of the following directions: - `asc` - `desc`
+  'pageSize': 0 // Number | Total number of items to return per page
+};
+apiInstance.listEmailTemplates(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | **String**| Search filter to apply to results | [optional] 
+ **pageToken** | **String**| Page token | [optional] 
+ **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
+ **pageSize** | **Number**| Total number of items to return per page | [optional] 
+
+### Return type
+
+[**ListEmailTemplatesResponse**](ListEmailTemplatesResponse.md)
 
 ### Authorization
 

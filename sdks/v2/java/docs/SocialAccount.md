@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** | Social account username or handle |  [optional] |
+|**name** | **String** | Social account username or handle. Maximum length is 255 characters. |  [optional] |
 |**type** | [**TypeEnum**](#TypeEnum) | Social account type |  |
 
 

@@ -97,7 +97,7 @@ class EmailAddress {
 
 
 /**
- * Email address
+ * Email address. Maximum length is 75 characters for EMAIL1 and 100 characters for EMAIL2 and EMAIL3.
  * @member {String} email
  */
 EmailAddress.prototype['email'] = undefined;

@@ -42,12 +42,14 @@ namespace Keap.Core.V2.Model
         /// </summary>
         /// <param name="id">Contact ID (required).</param>
         /// <param name="email">Email address.</param>
+        /// <param name="city">City.</param>
+        /// <param name="state">State.</param>
         /// <param name="firstName">First name.</param>
         /// <param name="lastName">Last name.</param>
         /// <param name="companyName">Company name.</param>
         /// <param name="jobTitle">Job title.</param>
         /// <param name="phoneNumber">Phone number.</param>
-        public OpportunityContact(string id = default, string email = default, string firstName = default, string lastName = default, string companyName = default, string jobTitle = default, string phoneNumber = default)
+        public OpportunityContact(string id = default, string email = default, string city = default, string state = default, string firstName = default, string lastName = default, string companyName = default, string jobTitle = default, string phoneNumber = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -56,6 +58,8 @@ namespace Keap.Core.V2.Model
             }
             this.Id = id;
             this.Email = email;
+            this.City = city;
+            this.State = state;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.CompanyName = companyName;
@@ -82,6 +86,26 @@ namespace Keap.Core.V2.Model
         */
         [DataMember(Name = "email", EmitDefaultValue = false)]
         public string Email { get; set; }
+
+        /// <summary>
+        /// City
+        /// </summary>
+        /// <value>City</value>
+        /*
+        <example>Chandler</example>
+        */
+        [DataMember(Name = "city", EmitDefaultValue = false)]
+        public string City { get; set; }
+
+        /// <summary>
+        /// State
+        /// </summary>
+        /// <value>State</value>
+        /*
+        <example>AZ</example>
+        */
+        [DataMember(Name = "state", EmitDefaultValue = false)]
+        public string State { get; set; }
 
         /// <summary>
         /// First name
@@ -143,6 +167,8 @@ namespace Keap.Core.V2.Model
             sb.Append("class OpportunityContact {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  City: ").Append(City).Append("\n");
+            sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");

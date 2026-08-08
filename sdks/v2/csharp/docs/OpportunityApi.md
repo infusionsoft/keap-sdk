@@ -6,24 +6,29 @@ All URIs are relative to *https://api.keap.com/crm*
 |--------|--------------|-------------|
 | [**CreateOpportunity**](OpportunityApi.md#createopportunity) | **POST** /rest/v2/opportunities | Create an Opportunity |
 | [**CreateOpportunityCustomFieldGroup**](OpportunityApi.md#createopportunitycustomfieldgroup) | **POST** /rest/v2/opportunities/model/customFields/groups | Create an Opportunity Custom Field Group |
+| [**CreateOpportunityCustomFieldTab**](OpportunityApi.md#createopportunitycustomfieldtab) | **POST** /rest/v2/opportunities/model/customFields/tabs | Create an Opportunity Custom Field Tab |
 | [**CreateOpportunityCustomFields**](OpportunityApi.md#createopportunitycustomfields) | **POST** /rest/v2/opportunities/model/customFields | Create an Opportunity Custom Field |
 | [**CreateOpportunityStage**](OpportunityApi.md#createopportunitystage) | **POST** /rest/v2/opportunities/stages | Create an Opportunity Stage |
 | [**DeleteOpportunitiesCustomField**](OpportunityApi.md#deleteopportunitiescustomfield) | **DELETE** /rest/v2/opportunities/model/customFields/{custom_field_id} | Delete an Opportunity Custom Field |
 | [**DeleteOpportunity**](OpportunityApi.md#deleteopportunity) | **DELETE** /rest/v2/opportunities/{opportunity_id} | Delete an Opportunity |
 | [**DeleteOpportunityCustomFieldGroup**](OpportunityApi.md#deleteopportunitycustomfieldgroup) | **DELETE** /rest/v2/opportunities/model/customFields/groups/{group_id} | Delete an Opportunity Custom Field Group |
+| [**DeleteOpportunityCustomFieldTab**](OpportunityApi.md#deleteopportunitycustomfieldtab) | **DELETE** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Delete an Opportunity Custom Field Tab |
 | [**DeleteOpportunityStage**](OpportunityApi.md#deleteopportunitystage) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage |
 | [**GetOpportunity**](OpportunityApi.md#getopportunity) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity |
 | [**GetOpportunityCustomFieldGroup**](OpportunityApi.md#getopportunitycustomfieldgroup) | **GET** /rest/v2/opportunities/model/customFields/groups/{group_id} | Retrieve an Opportunity Custom Field Group |
+| [**GetOpportunityCustomFieldTab**](OpportunityApi.md#getopportunitycustomfieldtab) | **GET** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Retrieve an Opportunity Custom Field Tab |
 | [**GetOpportunityStage**](OpportunityApi.md#getopportunitystage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage |
 | [**GetOpportunityStageMove**](OpportunityApi.md#getopportunitystagemove) | **GET** /rest/v2/opportunities/stageMoves/{stage_move_id} | Retrieve an Opportunity Stage Move |
 | [**ListOpportunities**](OpportunityApi.md#listopportunities) | **GET** /rest/v2/opportunities | List Opportunities |
 | [**ListOpportunityCustomFieldGroups**](OpportunityApi.md#listopportunitycustomfieldgroups) | **GET** /rest/v2/opportunities/model/customFields/groups | List Opportunity Custom Field Groups |
+| [**ListOpportunityCustomFieldTabs**](OpportunityApi.md#listopportunitycustomfieldtabs) | **GET** /rest/v2/opportunities/model/customFields/tabs | List Opportunity Custom Field Tabs |
 | [**ListOpportunityStageMoves**](OpportunityApi.md#listopportunitystagemoves) | **GET** /rest/v2/opportunities/stageMoves | List Opportunity Stage Moves |
 | [**ListOpportunityStages**](OpportunityApi.md#listopportunitystages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages |
 | [**RetrieveOpportunityCustomFieldModel**](OpportunityApi.md#retrieveopportunitycustomfieldmodel) | **GET** /rest/v2/opportunities/model | Retrieve Opportunity Custom Field Model |
 | [**UpdateOpportunity**](OpportunityApi.md#updateopportunity) | **PATCH** /rest/v2/opportunities/{opportunity_id} | Update an opportunity |
 | [**UpdateOpportunityCustomField**](OpportunityApi.md#updateopportunitycustomfield) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field |
 | [**UpdateOpportunityCustomFieldGroup**](OpportunityApi.md#updateopportunitycustomfieldgroup) | **PATCH** /rest/v2/opportunities/model/customFields/groups/{group_id} | Update an Opportunity Custom Field Group |
+| [**UpdateOpportunityCustomFieldTab**](OpportunityApi.md#updateopportunitycustomfieldtab) | **PATCH** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Update an Opportunity Custom Field Tab |
 | [**UpdateOpportunityStage**](OpportunityApi.md#updateopportunitystage) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage |
 
 <a id="createopportunity"></a>
@@ -206,6 +211,108 @@ catch (ApiException e)
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="createopportunitycustomfieldtab"></a>
+# **CreateOpportunityCustomFieldTab**
+> CustomFieldTab CreateOpportunityCustomFieldTab (CreateCustomFieldTabRequest createCustomFieldTabRequest)
+
+Create an Opportunity Custom Field Tab
+
+Creates a new custom field tab for the Opportunity record type.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateOpportunityCustomFieldTabExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new OpportunityApi(config);
+            var createCustomFieldTabRequest = new CreateCustomFieldTabRequest(); // CreateCustomFieldTabRequest | 
+
+            try
+            {
+                // Create an Opportunity Custom Field Tab
+                CustomFieldTab result = apiInstance.CreateOpportunityCustomFieldTab(createCustomFieldTabRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OpportunityApi.CreateOpportunityCustomFieldTab: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateOpportunityCustomFieldTabWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create an Opportunity Custom Field Tab
+    ApiResponse<CustomFieldTab> response = apiInstance.CreateOpportunityCustomFieldTabWithHttpInfo(createCustomFieldTabRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OpportunityApi.CreateOpportunityCustomFieldTabWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createCustomFieldTabRequest** | [**CreateCustomFieldTabRequest**](CreateCustomFieldTabRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
 
 ### Authorization
 
@@ -730,6 +837,104 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="deleteopportunitycustomfieldtab"></a>
+# **DeleteOpportunityCustomFieldTab**
+> void DeleteOpportunityCustomFieldTab (string tabId)
+
+Delete an Opportunity Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteOpportunityCustomFieldTabExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new OpportunityApi(config);
+            var tabId = "tabId_example";  // string | 
+
+            try
+            {
+                // Delete an Opportunity Custom Field Tab
+                apiInstance.DeleteOpportunityCustomFieldTab(tabId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OpportunityApi.DeleteOpportunityCustomFieldTab: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteOpportunityCustomFieldTabWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete an Opportunity Custom Field Tab
+    apiInstance.DeleteOpportunityCustomFieldTabWithHttpInfo(tabId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OpportunityApi.DeleteOpportunityCustomFieldTabWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tabId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="deleteopportunitystage"></a>
 # **DeleteOpportunityStage**
 > void DeleteOpportunityStage (string stageId)
@@ -1034,6 +1239,108 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="getopportunitycustomfieldtab"></a>
+# **GetOpportunityCustomFieldTab**
+> CustomFieldTab GetOpportunityCustomFieldTab (string tabId)
+
+Retrieve an Opportunity Custom Field Tab
+
+Retrieves a single custom field tab by id for the Opportunity record type.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetOpportunityCustomFieldTabExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new OpportunityApi(config);
+            var tabId = "tabId_example";  // string | 
+
+            try
+            {
+                // Retrieve an Opportunity Custom Field Tab
+                CustomFieldTab result = apiInstance.GetOpportunityCustomFieldTab(tabId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OpportunityApi.GetOpportunityCustomFieldTab: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetOpportunityCustomFieldTabWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve an Opportunity Custom Field Tab
+    ApiResponse<CustomFieldTab> response = apiInstance.GetOpportunityCustomFieldTabWithHttpInfo(tabId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OpportunityApi.GetOpportunityCustomFieldTabWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tabId** | **string** |  |  |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="getopportunitystage"></a>
 # **GetOpportunityStage**
 > RestOpportunityStage GetOpportunityStage (string stageId)
@@ -1267,7 +1574,7 @@ namespace Example
 
             var apiInstance = new OpportunityApi(config);
             var fields = new List<string>?(); // List<string>? | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time (optional) 
-            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request.  (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs - (String) `contact_phone` — matches the contact's phone. By default it is an exact match against the stored value, including any formatting characters (e.g. `contact_phone==(480) 123-4567`); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. `contact_phone==480*`) - (String) `contact_city` — matches the contact's city; supports wildcard prefix search (e.g. `contact_city==Chand*`) - (String) `contact_state` — matches the contact's state; supports wildcard prefix search (e.g. `contact_state==AZ*`) - (String) `projected_revenue_high` — projected revenue high; supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `projected_revenue_high>=1000`) - (String) `projected_revenue_low` — projected revenue low; supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `projected_revenue_low<=500`) Note: `opportunity_id` and `ids` cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. `cf_priority==10`). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field's data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (`==`) and prefix wildcard (e.g. `cf_company==Acme*`) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (`==`, `>`, `<`, `>=`, `<=`) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `cf_renewDate<=2026-01-01T00:00:00.000Z`). Date-only values such as `2026-01-01` are rejected - Yes/No fields — equals only, value `0` (No) or `1` (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. `cf_tags==red`) A custom field that does not exist, an operator unsupported for the field's type, or a value that does not match the field's type returns `400 Bad Request`.  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to opportunities items. One of the following fields: - `next_action_time` - `contact_name` - `opportunity_title` - `created_time` - `update_time`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
@@ -1314,7 +1621,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **fields** | [**List&lt;string&gt;?**](string.md) | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | [optional]  |
-| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
@@ -1424,6 +1731,103 @@ catch (ApiException e)
 ### Return type
 
 [**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listopportunitycustomfieldtabs"></a>
+# **ListOpportunityCustomFieldTabs**
+> ListCustomFieldTabsResponse ListOpportunityCustomFieldTabs ()
+
+List Opportunity Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Opportunity record type.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListOpportunityCustomFieldTabsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new OpportunityApi(config);
+
+            try
+            {
+                // List Opportunity Custom Field Tabs
+                ListCustomFieldTabsResponse result = apiInstance.ListOpportunityCustomFieldTabs();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OpportunityApi.ListOpportunityCustomFieldTabs: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListOpportunityCustomFieldTabsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Opportunity Custom Field Tabs
+    ApiResponse<ListCustomFieldTabsResponse> response = apiInstance.ListOpportunityCustomFieldTabsWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OpportunityApi.ListOpportunityCustomFieldTabsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+### Return type
+
+[**ListCustomFieldTabsResponse**](ListCustomFieldTabsResponse.md)
 
 ### Authorization
 
@@ -2057,6 +2461,112 @@ catch (ApiException e)
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updateopportunitycustomfieldtab"></a>
+# **UpdateOpportunityCustomFieldTab**
+> CustomFieldTab UpdateOpportunityCustomFieldTab (string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest)
+
+Update an Opportunity Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UpdateOpportunityCustomFieldTabExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new OpportunityApi(config);
+            var tabId = "tabId_example";  // string | 
+            var updateMask = new List<string>(); // List<string> | Comma-separated list of fields to update
+            var updateCustomFieldTabRequest = new UpdateCustomFieldTabRequest(); // UpdateCustomFieldTabRequest | 
+
+            try
+            {
+                // Update an Opportunity Custom Field Tab
+                CustomFieldTab result = apiInstance.UpdateOpportunityCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OpportunityApi.UpdateOpportunityCustomFieldTab: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateOpportunityCustomFieldTabWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update an Opportunity Custom Field Tab
+    ApiResponse<CustomFieldTab> response = apiInstance.UpdateOpportunityCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OpportunityApi.UpdateOpportunityCustomFieldTabWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tabId** | **string** |  |  |
+| **updateMask** | [**List&lt;string&gt;**](string.md) | Comma-separated list of fields to update |  |
+| **updateCustomFieldTabRequest** | [**UpdateCustomFieldTabRequest**](UpdateCustomFieldTabRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
 
 ### Authorization
 

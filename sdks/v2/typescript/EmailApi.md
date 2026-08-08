@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**deleteEmails**](EmailApi.md#deleteEmails) | **POST** /rest/v2/emails:batchRemove | Remove a set of Email Records
 [**getEmail**](EmailApi.md#getEmail) | **GET** /rest/v2/emails/{id} | Retrieve an Email
 [**getEmailTemplate**](EmailApi.md#getEmailTemplate) | **GET** /rest/v2/emails/templates/{email_template_id} | Retrieve an email template
+[**listEmailTemplates**](EmailApi.md#listEmailTemplates) | **GET** /rest/v2/emails/templates | List email templates
 [**listEmails**](EmailApi.md#listEmails) | **GET** /rest/v2/emails | List Emails
 [**sendEmail**](EmailApi.md#sendEmail) | **POST** /rest/v2/emails:send | Send an Email
 [**sendEmailTemplate**](EmailApi.md#sendEmailTemplate) | **POST** /rest/v2/emails/templates:send | Send an email based on a template
@@ -397,6 +398,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 **EmailTemplate**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listEmailTemplates**
+> ListEmailTemplatesResponse listEmailTemplates()
+
+Retrieves a paginated list of email templates
+
+### Example
+
+
+```typescript
+import { createConfiguration, EmailApi } from '';
+import type { EmailApiListEmailTemplatesRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new EmailApi(configuration);
+
+const request: EmailApiListEmailTemplatesRequest = {
+    // Search filter to apply to results (optional)
+  filter: "filter_example",
+    // Page token (optional)
+  pageToken: "page_token_example",
+    // Attribute and direction to order items. One of the following fields: - `id` One of the following directions: - `asc` - `desc` (optional)
+  orderBy: "order_by_example",
+    // Total number of items to return per page (optional)
+  pageSize: 0,
+};
+
+const data = await apiInstance.listEmailTemplates(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | [**string**] | Search filter to apply to results | (optional) defaults to undefined
+ **pageToken** | [**string**] | Page token | (optional) defaults to undefined
+ **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
+ **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
+
+
+### Return type
+
+**ListEmailTemplatesResponse**
 
 ### Authorization
 

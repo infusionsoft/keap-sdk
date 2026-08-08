@@ -7,15 +7,19 @@ Method | HTTP request | Description
 [**create_contact**](ContactApi.md#create_contact) | **POST** /rest/v2/contacts | Create a Contact
 [**create_contact_custom_field**](ContactApi.md#create_contact_custom_field) | **POST** /rest/v2/contacts/model/customFields | Create a Contact Custom Field
 [**create_contact_custom_field_group**](ContactApi.md#create_contact_custom_field_group) | **POST** /rest/v2/contacts/model/customFields/groups | Create a Contact Custom Field Group
+[**create_contact_custom_field_tab**](ContactApi.md#create_contact_custom_field_tab) | **POST** /rest/v2/contacts/model/customFields/tabs | Create a Contact Custom Field Tab
 [**create_contact_link_type**](ContactApi.md#create_contact_link_type) | **POST** /rest/v2/contacts/links/types | Create a Contact Link type
 [**delete_contact**](ContactApi.md#delete_contact) | **DELETE** /rest/v2/contacts/{contact_id} | Delete a Contact
 [**delete_contact_custom_field**](ContactApi.md#delete_contact_custom_field) | **DELETE** /rest/v2/contacts/model/customFields/{custom_field_id} | Delete a Contact Custom Field
 [**delete_contact_custom_field_group**](ContactApi.md#delete_contact_custom_field_group) | **DELETE** /rest/v2/contacts/model/customFields/groups/{group_id} | Delete a Contact Custom Field Group
+[**delete_contact_custom_field_tab**](ContactApi.md#delete_contact_custom_field_tab) | **DELETE** /rest/v2/contacts/model/customFields/tabs/{tab_id} | Delete a Contact Custom Field Tab
 [**delete_contact_link_type**](ContactApi.md#delete_contact_link_type) | **DELETE** /rest/v2/contacts/links/types/{link_type_id} | Delete a Contact Link type
 [**get_contact**](ContactApi.md#get_contact) | **GET** /rest/v2/contacts/{contact_id} | Retrieve a Contact
 [**get_contact_custom_field_group**](ContactApi.md#get_contact_custom_field_group) | **GET** /rest/v2/contacts/model/customFields/groups/{group_id} | Retrieve a Contact Custom Field Group
+[**get_contact_custom_field_tab**](ContactApi.md#get_contact_custom_field_tab) | **GET** /rest/v2/contacts/model/customFields/tabs/{tab_id} | Retrieve a Contact Custom Field Tab
 [**link_contacts**](ContactApi.md#link_contacts) | **POST** /rest/v2/contacts:link | Link Contacts
 [**list_contact_custom_field_groups**](ContactApi.md#list_contact_custom_field_groups) | **GET** /rest/v2/contacts/model/customFields/groups | List Contact Custom Field Groups
+[**list_contact_custom_field_tabs**](ContactApi.md#list_contact_custom_field_tabs) | **GET** /rest/v2/contacts/model/customFields/tabs | List Contact Custom Field Tabs
 [**list_contact_link_types**](ContactApi.md#list_contact_link_types) | **GET** /rest/v2/contacts/links/types | List Contact Link types
 [**list_contact_links**](ContactApi.md#list_contact_links) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts
 [**list_contacts**](ContactApi.md#list_contacts) | **GET** /rest/v2/contacts | List Contacts
@@ -25,6 +29,7 @@ Method | HTTP request | Description
 [**unlink_contacts**](ContactApi.md#unlink_contacts) | **POST** /rest/v2/contacts:unlink | Delete Link between two Contacts
 [**update_contact**](ContactApi.md#update_contact) | **PATCH** /rest/v2/contacts/{contact_id} | Update a Contact
 [**update_contact_custom_field_group**](ContactApi.md#update_contact_custom_field_group) | **PATCH** /rest/v2/contacts/model/customFields/groups/{group_id} | Update a Contact Custom Field Group
+[**update_contact_custom_field_tab**](ContactApi.md#update_contact_custom_field_tab) | **PATCH** /rest/v2/contacts/model/customFields/tabs/{tab_id} | Update a Contact Custom Field Tab
 [**update_contact_link_type**](ContactApi.md#update_contact_link_type) | **PATCH** /rest/v2/contacts/links/types/{link_type_id} | Update a Contact Link type
 
 
@@ -255,6 +260,88 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_contact_custom_field_tab**
+> CustomFieldTab create_contact_custom_field_tab(create_custom_field_tab_request)
+
+Create a Contact Custom Field Tab
+
+Creates a new custom field tab for the Contact record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.create_custom_field_tab_request import CreateCustomFieldTabRequest
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    create_custom_field_tab_request = keap_core_v2_client.CreateCustomFieldTabRequest() # CreateCustomFieldTabRequest | 
+
+    try:
+        # Create a Contact Custom Field Tab
+        api_response = api_instance.create_contact_custom_field_tab(create_custom_field_tab_request)
+        print("The response of ContactApi->create_contact_custom_field_tab:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContactApi->create_contact_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_custom_field_tab_request** | [**CreateCustomFieldTabRequest**](CreateCustomFieldTabRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
 
 ### Authorization
 
@@ -597,6 +684,84 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_contact_custom_field_tab**
+> delete_contact_custom_field_tab(tab_id)
+
+Delete a Contact Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    tab_id = 'tab_id_example' # str | 
+
+    try:
+        # Delete a Contact Custom Field Tab
+        api_instance.delete_contact_custom_field_tab(tab_id)
+    except Exception as e:
+        print("Exception when calling ContactApi->delete_contact_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_contact_link_type**
 > delete_contact_link_type(link_type_id)
 
@@ -839,6 +1004,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_contact_custom_field_tab**
+> CustomFieldTab get_contact_custom_field_tab(tab_id)
+
+Retrieve a Contact Custom Field Tab
+
+Retrieves a single custom field tab by id for the Contact record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    tab_id = 'tab_id_example' # str | 
+
+    try:
+        # Retrieve a Contact Custom Field Tab
+        api_response = api_instance.get_contact_custom_field_tab(tab_id)
+        print("The response of ContactApi->get_contact_custom_field_tab:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContactApi->get_contact_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **link_contacts**
 > ContactLink link_contacts(link_contacts_request)
 
@@ -976,6 +1222,83 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_contact_custom_field_tabs**
+> ListCustomFieldTabsResponse list_contact_custom_field_tabs()
+
+List Contact Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Contact record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_custom_field_tabs_response import ListCustomFieldTabsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+
+    try:
+        # List Contact Custom Field Tabs
+        api_response = api_instance.list_contact_custom_field_tabs()
+        print("The response of ContactApi->list_contact_custom_field_tabs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContactApi->list_contact_custom_field_tabs: %s\n" % e)
+```
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListCustomFieldTabsResponse**](ListCustomFieldTabsResponse.md)
 
 ### Authorization
 
@@ -1204,7 +1527,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.ContactApi(api_client)
     fields = ['fields_example'] # List[str] | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) (optional)
-    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, name, email, phone, website): `==` only, with optional   trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Choice fields (dropdown, radio, yes/no, user, state): `==` only - Numeric fields: `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `start_update_time`/`end_update_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter)  (optional)
+    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `email` — supports wildcard (e.g. `email==john*`) - (String) `given_name` — supports wildcard (e.g. `given_name==Mar*`) - (String) `family_name` — supports wildcard (e.g. `family_name==Smi*`) - (String) `middle_name` — supports wildcard (e.g. `middle_name==J*`) - (String) `company_id` - (Set[String]) `contact_ids` - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`) - (String) `start_update_time` - (String) `end_update_time` - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched. - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied. - (String) `billing_address_line1` - (String) `billing_address_locality` - (String) `billing_address_region` (long-form region/state name, e.g. \"Arizona\") - (String) `billing_address_postal_code` - (String) `billing_address_country_code` (ISO 3166-1 alpha-3, e.g. \"USA\") - (String) `shipping_address_line1` - (String) `shipping_address_locality` - (String) `shipping_address_region` - (String) `shipping_address_postal_code` - (String) `shipping_address_country_code` - (String) `other_address_line1` - (String) `other_address_locality` - (String) `other_address_region` - (String) `other_address_postal_code` - (String) `other_address_country_code` - (String) `city` — primary-address city (Contact.City); supports prefix wildcard (e.g. `city==Chan*`, \"starts with\") - (String) `state` — primary-address state/region (Contact.State); supports prefix wildcard (e.g. `state==Ar*`, \"starts with\") - (String) `website` — supports wildcard (e.g. `website==https://example*`) - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`) - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `contact_id>5` encoded as `contact_id%3E5`) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `firstName1%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=`; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `2026-01-01T00:00:00.000Z`), the same format as `start_update_time`/`end_update_time`. Date-only values such as `2026-01-01` are rejected - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For wildcard filtering, use `*` at the end of the value (prefix matching), encoded as `%2A`. For the filters listed above, here are some examples: - `filter=given_name%3D%3DMary` - `filter=given_name%3D%3DMar%2A` (wildcard: starts with \"Mar\") - `filter=company_id%3D%3D123` - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith` - `filter=billing_address_locality%3D%3DChandler` - `filter=city%3D%3DChandler` (city exact match) - `filter=city%3D%3DChan%2A` (city prefix wildcard: starts with \"Chan\") - `filter=city%3D%3DChandler%3Bstate%3D%3DArizona` (combined city + state filter) - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona` - `filter=contact_id%3E5` (contact_id > 5) - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name `firstName1` and `Score0`): - `filter=firstName1%3D%3DJohn` (custom field exact match) - `filter=firstName1%3D%3DJo%2A` (custom field prefix wildcard) - `filter=Score0%3E100` (custom field numeric comparison) - `filter=given_name%3D%3DJohn%3BStatus0%3D%3DActive` (combined standard + custom field filter)  (optional)
     order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `email` - `update_time`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
@@ -1225,7 +1548,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fields** | [**List[str]**](str.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) | [optional] 
- **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  | [optional] 
+ **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  | [optional] 
  **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
@@ -1736,6 +2059,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_contact_custom_field_tab**
+> CustomFieldTab update_contact_custom_field_tab(tab_id, update_mask, update_custom_field_tab_request)
+
+Update a Contact Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
+from keap_core_v2_client.models.update_custom_field_tab_request import UpdateCustomFieldTabRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    tab_id = 'tab_id_example' # str | 
+    update_mask = ['update_mask_example'] # List[str] | Comma-separated list of fields to update
+    update_custom_field_tab_request = keap_core_v2_client.UpdateCustomFieldTabRequest() # UpdateCustomFieldTabRequest | 
+
+    try:
+        # Update a Contact Custom Field Tab
+        api_response = api_instance.update_contact_custom_field_tab(tab_id, update_mask, update_custom_field_tab_request)
+        print("The response of ContactApi->update_contact_custom_field_tab:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContactApi->update_contact_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**|  | 
+ **update_mask** | [**List[str]**](str.md)| Comma-separated list of fields to update | 
+ **update_custom_field_tab_request** | [**UpdateCustomFieldTabRequest**](UpdateCustomFieldTabRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
 
 ### Authorization
 

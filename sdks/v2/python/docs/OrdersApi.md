@@ -10,23 +10,28 @@ Method | HTTP request | Description
 [**create_order**](OrdersApi.md#create_order) | **POST** /rest/v2/orders | Create an Order
 [**create_order_custom_field**](OrdersApi.md#create_order_custom_field) | **POST** /rest/v2/orders/model/customFields | Create an Order Custom Field
 [**create_order_custom_field_group**](OrdersApi.md#create_order_custom_field_group) | **POST** /rest/v2/orders/model/customFields/groups | Create an Order Custom Field Group
+[**create_order_custom_field_tab**](OrdersApi.md#create_order_custom_field_tab) | **POST** /rest/v2/orders/model/customFields/tabs | Create an Order Custom Field Tab
 [**create_order_item**](OrdersApi.md#create_order_item) | **POST** /rest/v2/orders/{order_id}/items | Create an Order Item
 [**create_payment_for_an_order**](OrdersApi.md#create_payment_for_an_order) | **POST** /rest/v2/orders/{order_id}/payments | Create a Payment
 [**delete_order**](OrdersApi.md#delete_order) | **DELETE** /rest/v2/orders/{order_id} | Delete an Order
 [**delete_order_custom_field**](OrdersApi.md#delete_order_custom_field) | **DELETE** /rest/v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field
 [**delete_order_custom_field_group**](OrdersApi.md#delete_order_custom_field_group) | **DELETE** /rest/v2/orders/model/customFields/groups/{group_id} | Delete an Order Custom Field Group
+[**delete_order_custom_field_tab**](OrdersApi.md#delete_order_custom_field_tab) | **DELETE** /rest/v2/orders/model/customFields/tabs/{tab_id} | Delete an Order Custom Field Tab
 [**delete_order_item**](OrdersApi.md#delete_order_item) | **DELETE** /rest/v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item
 [**detach_file_from_order**](OrdersApi.md#detach_file_from_order) | **POST** /rest/v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice
 [**get_order**](OrdersApi.md#get_order) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order
 [**get_order_custom_field_group**](OrdersApi.md#get_order_custom_field_group) | **GET** /rest/v2/orders/model/customFields/groups/{group_id} | Retrieve an Order Custom Field Group
+[**get_order_custom_field_tab**](OrdersApi.md#get_order_custom_field_tab) | **GET** /rest/v2/orders/model/customFields/tabs/{tab_id} | Retrieve an Order Custom Field Tab
 [**get_order_item**](OrdersApi.md#get_order_item) | **GET** /rest/v2/orders/{order_id}/items/{order_item_id} | Retrieve an Order Item
 [**list_order_custom_field_groups**](OrdersApi.md#list_order_custom_field_groups) | **GET** /rest/v2/orders/model/customFields/groups | List Order Custom Field Groups
+[**list_order_custom_field_tabs**](OrdersApi.md#list_order_custom_field_tabs) | **GET** /rest/v2/orders/model/customFields/tabs | List Order Custom Field Tabs
 [**list_order_payments**](OrdersApi.md#list_order_payments) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments
 [**list_orders**](OrdersApi.md#list_orders) | **GET** /rest/v2/orders | List orders
 [**retrieve_order_custom_field_model**](OrdersApi.md#retrieve_order_custom_field_model) | **GET** /rest/v2/orders/model | Retrieve Order Custom Field Model
 [**update_order**](OrdersApi.md#update_order) | **PATCH** /rest/v2/orders/{order_id} | Update an Order
 [**update_order_custom_field**](OrdersApi.md#update_order_custom_field) | **PATCH** /rest/v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field
 [**update_order_custom_field_group**](OrdersApi.md#update_order_custom_field_group) | **PATCH** /rest/v2/orders/model/customFields/groups/{group_id} | Update an Order Custom Field Group
+[**update_order_custom_field_tab**](OrdersApi.md#update_order_custom_field_tab) | **PATCH** /rest/v2/orders/model/customFields/tabs/{tab_id} | Update an Order Custom Field Tab
 [**update_order_item**](OrdersApi.md#update_order_item) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item
 
 
@@ -527,6 +532,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_order_custom_field_tab**
+> CustomFieldTab create_order_custom_field_tab(create_custom_field_tab_request)
+
+Create an Order Custom Field Tab
+
+Creates a new custom field tab for the Order record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.create_custom_field_tab_request import CreateCustomFieldTabRequest
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OrdersApi(api_client)
+    create_custom_field_tab_request = keap_core_v2_client.CreateCustomFieldTabRequest() # CreateCustomFieldTabRequest | 
+
+    try:
+        # Create an Order Custom Field Tab
+        api_response = api_instance.create_order_custom_field_tab(create_custom_field_tab_request)
+        print("The response of OrdersApi->create_order_custom_field_tab:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrdersApi->create_order_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_custom_field_tab_request** | [**CreateCustomFieldTabRequest**](CreateCustomFieldTabRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_order_item**
 > OrderItem create_order_item(order_id, create_order_item_request)
 
@@ -931,6 +1018,84 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_order_custom_field_tab**
+> delete_order_custom_field_tab(tab_id)
+
+Delete an Order Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OrdersApi(api_client)
+    tab_id = 'tab_id_example' # str | 
+
+    try:
+        # Delete an Order Custom Field Tab
+        api_instance.delete_order_custom_field_tab(tab_id)
+    except Exception as e:
+        print("Exception when calling OrdersApi->delete_order_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_order_item**
 > delete_order_item(order_id, order_item_id)
 
@@ -1257,6 +1422,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_order_custom_field_tab**
+> CustomFieldTab get_order_custom_field_tab(tab_id)
+
+Retrieve an Order Custom Field Tab
+
+Retrieves a single custom field tab by id for the Order record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OrdersApi(api_client)
+    tab_id = 'tab_id_example' # str | 
+
+    try:
+        # Retrieve an Order Custom Field Tab
+        api_response = api_instance.get_order_custom_field_tab(tab_id)
+        print("The response of OrdersApi->get_order_custom_field_tab:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrdersApi->get_order_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_order_item**
 > OrderItem get_order_item(order_id, order_item_id)
 
@@ -1421,6 +1667,83 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **list_order_custom_field_tabs**
+> ListCustomFieldTabsResponse list_order_custom_field_tabs()
+
+List Order Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Order record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_custom_field_tabs_response import ListCustomFieldTabsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OrdersApi(api_client)
+
+    try:
+        # List Order Custom Field Tabs
+        api_response = api_instance.list_order_custom_field_tabs()
+        print("The response of OrdersApi->list_order_custom_field_tabs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrdersApi->list_order_custom_field_tabs: %s\n" % e)
+```
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListCustomFieldTabsResponse**](ListCustomFieldTabsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_order_payments**
 > ListOrderPaymentsResponse list_order_payments(order_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
 
@@ -1543,7 +1866,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.OrdersApi(api_client)
-    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (String) `product_id` - (String) `contact_id` - (String) `invoice_id` - (String) `invoice_xid` - (Boolean) `paid` - (String) `created_since_time` - (String) `created_until_time` - (String) `modified_since_time` - (String) `modified_until_time` - (String) `title` - Wildcard matching allowed - (String) `order_type` (Allowed values: `ONLINE`, `OFFLINE`) - (String) `shipping_locality` - (String) `shipping_region_code` - (String) `shipping_postal_code` - (String) `shipping_country_code`  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, name, email, phone, website): `==` only, with optional   trailing wildcard (e.g. `_OrderTitle0%3D%3DValue%2A`) - Choice fields (dropdown, radio, yes/no, user, state): `==` only - Numeric fields: `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `created_since_time`/`created_until_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D123` - `filter=id%3C123` - `filter=ids%3D%3D1,10,4,24` - `filter=invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8` - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567` - `filter=shipping_locality%3D%3DPhoenix` - `filter=shipping_region_code%3D%3DIN-MH` - `filter=shipping_postal_code%3D%3D85001` - `filter=shipping_country_code%3D%3DIND`  Custom field examples (for custom fields with field_name `_OrderTitle0` and `_OrderValue1`): - `filter=_OrderTitle0%3D%3DTest` (custom field exact match) - `filter=_OrderTitle0%3D%3DTest%2A` (custom field prefix wildcard) - `filter=_OrderValue1%3E100` (custom field numeric comparison) - `filter=product_id%3D%3D123%3B_OrderStatus0%3D%3DActive` (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  (optional)
+    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (String) `product_id` - (String) `contact_id` - (String) `invoice_id` - (String) `invoice_xid` - (Boolean) `paid` - (String) `created_since_time` - (String) `created_until_time` - (String) `modified_since_time` - (String) `modified_until_time` - (String) `title` - Wildcard matching allowed - (String) `order_type` (Allowed values: `ONLINE`, `OFFLINE`) - (String) `shipping_locality` - (String) `shipping_region_code` - (String) `shipping_postal_code` - (String) `shipping_country_code`  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `_OrderTitle0%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `created_since_time`/`created_until_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D123` - `filter=id%3C123` - `filter=ids%3D%3D1,10,4,24` - `filter=invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8` - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567` - `filter=shipping_locality%3D%3DPhoenix` - `filter=shipping_region_code%3D%3DIN-MH` - `filter=shipping_postal_code%3D%3D85001` - `filter=shipping_country_code%3D%3DIND`  Custom field examples (for custom fields with field_name `_OrderTitle0` and `_OrderValue1`): - `filter=_OrderTitle0%3D%3DTest` (custom field exact match) - `filter=_OrderTitle0%3D%3DTest%2A` (custom field prefix wildcard) - `filter=_OrderValue1%3E100` (custom field numeric comparison) - `filter=product_id%3D%3D123%3B_OrderStatus0%3D%3DActive` (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  (optional)
     order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id` - `order_time` - `modification_time`  One of the following directions: - `asc` - `desc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
@@ -1563,7 +1886,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  | [optional] 
+ **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  | [optional] 
  **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
@@ -1906,6 +2229,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_order_custom_field_tab**
+> CustomFieldTab update_order_custom_field_tab(tab_id, update_mask, update_custom_field_tab_request)
+
+Update an Order Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
+from keap_core_v2_client.models.update_custom_field_tab_request import UpdateCustomFieldTabRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OrdersApi(api_client)
+    tab_id = 'tab_id_example' # str | 
+    update_mask = ['update_mask_example'] # List[str] | Comma-separated list of fields to update
+    update_custom_field_tab_request = keap_core_v2_client.UpdateCustomFieldTabRequest() # UpdateCustomFieldTabRequest | 
+
+    try:
+        # Update an Order Custom Field Tab
+        api_response = api_instance.update_order_custom_field_tab(tab_id, update_mask, update_custom_field_tab_request)
+        print("The response of OrdersApi->update_order_custom_field_tab:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrdersApi->update_order_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**|  | 
+ **update_mask** | [**List[str]**](str.md)| Comma-separated list of fields to update | 
+ **update_custom_field_tab_request** | [**UpdateCustomFieldTabRequest**](UpdateCustomFieldTabRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
 
 ### Authorization
 

@@ -16,17 +16,21 @@ import ApiClient from "../ApiClient";
 import CreateCustomFieldGroupRequest from '../model/CreateCustomFieldGroupRequest';
 import CreateCustomFieldRequest from '../model/CreateCustomFieldRequest';
 import CreateCustomFieldResponse from '../model/CreateCustomFieldResponse';
+import CreateCustomFieldTabRequest from '../model/CreateCustomFieldTabRequest';
 import CreateTaskRequest from '../model/CreateTaskRequest';
 import CreateUpdateTaskRequest from '../model/CreateUpdateTaskRequest';
 import CustomFieldGroup from '../model/CustomFieldGroup';
 import CustomFieldMetaData from '../model/CustomFieldMetaData';
+import CustomFieldTab from '../model/CustomFieldTab';
 import Error from '../model/Error';
 import ListCustomFieldGroupsResponse from '../model/ListCustomFieldGroupsResponse';
+import ListCustomFieldTabsResponse from '../model/ListCustomFieldTabsResponse';
 import ListTasksResponse from '../model/ListTasksResponse';
 import ObjectModel from '../model/ObjectModel';
 import Task from '../model/Task';
 import UpdateCustomFieldGroupRequest from '../model/UpdateCustomFieldGroupRequest';
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
+import UpdateCustomFieldTabRequest from '../model/UpdateCustomFieldTabRequest';
 import UpdateTaskResponse from '../model/UpdateTaskResponse';
 
 /**
@@ -196,6 +200,53 @@ export default class TaskApi {
 
 
     /**
+     * Create a Task Custom Field Tab
+     * Creates a new custom field tab for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {module:keap.core.v2/model/CreateCustomFieldTabRequest} createCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    createTaskCustomFieldTabWithHttpInfo(createCustomFieldTabRequest) {
+      let postBody = createCustomFieldTabRequest;
+      // verify the required parameter 'createCustomFieldTabRequest' is set
+      if (createCustomFieldTabRequest === undefined || createCustomFieldTabRequest === null) {
+        throw new Error("Missing the required parameter 'createCustomFieldTabRequest' when calling createTaskCustomFieldTab");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/tasks/model/customFields/tabs', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Create a Task Custom Field Tab
+     * Creates a new custom field tab for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {module:keap.core.v2/model/CreateCustomFieldTabRequest} createCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    createTaskCustomFieldTab(createCustomFieldTabRequest) {
+      return this.createTaskCustomFieldTabWithHttpInfo(createCustomFieldTabRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Delete a Task
      * Deletes a single task
      * @param {String} taskId 
@@ -340,6 +391,54 @@ export default class TaskApi {
 
 
     /**
+     * Delete a Task Custom Field Tab
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    deleteTaskCustomFieldTabWithHttpInfo(tabId) {
+      let postBody = null;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling deleteTaskCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/rest/v2/tasks/model/customFields/tabs/{tab_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Delete a Task Custom Field Tab
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    deleteTaskCustomFieldTab(tabId) {
+      return this.deleteTaskCustomFieldTabWithHttpInfo(tabId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Retrieve a Task
      * Retrieves a single task
      * @param {String} taskId 
@@ -442,6 +541,54 @@ export default class TaskApi {
 
 
     /**
+     * Retrieve a Task Custom Field Tab
+     * Retrieves a single custom field tab by id for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    getTaskCustomFieldTabWithHttpInfo(tabId) {
+      let postBody = null;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling getTaskCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/tasks/model/customFields/tabs/{tab_id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Retrieve a Task Custom Field Tab
+     * Retrieves a single custom field tab by id for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} tabId 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    getTaskCustomFieldTab(tabId) {
+      return this.getTaskCustomFieldTabWithHttpInfo(tabId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * List Task Custom Field Groups
      * Retrieves a list of custom field groups for the Task record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
      * @param {Object} opts Optional parameters
@@ -489,10 +636,51 @@ export default class TaskApi {
 
 
     /**
+     * List Task Custom Field Tabs
+     * Retrieves a list of custom field tabs for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListCustomFieldTabsResponse} and HTTP response
+     */
+    listTaskCustomFieldTabsWithHttpInfo() {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListCustomFieldTabsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/tasks/model/customFields/tabs', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List Task Custom Field Tabs
+     * Retrieves a list of custom field tabs for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListCustomFieldTabsResponse}
+     */
+    listTaskCustomFieldTabs() {
+      return this.listTaskCustomFieldTabsWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * List Tasks
      * Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id==UNASSIGNED.
      * @param {Object} opts Optional parameters
-     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `opportunity_id` - (String) `task_ids` - (String) `since_time` - (String) `until_time` - (String)   `id`     — supports `==`, `>`, `<`, `>=`, `<=` - (String) `title`  — supports prefix wildcard (`title==Foo*`)  Operators must be URL-encoded (`==` → `%3D%3D`, `>` → `%3E`, `<` → `%3C`). For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=opportunity_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` - `filter=id%3E5`                  (id > 5) - `filter=id%3C%3D100`              (id <= 100) - `filter=title%3D%3DFollow%2A`     (title starts with \"Follow\") 
+     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `opportunity_id` - (String) `task_ids` - (String) `priority`  — one of `CRITICAL`, `ESSENTIAL`, `NONESSENTIAL` - (String) `since_time` - (String) `until_time` - (String)   `id`     — supports `==`, `>`, `<`, `>=`, `<=` - (String) `title`  — supports prefix wildcard (`title==Foo*`)  Operators must be URL-encoded (`==` → `%3D%3D`, `>` → `%3E`, `<` → `%3C`). For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=opportunity_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=priority%3D%3DCRITICAL` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` - `filter=id%3E5`                  (id > 5) - `filter=id%3C%3D100`              (id <= 100) - `filter=title%3D%3DFollow%2A`     (title starts with \"Follow\")  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. `filter=cf_priority%3D%3D10`). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field's data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (`==`) and prefix wildcard (e.g. `cf_company%3D%3DAcme%2A`) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (`==`, `>`, `<`, `>=`, `<=`) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `cf_renewDate%3C%3D2026-01-01T00:00:00.000Z`). Date-only values such as `2026-01-01` are rejected - Yes/No fields — equals only, value `0` (No) or `1` (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. `cf_tags%3D%3Dred`) A custom field that does not exist, an operator unsupported for the field's type, or a value that does not match the field's type returns `400 Bad Request`. 
      * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time` - `update_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} [pageSize] Total number of items to return per page
      * @param {String} [pageToken] Page token
@@ -532,7 +720,7 @@ export default class TaskApi {
      * List Tasks
      * Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id==UNASSIGNED.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `opportunity_id` - (String) `task_ids` - (String) `since_time` - (String) `until_time` - (String)   `id`     — supports `==`, `>`, `<`, `>=`, `<=` - (String) `title`  — supports prefix wildcard (`title==Foo*`)  Operators must be URL-encoded (`==` → `%3D%3D`, `>` → `%3E`, `<` → `%3C`). For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=opportunity_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` - `filter=id%3E5`                  (id > 5) - `filter=id%3C%3D100`              (id <= 100) - `filter=title%3D%3DFollow%2A`     (title starts with \"Follow\") 
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `opportunity_id` - (String) `task_ids` - (String) `priority`  — one of `CRITICAL`, `ESSENTIAL`, `NONESSENTIAL` - (String) `since_time` - (String) `until_time` - (String)   `id`     — supports `==`, `>`, `<`, `>=`, `<=` - (String) `title`  — supports prefix wildcard (`title==Foo*`)  Operators must be URL-encoded (`==` → `%3D%3D`, `>` → `%3E`, `<` → `%3C`). For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=opportunity_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=priority%3D%3DCRITICAL` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` - `filter=id%3E5`                  (id > 5) - `filter=id%3C%3D100`              (id <= 100) - `filter=title%3D%3DFollow%2A`     (title starts with \"Follow\")  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. `filter=cf_priority%3D%3D10`). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field's data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (`==`) and prefix wildcard (e.g. `cf_company%3D%3DAcme%2A`) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (`==`, `>`, `<`, `>=`, `<=`) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `cf_renewDate%3C%3D2026-01-01T00:00:00.000Z`). Date-only values such as `2026-01-01` are rejected - Yes/No fields — equals only, value `0` (No) or `1` (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. `cf_tags%3D%3Dred`) A custom field that does not exist, an operator unsupported for the field's type, or a value that does not match the field's type returns `400 Bad Request`. 
      * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time` - `update_time`  One of the following directions: - `asc` - `desc`
      * @param {Number} opts.pageSize Total number of items to return per page
      * @param {String} opts.pageToken Page token
@@ -766,6 +954,67 @@ export default class TaskApi {
      */
     updateTaskCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest) {
       return this.updateTaskCustomFieldGroupWithHttpInfo(groupId, updateMask, updateCustomFieldGroupRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update a Task Custom Field Tab
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} tabId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldTabRequest} updateCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/CustomFieldTab} and HTTP response
+     */
+    updateTaskCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest) {
+      let postBody = updateCustomFieldTabRequest;
+      // verify the required parameter 'tabId' is set
+      if (tabId === undefined || tabId === null) {
+        throw new Error("Missing the required parameter 'tabId' when calling updateTaskCustomFieldTab");
+      }
+      // verify the required parameter 'updateMask' is set
+      if (updateMask === undefined || updateMask === null) {
+        throw new Error("Missing the required parameter 'updateMask' when calling updateTaskCustomFieldTab");
+      }
+      // verify the required parameter 'updateCustomFieldTabRequest' is set
+      if (updateCustomFieldTabRequest === undefined || updateCustomFieldTabRequest === null) {
+        throw new Error("Missing the required parameter 'updateCustomFieldTabRequest' when calling updateTaskCustomFieldTab");
+      }
+
+      let pathParams = {
+        'tab_id': tabId
+      };
+      let queryParams = {
+        'update_mask': this.apiClient.buildCollectionParam(updateMask, 'multi')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CustomFieldTab;
+      return this.apiClient.callApi(
+        '/rest/v2/tasks/model/customFields/tabs/{tab_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update a Task Custom Field Tab
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * @param {String} tabId 
+     * @param {Array.<module:keap.core.v2/model/String>} updateMask Comma-separated list of fields to update
+     * @param {module:keap.core.v2/model/UpdateCustomFieldTabRequest} updateCustomFieldTabRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/CustomFieldTab}
+     */
+    updateTaskCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest) {
+      return this.updateTaskCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

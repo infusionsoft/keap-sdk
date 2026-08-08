@@ -59,6 +59,8 @@ class OpportunityContact implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPITypes = [
         'id' => 'string',
         'email' => 'string',
+        'city' => 'string',
+        'state' => 'string',
         'first_name' => 'string',
         'last_name' => 'string',
         'company_name' => 'string',
@@ -76,6 +78,8 @@ class OpportunityContact implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPIFormats = [
         'id' => null,
         'email' => null,
+        'city' => null,
+        'state' => null,
         'first_name' => null,
         'last_name' => null,
         'company_name' => null,
@@ -91,6 +95,8 @@ class OpportunityContact implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static array $openAPINullables = [
         'id' => false,
         'email' => false,
+        'city' => false,
+        'state' => false,
         'first_name' => false,
         'last_name' => false,
         'company_name' => false,
@@ -186,6 +192,8 @@ class OpportunityContact implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $attributeMap = [
         'id' => 'id',
         'email' => 'email',
+        'city' => 'city',
+        'state' => 'state',
         'first_name' => 'first_name',
         'last_name' => 'last_name',
         'company_name' => 'company_name',
@@ -201,6 +209,8 @@ class OpportunityContact implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $setters = [
         'id' => 'setId',
         'email' => 'setEmail',
+        'city' => 'setCity',
+        'state' => 'setState',
         'first_name' => 'setFirstName',
         'last_name' => 'setLastName',
         'company_name' => 'setCompanyName',
@@ -216,6 +226,8 @@ class OpportunityContact implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $getters = [
         'id' => 'getId',
         'email' => 'getEmail',
+        'city' => 'getCity',
+        'state' => 'getState',
         'first_name' => 'getFirstName',
         'last_name' => 'getLastName',
         'company_name' => 'getCompanyName',
@@ -282,6 +294,8 @@ class OpportunityContact implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('city', $data ?? [], null);
+        $this->setIfExists('state', $data ?? [], null);
         $this->setIfExists('first_name', $data ?? [], null);
         $this->setIfExists('last_name', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
@@ -384,6 +398,60 @@ class OpportunityContact implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable email cannot be null');
         }
         $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets city
+     *
+     * @return string|null
+     */
+    public function getCity()
+    {
+        return $this->container['city'];
+    }
+
+    /**
+     * Sets city
+     *
+     * @param string|null $city City
+     *
+     * @return self
+     */
+    public function setCity($city)
+    {
+        if (is_null($city)) {
+            throw new \InvalidArgumentException('non-nullable city cannot be null');
+        }
+        $this->container['city'] = $city;
+
+        return $this;
+    }
+
+    /**
+     * Gets state
+     *
+     * @return string|null
+     */
+    public function getState()
+    {
+        return $this->container['state'];
+    }
+
+    /**
+     * Sets state
+     *
+     * @param string|null $state State
+     *
+     * @return self
+     */
+    public function setState($state)
+    {
+        if (is_null($state)) {
+            throw new \InvalidArgumentException('non-nullable state cannot be null');
+        }
+        $this->container['state'] = $state;
 
         return $this;
     }

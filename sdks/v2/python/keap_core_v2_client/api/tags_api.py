@@ -25,6 +25,7 @@ from keap_core_v2_client.models.create_update_tag_category_request import Create
 from keap_core_v2_client.models.create_update_tag_request import CreateUpdateTagRequest
 from keap_core_v2_client.models.get_tag_category_response import GetTagCategoryResponse
 from keap_core_v2_client.models.list_tag_categories_response import ListTagCategoriesResponse
+from keap_core_v2_client.models.list_tag_contact_associations_response import ListTagContactAssociationsResponse
 from keap_core_v2_client.models.list_tagged_companies_response import ListTaggedCompaniesResponse
 from keap_core_v2_client.models.list_tagged_contacts_response import ListTaggedContactsResponse
 from keap_core_v2_client.models.list_tags_response import ListTagsResponse
@@ -2438,6 +2439,344 @@ class TagsApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/rest/v2/tags/{tag_id}/companies',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def list_contacts_across_tags(
+        self,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply (at least one is required). Allowed fields: - (List[String]) `tag_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time` ")] = None,
+        page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items (best-effort for cross-collection reads). Field: - `applied_time`  Direction: - `asc` - `desc`")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ListTagContactAssociationsResponse:
+        """List Contacts Across Tags
+
+        Retrieves tag-contact associations across the tag collection (AEP-159), using the `-` wildcard in place of a single tag id. At least one filter is required. Returns association tuples (contact_id, tag_id, applied_at) only.
+
+        :param filter: Filter to apply (at least one is required). Allowed fields: - (List[String]) `tag_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time` 
+        :type filter: str
+        :param page_token: Page token
+        :type page_token: str
+        :param order_by: Attribute and direction to order items (best-effort for cross-collection reads). Field: - `applied_time`  Direction: - `asc` - `desc`
+        :type order_by: str
+        :param page_size: Total number of items to return per page
+        :type page_size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_contacts_across_tags_serialize(
+            filter=filter,
+            page_token=page_token,
+            order_by=order_by,
+            page_size=page_size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListTagContactAssociationsResponse",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def list_contacts_across_tags_with_http_info(
+        self,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply (at least one is required). Allowed fields: - (List[String]) `tag_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time` ")] = None,
+        page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items (best-effort for cross-collection reads). Field: - `applied_time`  Direction: - `asc` - `desc`")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ListTagContactAssociationsResponse]:
+        """List Contacts Across Tags
+
+        Retrieves tag-contact associations across the tag collection (AEP-159), using the `-` wildcard in place of a single tag id. At least one filter is required. Returns association tuples (contact_id, tag_id, applied_at) only.
+
+        :param filter: Filter to apply (at least one is required). Allowed fields: - (List[String]) `tag_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time` 
+        :type filter: str
+        :param page_token: Page token
+        :type page_token: str
+        :param order_by: Attribute and direction to order items (best-effort for cross-collection reads). Field: - `applied_time`  Direction: - `asc` - `desc`
+        :type order_by: str
+        :param page_size: Total number of items to return per page
+        :type page_size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_contacts_across_tags_serialize(
+            filter=filter,
+            page_token=page_token,
+            order_by=order_by,
+            page_size=page_size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListTagContactAssociationsResponse",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def list_contacts_across_tags_without_preload_content(
+        self,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply (at least one is required). Allowed fields: - (List[String]) `tag_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time` ")] = None,
+        page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
+        order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items (best-effort for cross-collection reads). Field: - `applied_time`  Direction: - `asc` - `desc`")] = None,
+        page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List Contacts Across Tags
+
+        Retrieves tag-contact associations across the tag collection (AEP-159), using the `-` wildcard in place of a single tag id. At least one filter is required. Returns association tuples (contact_id, tag_id, applied_at) only.
+
+        :param filter: Filter to apply (at least one is required). Allowed fields: - (List[String]) `tag_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time` 
+        :type filter: str
+        :param page_token: Page token
+        :type page_token: str
+        :param order_by: Attribute and direction to order items (best-effort for cross-collection reads). Field: - `applied_time`  Direction: - `asc` - `desc`
+        :type order_by: str
+        :param page_size: Total number of items to return per page
+        :type page_size: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_contacts_across_tags_serialize(
+            filter=filter,
+            page_token=page_token,
+            order_by=order_by,
+            page_size=page_size,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListTagContactAssociationsResponse",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _list_contacts_across_tags_serialize(
+        self,
+        filter,
+        page_token,
+        order_by,
+        page_size,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if filter is not None:
+            
+            _query_params.append(('filter', filter))
+            
+        if page_token is not None:
+            
+            _query_params.append(('page_token', page_token))
+            
+        if order_by is not None:
+            
+            _query_params.append(('order_by', order_by))
+            
+        if page_size is not None:
+            
+            _query_params.append(('page_size', page_size))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/rest/v2/tags/-/contacts',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

@@ -7,17 +7,22 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**CreateTask**](TaskApi.md#createtask) | **POST** /rest/v2/tasks | Create a Task |
 | [**CreateTaskCustomField**](TaskApi.md#createtaskcustomfield) | **POST** /rest/v2/tasks/model/customFields | Create a Custom Field |
 | [**CreateTaskCustomFieldGroup**](TaskApi.md#createtaskcustomfieldgroup) | **POST** /rest/v2/tasks/model/customFields/groups | Create a Task Custom Field Group |
+| [**CreateTaskCustomFieldTab**](TaskApi.md#createtaskcustomfieldtab) | **POST** /rest/v2/tasks/model/customFields/tabs | Create a Task Custom Field Tab |
 | [**DeleteTask**](TaskApi.md#deletetask) | **DELETE** /rest/v2/tasks/{task_id} | Delete a Task |
 | [**DeleteTaskCustomField**](TaskApi.md#deletetaskcustomfield) | **DELETE** /rest/v2/tasks/model/customFields/{custom_field_id} | Delete a Custom Field |
 | [**DeleteTaskCustomFieldGroup**](TaskApi.md#deletetaskcustomfieldgroup) | **DELETE** /rest/v2/tasks/model/customFields/groups/{group_id} | Delete a Task Custom Field Group |
+| [**DeleteTaskCustomFieldTab**](TaskApi.md#deletetaskcustomfieldtab) | **DELETE** /rest/v2/tasks/model/customFields/tabs/{tab_id} | Delete a Task Custom Field Tab |
 | [**GetTask**](TaskApi.md#gettask) | **GET** /rest/v2/tasks/{task_id} | Retrieve a Task |
 | [**GetTaskCustomFieldGroup**](TaskApi.md#gettaskcustomfieldgroup) | **GET** /rest/v2/tasks/model/customFields/groups/{group_id} | Retrieve a Task Custom Field Group |
+| [**GetTaskCustomFieldTab**](TaskApi.md#gettaskcustomfieldtab) | **GET** /rest/v2/tasks/model/customFields/tabs/{tab_id} | Retrieve a Task Custom Field Tab |
 | [**ListTaskCustomFieldGroups**](TaskApi.md#listtaskcustomfieldgroups) | **GET** /rest/v2/tasks/model/customFields/groups | List Task Custom Field Groups |
+| [**ListTaskCustomFieldTabs**](TaskApi.md#listtaskcustomfieldtabs) | **GET** /rest/v2/tasks/model/customFields/tabs | List Task Custom Field Tabs |
 | [**ListTasks**](TaskApi.md#listtasks) | **GET** /rest/v2/tasks | List Tasks |
 | [**RetrieveTaskModel**](TaskApi.md#retrievetaskmodel) | **GET** /rest/v2/tasks/model | Retrieve Task Model |
 | [**UpdateTask**](TaskApi.md#updatetask) | **PATCH** /rest/v2/tasks/{task_id} | Update a Task |
 | [**UpdateTaskCustomField**](TaskApi.md#updatetaskcustomfield) | **PATCH** /rest/v2/tasks/model/customFields/{custom_field_id} | Update a Task&#39;s Custom Field |
 | [**UpdateTaskCustomFieldGroup**](TaskApi.md#updatetaskcustomfieldgroup) | **PATCH** /rest/v2/tasks/model/customFields/groups/{group_id} | Update a Task Custom Field Group |
+| [**UpdateTaskCustomFieldTab**](TaskApi.md#updatetaskcustomfieldtab) | **PATCH** /rest/v2/tasks/model/customFields/tabs/{tab_id} | Update a Task Custom Field Tab |
 
 <a id="createtask"></a>
 # **CreateTask**
@@ -301,6 +306,108 @@ catch (ApiException e)
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="createtaskcustomfieldtab"></a>
+# **CreateTaskCustomFieldTab**
+> CustomFieldTab CreateTaskCustomFieldTab (CreateCustomFieldTabRequest createCustomFieldTabRequest)
+
+Create a Task Custom Field Tab
+
+Creates a new custom field tab for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateTaskCustomFieldTabExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TaskApi(config);
+            var createCustomFieldTabRequest = new CreateCustomFieldTabRequest(); // CreateCustomFieldTabRequest | 
+
+            try
+            {
+                // Create a Task Custom Field Tab
+                CustomFieldTab result = apiInstance.CreateTaskCustomFieldTab(createCustomFieldTabRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TaskApi.CreateTaskCustomFieldTab: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateTaskCustomFieldTabWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create a Task Custom Field Tab
+    ApiResponse<CustomFieldTab> response = apiInstance.CreateTaskCustomFieldTabWithHttpInfo(createCustomFieldTabRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaskApi.CreateTaskCustomFieldTabWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createCustomFieldTabRequest** | [**CreateCustomFieldTabRequest**](CreateCustomFieldTabRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
 
 ### Authorization
 
@@ -621,6 +728,104 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="deletetaskcustomfieldtab"></a>
+# **DeleteTaskCustomFieldTab**
+> void DeleteTaskCustomFieldTab (string tabId)
+
+Delete a Task Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteTaskCustomFieldTabExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TaskApi(config);
+            var tabId = "tabId_example";  // string | 
+
+            try
+            {
+                // Delete a Task Custom Field Tab
+                apiInstance.DeleteTaskCustomFieldTab(tabId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TaskApi.DeleteTaskCustomFieldTab: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteTaskCustomFieldTabWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Task Custom Field Tab
+    apiInstance.DeleteTaskCustomFieldTabWithHttpInfo(tabId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaskApi.DeleteTaskCustomFieldTabWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tabId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="gettask"></a>
 # **GetTask**
 > Task GetTask (string taskId, List<string>? fields = null)
@@ -827,6 +1032,108 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="gettaskcustomfieldtab"></a>
+# **GetTaskCustomFieldTab**
+> CustomFieldTab GetTaskCustomFieldTab (string tabId)
+
+Retrieve a Task Custom Field Tab
+
+Retrieves a single custom field tab by id for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetTaskCustomFieldTabExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TaskApi(config);
+            var tabId = "tabId_example";  // string | 
+
+            try
+            {
+                // Retrieve a Task Custom Field Tab
+                CustomFieldTab result = apiInstance.GetTaskCustomFieldTab(tabId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TaskApi.GetTaskCustomFieldTab: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetTaskCustomFieldTabWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve a Task Custom Field Tab
+    ApiResponse<CustomFieldTab> response = apiInstance.GetTaskCustomFieldTabWithHttpInfo(tabId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaskApi.GetTaskCustomFieldTabWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tabId** | **string** |  |  |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="listtaskcustomfieldgroups"></a>
 # **ListTaskCustomFieldGroups**
 > ListCustomFieldGroupsResponse ListTaskCustomFieldGroups (string? tabId = null)
@@ -929,6 +1236,103 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="listtaskcustomfieldtabs"></a>
+# **ListTaskCustomFieldTabs**
+> ListCustomFieldTabsResponse ListTaskCustomFieldTabs ()
+
+List Task Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListTaskCustomFieldTabsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TaskApi(config);
+
+            try
+            {
+                // List Task Custom Field Tabs
+                ListCustomFieldTabsResponse result = apiInstance.ListTaskCustomFieldTabs();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TaskApi.ListTaskCustomFieldTabs: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListTaskCustomFieldTabsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Task Custom Field Tabs
+    ApiResponse<ListCustomFieldTabsResponse> response = apiInstance.ListTaskCustomFieldTabsWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaskApi.ListTaskCustomFieldTabsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+### Return type
+
+[**ListCustomFieldTabsResponse**](ListCustomFieldTabsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="listtasks"></a>
 # **ListTasks**
 > ListTasksResponse ListTasks (string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null, List<string>? fields = null)
@@ -957,7 +1361,7 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new TaskApi(config);
-            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `opportunity_id` - (String) `task_ids` - (String) `since_time` - (String) `until_time` - (String)   `id`     — supports `==`, `>`, `<`, `>=`, `<=` - (String) `title`  — supports prefix wildcard (`title==Foo*`)  Operators must be URL-encoded (`==` → `%3D%3D`, `>` → `%3E`, `<` → `%3C`). For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=opportunity_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` - `filter=id%3E5`                  (id > 5) - `filter=id%3C%3D100`              (id <= 100) - `filter=title%3D%3DFollow%2A`     (title starts with \"Follow\")  (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `has_due_date` - (String) `is_completed` - (String) `user_id` - (String) `opportunity_id` - (String) `task_ids` - (String) `priority`  — one of `CRITICAL`, `ESSENTIAL`, `NONESSENTIAL` - (String) `since_time` - (String) `until_time` - (String)   `id`     — supports `==`, `>`, `<`, `>=`, `<=` - (String) `title`  — supports prefix wildcard (`title==Foo*`)  Operators must be URL-encoded (`==` → `%3D%3D`, `>` → `%3E`, `<` → `%3C`). For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=has_due_date%3D%3Dtrue` - `filter=is_completed%3D%3Dtrue` - `filter=user_id%3D%3D321` - `filter=opportunity_id%3D%3D321` - `filter=task_ids%3D%3D1,2,3` - `filter=priority%3D%3DCRITICAL` - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;` - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;` - `filter=id%3E5`                  (id > 5) - `filter=id%3C%3D100`              (id <= 100) - `filter=title%3D%3DFollow%2A`     (title starts with \"Follow\")  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. `filter=cf_priority%3D%3D10`). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field's data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (`==`) and prefix wildcard (e.g. `cf_company%3D%3DAcme%2A`) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (`==`, `>`, `<`, `>=`, `<=`) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `cf_renewDate%3C%3D2026-01-01T00:00:00.000Z`). Date-only values such as `2026-01-01` are rejected - Yes/No fields — equals only, value `0` (No) or `1` (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. `cf_tags%3D%3Dred`) A custom field that does not exist, an operator unsupported for the field's type, or a value that does not match the field's type returns `400 Bad Request`.  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `id` - `create_time` - `due_time` - `update_time`  One of the following directions: - `asc` - `desc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
@@ -1004,7 +1408,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;priority&#x60;  — one of &#x60;CRITICAL&#x60;, &#x60;ESSENTIAL&#x60;, &#x60;NONESSENTIAL&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;priority%3D%3DCRITICAL&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. &#x60;filter&#x3D;cf_priority%3D%3D10&#x60;). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company%3D%3DAcme%2A&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate%3C%3D2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags%3D%3Dred&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
@@ -1430,6 +1834,112 @@ catch (ApiException e)
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updatetaskcustomfieldtab"></a>
+# **UpdateTaskCustomFieldTab**
+> CustomFieldTab UpdateTaskCustomFieldTab (string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest)
+
+Update a Task Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UpdateTaskCustomFieldTabExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new TaskApi(config);
+            var tabId = "tabId_example";  // string | 
+            var updateMask = new List<string>(); // List<string> | Comma-separated list of fields to update
+            var updateCustomFieldTabRequest = new UpdateCustomFieldTabRequest(); // UpdateCustomFieldTabRequest | 
+
+            try
+            {
+                // Update a Task Custom Field Tab
+                CustomFieldTab result = apiInstance.UpdateTaskCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TaskApi.UpdateTaskCustomFieldTab: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateTaskCustomFieldTabWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update a Task Custom Field Tab
+    ApiResponse<CustomFieldTab> response = apiInstance.UpdateTaskCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling TaskApi.UpdateTaskCustomFieldTabWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tabId** | **string** |  |  |
+| **updateMask** | [**List&lt;string&gt;**](string.md) | Comma-separated list of fields to update |  |
+| **updateCustomFieldTabRequest** | [**UpdateCustomFieldTabRequest**](UpdateCustomFieldTabRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
 
 ### Authorization
 

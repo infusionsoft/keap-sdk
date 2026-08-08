@@ -115,7 +115,7 @@ namespace Keap.Core.V2.Api
         /// <param name="fileId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>byte[]</returns>
-        byte[] GetFileData(string fileId, int operationIndex = 0);
+        byte[] GetFileData1(string fileId, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a file&#39;s data
@@ -127,7 +127,7 @@ namespace Keap.Core.V2.Api
         /// <param name="fileId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of byte[]</returns>
-        ApiResponse<byte[]> GetFileDataWithHttpInfo(string fileId, int operationIndex = 0);
+        ApiResponse<byte[]> GetFileData1WithHttpInfo(string fileId, int operationIndex = 0);
         /// <summary>
         /// List all files
         /// </summary>
@@ -135,7 +135,7 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of files
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; — &#x60;true&#x60; (public) or &#x60;false&#x60; (private) - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; — one of: &#x60;ATTACHMENTS&#x60;, &#x60;CART&#x60;, &#x60;DOCUMENTS&#x60;, &#x60;HIDDEN&#x60;, &#x60;INVOICE&#x60;, &#x60;LOGO&#x60;, &#x60;TICKETS&#x60;, &#x60;WEB_FORM&#x60;, &#x60;FUNNEL&#x60; - (FileBoxType) &#x60;file_box_type&#x60; — one of: &#x60;APPLICATION&#x60;, &#x60;IMAGE&#x60;, &#x60;FAX&#x60;, &#x60;ATTACHMENT&#x60;, &#x60;TICKET&#x60;, &#x60;CONTACT&#x60;, &#x60;DIGITAL_PRODUCT&#x60;, &#x60;IMPORT&#x60;, &#x60;HIDDEN&#x60;, &#x60;WEB_FORM&#x60;, &#x60;STYLED_CART&#x60;, &#x60;RESAMPLED_IMAGE&#x60;, &#x60;TEMPLATE_THUMBNAIL&#x60;, &#x60;FUNNEL&#x60;, &#x60;LOGO_THUMBNAIL&#x60;, &#x60;UNLAYER&#x60;, &#x60;BRANDING_CENTER_LOGO&#x60; - (String) &#x60;file_name&#x60; - (String) &#x60;created_time&#x60; - (String) &#x60;updated_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. Multiple filters are combined with a semicolon (&#x60;;&#x60;, encoded &#x60;%3B&#x60;) and are ANDed together. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;is_public%3D%3Dfalse&#x60; - &#x60;filter&#x3D;category%3D%3DDOCUMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -150,7 +150,7 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of files
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; — &#x60;true&#x60; (public) or &#x60;false&#x60; (private) - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; — one of: &#x60;ATTACHMENTS&#x60;, &#x60;CART&#x60;, &#x60;DOCUMENTS&#x60;, &#x60;HIDDEN&#x60;, &#x60;INVOICE&#x60;, &#x60;LOGO&#x60;, &#x60;TICKETS&#x60;, &#x60;WEB_FORM&#x60;, &#x60;FUNNEL&#x60; - (FileBoxType) &#x60;file_box_type&#x60; — one of: &#x60;APPLICATION&#x60;, &#x60;IMAGE&#x60;, &#x60;FAX&#x60;, &#x60;ATTACHMENT&#x60;, &#x60;TICKET&#x60;, &#x60;CONTACT&#x60;, &#x60;DIGITAL_PRODUCT&#x60;, &#x60;IMPORT&#x60;, &#x60;HIDDEN&#x60;, &#x60;WEB_FORM&#x60;, &#x60;STYLED_CART&#x60;, &#x60;RESAMPLED_IMAGE&#x60;, &#x60;TEMPLATE_THUMBNAIL&#x60;, &#x60;FUNNEL&#x60;, &#x60;LOGO_THUMBNAIL&#x60;, &#x60;UNLAYER&#x60;, &#x60;BRANDING_CENTER_LOGO&#x60; - (String) &#x60;file_name&#x60; - (String) &#x60;created_time&#x60; - (String) &#x60;updated_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. Multiple filters are combined with a semicolon (&#x60;;&#x60;, encoded &#x60;%3B&#x60;) and are ANDed together. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;is_public%3D%3Dfalse&#x60; - &#x60;filter&#x3D;category%3D%3DDOCUMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -291,7 +291,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of byte[]</returns>
-        System.Threading.Tasks.Task<byte[]> GetFileDataAsync(string fileId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<byte[]> GetFileData1Async(string fileId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieve a file&#39;s data
@@ -304,7 +304,7 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        System.Threading.Tasks.Task<ApiResponse<byte[]>> GetFileDataWithHttpInfoAsync(string fileId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> GetFileData1WithHttpInfoAsync(string fileId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List all files
         /// </summary>
@@ -312,7 +312,7 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of files
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; — &#x60;true&#x60; (public) or &#x60;false&#x60; (private) - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; — one of: &#x60;ATTACHMENTS&#x60;, &#x60;CART&#x60;, &#x60;DOCUMENTS&#x60;, &#x60;HIDDEN&#x60;, &#x60;INVOICE&#x60;, &#x60;LOGO&#x60;, &#x60;TICKETS&#x60;, &#x60;WEB_FORM&#x60;, &#x60;FUNNEL&#x60; - (FileBoxType) &#x60;file_box_type&#x60; — one of: &#x60;APPLICATION&#x60;, &#x60;IMAGE&#x60;, &#x60;FAX&#x60;, &#x60;ATTACHMENT&#x60;, &#x60;TICKET&#x60;, &#x60;CONTACT&#x60;, &#x60;DIGITAL_PRODUCT&#x60;, &#x60;IMPORT&#x60;, &#x60;HIDDEN&#x60;, &#x60;WEB_FORM&#x60;, &#x60;STYLED_CART&#x60;, &#x60;RESAMPLED_IMAGE&#x60;, &#x60;TEMPLATE_THUMBNAIL&#x60;, &#x60;FUNNEL&#x60;, &#x60;LOGO_THUMBNAIL&#x60;, &#x60;UNLAYER&#x60;, &#x60;BRANDING_CENTER_LOGO&#x60; - (String) &#x60;file_name&#x60; - (String) &#x60;created_time&#x60; - (String) &#x60;updated_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. Multiple filters are combined with a semicolon (&#x60;;&#x60;, encoded &#x60;%3B&#x60;) and are ANDed together. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;is_public%3D%3Dfalse&#x60; - &#x60;filter&#x3D;category%3D%3DDOCUMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -328,7 +328,7 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of files
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; — &#x60;true&#x60; (public) or &#x60;false&#x60; (private) - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; — one of: &#x60;ATTACHMENTS&#x60;, &#x60;CART&#x60;, &#x60;DOCUMENTS&#x60;, &#x60;HIDDEN&#x60;, &#x60;INVOICE&#x60;, &#x60;LOGO&#x60;, &#x60;TICKETS&#x60;, &#x60;WEB_FORM&#x60;, &#x60;FUNNEL&#x60; - (FileBoxType) &#x60;file_box_type&#x60; — one of: &#x60;APPLICATION&#x60;, &#x60;IMAGE&#x60;, &#x60;FAX&#x60;, &#x60;ATTACHMENT&#x60;, &#x60;TICKET&#x60;, &#x60;CONTACT&#x60;, &#x60;DIGITAL_PRODUCT&#x60;, &#x60;IMPORT&#x60;, &#x60;HIDDEN&#x60;, &#x60;WEB_FORM&#x60;, &#x60;STYLED_CART&#x60;, &#x60;RESAMPLED_IMAGE&#x60;, &#x60;TEMPLATE_THUMBNAIL&#x60;, &#x60;FUNNEL&#x60;, &#x60;LOGO_THUMBNAIL&#x60;, &#x60;UNLAYER&#x60;, &#x60;BRANDING_CENTER_LOGO&#x60; - (String) &#x60;file_name&#x60; - (String) &#x60;created_time&#x60; - (String) &#x60;updated_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. Multiple filters are combined with a semicolon (&#x60;;&#x60;, encoded &#x60;%3B&#x60;) and are ANDed together. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;is_public%3D%3Dfalse&#x60; - &#x60;filter&#x3D;category%3D%3DDOCUMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -1087,9 +1087,9 @@ namespace Keap.Core.V2.Api
         /// <param name="fileId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>byte[]</returns>
-        public byte[] GetFileData(string fileId, int operationIndex = 0)
+        public byte[] GetFileData1(string fileId, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<byte[]> localVarResponse = GetFileDataWithHttpInfo(fileId);
+            Keap.Core.V2.Client.ApiResponse<byte[]> localVarResponse = GetFileData1WithHttpInfo(fileId);
             return localVarResponse.Data;
         }
 
@@ -1100,12 +1100,12 @@ namespace Keap.Core.V2.Api
         /// <param name="fileId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of byte[]</returns>
-        public Keap.Core.V2.Client.ApiResponse<byte[]> GetFileDataWithHttpInfo(string fileId, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<byte[]> GetFileData1WithHttpInfo(string fileId, int operationIndex = 0)
         {
             // verify the required parameter 'fileId' is set
             if (fileId == null)
             {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'fileId' when calling FilesApi->GetFileData");
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'fileId' when calling FilesApi->GetFileData1");
             }
 
             Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
@@ -1133,7 +1133,7 @@ namespace Keap.Core.V2.Api
 
             localVarRequestOptions.PathParameters.Add("file_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileId)); // path parameter
 
-            localVarRequestOptions.Operation = "FilesApi.GetFileData";
+            localVarRequestOptions.Operation = "FilesApi.GetFileData1";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -1157,7 +1157,7 @@ namespace Keap.Core.V2.Api
             var localVarResponse = this.Client.Get<byte[]>("/rest/v2/files/{file_id}:data", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetFileData", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetFileData1", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1175,9 +1175,9 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of byte[]</returns>
-        public async System.Threading.Tasks.Task<byte[]> GetFileDataAsync(string fileId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<byte[]> GetFileData1Async(string fileId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<byte[]> localVarResponse = await GetFileDataWithHttpInfoAsync(fileId, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<byte[]> localVarResponse = await GetFileData1WithHttpInfoAsync(fileId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1189,12 +1189,12 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (byte[])</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<byte[]>> GetFileDataWithHttpInfoAsync(string fileId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<byte[]>> GetFileData1WithHttpInfoAsync(string fileId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'fileId' is set
             if (fileId == null)
             {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'fileId' when calling FilesApi->GetFileData");
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'fileId' when calling FilesApi->GetFileData1");
             }
 
 
@@ -1222,7 +1222,7 @@ namespace Keap.Core.V2.Api
 
             localVarRequestOptions.PathParameters.Add("file_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(fileId)); // path parameter
 
-            localVarRequestOptions.Operation = "FilesApi.GetFileData";
+            localVarRequestOptions.Operation = "FilesApi.GetFileData1";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -1247,7 +1247,7 @@ namespace Keap.Core.V2.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetFileData", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetFileData1", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1261,7 +1261,7 @@ namespace Keap.Core.V2.Api
         /// List all files Retrieves a list of files
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; — &#x60;true&#x60; (public) or &#x60;false&#x60; (private) - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; — one of: &#x60;ATTACHMENTS&#x60;, &#x60;CART&#x60;, &#x60;DOCUMENTS&#x60;, &#x60;HIDDEN&#x60;, &#x60;INVOICE&#x60;, &#x60;LOGO&#x60;, &#x60;TICKETS&#x60;, &#x60;WEB_FORM&#x60;, &#x60;FUNNEL&#x60; - (FileBoxType) &#x60;file_box_type&#x60; — one of: &#x60;APPLICATION&#x60;, &#x60;IMAGE&#x60;, &#x60;FAX&#x60;, &#x60;ATTACHMENT&#x60;, &#x60;TICKET&#x60;, &#x60;CONTACT&#x60;, &#x60;DIGITAL_PRODUCT&#x60;, &#x60;IMPORT&#x60;, &#x60;HIDDEN&#x60;, &#x60;WEB_FORM&#x60;, &#x60;STYLED_CART&#x60;, &#x60;RESAMPLED_IMAGE&#x60;, &#x60;TEMPLATE_THUMBNAIL&#x60;, &#x60;FUNNEL&#x60;, &#x60;LOGO_THUMBNAIL&#x60;, &#x60;UNLAYER&#x60;, &#x60;BRANDING_CENTER_LOGO&#x60; - (String) &#x60;file_name&#x60; - (String) &#x60;created_time&#x60; - (String) &#x60;updated_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. Multiple filters are combined with a semicolon (&#x60;;&#x60;, encoded &#x60;%3B&#x60;) and are ANDed together. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;is_public%3D%3Dfalse&#x60; - &#x60;filter&#x3D;category%3D%3DDOCUMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -1277,7 +1277,7 @@ namespace Keap.Core.V2.Api
         /// List all files Retrieves a list of files
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; — &#x60;true&#x60; (public) or &#x60;false&#x60; (private) - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; — one of: &#x60;ATTACHMENTS&#x60;, &#x60;CART&#x60;, &#x60;DOCUMENTS&#x60;, &#x60;HIDDEN&#x60;, &#x60;INVOICE&#x60;, &#x60;LOGO&#x60;, &#x60;TICKETS&#x60;, &#x60;WEB_FORM&#x60;, &#x60;FUNNEL&#x60; - (FileBoxType) &#x60;file_box_type&#x60; — one of: &#x60;APPLICATION&#x60;, &#x60;IMAGE&#x60;, &#x60;FAX&#x60;, &#x60;ATTACHMENT&#x60;, &#x60;TICKET&#x60;, &#x60;CONTACT&#x60;, &#x60;DIGITAL_PRODUCT&#x60;, &#x60;IMPORT&#x60;, &#x60;HIDDEN&#x60;, &#x60;WEB_FORM&#x60;, &#x60;STYLED_CART&#x60;, &#x60;RESAMPLED_IMAGE&#x60;, &#x60;TEMPLATE_THUMBNAIL&#x60;, &#x60;FUNNEL&#x60;, &#x60;LOGO_THUMBNAIL&#x60;, &#x60;UNLAYER&#x60;, &#x60;BRANDING_CENTER_LOGO&#x60; - (String) &#x60;file_name&#x60; - (String) &#x60;created_time&#x60; - (String) &#x60;updated_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. Multiple filters are combined with a semicolon (&#x60;;&#x60;, encoded &#x60;%3B&#x60;) and are ANDed together. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;is_public%3D%3Dfalse&#x60; - &#x60;filter&#x3D;category%3D%3DDOCUMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -1363,7 +1363,7 @@ namespace Keap.Core.V2.Api
         /// List all files Retrieves a list of files
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; — &#x60;true&#x60; (public) or &#x60;false&#x60; (private) - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; — one of: &#x60;ATTACHMENTS&#x60;, &#x60;CART&#x60;, &#x60;DOCUMENTS&#x60;, &#x60;HIDDEN&#x60;, &#x60;INVOICE&#x60;, &#x60;LOGO&#x60;, &#x60;TICKETS&#x60;, &#x60;WEB_FORM&#x60;, &#x60;FUNNEL&#x60; - (FileBoxType) &#x60;file_box_type&#x60; — one of: &#x60;APPLICATION&#x60;, &#x60;IMAGE&#x60;, &#x60;FAX&#x60;, &#x60;ATTACHMENT&#x60;, &#x60;TICKET&#x60;, &#x60;CONTACT&#x60;, &#x60;DIGITAL_PRODUCT&#x60;, &#x60;IMPORT&#x60;, &#x60;HIDDEN&#x60;, &#x60;WEB_FORM&#x60;, &#x60;STYLED_CART&#x60;, &#x60;RESAMPLED_IMAGE&#x60;, &#x60;TEMPLATE_THUMBNAIL&#x60;, &#x60;FUNNEL&#x60;, &#x60;LOGO_THUMBNAIL&#x60;, &#x60;UNLAYER&#x60;, &#x60;BRANDING_CENTER_LOGO&#x60; - (String) &#x60;file_name&#x60; - (String) &#x60;created_time&#x60; - (String) &#x60;updated_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. Multiple filters are combined with a semicolon (&#x60;;&#x60;, encoded &#x60;%3B&#x60;) and are ANDed together. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;is_public%3D%3Dfalse&#x60; - &#x60;filter&#x3D;category%3D%3DDOCUMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -1380,7 +1380,7 @@ namespace Keap.Core.V2.Api
         /// List all files Retrieves a list of files
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; — &#x60;true&#x60; (public) or &#x60;false&#x60; (private) - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; — one of: &#x60;ATTACHMENTS&#x60;, &#x60;CART&#x60;, &#x60;DOCUMENTS&#x60;, &#x60;HIDDEN&#x60;, &#x60;INVOICE&#x60;, &#x60;LOGO&#x60;, &#x60;TICKETS&#x60;, &#x60;WEB_FORM&#x60;, &#x60;FUNNEL&#x60; - (FileBoxType) &#x60;file_box_type&#x60; — one of: &#x60;APPLICATION&#x60;, &#x60;IMAGE&#x60;, &#x60;FAX&#x60;, &#x60;ATTACHMENT&#x60;, &#x60;TICKET&#x60;, &#x60;CONTACT&#x60;, &#x60;DIGITAL_PRODUCT&#x60;, &#x60;IMPORT&#x60;, &#x60;HIDDEN&#x60;, &#x60;WEB_FORM&#x60;, &#x60;STYLED_CART&#x60;, &#x60;RESAMPLED_IMAGE&#x60;, &#x60;TEMPLATE_THUMBNAIL&#x60;, &#x60;FUNNEL&#x60;, &#x60;LOGO_THUMBNAIL&#x60;, &#x60;UNLAYER&#x60;, &#x60;BRANDING_CENTER_LOGO&#x60; - (String) &#x60;file_name&#x60; - (String) &#x60;created_time&#x60; - (String) &#x60;updated_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. Multiple filters are combined with a semicolon (&#x60;;&#x60;, encoded &#x60;%3B&#x60;) and are ANDed together. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;is_public%3D%3Dfalse&#x60; - &#x60;filter&#x3D;category%3D%3DDOCUMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>

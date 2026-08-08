@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **include_in_forecast** | **bool** | Include in sales forecast | [optional] 
 **projected_revenue_low** | **float** | Low revenue estimate | [optional] 
 **projected_revenue_high** | **float** | High revenue estimate | [optional] 
-**contact_id** | **str** | Associated contact ID | [optional] 
-**stage_id** | **str** | Pipeline stage ID | [optional] 
+**contact_id** | **str** | Associated contact ID | 
+**stage_id** | **str** | Pipeline stage ID | 
 **user_id** | **str** | Assigned user ID | [optional] 
 **custom_fields** | [**List[CustomField]**](CustomField.md) |  | [optional] 
 **affiliate_id** | **str** | Affiliate ID | [optional] 

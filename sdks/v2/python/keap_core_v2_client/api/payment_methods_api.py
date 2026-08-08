@@ -979,13 +979,13 @@ class PaymentMethodsApi:
 
 
     @validate_call
-    def list_payment_methods_0(
+    def list_payment_methods1(
         self,
         contact_id: Annotated[StrictStr, Field(description="ID of the contact to which the payment method belongs.")],
         filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`  ")] = None,
+        page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `desc` - `asc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
-        page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1007,12 +1007,12 @@ class PaymentMethodsApi:
         :type contact_id: str
         :param filter: Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`  
         :type filter: str
+        :param page_token: Page token
+        :type page_token: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `desc` - `asc`
         :type order_by: str
         :param page_size: Total number of items to return per page
         :type page_size: int
-        :param page_token: Page token
-        :type page_token: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1035,12 +1035,12 @@ class PaymentMethodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_payment_methods_0_serialize(
+        _param = self._list_payment_methods1_serialize(
             contact_id=contact_id,
             filter=filter,
+            page_token=page_token,
             order_by=order_by,
             page_size=page_size,
-            page_token=page_token,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1070,13 +1070,13 @@ class PaymentMethodsApi:
 
 
     @validate_call
-    def list_payment_methods_0_with_http_info(
+    def list_payment_methods1_with_http_info(
         self,
         contact_id: Annotated[StrictStr, Field(description="ID of the contact to which the payment method belongs.")],
         filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`  ")] = None,
+        page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `desc` - `asc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
-        page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1098,12 +1098,12 @@ class PaymentMethodsApi:
         :type contact_id: str
         :param filter: Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`  
         :type filter: str
+        :param page_token: Page token
+        :type page_token: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `desc` - `asc`
         :type order_by: str
         :param page_size: Total number of items to return per page
         :type page_size: int
-        :param page_token: Page token
-        :type page_token: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1126,12 +1126,12 @@ class PaymentMethodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_payment_methods_0_serialize(
+        _param = self._list_payment_methods1_serialize(
             contact_id=contact_id,
             filter=filter,
+            page_token=page_token,
             order_by=order_by,
             page_size=page_size,
-            page_token=page_token,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1161,13 +1161,13 @@ class PaymentMethodsApi:
 
 
     @validate_call
-    def list_payment_methods_0_without_preload_content(
+    def list_payment_methods1_without_preload_content(
         self,
         contact_id: Annotated[StrictStr, Field(description="ID of the contact to which the payment method belongs.")],
         filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`  ")] = None,
+        page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `desc` - `asc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
-        page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1189,12 +1189,12 @@ class PaymentMethodsApi:
         :type contact_id: str
         :param filter: Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`  
         :type filter: str
+        :param page_token: Page token
+        :type page_token: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `desc` - `asc`
         :type order_by: str
         :param page_size: Total number of items to return per page
         :type page_size: int
-        :param page_token: Page token
-        :type page_token: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1217,12 +1217,12 @@ class PaymentMethodsApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_payment_methods_0_serialize(
+        _param = self._list_payment_methods1_serialize(
             contact_id=contact_id,
             filter=filter,
+            page_token=page_token,
             order_by=order_by,
             page_size=page_size,
-            page_token=page_token,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1247,13 +1247,13 @@ class PaymentMethodsApi:
         return response_data.response
 
 
-    def _list_payment_methods_0_serialize(
+    def _list_payment_methods1_serialize(
         self,
         contact_id,
         filter,
+        page_token,
         order_by,
         page_size,
-        page_token,
         _request_auth,
         _content_type,
         _headers,
@@ -1282,6 +1282,10 @@ class PaymentMethodsApi:
             
             _query_params.append(('filter', filter))
             
+        if page_token is not None:
+            
+            _query_params.append(('page_token', page_token))
+            
         if order_by is not None:
             
             _query_params.append(('order_by', order_by))
@@ -1289,10 +1293,6 @@ class PaymentMethodsApi:
         if page_size is not None:
             
             _query_params.append(('page_size', page_size))
-            
-        if page_token is not None:
-            
-            _query_params.append(('page_token', page_token))
             
         # process the header parameters
         # process the form parameters

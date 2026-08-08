@@ -173,6 +173,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of CustomFieldGroup</returns>
         ApiResponse<CustomFieldGroup> CreateOrderCustomFieldGroupWithHttpInfo(CreateCustomFieldGroupRequest createCustomFieldGroupRequest, int operationIndex = 0);
         /// <summary>
+        /// Create an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Order record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        CustomFieldTab CreateOrderCustomFieldTab(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Create an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Order record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        ApiResponse<CustomFieldTab> CreateOrderCustomFieldTabWithHttpInfo(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0);
+        /// <summary>
         /// Create an Order Item
         /// </summary>
         /// <remarks>
@@ -292,6 +315,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteOrderCustomFieldGroupWithHttpInfo(string groupId, int operationIndex = 0);
         /// <summary>
+        /// Delete an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        void DeleteOrderCustomFieldTab(string tabId, int operationIndex = 0);
+
+        /// <summary>
+        /// Delete an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteOrderCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0);
+        /// <summary>
         /// Delete an Order Item
         /// </summary>
         /// <remarks>
@@ -388,6 +434,29 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of CustomFieldGroup</returns>
         ApiResponse<CustomFieldGroup> GetOrderCustomFieldGroupWithHttpInfo(string groupId, int operationIndex = 0);
         /// <summary>
+        /// Retrieve an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Order record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        CustomFieldTab GetOrderCustomFieldTab(string tabId, int operationIndex = 0);
+
+        /// <summary>
+        /// Retrieve an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Order record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        ApiResponse<CustomFieldTab> GetOrderCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0);
+        /// <summary>
         /// Retrieve an Order Item
         /// </summary>
         /// <remarks>
@@ -436,6 +505,27 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of ListCustomFieldGroupsResponse</returns>
         ApiResponse<ListCustomFieldGroupsResponse> ListOrderCustomFieldGroupsWithHttpInfo(string? tabId = default, int operationIndex = 0);
         /// <summary>
+        /// List Order Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Order record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListCustomFieldTabsResponse</returns>
+        ListCustomFieldTabsResponse ListOrderCustomFieldTabs(int operationIndex = 0);
+
+        /// <summary>
+        /// List Order Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Order record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListCustomFieldTabsResponse</returns>
+        ApiResponse<ListCustomFieldTabsResponse> ListOrderCustomFieldTabsWithHttpInfo(int operationIndex = 0);
+        /// <summary>
         /// Retrieve Order Payments
         /// </summary>
         /// <remarks>
@@ -473,7 +563,7 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of orders
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -488,7 +578,7 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of orders
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -597,6 +687,33 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomFieldGroup</returns>
         ApiResponse<CustomFieldGroup> UpdateOrderCustomFieldGroupWithHttpInfo(string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest, int operationIndex = 0);
+        /// <summary>
+        /// Update an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        CustomFieldTab UpdateOrderCustomFieldTab(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Update an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        ApiResponse<CustomFieldTab> UpdateOrderCustomFieldTabWithHttpInfo(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0);
         /// <summary>
         /// Update an Order Item
         /// </summary>
@@ -792,6 +909,31 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse (CustomFieldGroup)</returns>
         System.Threading.Tasks.Task<ApiResponse<CustomFieldGroup>> CreateOrderCustomFieldGroupWithHttpInfoAsync(CreateCustomFieldGroupRequest createCustomFieldGroupRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Create an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Order record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        System.Threading.Tasks.Task<CustomFieldTab> CreateOrderCustomFieldTabAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Create an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Creates a new custom field tab for the Order record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldTab>> CreateOrderCustomFieldTabWithHttpInfoAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Create an Order Item
         /// </summary>
         /// <remarks>
@@ -921,6 +1063,31 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteOrderCustomFieldGroupWithHttpInfoAsync(string groupId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Delete an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteOrderCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Delete an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteOrderCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Delete an Order Item
         /// </summary>
         /// <remarks>
@@ -1025,6 +1192,31 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse (CustomFieldGroup)</returns>
         System.Threading.Tasks.Task<ApiResponse<CustomFieldGroup>> GetOrderCustomFieldGroupWithHttpInfoAsync(string groupId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Retrieve an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Order record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        System.Threading.Tasks.Task<CustomFieldTab> GetOrderCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Retrieve an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a single custom field tab by id for the Order record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldTab>> GetOrderCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Retrieve an Order Item
         /// </summary>
         /// <remarks>
@@ -1077,6 +1269,29 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse (ListCustomFieldGroupsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListCustomFieldGroupsResponse>> ListOrderCustomFieldGroupsWithHttpInfoAsync(string? tabId = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// List Order Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Order record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCustomFieldTabsResponse</returns>
+        System.Threading.Tasks.Task<ListCustomFieldTabsResponse> ListOrderCustomFieldTabsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// List Order Custom Field Tabs
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of custom field tabs for the Order record type.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCustomFieldTabsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListCustomFieldTabsResponse>> ListOrderCustomFieldTabsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Retrieve Order Payments
         /// </summary>
         /// <remarks>
@@ -1116,7 +1331,7 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of orders
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -1132,7 +1347,7 @@ namespace Keap.Core.V2.Api
         /// Retrieves a list of orders
         /// </remarks>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -1250,6 +1465,35 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CustomFieldGroup)</returns>
         System.Threading.Tasks.Task<ApiResponse<CustomFieldGroup>> UpdateOrderCustomFieldGroupWithHttpInfoAsync(string groupId, List<string> updateMask, UpdateCustomFieldGroupRequest updateCustomFieldGroupRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Update an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        System.Threading.Tasks.Task<CustomFieldTab> UpdateOrderCustomFieldTabAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Update an Order Custom Field Tab
+        /// </summary>
+        /// <remarks>
+        /// Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CustomFieldTab>> UpdateOrderCustomFieldTabWithHttpInfoAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update an Order Item
         /// </summary>
@@ -2528,6 +2772,185 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// Create an Order Custom Field Tab Creates a new custom field tab for the Order record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        public CustomFieldTab CreateOrderCustomFieldTab(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = CreateOrderCustomFieldTabWithHttpInfo(createCustomFieldTabRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create an Order Custom Field Tab Creates a new custom field tab for the Order record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldTab> CreateOrderCustomFieldTabWithHttpInfo(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'createCustomFieldTabRequest' is set
+            if (createCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createCustomFieldTabRequest' when calling OrdersApi->CreateOrderCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "OrdersApi.CreateOrderCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CustomFieldTab>("/rest/v2/orders/model/customFields/tabs", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create an Order Custom Field Tab Creates a new custom field tab for the Order record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        public async System.Threading.Tasks.Task<CustomFieldTab> CreateOrderCustomFieldTabAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = await CreateOrderCustomFieldTabWithHttpInfoAsync(createCustomFieldTabRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create an Order Custom Field Tab Creates a new custom field tab for the Order record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldTab>> CreateOrderCustomFieldTabWithHttpInfoAsync(CreateCustomFieldTabRequest createCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'createCustomFieldTabRequest' is set
+            if (createCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createCustomFieldTabRequest' when calling OrdersApi->CreateOrderCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "OrdersApi.CreateOrderCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CustomFieldTab>("/rest/v2/orders/model/customFields/tabs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateOrderCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Create an Order Item Creates an order item on an existing order
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -3447,6 +3870,181 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// Delete an Order Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        public void DeleteOrderCustomFieldTab(string tabId, int operationIndex = 0)
+        {
+            DeleteOrderCustomFieldTabWithHttpInfo(tabId);
+        }
+
+        /// <summary>
+        /// Delete an Order Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Keap.Core.V2.Client.ApiResponse<Object> DeleteOrderCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling OrdersApi->DeleteOrderCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "OrdersApi.DeleteOrderCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<Object>("/rest/v2/orders/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteOrderCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete an Order Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteOrderCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            await DeleteOrderCustomFieldTabWithHttpInfoAsync(tabId, operationIndex, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Delete an Order Custom Field Tab Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Object>> DeleteOrderCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling OrdersApi->DeleteOrderCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "OrdersApi.DeleteOrderCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/rest/v2/orders/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteOrderCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Delete an Order Item Deletes an order item on an existing order
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -4191,6 +4789,183 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// Retrieve an Order Custom Field Tab Retrieves a single custom field tab by id for the Order record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        public CustomFieldTab GetOrderCustomFieldTab(string tabId, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = GetOrderCustomFieldTabWithHttpInfo(tabId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve an Order Custom Field Tab Retrieves a single custom field tab by id for the Order record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldTab> GetOrderCustomFieldTabWithHttpInfo(string tabId, int operationIndex = 0)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling OrdersApi->GetOrderCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "OrdersApi.GetOrderCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<CustomFieldTab>("/rest/v2/orders/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Retrieve an Order Custom Field Tab Retrieves a single custom field tab by id for the Order record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        public async System.Threading.Tasks.Task<CustomFieldTab> GetOrderCustomFieldTabAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = await GetOrderCustomFieldTabWithHttpInfoAsync(tabId, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve an Order Custom Field Tab Retrieves a single custom field tab by id for the Order record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldTab>> GetOrderCustomFieldTabWithHttpInfoAsync(string tabId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling OrdersApi->GetOrderCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+
+            localVarRequestOptions.Operation = "OrdersApi.GetOrderCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<CustomFieldTab>("/rest/v2/orders/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOrderCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Retrieve an Order Item Retrieves a single order item from an existing order
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -4557,6 +5332,165 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// List Order Custom Field Tabs Retrieves a list of custom field tabs for the Order record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListCustomFieldTabsResponse</returns>
+        public ListCustomFieldTabsResponse ListOrderCustomFieldTabs(int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse> localVarResponse = ListOrderCustomFieldTabsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Order Custom Field Tabs Retrieves a list of custom field tabs for the Order record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListCustomFieldTabsResponse</returns>
+        public Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse> ListOrderCustomFieldTabsWithHttpInfo(int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "OrdersApi.ListOrderCustomFieldTabs";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListCustomFieldTabsResponse>("/rest/v2/orders/model/customFields/tabs", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListOrderCustomFieldTabs", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List Order Custom Field Tabs Retrieves a list of custom field tabs for the Order record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCustomFieldTabsResponse</returns>
+        public async System.Threading.Tasks.Task<ListCustomFieldTabsResponse> ListOrderCustomFieldTabsAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse> localVarResponse = await ListOrderCustomFieldTabsWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Order Custom Field Tabs Retrieves a list of custom field tabs for the Order record type.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCustomFieldTabsResponse)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListCustomFieldTabsResponse>> ListOrderCustomFieldTabsWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            localVarRequestOptions.Operation = "OrdersApi.ListOrderCustomFieldTabs";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListCustomFieldTabsResponse>("/rest/v2/orders/model/customFields/tabs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListOrderCustomFieldTabs", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Retrieve Order Payments Retrieves a list of payments made against a given order, including historical or external payments of cash or credit card
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -4785,7 +5719,7 @@ namespace Keap.Core.V2.Api
         /// List orders Retrieves a list of orders
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -4801,7 +5735,7 @@ namespace Keap.Core.V2.Api
         /// List orders Retrieves a list of orders
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -4887,7 +5821,7 @@ namespace Keap.Core.V2.Api
         /// List orders Retrieves a list of orders
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -4904,7 +5838,7 @@ namespace Keap.Core.V2.Api
         /// List orders Retrieves a list of orders
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
+        /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
         /// <param name="pageToken">Page token (optional)</param>
@@ -5771,6 +6705,221 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateOrderCustomFieldGroup", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update an Order Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>CustomFieldTab</returns>
+        public CustomFieldTab UpdateOrderCustomFieldTab(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = UpdateOrderCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update an Order Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of CustomFieldTab</returns>
+        public Keap.Core.V2.Client.ApiResponse<CustomFieldTab> UpdateOrderCustomFieldTabWithHttpInfo(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling OrdersApi->UpdateOrderCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateMask' is set
+            if (updateMask == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateMask' when calling OrdersApi->UpdateOrderCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateCustomFieldTabRequest' is set
+            if (updateCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateCustomFieldTabRequest' when calling OrdersApi->UpdateOrderCustomFieldTab");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+            localVarRequestOptions.Data = updateCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "OrdersApi.UpdateOrderCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<CustomFieldTab>("/rest/v2/orders/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateOrderCustomFieldTab", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update an Order Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CustomFieldTab</returns>
+        public async System.Threading.Tasks.Task<CustomFieldTab> UpdateOrderCustomFieldTabAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<CustomFieldTab> localVarResponse = await UpdateOrderCustomFieldTabWithHttpInfoAsync(tabId, updateMask, updateCustomFieldTabRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update an Order Custom Field Tab Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tabId"></param>
+        /// <param name="updateMask">Comma-separated list of fields to update</param>
+        /// <param name="updateCustomFieldTabRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CustomFieldTab)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<CustomFieldTab>> UpdateOrderCustomFieldTabWithHttpInfoAsync(string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'tabId' is set
+            if (tabId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'tabId' when calling OrdersApi->UpdateOrderCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateMask' is set
+            if (updateMask == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateMask' when calling OrdersApi->UpdateOrderCustomFieldTab");
+            }
+
+            // verify the required parameter 'updateCustomFieldTabRequest' is set
+            if (updateCustomFieldTabRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'updateCustomFieldTabRequest' when calling OrdersApi->UpdateOrderCustomFieldTab");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tab_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(tabId)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+            localVarRequestOptions.Data = updateCustomFieldTabRequest;
+
+            localVarRequestOptions.Operation = "OrdersApi.UpdateOrderCustomFieldTab";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<CustomFieldTab>("/rest/v2/orders/model/customFields/tabs/{tab_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateOrderCustomFieldTab", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

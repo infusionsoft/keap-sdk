@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | Social account username or handle | [optional] 
+**name** | **str** | Social account username or handle. Maximum length is 255 characters. | [optional] 
 **type** | **str** | Social account type | 
 
 ## Example

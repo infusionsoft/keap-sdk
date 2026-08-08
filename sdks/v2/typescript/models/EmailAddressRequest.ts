@@ -14,7 +14,7 @@ import { HttpFile } from '../http/http';
 
 export class EmailAddressRequest {
     /**
-    * Email address
+    * Email address. Maximum length is 75 characters for EMAIL1 and 100 characters for EMAIL2 and EMAIL3.
     */
     'email'?: string;
     /**

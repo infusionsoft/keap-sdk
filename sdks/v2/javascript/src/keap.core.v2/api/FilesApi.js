@@ -209,11 +209,11 @@ export default class FilesApi {
      * @param {String} fileId 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Blob} and HTTP response
      */
-    getFileDataWithHttpInfo(fileId) {
+    getFileData1WithHttpInfo(fileId) {
       let postBody = null;
       // verify the required parameter 'fileId' is set
       if (fileId === undefined || fileId === null) {
-        throw new Error("Missing the required parameter 'fileId' when calling getFileData");
+        throw new Error("Missing the required parameter 'fileId' when calling getFileData1");
       }
 
       let pathParams = {
@@ -243,8 +243,8 @@ export default class FilesApi {
      * @param {String} fileId 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Blob}
      */
-    getFileData(fileId) {
-      return this.getFileDataWithHttpInfo(fileId)
+    getFileData1(fileId) {
+      return this.getFileData1WithHttpInfo(fileId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -255,7 +255,7 @@ export default class FilesApi {
      * List all files
      * Retrieves a list of files
      * @param {Object} opts Optional parameters
-     * @param {String} [filter] Filter to apply, allowed fields are: - (Boolean) `is_public` - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` - (FileBoxType) `file_box_type`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=category%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` 
+     * @param {String} [filter] Filter to apply, allowed fields are: - (Boolean) `is_public` — `true` (public) or `false` (private) - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` — one of: `ATTACHMENTS`, `CART`, `DOCUMENTS`, `HIDDEN`, `INVOICE`, `LOGO`, `TICKETS`, `WEB_FORM`, `FUNNEL` - (FileBoxType) `file_box_type` — one of: `APPLICATION`, `IMAGE`, `FAX`, `ATTACHMENT`, `TICKET`, `CONTACT`, `DIGITAL_PRODUCT`, `IMPORT`, `HIDDEN`, `WEB_FORM`, `STYLED_CART`, `RESAMPLED_IMAGE`, `TEMPLATE_THUMBNAIL`, `FUNNEL`, `LOGO_THUMBNAIL`, `UNLAYER`, `BRANDING_CENTER_LOGO` - (String) `file_name` - (String) `created_time` - (String) `updated_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. Multiple filters are combined with a semicolon (`;`, encoded `%3B`) and are ANDed together. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=is_public%3D%3Dfalse` - `filter=category%3D%3DDOCUMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse` 
      * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `file_name` - `updated_time` - ...  One of the following directions: - `asc` - `desc` 
      * @param {Number} [pageSize] Total number of items to return per page
      * @param {String} [pageToken] Page token
@@ -293,7 +293,7 @@ export default class FilesApi {
      * List all files
      * Retrieves a list of files
      * @param {Object} opts Optional parameters
-     * @param {String} opts.filter Filter to apply, allowed fields are: - (Boolean) `is_public` - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` - (FileBoxType) `file_box_type`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=category%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` 
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (Boolean) `is_public` — `true` (public) or `false` (private) - (String) `contact_id` - (String) `user_id` - (FileBoxCategory) `category` — one of: `ATTACHMENTS`, `CART`, `DOCUMENTS`, `HIDDEN`, `INVOICE`, `LOGO`, `TICKETS`, `WEB_FORM`, `FUNNEL` - (FileBoxType) `file_box_type` — one of: `APPLICATION`, `IMAGE`, `FAX`, `ATTACHMENT`, `TICKET`, `CONTACT`, `DIGITAL_PRODUCT`, `IMPORT`, `HIDDEN`, `WEB_FORM`, `STYLED_CART`, `RESAMPLED_IMAGE`, `TEMPLATE_THUMBNAIL`, `FUNNEL`, `LOGO_THUMBNAIL`, `UNLAYER`, `BRANDING_CENTER_LOGO` - (String) `file_name` - (String) `created_time` - (String) `updated_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. Multiple filters are combined with a semicolon (`;`, encoded `%3B`) and are ANDed together. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=is_public%3D%3Dfalse` - `filter=category%3D%3DDOCUMENTS` - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS` - `filter=file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse` 
      * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `file_name` - `updated_time` - ...  One of the following directions: - `asc` - `desc` 
      * @param {Number} opts.pageSize Total number of items to return per page
      * @param {String} opts.pageToken Page token

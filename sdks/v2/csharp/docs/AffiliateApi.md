@@ -12,18 +12,21 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**AssignSubscriptionCommissionProgram**](AffiliateApi.md#assignsubscriptioncommissionprogram) | **POST** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program |
 | [**CreateAffiliateCustomField**](AffiliateApi.md#createaffiliatecustomfield) | **POST** /rest/v2/affiliates/model/customFields | Create an Affiliate Custom Field |
 | [**CreateAffiliateCustomFieldGroup**](AffiliateApi.md#createaffiliatecustomfieldgroup) | **POST** /rest/v2/affiliates/model/customFields/groups | Create an Affiliate Custom Field Group |
+| [**CreateAffiliateCustomFieldTab**](AffiliateApi.md#createaffiliatecustomfieldtab) | **POST** /rest/v2/affiliates/model/customFields/tabs | Create an Affiliate Custom Field Tab |
 | [**CreateDefaultCommissionProgram**](AffiliateApi.md#createdefaultcommissionprogram) | **POST** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program |
 | [**CreateRedirectLink**](AffiliateApi.md#createredirectlink) | **POST** /rest/v2/affiliates/redirects | Create an Affiliate Link |
 | [**DeleteAffiliate**](AffiliateApi.md#deleteaffiliate) | **DELETE** /rest/v2/affiliates/{id} | Delete Affiliate |
 | [**DeleteAffiliateCommissionProgram**](AffiliateApi.md#deleteaffiliatecommissionprogram) | **DELETE** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program |
 | [**DeleteAffiliateCustomField**](AffiliateApi.md#deleteaffiliatecustomfield) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field |
 | [**DeleteAffiliateCustomFieldGroup**](AffiliateApi.md#deleteaffiliatecustomfieldgroup) | **DELETE** /rest/v2/affiliates/model/customFields/groups/{group_id} | Delete an Affiliate Custom Field Group |
+| [**DeleteAffiliateCustomFieldTab**](AffiliateApi.md#deleteaffiliatecustomfieldtab) | **DELETE** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Delete an Affiliate Custom Field Tab |
 | [**DeleteCommissionProgramResource**](AffiliateApi.md#deletecommissionprogramresource) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource |
 | [**DeleteRedirectLink**](AffiliateApi.md#deleteredirectlink) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link |
 | [**GetAffiliate**](AffiliateApi.md#getaffiliate) | **GET** /rest/v2/affiliates/{id} | Retrieve an Affiliate |
 | [**GetAffiliateCommissionTotal**](AffiliateApi.md#getaffiliatecommissiontotal) | **GET** /rest/v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal |
 | [**GetAffiliateCommissions**](AffiliateApi.md#getaffiliatecommissions) | **GET** /rest/v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commissions |
 | [**GetAffiliateCustomFieldGroup**](AffiliateApi.md#getaffiliatecustomfieldgroup) | **GET** /rest/v2/affiliates/model/customFields/groups/{group_id} | Retrieve an Affiliate Custom Field Group |
+| [**GetAffiliateCustomFieldTab**](AffiliateApi.md#getaffiliatecustomfieldtab) | **GET** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Retrieve an Affiliate Custom Field Tab |
 | [**GetAffiliateCustomFields**](AffiliateApi.md#getaffiliatecustomfields) | **GET** /rest/v2/affiliates/model | Retrieve Affiliate Model |
 | [**GetCommissionProgram**](AffiliateApi.md#getcommissionprogram) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program |
 | [**GetRedirectLink**](AffiliateApi.md#getredirectlink) | **GET** /rest/v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link |
@@ -31,6 +34,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**ListAffiliate**](AffiliateApi.md#listaffiliate) | **GET** /rest/v2/affiliates | List Affiliates |
 | [**ListAffiliateCommissionPrograms**](AffiliateApi.md#listaffiliatecommissionprograms) | **GET** /rest/v2/affiliates/commissionPrograms | List Affiliate Commission Programs |
 | [**ListAffiliateCustomFieldGroups**](AffiliateApi.md#listaffiliatecustomfieldgroups) | **GET** /rest/v2/affiliates/model/customFields/groups | List Affiliate Custom Field Groups |
+| [**ListAffiliateCustomFieldTabs**](AffiliateApi.md#listaffiliatecustomfieldtabs) | **GET** /rest/v2/affiliates/model/customFields/tabs | List Affiliate Custom Field Tabs |
 | [**ListAffiliateLinks**](AffiliateApi.md#listaffiliatelinks) | **GET** /rest/v2/affiliates/redirects | List Affiliate Links |
 | [**ListAffiliatePayments**](AffiliateApi.md#listaffiliatepayments) | **GET** /rest/v2/affiliates/{affiliate_id}/payments | List Affiliate Payments |
 | [**ListCommissionProgramResources**](AffiliateApi.md#listcommissionprogramresources) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id}/resources | Retrieve Commission Program Resources |
@@ -41,6 +45,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**UpdateAffiliate**](AffiliateApi.md#updateaffiliate) | **PATCH** /rest/v2/affiliates/{id} | Update an Affiliate |
 | [**UpdateAffiliateCustomField**](AffiliateApi.md#updateaffiliatecustomfield) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field |
 | [**UpdateAffiliateCustomFieldGroup**](AffiliateApi.md#updateaffiliatecustomfieldgroup) | **PATCH** /rest/v2/affiliates/model/customFields/groups/{group_id} | Update an Affiliate Custom Field Group |
+| [**UpdateAffiliateCustomFieldTab**](AffiliateApi.md#updateaffiliatecustomfieldtab) | **PATCH** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Update an Affiliate Custom Field Tab |
 | [**UpdateCommissionProgram**](AffiliateApi.md#updatecommissionprogram) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program |
 | [**UpdateCommissionProgramResource**](AffiliateApi.md#updatecommissionprogramresource) | **PATCH** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Update Commission Program Resource |
 | [**UpdateDefaultCommissionProgram**](AffiliateApi.md#updatedefaultcommissionprogram) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program |
@@ -866,6 +871,108 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="createaffiliatecustomfieldtab"></a>
+# **CreateAffiliateCustomFieldTab**
+> CustomFieldTab CreateAffiliateCustomFieldTab (CreateCustomFieldTabRequest createCustomFieldTabRequest)
+
+Create an Affiliate Custom Field Tab
+
+Creates a new custom field tab for the Affiliate record type.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateAffiliateCustomFieldTabExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AffiliateApi(config);
+            var createCustomFieldTabRequest = new CreateCustomFieldTabRequest(); // CreateCustomFieldTabRequest | 
+
+            try
+            {
+                // Create an Affiliate Custom Field Tab
+                CustomFieldTab result = apiInstance.CreateAffiliateCustomFieldTab(createCustomFieldTabRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.CreateAffiliateCustomFieldTab: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateAffiliateCustomFieldTabWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create an Affiliate Custom Field Tab
+    ApiResponse<CustomFieldTab> response = apiInstance.CreateAffiliateCustomFieldTabWithHttpInfo(createCustomFieldTabRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.CreateAffiliateCustomFieldTabWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **createCustomFieldTabRequest** | [**CreateCustomFieldTabRequest**](CreateCustomFieldTabRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="createdefaultcommissionprogram"></a>
 # **CreateDefaultCommissionProgram**
 > GetRestCommissionProgram CreateDefaultCommissionProgram (string commissionProgramId, CreateDefaultCommissionProgramRequest createDefaultCommissionProgramRequest)
@@ -1434,6 +1541,104 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **groupId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deleteaffiliatecustomfieldtab"></a>
+# **DeleteAffiliateCustomFieldTab**
+> void DeleteAffiliateCustomFieldTab (string tabId)
+
+Delete an Affiliate Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteAffiliateCustomFieldTabExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AffiliateApi(config);
+            var tabId = "tabId_example";  // string | 
+
+            try
+            {
+                // Delete an Affiliate Custom Field Tab
+                apiInstance.DeleteAffiliateCustomFieldTab(tabId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.DeleteAffiliateCustomFieldTab: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteAffiliateCustomFieldTabWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete an Affiliate Custom Field Tab
+    apiInstance.DeleteAffiliateCustomFieldTabWithHttpInfo(tabId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.DeleteAffiliateCustomFieldTabWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tabId** | **string** |  |  |
 
 ### Return type
 
@@ -2076,6 +2281,108 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="getaffiliatecustomfieldtab"></a>
+# **GetAffiliateCustomFieldTab**
+> CustomFieldTab GetAffiliateCustomFieldTab (string tabId)
+
+Retrieve an Affiliate Custom Field Tab
+
+Retrieves a single custom field tab by id for the Affiliate record type.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class GetAffiliateCustomFieldTabExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AffiliateApi(config);
+            var tabId = "tabId_example";  // string | 
+
+            try
+            {
+                // Retrieve an Affiliate Custom Field Tab
+                CustomFieldTab result = apiInstance.GetAffiliateCustomFieldTab(tabId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.GetAffiliateCustomFieldTab: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetAffiliateCustomFieldTabWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieve an Affiliate Custom Field Tab
+    ApiResponse<CustomFieldTab> response = apiInstance.GetAffiliateCustomFieldTabWithHttpInfo(tabId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.GetAffiliateCustomFieldTabWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tabId** | **string** |  |  |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="getaffiliatecustomfields"></a>
 # **GetAffiliateCustomFields**
 > ObjectModel GetAffiliateCustomFields ()
@@ -2515,7 +2822,7 @@ namespace Example
             config.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new AffiliateApi(config);
-            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: ==, and wildcard support (e.g., `value*`) - Numeric fields: ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Choice/Select fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed.  (optional) 
+            var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): ==, and wildcard support (e.g., `value*`) - Numeric fields (including user, month, day of week): ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Yes/No and drilldown fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed.  (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `id` - `date_created` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc`  (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
             var pageToken = "pageToken_example";  // string? | Page token (optional) 
@@ -2561,7 +2868,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Choice/Select fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed.  | [optional]  |
+| **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields (including user, month, day of week): &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Yes/No and drilldown fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed.  | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
 | **pageToken** | **string?** | Page token | [optional]  |
@@ -2779,6 +3086,103 @@ catch (ApiException e)
 ### Return type
 
 [**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listaffiliatecustomfieldtabs"></a>
+# **ListAffiliateCustomFieldTabs**
+> ListCustomFieldTabsResponse ListAffiliateCustomFieldTabs ()
+
+List Affiliate Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Affiliate record type.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListAffiliateCustomFieldTabsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AffiliateApi(config);
+
+            try
+            {
+                // List Affiliate Custom Field Tabs
+                ListCustomFieldTabsResponse result = apiInstance.ListAffiliateCustomFieldTabs();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.ListAffiliateCustomFieldTabs: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListAffiliateCustomFieldTabsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Affiliate Custom Field Tabs
+    ApiResponse<ListCustomFieldTabsResponse> response = apiInstance.ListAffiliateCustomFieldTabsWithHttpInfo();
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.ListAffiliateCustomFieldTabsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+### Return type
+
+[**ListCustomFieldTabsResponse**](ListCustomFieldTabsResponse.md)
 
 ### Authorization
 
@@ -3825,6 +4229,112 @@ catch (ApiException e)
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updateaffiliatecustomfieldtab"></a>
+# **UpdateAffiliateCustomFieldTab**
+> CustomFieldTab UpdateAffiliateCustomFieldTab (string tabId, List<string> updateMask, UpdateCustomFieldTabRequest updateCustomFieldTabRequest)
+
+Update an Affiliate Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UpdateAffiliateCustomFieldTabExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AffiliateApi(config);
+            var tabId = "tabId_example";  // string | 
+            var updateMask = new List<string>(); // List<string> | Comma-separated list of fields to update
+            var updateCustomFieldTabRequest = new UpdateCustomFieldTabRequest(); // UpdateCustomFieldTabRequest | 
+
+            try
+            {
+                // Update an Affiliate Custom Field Tab
+                CustomFieldTab result = apiInstance.UpdateAffiliateCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AffiliateApi.UpdateAffiliateCustomFieldTab: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateAffiliateCustomFieldTabWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update an Affiliate Custom Field Tab
+    ApiResponse<CustomFieldTab> response = apiInstance.UpdateAffiliateCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AffiliateApi.UpdateAffiliateCustomFieldTabWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tabId** | **string** |  |  |
+| **updateMask** | [**List&lt;string&gt;**](string.md) | Comma-separated list of fields to update |  |
+| **updateCustomFieldTabRequest** | [**UpdateCustomFieldTabRequest**](UpdateCustomFieldTabRequest.md) |  |  |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
 
 ### Authorization
 

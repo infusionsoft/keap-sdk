@@ -8,6 +8,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**createOpportunityWithHttpInfo**](OpportunityApi.md#createOpportunityWithHttpInfo) | **POST** /rest/v2/opportunities | Create an Opportunity |
 | [**createOpportunityCustomFieldGroup**](OpportunityApi.md#createOpportunityCustomFieldGroup) | **POST** /rest/v2/opportunities/model/customFields/groups | Create an Opportunity Custom Field Group |
 | [**createOpportunityCustomFieldGroupWithHttpInfo**](OpportunityApi.md#createOpportunityCustomFieldGroupWithHttpInfo) | **POST** /rest/v2/opportunities/model/customFields/groups | Create an Opportunity Custom Field Group |
+| [**createOpportunityCustomFieldTab**](OpportunityApi.md#createOpportunityCustomFieldTab) | **POST** /rest/v2/opportunities/model/customFields/tabs | Create an Opportunity Custom Field Tab |
+| [**createOpportunityCustomFieldTabWithHttpInfo**](OpportunityApi.md#createOpportunityCustomFieldTabWithHttpInfo) | **POST** /rest/v2/opportunities/model/customFields/tabs | Create an Opportunity Custom Field Tab |
 | [**createOpportunityCustomFields**](OpportunityApi.md#createOpportunityCustomFields) | **POST** /rest/v2/opportunities/model/customFields | Create an Opportunity Custom Field |
 | [**createOpportunityCustomFieldsWithHttpInfo**](OpportunityApi.md#createOpportunityCustomFieldsWithHttpInfo) | **POST** /rest/v2/opportunities/model/customFields | Create an Opportunity Custom Field |
 | [**createOpportunityStage**](OpportunityApi.md#createOpportunityStage) | **POST** /rest/v2/opportunities/stages | Create an Opportunity Stage |
@@ -18,12 +20,16 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**deleteOpportunityWithHttpInfo**](OpportunityApi.md#deleteOpportunityWithHttpInfo) | **DELETE** /rest/v2/opportunities/{opportunity_id} | Delete an Opportunity |
 | [**deleteOpportunityCustomFieldGroup**](OpportunityApi.md#deleteOpportunityCustomFieldGroup) | **DELETE** /rest/v2/opportunities/model/customFields/groups/{group_id} | Delete an Opportunity Custom Field Group |
 | [**deleteOpportunityCustomFieldGroupWithHttpInfo**](OpportunityApi.md#deleteOpportunityCustomFieldGroupWithHttpInfo) | **DELETE** /rest/v2/opportunities/model/customFields/groups/{group_id} | Delete an Opportunity Custom Field Group |
+| [**deleteOpportunityCustomFieldTab**](OpportunityApi.md#deleteOpportunityCustomFieldTab) | **DELETE** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Delete an Opportunity Custom Field Tab |
+| [**deleteOpportunityCustomFieldTabWithHttpInfo**](OpportunityApi.md#deleteOpportunityCustomFieldTabWithHttpInfo) | **DELETE** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Delete an Opportunity Custom Field Tab |
 | [**deleteOpportunityStage**](OpportunityApi.md#deleteOpportunityStage) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage |
 | [**deleteOpportunityStageWithHttpInfo**](OpportunityApi.md#deleteOpportunityStageWithHttpInfo) | **DELETE** /rest/v2/opportunities/stages/{stage_id} | Delete an Opportunity Stage |
 | [**getOpportunity**](OpportunityApi.md#getOpportunity) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity |
 | [**getOpportunityWithHttpInfo**](OpportunityApi.md#getOpportunityWithHttpInfo) | **GET** /rest/v2/opportunities/{opportunity_id} | Retrieve a Opportunity |
 | [**getOpportunityCustomFieldGroup**](OpportunityApi.md#getOpportunityCustomFieldGroup) | **GET** /rest/v2/opportunities/model/customFields/groups/{group_id} | Retrieve an Opportunity Custom Field Group |
 | [**getOpportunityCustomFieldGroupWithHttpInfo**](OpportunityApi.md#getOpportunityCustomFieldGroupWithHttpInfo) | **GET** /rest/v2/opportunities/model/customFields/groups/{group_id} | Retrieve an Opportunity Custom Field Group |
+| [**getOpportunityCustomFieldTab**](OpportunityApi.md#getOpportunityCustomFieldTab) | **GET** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Retrieve an Opportunity Custom Field Tab |
+| [**getOpportunityCustomFieldTabWithHttpInfo**](OpportunityApi.md#getOpportunityCustomFieldTabWithHttpInfo) | **GET** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Retrieve an Opportunity Custom Field Tab |
 | [**getOpportunityStage**](OpportunityApi.md#getOpportunityStage) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage |
 | [**getOpportunityStageWithHttpInfo**](OpportunityApi.md#getOpportunityStageWithHttpInfo) | **GET** /rest/v2/opportunities/stages/{stage_id} | Retrieve an Opportunity Stage |
 | [**getOpportunityStageMove**](OpportunityApi.md#getOpportunityStageMove) | **GET** /rest/v2/opportunities/stageMoves/{stage_move_id} | Retrieve an Opportunity Stage Move |
@@ -32,6 +38,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**listOpportunitiesWithHttpInfo**](OpportunityApi.md#listOpportunitiesWithHttpInfo) | **GET** /rest/v2/opportunities | List Opportunities |
 | [**listOpportunityCustomFieldGroups**](OpportunityApi.md#listOpportunityCustomFieldGroups) | **GET** /rest/v2/opportunities/model/customFields/groups | List Opportunity Custom Field Groups |
 | [**listOpportunityCustomFieldGroupsWithHttpInfo**](OpportunityApi.md#listOpportunityCustomFieldGroupsWithHttpInfo) | **GET** /rest/v2/opportunities/model/customFields/groups | List Opportunity Custom Field Groups |
+| [**listOpportunityCustomFieldTabs**](OpportunityApi.md#listOpportunityCustomFieldTabs) | **GET** /rest/v2/opportunities/model/customFields/tabs | List Opportunity Custom Field Tabs |
+| [**listOpportunityCustomFieldTabsWithHttpInfo**](OpportunityApi.md#listOpportunityCustomFieldTabsWithHttpInfo) | **GET** /rest/v2/opportunities/model/customFields/tabs | List Opportunity Custom Field Tabs |
 | [**listOpportunityStageMoves**](OpportunityApi.md#listOpportunityStageMoves) | **GET** /rest/v2/opportunities/stageMoves | List Opportunity Stage Moves |
 | [**listOpportunityStageMovesWithHttpInfo**](OpportunityApi.md#listOpportunityStageMovesWithHttpInfo) | **GET** /rest/v2/opportunities/stageMoves | List Opportunity Stage Moves |
 | [**listOpportunityStages**](OpportunityApi.md#listOpportunityStages) | **GET** /rest/v2/opportunities/stages | List of Opportunity Stages |
@@ -44,6 +52,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**updateOpportunityCustomFieldWithHttpInfo**](OpportunityApi.md#updateOpportunityCustomFieldWithHttpInfo) | **PATCH** /rest/v2/opportunities/model/customFields/{custom_field_id} | Update a Opportunity&#39;s Custom Field |
 | [**updateOpportunityCustomFieldGroup**](OpportunityApi.md#updateOpportunityCustomFieldGroup) | **PATCH** /rest/v2/opportunities/model/customFields/groups/{group_id} | Update an Opportunity Custom Field Group |
 | [**updateOpportunityCustomFieldGroupWithHttpInfo**](OpportunityApi.md#updateOpportunityCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/opportunities/model/customFields/groups/{group_id} | Update an Opportunity Custom Field Group |
+| [**updateOpportunityCustomFieldTab**](OpportunityApi.md#updateOpportunityCustomFieldTab) | **PATCH** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Update an Opportunity Custom Field Tab |
+| [**updateOpportunityCustomFieldTabWithHttpInfo**](OpportunityApi.md#updateOpportunityCustomFieldTabWithHttpInfo) | **PATCH** /rest/v2/opportunities/model/customFields/tabs/{tab_id} | Update an Opportunity Custom Field Tab |
 | [**updateOpportunityStage**](OpportunityApi.md#updateOpportunityStage) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage |
 | [**updateOpportunityStageWithHttpInfo**](OpportunityApi.md#updateOpportunityStageWithHttpInfo) | **PATCH** /rest/v2/opportunities/stages/{stage_id} | Update an Opportunity Stage |
 
@@ -348,6 +358,166 @@ public class Example {
 ### Return type
 
 ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## createOpportunityCustomFieldTab
+
+> CustomFieldTab createOpportunityCustomFieldTab(createCustomFieldTabRequest)
+
+Create an Opportunity Custom Field Tab
+
+Creates a new custom field tab for the Opportunity record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        CreateCustomFieldTabRequest createCustomFieldTabRequest = new CreateCustomFieldTabRequest(); // CreateCustomFieldTabRequest | 
+        try {
+            CustomFieldTab result = apiInstance.createOpportunityCustomFieldTab(createCustomFieldTabRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#createOpportunityCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCustomFieldTabRequest** | [**CreateCustomFieldTabRequest**](CreateCustomFieldTabRequest.md)|  | |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## createOpportunityCustomFieldTabWithHttpInfo
+
+> ApiResponse<CustomFieldTab> createOpportunityCustomFieldTab createOpportunityCustomFieldTabWithHttpInfo(createCustomFieldTabRequest)
+
+Create an Opportunity Custom Field Tab
+
+Creates a new custom field tab for the Opportunity record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        CreateCustomFieldTabRequest createCustomFieldTabRequest = new CreateCustomFieldTabRequest(); // CreateCustomFieldTabRequest | 
+        try {
+            ApiResponse<CustomFieldTab> response = apiInstance.createOpportunityCustomFieldTabWithHttpInfo(createCustomFieldTabRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#createOpportunityCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCustomFieldTabRequest** | [**CreateCustomFieldTabRequest**](CreateCustomFieldTabRequest.md)|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldTab**](CustomFieldTab.md)>
 
 
 ### Authorization
@@ -1167,6 +1337,164 @@ ApiResponse<Void>
 | **501** | Method Not Implemented |  -  |
 
 
+## deleteOpportunityCustomFieldTab
+
+> void deleteOpportunityCustomFieldTab(tabId)
+
+Delete an Opportunity Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        try {
+            apiInstance.deleteOpportunityCustomFieldTab(tabId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#deleteOpportunityCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## deleteOpportunityCustomFieldTabWithHttpInfo
+
+> ApiResponse<Void> deleteOpportunityCustomFieldTab deleteOpportunityCustomFieldTabWithHttpInfo(tabId)
+
+Delete an Opportunity Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        try {
+            ApiResponse<Void> response = apiInstance.deleteOpportunityCustomFieldTabWithHttpInfo(tabId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#deleteOpportunityCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## deleteOpportunityStage
 
 > void deleteOpportunityStage(stageId)
@@ -1649,6 +1977,166 @@ ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
 | **501** | Method Not Implemented |  -  |
 
 
+## getOpportunityCustomFieldTab
+
+> CustomFieldTab getOpportunityCustomFieldTab(tabId)
+
+Retrieve an Opportunity Custom Field Tab
+
+Retrieves a single custom field tab by id for the Opportunity record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        try {
+            CustomFieldTab result = apiInstance.getOpportunityCustomFieldTab(tabId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#getOpportunityCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## getOpportunityCustomFieldTabWithHttpInfo
+
+> ApiResponse<CustomFieldTab> getOpportunityCustomFieldTab getOpportunityCustomFieldTabWithHttpInfo(tabId)
+
+Retrieve an Opportunity Custom Field Tab
+
+Retrieves a single custom field tab by id for the Opportunity record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        try {
+            ApiResponse<CustomFieldTab> response = apiInstance.getOpportunityCustomFieldTabWithHttpInfo(tabId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#getOpportunityCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldTab**](CustomFieldTab.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## getOpportunityStage
 
 > RestOpportunityStage getOpportunityStage(stageId)
@@ -1999,7 +2487,7 @@ public class Example {
 
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         Set<String> fields = Arrays.asList(); // Set<String> | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request. 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs - (String) `contact_phone` — matches the contact's phone. By default it is an exact match against the stored value, including any formatting characters (e.g. `contact_phone==(480) 123-4567`); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. `contact_phone==480*`) - (String) `contact_city` — matches the contact's city; supports wildcard prefix search (e.g. `contact_city==Chand*`) - (String) `contact_state` — matches the contact's state; supports wildcard prefix search (e.g. `contact_state==AZ*`) - (String) `projected_revenue_high` — projected revenue high; supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `projected_revenue_high>=1000`) - (String) `projected_revenue_low` — projected revenue low; supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `projected_revenue_low<=500`) Note: `opportunity_id` and `ids` cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. `cf_priority==10`). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field's data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (`==`) and prefix wildcard (e.g. `cf_company==Acme*`) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (`==`, `>`, `<`, `>=`, `<=`) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `cf_renewDate<=2026-01-01T00:00:00.000Z`). Date-only values such as `2026-01-01` are rejected - Yes/No fields — equals only, value `0` (No) or `1` (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. `cf_tags==red`) A custom field that does not exist, an operator unsupported for the field's type, or a value that does not match the field's type returns `400 Bad Request`. 
         String orderBy = "orderBy_example"; // String | Attribute and direction to opportunities items. One of the following fields: - `next_action_time` - `contact_name` - `opportunity_title` - `created_time` - `update_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -2023,7 +2511,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **fields** | [**Set&lt;String&gt;**](String.md)| Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | [optional] [enum: custom_fields, created_by, last_updated_by, status_id, monthly_revenue, order_revenue, objection, status, stage_entrance_time] |
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  | [optional] |
 | **orderBy** | **String**| Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -2086,7 +2574,7 @@ public class Example {
 
         OpportunityApi apiInstance = new OpportunityApi(defaultClient);
         Set<String> fields = Arrays.asList(); // Set<String> | Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs Note: `opportunity_id` and `ids` cannot be used together in the same request. 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `stage_id` - (String) `user_id` - (String) `contact_id` - (String) `opportunity_title` — supports wildcard prefix search (e.g. `opportunity_title==Deal*`) - (String) `lead_source_name` — supports wildcard prefix search (e.g. `lead_source_name==Web*`) - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`) - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=` - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs - (String) `contact_phone` — matches the contact's phone. By default it is an exact match against the stored value, including any formatting characters (e.g. `contact_phone==(480) 123-4567`); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. `contact_phone==480*`) - (String) `contact_city` — matches the contact's city; supports wildcard prefix search (e.g. `contact_city==Chand*`) - (String) `contact_state` — matches the contact's state; supports wildcard prefix search (e.g. `contact_state==AZ*`) - (String) `projected_revenue_high` — projected revenue high; supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `projected_revenue_high>=1000`) - (String) `projected_revenue_low` — projected revenue low; supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `projected_revenue_low<=500`) Note: `opportunity_id` and `ids` cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. `cf_priority==10`). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field's data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (`==`) and prefix wildcard (e.g. `cf_company==Acme*`) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (`==`, `>`, `<`, `>=`, `<=`) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `cf_renewDate<=2026-01-01T00:00:00.000Z`). Date-only values such as `2026-01-01` are rejected - Yes/No fields — equals only, value `0` (No) or `1` (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. `cf_tags==red`) A custom field that does not exist, an operator unsupported for the field's type, or a value that does not match the field's type returns `400 Bad Request`. 
         String orderBy = "orderBy_example"; // String | Attribute and direction to opportunities items. One of the following fields: - `next_action_time` - `contact_name` - `opportunity_title` - `created_time` - `update_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -2112,7 +2600,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **fields** | [**Set&lt;String&gt;**](String.md)| Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time | [optional] [enum: custom_fields, created_by, last_updated_by, status_id, monthly_revenue, order_revenue, objection, status, stage_entrance_time] |
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field&#39;s type, or a value that does not match the field&#39;s type returns &#x60;400 Bad Request&#x60;.  | [optional] |
 | **orderBy** | **String**| Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -2280,6 +2768,158 @@ public class Example {
 ### Return type
 
 ApiResponse<[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## listOpportunityCustomFieldTabs
+
+> ListCustomFieldTabsResponse listOpportunityCustomFieldTabs()
+
+List Opportunity Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Opportunity record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        try {
+            ListCustomFieldTabsResponse result = apiInstance.listOpportunityCustomFieldTabs();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#listOpportunityCustomFieldTabs");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListCustomFieldTabsResponse**](ListCustomFieldTabsResponse.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## listOpportunityCustomFieldTabsWithHttpInfo
+
+> ApiResponse<ListCustomFieldTabsResponse> listOpportunityCustomFieldTabs listOpportunityCustomFieldTabsWithHttpInfo()
+
+List Opportunity Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Opportunity record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        try {
+            ApiResponse<ListCustomFieldTabsResponse> response = apiInstance.listOpportunityCustomFieldTabsWithHttpInfo();
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#listOpportunityCustomFieldTabs");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+ApiResponse<[**ListCustomFieldTabsResponse**](ListCustomFieldTabsResponse.md)>
 
 
 ### Authorization
@@ -3284,6 +3924,174 @@ public class Example {
 ### Return type
 
 ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## updateOpportunityCustomFieldTab
+
+> CustomFieldTab updateOpportunityCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest)
+
+Update an Opportunity Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        Set<String> updateMask = Arrays.asList(); // Set<String> | Comma-separated list of fields to update
+        UpdateCustomFieldTabRequest updateCustomFieldTabRequest = new UpdateCustomFieldTabRequest(); // UpdateCustomFieldTabRequest | 
+        try {
+            CustomFieldTab result = apiInstance.updateOpportunityCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#updateOpportunityCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| Comma-separated list of fields to update | [enum: name, order] |
+| **updateCustomFieldTabRequest** | [**UpdateCustomFieldTabRequest**](UpdateCustomFieldTabRequest.md)|  | |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## updateOpportunityCustomFieldTabWithHttpInfo
+
+> ApiResponse<CustomFieldTab> updateOpportunityCustomFieldTab updateOpportunityCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest)
+
+Update an Opportunity Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OpportunityApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OpportunityApi apiInstance = new OpportunityApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        Set<String> updateMask = Arrays.asList(); // Set<String> | Comma-separated list of fields to update
+        UpdateCustomFieldTabRequest updateCustomFieldTabRequest = new UpdateCustomFieldTabRequest(); // UpdateCustomFieldTabRequest | 
+        try {
+            ApiResponse<CustomFieldTab> response = apiInstance.updateOpportunityCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OpportunityApi#updateOpportunityCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| Comma-separated list of fields to update | [enum: name, order] |
+| **updateCustomFieldTabRequest** | [**UpdateCustomFieldTabRequest**](UpdateCustomFieldTabRequest.md)|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldTab**](CustomFieldTab.md)>
 
 
 ### Authorization

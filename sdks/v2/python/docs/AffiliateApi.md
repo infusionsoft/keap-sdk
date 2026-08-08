@@ -12,18 +12,21 @@ Method | HTTP request | Description
 [**assign_subscription_commission_program**](AffiliateApi.md#assign_subscription_commission_program) | **POST** /rest/v2/affiliates/commissionPrograms/subscriptionCommissionPrograms/{commission_program_id} | Assign a Subscription Commission Program
 [**create_affiliate_custom_field**](AffiliateApi.md#create_affiliate_custom_field) | **POST** /rest/v2/affiliates/model/customFields | Create an Affiliate Custom Field
 [**create_affiliate_custom_field_group**](AffiliateApi.md#create_affiliate_custom_field_group) | **POST** /rest/v2/affiliates/model/customFields/groups | Create an Affiliate Custom Field Group
+[**create_affiliate_custom_field_tab**](AffiliateApi.md#create_affiliate_custom_field_tab) | **POST** /rest/v2/affiliates/model/customFields/tabs | Create an Affiliate Custom Field Tab
 [**create_default_commission_program**](AffiliateApi.md#create_default_commission_program) | **POST** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Create a Default Commission Program
 [**create_redirect_link**](AffiliateApi.md#create_redirect_link) | **POST** /rest/v2/affiliates/redirects | Create an Affiliate Link
 [**delete_affiliate**](AffiliateApi.md#delete_affiliate) | **DELETE** /rest/v2/affiliates/{id} | Delete Affiliate
 [**delete_affiliate_commission_program**](AffiliateApi.md#delete_affiliate_commission_program) | **DELETE** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Delete a Commission Program
 [**delete_affiliate_custom_field**](AffiliateApi.md#delete_affiliate_custom_field) | **DELETE** /rest/v2/affiliates/model/customFields/{custom_field_id} | Delete a Custom Field
 [**delete_affiliate_custom_field_group**](AffiliateApi.md#delete_affiliate_custom_field_group) | **DELETE** /rest/v2/affiliates/model/customFields/groups/{group_id} | Delete an Affiliate Custom Field Group
+[**delete_affiliate_custom_field_tab**](AffiliateApi.md#delete_affiliate_custom_field_tab) | **DELETE** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Delete an Affiliate Custom Field Tab
 [**delete_commission_program_resource**](AffiliateApi.md#delete_commission_program_resource) | **DELETE** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Remove Commission Program Resource
 [**delete_redirect_link**](AffiliateApi.md#delete_redirect_link) | **DELETE** /rest/v2/affiliates/redirects/{redirect_id} | Delete an Affiliate Link
 [**get_affiliate**](AffiliateApi.md#get_affiliate) | **GET** /rest/v2/affiliates/{id} | Retrieve an Affiliate
 [**get_affiliate_commission_total**](AffiliateApi.md#get_affiliate_commission_total) | **GET** /rest/v2/affiliates/{affiliate_id}/commissionTotal | Retrieve Affiliate Commission Earned and View LedgerURl for portal
 [**get_affiliate_commissions**](AffiliateApi.md#get_affiliate_commissions) | **GET** /rest/v2/affiliates/{affiliate_id}:commissions | Retrieve Affiliate Commissions
 [**get_affiliate_custom_field_group**](AffiliateApi.md#get_affiliate_custom_field_group) | **GET** /rest/v2/affiliates/model/customFields/groups/{group_id} | Retrieve an Affiliate Custom Field Group
+[**get_affiliate_custom_field_tab**](AffiliateApi.md#get_affiliate_custom_field_tab) | **GET** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Retrieve an Affiliate Custom Field Tab
 [**get_affiliate_custom_fields**](AffiliateApi.md#get_affiliate_custom_fields) | **GET** /rest/v2/affiliates/model | Retrieve Affiliate Model
 [**get_commission_program**](AffiliateApi.md#get_commission_program) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Retrieve a Commission Program
 [**get_redirect_link**](AffiliateApi.md#get_redirect_link) | **GET** /rest/v2/affiliates/redirects/{redirect_id} | Retrieve an Affiliate Link
@@ -31,6 +34,7 @@ Method | HTTP request | Description
 [**list_affiliate**](AffiliateApi.md#list_affiliate) | **GET** /rest/v2/affiliates | List Affiliates
 [**list_affiliate_commission_programs**](AffiliateApi.md#list_affiliate_commission_programs) | **GET** /rest/v2/affiliates/commissionPrograms | List Affiliate Commission Programs
 [**list_affiliate_custom_field_groups**](AffiliateApi.md#list_affiliate_custom_field_groups) | **GET** /rest/v2/affiliates/model/customFields/groups | List Affiliate Custom Field Groups
+[**list_affiliate_custom_field_tabs**](AffiliateApi.md#list_affiliate_custom_field_tabs) | **GET** /rest/v2/affiliates/model/customFields/tabs | List Affiliate Custom Field Tabs
 [**list_affiliate_links**](AffiliateApi.md#list_affiliate_links) | **GET** /rest/v2/affiliates/redirects | List Affiliate Links
 [**list_affiliate_payments**](AffiliateApi.md#list_affiliate_payments) | **GET** /rest/v2/affiliates/{affiliate_id}/payments | List Affiliate Payments
 [**list_commission_program_resources**](AffiliateApi.md#list_commission_program_resources) | **GET** /rest/v2/affiliates/commissionPrograms/{commission_program_id}/resources | Retrieve Commission Program Resources
@@ -41,6 +45,7 @@ Method | HTTP request | Description
 [**update_affiliate**](AffiliateApi.md#update_affiliate) | **PATCH** /rest/v2/affiliates/{id} | Update an Affiliate
 [**update_affiliate_custom_field**](AffiliateApi.md#update_affiliate_custom_field) | **PATCH** /rest/v2/affiliates/model/customFields/{custom_field_id} | Update a Custom Field
 [**update_affiliate_custom_field_group**](AffiliateApi.md#update_affiliate_custom_field_group) | **PATCH** /rest/v2/affiliates/model/customFields/groups/{group_id} | Update an Affiliate Custom Field Group
+[**update_affiliate_custom_field_tab**](AffiliateApi.md#update_affiliate_custom_field_tab) | **PATCH** /rest/v2/affiliates/model/customFields/tabs/{tab_id} | Update an Affiliate Custom Field Tab
 [**update_commission_program**](AffiliateApi.md#update_commission_program) | **PATCH** /rest/v2/affiliates/commissionPrograms/{commission_program_id} | Update an Affiliate Commission Program
 [**update_commission_program_resource**](AffiliateApi.md#update_commission_program_resource) | **PATCH** /rest/v2/affiliates/commissionPrograms/resources/{resource_id} | Update Commission Program Resource
 [**update_default_commission_program**](AffiliateApi.md#update_default_commission_program) | **PATCH** /rest/v2/affiliates/commissionPrograms/defaultCommissionPrograms/{commission_program_id} | Update a Default Commission Program
@@ -708,6 +713,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_affiliate_custom_field_tab**
+> CustomFieldTab create_affiliate_custom_field_tab(create_custom_field_tab_request)
+
+Create an Affiliate Custom Field Tab
+
+Creates a new custom field tab for the Affiliate record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.create_custom_field_tab_request import CreateCustomFieldTabRequest
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    create_custom_field_tab_request = keap_core_v2_client.CreateCustomFieldTabRequest() # CreateCustomFieldTabRequest | 
+
+    try:
+        # Create an Affiliate Custom Field Tab
+        api_response = api_instance.create_affiliate_custom_field_tab(create_custom_field_tab_request)
+        print("The response of AffiliateApi->create_affiliate_custom_field_tab:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->create_affiliate_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_custom_field_tab_request** | [**CreateCustomFieldTabRequest**](CreateCustomFieldTabRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_default_commission_program**
 > GetRestCommissionProgram create_default_commission_program(commission_program_id, create_default_commission_program_request)
 
@@ -1156,6 +1243,84 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **group_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_affiliate_custom_field_tab**
+> delete_affiliate_custom_field_tab(tab_id)
+
+Delete an Affiliate Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    tab_id = 'tab_id_example' # str | 
+
+    try:
+        # Delete an Affiliate Custom Field Tab
+        api_instance.delete_affiliate_custom_field_tab(tab_id)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->delete_affiliate_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**|  | 
 
 ### Return type
 
@@ -1674,6 +1839,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_affiliate_custom_field_tab**
+> CustomFieldTab get_affiliate_custom_field_tab(tab_id)
+
+Retrieve an Affiliate Custom Field Tab
+
+Retrieves a single custom field tab by id for the Affiliate record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    tab_id = 'tab_id_example' # str | 
+
+    try:
+        # Retrieve an Affiliate Custom Field Tab
+        api_response = api_instance.get_affiliate_custom_field_tab(tab_id)
+        print("The response of AffiliateApi->get_affiliate_custom_field_tab:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->get_affiliate_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_affiliate_custom_fields**
 > ObjectModel get_affiliate_custom_fields()
 
@@ -2035,7 +2281,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with keap_core_v2_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = keap_core_v2_client.AffiliateApi(api_client)
-    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: ==, and wildcard support (e.g., `value*`) - Numeric fields: ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Choice/Select fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed.  (optional)
+    filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): ==, and wildcard support (e.g., `value*`) - Numeric fields (including user, month, day of week): ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Yes/No and drilldown fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed.  (optional)
     order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `id` - `date_created` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc`  (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
     page_token = 'page_token_example' # str | Page token (optional)
@@ -2055,7 +2301,7 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Choice/Select fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed.  | [optional] 
+ **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields (including user, month, day of week): &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Yes/No and drilldown fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed.  | [optional] 
  **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
  **page_token** | **str**| Page token | [optional] 
@@ -2231,6 +2477,83 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_affiliate_custom_field_tabs**
+> ListCustomFieldTabsResponse list_affiliate_custom_field_tabs()
+
+List Affiliate Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Affiliate record type.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_custom_field_tabs_response import ListCustomFieldTabsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+
+    try:
+        # List Affiliate Custom Field Tabs
+        api_response = api_instance.list_affiliate_custom_field_tabs()
+        print("The response of AffiliateApi->list_affiliate_custom_field_tabs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->list_affiliate_custom_field_tabs: %s\n" % e)
+```
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListCustomFieldTabsResponse**](ListCustomFieldTabsResponse.md)
 
 ### Authorization
 
@@ -3076,6 +3399,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomFieldGroup**](CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_affiliate_custom_field_tab**
+> CustomFieldTab update_affiliate_custom_field_tab(tab_id, update_mask, update_custom_field_tab_request)
+
+Update an Affiliate Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
+from keap_core_v2_client.models.update_custom_field_tab_request import UpdateCustomFieldTabRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.AffiliateApi(api_client)
+    tab_id = 'tab_id_example' # str | 
+    update_mask = ['update_mask_example'] # List[str] | Comma-separated list of fields to update
+    update_custom_field_tab_request = keap_core_v2_client.UpdateCustomFieldTabRequest() # UpdateCustomFieldTabRequest | 
+
+    try:
+        # Update an Affiliate Custom Field Tab
+        api_response = api_instance.update_affiliate_custom_field_tab(tab_id, update_mask, update_custom_field_tab_request)
+        print("The response of AffiliateApi->update_affiliate_custom_field_tab:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AffiliateApi->update_affiliate_custom_field_tab: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tab_id** | **str**|  | 
+ **update_mask** | [**List[str]**](str.md)| Comma-separated list of fields to update | 
+ **update_custom_field_tab_request** | [**UpdateCustomFieldTabRequest**](UpdateCustomFieldTabRequest.md)|  | 
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
 
 ### Authorization
 

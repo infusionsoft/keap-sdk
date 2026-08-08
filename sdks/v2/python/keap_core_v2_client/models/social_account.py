@@ -26,7 +26,7 @@ class SocialAccount(BaseModel):
     """
     SocialAccount
     """ # noqa: E501
-    name: Optional[StrictStr] = Field(default=None, description="Social account username or handle")
+    name: Optional[StrictStr] = Field(default=None, description="Social account username or handle. Maximum length is 255 characters.")
     type: StrictStr = Field(description="Social account type")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["name", "type"]

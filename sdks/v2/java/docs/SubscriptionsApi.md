@@ -12,18 +12,26 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**createSubscriptionCustomFieldWithHttpInfo**](SubscriptionsApi.md#createSubscriptionCustomFieldWithHttpInfo) | **POST** /rest/v2/subscriptions/model/customFields | Create a Subscription Custom Field |
 | [**createSubscriptionCustomFieldGroup**](SubscriptionsApi.md#createSubscriptionCustomFieldGroup) | **POST** /rest/v2/subscriptions/model/customFields/groups | Create a Subscription Custom Field Group |
 | [**createSubscriptionCustomFieldGroupWithHttpInfo**](SubscriptionsApi.md#createSubscriptionCustomFieldGroupWithHttpInfo) | **POST** /rest/v2/subscriptions/model/customFields/groups | Create a Subscription Custom Field Group |
+| [**createSubscriptionCustomFieldTab**](SubscriptionsApi.md#createSubscriptionCustomFieldTab) | **POST** /rest/v2/subscriptions/model/customFields/tabs | Create a Subscription Custom Field Tab |
+| [**createSubscriptionCustomFieldTabWithHttpInfo**](SubscriptionsApi.md#createSubscriptionCustomFieldTabWithHttpInfo) | **POST** /rest/v2/subscriptions/model/customFields/tabs | Create a Subscription Custom Field Tab |
 | [**deleteSubscriptionCustomField**](SubscriptionsApi.md#deleteSubscriptionCustomField) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field |
 | [**deleteSubscriptionCustomFieldWithHttpInfo**](SubscriptionsApi.md#deleteSubscriptionCustomFieldWithHttpInfo) | **DELETE** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Delete a Subscription Custom Field |
 | [**deleteSubscriptionCustomFieldGroup**](SubscriptionsApi.md#deleteSubscriptionCustomFieldGroup) | **DELETE** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Delete a Subscription Custom Field Group |
 | [**deleteSubscriptionCustomFieldGroupWithHttpInfo**](SubscriptionsApi.md#deleteSubscriptionCustomFieldGroupWithHttpInfo) | **DELETE** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Delete a Subscription Custom Field Group |
+| [**deleteSubscriptionCustomFieldTab**](SubscriptionsApi.md#deleteSubscriptionCustomFieldTab) | **DELETE** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Delete a Subscription Custom Field Tab |
+| [**deleteSubscriptionCustomFieldTabWithHttpInfo**](SubscriptionsApi.md#deleteSubscriptionCustomFieldTabWithHttpInfo) | **DELETE** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Delete a Subscription Custom Field Tab |
 | [**getSubscription**](SubscriptionsApi.md#getSubscription) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription |
 | [**getSubscriptionWithHttpInfo**](SubscriptionsApi.md#getSubscriptionWithHttpInfo) | **GET** /rest/v2/subscriptions/{subscription_id} | Retrieve a Subscription |
 | [**getSubscriptionCustomFieldGroup**](SubscriptionsApi.md#getSubscriptionCustomFieldGroup) | **GET** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Retrieve a Subscription Custom Field Group |
 | [**getSubscriptionCustomFieldGroupWithHttpInfo**](SubscriptionsApi.md#getSubscriptionCustomFieldGroupWithHttpInfo) | **GET** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Retrieve a Subscription Custom Field Group |
+| [**getSubscriptionCustomFieldTab**](SubscriptionsApi.md#getSubscriptionCustomFieldTab) | **GET** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Retrieve a Subscription Custom Field Tab |
+| [**getSubscriptionCustomFieldTabWithHttpInfo**](SubscriptionsApi.md#getSubscriptionCustomFieldTabWithHttpInfo) | **GET** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Retrieve a Subscription Custom Field Tab |
 | [**invoiceSubscription**](SubscriptionsApi.md#invoiceSubscription) | **POST** /rest/v2/subscriptions/{subscription_id}:invoice | Invoice a Subscription |
 | [**invoiceSubscriptionWithHttpInfo**](SubscriptionsApi.md#invoiceSubscriptionWithHttpInfo) | **POST** /rest/v2/subscriptions/{subscription_id}:invoice | Invoice a Subscription |
 | [**listSubscriptionCustomFieldGroups**](SubscriptionsApi.md#listSubscriptionCustomFieldGroups) | **GET** /rest/v2/subscriptions/model/customFields/groups | List Subscription Custom Field Groups |
 | [**listSubscriptionCustomFieldGroupsWithHttpInfo**](SubscriptionsApi.md#listSubscriptionCustomFieldGroupsWithHttpInfo) | **GET** /rest/v2/subscriptions/model/customFields/groups | List Subscription Custom Field Groups |
+| [**listSubscriptionCustomFieldTabs**](SubscriptionsApi.md#listSubscriptionCustomFieldTabs) | **GET** /rest/v2/subscriptions/model/customFields/tabs | List Subscription Custom Field Tabs |
+| [**listSubscriptionCustomFieldTabsWithHttpInfo**](SubscriptionsApi.md#listSubscriptionCustomFieldTabsWithHttpInfo) | **GET** /rest/v2/subscriptions/model/customFields/tabs | List Subscription Custom Field Tabs |
 | [**listSubscriptions**](SubscriptionsApi.md#listSubscriptions) | **GET** /rest/v2/subscriptions | List Subscriptions |
 | [**listSubscriptionsWithHttpInfo**](SubscriptionsApi.md#listSubscriptionsWithHttpInfo) | **GET** /rest/v2/subscriptions | List Subscriptions |
 | [**retrieveSubscriptionCustomFieldModel**](SubscriptionsApi.md#retrieveSubscriptionCustomFieldModel) | **GET** /rest/v2/subscriptions/model | Retrieve Subscription Custom Field Model |
@@ -34,6 +42,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**updateSubscriptionCustomFieldWithHttpInfo**](SubscriptionsApi.md#updateSubscriptionCustomFieldWithHttpInfo) | **PATCH** /rest/v2/subscriptions/model/customFields/{custom_field_id} | Update a Subscription Custom Field |
 | [**updateSubscriptionCustomFieldGroup**](SubscriptionsApi.md#updateSubscriptionCustomFieldGroup) | **PATCH** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Update a Subscription Custom Field Group |
 | [**updateSubscriptionCustomFieldGroupWithHttpInfo**](SubscriptionsApi.md#updateSubscriptionCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/subscriptions/model/customFields/groups/{group_id} | Update a Subscription Custom Field Group |
+| [**updateSubscriptionCustomFieldTab**](SubscriptionsApi.md#updateSubscriptionCustomFieldTab) | **PATCH** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Update a Subscription Custom Field Tab |
+| [**updateSubscriptionCustomFieldTabWithHttpInfo**](SubscriptionsApi.md#updateSubscriptionCustomFieldTabWithHttpInfo) | **PATCH** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Update a Subscription Custom Field Tab |
 
 
 
@@ -679,6 +689,166 @@ ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
 | **501** | Method Not Implemented |  -  |
 
 
+## createSubscriptionCustomFieldTab
+
+> CustomFieldTab createSubscriptionCustomFieldTab(createCustomFieldTabRequest)
+
+Create a Subscription Custom Field Tab
+
+Creates a new custom field tab for the Subscription record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.SubscriptionsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
+        CreateCustomFieldTabRequest createCustomFieldTabRequest = new CreateCustomFieldTabRequest(); // CreateCustomFieldTabRequest | 
+        try {
+            CustomFieldTab result = apiInstance.createSubscriptionCustomFieldTab(createCustomFieldTabRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling SubscriptionsApi#createSubscriptionCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCustomFieldTabRequest** | [**CreateCustomFieldTabRequest**](CreateCustomFieldTabRequest.md)|  | |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## createSubscriptionCustomFieldTabWithHttpInfo
+
+> ApiResponse<CustomFieldTab> createSubscriptionCustomFieldTab createSubscriptionCustomFieldTabWithHttpInfo(createCustomFieldTabRequest)
+
+Create a Subscription Custom Field Tab
+
+Creates a new custom field tab for the Subscription record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.SubscriptionsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
+        CreateCustomFieldTabRequest createCustomFieldTabRequest = new CreateCustomFieldTabRequest(); // CreateCustomFieldTabRequest | 
+        try {
+            ApiResponse<CustomFieldTab> response = apiInstance.createSubscriptionCustomFieldTabWithHttpInfo(createCustomFieldTabRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling SubscriptionsApi#createSubscriptionCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCustomFieldTabRequest** | [**CreateCustomFieldTabRequest**](CreateCustomFieldTabRequest.md)|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldTab**](CustomFieldTab.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## deleteSubscriptionCustomField
 
 > void deleteSubscriptionCustomField(customFieldId)
@@ -966,6 +1136,164 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **groupId** | **String**|  | |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## deleteSubscriptionCustomFieldTab
+
+> void deleteSubscriptionCustomFieldTab(tabId)
+
+Delete a Subscription Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.SubscriptionsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        try {
+            apiInstance.deleteSubscriptionCustomFieldTab(tabId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling SubscriptionsApi#deleteSubscriptionCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## deleteSubscriptionCustomFieldTabWithHttpInfo
+
+> ApiResponse<Void> deleteSubscriptionCustomFieldTab deleteSubscriptionCustomFieldTabWithHttpInfo(tabId)
+
+Delete a Subscription Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.SubscriptionsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        try {
+            ApiResponse<Void> response = apiInstance.deleteSubscriptionCustomFieldTabWithHttpInfo(tabId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling SubscriptionsApi#deleteSubscriptionCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
 
 ### Return type
 
@@ -1315,6 +1643,166 @@ ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
 | **501** | Method Not Implemented |  -  |
 
 
+## getSubscriptionCustomFieldTab
+
+> CustomFieldTab getSubscriptionCustomFieldTab(tabId)
+
+Retrieve a Subscription Custom Field Tab
+
+Retrieves a single custom field tab by id for the Subscription record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.SubscriptionsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        try {
+            CustomFieldTab result = apiInstance.getSubscriptionCustomFieldTab(tabId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling SubscriptionsApi#getSubscriptionCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## getSubscriptionCustomFieldTabWithHttpInfo
+
+> ApiResponse<CustomFieldTab> getSubscriptionCustomFieldTab getSubscriptionCustomFieldTabWithHttpInfo(tabId)
+
+Retrieve a Subscription Custom Field Tab
+
+Retrieves a single custom field tab by id for the Subscription record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.SubscriptionsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        try {
+            ApiResponse<CustomFieldTab> response = apiInstance.getSubscriptionCustomFieldTabWithHttpInfo(tabId);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling SubscriptionsApi#getSubscriptionCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldTab**](CustomFieldTab.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## invoiceSubscription
 
 > OrderV2 invoiceSubscription(subscriptionId)
@@ -1635,6 +2123,158 @@ ApiResponse<[**ListCustomFieldGroupsResponse**](ListCustomFieldGroupsResponse.md
 | **501** | Method Not Implemented |  -  |
 
 
+## listSubscriptionCustomFieldTabs
+
+> ListCustomFieldTabsResponse listSubscriptionCustomFieldTabs()
+
+List Subscription Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Subscription record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.SubscriptionsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
+        try {
+            ListCustomFieldTabsResponse result = apiInstance.listSubscriptionCustomFieldTabs();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling SubscriptionsApi#listSubscriptionCustomFieldTabs");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ListCustomFieldTabsResponse**](ListCustomFieldTabsResponse.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## listSubscriptionCustomFieldTabsWithHttpInfo
+
+> ApiResponse<ListCustomFieldTabsResponse> listSubscriptionCustomFieldTabs listSubscriptionCustomFieldTabsWithHttpInfo()
+
+List Subscription Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Subscription record type.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.SubscriptionsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
+        try {
+            ApiResponse<ListCustomFieldTabsResponse> response = apiInstance.listSubscriptionCustomFieldTabsWithHttpInfo();
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling SubscriptionsApi#listSubscriptionCustomFieldTabs");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+ApiResponse<[**ListCustomFieldTabsResponse**](ListCustomFieldTabsResponse.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## listSubscriptions
 
 > ListSubscriptionsResponse listSubscriptions(filter, orderBy, pageSize, pageToken)
@@ -1664,7 +2304,7 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive` 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/subscriptions/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `_SubscriptionNote0%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive`  Custom field examples (for custom fields with field_name `_SubscriptionNote0` and `_SubscriptionCount1`): - `filter=_SubscriptionNote0%3D%3DTest` (custom field exact match) - `filter=_SubscriptionNote0%3D%3DTest%2A` (custom field prefix wildcard) - `filter=_SubscriptionCount1%3E100` (custom field numeric comparison) - `filter=contact_id%3D%3D123%3B_SubscriptionNote0%3D%3DActive` (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo` 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -1687,7 +2327,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/subscriptions/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_SubscriptionNote0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  Custom field examples (for custom fields with field_name &#x60;_SubscriptionNote0&#x60; and &#x60;_SubscriptionCount1&#x60;): - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_SubscriptionCount1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;contact_id%3D%3D123%3B_SubscriptionNote0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -1749,7 +2389,7 @@ public class Example {
         oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
-        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive` 
+        String filter = "filter_example"; // String | Filter to apply, allowed fields are: - (String) `contact_id` - (String) `subscription_plan_id` - (String) `status` - (String) `id` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `billing_amount` - Allowable operators: \"==\", \"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (List[String]) `subscription_plan_ids`  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/subscriptions/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `_SubscriptionNote0%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=contact_id%3D%3D123` - `filter=subscription_plan_id%3D%3D456` - `filter=status%3D%3DActive` - `filter=id%3E5` - `filter=billing_amount%3E%3D100` - `filter=ids%3D%3D1,10,4,24` - `filter=subscription_plan_ids%3D%3D10,20,30` - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive`  Custom field examples (for custom fields with field_name `_SubscriptionNote0` and `_SubscriptionCount1`): - `filter=_SubscriptionNote0%3D%3DTest` (custom field exact match) - `filter=_SubscriptionNote0%3D%3DTest%2A` (custom field prefix wildcard) - `filter=_SubscriptionCount1%3E100` (custom field numeric comparison) - `filter=contact_id%3D%3D123%3B_SubscriptionNote0%3D%3DActive` (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo` 
         String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `id` - `contact_id` - `subscription_plan_id` - `modification_time`  One of the following directions: - `asc` - `desc`
         Integer pageSize = 0; // Integer | Total number of items to return per page
         String pageToken = "pageToken_example"; // String | Page token
@@ -1774,7 +2414,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  | [optional] |
+| **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/subscriptions/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_SubscriptionNote0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  Custom field examples (for custom fields with field_name &#x60;_SubscriptionNote0&#x60; and &#x60;_SubscriptionCount1&#x60;): - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_SubscriptionCount1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;contact_id%3D%3D123%3B_SubscriptionNote0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  | [optional] |
 | **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **pageSize** | **Integer**| Total number of items to return per page | [optional] |
 | **pageToken** | **String**| Page token | [optional] |
@@ -2438,6 +3078,174 @@ public class Example {
 ### Return type
 
 ApiResponse<[**CustomFieldGroup**](CustomFieldGroup.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## updateSubscriptionCustomFieldTab
+
+> CustomFieldTab updateSubscriptionCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest)
+
+Update a Subscription Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.SubscriptionsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        Set<String> updateMask = Arrays.asList(); // Set<String> | Comma-separated list of fields to update
+        UpdateCustomFieldTabRequest updateCustomFieldTabRequest = new UpdateCustomFieldTabRequest(); // UpdateCustomFieldTabRequest | 
+        try {
+            CustomFieldTab result = apiInstance.updateSubscriptionCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling SubscriptionsApi#updateSubscriptionCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| Comma-separated list of fields to update | [enum: name, order] |
+| **updateCustomFieldTabRequest** | [**UpdateCustomFieldTabRequest**](UpdateCustomFieldTabRequest.md)|  | |
+
+### Return type
+
+[**CustomFieldTab**](CustomFieldTab.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## updateSubscriptionCustomFieldTabWithHttpInfo
+
+> ApiResponse<CustomFieldTab> updateSubscriptionCustomFieldTab updateSubscriptionCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest)
+
+Update a Subscription Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in &#x60;update_mask&#x60; are applied.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.SubscriptionsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        SubscriptionsApi apiInstance = new SubscriptionsApi(defaultClient);
+        String tabId = "tabId_example"; // String | 
+        Set<String> updateMask = Arrays.asList(); // Set<String> | Comma-separated list of fields to update
+        UpdateCustomFieldTabRequest updateCustomFieldTabRequest = new UpdateCustomFieldTabRequest(); // UpdateCustomFieldTabRequest | 
+        try {
+            ApiResponse<CustomFieldTab> response = apiInstance.updateSubscriptionCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling SubscriptionsApi#updateSubscriptionCustomFieldTab");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tabId** | **String**|  | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| Comma-separated list of fields to update | [enum: name, order] |
+| **updateCustomFieldTabRequest** | [**UpdateCustomFieldTabRequest**](UpdateCustomFieldTabRequest.md)|  | |
+
+### Return type
+
+ApiResponse<[**CustomFieldTab**](CustomFieldTab.md)>
 
 
 ### Authorization

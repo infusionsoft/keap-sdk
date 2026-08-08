@@ -88,7 +88,7 @@ class SocialAccount {
 SocialAccount.RequiredProperties = ["type"];
 
 /**
- * Social account username or handle
+ * Social account username or handle. Maximum length is 255 characters.
  * @member {String} name
  */
 SocialAccount.prototype['name'] = undefined;

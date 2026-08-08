@@ -7,7 +7,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**deactivatePaymentMethod()**](PaymentMethodsApi.md#deactivatePaymentMethod) | **POST** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate | Deactivate a Contact Payment Method |
 | [**deletePaymentMethod()**](PaymentMethodsApi.md#deletePaymentMethod) | **DELETE** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Contact Payment Method |
 | [**listPaymentMethods()**](PaymentMethodsApi.md#listPaymentMethods) | **GET** /rest/v2/paymentMethods | List of Payment Methods |
-| [**listPaymentMethods_0()**](PaymentMethodsApi.md#listPaymentMethods_0) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods |
+| [**listPaymentMethods1()**](PaymentMethodsApi.md#listPaymentMethods1) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods |
 
 
 ## `deactivatePaymentMethod()`
@@ -195,10 +195,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `listPaymentMethods_0()`
+## `listPaymentMethods1()`
 
 ```php
-listPaymentMethods_0($contact_id, $filter, $order_by, $page_size, $page_token): \Keap\Core\V2\Model\ListContactPaymentMethodsResponse
+listPaymentMethods1($contact_id, $filter, $page_token, $order_by, $page_size): \Keap\Core\V2\Model\ListContactPaymentMethodsResponse
 ```
 
 List of Contact Payment Methods
@@ -223,15 +223,15 @@ $apiInstance = new Keap\Core\V2\Api\PaymentMethodsApi(
 );
 $contact_id = 'contact_id_example'; // string | ID of the contact to which the payment method belongs.
 $filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`
+$page_token = 'page_token_example'; // string | Page token
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `desc` - `asc`
 $page_size = 0; // int | Total number of items to return per page
-$page_token = 'page_token_example'; // string | Page token
 
 try {
-    $result = $apiInstance->listPaymentMethods_0($contact_id, $filter, $order_by, $page_size, $page_token);
+    $result = $apiInstance->listPaymentMethods1($contact_id, $filter, $page_token, $order_by, $page_size);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PaymentMethodsApi->listPaymentMethods_0: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PaymentMethodsApi->listPaymentMethods1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -241,9 +241,9 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **contact_id** | **string**| ID of the contact to which the payment method belongs. | |
 | **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60; | [optional] |
+| **page_token** | **string**| Page token | [optional] |
 | **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
-| **page_token** | **string**| Page token | [optional] |
 
 ### Return type
 

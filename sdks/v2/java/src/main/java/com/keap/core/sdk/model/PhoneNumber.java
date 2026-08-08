@@ -135,10 +135,10 @@ public class PhoneNumber implements Serializable {
   }
 
   /**
-   * Phone number
+   * Phone number. Maximum length is 40 characters for PHONE1-PHONE3 and 20 characters for PHONE4-PHONE5.
    * @return number
    */
-  @jakarta.annotation.Nullable  @Schema(example = "5551234567", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Phone number")
+  @jakarta.annotation.Nullable  @Schema(example = "5551234567", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Phone number. Maximum length is 40 characters for PHONE1-PHONE3 and 20 characters for PHONE4-PHONE5.")
   @JsonProperty(JSON_PROPERTY_NUMBER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getNumber() {

@@ -116,12 +116,12 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId">ID of the contact to which the payment method belongs.</param>
         /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
-        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ListContactPaymentMethodsResponse</returns>
-        ListContactPaymentMethodsResponse ListPaymentMethods_0(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0);
+        ListContactPaymentMethodsResponse ListPaymentMethods1(string contactId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0);
 
         /// <summary>
         /// List of Contact Payment Methods
@@ -132,12 +132,12 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId">ID of the contact to which the payment method belongs.</param>
         /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
-        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ListContactPaymentMethodsResponse</returns>
-        ApiResponse<ListContactPaymentMethodsResponse> ListPaymentMethods_0WithHttpInfo(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0);
+        ApiResponse<ListContactPaymentMethodsResponse> ListPaymentMethods1WithHttpInfo(string contactId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -241,13 +241,13 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId">ID of the contact to which the payment method belongs.</param>
         /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
-        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListContactPaymentMethodsResponse</returns>
-        System.Threading.Tasks.Task<ListContactPaymentMethodsResponse> ListPaymentMethods_0Async(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListContactPaymentMethodsResponse> ListPaymentMethods1Async(string contactId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List of Contact Payment Methods
@@ -258,13 +258,13 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId">ID of the contact to which the payment method belongs.</param>
         /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
-        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListContactPaymentMethodsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListContactPaymentMethodsResponse>> ListPaymentMethods_0WithHttpInfoAsync(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListContactPaymentMethodsResponse>> ListPaymentMethods1WithHttpInfoAsync(string contactId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -984,14 +984,14 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId">ID of the contact to which the payment method belongs.</param>
         /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
-        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ListContactPaymentMethodsResponse</returns>
-        public ListContactPaymentMethodsResponse ListPaymentMethods_0(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0)
+        public ListContactPaymentMethodsResponse ListPaymentMethods1(string contactId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0)
         {
-            Keap.Core.V2.Client.ApiResponse<ListContactPaymentMethodsResponse> localVarResponse = ListPaymentMethods_0WithHttpInfo(contactId, filter, orderBy, pageSize, pageToken);
+            Keap.Core.V2.Client.ApiResponse<ListContactPaymentMethodsResponse> localVarResponse = ListPaymentMethods1WithHttpInfo(contactId, filter, pageToken, orderBy, pageSize);
             return localVarResponse.Data;
         }
 
@@ -1001,17 +1001,17 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId">ID of the contact to which the payment method belongs.</param>
         /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
-        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ListContactPaymentMethodsResponse</returns>
-        public Keap.Core.V2.Client.ApiResponse<ListContactPaymentMethodsResponse> ListPaymentMethods_0WithHttpInfo(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0)
+        public Keap.Core.V2.Client.ApiResponse<ListContactPaymentMethodsResponse> ListPaymentMethods1WithHttpInfo(string contactId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0)
         {
             // verify the required parameter 'contactId' is set
             if (contactId == null)
             {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'contactId' when calling PaymentMethodsApi->ListPaymentMethods_0");
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'contactId' when calling PaymentMethodsApi->ListPaymentMethods1");
             }
 
             Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
@@ -1042,6 +1042,10 @@ namespace Keap.Core.V2.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
             }
+            if (pageToken != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
+            }
             if (orderBy != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "order_by", orderBy));
@@ -1050,12 +1054,8 @@ namespace Keap.Core.V2.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
             }
-            if (pageToken != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
-            }
 
-            localVarRequestOptions.Operation = "PaymentMethodsApi.ListPaymentMethods_0";
+            localVarRequestOptions.Operation = "PaymentMethodsApi.ListPaymentMethods1";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -1079,7 +1079,7 @@ namespace Keap.Core.V2.Api
             var localVarResponse = this.Client.Get<ListContactPaymentMethodsResponse>("/rest/v2/contacts/{contact_id}/paymentMethods", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ListPaymentMethods_0", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ListPaymentMethods1", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1095,15 +1095,15 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId">ID of the contact to which the payment method belongs.</param>
         /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
-        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListContactPaymentMethodsResponse</returns>
-        public async System.Threading.Tasks.Task<ListContactPaymentMethodsResponse> ListPaymentMethods_0Async(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListContactPaymentMethodsResponse> ListPaymentMethods1Async(string contactId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
-            Keap.Core.V2.Client.ApiResponse<ListContactPaymentMethodsResponse> localVarResponse = await ListPaymentMethods_0WithHttpInfoAsync(contactId, filter, orderBy, pageSize, pageToken, operationIndex, cancellationToken).ConfigureAwait(false);
+            Keap.Core.V2.Client.ApiResponse<ListContactPaymentMethodsResponse> localVarResponse = await ListPaymentMethods1WithHttpInfoAsync(contactId, filter, pageToken, orderBy, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1113,18 +1113,18 @@ namespace Keap.Core.V2.Api
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="contactId">ID of the contact to which the payment method belongs.</param>
         /// <param name="filter">Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; (optional)</param>
         /// <param name="pageSize">Total number of items to return per page (optional)</param>
-        /// <param name="pageToken">Page token (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListContactPaymentMethodsResponse)</returns>
-        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListContactPaymentMethodsResponse>> ListPaymentMethods_0WithHttpInfoAsync(string contactId, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListContactPaymentMethodsResponse>> ListPaymentMethods1WithHttpInfoAsync(string contactId, string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'contactId' is set
             if (contactId == null)
             {
-                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'contactId' when calling PaymentMethodsApi->ListPaymentMethods_0");
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'contactId' when calling PaymentMethodsApi->ListPaymentMethods1");
             }
 
 
@@ -1155,6 +1155,10 @@ namespace Keap.Core.V2.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
             }
+            if (pageToken != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
+            }
             if (orderBy != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "order_by", orderBy));
@@ -1163,12 +1167,8 @@ namespace Keap.Core.V2.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
             }
-            if (pageToken != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
-            }
 
-            localVarRequestOptions.Operation = "PaymentMethodsApi.ListPaymentMethods_0";
+            localVarRequestOptions.Operation = "PaymentMethodsApi.ListPaymentMethods1";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (oauth2) required
@@ -1193,7 +1193,7 @@ namespace Keap.Core.V2.Api
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ListPaymentMethods_0", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ListPaymentMethods1", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

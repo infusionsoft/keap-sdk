@@ -10,23 +10,28 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**createOrder()**](OrdersApi.md#createOrder) | **POST** /rest/v2/orders | Create an Order |
 | [**createOrderCustomField()**](OrdersApi.md#createOrderCustomField) | **POST** /rest/v2/orders/model/customFields | Create an Order Custom Field |
 | [**createOrderCustomFieldGroup()**](OrdersApi.md#createOrderCustomFieldGroup) | **POST** /rest/v2/orders/model/customFields/groups | Create an Order Custom Field Group |
+| [**createOrderCustomFieldTab()**](OrdersApi.md#createOrderCustomFieldTab) | **POST** /rest/v2/orders/model/customFields/tabs | Create an Order Custom Field Tab |
 | [**createOrderItem()**](OrdersApi.md#createOrderItem) | **POST** /rest/v2/orders/{order_id}/items | Create an Order Item |
 | [**createPaymentForAnOrder()**](OrdersApi.md#createPaymentForAnOrder) | **POST** /rest/v2/orders/{order_id}/payments | Create a Payment |
 | [**deleteOrder()**](OrdersApi.md#deleteOrder) | **DELETE** /rest/v2/orders/{order_id} | Delete an Order |
 | [**deleteOrderCustomField()**](OrdersApi.md#deleteOrderCustomField) | **DELETE** /rest/v2/orders/model/customFields/{custom_field_id} | Delete an Order Custom Field |
 | [**deleteOrderCustomFieldGroup()**](OrdersApi.md#deleteOrderCustomFieldGroup) | **DELETE** /rest/v2/orders/model/customFields/groups/{group_id} | Delete an Order Custom Field Group |
+| [**deleteOrderCustomFieldTab()**](OrdersApi.md#deleteOrderCustomFieldTab) | **DELETE** /rest/v2/orders/model/customFields/tabs/{tab_id} | Delete an Order Custom Field Tab |
 | [**deleteOrderItem()**](OrdersApi.md#deleteOrderItem) | **DELETE** /rest/v2/orders/{order_id}/items/{order_item_id} | Delete an Order Item |
 | [**detachFileFromOrder()**](OrdersApi.md#detachFileFromOrder) | **POST** /rest/v2/orders/{order_id}:detachFile | Detach a File from an Order Invoice |
 | [**getOrder()**](OrdersApi.md#getOrder) | **GET** /rest/v2/orders/{order_id} | Retrieve an Order |
 | [**getOrderCustomFieldGroup()**](OrdersApi.md#getOrderCustomFieldGroup) | **GET** /rest/v2/orders/model/customFields/groups/{group_id} | Retrieve an Order Custom Field Group |
+| [**getOrderCustomFieldTab()**](OrdersApi.md#getOrderCustomFieldTab) | **GET** /rest/v2/orders/model/customFields/tabs/{tab_id} | Retrieve an Order Custom Field Tab |
 | [**getOrderItem()**](OrdersApi.md#getOrderItem) | **GET** /rest/v2/orders/{order_id}/items/{order_item_id} | Retrieve an Order Item |
 | [**listOrderCustomFieldGroups()**](OrdersApi.md#listOrderCustomFieldGroups) | **GET** /rest/v2/orders/model/customFields/groups | List Order Custom Field Groups |
+| [**listOrderCustomFieldTabs()**](OrdersApi.md#listOrderCustomFieldTabs) | **GET** /rest/v2/orders/model/customFields/tabs | List Order Custom Field Tabs |
 | [**listOrderPayments()**](OrdersApi.md#listOrderPayments) | **GET** /rest/v2/orders/{order_id}/payments | Retrieve Order Payments |
 | [**listOrders()**](OrdersApi.md#listOrders) | **GET** /rest/v2/orders | List orders |
 | [**retrieveOrderCustomFieldModel()**](OrdersApi.md#retrieveOrderCustomFieldModel) | **GET** /rest/v2/orders/model | Retrieve Order Custom Field Model |
 | [**updateOrder()**](OrdersApi.md#updateOrder) | **PATCH** /rest/v2/orders/{order_id} | Update an Order |
 | [**updateOrderCustomField()**](OrdersApi.md#updateOrderCustomField) | **PATCH** /rest/v2/orders/model/customFields/{custom_field_id} | Update an Order Custom Field |
 | [**updateOrderCustomFieldGroup()**](OrdersApi.md#updateOrderCustomFieldGroup) | **PATCH** /rest/v2/orders/model/customFields/groups/{group_id} | Update an Order Custom Field Group |
+| [**updateOrderCustomFieldTab()**](OrdersApi.md#updateOrderCustomFieldTab) | **PATCH** /rest/v2/orders/model/customFields/tabs/{tab_id} | Update an Order Custom Field Tab |
 | [**updateOrderItem()**](OrdersApi.md#updateOrderItem) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item |
 
 
@@ -390,6 +395,65 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createOrderCustomFieldTab()`
+
+```php
+createOrderCustomFieldTab($create_custom_field_tab_request): \Keap\Core\V2\Model\CustomFieldTab
+```
+
+Create an Order Custom Field Tab
+
+Creates a new custom field tab for the Order record type.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OrdersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_custom_field_tab_request = new \Keap\Core\V2\Model\CreateCustomFieldTabRequest(); // \Keap\Core\V2\Model\CreateCustomFieldTabRequest
+
+try {
+    $result = $apiInstance->createOrderCustomFieldTab($create_custom_field_tab_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OrdersApi->createOrderCustomFieldTab: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_custom_field_tab_request** | [**\Keap\Core\V2\Model\CreateCustomFieldTabRequest**](../Model/CreateCustomFieldTabRequest.md)|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\CustomFieldTab**](../Model/CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createOrderItem()`
 
 ```php
@@ -686,6 +750,64 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `deleteOrderCustomFieldTab()`
+
+```php
+deleteOrderCustomFieldTab($tab_id)
+```
+
+Delete an Order Custom Field Tab
+
+Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OrdersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tab_id = 'tab_id_example'; // string
+
+try {
+    $apiInstance->deleteOrderCustomFieldTab($tab_id);
+} catch (Exception $e) {
+    echo 'Exception when calling OrdersApi->deleteOrderCustomFieldTab: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tab_id** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteOrderItem()`
 
 ```php
@@ -925,6 +1047,65 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getOrderCustomFieldTab()`
+
+```php
+getOrderCustomFieldTab($tab_id): \Keap\Core\V2\Model\CustomFieldTab
+```
+
+Retrieve an Order Custom Field Tab
+
+Retrieves a single custom field tab by id for the Order record type.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OrdersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tab_id = 'tab_id_example'; // string
+
+try {
+    $result = $apiInstance->getOrderCustomFieldTab($tab_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OrdersApi->getOrderCustomFieldTab: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tab_id** | **string**|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\CustomFieldTab**](../Model/CustomFieldTab.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getOrderItem()`
 
 ```php
@@ -1045,6 +1226,62 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listOrderCustomFieldTabs()`
+
+```php
+listOrderCustomFieldTabs(): \Keap\Core\V2\Model\ListCustomFieldTabsResponse
+```
+
+List Order Custom Field Tabs
+
+Retrieves a list of custom field tabs for the Order record type.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OrdersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listOrderCustomFieldTabs();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OrdersApi->listOrderCustomFieldTabs: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Keap\Core\V2\Model\ListCustomFieldTabsResponse**](../Model/ListCustomFieldTabsResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listOrderPayments()`
 
 ```php
@@ -1138,7 +1375,7 @@ $apiInstance = new Keap\Core\V2\Api\OrdersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (String) `product_id` - (String) `contact_id` - (String) `invoice_id` - (String) `invoice_xid` - (Boolean) `paid` - (String) `created_since_time` - (String) `created_until_time` - (String) `modified_since_time` - (String) `modified_until_time` - (String) `title` - Wildcard matching allowed - (String) `order_type` (Allowed values: `ONLINE`, `OFFLINE`) - (String) `shipping_locality` - (String) `shipping_region_code` - (String) `shipping_postal_code` - (String) `shipping_country_code`  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, name, email, phone, website): `==` only, with optional   trailing wildcard (e.g. `_OrderTitle0%3D%3DValue%2A`) - Choice fields (dropdown, radio, yes/no, user, state): `==` only - Numeric fields: `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `created_since_time`/`created_until_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D123` - `filter=id%3C123` - `filter=ids%3D%3D1,10,4,24` - `filter=invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8` - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567` - `filter=shipping_locality%3D%3DPhoenix` - `filter=shipping_region_code%3D%3DIN-MH` - `filter=shipping_postal_code%3D%3D85001` - `filter=shipping_country_code%3D%3DIND`  Custom field examples (for custom fields with field_name `_OrderTitle0` and `_OrderValue1`): - `filter=_OrderTitle0%3D%3DTest` (custom field exact match) - `filter=_OrderTitle0%3D%3DTest%2A` (custom field prefix wildcard) - `filter=_OrderValue1%3E100` (custom field numeric comparison) - `filter=product_id%3D%3D123%3B_OrderStatus0%3D%3DActive` (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`
+$filter = 'filter_example'; // string | Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (List[String]) `ids` - (String) `product_id` - (String) `contact_id` - (String) `invoice_id` - (String) `invoice_xid` - (Boolean) `paid` - (String) `created_since_time` - (String) `created_until_time` - (String) `modified_since_time` - (String) `modified_until_time` - (String) `title` - Wildcard matching allowed - (String) `order_type` (Allowed values: `ONLINE`, `OFFLINE`) - (String) `shipping_locality` - (String) `shipping_region_code` - (String) `shipping_postal_code` - (String) `shipping_country_code`  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field's type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): `==` only, with optional trailing wildcard (e.g. `_OrderTitle0%3D%3DValue%2A`) - Yes/No and drilldown fields: `==` only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): `==`, `>`, `<`, `>=`, `<=` - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `created_since_time`/`created_until_time`) - Multi-select fields: `==` matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=product_id%3D%3D123` - `filter=id%3C123` - `filter=ids%3D%3D1,10,4,24` - `filter=invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8` - `filter=product_id%3D%3D123%3Bcontact_id%3D%3D567` - `filter=shipping_locality%3D%3DPhoenix` - `filter=shipping_region_code%3D%3DIN-MH` - `filter=shipping_postal_code%3D%3D85001` - `filter=shipping_country_code%3D%3DIND`  Custom field examples (for custom fields with field_name `_OrderTitle0` and `_OrderValue1`): - `filter=_OrderTitle0%3D%3DTest` (custom field exact match) - `filter=_OrderTitle0%3D%3DTest%2A` (custom field prefix wildcard) - `filter=_OrderValue1%3E100` (custom field numeric comparison) - `filter=product_id%3D%3D123%3B_OrderStatus0%3D%3DActive` (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`
 $order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `id` - `order_time` - `modification_time`  One of the following directions: - `asc` - `desc`
 $page_size = 0; // int | Total number of items to return per page
 $page_token = 'page_token_example'; // string | Page token
@@ -1155,7 +1392,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; | [optional] |
+| **filter** | **string**| Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; | [optional] |
 | **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
 | **page_size** | **int**| Total number of items to return per page | [optional] |
 | **page_token** | **string**| Page token | [optional] |
@@ -1408,6 +1645,69 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\CustomFieldGroup**](../Model/CustomFieldGroup.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateOrderCustomFieldTab()`
+
+```php
+updateOrderCustomFieldTab($tab_id, $update_mask, $update_custom_field_tab_request): \Keap\Core\V2\Model\CustomFieldTab
+```
+
+Update an Order Custom Field Tab
+
+Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OrdersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tab_id = 'tab_id_example'; // string
+$update_mask = array('update_mask_example'); // string[] | Comma-separated list of fields to update
+$update_custom_field_tab_request = new \Keap\Core\V2\Model\UpdateCustomFieldTabRequest(); // \Keap\Core\V2\Model\UpdateCustomFieldTabRequest
+
+try {
+    $result = $apiInstance->updateOrderCustomFieldTab($tab_id, $update_mask, $update_custom_field_tab_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OrdersApi->updateOrderCustomFieldTab: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tab_id** | **string**|  | |
+| **update_mask** | [**string[]**](../Model/string.md)| Comma-separated list of fields to update | |
+| **update_custom_field_tab_request** | [**\Keap\Core\V2\Model\UpdateCustomFieldTabRequest**](../Model/UpdateCustomFieldTabRequest.md)|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\CustomFieldTab**](../Model/CustomFieldTab.md)
 
 ### Authorization
 

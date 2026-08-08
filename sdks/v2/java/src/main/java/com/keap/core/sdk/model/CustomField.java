@@ -33,45 +33,21 @@ import jakarta.validation.Valid;
  * CustomField
  */
 @JsonPropertyOrder({
-  CustomField.JSON_PROPERTY_ID,
-  CustomField.JSON_PROPERTY_CONTENT
+  CustomField.JSON_PROPERTY_CONTENT,
+  CustomField.JSON_PROPERTY_ID
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CustomField implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  @jakarta.annotation.Nullable  private String id;
-
   public static final String JSON_PROPERTY_CONTENT = "content";
   @jakarta.annotation.Nullable  private Object content = null;
 
+  public static final String JSON_PROPERTY_ID = "id";
+  @jakarta.annotation.Nullable  private String id;
+
   public CustomField() { 
   }
-
-  public CustomField id(@jakarta.annotation.Nullable String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-   */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getId() {
-    return id;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@jakarta.annotation.Nullable String id) {
-    this.id = id;
-  }
-
 
   public CustomField content(@jakarta.annotation.Nullable Object content) {
     this.content = content;
@@ -96,6 +72,30 @@ public class CustomField implements Serializable {
     this.content = content;
   }
 
+
+  public CustomField id(@jakarta.annotation.Nullable String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getId() {
+    return id;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@jakarta.annotation.Nullable String id) {
+    this.id = id;
+  }
+
   /**
    * Return true if this CustomField object is equal to o.
    */
@@ -108,21 +108,21 @@ public class CustomField implements Serializable {
       return false;
     }
     CustomField customField = (CustomField) o;
-    return Objects.equals(this.id, customField.id) &&
-        Objects.equals(this.content, customField.content);
+    return Objects.equals(this.content, customField.content) &&
+        Objects.equals(this.id, customField.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, content);
+    return Objects.hash(content, id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomField {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -150,12 +150,12 @@ public class CustomField implements Serializable {
           this.instance = instance;
         }
     
-        public CustomField.Builder id(String id) {
-              this.instance.id = id;
+        public CustomField.Builder content(Object content) {
+              this.instance.content = content;
           return this;
         }
-            public CustomField.Builder content(Object content) {
-              this.instance.content = content;
+            public CustomField.Builder id(String id) {
+              this.instance.id = id;
           return this;
         }
         
@@ -192,8 +192,8 @@ public class CustomField implements Serializable {
       */
       public CustomField.Builder toBuilder() {
         return new CustomField.Builder()
-          .id(getId())
-          .content(getContent());
+          .content(getContent())
+          .id(getId());
       }
 }
 

@@ -177,6 +177,7 @@ paths:
           - (String) `user_id`
           - (String) `opportunity_id`
           - (String) `task_ids`
+          - (String) `priority`  — one of `CRITICAL`, `ESSENTIAL`, `NONESSENTIAL`
           - (String) `since_time`
           - (String) `until_time`
           - (String)   `id`     — supports `==`, `>`, `<`, `>=`, `<=`
@@ -190,11 +191,21 @@ paths:
           - `filter=user_id%3D%3D321`
           - `filter=opportunity_id%3D%3D321`
           - `filter=task_ids%3D%3D1,2,3`
+          - `filter=priority%3D%3DCRITICAL`
           - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z;`
           - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z;`
           - `filter=id%3E5`                  (id > 5)
           - `filter=id%3C%3D100`              (id <= 100)
           - `filter=title%3D%3DFollow%2A`     (title starts with "Follow")
+
+          **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. `filter=cf_priority%3D%3D10`). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field's data type:
+          - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (`==`) and prefix wildcard (e.g. `cf_company%3D%3DAcme%2A`)
+          - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (`==`, `>`, `<`, `>=`, `<=`)
+          - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `cf_renewDate%3C%3D2026-01-01T00:00:00.000Z`). Date-only values such as `2026-01-01` are rejected
+          - Yes/No fields — equals only, value `0` (No) or `1` (Yes)
+          - Drilldown fields — equals only, integer value
+          - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. `cf_tags%3D%3Dred`)
+          A custom field that does not exist, an operator unsupported for the field's type, or a value that does not match the field's type returns `400 Bad Request`.
         required: false
         schema:
           type: string
@@ -395,6 +406,137 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateCustomFieldResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/tasks/model/customFields/tabs:
+    get:
+      tags:
+      - Task
+      summary: List Task Custom Field Tabs
+      description: 'Retrieves a list of custom field tabs for the Task record type.<br/>Note:
+        Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.'
+      operationId: listTaskCustomFieldTabs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldTabsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Task
+      summary: Create a Task Custom Field Tab
+      description: 'Creates a new custom field tab for the Task record type.<br/>Note:
+        Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.'
+      operationId: createTaskCustomFieldTab
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldTabRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
         '400':
           description: Bad Request
           content:
@@ -1120,6 +1262,19 @@ paths:
           - (List[String]) `ids`
           - (List[String]) `subscription_plan_ids`
 
+          Custom fields can be filtered by their field_name (case-insensitive, as returned
+          by GET /v2/subscriptions/model). A standard field above takes precedence over a custom
+          field with the same name. The supported operators depend on the custom field's type:
+          - Text-like fields (text, text area, name, email, phone, website, social security
+            number) and single-value choice fields with text options (dropdown, radio,
+            state): `==` only, with optional trailing wildcard (e.g. `_SubscriptionNote0%3D%3DValue%2A`)
+          - Yes/No and drilldown fields: `==` only
+          - Numeric fields (whole number, decimal, currency, percent, year, month, day of
+            week, user): `==`, `>`, `<`, `>=`, `<=`
+          - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601
+          - Multi-select fields: `==` matches records that contain the given option
+          Custom field filtering on non-indexed fields is supported but may be slower.
+
           You will need to apply the `==` operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
           - `filter=contact_id%3D%3D123`
           - `filter=subscription_plan_id%3D%3D456`
@@ -1129,6 +1284,15 @@ paths:
           - `filter=ids%3D%3D1,10,4,24`
           - `filter=subscription_plan_ids%3D%3D10,20,30`
           - `filter=contact_id%3D%3D123%3Bstatus%3D%3DActive`
+
+          Custom field examples (for custom fields with field_name `_SubscriptionNote0` and `_SubscriptionCount1`):
+          - `filter=_SubscriptionNote0%3D%3DTest` (custom field exact match)
+          - `filter=_SubscriptionNote0%3D%3DTest%2A` (custom field prefix wildcard)
+          - `filter=_SubscriptionCount1%3E100` (custom field numeric comparison)
+          - `filter=contact_id%3D%3D123%3B_SubscriptionNote0%3D%3DActive` (combined standard + custom field filter)
+
+          For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage:
+          - `field==foo*` finds anything in `field` that begins with `foo`
         required: false
         schema:
           type: string
@@ -1447,6 +1611,136 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/subscriptions/model/customFields/tabs:
+    get:
+      tags:
+      - Subscriptions
+      summary: List Subscription Custom Field Tabs
+      description: Retrieves a list of custom field tabs for the Subscription record
+        type.
+      operationId: listSubscriptionCustomFieldTabs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldTabsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Subscriptions
+      summary: Create a Subscription Custom Field Tab
+      description: Creates a new custom field tab for the Subscription record type.
+      operationId: createSubscriptionCustomFieldTab
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldTabRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
         '400':
           description: Bad Request
           content:
@@ -3533,10 +3827,12 @@ paths:
           Custom fields can be filtered by their field_name (case-insensitive, as returned
           by GET /v2/orders/model). A standard field above takes precedence over a custom
           field with the same name. The supported operators depend on the custom field's type:
-          - Text-like fields (text, name, email, phone, website): `==` only, with optional
-            trailing wildcard (e.g. `_OrderTitle0%3D%3DValue%2A`)
-          - Choice fields (dropdown, radio, yes/no, user, state): `==` only
-          - Numeric fields: `==`, `>`, `<`, `>=`, `<=`
+          - Text-like fields (text, text area, name, email, phone, website, social security
+            number) and single-value choice fields with text options (dropdown, radio,
+            state): `==` only, with optional trailing wildcard (e.g. `_OrderTitle0%3D%3DValue%2A`)
+          - Yes/No and drilldown fields: `==` only
+          - Numeric fields (whole number, decimal, currency, percent, year, month, day of
+            week, user): `==`, `>`, `<`, `>=`, `<=`
           - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `created_since_time`/`created_until_time`)
           - Multi-select fields: `==` matches records that contain the given option
           Custom field filtering on non-indexed fields is supported but may be slower.
@@ -4353,6 +4649,135 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/orders/model/customFields/tabs:
+    get:
+      tags:
+      - Orders
+      summary: List Order Custom Field Tabs
+      description: Retrieves a list of custom field tabs for the Order record type.
+      operationId: listOrderCustomFieldTabs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldTabsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Orders
+      summary: Create an Order Custom Field Tab
+      description: Creates a new custom field tab for the Order record type.
+      operationId: createOrderCustomFieldTab
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldTabRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/orders/model/customFields/groups:
     get:
       tags:
@@ -4534,7 +4959,21 @@ paths:
           - (String) `affiliate_id` — exact match only (e.g. `affiliate_id==123`)
           - (String) `opportunity_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=`
           - (String) `ids` — comma-separated list of opportunity IDs (e.g. `ids==1,2,3`), maximum 100 IDs
+          - (String) `contact_phone` — matches the contact's phone. By default it is an exact match against the stored value, including any formatting characters (e.g. `contact_phone==(480) 123-4567`); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. `contact_phone==480*`)
+          - (String) `contact_city` — matches the contact's city; supports wildcard prefix search (e.g. `contact_city==Chand*`)
+          - (String) `contact_state` — matches the contact's state; supports wildcard prefix search (e.g. `contact_state==AZ*`)
+          - (String) `projected_revenue_high` — projected revenue high; supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `projected_revenue_high>=1000`)
+          - (String) `projected_revenue_low` — projected revenue low; supports comparison operators: `==`, `>`, `<`, `>=`, `<=` (e.g. `projected_revenue_low<=500`)
           Note: `opportunity_id` and `ids` cannot be used together in the same request.
+
+          **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. `cf_priority==10`). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field's data type:
+          - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (`==`) and prefix wildcard (e.g. `cf_company==Acme*`)
+          - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (`==`, `>`, `<`, `>=`, `<=`)
+          - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `cf_renewDate<=2026-01-01T00:00:00.000Z`). Date-only values such as `2026-01-01` are rejected
+          - Yes/No fields — equals only, value `0` (No) or `1` (Yes)
+          - Drilldown fields — equals only, integer value
+          - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. `cf_tags==red`)
+          A custom field that does not exist, an operator unsupported for the field's type, or a value that does not match the field's type returns `400 Bad Request`.
         required: false
         schema:
           type: string
@@ -4954,6 +5393,136 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/opportunities/model/customFields/tabs:
+    get:
+      tags:
+      - Opportunity
+      summary: List Opportunity Custom Field Tabs
+      description: Retrieves a list of custom field tabs for the Opportunity record
+        type.
+      operationId: listOpportunityCustomFieldTabs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldTabsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Opportunity
+      summary: Create an Opportunity Custom Field Tab
+      description: Creates a new custom field tab for the Opportunity record type.
+      operationId: createOpportunityCustomFieldTab
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldTabRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/opportunities/model/customFields/groups:
     get:
       tags:
@@ -5163,6 +5732,137 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/notes/model/customFields/tabs:
+    get:
+      tags:
+      - Note
+      summary: List Note Custom Field Tabs
+      description: 'Retrieves a list of custom field tabs for the Note record type.<br/>Note:
+        Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.'
+      operationId: listNoteCustomFieldTabs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldTabsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Note
+      summary: Create a Note Custom Field Tab
+      description: 'Creates a new custom field tab for the Note record type.<br/>Note:
+        Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.'
+      operationId: createNoteCustomFieldTab
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldTabRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/notes/model/customFields/groups:
     get:
       tags:
@@ -5316,19 +6016,31 @@ paths:
         description: |-
           Filter to apply, allowed fields are:
 
-          - (String) `name`
+          - (String) `id` - Must be a positive integer. Allowable operators: "==", "<=", "<", ">=", ">", "!=". Values that are zero, negative, or non-integer return a 400.
+          - (String) `name` - Wildcard matching allowed
           - (String) `status`
           - (String) `lead_source_category_id`
-          - (String) `vendor`
-          - (String) `medium`
+          - (String) `vendor` - Wildcard matching allowed
+          - (String) `medium` - Wildcard matching allowed
+          - (String) `message` - Wildcard matching allowed
+          - (String) `description` - Wildcard matching allowed
           - (String) `start_time`
           - (String) `end_time`
 
-          You will need to apply the `==` operator to check the equality of one of the filters with your searched
-          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          You will need to apply the `==` operator (or another supported operator) to check the equality of one of
+          the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here are
+          some examples:
 
           - `filter=name%3D%3Dexample`
+          - `filter=name%3D%3DGoogle%2A` (name starts with "Google")
+          - `filter=id%3E1000` (id > 1000)
+          - `filter=id%3E%3D1000` (id >= 1000)
           - `filter=start_time%3D%3D2024-12-22T01:00:00.000Z`
+
+          For fields which allow wildcard matching, you may use the `*` wildcard character (or its encoded form
+          `%2A`) for case-insensitive prefix matching on text fields. Example of a valid wildcard pattern:
+
+          - `field==foo*` finds anything in `field` that begins with `foo`
         required: false
         schema:
           type: string
@@ -5524,10 +6236,12 @@ paths:
           type: string
       - name: lead_source_id
         in: path
-        description: The ID of the lead source this recurring expense belongs to
+        description: The ID of the lead source this recurring expense belongs to.
+          Use '-' as a wildcard to list recurring expenses across all lead sources.
         required: true
         schema:
           type: string
+        example: '-'
       - name: order_by
         in: query
         description: |-
@@ -6277,17 +6991,23 @@ paths:
         in: query
         description: |
           Filter to apply, allowed fields are:
-          - (Boolean) `is_public`
+          - (Boolean) `is_public` — `true` (public) or `false` (private)
           - (String) `contact_id`
           - (String) `user_id`
-          - (FileBoxCategory) `category`
-          - (FileBoxType) `file_box_type`
+          - (FileBoxCategory) `category` — one of: `ATTACHMENTS`, `CART`, `DOCUMENTS`, `HIDDEN`, `INVOICE`, `LOGO`, `TICKETS`, `WEB_FORM`, `FUNNEL`
+          - (FileBoxType) `file_box_type` — one of: `APPLICATION`, `IMAGE`, `FAX`, `ATTACHMENT`, `TICKET`, `CONTACT`, `DIGITAL_PRODUCT`, `IMPORT`, `HIDDEN`, `WEB_FORM`, `STYLED_CART`, `RESAMPLED_IMAGE`, `TEMPLATE_THUMBNAIL`, `FUNNEL`, `LOGO_THUMBNAIL`, `UNLAYER`, `BRANDING_CENTER_LOGO`
+          - (String) `file_name`
+          - (String) `created_time`
+          - (String) `updated_time`
 
           You will need to apply the `==` operator to check the equality of one of the filters with your searched
-          word, in the encoded form `%3D%3D`. For the filters listed above, here are some examples:
+          word, in the encoded form `%3D%3D`. Multiple filters are combined with a semicolon (`;`, encoded `%3B`)
+          and are ANDed together. For the filters listed above, here are some examples:
           - `filter=contact_id%3D%3D123`
-          - `filter=category%3D%3DATTACHMENTS`
+          - `filter=is_public%3D%3Dfalse`
+          - `filter=category%3D%3DDOCUMENTS`
           - `filter=file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS`
+          - `filter=file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse`
         required: false
         schema:
           type: string
@@ -8385,6 +9105,8 @@ paths:
           - (String) `other_address_region`
           - (String) `other_address_postal_code`
           - (String) `other_address_country_code`
+          - (String) `city` — primary-address city (Contact.City); supports prefix wildcard (e.g. `city==Chan*`, "starts with")
+          - (String) `state` — primary-address state/region (Contact.State); supports prefix wildcard (e.g. `state==Ar*`, "starts with")
           - (String) `website` — supports wildcard (e.g. `website==https://example*`)
           - (String) `lead_source_name` — supports wildcard (e.g. `lead_source_name==Google*`)
           - (String) `contact_id` — supports comparison operators: `==`, `>`, `<`, `>=`, `<=`
@@ -8392,11 +9114,13 @@ paths:
           Custom fields can be filtered by their field_name (case-insensitive, as returned
           by GET /v2/contacts/model). A standard field above takes precedence over a custom
           field with the same name. The supported operators depend on the custom field's type:
-          - Text-like fields (text, name, email, phone, website): `==` only, with optional
-            trailing wildcard (e.g. `firstName1%3D%3DValue%2A`)
-          - Choice fields (dropdown, radio, yes/no, user, state): `==` only
-          - Numeric fields: `==`, `>`, `<`, `>=`, `<=`
-          - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `start_update_time`/`end_update_time`)
+          - Text-like fields (text, text area, name, email, phone, website, social security
+            number) and single-value choice fields with text options (dropdown, radio,
+            state): `==` only, with optional trailing wildcard (e.g. `firstName1%3D%3DValue%2A`)
+          - Yes/No and drilldown fields: `==` only
+          - Numeric fields (whole number, decimal, currency, percent, year, month, day of
+            week, user): `==`, `>`, `<`, `>=`, `<=`
+          - Date fields: `==`, `>`, `<`, `>=`, `<=`; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. `2026-01-01T00:00:00.000Z`), the same format as `start_update_time`/`end_update_time`. Date-only values such as `2026-01-01` are rejected
           - Multi-select fields: `==` matches records that contain the given option
           Custom field filtering on non-indexed fields is supported but may be slower.
 
@@ -8409,6 +9133,9 @@ paths:
           - `filter=company_id%3D%3D123`
           - `filter=company_id%3D%3D123%3Bfamily_name%3D%3DSmith`
           - `filter=billing_address_locality%3D%3DChandler`
+          - `filter=city%3D%3DChandler` (city exact match)
+          - `filter=city%3D%3DChan%2A` (city prefix wildcard: starts with "Chan")
+          - `filter=city%3D%3DChandler%3Bstate%3D%3DArizona` (combined city + state filter)
           - `filter=shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona`
           - `filter=contact_id%3E5` (contact_id > 5)
           - `filter=ids%3D%3D1,2,3` (contacts with IDs 1, 2, or 3)
@@ -8937,6 +9664,16 @@ paths:
           - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z`
           - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`
 
+          Custom fields (when enabled) can be filtered by their field name (case-insensitive).
+          A standard field above takes precedence over a custom field with the same name.
+          Supported operators depend on the custom field's type:
+          - Text-like fields and single-value choice fields with text options (dropdown, radio, state): `==` only, with optional trailing wildcard (e.g. `Priority%3D%3DHigh%2A`)
+          - Yes/No and drilldown fields: `==` only
+          - Numeric fields (including user, month, day of week): `==`, `>`, `<`, `>=`, `<=`
+          - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601
+          - Multi-select fields: `==` matches records that contain the given option
+          Example (for a custom field named `Priority`): `filter=Priority%3D%3DHigh`
+
           Notes:
           - `id` and `ids` cannot be combined in the same request.
           - Wildcard `*` may only appear at the end of the value (prefix match).
@@ -9144,6 +9881,135 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/contacts/model/customFields/tabs:
+    get:
+      tags:
+      - Contact
+      summary: List Contact Custom Field Tabs
+      description: Retrieves a list of custom field tabs for the Contact record type.
+      operationId: listContactCustomFieldTabs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldTabsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Contact
+      summary: Create a Contact Custom Field Tab
+      description: Creates a new custom field tab for the Contact record type.
+      operationId: createContactCustomFieldTab
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldTabRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
         '400':
           description: Bad Request
           content:
@@ -9529,6 +10395,8 @@ paths:
           - (String) `company_name` - exact match on company name (equality only)
           - (String) `name` - company name with support for a wildcard at the end (e.g. `smith*`)
           - (String) `email` - exact match on email
+          - (String) `city` - company city (Contact.City) with support for a prefix wildcard at the end (e.g. `Chan*`)
+          - (String) `state` - company state/region (Contact.State) with support for a prefix wildcard at the end (e.g. `Ar*`)
           - (String) `since_time` - companies updated on or after this time
           - (String) `until_time` - companies updated on or before this time
           - (Number) `company_id` - supports comparison operators: `==`, `>`, `<`, `>=`, `<=`
@@ -9536,11 +10404,14 @@ paths:
           For equality filters, use the `==` operator in encoded form `%3D%3D`:
           - `filter=company_name%3D%3DCompany`
           - `filter=email%3D%3Dtest@gmail.com`
+          - `filter=city%3D%3DChandler`
           - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z`
           - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`
 
-          For wildcard name search (prefix only, case-insensitive):
+          For wildcard name/city/state search (prefix only, case-insensitive):
           - `filter=name%3D%3DAcme%2A` (starts with "Acme")
+          - `filter=city%3D%3DChan%2A` (city starts with "Chan")
+          - `filter=city%3D%3DChandler%3Bstate%3D%3DArizona` (combined city + state filter)
 
           For company_id comparison:
           - `filter=company_id%3E5` (company_id > 5)
@@ -9549,10 +10420,12 @@ paths:
           Custom fields can be filtered by their field name (case-insensitive). A standard
           field above takes precedence over a custom field with the same name. The supported
           operators depend on the custom field's type:
-          - Text-like fields (text, name, email, phone, website): `==` only, with optional
-            trailing wildcard (e.g. `Industry%3D%3DTech%2A`)
-          - Choice fields (dropdown, radio, yes/no, user, state): `==` only
-          - Numeric fields: `==`, `>`, `<`, `>=`, `<=`
+          - Text-like fields (text, text area, name, email, phone, website, social security
+            number) and single-value choice fields with text options (dropdown, radio,
+            state): `==` only, with optional trailing wildcard (e.g. `Industry%3D%3DTech%2A`)
+          - Yes/No and drilldown fields: `==` only
+          - Numeric fields (whole number, decimal, currency, percent, year, month, day of
+            week, user): `==`, `>`, `<`, `>=`, `<=`
           - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601 (same as `since_time`/`until_time`)
           - Multi-select fields: `==` matches records that contain the given option
           Examples (for a custom field named `Height`):
@@ -9875,6 +10748,135 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/companies/model/customFields/tabs:
+    get:
+      tags:
+      - Company
+      summary: List Company Custom Field Tabs
+      description: Retrieves a list of custom field tabs for the Company record type.
+      operationId: listCompanyCustomFieldTabs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldTabsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Company
+      summary: Create a Company Custom Field Tab
+      description: Creates a new custom field tab for the Company record type.
+      operationId: createCompanyCustomFieldTab
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldTabRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
         '400':
           description: Bad Request
           content:
@@ -10734,10 +11736,10 @@ paths:
           Standard field names take precedence over custom field names.
 
           Supported operators by field type:
-          - Text fields: ==, and wildcard support (e.g., `value*`)
-          - Numeric fields: ==, <, <=, >, >=
+          - Text fields and single-value choice fields with text options (dropdown, radio, state): ==, and wildcard support (e.g., `value*`)
+          - Numeric fields (including user, month, day of week): ==, <, <=, >, >=
           - Date fields: ==, <, <=, >, >= (ISO 8601 format)
-          - Choice/Select fields: ==
+          - Yes/No and drilldown fields: ==
           - Multi-select fields: == (matches if value is present)
 
           Examples of custom field filtering:
@@ -11236,6 +12238,136 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/affiliates/model/customFields/tabs:
+    get:
+      tags:
+      - Affiliate
+      summary: List Affiliate Custom Field Tabs
+      description: Retrieves a list of custom field tabs for the Affiliate record
+        type.
+      operationId: listAffiliateCustomFieldTabs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomFieldTabsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+      - Affiliate
+      summary: Create an Affiliate Custom Field Tab
+      description: Creates a new custom field tab for the Affiliate record type.
+      operationId: createAffiliateCustomFieldTab
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomFieldTabRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
         '400':
           description: Bad Request
           content:
@@ -12858,6 +13990,228 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/tasks/model/customFields/tabs/{tab_id}:
+    get:
+      tags:
+      - Task
+      summary: Retrieve a Task Custom Field Tab
+      description: 'Retrieves a single custom field tab by id for the Task record
+        type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes
+        are combined.'
+      operationId: getTaskCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Task
+      summary: Delete a Task Custom Field Tab
+      description: 'Deletes a custom field tab. Returns 409 Conflict if the tab still
+        contains groups.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments
+        and Notes are combined.'
+      operationId: deleteTaskCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Task
+      summary: Update a Task Custom Field Tab
+      description: 'Updates an existing custom field tab. Only fields listed in `update_mask`
+        are applied.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and
+        Notes are combined.'
+      operationId: updateTaskCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldTabRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/tasks/model/customFields/groups/{group_id}:
     get:
       tags:
@@ -13793,6 +15147,225 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/subscriptions/model/customFields/tabs/{tab_id}:
+    get:
+      tags:
+      - Subscriptions
+      summary: Retrieve a Subscription Custom Field Tab
+      description: Retrieves a single custom field tab by id for the Subscription
+        record type.
+      operationId: getSubscriptionCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Subscriptions
+      summary: Delete a Subscription Custom Field Tab
+      description: Deletes a custom field tab. Returns 409 Conflict if the tab still
+        contains groups.
+      operationId: deleteSubscriptionCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Subscriptions
+      summary: Update a Subscription Custom Field Tab
+      description: Updates an existing custom field tab. Only fields listed in `update_mask`
+        are applied.
+      operationId: updateSubscriptionCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldTabRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
         '400':
           description: Bad Request
           content:
@@ -16186,6 +17759,225 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/orders/model/customFields/tabs/{tab_id}:
+    get:
+      tags:
+      - Orders
+      summary: Retrieve an Order Custom Field Tab
+      description: Retrieves a single custom field tab by id for the Order record
+        type.
+      operationId: getOrderCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Orders
+      summary: Delete an Order Custom Field Tab
+      description: Deletes a custom field tab. Returns 409 Conflict if the tab still
+        contains groups.
+      operationId: deleteOrderCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Orders
+      summary: Update an Order Custom Field Tab
+      description: Updates an existing custom field tab. Only fields listed in `update_mask`
+        are applied.
+      operationId: updateOrderCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldTabRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/orders/model/customFields/groups/{group_id}:
     get:
       tags:
@@ -17052,6 +18844,225 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/opportunities/model/customFields/tabs/{tab_id}:
+    get:
+      tags:
+      - Opportunity
+      summary: Retrieve an Opportunity Custom Field Tab
+      description: Retrieves a single custom field tab by id for the Opportunity record
+        type.
+      operationId: getOpportunityCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Opportunity
+      summary: Delete an Opportunity Custom Field Tab
+      description: Deletes a custom field tab. Returns 409 Conflict if the tab still
+        contains groups.
+      operationId: deleteOpportunityCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Opportunity
+      summary: Update an Opportunity Custom Field Tab
+      description: Updates an existing custom field tab. Only fields listed in `update_mask`
+        are applied.
+      operationId: updateOpportunityCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldTabRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/opportunities/model/customFields/groups/{group_id}:
     get:
       tags:
@@ -17378,6 +19389,228 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/notes/model/customFields/tabs/{tab_id}:
+    get:
+      tags:
+      - Note
+      summary: Retrieve a Note Custom Field Tab
+      description: 'Retrieves a single custom field tab by id for the Note record
+        type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes
+        are combined.'
+      operationId: getNoteCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Note
+      summary: Delete a Note Custom Field Tab
+      description: 'Deletes a custom field tab. Returns 409 Conflict if the tab still
+        contains groups.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments
+        and Notes are combined.'
+      operationId: deleteNoteCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Note
+      summary: Update a Note Custom Field Tab
+      description: 'Updates an existing custom field tab. Only fields listed in `update_mask`
+        are applied.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and
+        Notes are combined.'
+      operationId: updateNoteCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldTabRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
         '400':
           description: Bad Request
           content:
@@ -20385,6 +22618,225 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/contacts/model/customFields/tabs/{tab_id}:
+    get:
+      tags:
+      - Contact
+      summary: Retrieve a Contact Custom Field Tab
+      description: Retrieves a single custom field tab by id for the Contact record
+        type.
+      operationId: getContactCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Contact
+      summary: Delete a Contact Custom Field Tab
+      description: Deletes a custom field tab. Returns 409 Conflict if the tab still
+        contains groups.
+      operationId: deleteContactCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Contact
+      summary: Update a Contact Custom Field Tab
+      description: Updates an existing custom field tab. Only fields listed in `update_mask`
+        are applied.
+      operationId: updateContactCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldTabRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/contacts/model/customFields/groups/{group_id}:
     get:
       tags:
@@ -21119,6 +23571,225 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/companies/model/customFields/tabs/{tab_id}:
+    get:
+      tags:
+      - Company
+      summary: Retrieve a Company Custom Field Tab
+      description: Retrieves a single custom field tab by id for the Company record
+        type.
+      operationId: getCompanyCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Company
+      summary: Delete a Company Custom Field Tab
+      description: Deletes a custom field tab. Returns 409 Conflict if the tab still
+        contains groups.
+      operationId: deleteCompanyCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Company
+      summary: Update a Company Custom Field Tab
+      description: Updates an existing custom field tab. Only fields listed in `update_mask`
+        are applied.
+      operationId: updateCompanyCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldTabRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
         '400':
           description: Bad Request
           content:
@@ -22144,6 +24815,225 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CustomFieldMetaData'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/affiliates/model/customFields/tabs/{tab_id}:
+    get:
+      tags:
+      - Affiliate
+      summary: Retrieve an Affiliate Custom Field Tab
+      description: Retrieves a single custom field tab by id for the Affiliate record
+        type.
+      operationId: getAffiliateCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+      - Affiliate
+      summary: Delete an Affiliate Custom Field Tab
+      description: Deletes a custom field tab. Returns 409 Conflict if the tab still
+        contains groups.
+      operationId: deleteAffiliateCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      tags:
+      - Affiliate
+      summary: Update an Affiliate Custom Field Tab
+      description: Updates an existing custom field tab. Only fields listed in `update_mask`
+        are applied.
+      operationId: updateAffiliateCustomFieldTab
+      parameters:
+      - name: tab_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: Comma-separated list of fields to update
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - name
+            - order
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomFieldTabRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFieldTab'
         '400':
           description: Bad Request
           content:
@@ -23534,6 +26424,110 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTaggedCompaniesResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/tags/-/contacts:
+    get:
+      tags:
+      - Tags
+      summary: List Contacts Across Tags
+      description: Retrieves tag-contact associations across the tag collection (AEP-159),
+        using the `-` wildcard in place of a single tag id. At least one filter is
+        required. Returns association tuples (contact_id, tag_id, applied_at) only.
+      operationId: listContactsAcrossTags
+      parameters:
+      - name: filter
+        in: query
+        description: |
+          Filter to apply (at least one is required). Allowed fields:
+          - (List[String]) `tag_ids` (max 100)
+          - (ISO-8601) `since_applied_time`
+          - (ISO-8601) `until_applied_time`
+        required: false
+        schema:
+          type: string
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items (best-effort for cross-collection reads).
+          Field:
+          - `applied_time`
+
+          Direction:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          maximum: 1000
+          minimum: 0
+        example: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTagContactAssociationsResponse'
         '400':
           description: Bad Request
           content:
@@ -25081,6 +28075,16 @@ paths:
           - `filter=since_time%3D%3D2025-04-16T20:33:02.321Z`
           - `filter=until_time%3D%3D2025-08-16T20:33:02.321Z`
 
+          Custom fields (when enabled) can be filtered by their field name (case-insensitive).
+          A standard field above takes precedence over a custom field with the same name.
+          Supported operators depend on the custom field's type:
+          - Text-like fields and single-value choice fields with text options (dropdown, radio, state): `==` only, with optional trailing wildcard (e.g. `Priority%3D%3DHigh%2A`)
+          - Yes/No and drilldown fields: `==` only
+          - Numeric fields (including user, month, day of week): `==`, `>`, `<`, `>=`, `<=`
+          - Date fields: `==`, `>`, `<`, `>=`, `<=` using full ISO 8601
+          - Multi-select fields: `==` matches records that contain the given option
+          Example (for a custom field named `Priority`): `filter=Priority%3D%3DHigh`
+
           Notes:
           - `id` and `ids` cannot be combined in the same request.
           - Wildcard `*` may only appear at the end of the value (prefix match).
@@ -25857,7 +28861,7 @@ paths:
       - Files
       summary: Retrieve a file's data
       description: Retrieves a file's data
-      operationId: getFileData
+      operationId: getFileData_1
       parameters:
       - name: file_id
         in: path
@@ -26003,6 +29007,103 @@ paths:
       responses:
         '204':
           description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/emails/templates:
+    get:
+      tags:
+      - Email
+      summary: List email templates
+      description: Retrieves a paginated list of email templates
+      operationId: listEmailTemplates
+      parameters:
+      - name: filter
+        in: query
+        description: Search filter to apply to results
+        required: false
+        schema:
+          type: string
+      - name: page_token
+        in: query
+        description: Page token
+        required: false
+        schema:
+          type: string
+      - name: order_by
+        in: query
+        description: |-
+          Attribute and direction to order items.
+          One of the following fields:
+          - `id`
+          One of the following directions:
+          - `asc`
+          - `desc`
+        required: false
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: Total number of items to return per page
+        required: false
+        schema:
+          type: integer
+          format: int32
+          maximum: 1000
+          minimum: 0
+        example: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEmailTemplatesResponse'
         '400':
           description: Bad Request
           content:
@@ -26365,7 +29466,7 @@ paths:
       - Payment Methods
       summary: List of Contact Payment Methods
       description: Retrieves a list of Contact Payment Methods
-      operationId: listPaymentMethods
+      operationId: listPaymentMethods_1
       parameters:
       - name: contact_id
         in: path
@@ -26383,6 +29484,12 @@ paths:
           word, in the encoded form `%3D%3D`.
           - `filter=merchant_account_id%3D%3D123`
 
+        required: false
+        schema:
+          type: string
+      - name: page_token
+        in: query
+        description: Page token
         required: false
         schema:
           type: string
@@ -26409,12 +29516,6 @@ paths:
           maximum: 1000
           minimum: 0
         example: 0
-      - name: page_token
-        in: query
-        description: Page token
-        required: false
-        schema:
-          type: string
       responses:
         '200':
           description: OK
@@ -27183,13 +30284,28 @@ paths:
         in: query
         description: |
           Filter to apply, allowed fields are:
-          - (String) `name`
 
-          You will need to apply the `==` operator to check the equality of the filter with your searched
-          text, in the encoded form `%3D%3D`. The search will look for the text anywhere in the automation name.
+          - `name` (String): Filter by automation name. Supports the `==` operator with optional prefix wildcard (`foo*`).
+            Without a wildcard, the search matches automations whose name contains the given text.
+            With a prefix wildcard, it matches automations whose name starts with the given text.
+            - `filter=name%3D%3DSpring Automation` — names containing "Spring Automation"
+            - `filter=name%3D%3DSpring*` — names starting with "Spring"
 
-          - `filter=name%3D%3DSpring Automation`
-          - `filter=name%3D%3DTag New Contacts`
+          - `id` (Long): Filter by automation ID. Supports comparison operators:
+            `==` `!=` `>` `<` `>=` `<=`
+            - `filter=id%3E5` — id > 5
+            - `filter=id%3E%3D10` — id >= 10
+
+          - `status` (String): Filter by automation status. Accepted values: `published`, `draft`.
+            - `filter=status%3D%3Dpublished` — published automations only
+            - `filter=status%3D%3Ddraft` — draft automations only
+
+          - `categories` (String): Filter by category ID (comma-separated list of IDs).
+            - `filter=categories%3D%3D1` — automations in category 1
+            - `filter=categories%3D%3D1,2,3` — automations in categories 1, 2, or 3
+
+          Multiple filters can be combined with `;` (AND logic):
+          - `filter=name%3D%3DSpring*%3Bautomation_id%3E5`
         required: false
         schema:
           type: string
@@ -27426,13 +30542,28 @@ paths:
         in: query
         description: |
           Filter to apply, allowed fields are:
-          - (String) `name`
 
-          You will need to apply the `==` operator to check the equality of the filter with your searched
-          text, in the encoded form `%3D%3D`. The search will look for the text anywhere in the automation name.
+          - `name` (String): Filter by automation name. Supports the `==` operator with optional prefix wildcard (`foo*`).
+            Without a wildcard, the search matches automations whose name contains the given text.
+            With a prefix wildcard, it matches automations whose name starts with the given text.
+            - `filter=name%3D%3DSpring Automation` — names containing "Spring Automation"
+            - `filter=name%3D%3DSpring*` — names starting with "Spring"
 
-          - `filter=name%3D%3DSpring Automation`
-          - `filter=name%3D%3DTag New Contacts`
+          - `id` (Long): Filter by automation ID. Supports comparison operators:
+            `==` `!=` `>` `<` `>=` `<=`
+            - `filter=id%3E5` — id > 5
+            - `filter=id%3E%3D10` — id >= 10
+
+          - `status` (String): Filter by automation status. Accepted values: `published`, `draft`.
+            - `filter=status%3D%3Dpublished` — published automations only
+            - `filter=status%3D%3Ddraft` — draft automations only
+
+          - `categories` (String): Filter by category ID (comma-separated list of IDs).
+            - `filter=categories%3D%3D1` — automations in category 1
+            - `filter=categories%3D%3D1,2,3` — automations in categories 1, 2, or 3
+
+          Multiple filters can be combined with `;` (AND logic):
+          - `filter=name%3D%3DSpring*%3Bautomation_id%3E5`
         required: false
         schema:
           type: string
@@ -28776,8 +31907,9 @@ components:
       properties:
         id:
           type: string
-        content: {
-          }
+        content:
+          description: The value of the custom field. Text custom field values have
+            a maximum length of 65535 characters.
     Task:
       type: object
       properties:
@@ -29015,6 +32147,40 @@ components:
           type: string
         label:
           type: string
+    CreateCustomFieldTabRequest:
+      type: object
+      properties:
+        name:
+          type: string
+    CustomFieldTab:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the custom field tab
+          example: 123
+        name:
+          type: string
+          description: The name of the custom field tab
+          example: Personal Info
+        order:
+          type: integer
+          format: int32
+          description: The display order of the tab
+          example: 1
+        record_type:
+          type: string
+          description: The record type this tab belongs to (e.g., CONTACT, COMPANY,
+            OPPORTUNITY, REFERRAL_PARTNER, ORDER, SUBSCRIPTION, TASK_NOTE_APPOINTMENT)
+          enum:
+          - CONTACT
+          - REFERRAL_PARTNER
+          - OPPORTUNITY
+          - TASK_NOTE_APPOINTMENT
+          - COMPANY
+          - ORDER
+          - SUBSCRIPTION
+          example: CONTACT
     CreateCustomFieldGroupRequest:
       type: object
       properties:
@@ -29293,8 +32459,9 @@ components:
       properties:
         id:
           type: string
-        content: {
-          }
+        content:
+          description: The value of the custom field. Text custom field values have
+            a maximum length of 65535 characters.
     Address:
       type: object
       properties:
@@ -29302,25 +32469,30 @@ components:
           type: string
           deprecated: true
           description: Deprecated. The long-name descriptive version of the Country
-            Code. Please use 'country_code' for POST/PATCH operations.
+            Code. Please use 'country_code' for POST/PATCH operations. Maximum length
+            is 100 characters.
           example: United States of America
         line1:
           type: string
-          description: Street address line 1
+          description: Street address line 1. Maximum length is 75 characters for
+            the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
           example: 123
         line2:
           type: string
-          description: Street address line 2
+          description: Street address line 2. Maximum length is 75 characters for
+            the BILLING address and 100 characters for the SHIPPING and OTHER addresses.
           example: Suite 100
         locality:
           type: string
-          description: The municipality to which the address belongs
+          description: The municipality to which the address belongs. Maximum length
+            is 50 characters for the BILLING address and 100 characters for the SHIPPING
+            and OTHER addresses.
           example: Phoenix
         region:
           type: string
           deprecated: true
           description: The long-name descriptive version of the Region Code. Please
-            use 'region_code' for POST/PATCH operations.
+            use 'region_code' for POST/PATCH operations. Maximum length is 50 characters.
           example: Arizona
         field:
           type: string
@@ -29337,7 +32509,8 @@ components:
           example: USA
         postal_code:
           type: string
-          description: Postal or ZIP code
+          description: Postal or ZIP code. Maximum length is 15 characters for the
+            BILLING and OTHER addresses and 20 characters for the SHIPPING address.
           example: 85001
         region_code:
           type: string
@@ -29345,11 +32518,12 @@ components:
           example: US-AZ
         zip_code:
           type: string
-          description: ZIP code (US)
+          description: ZIP code (US). Maximum length is 15 characters for the BILLING
+            and OTHER addresses and 20 characters for the SHIPPING address.
           example: 85001
         zip_four:
           type: string
-          description: ZIP+4 extension
+          description: ZIP+4 extension. Maximum length is 10 characters.
           example: 1234
     Subscription:
       type: object
@@ -31190,7 +34364,9 @@ components:
           description: Affiliate ID
           example: 789
       required:
+      - contact_id
       - opportunity_title
+      - stage_id
     CustomField:
       type: object
       properties:
@@ -31228,6 +34404,14 @@ components:
           type: string
           description: Email address
           example: john.smith@example.com
+        city:
+          type: string
+          description: City
+          example: Chandler
+        state:
+          type: string
+          description: State
+          example: AZ
         first_name:
           type: string
           description: First name
@@ -33136,7 +36320,7 @@ components:
       properties:
         addresses:
           type: array
-          description: Any address not listed here will be removed if it already exists.
+          description: Any item not listed here will be removed if it already exists.
             If an empty array is specified, all existing values will be removed.
           items:
             $ref: '#/components/schemas/Address'
@@ -33156,6 +36340,7 @@ components:
           type: string
           description: Personal website URL
           example: https://thryv.com
+          maxLength: 100
         anniversary_date:
           type: string
           description: The anniversary date
@@ -33170,13 +36355,13 @@ components:
           example: Prospect
         custom_fields:
           type: array
-          description: Any address not listed here will be removed if it already exists.
+          description: Any item not listed here will be removed if it already exists.
             If an empty array is specified, all existing values will be removed.
           items:
             $ref: '#/components/schemas/CustomFieldValue'
         email_addresses:
           type: array
-          description: Any address not listed here will be removed if it already exists.
+          description: Any item not listed here will be removed if it already exists.
             If an empty array is specified, all existing values will be removed.
           items:
             $ref: '#/components/schemas/EmailAddressRequest'
@@ -33184,9 +36369,10 @@ components:
           type: string
           description: Last name / surname
           example: Smith
+          maxLength: 40
         fax_numbers:
           type: array
-          description: Any address not listed here will be removed if it already exists.
+          description: Any item not listed here will be removed if it already exists.
             If an empty array is specified, all existing values will be removed.
           items:
             $ref: '#/components/schemas/FaxNumber'
@@ -33194,10 +36380,12 @@ components:
           type: string
           description: First name
           example: John
+          maxLength: 40
         job_title:
           type: string
           description: Job title
           example: Senior Software Engineer
+          maxLength: 255
         leadsource_id:
           type: string
           description: Lead source identifier
@@ -33206,13 +36394,14 @@ components:
           type: string
           description: Middle name
           example: Robert
+          maxLength: 100
         owner_id:
           type: string
           description: ID of the user who owns this contact
           example: 45
         phone_numbers:
           type: array
-          description: Any address not listed here will be removed if it already exists.
+          description: Any item not listed here will be removed if it already exists.
             If an empty array is specified, all existing values will be removed.
           items:
             $ref: '#/components/schemas/PhoneNumber'
@@ -33224,13 +36413,14 @@ components:
           type: string
           description: Preferred name or nickname
           example: Johnny
+          maxLength: 100
         referral_code:
           type: string
           description: Referral code
           example: REF2024ABC
         social_accounts:
           type: array
-          description: Any address not listed here will be removed if it already exists.
+          description: Any item not listed here will be removed if it already exists.
             If an empty array is specified, all existing values will be removed.
           items:
             $ref: '#/components/schemas/SocialAccount'
@@ -33253,6 +36443,7 @@ components:
           type: string
           description: Spouse's name
           example: Jane Smith
+          maxLength: 100
         time_zone:
           type: string
           description: Contact's timezone
@@ -33261,16 +36452,25 @@ components:
           $ref: '#/components/schemas/CreateContactUtmPropertiesRequest'
         assistant_name:
           type: string
+          description: Assistant's name
+          example: Pat Doe
+          maxLength: 20
         assistant_phone:
           type: string
+          description: Assistant's phone number
+          example: 5551234567
+          maxLength: 15
         billing_information:
           type: string
+          description: Billing information
+          maxLength: 100
     EmailAddressRequest:
       type: object
       properties:
         email:
           type: string
-          description: Email address
+          description: Email address. Maximum length is 75 characters for EMAIL1 and
+            100 characters for EMAIL2 and EMAIL3.
           example: john.smith@example.com
         field:
           type: string
@@ -33318,7 +36518,8 @@ components:
           example: 101
         number:
           type: string
-          description: Phone number
+          description: Phone number. Maximum length is 40 characters for PHONE1-PHONE3
+            and 20 characters for PHONE4-PHONE5.
           example: 5551234567
         type:
           type: string
@@ -33344,7 +36545,7 @@ components:
       properties:
         name:
           type: string
-          description: Social account username or handle
+          description: Social account username or handle. Maximum length is 255 characters.
           example: '@thryv'
         type:
           type: string
@@ -33548,7 +36749,8 @@ components:
       properties:
         email:
           type: string
-          description: Email address
+          description: Email address. Maximum length is 75 characters for EMAIL1 and
+            100 characters for EMAIL2 and EMAIL3.
           example: john.smith@example.com
         field:
           type: string
@@ -35296,6 +38498,14 @@ components:
           type: string
       required:
       - group_id
+    UpdateCustomFieldTabRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        order:
+          type: integer
+          format: int32
     UpdateCustomFieldGroupRequest:
       type: object
       properties:
@@ -37242,6 +40452,13 @@ components:
           items:
             type: string
           uniqueItems: true
+    ListCustomFieldTabsResponse:
+      type: object
+      properties:
+        tabs:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomFieldTab'
     ListCustomFieldGroupsResponse:
       type: object
       properties:
@@ -37337,6 +40554,30 @@ components:
           format: date-time
           description: The time this tag category was last updated, in ISO 8601 format
           example: '2024-03-15T10:30:00Z'
+    ListTagContactAssociationsResponse:
+      type: object
+      properties:
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagContactAssociation'
+        next_page_token:
+          type: string
+    TagContactAssociation:
+      type: object
+      properties:
+        contact_id:
+          type: string
+          description: The contact ID
+          example: 123
+        tag_id:
+          type: string
+          description: The tag ID
+          example: 456
+        applied_at:
+          type: string
+          description: The time the tag was applied to the contact, in ISO 8601 format.
+          example: '2024-01-15T10:30:00Z'
     ListSubscriptionsResponse:
       type: object
       properties:
@@ -38772,6 +42013,68 @@ components:
           description: List of sent emails
           items:
             $ref: '#/components/schemas/EmailSent'
+        next_page_token:
+          type: string
+    EmailTemplateSummary:
+      type: object
+      description: Email template metadata returned by the list endpoint. Does not
+        include body content; use GET /v2/emails/templates/{id} for full detail.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: The id of the template
+        piece_title:
+          type: string
+          description: The title of the template
+          example: Welcome Email
+        categories:
+          type: array
+          description: The categories associated with the email
+          example:
+          - Marketing
+          - Onboarding
+          items:
+            type: string
+        from_address:
+          type: string
+          description: The from address of the email
+          example: ~Owner.Email~
+        to_address:
+          type: string
+          description: The to address of the email
+          example: ~Contact.Email~
+        cc_address:
+          type: string
+          description: The cc address of the email
+          example: manager@company.com
+        bcc_address:
+          type: string
+          description: The bcc address of the email
+          example: archive@company.com
+        subject:
+          type: string
+          description: The subject of the email
+          example: Welcome ~Contact.FirstName~!
+        content_type:
+          type: string
+          description: The content type of the email
+          enum:
+          - TEXT
+          - HTML
+          - MULTIPART
+          example: HTML
+        merge_context:
+          type: string
+          description: The merge context of the email
+          example: Contact
+    ListEmailTemplatesResponse:
+      type: object
+      properties:
+        email_templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailTemplateSummary'
         next_page_token:
           type: string
     EmailTemplate:

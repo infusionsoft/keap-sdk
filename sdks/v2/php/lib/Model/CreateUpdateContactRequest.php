@@ -513,6 +513,30 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['website']) && (mb_strlen($this->container['website']) > 100)) {
+            $invalidProperties[] = "invalid value for 'website', the character length must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['family_name']) && (mb_strlen($this->container['family_name']) > 40)) {
+            $invalidProperties[] = "invalid value for 'family_name', the character length must be smaller than or equal to 40.";
+        }
+
+        if (!is_null($this->container['given_name']) && (mb_strlen($this->container['given_name']) > 40)) {
+            $invalidProperties[] = "invalid value for 'given_name', the character length must be smaller than or equal to 40.";
+        }
+
+        if (!is_null($this->container['job_title']) && (mb_strlen($this->container['job_title']) > 255)) {
+            $invalidProperties[] = "invalid value for 'job_title', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['middle_name']) && (mb_strlen($this->container['middle_name']) > 100)) {
+            $invalidProperties[] = "invalid value for 'middle_name', the character length must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['preferred_name']) && (mb_strlen($this->container['preferred_name']) > 100)) {
+            $invalidProperties[] = "invalid value for 'preferred_name', the character length must be smaller than or equal to 100.";
+        }
+
         $allowedValues = $this->getSourceTypeAllowableValues();
         if (!is_null($this->container['source_type']) && !in_array($this->container['source_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -520,6 +544,22 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
                 $this->container['source_type'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['spouse_name']) && (mb_strlen($this->container['spouse_name']) > 100)) {
+            $invalidProperties[] = "invalid value for 'spouse_name', the character length must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['assistant_name']) && (mb_strlen($this->container['assistant_name']) > 20)) {
+            $invalidProperties[] = "invalid value for 'assistant_name', the character length must be smaller than or equal to 20.";
+        }
+
+        if (!is_null($this->container['assistant_phone']) && (mb_strlen($this->container['assistant_phone']) > 15)) {
+            $invalidProperties[] = "invalid value for 'assistant_phone', the character length must be smaller than or equal to 15.";
+        }
+
+        if (!is_null($this->container['billing_information']) && (mb_strlen($this->container['billing_information']) > 100)) {
+            $invalidProperties[] = "invalid value for 'billing_information', the character length must be smaller than or equal to 100.";
         }
 
         return $invalidProperties;
@@ -550,7 +590,7 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets addresses
      *
-     * @param \Keap\Core\V2\Model\Address[]|null $addresses Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+     * @param \Keap\Core\V2\Model\Address[]|null $addresses Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
      *
      * @return self
      */
@@ -694,6 +734,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         if (is_null($website)) {
             throw new \InvalidArgumentException('non-nullable website cannot be null');
         }
+        if ((mb_strlen($website) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $website when calling CreateUpdateContactRequest., must be smaller than or equal to 100.');
+        }
+
         $this->container['website'] = $website;
 
         return $this;
@@ -793,7 +837,7 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets custom_fields
      *
-     * @param \Keap\Core\V2\Model\CustomFieldValue[]|null $custom_fields Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+     * @param \Keap\Core\V2\Model\CustomFieldValue[]|null $custom_fields Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
      *
      * @return self
      */
@@ -820,7 +864,7 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets email_addresses
      *
-     * @param \Keap\Core\V2\Model\EmailAddressRequest[]|null $email_addresses Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+     * @param \Keap\Core\V2\Model\EmailAddressRequest[]|null $email_addresses Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
      *
      * @return self
      */
@@ -856,6 +900,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         if (is_null($family_name)) {
             throw new \InvalidArgumentException('non-nullable family_name cannot be null');
         }
+        if ((mb_strlen($family_name) > 40)) {
+            throw new \InvalidArgumentException('invalid length for $family_name when calling CreateUpdateContactRequest., must be smaller than or equal to 40.');
+        }
+
         $this->container['family_name'] = $family_name;
 
         return $this;
@@ -874,7 +922,7 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets fax_numbers
      *
-     * @param \Keap\Core\V2\Model\FaxNumber[]|null $fax_numbers Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+     * @param \Keap\Core\V2\Model\FaxNumber[]|null $fax_numbers Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
      *
      * @return self
      */
@@ -910,6 +958,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         if (is_null($given_name)) {
             throw new \InvalidArgumentException('non-nullable given_name cannot be null');
         }
+        if ((mb_strlen($given_name) > 40)) {
+            throw new \InvalidArgumentException('invalid length for $given_name when calling CreateUpdateContactRequest., must be smaller than or equal to 40.');
+        }
+
         $this->container['given_name'] = $given_name;
 
         return $this;
@@ -937,6 +989,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         if (is_null($job_title)) {
             throw new \InvalidArgumentException('non-nullable job_title cannot be null');
         }
+        if ((mb_strlen($job_title) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $job_title when calling CreateUpdateContactRequest., must be smaller than or equal to 255.');
+        }
+
         $this->container['job_title'] = $job_title;
 
         return $this;
@@ -991,6 +1047,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         if (is_null($middle_name)) {
             throw new \InvalidArgumentException('non-nullable middle_name cannot be null');
         }
+        if ((mb_strlen($middle_name) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $middle_name when calling CreateUpdateContactRequest., must be smaller than or equal to 100.');
+        }
+
         $this->container['middle_name'] = $middle_name;
 
         return $this;
@@ -1036,7 +1096,7 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets phone_numbers
      *
-     * @param \Keap\Core\V2\Model\PhoneNumber[]|null $phone_numbers Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+     * @param \Keap\Core\V2\Model\PhoneNumber[]|null $phone_numbers Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
      *
      * @return self
      */
@@ -1099,6 +1159,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         if (is_null($preferred_name)) {
             throw new \InvalidArgumentException('non-nullable preferred_name cannot be null');
         }
+        if ((mb_strlen($preferred_name) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $preferred_name when calling CreateUpdateContactRequest., must be smaller than or equal to 100.');
+        }
+
         $this->container['preferred_name'] = $preferred_name;
 
         return $this;
@@ -1144,7 +1208,7 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets social_accounts
      *
-     * @param \Keap\Core\V2\Model\SocialAccount[]|null $social_accounts Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+     * @param \Keap\Core\V2\Model\SocialAccount[]|null $social_accounts Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
      *
      * @return self
      */
@@ -1217,6 +1281,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         if (is_null($spouse_name)) {
             throw new \InvalidArgumentException('non-nullable spouse_name cannot be null');
         }
+        if ((mb_strlen($spouse_name) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $spouse_name when calling CreateUpdateContactRequest., must be smaller than or equal to 100.');
+        }
+
         $this->container['spouse_name'] = $spouse_name;
 
         return $this;
@@ -1289,7 +1357,7 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets assistant_name
      *
-     * @param string|null $assistant_name assistant_name
+     * @param string|null $assistant_name Assistant's name
      *
      * @return self
      */
@@ -1298,6 +1366,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         if (is_null($assistant_name)) {
             throw new \InvalidArgumentException('non-nullable assistant_name cannot be null');
         }
+        if ((mb_strlen($assistant_name) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $assistant_name when calling CreateUpdateContactRequest., must be smaller than or equal to 20.');
+        }
+
         $this->container['assistant_name'] = $assistant_name;
 
         return $this;
@@ -1316,7 +1388,7 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets assistant_phone
      *
-     * @param string|null $assistant_phone assistant_phone
+     * @param string|null $assistant_phone Assistant's phone number
      *
      * @return self
      */
@@ -1325,6 +1397,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         if (is_null($assistant_phone)) {
             throw new \InvalidArgumentException('non-nullable assistant_phone cannot be null');
         }
+        if ((mb_strlen($assistant_phone) > 15)) {
+            throw new \InvalidArgumentException('invalid length for $assistant_phone when calling CreateUpdateContactRequest., must be smaller than or equal to 15.');
+        }
+
         $this->container['assistant_phone'] = $assistant_phone;
 
         return $this;
@@ -1343,7 +1419,7 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets billing_information
      *
-     * @param string|null $billing_information billing_information
+     * @param string|null $billing_information Billing information
      *
      * @return self
      */
@@ -1352,6 +1428,10 @@ class CreateUpdateContactRequest implements ModelInterface, ArrayAccess, \JsonSe
         if (is_null($billing_information)) {
             throw new \InvalidArgumentException('non-nullable billing_information cannot be null');
         }
+        if ((mb_strlen($billing_information) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $billing_information when calling CreateUpdateContactRequest., must be smaller than or equal to 100.');
+        }
+
         $this->container['billing_information'] = $billing_information;
 
         return $this;

@@ -76,7 +76,7 @@ namespace Keap.Core.V2.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EmailAddressRequest" /> class.
         /// </summary>
-        /// <param name="email">Email address.</param>
+        /// <param name="email">Email address. Maximum length is 75 characters for EMAIL1 and 100 characters for EMAIL2 and EMAIL3..</param>
         /// <param name="field">Email address slot.</param>
         /// <param name="optInReason">Reason for opting in.</param>
         public EmailAddressRequest(string email = default, FieldEnum? field = default, string optInReason = default)
@@ -87,9 +87,9 @@ namespace Keap.Core.V2.Model
         }
 
         /// <summary>
-        /// Email address
+        /// Email address. Maximum length is 75 characters for EMAIL1 and 100 characters for EMAIL2 and EMAIL3.
         /// </summary>
-        /// <value>Email address</value>
+        /// <value>Email address. Maximum length is 75 characters for EMAIL1 and 100 characters for EMAIL2 and EMAIL3.</value>
         /*
         <example>john.smith@example.com</example>
         */

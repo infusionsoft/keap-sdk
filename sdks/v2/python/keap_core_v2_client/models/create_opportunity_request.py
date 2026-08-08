@@ -35,8 +35,8 @@ class CreateOpportunityRequest(BaseModel):
     include_in_forecast: Optional[StrictBool] = Field(default=None, description="Include in sales forecast")
     projected_revenue_low: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Low revenue estimate")
     projected_revenue_high: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="High revenue estimate")
-    contact_id: Optional[StrictStr] = Field(default=None, description="Associated contact ID")
-    stage_id: Optional[StrictStr] = Field(default=None, description="Pipeline stage ID")
+    contact_id: StrictStr = Field(description="Associated contact ID")
+    stage_id: StrictStr = Field(description="Pipeline stage ID")
     user_id: Optional[StrictStr] = Field(default=None, description="Assigned user ID")
     custom_fields: Optional[List[CustomField]] = None
     affiliate_id: Optional[StrictStr] = Field(default=None, description="Affiliate ID")

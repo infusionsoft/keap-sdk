@@ -412,7 +412,7 @@ class EmailAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets email
      *
-     * @param string|null $email Email address
+     * @param string|null $email Email address. Maximum length is 75 characters for EMAIL1 and 100 characters for EMAIL2 and EMAIL3.
      *
      * @return self
      */

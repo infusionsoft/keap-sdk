@@ -29,6 +29,7 @@ from keap_core_v2_client.models.create_affiliate_request import CreateAffiliateR
 from keap_core_v2_client.models.create_commission_program_request import CreateCommissionProgramRequest
 from keap_core_v2_client.models.create_custom_field_group_request import CreateCustomFieldGroupRequest
 from keap_core_v2_client.models.create_custom_field_request import CreateCustomFieldRequest
+from keap_core_v2_client.models.create_custom_field_tab_request import CreateCustomFieldTabRequest
 from keap_core_v2_client.models.create_default_commission_program_request import CreateDefaultCommissionProgramRequest
 from keap_core_v2_client.models.create_or_update_affiliate_link_request import CreateOrUpdateAffiliateLinkRequest
 from keap_core_v2_client.models.create_product_commission_program_request import CreateProductCommissionProgramRequest
@@ -36,6 +37,7 @@ from keap_core_v2_client.models.create_program_resource_request import CreatePro
 from keap_core_v2_client.models.create_subscription_commission_program_request import CreateSubscriptionCommissionProgramRequest
 from keap_core_v2_client.models.custom_field_group import CustomFieldGroup
 from keap_core_v2_client.models.custom_field_meta_data import CustomFieldMetaData
+from keap_core_v2_client.models.custom_field_tab import CustomFieldTab
 from keap_core_v2_client.models.delete_program_commission_request import DeleteProgramCommissionRequest
 from keap_core_v2_client.models.delete_subscription_plan_commission_request import DeleteSubscriptionPlanCommissionRequest
 from keap_core_v2_client.models.get_rest_commission_program import GetRestCommissionProgram
@@ -47,6 +49,7 @@ from keap_core_v2_client.models.list_affiliate_referrals_response import ListAff
 from keap_core_v2_client.models.list_affiliate_summaries_response import ListAffiliateSummariesResponse
 from keap_core_v2_client.models.list_affiliates_response import ListAffiliatesResponse
 from keap_core_v2_client.models.list_custom_field_groups_response import ListCustomFieldGroupsResponse
+from keap_core_v2_client.models.list_custom_field_tabs_response import ListCustomFieldTabsResponse
 from keap_core_v2_client.models.list_program_resources_response import ListProgramResourcesResponse
 from keap_core_v2_client.models.object_model import ObjectModel
 from keap_core_v2_client.models.rest_affiliate import RestAffiliate
@@ -54,6 +57,7 @@ from keap_core_v2_client.models.update_affiliate_request import UpdateAffiliateR
 from keap_core_v2_client.models.update_commission_program_request import UpdateCommissionProgramRequest
 from keap_core_v2_client.models.update_custom_field_group_request import UpdateCustomFieldGroupRequest
 from keap_core_v2_client.models.update_custom_field_meta_data_request import UpdateCustomFieldMetaDataRequest
+from keap_core_v2_client.models.update_custom_field_tab_request import UpdateCustomFieldTabRequest
 from keap_core_v2_client.models.update_default_commission_program_request import UpdateDefaultCommissionProgramRequest
 from keap_core_v2_client.models.update_product_commission_program_request import UpdateProductCommissionProgramRequest
 from keap_core_v2_client.models.update_program_resource_request import UpdateProgramResourceRequest
@@ -2507,6 +2511,304 @@ class AffiliateApi:
 
 
     @validate_call
+    def create_affiliate_custom_field_tab(
+        self,
+        create_custom_field_tab_request: CreateCustomFieldTabRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> CustomFieldTab:
+        """Create an Affiliate Custom Field Tab
+
+        Creates a new custom field tab for the Affiliate record type.
+
+        :param create_custom_field_tab_request: (required)
+        :type create_custom_field_tab_request: CreateCustomFieldTabRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_affiliate_custom_field_tab_serialize(
+            create_custom_field_tab_request=create_custom_field_tab_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def create_affiliate_custom_field_tab_with_http_info(
+        self,
+        create_custom_field_tab_request: CreateCustomFieldTabRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[CustomFieldTab]:
+        """Create an Affiliate Custom Field Tab
+
+        Creates a new custom field tab for the Affiliate record type.
+
+        :param create_custom_field_tab_request: (required)
+        :type create_custom_field_tab_request: CreateCustomFieldTabRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_affiliate_custom_field_tab_serialize(
+            create_custom_field_tab_request=create_custom_field_tab_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def create_affiliate_custom_field_tab_without_preload_content(
+        self,
+        create_custom_field_tab_request: CreateCustomFieldTabRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Create an Affiliate Custom Field Tab
+
+        Creates a new custom field tab for the Affiliate record type.
+
+        :param create_custom_field_tab_request: (required)
+        :type create_custom_field_tab_request: CreateCustomFieldTabRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_affiliate_custom_field_tab_serialize(
+            create_custom_field_tab_request=create_custom_field_tab_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _create_affiliate_custom_field_tab_serialize(
+        self,
+        create_custom_field_tab_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if create_custom_field_tab_request is not None:
+            _body_params = create_custom_field_tab_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/rest/v2/affiliates/model/customFields/tabs',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def create_default_commission_program(
         self,
         commission_program_id: StrictStr,
@@ -4242,6 +4544,291 @@ class AffiliateApi:
         return self.api_client.param_serialize(
             method='DELETE',
             resource_path='/rest/v2/affiliates/model/customFields/groups/{group_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_affiliate_custom_field_tab(
+        self,
+        tab_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete an Affiliate Custom Field Tab
+
+        Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_affiliate_custom_field_tab_serialize(
+            tab_id=tab_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_affiliate_custom_field_tab_with_http_info(
+        self,
+        tab_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Delete an Affiliate Custom Field Tab
+
+        Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_affiliate_custom_field_tab_serialize(
+            tab_id=tab_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_affiliate_custom_field_tab_without_preload_content(
+        self,
+        tab_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Delete an Affiliate Custom Field Tab
+
+        Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_affiliate_custom_field_tab_serialize(
+            tab_id=tab_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_affiliate_custom_field_tab_serialize(
+        self,
+        tab_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tab_id is not None:
+            _path_params['tab_id'] = tab_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/rest/v2/affiliates/model/customFields/tabs/{tab_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -6036,6 +6623,291 @@ class AffiliateApi:
 
 
     @validate_call
+    def get_affiliate_custom_field_tab(
+        self,
+        tab_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> CustomFieldTab:
+        """Retrieve an Affiliate Custom Field Tab
+
+        Retrieves a single custom field tab by id for the Affiliate record type.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_affiliate_custom_field_tab_serialize(
+            tab_id=tab_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_affiliate_custom_field_tab_with_http_info(
+        self,
+        tab_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[CustomFieldTab]:
+        """Retrieve an Affiliate Custom Field Tab
+
+        Retrieves a single custom field tab by id for the Affiliate record type.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_affiliate_custom_field_tab_serialize(
+            tab_id=tab_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_affiliate_custom_field_tab_without_preload_content(
+        self,
+        tab_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Retrieve an Affiliate Custom Field Tab
+
+        Retrieves a single custom field tab by id for the Affiliate record type.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_affiliate_custom_field_tab_serialize(
+            tab_id=tab_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_affiliate_custom_field_tab_serialize(
+        self,
+        tab_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tab_id is not None:
+            _path_params['tab_id'] = tab_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/rest/v2/affiliates/model/customFields/tabs/{tab_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def get_affiliate_custom_fields(
         self,
         _request_timeout: Union[
@@ -7231,7 +8103,7 @@ class AffiliateApi:
     @validate_call
     def list_affiliate(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: ==, and wildcard support (e.g., `value*`) - Numeric fields: ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Choice/Select fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. ")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): ==, and wildcard support (e.g., `value*`) - Numeric fields (including user, month, day of week): ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Yes/No and drilldown fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `date_created` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc` ")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -7252,7 +8124,7 @@ class AffiliateApi:
 
         Retrieves a list of Affiliates
 
-        :param filter: Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: ==, and wildcard support (e.g., `value*`) - Numeric fields: ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Choice/Select fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. 
+        :param filter: Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): ==, and wildcard support (e.g., `value*`) - Numeric fields (including user, month, day of week): ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Yes/No and drilldown fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. 
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `date_created` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc` 
         :type order_by: str
@@ -7318,7 +8190,7 @@ class AffiliateApi:
     @validate_call
     def list_affiliate_with_http_info(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: ==, and wildcard support (e.g., `value*`) - Numeric fields: ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Choice/Select fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. ")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): ==, and wildcard support (e.g., `value*`) - Numeric fields (including user, month, day of week): ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Yes/No and drilldown fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `date_created` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc` ")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -7339,7 +8211,7 @@ class AffiliateApi:
 
         Retrieves a list of Affiliates
 
-        :param filter: Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: ==, and wildcard support (e.g., `value*`) - Numeric fields: ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Choice/Select fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. 
+        :param filter: Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): ==, and wildcard support (e.g., `value*`) - Numeric fields (including user, month, day of week): ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Yes/No and drilldown fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. 
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `date_created` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc` 
         :type order_by: str
@@ -7405,7 +8277,7 @@ class AffiliateApi:
     @validate_call
     def list_affiliate_without_preload_content(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: ==, and wildcard support (e.g., `value*`) - Numeric fields: ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Choice/Select fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. ")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): ==, and wildcard support (e.g., `value*`) - Numeric fields (including user, month, day of week): ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Yes/No and drilldown fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. ")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `id` - `date_created` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc` ")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -7426,7 +8298,7 @@ class AffiliateApi:
 
         Retrieves a list of Affiliates
 
-        :param filter: Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: ==, and wildcard support (e.g., `value*`) - Numeric fields: ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Choice/Select fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. 
+        :param filter: Filter to apply, allowed fields are: - (String) `id` - Allowable operators: \"==\",\"<=\", \"<\", \">=\", \">\", \"!=\" - (String) `name` - Wildcard matching allowed - (String) `contact_id` - (String) `referral_contact_id` - (String) `status` - (String) `code` - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)  You will need to apply the `==` operator to check the equality of one of the filters with the value you want to match, in the encoded form `%3D%3D`. For the filters listed above, here are some examples: - `filter=id%3C123` - `filter=id%3D%3D123` - `filter=name%3D%3DBob` - `filter=contact_id%3D%3D567` - `filter=contact_id%3D%3D123%3Bcode%3D%3D567`  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): ==, and wildcard support (e.g., `value*`) - Numeric fields (including user, month, day of week): ==, <, <=, >, >= - Date fields: ==, <, <=, >, >= (ISO 8601 format) - Yes/No and drilldown fields: == - Multi-select fields: == (matches if value is present)  Examples of custom field filtering: - `filter=tier%3D%3DPlatinum` - Text field exact match - `filter=region%3D%3DWest%2A` - Text field with wildcard (starts with \"West\") - `filter=revenue%3E100000` - Numeric field greater than 100000 - `filter=join_date%3E%3D2024-01-01` - Date field on or after Jan 1, 2024 - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields  Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons. Only prefix wildcards (e.g., `value*`) are allowed. 
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `id` - `date_created` - `name` - `status` - `code`  One of the following directions: - `asc` - `desc` 
         :type order_by: str
@@ -8176,6 +9048,276 @@ class AffiliateApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/rest/v2/affiliates/model/customFields/groups',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def list_affiliate_custom_field_tabs(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ListCustomFieldTabsResponse:
+        """List Affiliate Custom Field Tabs
+
+        Retrieves a list of custom field tabs for the Affiliate record type.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_affiliate_custom_field_tabs_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListCustomFieldTabsResponse",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def list_affiliate_custom_field_tabs_with_http_info(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ListCustomFieldTabsResponse]:
+        """List Affiliate Custom Field Tabs
+
+        Retrieves a list of custom field tabs for the Affiliate record type.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_affiliate_custom_field_tabs_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListCustomFieldTabsResponse",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def list_affiliate_custom_field_tabs_without_preload_content(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List Affiliate Custom Field Tabs
+
+        Retrieves a list of custom field tabs for the Affiliate record type.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_affiliate_custom_field_tabs_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ListCustomFieldTabsResponse",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _list_affiliate_custom_field_tabs_serialize(
+        self,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/rest/v2/affiliates/model/customFields/tabs',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -11422,6 +12564,337 @@ class AffiliateApi:
         return self.api_client.param_serialize(
             method='PATCH',
             resource_path='/rest/v2/affiliates/model/customFields/groups/{group_id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def update_affiliate_custom_field_tab(
+        self,
+        tab_id: StrictStr,
+        update_mask: Annotated[List[StrictStr], Field(description="Comma-separated list of fields to update")],
+        update_custom_field_tab_request: UpdateCustomFieldTabRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> CustomFieldTab:
+        """Update an Affiliate Custom Field Tab
+
+        Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param update_mask: Comma-separated list of fields to update (required)
+        :type update_mask: List[str]
+        :param update_custom_field_tab_request: (required)
+        :type update_custom_field_tab_request: UpdateCustomFieldTabRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_affiliate_custom_field_tab_serialize(
+            tab_id=tab_id,
+            update_mask=update_mask,
+            update_custom_field_tab_request=update_custom_field_tab_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def update_affiliate_custom_field_tab_with_http_info(
+        self,
+        tab_id: StrictStr,
+        update_mask: Annotated[List[StrictStr], Field(description="Comma-separated list of fields to update")],
+        update_custom_field_tab_request: UpdateCustomFieldTabRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[CustomFieldTab]:
+        """Update an Affiliate Custom Field Tab
+
+        Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param update_mask: Comma-separated list of fields to update (required)
+        :type update_mask: List[str]
+        :param update_custom_field_tab_request: (required)
+        :type update_custom_field_tab_request: UpdateCustomFieldTabRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_affiliate_custom_field_tab_serialize(
+            tab_id=tab_id,
+            update_mask=update_mask,
+            update_custom_field_tab_request=update_custom_field_tab_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def update_affiliate_custom_field_tab_without_preload_content(
+        self,
+        tab_id: StrictStr,
+        update_mask: Annotated[List[StrictStr], Field(description="Comma-separated list of fields to update")],
+        update_custom_field_tab_request: UpdateCustomFieldTabRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update an Affiliate Custom Field Tab
+
+        Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+
+        :param tab_id: (required)
+        :type tab_id: str
+        :param update_mask: Comma-separated list of fields to update (required)
+        :type update_mask: List[str]
+        :param update_custom_field_tab_request: (required)
+        :type update_custom_field_tab_request: UpdateCustomFieldTabRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_affiliate_custom_field_tab_serialize(
+            tab_id=tab_id,
+            update_mask=update_mask,
+            update_custom_field_tab_request=update_custom_field_tab_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "CustomFieldTab",
+            '400': "Error",
+            '401': "Error",
+            '403': "Error",
+            '404': "Error",
+            '405': "Error",
+            '409': "Error",
+            '500': "Error",
+            '501': "Error",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _update_affiliate_custom_field_tab_serialize(
+        self,
+        tab_id,
+        update_mask,
+        update_custom_field_tab_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'update_mask': 'multi',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if tab_id is not None:
+            _path_params['tab_id'] = tab_id
+        # process the query parameters
+        if update_mask is not None:
+            
+            _query_params.append(('update_mask', update_mask))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if update_custom_field_tab_request is not None:
+            _body_params = update_custom_field_tab_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'oauth2'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path='/rest/v2/affiliates/model/customFields/tabs/{tab_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

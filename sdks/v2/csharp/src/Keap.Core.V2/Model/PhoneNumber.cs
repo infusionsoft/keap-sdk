@@ -89,7 +89,7 @@ namespace Keap.Core.V2.Model
         /// Initializes a new instance of the <see cref="PhoneNumber" /> class.
         /// </summary>
         /// <param name="extension">Phone extension.</param>
-        /// <param name="number">Phone number.</param>
+        /// <param name="number">Phone number. Maximum length is 40 characters for PHONE1-PHONE3 and 20 characters for PHONE4-PHONE5..</param>
         /// <param name="type">Phone type.</param>
         /// <param name="field">Phone number slot.</param>
         /// <param name="numberE164">Phone number in E.164 format.</param>
@@ -113,9 +113,9 @@ namespace Keap.Core.V2.Model
         public string Extension { get; set; }
 
         /// <summary>
-        /// Phone number
+        /// Phone number. Maximum length is 40 characters for PHONE1-PHONE3 and 20 characters for PHONE4-PHONE5.
         /// </summary>
-        /// <value>Phone number</value>
+        /// <value>Phone number. Maximum length is 40 characters for PHONE1-PHONE3 and 20 characters for PHONE4-PHONE5.</value>
         /*
         <example>5551234567</example>
         */

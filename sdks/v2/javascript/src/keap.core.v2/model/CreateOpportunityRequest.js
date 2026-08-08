@@ -24,10 +24,12 @@ class CreateOpportunityRequest {
      * opportunity
      * @alias module:keap.core.v2/model/CreateOpportunityRequest
      * @param opportunityTitle {String} Opportunity title
+     * @param contactId {String} Associated contact ID
+     * @param stageId {String} Pipeline stage ID
      */
-    constructor(opportunityTitle) { 
+    constructor(opportunityTitle, contactId, stageId) { 
         
-        CreateOpportunityRequest.initialize(this, opportunityTitle);
+        CreateOpportunityRequest.initialize(this, opportunityTitle, contactId, stageId);
     }
 
     /**
@@ -35,8 +37,10 @@ class CreateOpportunityRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, opportunityTitle) { 
+    static initialize(obj, opportunityTitle, contactId, stageId) { 
         obj['opportunity_title'] = opportunityTitle;
+        obj['contact_id'] = contactId;
+        obj['stage_id'] = stageId;
     }
 
     /**
@@ -158,7 +162,7 @@ class CreateOpportunityRequest {
 
 }
 
-CreateOpportunityRequest.RequiredProperties = ["opportunity_title"];
+CreateOpportunityRequest.RequiredProperties = ["opportunity_title", "contact_id", "stage_id"];
 
 /**
  * Opportunity title

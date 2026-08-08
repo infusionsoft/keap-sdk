@@ -26,7 +26,7 @@ import { HttpFile } from '../http/http';
 */
 export class CreateUpdateContactRequest {
     /**
-    * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+    * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
     */
     'addresses'?: Array<Address>;
     'company'?: BasicCompany;
@@ -56,11 +56,11 @@ export class CreateUpdateContactRequest {
     */
     'contactType'?: string;
     /**
-    * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+    * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
     */
     'customFields'?: Array<CustomFieldValue>;
     /**
-    * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+    * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
     */
     'emailAddresses'?: Array<EmailAddressRequest>;
     /**
@@ -68,7 +68,7 @@ export class CreateUpdateContactRequest {
     */
     'familyName'?: string;
     /**
-    * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+    * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
     */
     'faxNumbers'?: Array<FaxNumber>;
     /**
@@ -92,7 +92,7 @@ export class CreateUpdateContactRequest {
     */
     'ownerId'?: string;
     /**
-    * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+    * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
     */
     'phoneNumbers'?: Array<PhoneNumber>;
     /**
@@ -108,7 +108,7 @@ export class CreateUpdateContactRequest {
     */
     'referralCode'?: string;
     /**
-    * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+    * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
     */
     'socialAccounts'?: Array<SocialAccount>;
     'sourceType'?: CreateUpdateContactRequestSourceTypeEnum;
@@ -121,8 +121,17 @@ export class CreateUpdateContactRequest {
     */
     'timeZone'?: string;
     'utmParameters'?: CreateContactUtmPropertiesRequest;
+    /**
+    * Assistant\'s name
+    */
     'assistantName'?: string;
+    /**
+    * Assistant\'s phone number
+    */
     'assistantPhone'?: string;
+    /**
+    * Billing information
+    */
     'billingInformation'?: string;
 
     static readonly discriminator: string | undefined = undefined;

@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from keap_core_v2_client.models.address import Address
 from keap_core_v2_client.models.basic_company import BasicCompany
 from keap_core_v2_client.models.create_contact_utm_properties_request import CreateContactUtmPropertiesRequest
@@ -35,36 +36,36 @@ class CreateUpdateContactRequest(BaseModel):
     """
     contact
     """ # noqa: E501
-    addresses: Optional[List[Address]] = Field(default=None, description="Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
+    addresses: Optional[List[Address]] = Field(default=None, description="Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
     company: Optional[BasicCompany] = None
     origin: Optional[OriginRequest] = None
     prefix: Optional[StrictStr] = Field(default=None, description="Name prefix")
     suffix: Optional[StrictStr] = Field(default=None, description="Name suffix")
-    website: Optional[StrictStr] = Field(default=None, description="Personal website URL")
+    website: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="Personal website URL")
     anniversary_date: Optional[StrictStr] = Field(default=None, description="The anniversary date")
     birth_date: Optional[StrictStr] = Field(default=None, description="The birth date")
     contact_type: Optional[StrictStr] = Field(default=None, description="Type of contact")
-    custom_fields: Optional[List[CustomFieldValue]] = Field(default=None, description="Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
-    email_addresses: Optional[List[EmailAddressRequest]] = Field(default=None, description="Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
-    family_name: Optional[StrictStr] = Field(default=None, description="Last name / surname")
-    fax_numbers: Optional[List[FaxNumber]] = Field(default=None, description="Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
-    given_name: Optional[StrictStr] = Field(default=None, description="First name")
-    job_title: Optional[StrictStr] = Field(default=None, description="Job title")
+    custom_fields: Optional[List[CustomFieldValue]] = Field(default=None, description="Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
+    email_addresses: Optional[List[EmailAddressRequest]] = Field(default=None, description="Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
+    family_name: Optional[Annotated[str, Field(strict=True, max_length=40)]] = Field(default=None, description="Last name / surname")
+    fax_numbers: Optional[List[FaxNumber]] = Field(default=None, description="Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
+    given_name: Optional[Annotated[str, Field(strict=True, max_length=40)]] = Field(default=None, description="First name")
+    job_title: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="Job title")
     leadsource_id: Optional[StrictStr] = Field(default=None, description="Lead source identifier")
-    middle_name: Optional[StrictStr] = Field(default=None, description="Middle name")
+    middle_name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="Middle name")
     owner_id: Optional[StrictStr] = Field(default=None, description="ID of the user who owns this contact")
-    phone_numbers: Optional[List[PhoneNumber]] = Field(default=None, description="Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
+    phone_numbers: Optional[List[PhoneNumber]] = Field(default=None, description="Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
     preferred_locale: Optional[StrictStr] = Field(default=None, description="Preferred locale")
-    preferred_name: Optional[StrictStr] = Field(default=None, description="Preferred name or nickname")
+    preferred_name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="Preferred name or nickname")
     referral_code: Optional[StrictStr] = Field(default=None, description="Referral code")
-    social_accounts: Optional[List[SocialAccount]] = Field(default=None, description="Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
+    social_accounts: Optional[List[SocialAccount]] = Field(default=None, description="Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.")
     source_type: Optional[StrictStr] = None
-    spouse_name: Optional[StrictStr] = Field(default=None, description="Spouse's name")
+    spouse_name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="Spouse's name")
     time_zone: Optional[StrictStr] = Field(default=None, description="Contact's timezone")
     utm_parameters: Optional[CreateContactUtmPropertiesRequest] = None
-    assistant_name: Optional[StrictStr] = None
-    assistant_phone: Optional[StrictStr] = None
-    billing_information: Optional[StrictStr] = None
+    assistant_name: Optional[Annotated[str, Field(strict=True, max_length=20)]] = Field(default=None, description="Assistant's name")
+    assistant_phone: Optional[Annotated[str, Field(strict=True, max_length=15)]] = Field(default=None, description="Assistant's phone number")
+    billing_information: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="Billing information")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["addresses", "company", "origin", "prefix", "suffix", "website", "anniversary_date", "birth_date", "contact_type", "custom_fields", "email_addresses", "family_name", "fax_numbers", "given_name", "job_title", "leadsource_id", "middle_name", "owner_id", "phone_numbers", "preferred_locale", "preferred_name", "referral_code", "social_accounts", "source_type", "spouse_name", "time_zone", "utm_parameters", "assistant_name", "assistant_phone", "billing_information"]
 

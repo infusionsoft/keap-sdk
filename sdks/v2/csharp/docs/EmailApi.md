@@ -10,6 +10,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**DeleteEmails**](EmailApi.md#deleteemails) | **POST** /rest/v2/emails:batchRemove | Remove a set of Email Records |
 | [**GetEmail**](EmailApi.md#getemail) | **GET** /rest/v2/emails/{id} | Retrieve an Email |
 | [**GetEmailTemplate**](EmailApi.md#getemailtemplate) | **GET** /rest/v2/emails/templates/{email_template_id} | Retrieve an email template |
+| [**ListEmailTemplates**](EmailApi.md#listemailtemplates) | **GET** /rest/v2/emails/templates | List email templates |
 | [**ListEmails**](EmailApi.md#listemails) | **GET** /rest/v2/emails | List Emails |
 | [**SendEmail**](EmailApi.md#sendemail) | **POST** /rest/v2/emails:send | Send an Email |
 | [**SendEmailTemplate**](EmailApi.md#sendemailtemplate) | **POST** /rest/v2/emails/templates:send | Send an email based on a template |
@@ -596,6 +597,114 @@ catch (ApiException e)
 ### Return type
 
 [**EmailTemplate**](EmailTemplate.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listemailtemplates"></a>
+# **ListEmailTemplates**
+> ListEmailTemplatesResponse ListEmailTemplates (string? filter = null, string? pageToken = null, string? orderBy = null, int? pageSize = null)
+
+List email templates
+
+Retrieves a paginated list of email templates
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListEmailTemplatesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new EmailApi(config);
+            var filter = "filter_example";  // string? | Search filter to apply to results (optional) 
+            var pageToken = "pageToken_example";  // string? | Page token (optional) 
+            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `id` One of the following directions: - `asc` - `desc` (optional) 
+            var pageSize = 0;  // int? | Total number of items to return per page (optional) 
+
+            try
+            {
+                // List email templates
+                ListEmailTemplatesResponse result = apiInstance.ListEmailTemplates(filter, pageToken, orderBy, pageSize);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling EmailApi.ListEmailTemplates: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListEmailTemplatesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List email templates
+    ApiResponse<ListEmailTemplatesResponse> response = apiInstance.ListEmailTemplatesWithHttpInfo(filter, pageToken, orderBy, pageSize);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling EmailApi.ListEmailTemplatesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **filter** | **string?** | Search filter to apply to results | [optional]  |
+| **pageToken** | **string?** | Page token | [optional]  |
+| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional]  |
+| **pageSize** | **int?** | Total number of items to return per page | [optional]  |
+
+### Return type
+
+[**ListEmailTemplatesResponse**](ListEmailTemplatesResponse.md)
 
 ### Authorization
 

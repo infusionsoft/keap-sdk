@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Contact ID | 
 **Email** | **string** | Email address | [optional] 
+**City** | **string** | City | [optional] 
+**State** | **string** | State | [optional] 
 **FirstName** | **string** | First name | [optional] 
 **LastName** | **string** | Last name | [optional] 
 **CompanyName** | **string** | Company name | [optional] 

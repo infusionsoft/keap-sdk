@@ -7,7 +7,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**DeactivatePaymentMethod**](PaymentMethodsApi.md#deactivatepaymentmethod) | **POST** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate | Deactivate a Contact Payment Method |
 | [**DeletePaymentMethod**](PaymentMethodsApi.md#deletepaymentmethod) | **DELETE** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Contact Payment Method |
 | [**ListPaymentMethods**](PaymentMethodsApi.md#listpaymentmethods) | **GET** /rest/v2/paymentMethods | List of Payment Methods |
-| [**ListPaymentMethods_0**](PaymentMethodsApi.md#listpaymentmethods_0) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods |
+| [**ListPaymentMethods1**](PaymentMethodsApi.md#listpaymentmethods1) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods |
 
 <a id="deactivatepaymentmethod"></a>
 # **DeactivatePaymentMethod**
@@ -317,9 +317,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listpaymentmethods_0"></a>
-# **ListPaymentMethods_0**
-> ListContactPaymentMethodsResponse ListPaymentMethods_0 (string contactId, string? filter = null, string? orderBy = null, int? pageSize = null, string? pageToken = null)
+<a id="listpaymentmethods1"></a>
+# **ListPaymentMethods1**
+> ListContactPaymentMethodsResponse ListPaymentMethods1 (string contactId, string? filter = null, string? pageToken = null, string? orderBy = null, int? pageSize = null)
 
 List of Contact Payment Methods
 
@@ -335,7 +335,7 @@ using Keap.Core.V2.Model;
 
 namespace Example
 {
-    public class ListPaymentMethods_0Example
+    public class ListPaymentMethods1Example
     {
         public static void Main()
         {
@@ -347,19 +347,19 @@ namespace Example
             var apiInstance = new PaymentMethodsApi(config);
             var contactId = "contactId_example";  // string | ID of the contact to which the payment method belongs.
             var filter = "filter_example";  // string? | Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`   (optional) 
+            var pageToken = "pageToken_example";  // string? | Page token (optional) 
             var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `desc` - `asc` (optional) 
             var pageSize = 0;  // int? | Total number of items to return per page (optional) 
-            var pageToken = "pageToken_example";  // string? | Page token (optional) 
 
             try
             {
                 // List of Contact Payment Methods
-                ListContactPaymentMethodsResponse result = apiInstance.ListPaymentMethods_0(contactId, filter, orderBy, pageSize, pageToken);
+                ListContactPaymentMethodsResponse result = apiInstance.ListPaymentMethods1(contactId, filter, pageToken, orderBy, pageSize);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling PaymentMethodsApi.ListPaymentMethods_0: " + e.Message);
+                Debug.Print("Exception when calling PaymentMethodsApi.ListPaymentMethods1: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -368,21 +368,21 @@ namespace Example
 }
 ```
 
-#### Using the ListPaymentMethods_0WithHttpInfo variant
+#### Using the ListPaymentMethods1WithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
     // List of Contact Payment Methods
-    ApiResponse<ListContactPaymentMethodsResponse> response = apiInstance.ListPaymentMethods_0WithHttpInfo(contactId, filter, orderBy, pageSize, pageToken);
+    ApiResponse<ListContactPaymentMethodsResponse> response = apiInstance.ListPaymentMethods1WithHttpInfo(contactId, filter, pageToken, orderBy, pageSize);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling PaymentMethodsApi.ListPaymentMethods_0WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling PaymentMethodsApi.ListPaymentMethods1WithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -394,9 +394,9 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **contactId** | **string** | ID of the contact to which the payment method belongs. |  |
 | **filter** | **string?** | Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   | [optional]  |
+| **pageToken** | **string?** | Page token | [optional]  |
 | **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; | [optional]  |
 | **pageSize** | **int?** | Total number of items to return per page | [optional]  |
-| **pageToken** | **string?** | Page token | [optional]  |
 
 ### Return type
 

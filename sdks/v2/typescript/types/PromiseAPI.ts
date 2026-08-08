@@ -90,6 +90,7 @@ import { CreateCustomFieldGroupRequest } from '../models/CreateCustomFieldGroupR
 import { CreateCustomFieldOptionRequest } from '../models/CreateCustomFieldOptionRequest';
 import { CreateCustomFieldRequest } from '../models/CreateCustomFieldRequest';
 import { CreateCustomFieldResponse } from '../models/CreateCustomFieldResponse';
+import { CreateCustomFieldTabRequest } from '../models/CreateCustomFieldTabRequest';
 import { CreateDefaultCommissionProgramRequest } from '../models/CreateDefaultCommissionProgramRequest';
 import { CreateEmailSentRequest } from '../models/CreateEmailSentRequest';
 import { CreateEmailsSentRequest } from '../models/CreateEmailsSentRequest';
@@ -137,6 +138,7 @@ import { CustomField } from '../models/CustomField';
 import { CustomFieldGroup } from '../models/CustomFieldGroup';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
 import { CustomFieldOption } from '../models/CustomFieldOption';
+import { CustomFieldTab } from '../models/CustomFieldTab';
 import { CustomFieldValue } from '../models/CustomFieldValue';
 import { CustomFieldValueObject } from '../models/CustomFieldValueObject';
 import { DefaultCommission } from '../models/DefaultCommission';
@@ -155,6 +157,7 @@ import { EmailSent } from '../models/EmailSent';
 import { EmailSentCreateError } from '../models/EmailSentCreateError';
 import { EmailSentWithContent } from '../models/EmailSentWithContent';
 import { EmailTemplate } from '../models/EmailTemplate';
+import { EmailTemplateSummary } from '../models/EmailTemplateSummary';
 import { EmailsSentList } from '../models/EmailsSentList';
 import { ErrorDetails } from '../models/ErrorDetails';
 import { FaxNumber } from '../models/FaxNumber';
@@ -209,7 +212,9 @@ import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
 import { ListCustomFieldGroupsResponse } from '../models/ListCustomFieldGroupsResponse';
+import { ListCustomFieldTabsResponse } from '../models/ListCustomFieldTabsResponse';
 import { ListEmailAddressStatusResponse } from '../models/ListEmailAddressStatusResponse';
+import { ListEmailTemplatesResponse } from '../models/ListEmailTemplatesResponse';
 import { ListEmailsSentResponse } from '../models/ListEmailsSentResponse';
 import { ListFilesResponse } from '../models/ListFilesResponse';
 import { ListFreeTrialDiscountsResponse } from '../models/ListFreeTrialDiscountsResponse';
@@ -244,6 +249,7 @@ import { ListShippingDiscountsResponse } from '../models/ListShippingDiscountsRe
 import { ListSubscriptionPlansResponse } from '../models/ListSubscriptionPlansResponse';
 import { ListSubscriptionsResponse } from '../models/ListSubscriptionsResponse';
 import { ListTagCategoriesResponse } from '../models/ListTagCategoriesResponse';
+import { ListTagContactAssociationsResponse } from '../models/ListTagContactAssociationsResponse';
 import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesResponse';
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
@@ -325,6 +331,7 @@ import { SubscriptionPlanDetail } from '../models/SubscriptionPlanDetail';
 import { SubscriptionPlanList } from '../models/SubscriptionPlanList';
 import { Tag } from '../models/Tag';
 import { TagCategory } from '../models/TagCategory';
+import { TagContactAssociation } from '../models/TagContactAssociation';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { TaggedContact } from '../models/TaggedContact';
 import { Task } from '../models/Task';
@@ -339,6 +346,7 @@ import { UpdateCompanyRequest } from '../models/UpdateCompanyRequest';
 import { UpdateContactLinkTypeRequest } from '../models/UpdateContactLinkTypeRequest';
 import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
+import { UpdateCustomFieldTabRequest } from '../models/UpdateCustomFieldTabRequest';
 import { UpdateDefaultCommissionProgramRequest } from '../models/UpdateDefaultCommissionProgramRequest';
 import { UpdateEmailAddress } from '../models/UpdateEmailAddress';
 import { UpdateFreeTrialDiscountCriteria } from '../models/UpdateFreeTrialDiscountCriteria';
@@ -575,6 +583,28 @@ export class PromiseAffiliateApi {
     }
 
     /**
+     * Creates a new custom field tab for the Affiliate record type.
+     * Create an Affiliate Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createAffiliateCustomFieldTabWithHttpInfo(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createAffiliateCustomFieldTabWithHttpInfo(createCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field tab for the Affiliate record type.
+     * Create an Affiliate Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createAffiliateCustomFieldTab(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createAffiliateCustomFieldTab(createCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Creates a Default Commission Program
      * Create a Default Commission Program
      * @param commissionProgramId
@@ -705,6 +735,28 @@ export class PromiseAffiliateApi {
     public deleteAffiliateCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteAffiliateCustomFieldGroup(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * Delete an Affiliate Custom Field Tab
+     * @param tabId
+     */
+    public deleteAffiliateCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteAffiliateCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * Delete an Affiliate Custom Field Tab
+     * @param tabId
+     */
+    public deleteAffiliateCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteAffiliateCustomFieldTab(tabId, observableOptions);
         return result.toPromise();
     }
 
@@ -849,6 +901,28 @@ export class PromiseAffiliateApi {
     }
 
     /**
+     * Retrieves a single custom field tab by id for the Affiliate record type.
+     * Retrieve an Affiliate Custom Field Tab
+     * @param tabId
+     */
+    public getAffiliateCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAffiliateCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field tab by id for the Affiliate record type.
+     * Retrieve an Affiliate Custom Field Tab
+     * @param tabId
+     */
+    public getAffiliateCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAffiliateCustomFieldTab(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Get the custom fields and optional properties for the Affiliate object
      * Retrieve Affiliate Model
      */
@@ -945,7 +1019,7 @@ export class PromiseAffiliateApi {
     /**
      * Retrieves a list of Affiliates
      * List Affiliates
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Choice/Select fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed. 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields (including user, month, day of week): &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Yes/No and drilldown fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed. 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -959,7 +1033,7 @@ export class PromiseAffiliateApi {
     /**
      * Retrieves a list of Affiliates
      * List Affiliates
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields: &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Choice/Select fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed. 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;contact_id&#x60; - (String) &#x60;referral_contact_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;code&#x60; - (Custom) Custom field names - Reference by field name (e.g., &#x60;tier&#x60;, &#x60;region&#x60;)  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with the value you want to match, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;name%3D%3DBob&#x60; - &#x60;filter&#x3D;contact_id%3D%3D567&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bcode%3D%3D567&#x60;  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  Custom Field Filtering: Custom fields are referenced by their field name as configured in the system. Standard field names take precedence over custom field names.  Supported operators by field type: - Text fields and single-value choice fields with text options (dropdown, radio, state): &#x3D;&#x3D;, and wildcard support (e.g., &#x60;value*&#x60;) - Numeric fields (including user, month, day of week): &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; - Date fields: &#x3D;&#x3D;, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D; (ISO 8601 format) - Yes/No and drilldown fields: &#x3D;&#x3D; - Multi-select fields: &#x3D;&#x3D; (matches if value is present)  Examples of custom field filtering: - &#x60;filter&#x3D;tier%3D%3DPlatinum&#x60; - Text field exact match - &#x60;filter&#x3D;region%3D%3DWest%2A&#x60; - Text field with wildcard (starts with \&quot;West\&quot;) - &#x60;filter&#x3D;revenue%3E100000&#x60; - Numeric field greater than 100000 - &#x60;filter&#x3D;join_date%3E%3D2024-01-01&#x60; - Date field on or after Jan 1, 2024 - &#x60;filter&#x3D;name%3D%3DBob%3Btier%3D%3DGold&#x60; - Combine standard and custom fields  Note: Leading wildcards (e.g., &#x60;*value&#x60;) are not supported for performance reasons. Only prefix wildcards (e.g., &#x60;value*&#x60;) are allowed. 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;date_created&#x60; - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;code&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -1017,6 +1091,26 @@ export class PromiseAffiliateApi {
     public listAffiliateCustomFieldGroups(tabId?: string, _options?: PromiseConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listAffiliateCustomFieldGroups(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field tabs for the Affiliate record type.
+     * List Affiliate Custom Field Tabs
+     */
+    public listAffiliateCustomFieldTabsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldTabsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAffiliateCustomFieldTabsWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field tabs for the Affiliate record type.
+     * List Affiliate Custom Field Tabs
+     */
+    public listAffiliateCustomFieldTabs(_options?: PromiseConfigurationOptions): Promise<ListCustomFieldTabsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listAffiliateCustomFieldTabs(observableOptions);
         return result.toPromise();
     }
 
@@ -1275,6 +1369,32 @@ export class PromiseAffiliateApi {
     public updateAffiliateCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateAffiliateCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * Update an Affiliate Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateAffiliateCustomFieldTabWithHttpInfo(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateAffiliateCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * Update an Affiliate Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateAffiliateCustomFieldTab(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateAffiliateCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -1590,7 +1710,7 @@ export class PromiseAutomationApi {
     /**
      * Retrieves a list of automations IDs
      * List Automations Ids
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched text, in the encoded form &#x60;%3D%3D&#x60;. The search will look for the text anywhere in the automation name.  - &#x60;filter&#x3D;name%3D%3DSpring Automation&#x60; - &#x60;filter&#x3D;name%3D%3DTag New Contacts&#x60; 
+     * @param [filter] Filter to apply, allowed fields are:  - &#x60;name&#x60; (String): Filter by automation name. Supports the &#x60;&#x3D;&#x3D;&#x60; operator with optional prefix wildcard (&#x60;foo*&#x60;).   Without a wildcard, the search matches automations whose name contains the given text.   With a prefix wildcard, it matches automations whose name starts with the given text.   - &#x60;filter&#x3D;name%3D%3DSpring Automation&#x60; — names containing \&quot;Spring Automation\&quot;   - &#x60;filter&#x3D;name%3D%3DSpring*&#x60; — names starting with \&quot;Spring\&quot;  - &#x60;id&#x60; (Long): Filter by automation ID. Supports comparison operators:   &#x60;&#x3D;&#x3D;&#x60; &#x60;!&#x3D;&#x60; &#x60;&gt;&#x60; &#x60;&lt;&#x60; &#x60;&gt;&#x3D;&#x60; &#x60;&lt;&#x3D;&#x60;   - &#x60;filter&#x3D;id%3E5&#x60; — id &gt; 5   - &#x60;filter&#x3D;id%3E%3D10&#x60; — id &gt;&#x3D; 10  - &#x60;status&#x60; (String): Filter by automation status. Accepted values: &#x60;published&#x60;, &#x60;draft&#x60;.   - &#x60;filter&#x3D;status%3D%3Dpublished&#x60; — published automations only   - &#x60;filter&#x3D;status%3D%3Ddraft&#x60; — draft automations only  - &#x60;categories&#x60; (String): Filter by category ID (comma-separated list of IDs).   - &#x60;filter&#x3D;categories%3D%3D1&#x60; — automations in category 1   - &#x60;filter&#x3D;categories%3D%3D1,2,3&#x60; — automations in categories 1, 2, or 3  Multiple filters can be combined with &#x60;;&#x60; (AND logic): - &#x60;filter&#x3D;name%3D%3DSpring*%3Bautomation_id%3E5&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;category&#x60; - &#x60;activeContacts&#x60; - &#x60;publishedDate&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -1604,7 +1724,7 @@ export class PromiseAutomationApi {
     /**
      * Retrieves a list of automations IDs
      * List Automations Ids
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched text, in the encoded form &#x60;%3D%3D&#x60;. The search will look for the text anywhere in the automation name.  - &#x60;filter&#x3D;name%3D%3DSpring Automation&#x60; - &#x60;filter&#x3D;name%3D%3DTag New Contacts&#x60; 
+     * @param [filter] Filter to apply, allowed fields are:  - &#x60;name&#x60; (String): Filter by automation name. Supports the &#x60;&#x3D;&#x3D;&#x60; operator with optional prefix wildcard (&#x60;foo*&#x60;).   Without a wildcard, the search matches automations whose name contains the given text.   With a prefix wildcard, it matches automations whose name starts with the given text.   - &#x60;filter&#x3D;name%3D%3DSpring Automation&#x60; — names containing \&quot;Spring Automation\&quot;   - &#x60;filter&#x3D;name%3D%3DSpring*&#x60; — names starting with \&quot;Spring\&quot;  - &#x60;id&#x60; (Long): Filter by automation ID. Supports comparison operators:   &#x60;&#x3D;&#x3D;&#x60; &#x60;!&#x3D;&#x60; &#x60;&gt;&#x60; &#x60;&lt;&#x60; &#x60;&gt;&#x3D;&#x60; &#x60;&lt;&#x3D;&#x60;   - &#x60;filter&#x3D;id%3E5&#x60; — id &gt; 5   - &#x60;filter&#x3D;id%3E%3D10&#x60; — id &gt;&#x3D; 10  - &#x60;status&#x60; (String): Filter by automation status. Accepted values: &#x60;published&#x60;, &#x60;draft&#x60;.   - &#x60;filter&#x3D;status%3D%3Dpublished&#x60; — published automations only   - &#x60;filter&#x3D;status%3D%3Ddraft&#x60; — draft automations only  - &#x60;categories&#x60; (String): Filter by category ID (comma-separated list of IDs).   - &#x60;filter&#x3D;categories%3D%3D1&#x60; — automations in category 1   - &#x60;filter&#x3D;categories%3D%3D1,2,3&#x60; — automations in categories 1, 2, or 3  Multiple filters can be combined with &#x60;;&#x60; (AND logic): - &#x60;filter&#x3D;name%3D%3DSpring*%3Bautomation_id%3E5&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;category&#x60; - &#x60;activeContacts&#x60; - &#x60;publishedDate&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -1618,7 +1738,7 @@ export class PromiseAutomationApi {
     /**
      * Retrieves a list of automations
      * List Automations
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched text, in the encoded form &#x60;%3D%3D&#x60;. The search will look for the text anywhere in the automation name.  - &#x60;filter&#x3D;name%3D%3DSpring Automation&#x60; - &#x60;filter&#x3D;name%3D%3DTag New Contacts&#x60; 
+     * @param [filter] Filter to apply, allowed fields are:  - &#x60;name&#x60; (String): Filter by automation name. Supports the &#x60;&#x3D;&#x3D;&#x60; operator with optional prefix wildcard (&#x60;foo*&#x60;).   Without a wildcard, the search matches automations whose name contains the given text.   With a prefix wildcard, it matches automations whose name starts with the given text.   - &#x60;filter&#x3D;name%3D%3DSpring Automation&#x60; — names containing \&quot;Spring Automation\&quot;   - &#x60;filter&#x3D;name%3D%3DSpring*&#x60; — names starting with \&quot;Spring\&quot;  - &#x60;id&#x60; (Long): Filter by automation ID. Supports comparison operators:   &#x60;&#x3D;&#x3D;&#x60; &#x60;!&#x3D;&#x60; &#x60;&gt;&#x60; &#x60;&lt;&#x60; &#x60;&gt;&#x3D;&#x60; &#x60;&lt;&#x3D;&#x60;   - &#x60;filter&#x3D;id%3E5&#x60; — id &gt; 5   - &#x60;filter&#x3D;id%3E%3D10&#x60; — id &gt;&#x3D; 10  - &#x60;status&#x60; (String): Filter by automation status. Accepted values: &#x60;published&#x60;, &#x60;draft&#x60;.   - &#x60;filter&#x3D;status%3D%3Dpublished&#x60; — published automations only   - &#x60;filter&#x3D;status%3D%3Ddraft&#x60; — draft automations only  - &#x60;categories&#x60; (String): Filter by category ID (comma-separated list of IDs).   - &#x60;filter&#x3D;categories%3D%3D1&#x60; — automations in category 1   - &#x60;filter&#x3D;categories%3D%3D1,2,3&#x60; — automations in categories 1, 2, or 3  Multiple filters can be combined with &#x60;;&#x60; (AND logic): - &#x60;filter&#x3D;name%3D%3DSpring*%3Bautomation_id%3E5&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;category&#x60; - &#x60;activeContacts&#x60; - &#x60;publishedDate&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -1632,7 +1752,7 @@ export class PromiseAutomationApi {
     /**
      * Retrieves a list of automations
      * List Automations
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of the filter with your searched text, in the encoded form &#x60;%3D%3D&#x60;. The search will look for the text anywhere in the automation name.  - &#x60;filter&#x3D;name%3D%3DSpring Automation&#x60; - &#x60;filter&#x3D;name%3D%3DTag New Contacts&#x60; 
+     * @param [filter] Filter to apply, allowed fields are:  - &#x60;name&#x60; (String): Filter by automation name. Supports the &#x60;&#x3D;&#x3D;&#x60; operator with optional prefix wildcard (&#x60;foo*&#x60;).   Without a wildcard, the search matches automations whose name contains the given text.   With a prefix wildcard, it matches automations whose name starts with the given text.   - &#x60;filter&#x3D;name%3D%3DSpring Automation&#x60; — names containing \&quot;Spring Automation\&quot;   - &#x60;filter&#x3D;name%3D%3DSpring*&#x60; — names starting with \&quot;Spring\&quot;  - &#x60;id&#x60; (Long): Filter by automation ID. Supports comparison operators:   &#x60;&#x3D;&#x3D;&#x60; &#x60;!&#x3D;&#x60; &#x60;&gt;&#x60; &#x60;&lt;&#x60; &#x60;&gt;&#x3D;&#x60; &#x60;&lt;&#x3D;&#x60;   - &#x60;filter&#x3D;id%3E5&#x60; — id &gt; 5   - &#x60;filter&#x3D;id%3E%3D10&#x60; — id &gt;&#x3D; 10  - &#x60;status&#x60; (String): Filter by automation status. Accepted values: &#x60;published&#x60;, &#x60;draft&#x60;.   - &#x60;filter&#x3D;status%3D%3Dpublished&#x60; — published automations only   - &#x60;filter&#x3D;status%3D%3Ddraft&#x60; — draft automations only  - &#x60;categories&#x60; (String): Filter by category ID (comma-separated list of IDs).   - &#x60;filter&#x3D;categories%3D%3D1&#x60; — automations in category 1   - &#x60;filter&#x3D;categories%3D%3D1,2,3&#x60; — automations in categories 1, 2, or 3  Multiple filters can be combined with &#x60;;&#x60; (AND logic): - &#x60;filter&#x3D;name%3D%3DSpring*%3Bautomation_id%3E5&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60; - &#x60;category&#x60; - &#x60;activeContacts&#x60; - &#x60;publishedDate&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -2275,6 +2395,28 @@ export class PromiseCompanyApi {
     }
 
     /**
+     * Creates a new custom field tab for the Company record type.
+     * Create a Company Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createCompanyCustomFieldTabWithHttpInfo(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createCompanyCustomFieldTabWithHttpInfo(createCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field tab for the Company record type.
+     * Create a Company Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createCompanyCustomFieldTab(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createCompanyCustomFieldTab(createCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes the specified Company
      * Delete a Company
      * @param companyId
@@ -2341,6 +2483,28 @@ export class PromiseCompanyApi {
     }
 
     /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * Delete a Company Custom Field Tab
+     * @param tabId
+     */
+    public deleteCompanyCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteCompanyCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * Delete a Company Custom Field Tab
+     * @param tabId
+     */
+    public deleteCompanyCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteCompanyCustomFieldTab(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a single Company
      * Retrieve a Company
      * @param companyId
@@ -2387,10 +2551,32 @@ export class PromiseCompanyApi {
     }
 
     /**
+     * Retrieves a single custom field tab by id for the Company record type.
+     * Retrieve a Company Custom Field Tab
+     * @param tabId
+     */
+    public getCompanyCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCompanyCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field tab by id for the Company record type.
+     * Retrieve a Company Custom Field Tab
+     * @param tabId
+     */
+    public getCompanyCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCompanyCustomFieldTab(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a list of all Companies.<br/><br/>
      * List Companies
      * @param [fields] Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren\&#39;t included, by default.)
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;Industry%3D%3DTech%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;since_time&#x60;/&#x60;until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Examples (for a custom field named &#x60;Height&#x60;): - &#x60;filter&#x3D;Height%3D%3DTall&#x60; - &#x60;filter&#x3D;Height%3E100&#x60; Custom field filtering on non-indexed fields is supported but may be slower. 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;city&#x60; - company city (Contact.City) with support for a prefix wildcard at the end (e.g. &#x60;Chan*&#x60;) - (String) &#x60;state&#x60; - company state/region (Contact.State) with support for a prefix wildcard at the end (e.g. &#x60;Ar*&#x60;) - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name/city/state search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;Industry%3D%3DTech%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;since_time&#x60;/&#x60;until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Examples (for a custom field named &#x60;Height&#x60;): - &#x60;filter&#x3D;Height%3D%3DTall&#x60; - &#x60;filter&#x3D;Height%3E100&#x60; Custom field filtering on non-indexed fields is supported but may be slower. 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -2405,7 +2591,7 @@ export class PromiseCompanyApi {
      * Retrieves a list of all Companies.<br/><br/>
      * List Companies
      * @param [fields] Comma-delimited list of Company properties to include in the response. (Fields such as &#x60;notes&#x60;, &#x60;fax_number&#x60;, &#x60;address&#x60;, &#x60;email_address&#x60;, &#x60;phone_number&#x60;, &#x60;update_time&#x60;, &#x60;create_time&#x60; and &#x60;custom_fields&#x60; aren\&#39;t included, by default.)
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;Industry%3D%3DTech%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;since_time&#x60;/&#x60;until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Examples (for a custom field named &#x60;Height&#x60;): - &#x60;filter&#x3D;Height%3D%3DTall&#x60; - &#x60;filter&#x3D;Height%3E100&#x60; Custom field filtering on non-indexed fields is supported but may be slower. 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;company_name&#x60; - exact match on company name (equality only) - (String) &#x60;name&#x60; - company name with support for a wildcard at the end (e.g. &#x60;smith*&#x60;) - (String) &#x60;email&#x60; - exact match on email - (String) &#x60;city&#x60; - company city (Contact.City) with support for a prefix wildcard at the end (e.g. &#x60;Chan*&#x60;) - (String) &#x60;state&#x60; - company state/region (Contact.State) with support for a prefix wildcard at the end (e.g. &#x60;Ar*&#x60;) - (String) &#x60;since_time&#x60; - companies updated on or after this time - (String) &#x60;until_time&#x60; - companies updated on or before this time - (Number) &#x60;company_id&#x60; - supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;  For equality filters, use the &#x60;&#x3D;&#x3D;&#x60; operator in encoded form &#x60;%3D%3D&#x60;: - &#x60;filter&#x3D;company_name%3D%3DCompany&#x60; - &#x60;filter&#x3D;email%3D%3Dtest@gmail.com&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  For wildcard name/city/state search (prefix only, case-insensitive): - &#x60;filter&#x3D;name%3D%3DAcme%2A&#x60; (starts with \&quot;Acme\&quot;) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter)  For company_id comparison: - &#x60;filter&#x3D;company_id%3E5&#x60; (company_id &gt; 5) - &#x60;filter&#x3D;company_id%3E%3D10&#x60; (company_id &gt;&#x3D; 10)  Custom fields can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;Industry%3D%3DTech%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;since_time&#x60;/&#x60;until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Examples (for a custom field named &#x60;Height&#x60;): - &#x60;filter&#x3D;Height%3D%3DTall&#x60; - &#x60;filter&#x3D;Height%3E100&#x60; Custom field filtering on non-indexed fields is supported but may be slower. 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;name&#x60; - &#x60;email&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -2435,6 +2621,26 @@ export class PromiseCompanyApi {
     public listCompanyCustomFieldGroups(tabId?: string, _options?: PromiseConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listCompanyCustomFieldGroups(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field tabs for the Company record type.
+     * List Company Custom Field Tabs
+     */
+    public listCompanyCustomFieldTabsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldTabsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listCompanyCustomFieldTabsWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field tabs for the Company record type.
+     * List Company Custom Field Tabs
+     */
+    public listCompanyCustomFieldTabs(_options?: PromiseConfigurationOptions): Promise<ListCustomFieldTabsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listCompanyCustomFieldTabs(observableOptions);
         return result.toPromise();
     }
 
@@ -2590,6 +2796,32 @@ export class PromiseCompanyApi {
         return result.toPromise();
     }
 
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * Update a Company Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateCompanyCustomFieldTabWithHttpInfo(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateCompanyCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * Update a Company Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateCompanyCustomFieldTab(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateCompanyCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
 
 }
 
@@ -2676,6 +2908,28 @@ export class PromiseContactApi {
     public createContactCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.createContactCustomFieldGroup(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field tab for the Contact record type.
+     * Create a Contact Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createContactCustomFieldTabWithHttpInfo(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createContactCustomFieldTabWithHttpInfo(createCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field tab for the Contact record type.
+     * Create a Contact Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createContactCustomFieldTab(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createContactCustomFieldTab(createCustomFieldTabRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2768,6 +3022,28 @@ export class PromiseContactApi {
     }
 
     /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * Delete a Contact Custom Field Tab
+     * @param tabId
+     */
+    public deleteContactCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteContactCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * Delete a Contact Custom Field Tab
+     * @param tabId
+     */
+    public deleteContactCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteContactCustomFieldTab(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes the specified Contact Link type. The Link type cannot be deleted if it is currently applied to any Linked Contacts.
      * Delete a Contact Link type
      * @param linkTypeId Contact Link type identifier
@@ -2836,6 +3112,28 @@ export class PromiseContactApi {
     }
 
     /**
+     * Retrieves a single custom field tab by id for the Contact record type.
+     * Retrieve a Contact Custom Field Tab
+     * @param tabId
+     */
+    public getContactCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getContactCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field tab by id for the Contact record type.
+     * Retrieve a Contact Custom Field Tab
+     * @param tabId
+     */
+    public getContactCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getContactCustomFieldTab(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Links two Contacts together using the provided Link type
      * Link Contacts
      * @param linkContactsRequest
@@ -2876,6 +3174,26 @@ export class PromiseContactApi {
     public listContactCustomFieldGroups(tabId?: string, _options?: PromiseConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listContactCustomFieldGroups(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field tabs for the Contact record type.
+     * List Contact Custom Field Tabs
+     */
+    public listContactCustomFieldTabsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldTabsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listContactCustomFieldTabsWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field tabs for the Contact record type.
+     * List Contact Custom Field Tabs
+     */
+    public listContactCustomFieldTabs(_options?: PromiseConfigurationOptions): Promise<ListCustomFieldTabsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listContactCustomFieldTabs(observableOptions);
         return result.toPromise();
     }
 
@@ -2933,7 +3251,7 @@ export class PromiseContactApi {
      * Retrieves a list of Contacts
      * List Contacts
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter) 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter) 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -2948,7 +3266,7 @@ export class PromiseContactApi {
      * Retrieves a list of Contacts
      * List Contacts
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter) 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;email&#x60; — supports wildcard (e.g. &#x60;email&#x3D;&#x3D;john*&#x60;) - (String) &#x60;given_name&#x60; — supports wildcard (e.g. &#x60;given_name&#x3D;&#x3D;Mar*&#x60;) - (String) &#x60;family_name&#x60; — supports wildcard (e.g. &#x60;family_name&#x3D;&#x3D;Smi*&#x60;) - (String) &#x60;middle_name&#x60; — supports wildcard (e.g. &#x60;middle_name&#x3D;&#x3D;J*&#x60;) - (String) &#x60;company_id&#x60; - (Set[String]) &#x60;contact_ids&#x60; - (Set[String]) &#x60;ids&#x60; — accepts a list of contact IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;start_update_time&#x60; - (String) &#x60;end_update_time&#x60; - (String) &#x60;phone_number&#x60; — the phone number to search for. Requires &#x60;phone_fields&#x60; to be specified; only the specified phone fields are searched. - (Set[String]) &#x60;phone_fields&#x60; — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when &#x60;phone_number&#x60; is supplied. - (String) &#x60;billing_address_line1&#x60; - (String) &#x60;billing_address_locality&#x60; - (String) &#x60;billing_address_region&#x60; (long-form region/state name, e.g. \&quot;Arizona\&quot;) - (String) &#x60;billing_address_postal_code&#x60; - (String) &#x60;billing_address_country_code&#x60; (ISO 3166-1 alpha-3, e.g. \&quot;USA\&quot;) - (String) &#x60;shipping_address_line1&#x60; - (String) &#x60;shipping_address_locality&#x60; - (String) &#x60;shipping_address_region&#x60; - (String) &#x60;shipping_address_postal_code&#x60; - (String) &#x60;shipping_address_country_code&#x60; - (String) &#x60;other_address_line1&#x60; - (String) &#x60;other_address_locality&#x60; - (String) &#x60;other_address_region&#x60; - (String) &#x60;other_address_postal_code&#x60; - (String) &#x60;other_address_country_code&#x60; - (String) &#x60;city&#x60; — primary-address city (Contact.City); supports prefix wildcard (e.g. &#x60;city&#x3D;&#x3D;Chan*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;state&#x60; — primary-address state/region (Contact.State); supports prefix wildcard (e.g. &#x60;state&#x3D;&#x3D;Ar*&#x60;, \&quot;starts with\&quot;) - (String) &#x60;website&#x60; — supports wildcard (e.g. &#x60;website&#x3D;&#x3D;https://example*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard (e.g. &#x60;lead_source_name&#x3D;&#x3D;Google*&#x60;) - (String) &#x60;contact_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;contact_id&gt;5&#x60; encoded as &#x60;contact_id%3E5&#x60;) Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/contacts/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;firstName1%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;2026-01-01T00:00:00.000Z&#x60;), the same format as &#x60;start_update_time&#x60;/&#x60;end_update_time&#x60;. Date-only values such as &#x60;2026-01-01&#x60; are rejected - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For wildcard filtering, use &#x60;*&#x60; at the end of the value (prefix matching), encoded as &#x60;%2A&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;given_name%3D%3DMary&#x60; - &#x60;filter&#x3D;given_name%3D%3DMar%2A&#x60; (wildcard: starts with \&quot;Mar\&quot;) - &#x60;filter&#x3D;company_id%3D%3D123&#x60; - &#x60;filter&#x3D;company_id%3D%3D123%3Bfamily_name%3D%3DSmith&#x60; - &#x60;filter&#x3D;billing_address_locality%3D%3DChandler&#x60; - &#x60;filter&#x3D;city%3D%3DChandler&#x60; (city exact match) - &#x60;filter&#x3D;city%3D%3DChan%2A&#x60; (city prefix wildcard: starts with \&quot;Chan\&quot;) - &#x60;filter&#x3D;city%3D%3DChandler%3Bstate%3D%3DArizona&#x60; (combined city + state filter) - &#x60;filter&#x3D;shipping_address_country_code%3D%3DUSA%3Bshipping_address_region%3D%3DArizona&#x60; - &#x60;filter&#x3D;contact_id%3E5&#x60; (contact_id &gt; 5) - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; (contacts with IDs 1, 2, or 3)  Custom field examples (for custom fields with field_name &#x60;firstName1&#x60; and &#x60;Score0&#x60;): - &#x60;filter&#x3D;firstName1%3D%3DJohn&#x60; (custom field exact match) - &#x60;filter&#x3D;firstName1%3D%3DJo%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;Score0%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;given_name%3D%3DJohn%3BStatus0%3D%3DActive&#x60; (combined standard + custom field filter) 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;email&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -3106,6 +3424,32 @@ export class PromiseContactApi {
     public updateContactCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateContactCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * Update a Contact Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateContactCustomFieldTabWithHttpInfo(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateContactCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * Update a Contact Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateContactCustomFieldTab(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateContactCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -3283,6 +3627,34 @@ export class PromiseEmailApi {
     public getEmailTemplate(emailTemplateId: string, _options?: PromiseConfigurationOptions): Promise<EmailTemplate> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getEmailTemplate(emailTemplateId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a paginated list of email templates
+     * List email templates
+     * @param [filter] Search filter to apply to results
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listEmailTemplatesWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListEmailTemplatesResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listEmailTemplatesWithHttpInfo(filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a paginated list of email templates
+     * List email templates
+     * @param [filter] Search filter to apply to results
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listEmailTemplates(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<ListEmailTemplatesResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listEmailTemplates(filter, pageToken, orderBy, pageSize, observableOptions);
         return result.toPromise();
     }
 
@@ -3549,9 +3921,9 @@ export class PromiseFilesApi {
      * Retrieve a file\'s data
      * @param fileId
      */
-    public getFileDataWithHttpInfo(fileId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<string>> {
+    public getFileData1WithHttpInfo(fileId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<string>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFileDataWithHttpInfo(fileId, observableOptions);
+        const result = this.api.getFileData1WithHttpInfo(fileId, observableOptions);
         return result.toPromise();
     }
 
@@ -3560,16 +3932,16 @@ export class PromiseFilesApi {
      * Retrieve a file\'s data
      * @param fileId
      */
-    public getFileData(fileId: string, _options?: PromiseConfigurationOptions): Promise<string> {
+    public getFileData1(fileId: string, _options?: PromiseConfigurationOptions): Promise<string> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFileData(fileId, observableOptions);
+        const result = this.api.getFileData1(fileId, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Retrieves a list of files
      * List all files
-     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; — &#x60;true&#x60; (public) or &#x60;false&#x60; (private) - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; — one of: &#x60;ATTACHMENTS&#x60;, &#x60;CART&#x60;, &#x60;DOCUMENTS&#x60;, &#x60;HIDDEN&#x60;, &#x60;INVOICE&#x60;, &#x60;LOGO&#x60;, &#x60;TICKETS&#x60;, &#x60;WEB_FORM&#x60;, &#x60;FUNNEL&#x60; - (FileBoxType) &#x60;file_box_type&#x60; — one of: &#x60;APPLICATION&#x60;, &#x60;IMAGE&#x60;, &#x60;FAX&#x60;, &#x60;ATTACHMENT&#x60;, &#x60;TICKET&#x60;, &#x60;CONTACT&#x60;, &#x60;DIGITAL_PRODUCT&#x60;, &#x60;IMPORT&#x60;, &#x60;HIDDEN&#x60;, &#x60;WEB_FORM&#x60;, &#x60;STYLED_CART&#x60;, &#x60;RESAMPLED_IMAGE&#x60;, &#x60;TEMPLATE_THUMBNAIL&#x60;, &#x60;FUNNEL&#x60;, &#x60;LOGO_THUMBNAIL&#x60;, &#x60;UNLAYER&#x60;, &#x60;BRANDING_CENTER_LOGO&#x60; - (String) &#x60;file_name&#x60; - (String) &#x60;created_time&#x60; - (String) &#x60;updated_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. Multiple filters are combined with a semicolon (&#x60;;&#x60;, encoded &#x60;%3B&#x60;) and are ANDed together. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;is_public%3D%3Dfalse&#x60; - &#x60;filter&#x3D;category%3D%3DDOCUMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -3583,7 +3955,7 @@ export class PromiseFilesApi {
     /**
      * Retrieves a list of files
      * List all files
-     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; - (FileBoxType) &#x60;file_box_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;category%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (Boolean) &#x60;is_public&#x60; — &#x60;true&#x60; (public) or &#x60;false&#x60; (private) - (String) &#x60;contact_id&#x60; - (String) &#x60;user_id&#x60; - (FileBoxCategory) &#x60;category&#x60; — one of: &#x60;ATTACHMENTS&#x60;, &#x60;CART&#x60;, &#x60;DOCUMENTS&#x60;, &#x60;HIDDEN&#x60;, &#x60;INVOICE&#x60;, &#x60;LOGO&#x60;, &#x60;TICKETS&#x60;, &#x60;WEB_FORM&#x60;, &#x60;FUNNEL&#x60; - (FileBoxType) &#x60;file_box_type&#x60; — one of: &#x60;APPLICATION&#x60;, &#x60;IMAGE&#x60;, &#x60;FAX&#x60;, &#x60;ATTACHMENT&#x60;, &#x60;TICKET&#x60;, &#x60;CONTACT&#x60;, &#x60;DIGITAL_PRODUCT&#x60;, &#x60;IMPORT&#x60;, &#x60;HIDDEN&#x60;, &#x60;WEB_FORM&#x60;, &#x60;STYLED_CART&#x60;, &#x60;RESAMPLED_IMAGE&#x60;, &#x60;TEMPLATE_THUMBNAIL&#x60;, &#x60;FUNNEL&#x60;, &#x60;LOGO_THUMBNAIL&#x60;, &#x60;UNLAYER&#x60;, &#x60;BRANDING_CENTER_LOGO&#x60; - (String) &#x60;file_name&#x60; - (String) &#x60;created_time&#x60; - (String) &#x60;updated_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. Multiple filters are combined with a semicolon (&#x60;;&#x60;, encoded &#x60;%3B&#x60;) and are ANDed together. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;is_public%3D%3Dfalse&#x60; - &#x60;filter&#x3D;category%3D%3DDOCUMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DTICKET%3Bcategory%3D%3DATTACHMENTS&#x60; - &#x60;filter&#x3D;file_box_type%3D%3DCONTACT%3Bis_public%3D%3Dfalse&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;file_name&#x60; - &#x60;updated_time&#x60; - ...  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; 
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -4373,7 +4745,7 @@ export class PromiseLeadSourceRecurringExpensesApi {
     /**
      * Retrieves a list of recurring expenses with lead_source_id and optional \'filter\' query param
      * Retrieves a list of lead source recurring expenses
-     * @param leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param leadSourceId The ID of the lead source this recurring expense belongs to. Use \&#39;-\&#39; as a wildcard to list recurring expenses across all lead sources.
      * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60; - (String) &#x60;next_expense_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;next_expense_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;next_expense_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -4388,7 +4760,7 @@ export class PromiseLeadSourceRecurringExpensesApi {
     /**
      * Retrieves a list of recurring expenses with lead_source_id and optional \'filter\' query param
      * Retrieves a list of lead source recurring expenses
-     * @param leadSourceId The ID of the lead source this recurring expense belongs to
+     * @param leadSourceId The ID of the lead source this recurring expense belongs to. Use \&#39;-\&#39; as a wildcard to list recurring expenses across all lead sources.
      * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;title&#x60; - (Long) &#x60;amount&#x60; - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60; - (String) &#x60;next_expense_time&#x60; - (String) &#x60;create_time&#x60; - (String) &#x60;update_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;amount%3D%3D2500&#x60; - &#x60;filter&#x3D;next_expense_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;title&#x60; - &#x60;amount&#x60; - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;next_expense_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -4516,7 +4888,7 @@ export class PromiseLeadSourcesApi {
     /**
      * Retrieves a list of Lead Sources
      * List Lead Sources
-     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;status&#x60; - (String) &#x60;lead_source_category_id&#x60; - (String) &#x60;vendor&#x60; - (String) &#x60;medium&#x60; - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dexample&#x60; - &#x60;filter&#x3D;start_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;id&#x60; - Must be a positive integer. Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot;. Values that are zero, negative, or non-integer return a 400. - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;status&#x60; - (String) &#x60;lead_source_category_id&#x60; - (String) &#x60;vendor&#x60; - Wildcard matching allowed - (String) &#x60;medium&#x60; - Wildcard matching allowed - (String) &#x60;message&#x60; - Wildcard matching allowed - (String) &#x60;description&#x60; - Wildcard matching allowed - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or another supported operator) to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dexample&#x60; - &#x60;filter&#x3D;name%3D%3DGoogle%2A&#x60; (name starts with \&quot;Google\&quot;) - &#x60;filter&#x3D;id%3E1000&#x60; (id &gt; 1000) - &#x60;filter&#x3D;id%3E%3D1000&#x60; (id &gt;&#x3D; 1000) - &#x60;filter&#x3D;start_time%3D%3D2024-12-22T01:00:00.000Z&#x60;  For fields which allow wildcard matching, you may use the &#x60;*&#x60; wildcard character (or its encoded form &#x60;%2A&#x60;) for case-insensitive prefix matching on text fields. Example of a valid wildcard pattern:  - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;
      * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;vendor&#x60; - &#x60;medium&#x60; - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions:  - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -4530,7 +4902,7 @@ export class PromiseLeadSourcesApi {
     /**
      * Retrieves a list of Lead Sources
      * List Lead Sources
-     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - (String) &#x60;status&#x60; - (String) &#x60;lead_source_category_id&#x60; - (String) &#x60;vendor&#x60; - (String) &#x60;medium&#x60; - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dexample&#x60; - &#x60;filter&#x3D;start_time%3D%3D2024-12-22T01:00:00.000Z&#x60;
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;id&#x60; - Must be a positive integer. Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot;. Values that are zero, negative, or non-integer return a 400. - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;status&#x60; - (String) &#x60;lead_source_category_id&#x60; - (String) &#x60;vendor&#x60; - Wildcard matching allowed - (String) &#x60;medium&#x60; - Wildcard matching allowed - (String) &#x60;message&#x60; - Wildcard matching allowed - (String) &#x60;description&#x60; - Wildcard matching allowed - (String) &#x60;start_time&#x60; - (String) &#x60;end_time&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or another supported operator) to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dexample&#x60; - &#x60;filter&#x3D;name%3D%3DGoogle%2A&#x60; (name starts with \&quot;Google\&quot;) - &#x60;filter&#x3D;id%3E1000&#x60; (id &gt; 1000) - &#x60;filter&#x3D;id%3E%3D1000&#x60; (id &gt;&#x3D; 1000) - &#x60;filter&#x3D;start_time%3D%3D2024-12-22T01:00:00.000Z&#x60;  For fields which allow wildcard matching, you may use the &#x60;*&#x60; wildcard character (or its encoded form &#x60;%2A&#x60;) for case-insensitive prefix matching on text fields. Example of a valid wildcard pattern:  - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;
      * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;name&#x60; - &#x60;status&#x60; - &#x60;vendor&#x60; - &#x60;medium&#x60; - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions:  - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -4811,6 +5183,28 @@ export class PromiseNoteApi {
     }
 
     /**
+     * Creates a new custom field tab for the Note record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Create a Note Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createNoteCustomFieldTabWithHttpInfo(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createNoteCustomFieldTabWithHttpInfo(createCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field tab for the Note record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Create a Note Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createNoteCustomFieldTab(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createNoteCustomFieldTab(createCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes the specified Note
      * Delete a Note
      * @param contactId
@@ -4853,6 +5247,28 @@ export class PromiseNoteApi {
     public deleteNoteCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteNoteCustomFieldGroup(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Note Custom Field Tab
+     * @param tabId
+     */
+    public deleteNoteCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteNoteCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Note Custom Field Tab
+     * @param tabId
+     */
+    public deleteNoteCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteNoteCustomFieldTab(tabId, observableOptions);
         return result.toPromise();
     }
 
@@ -4927,9 +5343,31 @@ export class PromiseNoteApi {
     }
 
     /**
+     * Retrieves a single custom field tab by id for the Note record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Note Custom Field Tab
+     * @param tabId
+     */
+    public getNoteCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getNoteCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field tab by id for the Note record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Note Custom Field Tab
+     * @param tabId
+     */
+    public getNoteCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getNoteCustomFieldTab(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a list of all notes
      * List All Notes
-     * @param [filter] Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons. 
+     * @param [filter] Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Custom fields (when enabled) can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. Supported operators depend on the custom field\&#39;s type: - Text-like fields and single-value choice fields with text options (dropdown, radio, state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;Priority%3D%3DHigh%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (including user, month, day of week): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Example (for a custom field named &#x60;Priority&#x60;): &#x60;filter&#x3D;Priority%3D%3DHigh&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons. 
      * @param [pageToken] Page token
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -4944,7 +5382,7 @@ export class PromiseNoteApi {
     /**
      * Retrieves a list of all notes
      * List All Notes
-     * @param [filter] Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons. 
+     * @param [filter] Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Custom fields (when enabled) can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. Supported operators depend on the custom field\&#39;s type: - Text-like fields and single-value choice fields with text options (dropdown, radio, state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;Priority%3D%3DHigh%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (including user, month, day of week): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Example (for a custom field named &#x60;Priority&#x60;): &#x60;filter&#x3D;Priority%3D%3DHigh&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons. 
      * @param [pageToken] Page token
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -4975,6 +5413,26 @@ export class PromiseNoteApi {
     public listNoteCustomFieldGroups(tabId?: string, _options?: PromiseConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listNoteCustomFieldGroups(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field tabs for the Note record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * List Note Custom Field Tabs
+     */
+    public listNoteCustomFieldTabsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldTabsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listNoteCustomFieldTabsWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field tabs for the Note record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * List Note Custom Field Tabs
+     */
+    public listNoteCustomFieldTabs(_options?: PromiseConfigurationOptions): Promise<ListCustomFieldTabsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listNoteCustomFieldTabs(observableOptions);
         return result.toPromise();
     }
 
@@ -5010,7 +5468,7 @@ export class PromiseNoteApi {
      * Retrieves a list of Notes for a given contact
      * List Notes
      * @param contactId
-     * @param [filter] Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons. 
+     * @param [filter] Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Custom fields (when enabled) can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. Supported operators depend on the custom field\&#39;s type: - Text-like fields and single-value choice fields with text options (dropdown, radio, state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;Priority%3D%3DHigh%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (including user, month, day of week): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Example (for a custom field named &#x60;Priority&#x60;): &#x60;filter&#x3D;Priority%3D%3DHigh&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons. 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -5026,7 +5484,7 @@ export class PromiseNoteApi {
      * Retrieves a list of Notes for a given contact
      * List Notes
      * @param contactId
-     * @param [filter] Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons. 
+     * @param [filter] Filter to apply. Allowed fields and operators: - (String) &#x60;id&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String list) &#x60;ids&#x60; — comma-separated note ids, supports &#x60;&#x3D;&#x3D;&#x60; only (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;) - (String) &#x60;title&#x60; — supports &#x60;&#x3D;&#x3D;&#x60;. Bare value matches anywhere in the title (contains).    Wildcard prefix match also supported (e.g. &#x60;title&#x3D;&#x3D;Follow*&#x60;) - (String) &#x60;contact_id&#x60; - (String) &#x60;assigned_to_user_id&#x60; - (String) &#x60;since_time&#x60; — ISO-8601 date/time - (String) &#x60;until_time&#x60; — ISO-8601 date/time  Operators must be URL-encoded. Common encodings: &#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;!&#x3D;&#x60; → &#x60;!%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;, &#x60;&gt;&#x3D;&#x60; → &#x60;%3E%3D&#x60;, &#x60;&lt;&#x3D;&#x60; → &#x60;%3C%3D&#x60;, &#x60;*&#x60; → &#x60;%2A&#x60;.  Multiple filters are combined with AND using &#x60;;&#x60;.  Examples: - &#x60;filter&#x3D;contact_id%3D%3D1001&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z&#x60;  Custom fields (when enabled) can be filtered by their field name (case-insensitive). A standard field above takes precedence over a custom field with the same name. Supported operators depend on the custom field\&#39;s type: - Text-like fields and single-value choice fields with text options (dropdown, radio, state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;Priority%3D%3DHigh%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (including user, month, day of week): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Example (for a custom field named &#x60;Priority&#x60;): &#x60;filter&#x3D;Priority%3D%3DHigh&#x60;  Notes: - &#x60;id&#x60; and &#x60;ids&#x60; cannot be combined in the same request. - Wildcard &#x60;*&#x60; may only appear at the end of the value (prefix match).    Leading wildcards (&#x60;*foo&#x60;, &#x60;*foo*&#x60;) are rejected for performance reasons. 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -5111,6 +5569,32 @@ export class PromiseNoteApi {
     public updateNoteCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateNoteCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Update a Note Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateNoteCustomFieldTabWithHttpInfo(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateNoteCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Update a Note Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateNoteCustomFieldTab(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateNoteCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -5202,6 +5686,28 @@ export class PromiseOpportunityApi {
     public createOpportunityCustomFieldGroup(createCustomFieldGroupRequest: CreateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.createOpportunityCustomFieldGroup(createCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field tab for the Opportunity record type.
+     * Create an Opportunity Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createOpportunityCustomFieldTabWithHttpInfo(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createOpportunityCustomFieldTabWithHttpInfo(createCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field tab for the Opportunity record type.
+     * Create an Opportunity Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createOpportunityCustomFieldTab(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createOpportunityCustomFieldTab(createCustomFieldTabRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -5316,6 +5822,28 @@ export class PromiseOpportunityApi {
     }
 
     /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * Delete an Opportunity Custom Field Tab
+     * @param tabId
+     */
+    public deleteOpportunityCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOpportunityCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * Delete an Opportunity Custom Field Tab
+     * @param tabId
+     */
+    public deleteOpportunityCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOpportunityCustomFieldTab(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes the specified Opportunity Stage
      * Delete an Opportunity Stage
      * @param stageId
@@ -5384,6 +5912,28 @@ export class PromiseOpportunityApi {
     }
 
     /**
+     * Retrieves a single custom field tab by id for the Opportunity record type.
+     * Retrieve an Opportunity Custom Field Tab
+     * @param tabId
+     */
+    public getOpportunityCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getOpportunityCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field tab by id for the Opportunity record type.
+     * Retrieve an Opportunity Custom Field Tab
+     * @param tabId
+     */
+    public getOpportunityCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getOpportunityCustomFieldTab(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves the specified Opportunity Stage
      * Retrieve an Opportunity Stage
      * @param stageId
@@ -5431,7 +5981,7 @@ export class PromiseOpportunityApi {
      * Retrieves a list of all Opportunities.
      * List Opportunities
      * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact\&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact\&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact\&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field\&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field\&#39;s type, or a value that does not match the field\&#39;s type returns &#x60;400 Bad Request&#x60;. 
      * @param [orderBy] Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -5446,7 +5996,7 @@ export class PromiseOpportunityApi {
      * Retrieves a list of all Opportunities.
      * List Opportunities
      * @param [fields] Comma-delimited list of optional Opportunities properties to include in the response. Legacy field names are supported for optional fields only if legacy opportunities feature is enabled. Allowed optional values: custom_fields,created_by,last_updated_by,status_id. Allowed legacy optional values: monthly_revenue,order_revenue,objection,status,stage_entrance_time
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request. 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;stage_id&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;opportunity_title&#x60; — supports wildcard prefix search (e.g. &#x60;opportunity_title&#x3D;&#x3D;Deal*&#x60;) - (String) &#x60;lead_source_name&#x60; — supports wildcard prefix search (e.g. &#x60;lead_source_name&#x3D;&#x3D;Web*&#x60;) - (String) &#x60;affiliate_id&#x60; — exact match only (e.g. &#x60;affiliate_id&#x3D;&#x3D;123&#x60;) - (String) &#x60;opportunity_id&#x60; — supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;ids&#x60; — comma-separated list of opportunity IDs (e.g. &#x60;ids&#x3D;&#x3D;1,2,3&#x60;), maximum 100 IDs - (String) &#x60;contact_phone&#x60; — matches the contact\&#39;s phone. By default it is an exact match against the stored value, including any formatting characters (e.g. &#x60;contact_phone&#x3D;&#x3D;(480) 123-4567&#x60;); it does not normalize or search across an unformatted number. Supports wildcard prefix search for partial matches (e.g. &#x60;contact_phone&#x3D;&#x3D;480*&#x60;) - (String) &#x60;contact_city&#x60; — matches the contact\&#39;s city; supports wildcard prefix search (e.g. &#x60;contact_city&#x3D;&#x3D;Chand*&#x60;) - (String) &#x60;contact_state&#x60; — matches the contact\&#39;s state; supports wildcard prefix search (e.g. &#x60;contact_state&#x3D;&#x3D;AZ*&#x60;) - (String) &#x60;projected_revenue_high&#x60; — projected revenue high; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_high&gt;&#x3D;1000&#x60;) - (String) &#x60;projected_revenue_low&#x60; — projected revenue low; supports comparison operators: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; (e.g. &#x60;projected_revenue_low&lt;&#x3D;500&#x60;) Note: &#x60;opportunity_id&#x60; and &#x60;ids&#x60; cannot be used together in the same request.  **Custom fields:** opportunities may also be filtered by any custom field defined on the Opportunity record, referenced by its field name (e.g. &#x60;cf_priority&#x3D;&#x3D;10&#x60;). Both indexed and non-indexed custom fields are filterable. The supported operator and value depend on the field\&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company&#x3D;&#x3D;Acme*&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate&lt;&#x3D;2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags&#x3D;&#x3D;red&#x60;) A custom field that does not exist, an operator unsupported for the field\&#39;s type, or a value that does not match the field\&#39;s type returns &#x60;400 Bad Request&#x60;. 
      * @param [orderBy] Attribute and direction to opportunities items. One of the following fields: - &#x60;next_action_time&#x60; - &#x60;contact_name&#x60; - &#x60;opportunity_title&#x60; - &#x60;created_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -5476,6 +6026,26 @@ export class PromiseOpportunityApi {
     public listOpportunityCustomFieldGroups(tabId?: string, _options?: PromiseConfigurationOptions): Promise<ListCustomFieldGroupsResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listOpportunityCustomFieldGroups(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field tabs for the Opportunity record type.
+     * List Opportunity Custom Field Tabs
+     */
+    public listOpportunityCustomFieldTabsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldTabsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listOpportunityCustomFieldTabsWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field tabs for the Opportunity record type.
+     * List Opportunity Custom Field Tabs
+     */
+    public listOpportunityCustomFieldTabs(_options?: PromiseConfigurationOptions): Promise<ListCustomFieldTabsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listOpportunityCustomFieldTabs(observableOptions);
         return result.toPromise();
     }
 
@@ -5632,6 +6202,32 @@ export class PromiseOpportunityApi {
     public updateOpportunityCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOpportunityCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * Update an Opportunity Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateOpportunityCustomFieldTabWithHttpInfo(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateOpportunityCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * Update an Opportunity Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateOpportunityCustomFieldTab(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateOpportunityCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -6006,6 +6602,28 @@ export class PromiseOrdersApi {
     }
 
     /**
+     * Creates a new custom field tab for the Order record type.
+     * Create an Order Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createOrderCustomFieldTabWithHttpInfo(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createOrderCustomFieldTabWithHttpInfo(createCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field tab for the Order record type.
+     * Create an Order Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createOrderCustomFieldTab(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createOrderCustomFieldTab(createCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Creates an order item on an existing order
      * Create an Order Item
      * @param orderId
@@ -6120,6 +6738,28 @@ export class PromiseOrdersApi {
     }
 
     /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * Delete an Order Custom Field Tab
+     * @param tabId
+     */
+    public deleteOrderCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOrderCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * Delete an Order Custom Field Tab
+     * @param tabId
+     */
+    public deleteOrderCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteOrderCustomFieldTab(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes an order item on an existing order
      * Delete an Order Item
      * @param orderId
@@ -6212,6 +6852,28 @@ export class PromiseOrdersApi {
     }
 
     /**
+     * Retrieves a single custom field tab by id for the Order record type.
+     * Retrieve an Order Custom Field Tab
+     * @param tabId
+     */
+    public getOrderCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getOrderCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field tab by id for the Order record type.
+     * Retrieve an Order Custom Field Tab
+     * @param tabId
+     */
+    public getOrderCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getOrderCustomFieldTab(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a single order item from an existing order
      * Retrieve an Order Item
      * @param orderId
@@ -6258,6 +6920,26 @@ export class PromiseOrdersApi {
     }
 
     /**
+     * Retrieves a list of custom field tabs for the Order record type.
+     * List Order Custom Field Tabs
+     */
+    public listOrderCustomFieldTabsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldTabsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listOrderCustomFieldTabsWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field tabs for the Order record type.
+     * List Order Custom Field Tabs
+     */
+    public listOrderCustomFieldTabs(_options?: PromiseConfigurationOptions): Promise<ListCustomFieldTabsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listOrderCustomFieldTabs(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a list of payments made against a given order, including historical or external payments of cash or credit card
      * Retrieve Order Payments
      * @param orderId
@@ -6290,7 +6972,7 @@ export class PromiseOrdersApi {
     /**
      * Retrieves a list of orders
      * List orders
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -6304,7 +6986,7 @@ export class PromiseOrdersApi {
     /**
      * Retrieves a list of orders
      * List orders
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, name, email, phone, website): &#x60;&#x3D;&#x3D;&#x60; only, with optional   trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Choice fields (dropdown, radio, yes/no, user, state): &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;product_id&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;invoice_id&#x60; - (String) &#x60;invoice_xid&#x60; - (Boolean) &#x60;paid&#x60; - (String) &#x60;created_since_time&#x60; - (String) &#x60;created_until_time&#x60; - (String) &#x60;modified_since_time&#x60; - (String) &#x60;modified_until_time&#x60; - (String) &#x60;title&#x60; - Wildcard matching allowed - (String) &#x60;order_type&#x60; (Allowed values: &#x60;ONLINE&#x60;, &#x60;OFFLINE&#x60;) - (String) &#x60;shipping_locality&#x60; - (String) &#x60;shipping_region_code&#x60; - (String) &#x60;shipping_postal_code&#x60; - (String) &#x60;shipping_country_code&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/orders/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_OrderTitle0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 (same as &#x60;created_since_time&#x60;/&#x60;created_until_time&#x60;) - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;product_id%3D%3D123&#x60; - &#x60;filter&#x3D;id%3C123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;invoice_xid%3D%3Df411a79c-9a92-4960-91d9-656f910a25e8&#x60; - &#x60;filter&#x3D;product_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;shipping_locality%3D%3DPhoenix&#x60; - &#x60;filter&#x3D;shipping_region_code%3D%3DIN-MH&#x60; - &#x60;filter&#x3D;shipping_postal_code%3D%3D85001&#x60; - &#x60;filter&#x3D;shipping_country_code%3D%3DIND&#x60;  Custom field examples (for custom fields with field_name &#x60;_OrderTitle0&#x60; and &#x60;_OrderValue1&#x60;): - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_OrderTitle0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_OrderValue1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;product_id%3D%3D123%3B_OrderStatus0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;order_time&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -6410,6 +7092,32 @@ export class PromiseOrdersApi {
     public updateOrderCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOrderCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * Update an Order Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateOrderCustomFieldTabWithHttpInfo(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateOrderCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * Update an Order Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateOrderCustomFieldTab(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateOrderCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -6582,13 +7290,13 @@ export class PromisePaymentMethodsApi {
      * List of Contact Payment Methods
      * @param contactId ID of the contact to which the payment method belongs.
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  
+     * @param [pageToken] Page token
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
      * @param [pageSize] Total number of items to return per page
-     * @param [pageToken] Page token
      */
-    public listPaymentMethods_1WithHttpInfo(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListContactPaymentMethodsResponse>> {
+    public listPaymentMethods1WithHttpInfo(contactId: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListContactPaymentMethodsResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.listPaymentMethods_1WithHttpInfo(contactId, filter, orderBy, pageSize, pageToken, observableOptions);
+        const result = this.api.listPaymentMethods1WithHttpInfo(contactId, filter, pageToken, orderBy, pageSize, observableOptions);
         return result.toPromise();
     }
 
@@ -6597,13 +7305,13 @@ export class PromisePaymentMethodsApi {
      * List of Contact Payment Methods
      * @param contactId ID of the contact to which the payment method belongs.
      * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;  
+     * @param [pageToken] Page token
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60;
      * @param [pageSize] Total number of items to return per page
-     * @param [pageToken] Page token
      */
-    public listPaymentMethods_1(contactId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListContactPaymentMethodsResponse> {
+    public listPaymentMethods1(contactId: string, filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<ListContactPaymentMethodsResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.listPaymentMethods_1(contactId, filter, orderBy, pageSize, pageToken, observableOptions);
+        const result = this.api.listPaymentMethods1(contactId, filter, pageToken, orderBy, pageSize, observableOptions);
         return result.toPromise();
     }
 
@@ -8530,6 +9238,28 @@ export class PromiseSubscriptionsApi {
     }
 
     /**
+     * Creates a new custom field tab for the Subscription record type.
+     * Create a Subscription Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createSubscriptionCustomFieldTabWithHttpInfo(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createSubscriptionCustomFieldTabWithHttpInfo(createCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field tab for the Subscription record type.
+     * Create a Subscription Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createSubscriptionCustomFieldTab(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createSubscriptionCustomFieldTab(createCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes a custom field from the Subscription object
      * Delete a Subscription Custom Field
      * @param customFieldId
@@ -8570,6 +9300,28 @@ export class PromiseSubscriptionsApi {
     public deleteSubscriptionCustomFieldGroup(groupId: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteSubscriptionCustomFieldGroup(groupId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * Delete a Subscription Custom Field Tab
+     * @param tabId
+     */
+    public deleteSubscriptionCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteSubscriptionCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.
+     * Delete a Subscription Custom Field Tab
+     * @param tabId
+     */
+    public deleteSubscriptionCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteSubscriptionCustomFieldTab(tabId, observableOptions);
         return result.toPromise();
     }
 
@@ -8618,6 +9370,28 @@ export class PromiseSubscriptionsApi {
     }
 
     /**
+     * Retrieves a single custom field tab by id for the Subscription record type.
+     * Retrieve a Subscription Custom Field Tab
+     * @param tabId
+     */
+    public getSubscriptionCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getSubscriptionCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field tab by id for the Subscription record type.
+     * Retrieve a Subscription Custom Field Tab
+     * @param tabId
+     */
+    public getSubscriptionCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getSubscriptionCustomFieldTab(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Generates invoices from all cycles of a subscription that are due. Returns the most recently billed invoice.
      * Invoice a Subscription
      * @param subscriptionId
@@ -8662,9 +9436,29 @@ export class PromiseSubscriptionsApi {
     }
 
     /**
+     * Retrieves a list of custom field tabs for the Subscription record type.
+     * List Subscription Custom Field Tabs
+     */
+    public listSubscriptionCustomFieldTabsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldTabsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listSubscriptionCustomFieldTabsWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field tabs for the Subscription record type.
+     * List Subscription Custom Field Tabs
+     */
+    public listSubscriptionCustomFieldTabs(_options?: PromiseConfigurationOptions): Promise<ListCustomFieldTabsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listSubscriptionCustomFieldTabs(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a list of subscriptions using the specified search criteria.
      * List Subscriptions
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/subscriptions/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_SubscriptionNote0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  Custom field examples (for custom fields with field_name &#x60;_SubscriptionNote0&#x60; and &#x60;_SubscriptionCount1&#x60;): - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_SubscriptionCount1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;contact_id%3D%3D123%3B_SubscriptionNote0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -8678,7 +9472,7 @@ export class PromiseSubscriptionsApi {
     /**
      * Retrieves a list of subscriptions using the specified search criteria.
      * List Subscriptions
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60; 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;subscription_plan_id&#x60; - (String) &#x60;status&#x60; - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;billing_amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;, \&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (List[String]) &#x60;subscription_plan_ids&#x60;  Custom fields can be filtered by their field_name (case-insensitive, as returned by GET /v2/subscriptions/model). A standard field above takes precedence over a custom field with the same name. The supported operators depend on the custom field\&#39;s type: - Text-like fields (text, text area, name, email, phone, website, social security   number) and single-value choice fields with text options (dropdown, radio,   state): &#x60;&#x3D;&#x3D;&#x60; only, with optional trailing wildcard (e.g. &#x60;_SubscriptionNote0%3D%3DValue%2A&#x60;) - Yes/No and drilldown fields: &#x60;&#x3D;&#x3D;&#x60; only - Numeric fields (whole number, decimal, currency, percent, year, month, day of   week, user): &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - Date fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; using full ISO 8601 - Multi-select fields: &#x60;&#x3D;&#x3D;&#x60; matches records that contain the given option Custom field filtering on non-indexed fields is supported but may be slower.  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator (or other supported operators), to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;subscription_plan_id%3D%3D456&#x60; - &#x60;filter&#x3D;status%3D%3DActive&#x60; - &#x60;filter&#x3D;id%3E5&#x60; - &#x60;filter&#x3D;billing_amount%3E%3D100&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;subscription_plan_ids%3D%3D10,20,30&#x60; - &#x60;filter&#x3D;contact_id%3D%3D123%3Bstatus%3D%3DActive&#x60;  Custom field examples (for custom fields with field_name &#x60;_SubscriptionNote0&#x60; and &#x60;_SubscriptionCount1&#x60;): - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest&#x60; (custom field exact match) - &#x60;filter&#x3D;_SubscriptionNote0%3D%3DTest%2A&#x60; (custom field prefix wildcard) - &#x60;filter&#x3D;_SubscriptionCount1%3E100&#x60; (custom field numeric comparison) - &#x60;filter&#x3D;contact_id%3D%3D123%3B_SubscriptionNote0%3D%3DActive&#x60; (combined standard + custom field filter)  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for case-insensitive partial matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60; 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;contact_id&#x60; - &#x60;subscription_plan_id&#x60; - &#x60;modification_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -8784,6 +9578,32 @@ export class PromiseSubscriptionsApi {
     public updateSubscriptionCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateSubscriptionCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * Update a Subscription Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateSubscriptionCustomFieldTabWithHttpInfo(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateSubscriptionCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.
+     * Update a Subscription Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateSubscriptionCustomFieldTab(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateSubscriptionCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -8989,6 +9809,34 @@ export class PromiseTagsApi {
     public listCompaniesForTagId(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListTaggedCompaniesResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listCompaniesForTagId(tagId, filter, orderBy, pageSize, pageToken, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves tag-contact associations across the tag collection (AEP-159), using the `-` wildcard in place of a single tag id. At least one filter is required. Returns association tuples (contact_id, tag_id, applied_at) only.
+     * List Contacts Across Tags
+     * @param [filter] Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;tag_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60; 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items (best-effort for cross-collection reads). Field: - &#x60;applied_time&#x60;  Direction: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listContactsAcrossTagsWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListTagContactAssociationsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listContactsAcrossTagsWithHttpInfo(filter, pageToken, orderBy, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves tag-contact associations across the tag collection (AEP-159), using the `-` wildcard in place of a single tag id. At least one filter is required. Returns association tuples (contact_id, tag_id, applied_at) only.
+     * List Contacts Across Tags
+     * @param [filter] Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;tag_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60; 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items (best-effort for cross-collection reads). Field: - &#x60;applied_time&#x60;  Direction: - &#x60;asc&#x60; - &#x60;desc&#x60;
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listContactsAcrossTags(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<ListTagContactAssociationsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listContactsAcrossTags(filter, pageToken, orderBy, pageSize, observableOptions);
         return result.toPromise();
     }
 
@@ -9242,6 +10090,28 @@ export class PromiseTaskApi {
     }
 
     /**
+     * Creates a new custom field tab for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Create a Task Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createTaskCustomFieldTabWithHttpInfo(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createTaskCustomFieldTabWithHttpInfo(createCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new custom field tab for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Create a Task Custom Field Tab
+     * @param createCustomFieldTabRequest
+     */
+    public createTaskCustomFieldTab(createCustomFieldTabRequest: CreateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createTaskCustomFieldTab(createCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes a single task
      * Delete a Task
      * @param taskId
@@ -9308,6 +10178,28 @@ export class PromiseTaskApi {
     }
 
     /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Task Custom Field Tab
+     * @param tabId
+     */
+    public deleteTaskCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteTaskCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a custom field tab. Returns 409 Conflict if the tab still contains groups.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Delete a Task Custom Field Tab
+     * @param tabId
+     */
+    public deleteTaskCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteTaskCustomFieldTab(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a single task
      * Retrieve a Task
      * @param taskId
@@ -9354,6 +10246,28 @@ export class PromiseTaskApi {
     }
 
     /**
+     * Retrieves a single custom field tab by id for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Task Custom Field Tab
+     * @param tabId
+     */
+    public getTaskCustomFieldTabWithHttpInfo(tabId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getTaskCustomFieldTabWithHttpInfo(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a single custom field tab by id for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Retrieve a Task Custom Field Tab
+     * @param tabId
+     */
+    public getTaskCustomFieldTab(tabId: string, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getTaskCustomFieldTab(tabId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a list of custom field groups for the Task record type. Optionally filter by tab_id to scope to a specific tab.<br/>Note: Custom Field Groups for Tasks, Classic Appointments and Notes are combined.
      * List Task Custom Field Groups
      * @param [tabId] Optional tab id to scope groups to a single tab
@@ -9376,9 +10290,29 @@ export class PromiseTaskApi {
     }
 
     /**
+     * Retrieves a list of custom field tabs for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * List Task Custom Field Tabs
+     */
+    public listTaskCustomFieldTabsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCustomFieldTabsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listTaskCustomFieldTabsWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Retrieves a list of custom field tabs for the Task record type.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * List Task Custom Field Tabs
+     */
+    public listTaskCustomFieldTabs(_options?: PromiseConfigurationOptions): Promise<ListCustomFieldTabsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listTaskCustomFieldTabs(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id==UNASSIGNED.
      * List Tasks
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;) 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;priority&#x60;  — one of &#x60;CRITICAL&#x60;, &#x60;ESSENTIAL&#x60;, &#x60;NONESSENTIAL&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;priority%3D%3DCRITICAL&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. &#x60;filter&#x3D;cf_priority%3D%3D10&#x60;). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field\&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company%3D%3DAcme%2A&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate%3C%3D2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags%3D%3Dred&#x60;) A custom field that does not exist, an operator unsupported for the field\&#39;s type, or a value that does not match the field\&#39;s type returns &#x60;400 Bad Request&#x60;. 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -9393,7 +10327,7 @@ export class PromiseTaskApi {
     /**
      * Retrieves a list of tasks based on the provided filter. Tasks which are not assigned to a User may be queried with user_id==UNASSIGNED.
      * List Tasks
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;) 
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;contact_id&#x60; - (String) &#x60;has_due_date&#x60; - (String) &#x60;is_completed&#x60; - (String) &#x60;user_id&#x60; - (String) &#x60;opportunity_id&#x60; - (String) &#x60;task_ids&#x60; - (String) &#x60;priority&#x60;  — one of &#x60;CRITICAL&#x60;, &#x60;ESSENTIAL&#x60;, &#x60;NONESSENTIAL&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String)   &#x60;id&#x60;     — supports &#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60; - (String) &#x60;title&#x60;  — supports prefix wildcard (&#x60;title&#x3D;&#x3D;Foo*&#x60;)  Operators must be URL-encoded (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;). For the filters listed above, here are some examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;has_due_date%3D%3Dtrue&#x60; - &#x60;filter&#x3D;is_completed%3D%3Dtrue&#x60; - &#x60;filter&#x3D;user_id%3D%3D321&#x60; - &#x60;filter&#x3D;opportunity_id%3D%3D321&#x60; - &#x60;filter&#x3D;task_ids%3D%3D1,2,3&#x60; - &#x60;filter&#x3D;priority%3D%3DCRITICAL&#x60; - &#x60;filter&#x3D;since_time%3D%3D2025-04-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;until_time%3D%3D2025-08-16T20:33:02.321Z;&#x60; - &#x60;filter&#x3D;id%3E5&#x60;                  (id &gt; 5) - &#x60;filter&#x3D;id%3C%3D100&#x60;              (id &lt;&#x3D; 100) - &#x60;filter&#x3D;title%3D%3DFollow%2A&#x60;     (title starts with \&quot;Follow\&quot;)  **Custom fields:** tasks may also be filtered by any custom field defined on the Task record, referenced by its field name (e.g. &#x60;filter&#x3D;cf_priority%3D%3D10&#x60;). Both indexed and non-indexed custom fields are filterable. Operators must be URL-encoded, same as the standard fields above. The supported operator and value depend on the field\&#39;s data type: - Text-like fields (Text, Text Area, Name, Email, Website, Phone, Social Security Number) and choice fields with text options (Dropdown, Radio, State) — equals (&#x60;&#x3D;&#x3D;&#x60;) and prefix wildcard (e.g. &#x60;cf_company%3D%3DAcme%2A&#x60;) - Numeric fields (Whole Number, Decimal, Currency, Percent, Year, Month, Day of Week, User) — equals and comparison (&#x60;&#x3D;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, &#x60;&gt;&#x3D;&#x60;, &#x60;&lt;&#x3D;&#x60;) - Date and Date/Time fields — equals and comparison; the value must be a full ISO-8601 date-time with milliseconds and a timezone offset (e.g. &#x60;cf_renewDate%3C%3D2026-01-01T00:00:00.000Z&#x60;). Date-only values such as &#x60;2026-01-01&#x60; are rejected - Yes/No fields — equals only, value &#x60;0&#x60; (No) or &#x60;1&#x60; (Yes) - Drilldown fields — equals only, integer value - Multi-select fields (List Box, User List Box) — equals only, matched as a contains search over the stored selections (e.g. &#x60;cf_tags%3D%3Dred&#x60;) A custom field that does not exist, an operator unsupported for the field\&#39;s type, or a value that does not match the field\&#39;s type returns &#x60;400 Bad Request&#x60;. 
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;create_time&#x60; - &#x60;due_time&#x60; - &#x60;update_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -9502,6 +10436,32 @@ export class PromiseTaskApi {
     public updateTaskCustomFieldGroup(groupId: string, updateMask: Set<'name' | 'tab_id' | 'order'>, updateCustomFieldGroupRequest: UpdateCustomFieldGroupRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldGroup> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateTaskCustomFieldGroup(groupId, updateMask, updateCustomFieldGroupRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateTaskCustomFieldTabWithHttpInfo(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomFieldTab>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateTaskCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an existing custom field tab. Only fields listed in `update_mask` are applied.<br/>Note: Custom Field Tabs for Tasks, Classic Appointments and Notes are combined.
+     * Update a Task Custom Field Tab
+     * @param tabId
+     * @param updateMask Comma-separated list of fields to update
+     * @param updateCustomFieldTabRequest
+     */
+    public updateTaskCustomFieldTab(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: PromiseConfigurationOptions): Promise<CustomFieldTab> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.updateTaskCustomFieldTab(tabId, updateMask, updateCustomFieldTabRequest, observableOptions);
         return result.toPromise();
     }
 

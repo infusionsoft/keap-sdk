@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**deactivatePaymentMethod**](PaymentMethodsApi.md#deactivatePaymentMethod) | **POST** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate | Deactivate a Contact Payment Method
 [**deletePaymentMethod**](PaymentMethodsApi.md#deletePaymentMethod) | **DELETE** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Contact Payment Method
 [**listPaymentMethods**](PaymentMethodsApi.md#listPaymentMethods) | **GET** /rest/v2/paymentMethods | List of Payment Methods
-[**listPaymentMethods_0**](PaymentMethodsApi.md#listPaymentMethods_0) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods
+[**listPaymentMethods1**](PaymentMethodsApi.md#listPaymentMethods1) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods
 
 
 # **deactivatePaymentMethod**
@@ -208,8 +208,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **listPaymentMethods_0**
-> ListContactPaymentMethodsResponse listPaymentMethods_0()
+# **listPaymentMethods1**
+> ListContactPaymentMethodsResponse listPaymentMethods1()
 
 Retrieves a list of Contact Payment Methods
 
@@ -218,25 +218,25 @@ Retrieves a list of Contact Payment Methods
 
 ```typescript
 import { createConfiguration, PaymentMethodsApi } from '';
-import type { PaymentMethodsApiListPaymentMethods0Request } from '';
+import type { PaymentMethodsApiListPaymentMethods1Request } from '';
 
 const configuration = createConfiguration();
 const apiInstance = new PaymentMethodsApi(configuration);
 
-const request: PaymentMethodsApiListPaymentMethods0Request = {
+const request: PaymentMethodsApiListPaymentMethods1Request = {
     // ID of the contact to which the payment method belongs.
   contactId: "contact_id_example",
     // Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`   (optional)
   filter: "filter_example",
+    // Page token (optional)
+  pageToken: "page_token_example",
     // Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `desc` - `asc` (optional)
   orderBy: "order_by_example",
     // Total number of items to return per page (optional)
   pageSize: 0,
-    // Page token (optional)
-  pageToken: "page_token_example",
 };
 
-const data = await apiInstance.listPaymentMethods_0(request);
+const data = await apiInstance.listPaymentMethods1(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -247,9 +247,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contactId** | [**string**] | ID of the contact to which the payment method belongs. | defaults to undefined
  **filter** | [**string**] | Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   | (optional) defaults to undefined
+ **pageToken** | [**string**] | Page token | (optional) defaults to undefined
  **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; | (optional) defaults to undefined
  **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
- **pageToken** | [**string**] | Page token | (optional) defaults to undefined
 
 
 ### Return type

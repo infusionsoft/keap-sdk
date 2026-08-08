@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**deactivate_payment_method**](PaymentMethodsApi.md#deactivate_payment_method) | **POST** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate | Deactivate a Contact Payment Method
 [**delete_payment_method**](PaymentMethodsApi.md#delete_payment_method) | **DELETE** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Contact Payment Method
 [**list_payment_methods**](PaymentMethodsApi.md#list_payment_methods) | **GET** /rest/v2/paymentMethods | List of Payment Methods
-[**list_payment_methods_0**](PaymentMethodsApi.md#list_payment_methods_0) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods
+[**list_payment_methods1**](PaymentMethodsApi.md#list_payment_methods1) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods
 
 
 # **deactivate_payment_method**
@@ -257,8 +257,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_payment_methods_0**
-> ListContactPaymentMethodsResponse list_payment_methods_0(contact_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
+# **list_payment_methods1**
+> ListContactPaymentMethodsResponse list_payment_methods1(contact_id, filter=filter, page_token=page_token, order_by=order_by, page_size=page_size)
 
 List of Contact Payment Methods
 
@@ -292,17 +292,17 @@ with keap_core_v2_client.ApiClient(configuration) as api_client:
     api_instance = keap_core_v2_client.PaymentMethodsApi(api_client)
     contact_id = 'contact_id_example' # str | ID of the contact to which the payment method belongs.
     filter = 'filter_example' # str | Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`   (optional)
+    page_token = 'page_token_example' # str | Page token (optional)
     order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `desc` - `asc` (optional)
     page_size = 0 # int | Total number of items to return per page (optional)
-    page_token = 'page_token_example' # str | Page token (optional)
 
     try:
         # List of Contact Payment Methods
-        api_response = api_instance.list_payment_methods_0(contact_id, filter=filter, order_by=order_by, page_size=page_size, page_token=page_token)
-        print("The response of PaymentMethodsApi->list_payment_methods_0:\n")
+        api_response = api_instance.list_payment_methods1(contact_id, filter=filter, page_token=page_token, order_by=order_by, page_size=page_size)
+        print("The response of PaymentMethodsApi->list_payment_methods1:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PaymentMethodsApi->list_payment_methods_0: %s\n" % e)
+        print("Exception when calling PaymentMethodsApi->list_payment_methods1: %s\n" % e)
 ```
 
 
@@ -313,9 +313,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contact_id** | **str**| ID of the contact to which the payment method belongs. | 
  **filter** | **str**| Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   | [optional] 
+ **page_token** | **str**| Page token | [optional] 
  **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; | [optional] 
  **page_size** | **int**| Total number of items to return per page | [optional] 
- **page_token** | **str**| Page token | [optional] 
 
 ### Return type
 

@@ -322,7 +322,7 @@ class CreateUpdateContactRequest {
 
 
 /**
- * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+ * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
  * @member {Array.<module:keap.core.v2/model/Address>} addresses
  */
 CreateUpdateContactRequest.prototype['addresses'] = undefined;
@@ -374,13 +374,13 @@ CreateUpdateContactRequest.prototype['birth_date'] = undefined;
 CreateUpdateContactRequest.prototype['contact_type'] = undefined;
 
 /**
- * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+ * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
  * @member {Array.<module:keap.core.v2/model/CustomFieldValue>} custom_fields
  */
 CreateUpdateContactRequest.prototype['custom_fields'] = undefined;
 
 /**
- * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+ * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
  * @member {Array.<module:keap.core.v2/model/EmailAddressRequest>} email_addresses
  */
 CreateUpdateContactRequest.prototype['email_addresses'] = undefined;
@@ -392,7 +392,7 @@ CreateUpdateContactRequest.prototype['email_addresses'] = undefined;
 CreateUpdateContactRequest.prototype['family_name'] = undefined;
 
 /**
- * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+ * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
  * @member {Array.<module:keap.core.v2/model/FaxNumber>} fax_numbers
  */
 CreateUpdateContactRequest.prototype['fax_numbers'] = undefined;
@@ -428,7 +428,7 @@ CreateUpdateContactRequest.prototype['middle_name'] = undefined;
 CreateUpdateContactRequest.prototype['owner_id'] = undefined;
 
 /**
- * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+ * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
  * @member {Array.<module:keap.core.v2/model/PhoneNumber>} phone_numbers
  */
 CreateUpdateContactRequest.prototype['phone_numbers'] = undefined;
@@ -452,7 +452,7 @@ CreateUpdateContactRequest.prototype['preferred_name'] = undefined;
 CreateUpdateContactRequest.prototype['referral_code'] = undefined;
 
 /**
- * Any address not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
+ * Any item not listed here will be removed if it already exists. If an empty array is specified, all existing values will be removed.
  * @member {Array.<module:keap.core.v2/model/SocialAccount>} social_accounts
  */
 CreateUpdateContactRequest.prototype['social_accounts'] = undefined;
@@ -480,16 +480,19 @@ CreateUpdateContactRequest.prototype['time_zone'] = undefined;
 CreateUpdateContactRequest.prototype['utm_parameters'] = undefined;
 
 /**
+ * Assistant's name
  * @member {String} assistant_name
  */
 CreateUpdateContactRequest.prototype['assistant_name'] = undefined;
 
 /**
+ * Assistant's phone number
  * @member {String} assistant_phone
  */
 CreateUpdateContactRequest.prototype['assistant_phone'] = undefined;
 
 /**
+ * Billing information
  * @member {String} billing_information
  */
 CreateUpdateContactRequest.prototype['billing_information'] = undefined;

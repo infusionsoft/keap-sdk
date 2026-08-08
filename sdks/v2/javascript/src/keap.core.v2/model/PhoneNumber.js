@@ -107,7 +107,7 @@ class PhoneNumber {
 PhoneNumber.prototype['extension'] = undefined;
 
 /**
- * Phone number
+ * Phone number. Maximum length is 40 characters for PHONE1-PHONE3 and 20 characters for PHONE4-PHONE5.
  * @member {String} number
  */
 PhoneNumber.prototype['number'] = undefined;

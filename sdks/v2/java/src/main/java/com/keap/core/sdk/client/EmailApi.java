@@ -27,6 +27,7 @@ import com.keap.core.sdk.model.EmailSentWithContent;
 import com.keap.core.sdk.model.EmailTemplate;
 import com.keap.core.sdk.model.EmailsSentList;
 import com.keap.core.sdk.model.Error;
+import com.keap.core.sdk.model.ListEmailTemplatesResponse;
 import com.keap.core.sdk.model.ListEmailsSentResponse;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -622,6 +623,114 @@ import io.github.resilience4j.retry.Retry;
         .replace("{email_template_id}", ApiClient.urlEncode(emailTemplateId.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * List email templates
+   * Retrieves a paginated list of email templates
+   * @param filter Search filter to apply to results (optional)
+   * @param pageToken Page token (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+   * @param pageSize Total number of items to return per page (optional)
+   * @return ListEmailTemplatesResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListEmailTemplatesResponse listEmailTemplates(String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+    ApiResponse<ListEmailTemplatesResponse> localVarResponse = listEmailTemplatesWithHttpInfo(filter, pageToken, orderBy, pageSize);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * List email templates
+   * Retrieves a paginated list of email templates
+   * @param filter Search filter to apply to results (optional)
+   * @param pageToken Page token (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60; (optional)
+   * @param pageSize Total number of items to return per page (optional)
+   * @return ApiResponse&lt;ListEmailTemplatesResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ListEmailTemplatesResponse> listEmailTemplatesWithHttpInfo(String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listEmailTemplatesRequestBuilder(filter, pageToken, orderBy, pageSize);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listEmailTemplates", localVarResponse);
+        }
+        return new ApiResponse<ListEmailTemplatesResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListEmailTemplatesResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listEmailTemplatesRequestBuilder(String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/emails/templates";
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "filter";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("filter", filter));
+    localVarQueryParameterBaseName = "page_token";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_token", pageToken));
+    localVarQueryParameterBaseName = "order_by";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("order_by", orderBy));
+    localVarQueryParameterBaseName = "page_size";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_size", pageSize));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
 
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());

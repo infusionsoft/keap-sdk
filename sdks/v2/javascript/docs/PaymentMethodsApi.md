@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**deactivatePaymentMethod**](PaymentMethodsApi.md#deactivatePaymentMethod) | **POST** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate | Deactivate a Contact Payment Method
 [**deletePaymentMethod**](PaymentMethodsApi.md#deletePaymentMethod) | **DELETE** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id} | Delete a Contact Payment Method
 [**listPaymentMethods**](PaymentMethodsApi.md#listPaymentMethods) | **GET** /rest/v2/paymentMethods | List of Payment Methods
-[**listPaymentMethods_0**](PaymentMethodsApi.md#listPaymentMethods_0) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods
+[**listPaymentMethods1**](PaymentMethodsApi.md#listPaymentMethods1) | **GET** /rest/v2/contacts/{contact_id}/paymentMethods | List of Contact Payment Methods
 
 
 
@@ -167,9 +167,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## listPaymentMethods_0
+## listPaymentMethods1
 
-> ListContactPaymentMethodsResponse listPaymentMethods_0(contactId, opts)
+> ListContactPaymentMethodsResponse listPaymentMethods1(contactId, opts)
 
 List of Contact Payment Methods
 
@@ -188,11 +188,11 @@ let apiInstance = new KeapCoreServiceV2Sdk.PaymentMethodsApi();
 let contactId = "contactId_example"; // String | ID of the contact to which the payment method belongs.
 let opts = {
   'filter': "filter_example", // String | Filter to apply, allowed fields are: - (String) `merchant_account_id`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. - `filter=merchant_account_id%3D%3D123`  
+  'pageToken': "pageToken_example", // String | Page token
   'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `created_time`  One of the following directions: - `desc` - `asc`
-  'pageSize': 0, // Number | Total number of items to return per page
-  'pageToken': "pageToken_example" // String | Page token
+  'pageSize': 0 // Number | Total number of items to return per page
 };
-apiInstance.listPaymentMethods_0(contactId, opts).then((data) => {
+apiInstance.listPaymentMethods1(contactId, opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -207,9 +207,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contactId** | **String**| ID of the contact to which the payment method belongs. | 
  **filter** | **String**| Filter to apply, allowed fields are: - (String) &#x60;merchant_account_id&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. - &#x60;filter&#x3D;merchant_account_id%3D%3D123&#x60;   | [optional] 
+ **pageToken** | **String**| Page token | [optional] 
  **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;created_time&#x60;  One of the following directions: - &#x60;desc&#x60; - &#x60;asc&#x60; | [optional] 
  **pageSize** | **Number**| Total number of items to return per page | [optional] 
- **pageToken** | **String**| Page token | [optional] 
 
 ### Return type
 

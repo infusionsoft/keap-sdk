@@ -22,6 +22,14 @@ export class OpportunityContact {
     */
     'email'?: string;
     /**
+    * City
+    */
+    'city'?: string;
+    /**
+    * State
+    */
+    'state'?: string;
+    /**
     * First name
     */
     'firstName'?: string;
@@ -56,6 +64,18 @@ export class OpportunityContact {
         {
             "name": "email",
             "baseName": "email",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "city",
+            "baseName": "city",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "state",
+            "baseName": "state",
             "type": "string",
             "format": ""
         },
