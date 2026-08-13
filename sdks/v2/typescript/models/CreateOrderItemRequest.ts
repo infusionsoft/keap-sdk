@@ -140,6 +140,7 @@ export enum CreateOrderItemRequestItemTypeEnum {
     DiscountProduct = 'DISCOUNT_PRODUCT',
     DiscountProductCategory = 'DISCOUNT_PRODUCT_CATEGORY',
     DiscountShipping = 'DISCOUNT_SHIPPING',
-    Other = 'OTHER'
+    Other = 'OTHER',
+    Fee = 'FEE'
 }
 

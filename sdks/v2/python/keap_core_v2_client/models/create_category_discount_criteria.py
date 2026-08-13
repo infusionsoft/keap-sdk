@@ -17,20 +17,32 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from keap_core_v2_client.models.tag_contact_association import TagContactAssociation
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ListTagContactAssociationsResponse(BaseModel):
+class CreateCategoryDiscountCriteria(BaseModel):
     """
-    ListTagContactAssociationsResponse
+    CreateCategoryDiscountCriteria
     """ # noqa: E501
-    contacts: Optional[List[TagContactAssociation]] = None
-    next_page_token: Optional[StrictStr] = None
+    type: Optional[StrictStr] = Field(default=None, description="Type of criteria: DATE_RANGE or PROMO_CODE")
+    code: Optional[StrictStr] = Field(default=None, description="Promotional code for PROMO_CODE criteria")
+    range_start_time: Optional[datetime] = Field(default=None, description="Start date/time for DATE_RANGE criteria (ISO-8601 format)")
+    range_end_time: Optional[datetime] = Field(default=None, description="End date/time for DATE_RANGE criteria (ISO-8601 format)")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["contacts", "next_page_token"]
+    __properties: ClassVar[List[str]] = ["type", "code", "range_start_time", "range_end_time"]
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['DATE_RANGE', 'PROMO_CODE']):
+            raise ValueError("must be one of enum values ('DATE_RANGE', 'PROMO_CODE')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +62,7 @@ class ListTagContactAssociationsResponse(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ListTagContactAssociationsResponse from a JSON string"""
+        """Create an instance of CreateCategoryDiscountCriteria from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,13 +85,6 @@ class ListTagContactAssociationsResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in contacts (list)
-        _items = []
-        if self.contacts:
-            for _item_contacts in self.contacts:
-                if _item_contacts:
-                    _items.append(_item_contacts.to_dict())
-            _dict['contacts'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -89,7 +94,7 @@ class ListTagContactAssociationsResponse(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ListTagContactAssociationsResponse from a dict"""
+        """Create an instance of CreateCategoryDiscountCriteria from a dict"""
         if obj is None:
             return None
 
@@ -97,8 +102,10 @@ class ListTagContactAssociationsResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "contacts": [TagContactAssociation.from_dict(_item) for _item in obj["contacts"]] if obj.get("contacts") is not None else None,
-            "next_page_token": obj.get("next_page_token")
+            "type": obj.get("type"),
+            "code": obj.get("code"),
+            "range_start_time": obj.get("range_start_time"),
+            "range_end_time": obj.get("range_end_time")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

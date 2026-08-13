@@ -37,6 +37,11 @@
 |**synced** | **Boolean** | Whether order is synced with external systems |  [optional] |
 |**invoiceId** | **String** | Associated invoice ID |  [optional] |
 |**customFields** | [**List&lt;CustomFieldValue&gt;**](CustomFieldValue.md) | List of custom field values applied to this order |  [optional] |
+|**sentTime** | **ZonedDateTime** | The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) |  [optional] |
+|**dueTime** | **ZonedDateTime** | The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) |  [optional] |
+|**externalCreateUser** | **String** | The external system user that created this order. |  [optional] |
+|**externalCreateTime** | **ZonedDateTime** | The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) |  [optional] |
+|**externalUpdateTime** | **ZonedDateTime** | The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) |  [optional] |
 
 
 

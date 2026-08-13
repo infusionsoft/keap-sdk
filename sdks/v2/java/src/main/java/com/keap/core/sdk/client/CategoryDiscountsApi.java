@@ -18,7 +18,9 @@ import com.keap.core.sdk.ApiResponse;
 import com.keap.core.sdk.Pair;
 
 import com.keap.core.sdk.model.CategoryDiscount;
+import com.keap.core.sdk.model.CreateCategoryDiscountCriteria;
 import com.keap.core.sdk.model.CreateCategoryDiscountRequest;
+import com.keap.core.sdk.model.DiscountCriteria;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.ListCategoryDiscountsResponse;
 import java.util.Set;
@@ -189,6 +191,104 @@ import io.github.resilience4j.retry.Retry;
   }
 
   /**
+   * Create a Category Discount Criteria
+   * Creates a Category Discount Criteria
+   * @param discountId  (required)
+   * @param createCategoryDiscountCriteria  (required)
+   * @return DiscountCriteria
+   * @throws ApiException if fails to make API call
+   */
+  public DiscountCriteria createCategoryDiscountCriteria(String discountId, CreateCategoryDiscountCriteria createCategoryDiscountCriteria) throws ApiException {
+    ApiResponse<DiscountCriteria> localVarResponse = createCategoryDiscountCriteriaWithHttpInfo(discountId, createCategoryDiscountCriteria);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create a Category Discount Criteria
+   * Creates a Category Discount Criteria
+   * @param discountId  (required)
+   * @param createCategoryDiscountCriteria  (required)
+   * @return ApiResponse&lt;DiscountCriteria&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<DiscountCriteria> createCategoryDiscountCriteriaWithHttpInfo(String discountId, CreateCategoryDiscountCriteria createCategoryDiscountCriteria) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createCategoryDiscountCriteriaRequestBuilder(discountId, createCategoryDiscountCriteria);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("createCategoryDiscountCriteria", localVarResponse);
+        }
+        return new ApiResponse<DiscountCriteria>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<DiscountCriteria>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder createCategoryDiscountCriteriaRequestBuilder(String discountId, CreateCategoryDiscountCriteria createCategoryDiscountCriteria) throws ApiException {
+    // verify the required parameter 'discountId' is set
+    if (discountId == null) {
+      throw new ApiException(400, "Missing the required parameter 'discountId' when calling createCategoryDiscountCriteria");
+    }
+    // verify the required parameter 'createCategoryDiscountCriteria' is set
+    if (createCategoryDiscountCriteria == null) {
+      throw new ApiException(400, "Missing the required parameter 'createCategoryDiscountCriteria' when calling createCategoryDiscountCriteria");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/discounts/productCategories/{discount_id}/criteria"
+        .replace("{discount_id}", ApiClient.urlEncode(discountId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(createCategoryDiscountCriteria);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Delete a Category Discount
    * Deletes a specified Category Discount
    * @param discountId  (required)
@@ -261,6 +361,102 @@ import io.github.resilience4j.retry.Retry;
 
     String localVarPath = "/rest/v2/discounts/productCategories/{discount_id}"
         .replace("{discount_id}", ApiClient.urlEncode(discountId.toString()));
+
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Delete a Category Discount Criteria
+   * Deletes a specified Category Discount Criteria
+   * @param discountId  (required)
+   * @param criteriaId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteCategoryDiscountCriteria(String discountId, String criteriaId) throws ApiException {
+    deleteCategoryDiscountCriteriaWithHttpInfo(discountId, criteriaId);
+  }
+
+  /**
+   * Delete a Category Discount Criteria
+   * Deletes a specified Category Discount Criteria
+   * @param discountId  (required)
+   * @param criteriaId  (required)
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteCategoryDiscountCriteriaWithHttpInfo(String discountId, String criteriaId) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteCategoryDiscountCriteriaRequestBuilder(discountId, criteriaId);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteCategoryDiscountCriteria", localVarResponse);
+        }
+        return new ApiResponse<Void>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          null
+        );
+      } finally {
+        // Drain the InputStream
+        while (localVarResponse.body().read() != -1) {
+            // Ignore
+        }
+        localVarResponse.body().close();
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteCategoryDiscountCriteriaRequestBuilder(String discountId, String criteriaId) throws ApiException {
+    // verify the required parameter 'discountId' is set
+    if (discountId == null) {
+      throw new ApiException(400, "Missing the required parameter 'discountId' when calling deleteCategoryDiscountCriteria");
+    }
+    // verify the required parameter 'criteriaId' is set
+    if (criteriaId == null) {
+      throw new ApiException(400, "Missing the required parameter 'criteriaId' when calling deleteCategoryDiscountCriteria");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/discounts/productCategories/{discount_id}/criteria/{criteria_id}"
+        .replace("{discount_id}", ApiClient.urlEncode(discountId.toString()))
+        .replace("{criteria_id}", ApiClient.urlEncode(criteriaId.toString()));
 
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
 

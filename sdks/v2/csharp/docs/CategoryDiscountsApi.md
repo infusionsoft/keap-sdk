@@ -5,7 +5,9 @@ All URIs are relative to *https://api.keap.com/crm*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CreateCategoryDiscount**](CategoryDiscountsApi.md#createcategorydiscount) | **POST** /rest/v2/discounts/productCategories | Create a Category Discount |
+| [**CreateCategoryDiscountCriteria**](CategoryDiscountsApi.md#createcategorydiscountcriteria) | **POST** /rest/v2/discounts/productCategories/{discount_id}/criteria | Create a Category Discount Criteria |
 | [**DeleteCategoryDiscount**](CategoryDiscountsApi.md#deletecategorydiscount) | **DELETE** /rest/v2/discounts/productCategories/{discount_id} | Delete a Category Discount |
+| [**DeleteCategoryDiscountCriteria**](CategoryDiscountsApi.md#deletecategorydiscountcriteria) | **DELETE** /rest/v2/discounts/productCategories/{discount_id}/criteria/{criteria_id} | Delete a Category Discount Criteria |
 | [**GetCategoryDiscount**](CategoryDiscountsApi.md#getcategorydiscount) | **GET** /rest/v2/discounts/productCategories/{discount_id} | Retrieve a Category Discount |
 | [**ListCategoryDiscounts**](CategoryDiscountsApi.md#listcategorydiscounts) | **GET** /rest/v2/discounts/productCategories | List Category Discounts |
 | [**UpdateCategoryDiscount**](CategoryDiscountsApi.md#updatecategorydiscount) | **PATCH** /rest/v2/discounts/productCategories/{discount_id} | Update a Category Discount |
@@ -112,6 +114,110 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="createcategorydiscountcriteria"></a>
+# **CreateCategoryDiscountCriteria**
+> DiscountCriteria CreateCategoryDiscountCriteria (string discountId, CreateCategoryDiscountCriteria createCategoryDiscountCriteria)
+
+Create a Category Discount Criteria
+
+Creates a Category Discount Criteria
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class CreateCategoryDiscountCriteriaExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new CategoryDiscountsApi(config);
+            var discountId = "discountId_example";  // string | 
+            var createCategoryDiscountCriteria = new CreateCategoryDiscountCriteria(); // CreateCategoryDiscountCriteria | 
+
+            try
+            {
+                // Create a Category Discount Criteria
+                DiscountCriteria result = apiInstance.CreateCategoryDiscountCriteria(discountId, createCategoryDiscountCriteria);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CategoryDiscountsApi.CreateCategoryDiscountCriteria: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateCategoryDiscountCriteriaWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create a Category Discount Criteria
+    ApiResponse<DiscountCriteria> response = apiInstance.CreateCategoryDiscountCriteriaWithHttpInfo(discountId, createCategoryDiscountCriteria);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling CategoryDiscountsApi.CreateCategoryDiscountCriteriaWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **discountId** | **string** |  |  |
+| **createCategoryDiscountCriteria** | [**CreateCategoryDiscountCriteria**](CreateCategoryDiscountCriteria.md) |  |  |
+
+### Return type
+
+[**DiscountCriteria**](DiscountCriteria.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Created |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="deletecategorydiscount"></a>
 # **DeleteCategoryDiscount**
 > void DeleteCategoryDiscount (string discountId)
@@ -180,6 +286,106 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **discountId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deletecategorydiscountcriteria"></a>
+# **DeleteCategoryDiscountCriteria**
+> void DeleteCategoryDiscountCriteria (string discountId, string criteriaId)
+
+Delete a Category Discount Criteria
+
+Deletes a specified Category Discount Criteria
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class DeleteCategoryDiscountCriteriaExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new CategoryDiscountsApi(config);
+            var discountId = "discountId_example";  // string | 
+            var criteriaId = "criteriaId_example";  // string | 
+
+            try
+            {
+                // Delete a Category Discount Criteria
+                apiInstance.DeleteCategoryDiscountCriteria(discountId, criteriaId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CategoryDiscountsApi.DeleteCategoryDiscountCriteria: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteCategoryDiscountCriteriaWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a Category Discount Criteria
+    apiInstance.DeleteCategoryDiscountCriteriaWithHttpInfo(discountId, criteriaId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling CategoryDiscountsApi.DeleteCategoryDiscountCriteriaWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **discountId** | **string** |  |  |
+| **criteriaId** | **string** |  |  |
 
 ### Return type
 

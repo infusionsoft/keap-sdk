@@ -12,7 +12,6 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**getCategory()**](TagsApi.md#getCategory) | **GET** /rest/v2/tags/categories/{tag_category_id} | Retrieve a Tag Category |
 | [**getTag()**](TagsApi.md#getTag) | **GET** /rest/v2/tags/{tag_id} | Retrieve a Tag |
 | [**listCompaniesForTagId()**](TagsApi.md#listCompaniesForTagId) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies |
-| [**listContactsAcrossTags()**](TagsApi.md#listContactsAcrossTags) | **GET** /rest/v2/tags/-/contacts | List Contacts Across Tags |
 | [**listContactsWithTagId()**](TagsApi.md#listContactsWithTagId) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts |
 | [**listTagCategories()**](TagsApi.md#listTagCategories) | **GET** /rest/v2/tags/categories | List Tag Categories |
 | [**listTags()**](TagsApi.md#listTags) | **GET** /rest/v2/tags | List Tags |
@@ -487,71 +486,6 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\ListTaggedCompaniesResponse**](../Model/ListTaggedCompaniesResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `listContactsAcrossTags()`
-
-```php
-listContactsAcrossTags($filter, $page_token, $order_by, $page_size): \Keap\Core\V2\Model\ListTagContactAssociationsResponse
-```
-
-List Contacts Across Tags
-
-Retrieves tag-contact associations across the tag collection (AEP-159), using the `-` wildcard in place of a single tag id. At least one filter is required. Returns association tuples (contact_id, tag_id, applied_at) only.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$apiInstance = new Keap\Core\V2\Api\TagsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$filter = 'filter_example'; // string | Filter to apply (at least one is required). Allowed fields: - (List[String]) `tag_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time`
-$page_token = 'page_token_example'; // string | Page token
-$order_by = 'order_by_example'; // string | Attribute and direction to order items (best-effort for cross-collection reads). Field: - `applied_time`  Direction: - `asc` - `desc`
-$page_size = 0; // int | Total number of items to return per page
-
-try {
-    $result = $apiInstance->listContactsAcrossTags($filter, $page_token, $order_by, $page_size);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling TagsApi->listContactsAcrossTags: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **filter** | **string**| Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;tag_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60; | [optional] |
-| **page_token** | **string**| Page token | [optional] |
-| **order_by** | **string**| Attribute and direction to order items (best-effort for cross-collection reads). Field: - &#x60;applied_time&#x60;  Direction: - &#x60;asc&#x60; - &#x60;desc&#x60; | [optional] |
-| **page_size** | **int**| Total number of items to return per page | [optional] |
-
-### Return type
-
-[**\Keap\Core\V2\Model\ListTagContactAssociationsResponse**](../Model/ListTagContactAssociationsResponse.md)
 
 ### Authorization
 

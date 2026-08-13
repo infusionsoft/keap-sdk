@@ -188,7 +188,12 @@ namespace Keap.Core.V2.Model
         /// <param name="synced">Whether order is synced with external systems.</param>
         /// <param name="invoiceId">Associated invoice ID.</param>
         /// <param name="customFields">List of custom field values applied to this order.</param>
-        public OrderV2(string id = default, string title = default, StatusEnum? status = default, CurrencyValue total = default, BasicContact contact = default, string notes = default, string terms = default, OrderTypeEnum? orderType = default, SourceTypeEnum? sourceType = default, DateTime creationTime = default, DateTime modificationTime = default, DateTime orderTime = default, string leadAffiliateId = default, string salesAffiliateId = default, CurrencyValue totalPaid = default, CurrencyValue totalDue = default, ShippingInformation shippingInformation = default, CurrencyValue refundTotal = default, bool allowPayment = default, bool allowPaypal = default, List<OrderItem> orderItems = default, PaymentPlan paymentPlan = default, string invoiceNumber = default, List<InvoiceFile> files = default, string creditStatus = default, string promoCode = default, string refundStatus = default, bool synced = default, string invoiceId = default, List<CustomFieldValue> customFields = default)
+        /// <param name="sentTime">The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z).</param>
+        /// <param name="dueTime">The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z).</param>
+        /// <param name="externalCreateUser">The external system user that created this order..</param>
+        /// <param name="externalCreateTime">The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z).</param>
+        /// <param name="externalUpdateTime">The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z).</param>
+        public OrderV2(string id = default, string title = default, StatusEnum? status = default, CurrencyValue total = default, BasicContact contact = default, string notes = default, string terms = default, OrderTypeEnum? orderType = default, SourceTypeEnum? sourceType = default, DateTime creationTime = default, DateTime modificationTime = default, DateTime orderTime = default, string leadAffiliateId = default, string salesAffiliateId = default, CurrencyValue totalPaid = default, CurrencyValue totalDue = default, ShippingInformation shippingInformation = default, CurrencyValue refundTotal = default, bool allowPayment = default, bool allowPaypal = default, List<OrderItem> orderItems = default, PaymentPlan paymentPlan = default, string invoiceNumber = default, List<InvoiceFile> files = default, string creditStatus = default, string promoCode = default, string refundStatus = default, bool synced = default, string invoiceId = default, List<CustomFieldValue> customFields = default, DateTime sentTime = default, DateTime dueTime = default, string externalCreateUser = default, DateTime externalCreateTime = default, DateTime externalUpdateTime = default)
         {
             this.Id = id;
             this.Title = title;
@@ -220,6 +225,11 @@ namespace Keap.Core.V2.Model
             this.Synced = synced;
             this.InvoiceId = invoiceId;
             this.CustomFields = customFields;
+            this.SentTime = sentTime;
+            this.DueTime = dueTime;
+            this.ExternalCreateUser = externalCreateUser;
+            this.ExternalCreateTime = externalCreateTime;
+            this.ExternalUpdateTime = externalUpdateTime;
         }
 
         /// <summary>
@@ -466,6 +476,56 @@ namespace Keap.Core.V2.Model
         public List<CustomFieldValue> CustomFields { get; set; }
 
         /// <summary>
+        /// The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+        /// </summary>
+        /// <value>The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)</value>
+        /*
+        <example>2024-05-21T14:30:00Z</example>
+        */
+        [DataMember(Name = "sent_time", EmitDefaultValue = false)]
+        public DateTime SentTime { get; set; }
+
+        /// <summary>
+        /// The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+        /// </summary>
+        /// <value>The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)</value>
+        /*
+        <example>2024-06-20T14:30:00Z</example>
+        */
+        [DataMember(Name = "due_time", EmitDefaultValue = false)]
+        public DateTime DueTime { get; set; }
+
+        /// <summary>
+        /// The external system user that created this order.
+        /// </summary>
+        /// <value>The external system user that created this order.</value>
+        /*
+        <example>user@example.com</example>
+        */
+        [DataMember(Name = "external_create_user", EmitDefaultValue = false)]
+        public string ExternalCreateUser { get; set; }
+
+        /// <summary>
+        /// The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+        /// </summary>
+        /// <value>The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)</value>
+        /*
+        <example>2024-05-21T14:30:00Z</example>
+        */
+        [DataMember(Name = "external_create_time", EmitDefaultValue = false)]
+        public DateTime ExternalCreateTime { get; set; }
+
+        /// <summary>
+        /// The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+        /// </summary>
+        /// <value>The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)</value>
+        /*
+        <example>2024-05-21T14:30:00Z</example>
+        */
+        [DataMember(Name = "external_update_time", EmitDefaultValue = false)]
+        public DateTime ExternalUpdateTime { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -503,6 +563,11 @@ namespace Keap.Core.V2.Model
             sb.Append("  Synced: ").Append(Synced).Append("\n");
             sb.Append("  InvoiceId: ").Append(InvoiceId).Append("\n");
             sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
+            sb.Append("  SentTime: ").Append(SentTime).Append("\n");
+            sb.Append("  DueTime: ").Append(DueTime).Append("\n");
+            sb.Append("  ExternalCreateUser: ").Append(ExternalCreateUser).Append("\n");
+            sb.Append("  ExternalCreateTime: ").Append(ExternalCreateTime).Append("\n");
+            sb.Append("  ExternalUpdateTime: ").Append(ExternalUpdateTime).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

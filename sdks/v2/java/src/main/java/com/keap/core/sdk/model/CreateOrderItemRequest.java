@@ -97,6 +97,8 @@ public class CreateOrderItemRequest implements Serializable {
     
     OTHER(String.valueOf("OTHER")),
     
+    FEE(String.valueOf("FEE")),
+    
     UNKNOWN_COULD_NOT_DESERIALIZE(String.valueOf("unknown_default_open_api"));
 
     private String value;

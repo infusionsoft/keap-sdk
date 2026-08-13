@@ -43,6 +43,7 @@
 | DISCOUNT_SHIPPING | &quot;DISCOUNT_SHIPPING&quot; |
 | TIP | &quot;TIP&quot; |
 | OTHER | &quot;OTHER&quot; |
+| FEE | &quot;FEE&quot; |
 | UNKNOWN | &quot;UNKNOWN&quot; |
 | UNKNOWN_COULD_NOT_DESERIALIZE | &quot;unknown_default_open_api&quot; |
 

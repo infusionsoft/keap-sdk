@@ -71,6 +71,7 @@ namespace Keap.Core.V2.Model
         /// </summary>
         /// <param name="notes">Internal notes.</param>
         /// <param name="terms">Order terms.</param>
+        /// <param name="title">A title for the invoice.</param>
         /// <param name="contactId">ID of the contact for this order (required).</param>
         /// <param name="orderItems">List of items to include in the order.</param>
         /// <param name="orderTitle">Title for the order (required).</param>
@@ -81,7 +82,13 @@ namespace Keap.Core.V2.Model
         /// <param name="salesAffiliateId">Sales affiliate ID.</param>
         /// <param name="shippingAddress">Shipping address for the order.</param>
         /// <param name="customFields">List of custom field values to apply to this order.</param>
-        public RestCreateOrderRequest(string notes = default, string terms = default, string contactId = default, List<CreateOrderItemRequest> orderItems = default, string orderTitle = default, DateTime orderTime = default, OrderTypeEnum orderType = default, List<string> promoCodes = default, string leadAffiliateId = default, string salesAffiliateId = default, AddressInformation shippingAddress = default, List<CustomFieldValue> customFields = default)
+        /// <param name="sentTime">The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z).</param>
+        /// <param name="dueTime">The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z).</param>
+        /// <param name="invoiceNumber">Invoice number.</param>
+        /// <param name="externalCreateUser">The external system user that created this order..</param>
+        /// <param name="externalCreateTime">The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z).</param>
+        /// <param name="externalUpdateTime">The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z).</param>
+        public RestCreateOrderRequest(string notes = default, string terms = default, string title = default, string contactId = default, List<CreateOrderItemRequest> orderItems = default, string orderTitle = default, DateTime orderTime = default, OrderTypeEnum orderType = default, List<string> promoCodes = default, string leadAffiliateId = default, string salesAffiliateId = default, AddressInformation shippingAddress = default, List<CustomFieldValue> customFields = default, DateTime sentTime = default, DateTime dueTime = default, string invoiceNumber = default, string externalCreateUser = default, DateTime externalCreateTime = default, DateTime externalUpdateTime = default)
         {
             // to ensure "contactId" is required (not null)
             if (contactId == null)
@@ -99,12 +106,19 @@ namespace Keap.Core.V2.Model
             this.OrderType = orderType;
             this.Notes = notes;
             this.Terms = terms;
+            this.Title = title;
             this.OrderItems = orderItems;
             this.PromoCodes = promoCodes;
             this.LeadAffiliateId = leadAffiliateId;
             this.SalesAffiliateId = salesAffiliateId;
             this.ShippingAddress = shippingAddress;
             this.CustomFields = customFields;
+            this.SentTime = sentTime;
+            this.DueTime = dueTime;
+            this.InvoiceNumber = invoiceNumber;
+            this.ExternalCreateUser = externalCreateUser;
+            this.ExternalCreateTime = externalCreateTime;
+            this.ExternalUpdateTime = externalUpdateTime;
         }
 
         /// <summary>
@@ -126,6 +140,16 @@ namespace Keap.Core.V2.Model
         */
         [DataMember(Name = "terms", EmitDefaultValue = false)]
         public string Terms { get; set; }
+
+        /// <summary>
+        /// A title for the invoice
+        /// </summary>
+        /// <value>A title for the invoice</value>
+        /*
+        <example>Monthly subscription invoice</example>
+        */
+        [DataMember(Name = "title", EmitDefaultValue = false)]
+        public string Title { get; set; }
 
         /// <summary>
         /// ID of the contact for this order
@@ -212,6 +236,66 @@ namespace Keap.Core.V2.Model
         public List<CustomFieldValue> CustomFields { get; set; }
 
         /// <summary>
+        /// The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+        /// </summary>
+        /// <value>The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)</value>
+        /*
+        <example>2024-05-21T14:30:00Z</example>
+        */
+        [DataMember(Name = "sent_time", EmitDefaultValue = false)]
+        public DateTime SentTime { get; set; }
+
+        /// <summary>
+        /// The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+        /// </summary>
+        /// <value>The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)</value>
+        /*
+        <example>2024-06-20T14:30:00Z</example>
+        */
+        [DataMember(Name = "due_time", EmitDefaultValue = false)]
+        public DateTime DueTime { get; set; }
+
+        /// <summary>
+        /// Invoice number
+        /// </summary>
+        /// <value>Invoice number</value>
+        /*
+        <example>1001</example>
+        */
+        [DataMember(Name = "invoice_number", EmitDefaultValue = false)]
+        public string InvoiceNumber { get; set; }
+
+        /// <summary>
+        /// The external system user that created this order.
+        /// </summary>
+        /// <value>The external system user that created this order.</value>
+        /*
+        <example>user@example.com</example>
+        */
+        [DataMember(Name = "external_create_user", EmitDefaultValue = false)]
+        public string ExternalCreateUser { get; set; }
+
+        /// <summary>
+        /// The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+        /// </summary>
+        /// <value>The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)</value>
+        /*
+        <example>2024-05-21T14:30:00Z</example>
+        */
+        [DataMember(Name = "external_create_time", EmitDefaultValue = false)]
+        public DateTime ExternalCreateTime { get; set; }
+
+        /// <summary>
+        /// The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+        /// </summary>
+        /// <value>The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)</value>
+        /*
+        <example>2024-05-21T14:30:00Z</example>
+        */
+        [DataMember(Name = "external_update_time", EmitDefaultValue = false)]
+        public DateTime ExternalUpdateTime { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -221,6 +305,7 @@ namespace Keap.Core.V2.Model
             sb.Append("class RestCreateOrderRequest {\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("  Terms: ").Append(Terms).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  ContactId: ").Append(ContactId).Append("\n");
             sb.Append("  OrderItems: ").Append(OrderItems).Append("\n");
             sb.Append("  OrderTitle: ").Append(OrderTitle).Append("\n");
@@ -231,6 +316,12 @@ namespace Keap.Core.V2.Model
             sb.Append("  SalesAffiliateId: ").Append(SalesAffiliateId).Append("\n");
             sb.Append("  ShippingAddress: ").Append(ShippingAddress).Append("\n");
             sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
+            sb.Append("  SentTime: ").Append(SentTime).Append("\n");
+            sb.Append("  DueTime: ").Append(DueTime).Append("\n");
+            sb.Append("  InvoiceNumber: ").Append(InvoiceNumber).Append("\n");
+            sb.Append("  ExternalCreateUser: ").Append(ExternalCreateUser).Append("\n");
+            sb.Append("  ExternalCreateTime: ").Append(ExternalCreateTime).Append("\n");
+            sb.Append("  ExternalUpdateTime: ").Append(ExternalUpdateTime).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

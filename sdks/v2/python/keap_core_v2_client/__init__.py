@@ -14,7 +14,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-__version__ = "2.0.19"
+__version__ = "2.0.20"
 
 # import apis into sdk package
 from keap_core_v2_client.api.affiliate_api import AffiliateApi
@@ -125,7 +125,6 @@ from keap_core_v2_client.models.assigned_products import AssignedProducts
 from keap_core_v2_client.models.automation import Automation
 from keap_core_v2_client.models.automation_category import AutomationCategory
 from keap_core_v2_client.models.automation_lock_status import AutomationLockStatus
-from keap_core_v2_client.models.automation_state_request import AutomationStateRequest
 from keap_core_v2_client.models.basic_company import BasicCompany
 from keap_core_v2_client.models.basic_contact import BasicContact
 from keap_core_v2_client.models.basic_user import BasicUser
@@ -152,6 +151,7 @@ from keap_core_v2_client.models.country import Country
 from keap_core_v2_client.models.country_codes import CountryCodes
 from keap_core_v2_client.models.create_affiliate_request import CreateAffiliateRequest
 from keap_core_v2_client.models.create_automation_category_request import CreateAutomationCategoryRequest
+from keap_core_v2_client.models.create_category_discount_criteria import CreateCategoryDiscountCriteria
 from keap_core_v2_client.models.create_category_discount_request import CreateCategoryDiscountRequest
 from keap_core_v2_client.models.create_commission_program_request import CreateCommissionProgramRequest
 from keap_core_v2_client.models.create_company_request import CreateCompanyRequest
@@ -321,7 +321,6 @@ from keap_core_v2_client.models.list_shipping_discounts_response import ListShip
 from keap_core_v2_client.models.list_subscription_plans_response import ListSubscriptionPlansResponse
 from keap_core_v2_client.models.list_subscriptions_response import ListSubscriptionsResponse
 from keap_core_v2_client.models.list_tag_categories_response import ListTagCategoriesResponse
-from keap_core_v2_client.models.list_tag_contact_associations_response import ListTagContactAssociationsResponse
 from keap_core_v2_client.models.list_tagged_companies_response import ListTaggedCompaniesResponse
 from keap_core_v2_client.models.list_tagged_contacts_response import ListTaggedContactsResponse
 from keap_core_v2_client.models.list_tags_response import ListTagsResponse
@@ -370,6 +369,7 @@ from keap_core_v2_client.models.province import Province
 from keap_core_v2_client.models.referral import Referral
 from keap_core_v2_client.models.remove_contacts_from_sequence_request import RemoveContactsFromSequenceRequest
 from keap_core_v2_client.models.remove_contacts_from_sequence_response import RemoveContactsFromSequenceResponse
+from keap_core_v2_client.models.rename_easy_automation_command import RenameEasyAutomationCommand
 from keap_core_v2_client.models.report import Report
 from keap_core_v2_client.models.report_entry_record import ReportEntryRecord
 from keap_core_v2_client.models.report_entry_value import ReportEntryValue
@@ -402,7 +402,6 @@ from keap_core_v2_client.models.subscription_plan_detail import SubscriptionPlan
 from keap_core_v2_client.models.subscription_plan_list import SubscriptionPlanList
 from keap_core_v2_client.models.tag import Tag
 from keap_core_v2_client.models.tag_category import TagCategory
-from keap_core_v2_client.models.tag_contact_association import TagContactAssociation
 from keap_core_v2_client.models.tagged_company import TaggedCompany
 from keap_core_v2_client.models.tagged_contact import TaggedContact
 from keap_core_v2_client.models.task import Task

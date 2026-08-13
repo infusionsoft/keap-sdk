@@ -17,25 +17,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class AutomationStateRequest(BaseModel):
+class RenameEasyAutomationCommand(BaseModel):
     """
-    AutomationStateRequest
+    An object used to rename an automation.
     """ # noqa: E501
-    state: StrictStr = Field(description="The desired lifecycle state of the automation.")
+    name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Name of the easy automation")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["state"]
-
-    @field_validator('state')
-    def state_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['enabled', 'disabled']):
-            raise ValueError("must be one of enum values ('enabled', 'disabled')")
-        return value
+    __properties: ClassVar[List[str]] = ["name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -55,7 +49,7 @@ class AutomationStateRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AutomationStateRequest from a JSON string"""
+        """Create an instance of RenameEasyAutomationCommand from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -87,7 +81,7 @@ class AutomationStateRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AutomationStateRequest from a dict"""
+        """Create an instance of RenameEasyAutomationCommand from a dict"""
         if obj is None:
             return None
 
@@ -95,7 +89,7 @@ class AutomationStateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "state": obj.get("state")
+            "name": obj.get("name")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

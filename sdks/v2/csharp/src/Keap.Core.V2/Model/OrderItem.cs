@@ -136,10 +136,16 @@ namespace Keap.Core.V2.Model
             OTHER = 16,
 
             /// <summary>
+            /// Enum FEE for value: FEE
+            /// </summary>
+            [EnumMember(Value = "FEE")]
+            FEE = 17,
+
+            /// <summary>
             /// Enum UNKNOWN for value: UNKNOWN
             /// </summary>
             [EnumMember(Value = "UNKNOWN")]
-            UNKNOWN = 17
+            UNKNOWN = 18
         }
 
         /// <summary>

@@ -20,10 +20,10 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**listAllAutomationIdsWithHttpInfo**](AutomationApi.md#listAllAutomationIdsWithHttpInfo) | **GET** /rest/v2/automations/ids | List Automations Ids |
 | [**listAutomations**](AutomationApi.md#listAutomations) | **GET** /rest/v2/automations | List Automations |
 | [**listAutomationsWithHttpInfo**](AutomationApi.md#listAutomationsWithHttpInfo) | **GET** /rest/v2/automations | List Automations |
+| [**renameAutomationV2**](AutomationApi.md#renameAutomationV2) | **PATCH** /rest/v2/easy-automations/{automation_id} | Renames an Easy Automation. |
+| [**renameAutomationV2WithHttpInfo**](AutomationApi.md#renameAutomationV2WithHttpInfo) | **PATCH** /rest/v2/easy-automations/{automation_id} | Renames an Easy Automation. |
 | [**unpublishAutomation**](AutomationApi.md#unpublishAutomation) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation |
 | [**unpublishAutomationWithHttpInfo**](AutomationApi.md#unpublishAutomationWithHttpInfo) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation |
-| [**updateState**](AutomationApi.md#updateState) | **PUT** /rest/v2/easy-automations/{automation_id}/state | Update the state of an Easy Automation |
-| [**updateStateWithHttpInfo**](AutomationApi.md#updateStateWithHttpInfo) | **PUT** /rest/v2/easy-automations/{automation_id}/state | Update the state of an Easy Automation |
 
 
 
@@ -1333,6 +1333,168 @@ ApiResponse<[**ListAutomationResponse**](ListAutomationResponse.md)>
 | **501** | Method Not Implemented |  -  |
 
 
+## renameAutomationV2
+
+> void renameAutomationV2(automationId, renameEasyAutomationCommand)
+
+Renames an Easy Automation.
+
+Updates the name of a single easy automation.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AutomationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AutomationApi apiInstance = new AutomationApi(defaultClient);
+        String automationId = "HWv0fbDNDbWg6cFKY027"; // String | automation_id
+        RenameEasyAutomationCommand renameEasyAutomationCommand = new RenameEasyAutomationCommand(); // RenameEasyAutomationCommand | 
+        try {
+            apiInstance.renameAutomationV2(automationId, renameEasyAutomationCommand);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AutomationApi#renameAutomationV2");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **automationId** | **String**| automation_id | |
+| **renameEasyAutomationCommand** | [**RenameEasyAutomationCommand**](RenameEasyAutomationCommand.md)|  | |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## renameAutomationV2WithHttpInfo
+
+> ApiResponse<Void> renameAutomationV2 renameAutomationV2WithHttpInfo(automationId, renameEasyAutomationCommand)
+
+Renames an Easy Automation.
+
+Updates the name of a single easy automation.
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.AutomationApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        AutomationApi apiInstance = new AutomationApi(defaultClient);
+        String automationId = "HWv0fbDNDbWg6cFKY027"; // String | automation_id
+        RenameEasyAutomationCommand renameEasyAutomationCommand = new RenameEasyAutomationCommand(); // RenameEasyAutomationCommand | 
+        try {
+            ApiResponse<Void> response = apiInstance.renameAutomationV2WithHttpInfo(automationId, renameEasyAutomationCommand);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AutomationApi#renameAutomationV2");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **automationId** | **String**| automation_id | |
+| **renameEasyAutomationCommand** | [**RenameEasyAutomationCommand**](RenameEasyAutomationCommand.md)|  | |
+
+### Return type
+
+
+ApiResponse<Void>
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## unpublishAutomation
 
 > void unpublishAutomation(automationId, unpublishAutomationRequest)
@@ -1485,168 +1647,6 @@ ApiResponse<Void>
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **405** | Method Not Allowed |  -  |
-| **409** | Conflict |  -  |
-| **500** | Internal Server Error |  -  |
-| **501** | Method Not Implemented |  -  |
-
-
-## updateState
-
-> void updateState(automationId, automationStateRequest)
-
-Update the state of an Easy Automation
-
-Updates the lifecycle state of an existing Easy Automation. Supported states: &#x60;disabled&#x60;, &#x60;enabled&#x60;.
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.auth.*;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.AutomationApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm");
-        
-        // Configure OAuth2 access token for authorization: oauth2
-        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-        oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-        AutomationApi apiInstance = new AutomationApi(defaultClient);
-        String automationId = "automationId_example"; // String | 
-        AutomationStateRequest automationStateRequest = new AutomationStateRequest(); // AutomationStateRequest | 
-        try {
-            apiInstance.updateState(automationId, automationStateRequest);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#updateState");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **automationId** | **String**|  | |
-| **automationStateRequest** | [**AutomationStateRequest**](AutomationStateRequest.md)|  | |
-
-### Return type
-
-
-null (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | No Content |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **405** | Method Not Allowed |  -  |
-| **409** | Conflict |  -  |
-| **500** | Internal Server Error |  -  |
-| **501** | Method Not Implemented |  -  |
-
-## updateStateWithHttpInfo
-
-> ApiResponse<Void> updateState updateStateWithHttpInfo(automationId, automationStateRequest)
-
-Update the state of an Easy Automation
-
-Updates the lifecycle state of an existing Easy Automation. Supported states: &#x60;disabled&#x60;, &#x60;enabled&#x60;.
-
-### Example
-
-```java
-// Import classes:
-import com.keap.core.sdk.ApiClient;
-import com.keap.core.sdk.ApiException;
-import com.keap.core.sdk.ApiResponse;
-import com.keap.core.sdk.Configuration;
-import com.keap.core.sdk.auth.*;
-import com.keap.core.sdk.models.*;
-import com.keap.core.sdk.client.AutomationApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api.keap.com/crm");
-        
-        // Configure OAuth2 access token for authorization: oauth2
-        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-        oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-        AutomationApi apiInstance = new AutomationApi(defaultClient);
-        String automationId = "automationId_example"; // String | 
-        AutomationStateRequest automationStateRequest = new AutomationStateRequest(); // AutomationStateRequest | 
-        try {
-            ApiResponse<Void> response = apiInstance.updateStateWithHttpInfo(automationId, automationStateRequest);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AutomationApi#updateState");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **automationId** | **String**|  | |
-| **automationStateRequest** | [**AutomationStateRequest**](AutomationStateRequest.md)|  | |
-
-### Return type
-
-
-ApiResponse<Void>
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | No Content |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |

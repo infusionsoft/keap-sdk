@@ -1,6 +1,6 @@
 <?php
 /**
- * AutomationStateRequest
+ * RenameEasyAutomationCommand
  *
  * PHP version 8.1
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \Keap\Core\V2\ObjectSerializer;
 
 /**
- * AutomationStateRequest Class Doc Comment
+ * RenameEasyAutomationCommand Class Doc Comment
  *
  * @category Class
+ * @description An object used to rename an automation.
  * @package  Keap\Core\V2
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AutomationStateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class RenameEasyAutomationCommand implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class AutomationStateRequest implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AutomationStateRequest';
+    protected static $openAPIModelName = 'RenameEasyAutomationCommand';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +58,7 @@ class AutomationStateRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'state' => 'string'
+        'name' => 'string'
     ];
 
     /**
@@ -68,7 +69,7 @@ class AutomationStateRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'state' => null
+        'name' => null
     ];
 
     /**
@@ -77,7 +78,7 @@ class AutomationStateRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'state' => false
+        'name' => false
     ];
 
     /**
@@ -166,7 +167,7 @@ class AutomationStateRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'state' => 'state'
+        'name' => 'name'
     ];
 
     /**
@@ -175,7 +176,7 @@ class AutomationStateRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'state' => 'setState'
+        'name' => 'setName'
     ];
 
     /**
@@ -184,7 +185,7 @@ class AutomationStateRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'state' => 'getState'
+        'name' => 'getName'
     ];
 
     /**
@@ -228,21 +229,6 @@ class AutomationStateRequest implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
-    public const STATE_ENABLED = 'enabled';
-    public const STATE_DISABLED = 'disabled';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStateAllowableValues()
-    {
-        return [
-            self::STATE_ENABLED,
-            self::STATE_DISABLED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -259,7 +245,7 @@ class AutomationStateRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('state', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -289,16 +275,11 @@ class AutomationStateRequest implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['state'] === null) {
-            $invalidProperties[] = "'state' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
-        $allowedValues = $this->getStateAllowableValues();
-        if (!is_null($this->container['state']) && !in_array($this->container['state'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'state', must be one of '%s'",
-                $this->container['state'],
-                implode("', '", $allowedValues)
-            );
+        if ((mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -317,38 +298,33 @@ class AutomationStateRequest implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets state
+     * Gets name
      *
      * @return string
      */
-    public function getState()
+    public function getName()
     {
-        return $this->container['state'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets state
+     * Sets name
      *
-     * @param string $state The desired lifecycle state of the automation.
+     * @param string $name Name of the easy automation
      *
      * @return self
      */
-    public function setState($state)
+    public function setName($name)
     {
-        if (is_null($state)) {
-            throw new \InvalidArgumentException('non-nullable state cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $allowedValues = $this->getStateAllowableValues();
-        if (!in_array($state, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'state', must be one of '%s'",
-                    $state,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+        if ((mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling RenameEasyAutomationCommand., must be bigger than or equal to 1.');
         }
-        $this->container['state'] = $state;
+
+        $this->container['name'] = $name;
 
         return $this;
     }

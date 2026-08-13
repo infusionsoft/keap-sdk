@@ -140,6 +140,26 @@ export class OrderV2 {
     * List of custom field values applied to this order
     */
     'customFields'?: Array<CustomFieldValue>;
+    /**
+    * The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+    */
+    'sentTime'?: Date;
+    /**
+    * The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+    */
+    'dueTime'?: Date;
+    /**
+    * The external system user that created this order.
+    */
+    'externalCreateUser'?: string;
+    /**
+    * The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+    */
+    'externalCreateTime'?: Date;
+    /**
+    * The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+    */
+    'externalUpdateTime'?: Date;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -325,6 +345,36 @@ export class OrderV2 {
             "baseName": "custom_fields",
             "type": "Array<CustomFieldValue>",
             "format": ""
+        },
+        {
+            "name": "sentTime",
+            "baseName": "sent_time",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
+            "name": "dueTime",
+            "baseName": "due_time",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
+            "name": "externalCreateUser",
+            "baseName": "external_create_user",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "externalCreateTime",
+            "baseName": "external_create_time",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
+            "name": "externalUpdateTime",
+            "baseName": "external_update_time",
+            "type": "Date",
+            "format": "date-time"
         }    ];
 
     static getAttributeTypeMap() {

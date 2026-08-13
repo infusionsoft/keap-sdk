@@ -44,6 +44,8 @@ Name | Type | Description | Notes
 
 * `OTHER` (value: `"OTHER"`)
 
+* `FEE` (value: `"FEE"`)
+
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 

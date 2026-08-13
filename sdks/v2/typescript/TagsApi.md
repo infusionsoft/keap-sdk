@@ -12,7 +12,6 @@ Method | HTTP request | Description
 [**getCategory**](TagsApi.md#getCategory) | **GET** /rest/v2/tags/categories/{tag_category_id} | Retrieve a Tag Category
 [**getTag**](TagsApi.md#getTag) | **GET** /rest/v2/tags/{tag_id} | Retrieve a Tag
 [**listCompaniesForTagId**](TagsApi.md#listCompaniesForTagId) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies
-[**listContactsAcrossTags**](TagsApi.md#listContactsAcrossTags) | **GET** /rest/v2/tags/-/contacts | List Contacts Across Tags
 [**listContactsWithTagId**](TagsApi.md#listContactsWithTagId) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts
 [**listTagCategories**](TagsApi.md#listTagCategories) | **GET** /rest/v2/tags/categories | List Tag Categories
 [**listTags**](TagsApi.md#listTags) | **GET** /rest/v2/tags | List Tags
@@ -509,76 +508,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **ListTaggedCompaniesResponse**
-
-### Authorization
-
-[oauth2](README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**405** | Method Not Allowed |  -  |
-**409** | Conflict |  -  |
-**500** | Internal Server Error |  -  |
-**501** | Method Not Implemented |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **listContactsAcrossTags**
-> ListTagContactAssociationsResponse listContactsAcrossTags()
-
-Retrieves tag-contact associations across the tag collection (AEP-159), using the `-` wildcard in place of a single tag id. At least one filter is required. Returns association tuples (contact_id, tag_id, applied_at) only.
-
-### Example
-
-
-```typescript
-import { createConfiguration, TagsApi } from '';
-import type { TagsApiListContactsAcrossTagsRequest } from '';
-
-const configuration = createConfiguration();
-const apiInstance = new TagsApi(configuration);
-
-const request: TagsApiListContactsAcrossTagsRequest = {
-    // Filter to apply (at least one is required). Allowed fields: - (List[String]) `tag_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time`  (optional)
-  filter: "filter_example",
-    // Page token (optional)
-  pageToken: "page_token_example",
-    // Attribute and direction to order items (best-effort for cross-collection reads). Field: - `applied_time`  Direction: - `asc` - `desc` (optional)
-  orderBy: "order_by_example",
-    // Total number of items to return per page (optional)
-  pageSize: 0,
-};
-
-const data = await apiInstance.listContactsAcrossTags(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filter** | [**string**] | Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;tag_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  | (optional) defaults to undefined
- **pageToken** | [**string**] | Page token | (optional) defaults to undefined
- **orderBy** | [**string**] | Attribute and direction to order items (best-effort for cross-collection reads). Field: - &#x60;applied_time&#x60;  Direction: - &#x60;asc&#x60; - &#x60;desc&#x60; | (optional) defaults to undefined
- **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
-
-
-### Return type
-
-**ListTagContactAssociationsResponse**
 
 ### Authorization
 

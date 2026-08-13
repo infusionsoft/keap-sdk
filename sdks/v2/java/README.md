@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.19</version>
+  <version>2.0.20</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.19"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.20"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.19.jar`
+- `target/core-service-v2-java-sdk-2.0.20.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -220,10 +220,10 @@ Class | Method | HTTP request | Description
 *AutomationApi* | [**listAllAutomationIdsWithHttpInfo**](docs/AutomationApi.md#listAllAutomationIdsWithHttpInfo) | **GET** /rest/v2/automations/ids | List Automations Ids
 *AutomationApi* | [**listAutomations**](docs/AutomationApi.md#listAutomations) | **GET** /rest/v2/automations | List Automations
 *AutomationApi* | [**listAutomationsWithHttpInfo**](docs/AutomationApi.md#listAutomationsWithHttpInfo) | **GET** /rest/v2/automations | List Automations
+*AutomationApi* | [**renameAutomationV2**](docs/AutomationApi.md#renameAutomationV2) | **PATCH** /rest/v2/easy-automations/{automation_id} | Renames an Easy Automation.
+*AutomationApi* | [**renameAutomationV2WithHttpInfo**](docs/AutomationApi.md#renameAutomationV2WithHttpInfo) | **PATCH** /rest/v2/easy-automations/{automation_id} | Renames an Easy Automation.
 *AutomationApi* | [**unpublishAutomation**](docs/AutomationApi.md#unpublishAutomation) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation
 *AutomationApi* | [**unpublishAutomationWithHttpInfo**](docs/AutomationApi.md#unpublishAutomationWithHttpInfo) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation
-*AutomationApi* | [**updateState**](docs/AutomationApi.md#updateState) | **PUT** /rest/v2/easy-automations/{automation_id}/state | Update the state of an Easy Automation
-*AutomationApi* | [**updateStateWithHttpInfo**](docs/AutomationApi.md#updateStateWithHttpInfo) | **PUT** /rest/v2/easy-automations/{automation_id}/state | Update the state of an Easy Automation
 *AutomationCategoryApi* | [**createCategory**](docs/AutomationCategoryApi.md#createCategory) | **POST** /rest/v2/automationCategory | Create automation category
 *AutomationCategoryApi* | [**createCategoryWithHttpInfo**](docs/AutomationCategoryApi.md#createCategoryWithHttpInfo) | **POST** /rest/v2/automationCategory | Create automation category
 *AutomationCategoryApi* | [**deleteCategories**](docs/AutomationCategoryApi.md#deleteCategories) | **DELETE** /rest/v2/automationCategory | Delete automation category
@@ -250,8 +250,12 @@ Class | Method | HTTP request | Description
 *CampaignApi* | [**removeContactsFromCampaignSequenceWithHttpInfo**](docs/CampaignApi.md#removeContactsFromCampaignSequenceWithHttpInfo) | **POST** /rest/v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
 *CategoryDiscountsApi* | [**createCategoryDiscount**](docs/CategoryDiscountsApi.md#createCategoryDiscount) | **POST** /rest/v2/discounts/productCategories | Create a Category Discount
 *CategoryDiscountsApi* | [**createCategoryDiscountWithHttpInfo**](docs/CategoryDiscountsApi.md#createCategoryDiscountWithHttpInfo) | **POST** /rest/v2/discounts/productCategories | Create a Category Discount
+*CategoryDiscountsApi* | [**createCategoryDiscountCriteria**](docs/CategoryDiscountsApi.md#createCategoryDiscountCriteria) | **POST** /rest/v2/discounts/productCategories/{discount_id}/criteria | Create a Category Discount Criteria
+*CategoryDiscountsApi* | [**createCategoryDiscountCriteriaWithHttpInfo**](docs/CategoryDiscountsApi.md#createCategoryDiscountCriteriaWithHttpInfo) | **POST** /rest/v2/discounts/productCategories/{discount_id}/criteria | Create a Category Discount Criteria
 *CategoryDiscountsApi* | [**deleteCategoryDiscount**](docs/CategoryDiscountsApi.md#deleteCategoryDiscount) | **DELETE** /rest/v2/discounts/productCategories/{discount_id} | Delete a Category Discount
 *CategoryDiscountsApi* | [**deleteCategoryDiscountWithHttpInfo**](docs/CategoryDiscountsApi.md#deleteCategoryDiscountWithHttpInfo) | **DELETE** /rest/v2/discounts/productCategories/{discount_id} | Delete a Category Discount
+*CategoryDiscountsApi* | [**deleteCategoryDiscountCriteria**](docs/CategoryDiscountsApi.md#deleteCategoryDiscountCriteria) | **DELETE** /rest/v2/discounts/productCategories/{discount_id}/criteria/{criteria_id} | Delete a Category Discount Criteria
+*CategoryDiscountsApi* | [**deleteCategoryDiscountCriteriaWithHttpInfo**](docs/CategoryDiscountsApi.md#deleteCategoryDiscountCriteriaWithHttpInfo) | **DELETE** /rest/v2/discounts/productCategories/{discount_id}/criteria/{criteria_id} | Delete a Category Discount Criteria
 *CategoryDiscountsApi* | [**getCategoryDiscount**](docs/CategoryDiscountsApi.md#getCategoryDiscount) | **GET** /rest/v2/discounts/productCategories/{discount_id} | Retrieve a Category Discount
 *CategoryDiscountsApi* | [**getCategoryDiscountWithHttpInfo**](docs/CategoryDiscountsApi.md#getCategoryDiscountWithHttpInfo) | **GET** /rest/v2/discounts/productCategories/{discount_id} | Retrieve a Category Discount
 *CategoryDiscountsApi* | [**listCategoryDiscounts**](docs/CategoryDiscountsApi.md#listCategoryDiscounts) | **GET** /rest/v2/discounts/productCategories | List Category Discounts
@@ -834,8 +838,6 @@ Class | Method | HTTP request | Description
 *TagsApi* | [**getTagWithHttpInfo**](docs/TagsApi.md#getTagWithHttpInfo) | **GET** /rest/v2/tags/{tag_id} | Retrieve a Tag
 *TagsApi* | [**listCompaniesForTagId**](docs/TagsApi.md#listCompaniesForTagId) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies
 *TagsApi* | [**listCompaniesForTagIdWithHttpInfo**](docs/TagsApi.md#listCompaniesForTagIdWithHttpInfo) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies
-*TagsApi* | [**listContactsAcrossTags**](docs/TagsApi.md#listContactsAcrossTags) | **GET** /rest/v2/tags/-/contacts | List Contacts Across Tags
-*TagsApi* | [**listContactsAcrossTagsWithHttpInfo**](docs/TagsApi.md#listContactsAcrossTagsWithHttpInfo) | **GET** /rest/v2/tags/-/contacts | List Contacts Across Tags
 *TagsApi* | [**listContactsWithTagId**](docs/TagsApi.md#listContactsWithTagId) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts
 *TagsApi* | [**listContactsWithTagIdWithHttpInfo**](docs/TagsApi.md#listContactsWithTagIdWithHttpInfo) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts
 *TagsApi* | [**listTagCategories**](docs/TagsApi.md#listTagCategories) | **GET** /rest/v2/tags/categories | List Tag Categories
@@ -960,7 +962,6 @@ Class | Method | HTTP request | Description
  - [Automation](docs/Automation.md)
  - [AutomationCategory](docs/AutomationCategory.md)
  - [AutomationLockStatus](docs/AutomationLockStatus.md)
- - [AutomationStateRequest](docs/AutomationStateRequest.md)
  - [BasicCompany](docs/BasicCompany.md)
  - [BasicContact](docs/BasicContact.md)
  - [BasicUser](docs/BasicUser.md)
@@ -987,6 +988,7 @@ Class | Method | HTTP request | Description
  - [CountryCodes](docs/CountryCodes.md)
  - [CreateAffiliateRequest](docs/CreateAffiliateRequest.md)
  - [CreateAutomationCategoryRequest](docs/CreateAutomationCategoryRequest.md)
+ - [CreateCategoryDiscountCriteria](docs/CreateCategoryDiscountCriteria.md)
  - [CreateCategoryDiscountRequest](docs/CreateCategoryDiscountRequest.md)
  - [CreateCommissionProgramRequest](docs/CreateCommissionProgramRequest.md)
  - [CreateCompanyRequest](docs/CreateCompanyRequest.md)
@@ -1156,7 +1158,6 @@ Class | Method | HTTP request | Description
  - [ListSubscriptionPlansResponse](docs/ListSubscriptionPlansResponse.md)
  - [ListSubscriptionsResponse](docs/ListSubscriptionsResponse.md)
  - [ListTagCategoriesResponse](docs/ListTagCategoriesResponse.md)
- - [ListTagContactAssociationsResponse](docs/ListTagContactAssociationsResponse.md)
  - [ListTaggedCompaniesResponse](docs/ListTaggedCompaniesResponse.md)
  - [ListTaggedContactsResponse](docs/ListTaggedContactsResponse.md)
  - [ListTagsResponse](docs/ListTagsResponse.md)
@@ -1205,6 +1206,7 @@ Class | Method | HTTP request | Description
  - [Referral](docs/Referral.md)
  - [RemoveContactsFromSequenceRequest](docs/RemoveContactsFromSequenceRequest.md)
  - [RemoveContactsFromSequenceResponse](docs/RemoveContactsFromSequenceResponse.md)
+ - [RenameEasyAutomationCommand](docs/RenameEasyAutomationCommand.md)
  - [Report](docs/Report.md)
  - [ReportEntryRecord](docs/ReportEntryRecord.md)
  - [ReportEntryValue](docs/ReportEntryValue.md)
@@ -1237,7 +1239,6 @@ Class | Method | HTTP request | Description
  - [SubscriptionPlanList](docs/SubscriptionPlanList.md)
  - [Tag](docs/Tag.md)
  - [TagCategory](docs/TagCategory.md)
- - [TagContactAssociation](docs/TagContactAssociation.md)
  - [TaggedCompany](docs/TaggedCompany.md)
  - [TaggedContact](docs/TaggedContact.md)
  - [Task](docs/Task.md)

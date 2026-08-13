@@ -86,7 +86,12 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'refund_status' => 'string',
         'synced' => 'bool',
         'invoice_id' => 'string',
-        'custom_fields' => '\Keap\Core\V2\Model\CustomFieldValue[]'
+        'custom_fields' => '\Keap\Core\V2\Model\CustomFieldValue[]',
+        'sent_time' => '\DateTime',
+        'due_time' => '\DateTime',
+        'external_create_user' => 'string',
+        'external_create_time' => '\DateTime',
+        'external_update_time' => '\DateTime'
     ];
 
     /**
@@ -126,7 +131,12 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'refund_status' => null,
         'synced' => null,
         'invoice_id' => null,
-        'custom_fields' => null
+        'custom_fields' => null,
+        'sent_time' => 'date-time',
+        'due_time' => 'date-time',
+        'external_create_user' => null,
+        'external_create_time' => 'date-time',
+        'external_update_time' => 'date-time'
     ];
 
     /**
@@ -164,7 +174,12 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'refund_status' => false,
         'synced' => false,
         'invoice_id' => false,
-        'custom_fields' => false
+        'custom_fields' => false,
+        'sent_time' => false,
+        'due_time' => false,
+        'external_create_user' => false,
+        'external_create_time' => false,
+        'external_update_time' => false
     ];
 
     /**
@@ -282,7 +297,12 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'refund_status' => 'refund_status',
         'synced' => 'synced',
         'invoice_id' => 'invoice_id',
-        'custom_fields' => 'custom_fields'
+        'custom_fields' => 'custom_fields',
+        'sent_time' => 'sent_time',
+        'due_time' => 'due_time',
+        'external_create_user' => 'external_create_user',
+        'external_create_time' => 'external_create_time',
+        'external_update_time' => 'external_update_time'
     ];
 
     /**
@@ -320,7 +340,12 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'refund_status' => 'setRefundStatus',
         'synced' => 'setSynced',
         'invoice_id' => 'setInvoiceId',
-        'custom_fields' => 'setCustomFields'
+        'custom_fields' => 'setCustomFields',
+        'sent_time' => 'setSentTime',
+        'due_time' => 'setDueTime',
+        'external_create_user' => 'setExternalCreateUser',
+        'external_create_time' => 'setExternalCreateTime',
+        'external_update_time' => 'setExternalUpdateTime'
     ];
 
     /**
@@ -358,7 +383,12 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'refund_status' => 'getRefundStatus',
         'synced' => 'getSynced',
         'invoice_id' => 'getInvoiceId',
-        'custom_fields' => 'getCustomFields'
+        'custom_fields' => 'getCustomFields',
+        'sent_time' => 'getSentTime',
+        'due_time' => 'getDueTime',
+        'external_create_user' => 'getExternalCreateUser',
+        'external_create_time' => 'getExternalCreateTime',
+        'external_update_time' => 'getExternalUpdateTime'
     ];
 
     /**
@@ -505,6 +535,11 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('synced', $data ?? [], null);
         $this->setIfExists('invoice_id', $data ?? [], null);
         $this->setIfExists('custom_fields', $data ?? [], null);
+        $this->setIfExists('sent_time', $data ?? [], null);
+        $this->setIfExists('due_time', $data ?? [], null);
+        $this->setIfExists('external_create_user', $data ?? [], null);
+        $this->setIfExists('external_create_time', $data ?? [], null);
+        $this->setIfExists('external_update_time', $data ?? [], null);
     }
 
     /**
@@ -1412,6 +1447,141 @@ class OrderV2 implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable custom_fields cannot be null');
         }
         $this->container['custom_fields'] = $custom_fields;
+
+        return $this;
+    }
+
+    /**
+     * Gets sent_time
+     *
+     * @return \DateTime|null
+     */
+    public function getSentTime()
+    {
+        return $this->container['sent_time'];
+    }
+
+    /**
+     * Sets sent_time
+     *
+     * @param \DateTime|null $sent_time The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+     *
+     * @return self
+     */
+    public function setSentTime($sent_time)
+    {
+        if (is_null($sent_time)) {
+            throw new \InvalidArgumentException('non-nullable sent_time cannot be null');
+        }
+        $this->container['sent_time'] = $sent_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets due_time
+     *
+     * @return \DateTime|null
+     */
+    public function getDueTime()
+    {
+        return $this->container['due_time'];
+    }
+
+    /**
+     * Sets due_time
+     *
+     * @param \DateTime|null $due_time The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+     *
+     * @return self
+     */
+    public function setDueTime($due_time)
+    {
+        if (is_null($due_time)) {
+            throw new \InvalidArgumentException('non-nullable due_time cannot be null');
+        }
+        $this->container['due_time'] = $due_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_create_user
+     *
+     * @return string|null
+     */
+    public function getExternalCreateUser()
+    {
+        return $this->container['external_create_user'];
+    }
+
+    /**
+     * Sets external_create_user
+     *
+     * @param string|null $external_create_user The external system user that created this order.
+     *
+     * @return self
+     */
+    public function setExternalCreateUser($external_create_user)
+    {
+        if (is_null($external_create_user)) {
+            throw new \InvalidArgumentException('non-nullable external_create_user cannot be null');
+        }
+        $this->container['external_create_user'] = $external_create_user;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_create_time
+     *
+     * @return \DateTime|null
+     */
+    public function getExternalCreateTime()
+    {
+        return $this->container['external_create_time'];
+    }
+
+    /**
+     * Sets external_create_time
+     *
+     * @param \DateTime|null $external_create_time The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+     *
+     * @return self
+     */
+    public function setExternalCreateTime($external_create_time)
+    {
+        if (is_null($external_create_time)) {
+            throw new \InvalidArgumentException('non-nullable external_create_time cannot be null');
+        }
+        $this->container['external_create_time'] = $external_create_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_update_time
+     *
+     * @return \DateTime|null
+     */
+    public function getExternalUpdateTime()
+    {
+        return $this->container['external_update_time'];
+    }
+
+    /**
+     * Sets external_update_time
+     *
+     * @param \DateTime|null $external_update_time The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+     *
+     * @return self
+     */
+    public function setExternalUpdateTime($external_update_time)
+    {
+        if (is_null($external_update_time)) {
+            throw new \InvalidArgumentException('non-nullable external_update_time cannot be null');
+        }
+        $this->container['external_update_time'] = $external_update_time;
 
         return $this;
     }

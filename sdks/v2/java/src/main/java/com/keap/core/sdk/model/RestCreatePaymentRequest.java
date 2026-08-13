@@ -39,7 +39,13 @@ import jakarta.validation.Valid;
   RestCreatePaymentRequest.JSON_PROPERTY_PAYMENT_METHOD_TYPE,
   RestCreatePaymentRequest.JSON_PROPERTY_PAYMENT_TIME,
   RestCreatePaymentRequest.JSON_PROPERTY_PAYMENT_AMOUNT,
-  RestCreatePaymentRequest.JSON_PROPERTY_APPLY_TO_COMMISSIONS
+  RestCreatePaymentRequest.JSON_PROPERTY_APPLY_TO_COMMISSIONS,
+  RestCreatePaymentRequest.JSON_PROPERTY_EXTERNAL_SOURCE,
+  RestCreatePaymentRequest.JSON_PROPERTY_EXTERNAL_SOURCE_VALUE,
+  RestCreatePaymentRequest.JSON_PROPERTY_EXTERNAL_STATUS_VALUE,
+  RestCreatePaymentRequest.JSON_PROPERTY_EXTERNAL_CREATE_TIME,
+  RestCreatePaymentRequest.JSON_PROPERTY_EXTERNAL_UPDATE_TIME,
+  RestCreatePaymentRequest.JSON_PROPERTY_EXTERNAL_CREATE_USER
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class RestCreatePaymentRequest implements Serializable {
@@ -62,6 +68,24 @@ public class RestCreatePaymentRequest implements Serializable {
 
   public static final String JSON_PROPERTY_APPLY_TO_COMMISSIONS = "apply_to_commissions";
   @jakarta.annotation.Nonnull  private Boolean applyToCommissions;
+
+  public static final String JSON_PROPERTY_EXTERNAL_SOURCE = "external_source";
+  @jakarta.annotation.Nullable  private String externalSource;
+
+  public static final String JSON_PROPERTY_EXTERNAL_SOURCE_VALUE = "external_source_value";
+  @jakarta.annotation.Nullable  private String externalSourceValue;
+
+  public static final String JSON_PROPERTY_EXTERNAL_STATUS_VALUE = "external_status_value";
+  @jakarta.annotation.Nullable  private String externalStatusValue;
+
+  public static final String JSON_PROPERTY_EXTERNAL_CREATE_TIME = "external_create_time";
+  @jakarta.annotation.Nullable  private ZonedDateTime externalCreateTime;
+
+  public static final String JSON_PROPERTY_EXTERNAL_UPDATE_TIME = "external_update_time";
+  @jakarta.annotation.Nullable  private ZonedDateTime externalUpdateTime;
+
+  public static final String JSON_PROPERTY_EXTERNAL_CREATE_USER = "external_create_user";
+  @jakarta.annotation.Nullable  private String externalCreateUser;
 
   public RestCreatePaymentRequest() { 
   }
@@ -212,6 +236,152 @@ public class RestCreatePaymentRequest implements Serializable {
     this.applyToCommissions = applyToCommissions;
   }
 
+
+  public RestCreatePaymentRequest externalSource(@jakarta.annotation.Nullable String externalSource) {
+    this.externalSource = externalSource;
+    return this;
+  }
+
+  /**
+   * The external source type of this payment.
+   * @return externalSource
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The external source type of this payment.")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_SOURCE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getExternalSource() {
+    return externalSource;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_SOURCE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalSource(@jakarta.annotation.Nullable String externalSource) {
+    this.externalSource = externalSource;
+  }
+
+
+  public RestCreatePaymentRequest externalSourceValue(@jakarta.annotation.Nullable String externalSourceValue) {
+    this.externalSourceValue = externalSourceValue;
+    return this;
+  }
+
+  /**
+   * The external source value of this payment.
+   * @return externalSourceValue
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The external source value of this payment.")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_SOURCE_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getExternalSourceValue() {
+    return externalSourceValue;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_SOURCE_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalSourceValue(@jakarta.annotation.Nullable String externalSourceValue) {
+    this.externalSourceValue = externalSourceValue;
+  }
+
+
+  public RestCreatePaymentRequest externalStatusValue(@jakarta.annotation.Nullable String externalStatusValue) {
+    this.externalStatusValue = externalStatusValue;
+    return this;
+  }
+
+  /**
+   * The external status value of this payment.
+   * @return externalStatusValue
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The external status value of this payment.")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_STATUS_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getExternalStatusValue() {
+    return externalStatusValue;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_STATUS_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalStatusValue(@jakarta.annotation.Nullable String externalStatusValue) {
+    this.externalStatusValue = externalStatusValue;
+  }
+
+
+  public RestCreatePaymentRequest externalCreateTime(@jakarta.annotation.Nullable ZonedDateTime externalCreateTime) {
+    this.externalCreateTime = externalCreateTime;
+    return this;
+  }
+
+  /**
+   * The external creation timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+   * @return externalCreateTime
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "2024-05-21T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The external creation timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ZonedDateTime getExternalCreateTime() {
+    return externalCreateTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalCreateTime(@jakarta.annotation.Nullable ZonedDateTime externalCreateTime) {
+    this.externalCreateTime = externalCreateTime;
+  }
+
+
+  public RestCreatePaymentRequest externalUpdateTime(@jakarta.annotation.Nullable ZonedDateTime externalUpdateTime) {
+    this.externalUpdateTime = externalUpdateTime;
+    return this;
+  }
+
+  /**
+   * The external update timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+   * @return externalUpdateTime
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "2024-05-21T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The external update timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_UPDATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ZonedDateTime getExternalUpdateTime() {
+    return externalUpdateTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_UPDATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalUpdateTime(@jakarta.annotation.Nullable ZonedDateTime externalUpdateTime) {
+    this.externalUpdateTime = externalUpdateTime;
+  }
+
+
+  public RestCreatePaymentRequest externalCreateUser(@jakarta.annotation.Nullable String externalCreateUser) {
+    this.externalCreateUser = externalCreateUser;
+    return this;
+  }
+
+  /**
+   * The user who created this payment externally.
+   * @return externalCreateUser
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The user who created this payment externally.")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_USER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getExternalCreateUser() {
+    return externalCreateUser;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_USER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalCreateUser(@jakarta.annotation.Nullable String externalCreateUser) {
+    this.externalCreateUser = externalCreateUser;
+  }
+
   /**
    * Return true if this RestCreatePaymentRequest object is equal to o.
    */
@@ -229,12 +399,18 @@ public class RestCreatePaymentRequest implements Serializable {
         Objects.equals(this.paymentMethodType, restCreatePaymentRequest.paymentMethodType) &&
         Objects.equals(this.paymentTime, restCreatePaymentRequest.paymentTime) &&
         Objects.equals(this.paymentAmount, restCreatePaymentRequest.paymentAmount) &&
-        Objects.equals(this.applyToCommissions, restCreatePaymentRequest.applyToCommissions);
+        Objects.equals(this.applyToCommissions, restCreatePaymentRequest.applyToCommissions) &&
+        Objects.equals(this.externalSource, restCreatePaymentRequest.externalSource) &&
+        Objects.equals(this.externalSourceValue, restCreatePaymentRequest.externalSourceValue) &&
+        Objects.equals(this.externalStatusValue, restCreatePaymentRequest.externalStatusValue) &&
+        Objects.equals(this.externalCreateTime, restCreatePaymentRequest.externalCreateTime) &&
+        Objects.equals(this.externalUpdateTime, restCreatePaymentRequest.externalUpdateTime) &&
+        Objects.equals(this.externalCreateUser, restCreatePaymentRequest.externalCreateUser);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(notes, paymentMethodId, paymentMethodType, paymentTime, paymentAmount, applyToCommissions);
+    return Objects.hash(notes, paymentMethodId, paymentMethodType, paymentTime, paymentAmount, applyToCommissions, externalSource, externalSourceValue, externalStatusValue, externalCreateTime, externalUpdateTime, externalCreateUser);
   }
 
   @Override
@@ -247,6 +423,12 @@ public class RestCreatePaymentRequest implements Serializable {
     sb.append("    paymentTime: ").append(toIndentedString(paymentTime)).append("\n");
     sb.append("    paymentAmount: ").append(toIndentedString(paymentAmount)).append("\n");
     sb.append("    applyToCommissions: ").append(toIndentedString(applyToCommissions)).append("\n");
+    sb.append("    externalSource: ").append(toIndentedString(externalSource)).append("\n");
+    sb.append("    externalSourceValue: ").append(toIndentedString(externalSourceValue)).append("\n");
+    sb.append("    externalStatusValue: ").append(toIndentedString(externalStatusValue)).append("\n");
+    sb.append("    externalCreateTime: ").append(toIndentedString(externalCreateTime)).append("\n");
+    sb.append("    externalUpdateTime: ").append(toIndentedString(externalUpdateTime)).append("\n");
+    sb.append("    externalCreateUser: ").append(toIndentedString(externalCreateUser)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -298,6 +480,30 @@ public class RestCreatePaymentRequest implements Serializable {
               this.instance.applyToCommissions = applyToCommissions;
           return this;
         }
+            public RestCreatePaymentRequest.Builder externalSource(String externalSource) {
+              this.instance.externalSource = externalSource;
+          return this;
+        }
+            public RestCreatePaymentRequest.Builder externalSourceValue(String externalSourceValue) {
+              this.instance.externalSourceValue = externalSourceValue;
+          return this;
+        }
+            public RestCreatePaymentRequest.Builder externalStatusValue(String externalStatusValue) {
+              this.instance.externalStatusValue = externalStatusValue;
+          return this;
+        }
+            public RestCreatePaymentRequest.Builder externalCreateTime(ZonedDateTime externalCreateTime) {
+              this.instance.externalCreateTime = externalCreateTime;
+          return this;
+        }
+            public RestCreatePaymentRequest.Builder externalUpdateTime(ZonedDateTime externalUpdateTime) {
+              this.instance.externalUpdateTime = externalUpdateTime;
+          return this;
+        }
+            public RestCreatePaymentRequest.Builder externalCreateUser(String externalCreateUser) {
+              this.instance.externalCreateUser = externalCreateUser;
+          return this;
+        }
         
     
         /**
@@ -337,7 +543,13 @@ public class RestCreatePaymentRequest implements Serializable {
           .paymentMethodType(getPaymentMethodType())
           .paymentTime(getPaymentTime())
           .paymentAmount(getPaymentAmount())
-          .applyToCommissions(getApplyToCommissions());
+          .applyToCommissions(getApplyToCommissions())
+          .externalSource(getExternalSource())
+          .externalSourceValue(getExternalSourceValue())
+          .externalStatusValue(getExternalStatusValue())
+          .externalCreateTime(getExternalCreateTime())
+          .externalUpdateTime(getExternalUpdateTime())
+          .externalCreateUser(getExternalCreateUser());
       }
 }
 

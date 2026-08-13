@@ -30,83 +30,48 @@ import jakarta.validation.Valid;
 
 
 /**
- * AutomationStateRequest
+ * An object used to rename an automation.
  */
+@Schema(description = "An object used to rename an automation.")
 @JsonPropertyOrder({
-  AutomationStateRequest.JSON_PROPERTY_STATE
+  RenameEasyAutomationCommand.JSON_PROPERTY_NAME
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
-public class AutomationStateRequest implements Serializable {
+public class RenameEasyAutomationCommand implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  /**
-   * The desired lifecycle state of the automation.
-   */
-  public enum StateEnum {
-    ENABLED(String.valueOf("enabled")),
-    
-    DISABLED(String.valueOf("disabled")),
-    
-    UNKNOWN_COULD_NOT_DESERIALIZE(String.valueOf("unknown_default_open_api"));
+  public static final String JSON_PROPERTY_NAME = "name";
+  @jakarta.annotation.Nonnull  private String name;
 
-    private String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StateEnum fromValue(String value) {
-      for (StateEnum b : StateEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return UNKNOWN_COULD_NOT_DESERIALIZE;
-    }
-  }
-  public static final String JSON_PROPERTY_STATE = "state";
-  @jakarta.annotation.Nonnull  private StateEnum state;
-
-  public AutomationStateRequest() { 
+  public RenameEasyAutomationCommand() { 
   }
 
-  public AutomationStateRequest state(@jakarta.annotation.Nonnull StateEnum state) {
-    this.state = state;
+  public RenameEasyAutomationCommand name(@jakarta.annotation.Nonnull String name) {
+    this.name = name;
     return this;
   }
 
   /**
-   * The desired lifecycle state of the automation.
-   * @return state
+   * Name of the easy automation
+   * @return name
    */
   @jakarta.annotation.Nonnull  @NotNull
-  @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "The desired lifecycle state of the automation.")
-  @JsonProperty(JSON_PROPERTY_STATE)
+ @Size(min=1)  @Schema(example = "Welcome new customer (Fall 26)", requiredMode = Schema.RequiredMode.REQUIRED, description = "Name of the easy automation")
+  @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public StateEnum getState() {
-    return state;
+  public String getName() {
+    return name;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setState(@jakarta.annotation.Nonnull StateEnum state) {
-    this.state = state;
+  public void setName(@jakarta.annotation.Nonnull String name) {
+    this.name = name;
   }
 
   /**
-   * Return true if this AutomationStateRequest object is equal to o.
+   * Return true if this RenameEasyAutomationCommand object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -116,20 +81,20 @@ public class AutomationStateRequest implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AutomationStateRequest automationStateRequest = (AutomationStateRequest) o;
-    return Objects.equals(this.state, automationStateRequest.state);
+    RenameEasyAutomationCommand renameEasyAutomationCommand = (RenameEasyAutomationCommand) o;
+    return Objects.equals(this.name, renameEasyAutomationCommand.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(state);
+    return Objects.hash(name);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AutomationStateRequest {\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
+    sb.append("class RenameEasyAutomationCommand {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -147,28 +112,28 @@ public class AutomationStateRequest implements Serializable {
 
     public static class Builder {
     
-        private AutomationStateRequest instance;
+        private RenameEasyAutomationCommand instance;
     
         public Builder() {
-          this(new AutomationStateRequest());
+          this(new RenameEasyAutomationCommand());
         }
     
-        protected Builder(AutomationStateRequest instance) {
+        protected Builder(RenameEasyAutomationCommand instance) {
           this.instance = instance;
         }
     
-        public AutomationStateRequest.Builder state(StateEnum state) {
-              this.instance.state = state;
+        public RenameEasyAutomationCommand.Builder name(String name) {
+              this.instance.name = name;
           return this;
         }
         
     
         /**
-        * returns a built AutomationStateRequest instance.
+        * returns a built RenameEasyAutomationCommand instance.
         *
         * The builder is not reusable.
         */
-        public AutomationStateRequest build() {
+        public RenameEasyAutomationCommand build() {
           try {
             return this.instance;
           } finally {
@@ -186,16 +151,16 @@ public class AutomationStateRequest implements Serializable {
       /**
       * Create a builder with no initialized field.
       */
-      public static AutomationStateRequest.Builder builder() {
-        return new AutomationStateRequest.Builder();
+      public static RenameEasyAutomationCommand.Builder builder() {
+        return new RenameEasyAutomationCommand.Builder();
       }
     
       /**
       * Create a builder with a shallow copy of this instance.
       */
-      public AutomationStateRequest.Builder toBuilder() {
-        return new AutomationStateRequest.Builder()
-          .state(getState());
+      public RenameEasyAutomationCommand.Builder toBuilder() {
+        return new RenameEasyAutomationCommand.Builder()
+          .name(getName());
       }
 }
 

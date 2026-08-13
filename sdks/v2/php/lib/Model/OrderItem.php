@@ -316,6 +316,7 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public const ITEM_TYPE_DISCOUNT_SHIPPING = 'DISCOUNT_SHIPPING';
     public const ITEM_TYPE_TIP = 'TIP';
     public const ITEM_TYPE_OTHER = 'OTHER';
+    public const ITEM_TYPE_FEE = 'FEE';
     public const ITEM_TYPE_UNKNOWN = 'UNKNOWN';
 
     /**
@@ -342,6 +343,7 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
             self::ITEM_TYPE_DISCOUNT_SHIPPING,
             self::ITEM_TYPE_TIP,
             self::ITEM_TYPE_OTHER,
+            self::ITEM_TYPE_FEE,
             self::ITEM_TYPE_UNKNOWN,
         ];
     }

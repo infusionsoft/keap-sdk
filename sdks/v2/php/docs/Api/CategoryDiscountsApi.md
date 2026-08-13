@@ -5,7 +5,9 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**createCategoryDiscount()**](CategoryDiscountsApi.md#createCategoryDiscount) | **POST** /rest/v2/discounts/productCategories | Create a Category Discount |
+| [**createCategoryDiscountCriteria()**](CategoryDiscountsApi.md#createCategoryDiscountCriteria) | **POST** /rest/v2/discounts/productCategories/{discount_id}/criteria | Create a Category Discount Criteria |
 | [**deleteCategoryDiscount()**](CategoryDiscountsApi.md#deleteCategoryDiscount) | **DELETE** /rest/v2/discounts/productCategories/{discount_id} | Delete a Category Discount |
+| [**deleteCategoryDiscountCriteria()**](CategoryDiscountsApi.md#deleteCategoryDiscountCriteria) | **DELETE** /rest/v2/discounts/productCategories/{discount_id}/criteria/{criteria_id} | Delete a Category Discount Criteria |
 | [**getCategoryDiscount()**](CategoryDiscountsApi.md#getCategoryDiscount) | **GET** /rest/v2/discounts/productCategories/{discount_id} | Retrieve a Category Discount |
 | [**listCategoryDiscounts()**](CategoryDiscountsApi.md#listCategoryDiscounts) | **GET** /rest/v2/discounts/productCategories | List Category Discounts |
 | [**updateCategoryDiscount()**](CategoryDiscountsApi.md#updateCategoryDiscount) | **PATCH** /rest/v2/discounts/productCategories/{discount_id} | Update a Category Discount |
@@ -70,6 +72,67 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createCategoryDiscountCriteria()`
+
+```php
+createCategoryDiscountCriteria($discount_id, $create_category_discount_criteria): \Keap\Core\V2\Model\DiscountCriteria
+```
+
+Create a Category Discount Criteria
+
+Creates a Category Discount Criteria
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\CategoryDiscountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$discount_id = 'discount_id_example'; // string
+$create_category_discount_criteria = new \Keap\Core\V2\Model\CreateCategoryDiscountCriteria(); // \Keap\Core\V2\Model\CreateCategoryDiscountCriteria
+
+try {
+    $result = $apiInstance->createCategoryDiscountCriteria($discount_id, $create_category_discount_criteria);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CategoryDiscountsApi->createCategoryDiscountCriteria: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **discount_id** | **string**|  | |
+| **create_category_discount_criteria** | [**\Keap\Core\V2\Model\CreateCategoryDiscountCriteria**](../Model/CreateCategoryDiscountCriteria.md)|  | |
+
+### Return type
+
+[**\Keap\Core\V2\Model\DiscountCriteria**](../Model/DiscountCriteria.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteCategoryDiscount()`
 
 ```php
@@ -110,6 +173,66 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **discount_id** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteCategoryDiscountCriteria()`
+
+```php
+deleteCategoryDiscountCriteria($discount_id, $criteria_id)
+```
+
+Delete a Category Discount Criteria
+
+Deletes a specified Category Discount Criteria
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\CategoryDiscountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$discount_id = 'discount_id_example'; // string
+$criteria_id = 'criteria_id_example'; // string
+
+try {
+    $apiInstance->deleteCategoryDiscountCriteria($discount_id, $criteria_id);
+} catch (Exception $e) {
+    echo 'Exception when calling CategoryDiscountsApi->deleteCategoryDiscountCriteria: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **discount_id** | **string**|  | |
+| **criteria_id** | **string**|  | |
 
 ### Return type
 

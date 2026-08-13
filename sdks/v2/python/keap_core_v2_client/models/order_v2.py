@@ -64,8 +64,13 @@ class OrderV2(BaseModel):
     synced: Optional[StrictBool] = Field(default=None, description="Whether order is synced with external systems")
     invoice_id: Optional[StrictStr] = Field(default=None, description="Associated invoice ID")
     custom_fields: Optional[List[CustomFieldValue]] = Field(default=None, description="List of custom field values applied to this order")
+    sent_time: Optional[datetime] = Field(default=None, description="The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+    due_time: Optional[datetime] = Field(default=None, description="The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+    external_create_user: Optional[StrictStr] = Field(default=None, description="The external system user that created this order.")
+    external_create_time: Optional[datetime] = Field(default=None, description="The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+    external_update_time: Optional[datetime] = Field(default=None, description="The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "title", "status", "total", "contact", "notes", "terms", "order_type", "source_type", "creation_time", "modification_time", "order_time", "lead_affiliate_id", "sales_affiliate_id", "total_paid", "total_due", "shipping_information", "refund_total", "allow_payment", "allow_paypal", "order_items", "payment_plan", "invoice_number", "files", "credit_status", "promo_code", "refund_status", "synced", "invoice_id", "custom_fields"]
+    __properties: ClassVar[List[str]] = ["id", "title", "status", "total", "contact", "notes", "terms", "order_type", "source_type", "creation_time", "modification_time", "order_time", "lead_affiliate_id", "sales_affiliate_id", "total_paid", "total_due", "shipping_information", "refund_total", "allow_payment", "allow_paypal", "order_items", "payment_plan", "invoice_number", "files", "credit_status", "promo_code", "refund_status", "synced", "invoice_id", "custom_fields", "sent_time", "due_time", "external_create_user", "external_create_time", "external_update_time"]
 
     @field_validator('status')
     def status_validate_enum(cls, value):
@@ -226,7 +231,12 @@ class OrderV2(BaseModel):
             "refund_status": obj.get("refund_status"),
             "synced": obj.get("synced"),
             "invoice_id": obj.get("invoice_id"),
-            "custom_fields": [CustomFieldValue.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None
+            "custom_fields": [CustomFieldValue.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None,
+            "sent_time": obj.get("sent_time"),
+            "due_time": obj.get("due_time"),
+            "external_create_user": obj.get("external_create_user"),
+            "external_create_time": obj.get("external_create_time"),
+            "external_update_time": obj.get("external_update_time")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

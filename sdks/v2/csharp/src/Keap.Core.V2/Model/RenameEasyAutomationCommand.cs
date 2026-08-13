@@ -27,50 +27,39 @@ using OpenAPIDateConverter = Keap.Core.V2.Client.OpenAPIDateConverter;
 namespace Keap.Core.V2.Model
 {
     /// <summary>
-    /// AutomationStateRequest
+    /// An object used to rename an automation.
     /// </summary>
-    [DataContract(Name = "AutomationStateRequest")]
-    public partial class AutomationStateRequest : IValidatableObject
+    [DataContract(Name = "RenameEasyAutomationCommand")]
+    public partial class RenameEasyAutomationCommand : IValidatableObject
     {
         /// <summary>
-        /// The desired lifecycle state of the automation.
-        /// </summary>
-        /// <value>The desired lifecycle state of the automation.</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum StateEnum
-        {
-            /// <summary>
-            /// Enum Enabled for value: enabled
-            /// </summary>
-            [EnumMember(Value = "enabled")]
-            Enabled = 1,
-
-            /// <summary>
-            /// Enum Disabled for value: disabled
-            /// </summary>
-            [EnumMember(Value = "disabled")]
-            Disabled = 2
-        }
-
-        /// <summary>
-        /// The desired lifecycle state of the automation.
-        /// </summary>
-        /// <value>The desired lifecycle state of the automation.</value>
-        [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
-        public StateEnum State { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AutomationStateRequest" /> class.
+        /// Initializes a new instance of the <see cref="RenameEasyAutomationCommand" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected AutomationStateRequest() { }
+        protected RenameEasyAutomationCommand() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="AutomationStateRequest" /> class.
+        /// Initializes a new instance of the <see cref="RenameEasyAutomationCommand" /> class.
         /// </summary>
-        /// <param name="state">The desired lifecycle state of the automation. (required).</param>
-        public AutomationStateRequest(StateEnum state = default)
+        /// <param name="name">Name of the easy automation (required).</param>
+        public RenameEasyAutomationCommand(string name = default)
         {
-            this.State = state;
+            // to ensure "name" is required (not null)
+            if (name == null)
+            {
+                throw new ArgumentNullException("name is a required property for RenameEasyAutomationCommand and cannot be null");
+            }
+            this.Name = name;
         }
+
+        /// <summary>
+        /// Name of the easy automation
+        /// </summary>
+        /// <value>Name of the easy automation</value>
+        /*
+        <example>Welcome new customer (Fall 26)</example>
+        */
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,8 +68,8 @@ namespace Keap.Core.V2.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class AutomationStateRequest {\n");
-            sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("class RenameEasyAutomationCommand {\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -101,6 +90,12 @@ namespace Keap.Core.V2.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // Name (string) minLength
+            if (this.Name != null && this.Name.Length < 1)
+            {
+                yield return new ValidationResult("Invalid value for Name, length must be greater than 1.", new [] { "Name" });
+            }
+
             yield break;
         }    }
 

@@ -143,6 +143,21 @@ class OrderV2 {
             if (data.hasOwnProperty('custom_fields')) {
                 obj['custom_fields'] = ApiClient.convertToType(data['custom_fields'], [CustomFieldValue]);
             }
+            if (data.hasOwnProperty('sent_time')) {
+                obj['sent_time'] = ApiClient.convertToType(data['sent_time'], 'Date');
+            }
+            if (data.hasOwnProperty('due_time')) {
+                obj['due_time'] = ApiClient.convertToType(data['due_time'], 'Date');
+            }
+            if (data.hasOwnProperty('external_create_user')) {
+                obj['external_create_user'] = ApiClient.convertToType(data['external_create_user'], 'String');
+            }
+            if (data.hasOwnProperty('external_create_time')) {
+                obj['external_create_time'] = ApiClient.convertToType(data['external_create_time'], 'Date');
+            }
+            if (data.hasOwnProperty('external_update_time')) {
+                obj['external_update_time'] = ApiClient.convertToType(data['external_update_time'], 'Date');
+            }
         }
         return obj;
     }
@@ -266,6 +281,10 @@ class OrderV2 {
             for (const item of data['custom_fields']) {
                 CustomFieldValue.validateJSON(item);
             };
+        }
+        // ensure the json data is a string
+        if (data['external_create_user'] && !(typeof data['external_create_user'] === 'string' || data['external_create_user'] instanceof String)) {
+            throw new Error("Expected the field `external_create_user` to be a primitive type in the JSON string but got " + data['external_create_user']);
         }
 
         return true;
@@ -455,6 +474,36 @@ OrderV2.prototype['invoice_id'] = undefined;
  * @member {Array.<module:keap.core.v2/model/CustomFieldValue>} custom_fields
  */
 OrderV2.prototype['custom_fields'] = undefined;
+
+/**
+ * The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+ * @member {Date} sent_time
+ */
+OrderV2.prototype['sent_time'] = undefined;
+
+/**
+ * The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+ * @member {Date} due_time
+ */
+OrderV2.prototype['due_time'] = undefined;
+
+/**
+ * The external system user that created this order.
+ * @member {String} external_create_user
+ */
+OrderV2.prototype['external_create_user'] = undefined;
+
+/**
+ * The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+ * @member {Date} external_create_time
+ */
+OrderV2.prototype['external_create_time'] = undefined;
+
+/**
+ * The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+ * @member {Date} external_update_time
+ */
+OrderV2.prototype['external_update_time'] = undefined;
 
 
 

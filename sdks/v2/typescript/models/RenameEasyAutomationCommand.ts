@@ -10,12 +10,16 @@
  * Do not edit the class manually.
  */
 
-import { TagContactAssociation } from '../models/TagContactAssociation';
 import { HttpFile } from '../http/http';
 
-export class ListTagContactAssociationsResponse {
-    'contacts'?: Array<TagContactAssociation>;
-    'nextPageToken'?: string;
+/**
+* An object used to rename an automation.
+*/
+export class RenameEasyAutomationCommand {
+    /**
+    * Name of the easy automation
+    */
+    'name': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -23,20 +27,14 @@ export class ListTagContactAssociationsResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "contacts",
-            "baseName": "contacts",
-            "type": "Array<TagContactAssociation>",
-            "format": ""
-        },
-        {
-            "name": "nextPageToken",
-            "baseName": "next_page_token",
+            "name": "name",
+            "baseName": "name",
             "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return ListTagContactAssociationsResponse.attributeTypeMap;
+        return RenameEasyAutomationCommand.attributeTypeMap;
     }
 
     public constructor() {

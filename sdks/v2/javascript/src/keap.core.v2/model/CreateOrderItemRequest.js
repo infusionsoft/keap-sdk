@@ -277,6 +277,12 @@ CreateOrderItemRequest['ItemTypeEnum'] = {
     "OTHER": "OTHER",
 
     /**
+     * value: "FEE"
+     * @const
+     */
+    "FEE": "FEE",
+
+    /**
      * value: "unknown_default_open_api"
      * @const
      */

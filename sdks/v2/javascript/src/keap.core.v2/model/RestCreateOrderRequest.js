@@ -63,6 +63,9 @@ class RestCreateOrderRequest {
             if (data.hasOwnProperty('terms')) {
                 obj['terms'] = ApiClient.convertToType(data['terms'], 'String');
             }
+            if (data.hasOwnProperty('title')) {
+                obj['title'] = ApiClient.convertToType(data['title'], 'String');
+            }
             if (data.hasOwnProperty('contact_id')) {
                 obj['contact_id'] = ApiClient.convertToType(data['contact_id'], 'String');
             }
@@ -93,6 +96,24 @@ class RestCreateOrderRequest {
             if (data.hasOwnProperty('custom_fields')) {
                 obj['custom_fields'] = ApiClient.convertToType(data['custom_fields'], [CustomFieldValue]);
             }
+            if (data.hasOwnProperty('sent_time')) {
+                obj['sent_time'] = ApiClient.convertToType(data['sent_time'], 'Date');
+            }
+            if (data.hasOwnProperty('due_time')) {
+                obj['due_time'] = ApiClient.convertToType(data['due_time'], 'Date');
+            }
+            if (data.hasOwnProperty('invoice_number')) {
+                obj['invoice_number'] = ApiClient.convertToType(data['invoice_number'], 'String');
+            }
+            if (data.hasOwnProperty('external_create_user')) {
+                obj['external_create_user'] = ApiClient.convertToType(data['external_create_user'], 'String');
+            }
+            if (data.hasOwnProperty('external_create_time')) {
+                obj['external_create_time'] = ApiClient.convertToType(data['external_create_time'], 'Date');
+            }
+            if (data.hasOwnProperty('external_update_time')) {
+                obj['external_update_time'] = ApiClient.convertToType(data['external_update_time'], 'Date');
+            }
         }
         return obj;
     }
@@ -116,6 +137,10 @@ class RestCreateOrderRequest {
         // ensure the json data is a string
         if (data['terms'] && !(typeof data['terms'] === 'string' || data['terms'] instanceof String)) {
             throw new Error("Expected the field `terms` to be a primitive type in the JSON string but got " + data['terms']);
+        }
+        // ensure the json data is a string
+        if (data['title'] && !(typeof data['title'] === 'string' || data['title'] instanceof String)) {
+            throw new Error("Expected the field `title` to be a primitive type in the JSON string but got " + data['title']);
         }
         // ensure the json data is a string
         if (data['contact_id'] && !(typeof data['contact_id'] === 'string' || data['contact_id'] instanceof String)) {
@@ -165,6 +190,14 @@ class RestCreateOrderRequest {
                 CustomFieldValue.validateJSON(item);
             };
         }
+        // ensure the json data is a string
+        if (data['invoice_number'] && !(typeof data['invoice_number'] === 'string' || data['invoice_number'] instanceof String)) {
+            throw new Error("Expected the field `invoice_number` to be a primitive type in the JSON string but got " + data['invoice_number']);
+        }
+        // ensure the json data is a string
+        if (data['external_create_user'] && !(typeof data['external_create_user'] === 'string' || data['external_create_user'] instanceof String)) {
+            throw new Error("Expected the field `external_create_user` to be a primitive type in the JSON string but got " + data['external_create_user']);
+        }
 
         return true;
     }
@@ -185,6 +218,12 @@ RestCreateOrderRequest.prototype['notes'] = undefined;
  * @member {String} terms
  */
 RestCreateOrderRequest.prototype['terms'] = undefined;
+
+/**
+ * A title for the invoice
+ * @member {String} title
+ */
+RestCreateOrderRequest.prototype['title'] = undefined;
 
 /**
  * ID of the contact for this order
@@ -245,6 +284,42 @@ RestCreateOrderRequest.prototype['shipping_address'] = undefined;
  * @member {Array.<module:keap.core.v2/model/CustomFieldValue>} custom_fields
  */
 RestCreateOrderRequest.prototype['custom_fields'] = undefined;
+
+/**
+ * The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+ * @member {Date} sent_time
+ */
+RestCreateOrderRequest.prototype['sent_time'] = undefined;
+
+/**
+ * The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+ * @member {Date} due_time
+ */
+RestCreateOrderRequest.prototype['due_time'] = undefined;
+
+/**
+ * Invoice number
+ * @member {String} invoice_number
+ */
+RestCreateOrderRequest.prototype['invoice_number'] = undefined;
+
+/**
+ * The external system user that created this order.
+ * @member {String} external_create_user
+ */
+RestCreateOrderRequest.prototype['external_create_user'] = undefined;
+
+/**
+ * The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+ * @member {Date} external_create_time
+ */
+RestCreateOrderRequest.prototype['external_create_time'] = undefined;
+
+/**
+ * The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+ * @member {Date} external_update_time
+ */
+RestCreateOrderRequest.prototype['external_update_time'] = undefined;
 
 
 

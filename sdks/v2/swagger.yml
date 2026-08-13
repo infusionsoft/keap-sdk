@@ -17,77 +17,6 @@ security:
 - oauth2: [
     ]
 paths:
-  /rest/v2/easy-automations/{automation_id}/state:
-    put:
-      tags:
-      - Automation
-      summary: Update the state of an Easy Automation
-      description: 'Updates the lifecycle state of an existing Easy Automation. Supported
-        states: `disabled`, `enabled`.'
-      operationId: updateState
-      parameters:
-      - name: automation_id
-        in: path
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AutomationStateRequest'
-        required: true
-      responses:
-        '204':
-          description: No Content
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '405':
-          description: Method Not Allowed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '409':
-          description: Conflict
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '501':
-          description: Method Not Implemented
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
   /rest/v2/automations/{automation_id}/unpublish:
     put:
       tags:
@@ -6616,12 +6545,23 @@ paths:
         description: |-
           Filter to apply, allowed fields are:
 
-          - (String) `name`
+          - (String) `name` - Wildcard matching allowed
+          - (String) `description` - Wildcard matching allowed
 
           You will need to apply the `==` operator to check the equality of one of the filters with your searched
-          word, in the encoded form `%3D%3D`. For the filters listed above, here is an example:
+          word, in the encoded form `%3D%3D`.
+
+          For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A)
+          for prefix matching on text fields. Example of a valid pattern of wildcard usage:
+          - `field==foo*` finds anything in `field` that begins with `foo`
+
+          For the filters listed above, here are some examples:
 
           - `filter=name%3D%3Dexample`
+          - `filter=name%3D%3Dexam*` (starts with "exam")
+          - `filter=description%3D%3Dexample`
+          - `filter=description%3D%3Dexam*` (starts with "exam")
+          - `filter=name%3D%3Dexam*%3Bdescription%3D%3Dsales` (multiple filters combined)
         required: false
         schema:
           type: string
@@ -8494,6 +8434,80 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CategoryDiscount'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/discounts/productCategories/{discount_id}/criteria:
+    post:
+      tags:
+      - Category Discounts
+      summary: Create a Category Discount Criteria
+      description: Creates a Category Discount Criteria
+      operationId: createCategoryDiscountCriteria
+      parameters:
+      - name: discount_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCategoryDiscountCriteria'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscountCriteria'
         '400':
           description: Bad Request
           content:
@@ -17306,6 +17320,13 @@ paths:
             - terms
             - payment_plan
             - custom_fields
+            - sent_time
+            - title
+            - due_time
+            - invoice_number
+            - external_create_user
+            - external_create_time
+            - external_update_time
           uniqueItems: true
       requestBody:
         content:
@@ -20923,6 +20944,78 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestEmailAddressStatus'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/easy-automations/{automation_id}:
+    patch:
+      tags:
+      - Automation
+      summary: Renames an Easy Automation.
+      description: Updates the name of a single easy automation.
+      operationId: renameAutomationV2
+      parameters:
+      - name: automation_id
+        in: path
+        description: automation_id
+        required: true
+        schema:
+          type: string
+        example: HWv0fbDNDbWg6cFKY027
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RenameEasyAutomationCommand'
+        required: true
+      responses:
+        '204':
+          description: No Content
         '400':
           description: Bad Request
           content:
@@ -26472,110 +26565,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /rest/v2/tags/-/contacts:
-    get:
-      tags:
-      - Tags
-      summary: List Contacts Across Tags
-      description: Retrieves tag-contact associations across the tag collection (AEP-159),
-        using the `-` wildcard in place of a single tag id. At least one filter is
-        required. Returns association tuples (contact_id, tag_id, applied_at) only.
-      operationId: listContactsAcrossTags
-      parameters:
-      - name: filter
-        in: query
-        description: |
-          Filter to apply (at least one is required). Allowed fields:
-          - (List[String]) `tag_ids` (max 100)
-          - (ISO-8601) `since_applied_time`
-          - (ISO-8601) `until_applied_time`
-        required: false
-        schema:
-          type: string
-      - name: page_token
-        in: query
-        description: Page token
-        required: false
-        schema:
-          type: string
-      - name: order_by
-        in: query
-        description: |-
-          Attribute and direction to order items (best-effort for cross-collection reads).
-          Field:
-          - `applied_time`
-
-          Direction:
-          - `asc`
-          - `desc`
-        required: false
-        schema:
-          type: string
-      - name: page_size
-        in: query
-        description: Total number of items to return per page
-        required: false
-        schema:
-          type: integer
-          format: int32
-          maximum: 1000
-          minimum: 0
-        example: 0
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListTagContactAssociationsResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '405':
-          description: Method Not Allowed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '409':
-          description: Conflict
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '501':
-          description: Method Not Implemented
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
   /rest/v2/subscriptions/model:
     get:
       tags:
@@ -27038,7 +27027,7 @@ paths:
         in: query
         description: |-
           Filter to apply, allowed fields are:
-          - (String) `id`
+          - (String) `id` - Allowable operators: "==",">",">=","<","<="
           - (List[String]) `ids`
           - (String) `amount` - Allowable operators: "==","<=", "<", ">=", ">", "!="
           - (String) `order_id`
@@ -31508,6 +31497,75 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/discounts/productCategories/{discount_id}/criteria/{criteria_id}:
+    delete:
+      tags:
+      - Category Discounts
+      summary: Delete a Category Discount Criteria
+      description: Deletes a specified Category Discount Criteria
+      operationId: deleteCategoryDiscountCriteria
+      parameters:
+      - name: discount_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: criteria_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/discounts/orderTotals/{discount_id}/criteria/{criteria_id}:
     delete:
       tags:
@@ -31804,17 +31862,6 @@ components:
           type: string
         resource:
           type: string
-    AutomationStateRequest:
-      type: object
-      properties:
-        state:
-          type: string
-          description: The desired lifecycle state of the automation.
-          enum:
-          - enabled
-          - disabled
-      required:
-      - state
     UnpublishAutomationRequest:
       type: object
       description: Request to unpublish a single automation
@@ -32768,6 +32815,7 @@ components:
           - DISCOUNT_SHIPPING
           - TIP
           - OTHER
+          - FEE
           - UNKNOWN
           example: PRODUCT
         cost_per_unit:
@@ -32956,6 +33004,34 @@ components:
             content: Preferred
           items:
             $ref: '#/components/schemas/CustomFieldValue'
+        sent_time:
+          type: string
+          format: date-time
+          description: The date and time the invoice was sent. In ISO-8601 format
+            (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
+        due_time:
+          type: string
+          format: date-time
+          description: The date and time the invoice is due. In ISO-8601 format (e.g.
+            2024-05-21T23:00:00Z)
+          example: '2024-06-20T14:30:00Z'
+        external_create_user:
+          type: string
+          description: The external system user that created this order.
+          example: user@example.com
+        external_create_time:
+          type: string
+          format: date-time
+          description: The date and time the order was created in the external system.
+            In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
+        external_update_time:
+          type: string
+          format: date-time
+          description: The date and time the order was last updated in the external
+            system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
     PaymentPlan:
       type: object
       properties:
@@ -34119,6 +34195,7 @@ components:
           - DISCOUNT_PRODUCT_CATEGORY
           - DISCOUNT_SHIPPING
           - OTHER
+          - FEE
           example: PRODUCT
         price_per_unit:
           type: number
@@ -34145,6 +34222,10 @@ components:
           type: string
           description: Order terms
           example: Net 30
+        title:
+          type: string
+          description: A title for the invoice
+          example: Monthly subscription invoice
         contact_id:
           type: string
           description: ID of the contact for this order
@@ -34200,6 +34281,38 @@ components:
             content: Preferred
           items:
             $ref: '#/components/schemas/CustomFieldValue'
+        sent_time:
+          type: string
+          format: date-time
+          description: The date and time the invoice was sent. In ISO-8601 format
+            (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
+        due_time:
+          type: string
+          format: date-time
+          description: The date and time the invoice is due. In ISO-8601 format (e.g.
+            2024-05-21T23:00:00Z)
+          example: '2024-06-20T14:30:00Z'
+        invoice_number:
+          type: string
+          description: Invoice number
+          example: 1001
+        external_create_user:
+          type: string
+          description: The external system user that created this order.
+          example: user@example.com
+        external_create_time:
+          type: string
+          format: date-time
+          description: The date and time the order was created in the external system.
+            In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
+        external_update_time:
+          type: string
+          format: date-time
+          description: The date and time the order was last updated in the external
+            system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
       required:
       - contact_id
       - order_time
@@ -34241,6 +34354,30 @@ components:
         apply_to_commissions:
           type: boolean
           description: Whether to apply this payment to commissions.
+        external_source:
+          type: string
+          description: The external source type of this payment.
+        external_source_value:
+          type: string
+          description: The external source value of this payment.
+        external_status_value:
+          type: string
+          description: The external status value of this payment.
+        external_create_time:
+          type: string
+          format: date-time
+          description: The external creation timestamp of this payment. In ISO-8601
+            format (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
+        external_update_time:
+          type: string
+          format: date-time
+          description: The external update timestamp of this payment. In ISO-8601
+            format (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
+        external_create_user:
+          type: string
+          description: The user who created this payment externally.
       required:
       - apply_to_commissions
       - payment_amount
@@ -35914,6 +36051,30 @@ components:
           type: string
           description: Unique identifier for this criteria
           example: 501
+        range_start_time:
+          type: string
+          format: date-time
+          description: Start date/time for DATE_RANGE criteria (ISO-8601 format)
+          example: '2024-01-01T00:00:00Z'
+        range_end_time:
+          type: string
+          format: date-time
+          description: End date/time for DATE_RANGE criteria (ISO-8601 format)
+          example: '2024-12-31T23:59:59Z'
+    CreateCategoryDiscountCriteria:
+      type: object
+      properties:
+        type:
+          type: string
+          description: 'Type of criteria: DATE_RANGE or PROMO_CODE'
+          enum:
+          - DATE_RANGE
+          - PROMO_CODE
+          example: DATE_RANGE
+        code:
+          type: string
+          description: Promotional code for PROMO_CODE criteria
+          example: SUMMER2024
         range_start_time:
           type: string
           format: date-time
@@ -38947,6 +39108,10 @@ components:
           type: string
           description: Order terms
           example: Net 30
+        title:
+          type: string
+          description: A title for the invoice
+          example: Monthly subscription invoice
         contact_id:
           type: string
           description: ID of the contact for this order
@@ -38999,6 +39164,38 @@ components:
             content: Preferred
           items:
             $ref: '#/components/schemas/CustomFieldValue'
+        sent_time:
+          type: string
+          format: date-time
+          description: The date and time the invoice was sent. In ISO-8601 format
+            (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
+        due_time:
+          type: string
+          format: date-time
+          description: The date and time the invoice is due. In ISO-8601 format (e.g.
+            2024-05-21T23:00:00Z)
+          example: '2024-06-20T14:30:00Z'
+        invoice_number:
+          type: string
+          description: Invoice number
+          example: 1001
+        external_create_user:
+          type: string
+          description: The external system user that created this order.
+          example: user@example.com
+        external_create_time:
+          type: string
+          format: date-time
+          description: The date and time the order was created in the external system.
+            In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
+        external_update_time:
+          type: string
+          format: date-time
+          description: The date and time the order was last updated in the external
+            system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
     UpdatedPaymentPlan:
       type: object
       properties:
@@ -39327,6 +39524,17 @@ components:
       - email
       - opted_in
       - status
+    RenameEasyAutomationCommand:
+      type: object
+      description: An object used to rename an automation.
+      properties:
+        name:
+          type: string
+          description: Name of the easy automation
+          example: Welcome new customer (Fall 26)
+          minLength: 1
+      required:
+      - name
     UpdateShippingDiscountCriteria:
       type: object
       properties:
@@ -40554,30 +40762,6 @@ components:
           format: date-time
           description: The time this tag category was last updated, in ISO 8601 format
           example: '2024-03-15T10:30:00Z'
-    ListTagContactAssociationsResponse:
-      type: object
-      properties:
-        contacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/TagContactAssociation'
-        next_page_token:
-          type: string
-    TagContactAssociation:
-      type: object
-      properties:
-        contact_id:
-          type: string
-          description: The contact ID
-          example: 123
-        tag_id:
-          type: string
-          description: The tag ID
-          example: 456
-        applied_at:
-          type: string
-          description: The time the tag was applied to the contact, in ISO 8601 format.
-          example: '2024-01-15T10:30:00Z'
     ListSubscriptionsResponse:
       type: object
       properties:

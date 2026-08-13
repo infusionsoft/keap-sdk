@@ -256,6 +256,7 @@ const request: OrdersApiCreateOrderRequest = {
   restCreateOrderRequest: {
     notes: "Rush delivery requested",
     terms: "Net 30",
+    title: "Monthly subscription invoice",
     contactId: "123",
     orderItems: [
       {
@@ -298,6 +299,12 @@ const request: OrdersApiCreateOrderRequest = {
         content: null,
       },
     ],
+    sentTime: new Date('2024-05-21T14:30:00Z'),
+    dueTime: new Date('2024-06-20T14:30:00Z'),
+    invoiceNumber: "1001",
+    externalCreateUser: "user@example.com",
+    externalCreateTime: new Date('2024-05-21T14:30:00Z'),
+    externalUpdateTime: new Date('2024-05-21T14:30:00Z'),
   },
 };
 
@@ -641,6 +648,12 @@ const request: OrdersApiCreatePaymentForAnOrderRequest = {
     paymentTime: new Date('2024-05-21T14:30:00Z'),
     paymentAmount: 3.14,
     applyToCommissions: true,
+    externalSource: "externalSource_example",
+    externalSourceValue: "externalSourceValue_example",
+    externalStatusValue: "externalStatusValue_example",
+    externalCreateTime: new Date('2024-05-21T14:30:00Z'),
+    externalUpdateTime: new Date('2024-05-21T14:30:00Z'),
+    externalCreateUser: "externalCreateUser_example",
   },
 };
 
@@ -1641,6 +1654,7 @@ const request: OrdersApiUpdateOrderRequest = {
   updateOrderRequest: {
     notes: "Rush delivery",
     terms: "Net 30",
+    title: "Monthly subscription invoice",
     contactId: "123",
     orderTitle: "Online Purchase",
     orderTime: new Date('2024-05-21T14:30:00Z'),
@@ -1680,6 +1694,12 @@ const request: OrdersApiUpdateOrderRequest = {
         content: null,
       },
     ],
+    sentTime: new Date('2024-05-21T14:30:00Z'),
+    dueTime: new Date('2024-06-20T14:30:00Z'),
+    invoiceNumber: "1001",
+    externalCreateUser: "user@example.com",
+    externalCreateTime: new Date('2024-05-21T14:30:00Z'),
+    externalUpdateTime: new Date('2024-05-21T14:30:00Z'),
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
   updateMask: [
@@ -1698,7 +1718,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateOrderRequest** | **UpdateOrderRequest**|  |
  **orderId** | [**string**] |  | defaults to undefined
- **updateMask** | **Array<&#39;contact_id&#39; &#124; &#39;order_items&#39; &#124; &#39;order_title&#39; &#124; &#39;order_time&#39; &#124; &#39;order_type&#39; &#124; &#39;promo_codes&#39; &#124; &#39;lead_affiliate_id&#39; &#124; &#39;sales_affiliate_id&#39; &#124; &#39;shipping_address&#39; &#124; &#39;notes&#39; &#124; &#39;terms&#39; &#124; &#39;payment_plan&#39; &#124; &#39;custom_fields&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;contact_id&#39; &#124; &#39;order_items&#39; &#124; &#39;order_title&#39; &#124; &#39;order_time&#39; &#124; &#39;order_type&#39; &#124; &#39;promo_codes&#39; &#124; &#39;lead_affiliate_id&#39; &#124; &#39;sales_affiliate_id&#39; &#124; &#39;shipping_address&#39; &#124; &#39;notes&#39; &#124; &#39;terms&#39; &#124; &#39;payment_plan&#39; &#124; &#39;custom_fields&#39; &#124; &#39;sent_time&#39; &#124; &#39;title&#39; &#124; &#39;due_time&#39; &#124; &#39;invoice_number&#39; &#124; &#39;external_create_user&#39; &#124; &#39;external_create_time&#39; &#124; &#39;external_update_time&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

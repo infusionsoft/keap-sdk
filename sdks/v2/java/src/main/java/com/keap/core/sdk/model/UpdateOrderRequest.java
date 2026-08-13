@@ -42,6 +42,7 @@ import jakarta.validation.Valid;
 @JsonPropertyOrder({
   UpdateOrderRequest.JSON_PROPERTY_NOTES,
   UpdateOrderRequest.JSON_PROPERTY_TERMS,
+  UpdateOrderRequest.JSON_PROPERTY_TITLE,
   UpdateOrderRequest.JSON_PROPERTY_CONTACT_ID,
   UpdateOrderRequest.JSON_PROPERTY_ORDER_TITLE,
   UpdateOrderRequest.JSON_PROPERTY_ORDER_TIME,
@@ -51,7 +52,13 @@ import jakarta.validation.Valid;
   UpdateOrderRequest.JSON_PROPERTY_SALES_AFFILIATE_ID,
   UpdateOrderRequest.JSON_PROPERTY_SHIPPING_ADDRESS,
   UpdateOrderRequest.JSON_PROPERTY_PAYMENT_PLAN,
-  UpdateOrderRequest.JSON_PROPERTY_CUSTOM_FIELDS
+  UpdateOrderRequest.JSON_PROPERTY_CUSTOM_FIELDS,
+  UpdateOrderRequest.JSON_PROPERTY_SENT_TIME,
+  UpdateOrderRequest.JSON_PROPERTY_DUE_TIME,
+  UpdateOrderRequest.JSON_PROPERTY_INVOICE_NUMBER,
+  UpdateOrderRequest.JSON_PROPERTY_EXTERNAL_CREATE_USER,
+  UpdateOrderRequest.JSON_PROPERTY_EXTERNAL_CREATE_TIME,
+  UpdateOrderRequest.JSON_PROPERTY_EXTERNAL_UPDATE_TIME
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateOrderRequest implements Serializable {
@@ -62,6 +69,9 @@ public class UpdateOrderRequest implements Serializable {
 
   public static final String JSON_PROPERTY_TERMS = "terms";
   @jakarta.annotation.Nullable  private String terms;
+
+  public static final String JSON_PROPERTY_TITLE = "title";
+  @jakarta.annotation.Nullable  private String title;
 
   public static final String JSON_PROPERTY_CONTACT_ID = "contact_id";
   @jakarta.annotation.Nullable  private String contactId;
@@ -129,6 +139,24 @@ public class UpdateOrderRequest implements Serializable {
   public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
   @jakarta.annotation.Nullable  private List<@Valid CustomFieldValue> customFields = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_SENT_TIME = "sent_time";
+  @jakarta.annotation.Nullable  private ZonedDateTime sentTime;
+
+  public static final String JSON_PROPERTY_DUE_TIME = "due_time";
+  @jakarta.annotation.Nullable  private ZonedDateTime dueTime;
+
+  public static final String JSON_PROPERTY_INVOICE_NUMBER = "invoice_number";
+  @jakarta.annotation.Nullable  private String invoiceNumber;
+
+  public static final String JSON_PROPERTY_EXTERNAL_CREATE_USER = "external_create_user";
+  @jakarta.annotation.Nullable  private String externalCreateUser;
+
+  public static final String JSON_PROPERTY_EXTERNAL_CREATE_TIME = "external_create_time";
+  @jakarta.annotation.Nullable  private ZonedDateTime externalCreateTime;
+
+  public static final String JSON_PROPERTY_EXTERNAL_UPDATE_TIME = "external_update_time";
+  @jakarta.annotation.Nullable  private ZonedDateTime externalUpdateTime;
+
   public UpdateOrderRequest() { 
   }
 
@@ -177,6 +205,30 @@ public class UpdateOrderRequest implements Serializable {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTerms(@jakarta.annotation.Nullable String terms) {
     this.terms = terms;
+  }
+
+
+  public UpdateOrderRequest title(@jakarta.annotation.Nullable String title) {
+    this.title = title;
+    return this;
+  }
+
+  /**
+   * A title for the invoice
+   * @return title
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Monthly subscription invoice", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "A title for the invoice")
+  @JsonProperty(JSON_PROPERTY_TITLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTitle() {
+    return title;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TITLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTitle(@jakarta.annotation.Nullable String title) {
+    this.title = title;
   }
 
 
@@ -439,6 +491,154 @@ public class UpdateOrderRequest implements Serializable {
     this.customFields = customFields;
   }
 
+
+  public UpdateOrderRequest sentTime(@jakarta.annotation.Nullable ZonedDateTime sentTime) {
+    this.sentTime = sentTime;
+    return this;
+  }
+
+  /**
+   * The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+   * @return sentTime
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "2024-05-21T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+  @JsonProperty(JSON_PROPERTY_SENT_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ZonedDateTime getSentTime() {
+    return sentTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SENT_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSentTime(@jakarta.annotation.Nullable ZonedDateTime sentTime) {
+    this.sentTime = sentTime;
+  }
+
+
+  public UpdateOrderRequest dueTime(@jakarta.annotation.Nullable ZonedDateTime dueTime) {
+    this.dueTime = dueTime;
+    return this;
+  }
+
+  /**
+   * The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+   * @return dueTime
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "2024-06-20T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+  @JsonProperty(JSON_PROPERTY_DUE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ZonedDateTime getDueTime() {
+    return dueTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DUE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDueTime(@jakarta.annotation.Nullable ZonedDateTime dueTime) {
+    this.dueTime = dueTime;
+  }
+
+
+  public UpdateOrderRequest invoiceNumber(@jakarta.annotation.Nullable String invoiceNumber) {
+    this.invoiceNumber = invoiceNumber;
+    return this;
+  }
+
+  /**
+   * Invoice number
+   * @return invoiceNumber
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "1001", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Invoice number")
+  @JsonProperty(JSON_PROPERTY_INVOICE_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getInvoiceNumber() {
+    return invoiceNumber;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INVOICE_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setInvoiceNumber(@jakarta.annotation.Nullable String invoiceNumber) {
+    this.invoiceNumber = invoiceNumber;
+  }
+
+
+  public UpdateOrderRequest externalCreateUser(@jakarta.annotation.Nullable String externalCreateUser) {
+    this.externalCreateUser = externalCreateUser;
+    return this;
+  }
+
+  /**
+   * The external system user that created this order.
+   * @return externalCreateUser
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "user@example.com", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The external system user that created this order.")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_USER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getExternalCreateUser() {
+    return externalCreateUser;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_USER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalCreateUser(@jakarta.annotation.Nullable String externalCreateUser) {
+    this.externalCreateUser = externalCreateUser;
+  }
+
+
+  public UpdateOrderRequest externalCreateTime(@jakarta.annotation.Nullable ZonedDateTime externalCreateTime) {
+    this.externalCreateTime = externalCreateTime;
+    return this;
+  }
+
+  /**
+   * The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+   * @return externalCreateTime
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "2024-05-21T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ZonedDateTime getExternalCreateTime() {
+    return externalCreateTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalCreateTime(@jakarta.annotation.Nullable ZonedDateTime externalCreateTime) {
+    this.externalCreateTime = externalCreateTime;
+  }
+
+
+  public UpdateOrderRequest externalUpdateTime(@jakarta.annotation.Nullable ZonedDateTime externalUpdateTime) {
+    this.externalUpdateTime = externalUpdateTime;
+    return this;
+  }
+
+  /**
+   * The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+   * @return externalUpdateTime
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "2024-05-21T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_UPDATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ZonedDateTime getExternalUpdateTime() {
+    return externalUpdateTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_UPDATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalUpdateTime(@jakarta.annotation.Nullable ZonedDateTime externalUpdateTime) {
+    this.externalUpdateTime = externalUpdateTime;
+  }
+
   /**
    * Return true if this UpdateOrderRequest object is equal to o.
    */
@@ -453,6 +653,7 @@ public class UpdateOrderRequest implements Serializable {
     UpdateOrderRequest updateOrderRequest = (UpdateOrderRequest) o;
     return Objects.equals(this.notes, updateOrderRequest.notes) &&
         Objects.equals(this.terms, updateOrderRequest.terms) &&
+        Objects.equals(this.title, updateOrderRequest.title) &&
         Objects.equals(this.contactId, updateOrderRequest.contactId) &&
         Objects.equals(this.orderTitle, updateOrderRequest.orderTitle) &&
         Objects.equals(this.orderTime, updateOrderRequest.orderTime) &&
@@ -462,12 +663,18 @@ public class UpdateOrderRequest implements Serializable {
         Objects.equals(this.salesAffiliateId, updateOrderRequest.salesAffiliateId) &&
         Objects.equals(this.shippingAddress, updateOrderRequest.shippingAddress) &&
         Objects.equals(this.paymentPlan, updateOrderRequest.paymentPlan) &&
-        Objects.equals(this.customFields, updateOrderRequest.customFields);
+        Objects.equals(this.customFields, updateOrderRequest.customFields) &&
+        Objects.equals(this.sentTime, updateOrderRequest.sentTime) &&
+        Objects.equals(this.dueTime, updateOrderRequest.dueTime) &&
+        Objects.equals(this.invoiceNumber, updateOrderRequest.invoiceNumber) &&
+        Objects.equals(this.externalCreateUser, updateOrderRequest.externalCreateUser) &&
+        Objects.equals(this.externalCreateTime, updateOrderRequest.externalCreateTime) &&
+        Objects.equals(this.externalUpdateTime, updateOrderRequest.externalUpdateTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(notes, terms, contactId, orderTitle, orderTime, orderType, promoCodes, leadAffiliateId, salesAffiliateId, shippingAddress, paymentPlan, customFields);
+    return Objects.hash(notes, terms, title, contactId, orderTitle, orderTime, orderType, promoCodes, leadAffiliateId, salesAffiliateId, shippingAddress, paymentPlan, customFields, sentTime, dueTime, invoiceNumber, externalCreateUser, externalCreateTime, externalUpdateTime);
   }
 
   @Override
@@ -476,6 +683,7 @@ public class UpdateOrderRequest implements Serializable {
     sb.append("class UpdateOrderRequest {\n");
     sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("    terms: ").append(toIndentedString(terms)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    contactId: ").append(toIndentedString(contactId)).append("\n");
     sb.append("    orderTitle: ").append(toIndentedString(orderTitle)).append("\n");
     sb.append("    orderTime: ").append(toIndentedString(orderTime)).append("\n");
@@ -486,6 +694,12 @@ public class UpdateOrderRequest implements Serializable {
     sb.append("    shippingAddress: ").append(toIndentedString(shippingAddress)).append("\n");
     sb.append("    paymentPlan: ").append(toIndentedString(paymentPlan)).append("\n");
     sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
+    sb.append("    sentTime: ").append(toIndentedString(sentTime)).append("\n");
+    sb.append("    dueTime: ").append(toIndentedString(dueTime)).append("\n");
+    sb.append("    invoiceNumber: ").append(toIndentedString(invoiceNumber)).append("\n");
+    sb.append("    externalCreateUser: ").append(toIndentedString(externalCreateUser)).append("\n");
+    sb.append("    externalCreateTime: ").append(toIndentedString(externalCreateTime)).append("\n");
+    sb.append("    externalUpdateTime: ").append(toIndentedString(externalUpdateTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -519,6 +733,10 @@ public class UpdateOrderRequest implements Serializable {
         }
             public UpdateOrderRequest.Builder terms(String terms) {
               this.instance.terms = terms;
+          return this;
+        }
+            public UpdateOrderRequest.Builder title(String title) {
+              this.instance.title = title;
           return this;
         }
             public UpdateOrderRequest.Builder contactId(String contactId) {
@@ -561,6 +779,30 @@ public class UpdateOrderRequest implements Serializable {
               this.instance.customFields = customFields;
           return this;
         }
+            public UpdateOrderRequest.Builder sentTime(ZonedDateTime sentTime) {
+              this.instance.sentTime = sentTime;
+          return this;
+        }
+            public UpdateOrderRequest.Builder dueTime(ZonedDateTime dueTime) {
+              this.instance.dueTime = dueTime;
+          return this;
+        }
+            public UpdateOrderRequest.Builder invoiceNumber(String invoiceNumber) {
+              this.instance.invoiceNumber = invoiceNumber;
+          return this;
+        }
+            public UpdateOrderRequest.Builder externalCreateUser(String externalCreateUser) {
+              this.instance.externalCreateUser = externalCreateUser;
+          return this;
+        }
+            public UpdateOrderRequest.Builder externalCreateTime(ZonedDateTime externalCreateTime) {
+              this.instance.externalCreateTime = externalCreateTime;
+          return this;
+        }
+            public UpdateOrderRequest.Builder externalUpdateTime(ZonedDateTime externalUpdateTime) {
+              this.instance.externalUpdateTime = externalUpdateTime;
+          return this;
+        }
         
     
         /**
@@ -597,6 +839,7 @@ public class UpdateOrderRequest implements Serializable {
         return new UpdateOrderRequest.Builder()
           .notes(getNotes())
           .terms(getTerms())
+          .title(getTitle())
           .contactId(getContactId())
           .orderTitle(getOrderTitle())
           .orderTime(getOrderTime())
@@ -606,7 +849,13 @@ public class UpdateOrderRequest implements Serializable {
           .salesAffiliateId(getSalesAffiliateId())
           .shippingAddress(getShippingAddress())
           .paymentPlan(getPaymentPlan())
-          .customFields(getCustomFields());
+          .customFields(getCustomFields())
+          .sentTime(getSentTime())
+          .dueTime(getDueTime())
+          .invoiceNumber(getInvoiceNumber())
+          .externalCreateUser(getExternalCreateUser())
+          .externalCreateTime(getExternalCreateTime())
+          .externalUpdateTime(getExternalUpdateTime());
       }
 }
 

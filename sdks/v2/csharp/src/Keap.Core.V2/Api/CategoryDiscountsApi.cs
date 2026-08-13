@@ -52,6 +52,31 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of CategoryDiscount</returns>
         ApiResponse<CategoryDiscount> CreateCategoryDiscountWithHttpInfo(CreateCategoryDiscountRequest createCategoryDiscountRequest, int operationIndex = 0);
         /// <summary>
+        /// Create a Category Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Creates a Category Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createCategoryDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DiscountCriteria</returns>
+        DiscountCriteria CreateCategoryDiscountCriteria(string discountId, CreateCategoryDiscountCriteria createCategoryDiscountCriteria, int operationIndex = 0);
+
+        /// <summary>
+        /// Create a Category Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Creates a Category Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createCategoryDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DiscountCriteria</returns>
+        ApiResponse<DiscountCriteria> CreateCategoryDiscountCriteriaWithHttpInfo(string discountId, CreateCategoryDiscountCriteria createCategoryDiscountCriteria, int operationIndex = 0);
+        /// <summary>
         /// Delete a Category Discount
         /// </summary>
         /// <remarks>
@@ -74,6 +99,31 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteCategoryDiscountWithHttpInfo(string discountId, int operationIndex = 0);
+        /// <summary>
+        /// Delete a Category Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Deletes a specified Category Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        void DeleteCategoryDiscountCriteria(string discountId, string criteriaId, int operationIndex = 0);
+
+        /// <summary>
+        /// Delete a Category Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Deletes a specified Category Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteCategoryDiscountCriteriaWithHttpInfo(string discountId, string criteriaId, int operationIndex = 0);
         /// <summary>
         /// Retrieve a Category Discount
         /// </summary>
@@ -188,6 +238,33 @@ namespace Keap.Core.V2.Api
         /// <returns>Task of ApiResponse (CategoryDiscount)</returns>
         System.Threading.Tasks.Task<ApiResponse<CategoryDiscount>> CreateCategoryDiscountWithHttpInfoAsync(CreateCategoryDiscountRequest createCategoryDiscountRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Create a Category Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Creates a Category Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createCategoryDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DiscountCriteria</returns>
+        System.Threading.Tasks.Task<DiscountCriteria> CreateCategoryDiscountCriteriaAsync(string discountId, CreateCategoryDiscountCriteria createCategoryDiscountCriteria, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Create a Category Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Creates a Category Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createCategoryDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DiscountCriteria)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DiscountCriteria>> CreateCategoryDiscountCriteriaWithHttpInfoAsync(string discountId, CreateCategoryDiscountCriteria createCategoryDiscountCriteria, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Delete a Category Discount
         /// </summary>
         /// <remarks>
@@ -212,6 +289,33 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteCategoryDiscountWithHttpInfoAsync(string discountId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Delete a Category Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Deletes a specified Category Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteCategoryDiscountCriteriaAsync(string discountId, string criteriaId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Delete a Category Discount Criteria
+        /// </summary>
+        /// <remarks>
+        /// Deletes a specified Category Discount Criteria
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteCategoryDiscountCriteriaWithHttpInfoAsync(string discountId, string criteriaId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Retrieve a Category Discount
         /// </summary>
@@ -597,6 +701,203 @@ namespace Keap.Core.V2.Api
         }
 
         /// <summary>
+        /// Create a Category Discount Criteria Creates a Category Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createCategoryDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>DiscountCriteria</returns>
+        public DiscountCriteria CreateCategoryDiscountCriteria(string discountId, CreateCategoryDiscountCriteria createCategoryDiscountCriteria, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<DiscountCriteria> localVarResponse = CreateCategoryDiscountCriteriaWithHttpInfo(discountId, createCategoryDiscountCriteria);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a Category Discount Criteria Creates a Category Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createCategoryDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of DiscountCriteria</returns>
+        public Keap.Core.V2.Client.ApiResponse<DiscountCriteria> CreateCategoryDiscountCriteriaWithHttpInfo(string discountId, CreateCategoryDiscountCriteria createCategoryDiscountCriteria, int operationIndex = 0)
+        {
+            // verify the required parameter 'discountId' is set
+            if (discountId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'discountId' when calling CategoryDiscountsApi->CreateCategoryDiscountCriteria");
+            }
+
+            // verify the required parameter 'createCategoryDiscountCriteria' is set
+            if (createCategoryDiscountCriteria == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createCategoryDiscountCriteria' when calling CategoryDiscountsApi->CreateCategoryDiscountCriteria");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("discount_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(discountId)); // path parameter
+            localVarRequestOptions.Data = createCategoryDiscountCriteria;
+
+            localVarRequestOptions.Operation = "CategoryDiscountsApi.CreateCategoryDiscountCriteria";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<DiscountCriteria>("/rest/v2/discounts/productCategories/{discount_id}/criteria", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateCategoryDiscountCriteria", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create a Category Discount Criteria Creates a Category Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createCategoryDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DiscountCriteria</returns>
+        public async System.Threading.Tasks.Task<DiscountCriteria> CreateCategoryDiscountCriteriaAsync(string discountId, CreateCategoryDiscountCriteria createCategoryDiscountCriteria, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<DiscountCriteria> localVarResponse = await CreateCategoryDiscountCriteriaWithHttpInfoAsync(discountId, createCategoryDiscountCriteria, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create a Category Discount Criteria Creates a Category Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="createCategoryDiscountCriteria"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DiscountCriteria)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<DiscountCriteria>> CreateCategoryDiscountCriteriaWithHttpInfoAsync(string discountId, CreateCategoryDiscountCriteria createCategoryDiscountCriteria, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'discountId' is set
+            if (discountId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'discountId' when calling CategoryDiscountsApi->CreateCategoryDiscountCriteria");
+            }
+
+            // verify the required parameter 'createCategoryDiscountCriteria' is set
+            if (createCategoryDiscountCriteria == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'createCategoryDiscountCriteria' when calling CategoryDiscountsApi->CreateCategoryDiscountCriteria");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("discount_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(discountId)); // path parameter
+            localVarRequestOptions.Data = createCategoryDiscountCriteria;
+
+            localVarRequestOptions.Operation = "CategoryDiscountsApi.CreateCategoryDiscountCriteria";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<DiscountCriteria>("/rest/v2/discounts/productCategories/{discount_id}/criteria", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateCategoryDiscountCriteria", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Delete a Category Discount Deletes a specified Category Discount
         /// </summary>
         /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
@@ -762,6 +1063,199 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeleteCategoryDiscount", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete a Category Discount Criteria Deletes a specified Category Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        public void DeleteCategoryDiscountCriteria(string discountId, string criteriaId, int operationIndex = 0)
+        {
+            DeleteCategoryDiscountCriteriaWithHttpInfo(discountId, criteriaId);
+        }
+
+        /// <summary>
+        /// Delete a Category Discount Criteria Deletes a specified Category Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Keap.Core.V2.Client.ApiResponse<Object> DeleteCategoryDiscountCriteriaWithHttpInfo(string discountId, string criteriaId, int operationIndex = 0)
+        {
+            // verify the required parameter 'discountId' is set
+            if (discountId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'discountId' when calling CategoryDiscountsApi->DeleteCategoryDiscountCriteria");
+            }
+
+            // verify the required parameter 'criteriaId' is set
+            if (criteriaId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'criteriaId' when calling CategoryDiscountsApi->DeleteCategoryDiscountCriteria");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("discount_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(discountId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("criteria_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(criteriaId)); // path parameter
+
+            localVarRequestOptions.Operation = "CategoryDiscountsApi.DeleteCategoryDiscountCriteria";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<Object>("/rest/v2/discounts/productCategories/{discount_id}/criteria/{criteria_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteCategoryDiscountCriteria", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete a Category Discount Criteria Deletes a specified Category Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteCategoryDiscountCriteriaAsync(string discountId, string criteriaId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            await DeleteCategoryDiscountCriteriaWithHttpInfoAsync(discountId, criteriaId, operationIndex, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Delete a Category Discount Criteria Deletes a specified Category Discount Criteria
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="discountId"></param>
+        /// <param name="criteriaId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<Object>> DeleteCategoryDiscountCriteriaWithHttpInfoAsync(string discountId, string criteriaId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'discountId' is set
+            if (discountId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'discountId' when calling CategoryDiscountsApi->DeleteCategoryDiscountCriteria");
+            }
+
+            // verify the required parameter 'criteriaId' is set
+            if (criteriaId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'criteriaId' when calling CategoryDiscountsApi->DeleteCategoryDiscountCriteria");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("discount_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(discountId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("criteria_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(criteriaId)); // path parameter
+
+            localVarRequestOptions.Operation = "CategoryDiscountsApi.DeleteCategoryDiscountCriteria";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/rest/v2/discounts/productCategories/{discount_id}/criteria/{criteria_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteCategoryDiscountCriteria", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

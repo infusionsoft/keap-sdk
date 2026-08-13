@@ -68,6 +68,24 @@ class RestCreatePaymentRequest {
             if (data.hasOwnProperty('apply_to_commissions')) {
                 obj['apply_to_commissions'] = ApiClient.convertToType(data['apply_to_commissions'], 'Boolean');
             }
+            if (data.hasOwnProperty('external_source')) {
+                obj['external_source'] = ApiClient.convertToType(data['external_source'], 'String');
+            }
+            if (data.hasOwnProperty('external_source_value')) {
+                obj['external_source_value'] = ApiClient.convertToType(data['external_source_value'], 'String');
+            }
+            if (data.hasOwnProperty('external_status_value')) {
+                obj['external_status_value'] = ApiClient.convertToType(data['external_status_value'], 'String');
+            }
+            if (data.hasOwnProperty('external_create_time')) {
+                obj['external_create_time'] = ApiClient.convertToType(data['external_create_time'], 'Date');
+            }
+            if (data.hasOwnProperty('external_update_time')) {
+                obj['external_update_time'] = ApiClient.convertToType(data['external_update_time'], 'Date');
+            }
+            if (data.hasOwnProperty('external_create_user')) {
+                obj['external_create_user'] = ApiClient.convertToType(data['external_create_user'], 'String');
+            }
         }
         return obj;
     }
@@ -95,6 +113,22 @@ class RestCreatePaymentRequest {
         // ensure the json data is a string
         if (data['payment_method_type'] && !(typeof data['payment_method_type'] === 'string' || data['payment_method_type'] instanceof String)) {
             throw new Error("Expected the field `payment_method_type` to be a primitive type in the JSON string but got " + data['payment_method_type']);
+        }
+        // ensure the json data is a string
+        if (data['external_source'] && !(typeof data['external_source'] === 'string' || data['external_source'] instanceof String)) {
+            throw new Error("Expected the field `external_source` to be a primitive type in the JSON string but got " + data['external_source']);
+        }
+        // ensure the json data is a string
+        if (data['external_source_value'] && !(typeof data['external_source_value'] === 'string' || data['external_source_value'] instanceof String)) {
+            throw new Error("Expected the field `external_source_value` to be a primitive type in the JSON string but got " + data['external_source_value']);
+        }
+        // ensure the json data is a string
+        if (data['external_status_value'] && !(typeof data['external_status_value'] === 'string' || data['external_status_value'] instanceof String)) {
+            throw new Error("Expected the field `external_status_value` to be a primitive type in the JSON string but got " + data['external_status_value']);
+        }
+        // ensure the json data is a string
+        if (data['external_create_user'] && !(typeof data['external_create_user'] === 'string' || data['external_create_user'] instanceof String)) {
+            throw new Error("Expected the field `external_create_user` to be a primitive type in the JSON string but got " + data['external_create_user']);
         }
 
         return true;
@@ -140,6 +174,42 @@ RestCreatePaymentRequest.prototype['payment_amount'] = undefined;
  * @member {Boolean} apply_to_commissions
  */
 RestCreatePaymentRequest.prototype['apply_to_commissions'] = undefined;
+
+/**
+ * The external source type of this payment.
+ * @member {String} external_source
+ */
+RestCreatePaymentRequest.prototype['external_source'] = undefined;
+
+/**
+ * The external source value of this payment.
+ * @member {String} external_source_value
+ */
+RestCreatePaymentRequest.prototype['external_source_value'] = undefined;
+
+/**
+ * The external status value of this payment.
+ * @member {String} external_status_value
+ */
+RestCreatePaymentRequest.prototype['external_status_value'] = undefined;
+
+/**
+ * The external creation timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+ * @member {Date} external_create_time
+ */
+RestCreatePaymentRequest.prototype['external_create_time'] = undefined;
+
+/**
+ * The external update timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+ * @member {Date} external_update_time
+ */
+RestCreatePaymentRequest.prototype['external_update_time'] = undefined;
+
+/**
+ * The user who created this payment externally.
+ * @member {String} external_create_user
+ */
+RestCreatePaymentRequest.prototype['external_create_user'] = undefined;
 
 
 

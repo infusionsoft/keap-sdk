@@ -5,7 +5,9 @@ All URIs are relative to *https://api.keap.com/crm*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createCategoryDiscount**](CategoryDiscountsApi.md#createCategoryDiscount) | **POST** /rest/v2/discounts/productCategories | Create a Category Discount
+[**createCategoryDiscountCriteria**](CategoryDiscountsApi.md#createCategoryDiscountCriteria) | **POST** /rest/v2/discounts/productCategories/{discount_id}/criteria | Create a Category Discount Criteria
 [**deleteCategoryDiscount**](CategoryDiscountsApi.md#deleteCategoryDiscount) | **DELETE** /rest/v2/discounts/productCategories/{discount_id} | Delete a Category Discount
+[**deleteCategoryDiscountCriteria**](CategoryDiscountsApi.md#deleteCategoryDiscountCriteria) | **DELETE** /rest/v2/discounts/productCategories/{discount_id}/criteria/{criteria_id} | Delete a Category Discount Criteria
 [**getCategoryDiscount**](CategoryDiscountsApi.md#getCategoryDiscount) | **GET** /rest/v2/discounts/productCategories/{discount_id} | Retrieve a Category Discount
 [**listCategoryDiscounts**](CategoryDiscountsApi.md#listCategoryDiscounts) | **GET** /rest/v2/discounts/productCategories | List Category Discounts
 [**updateCategoryDiscount**](CategoryDiscountsApi.md#updateCategoryDiscount) | **PATCH** /rest/v2/discounts/productCategories/{discount_id} | Update a Category Discount
@@ -86,6 +88,75 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **createCategoryDiscountCriteria**
+> DiscountCriteria createCategoryDiscountCriteria(createCategoryDiscountCriteria)
+
+Creates a Category Discount Criteria
+
+### Example
+
+
+```typescript
+import { createConfiguration, CategoryDiscountsApi } from '';
+import type { CategoryDiscountsApiCreateCategoryDiscountCriteriaRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new CategoryDiscountsApi(configuration);
+
+const request: CategoryDiscountsApiCreateCategoryDiscountCriteriaRequest = {
+  
+  discountId: "discount_id_example",
+  
+  createCategoryDiscountCriteria: {
+    type: "DATE_RANGE",
+    code: "SUMMER2024",
+    rangeStartTime: new Date('2024-01-01T00:00:00Z'),
+    rangeEndTime: new Date('2024-12-31T23:59:59Z'),
+  },
+};
+
+const data = await apiInstance.createCategoryDiscountCriteria(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCategoryDiscountCriteria** | **CreateCategoryDiscountCriteria**|  |
+ **discountId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**DiscountCriteria**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **deleteCategoryDiscount**
 > void deleteCategoryDiscount()
 
@@ -116,6 +187,70 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **discountId** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **deleteCategoryDiscountCriteria**
+> void deleteCategoryDiscountCriteria()
+
+Deletes a specified Category Discount Criteria
+
+### Example
+
+
+```typescript
+import { createConfiguration, CategoryDiscountsApi } from '';
+import type { CategoryDiscountsApiDeleteCategoryDiscountCriteriaRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new CategoryDiscountsApi(configuration);
+
+const request: CategoryDiscountsApiDeleteCategoryDiscountCriteriaRequest = {
+  
+  discountId: "discount_id_example",
+  
+  criteriaId: "criteria_id_example",
+};
+
+const data = await apiInstance.deleteCategoryDiscountCriteria(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discountId** | [**string**] |  | defaults to undefined
+ **criteriaId** | [**string**] |  | defaults to undefined
 
 
 ### Return type

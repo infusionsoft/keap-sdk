@@ -179,6 +179,7 @@ export enum OrderItemItemTypeEnum {
     DiscountShipping = 'DISCOUNT_SHIPPING',
     Tip = 'TIP',
     Other = 'OTHER',
+    Fee = 'FEE',
     Unknown = 'UNKNOWN'
 }
 

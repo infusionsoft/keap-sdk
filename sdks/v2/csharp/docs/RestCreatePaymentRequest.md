@@ -10,6 +10,12 @@ Name | Type | Description | Notes
 **PaymentTime** | **DateTime** | The date and time of payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
 **PaymentAmount** | **double** | The amount to pay. Must not exceed the current balance of the order. Must be greater than 0 if charging with a payment_method_id | 
 **ApplyToCommissions** | **bool** | Whether to apply this payment to commissions. | 
+**ExternalSource** | **string** | The external source type of this payment. | [optional] 
+**ExternalSourceValue** | **string** | The external source value of this payment. | [optional] 
+**ExternalStatusValue** | **string** | The external status value of this payment. | [optional] 
+**ExternalCreateTime** | **DateTime** | The external creation timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
+**ExternalUpdateTime** | **DateTime** | The external update timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional] 
+**ExternalCreateUser** | **string** | The user who created this payment externally. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

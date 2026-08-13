@@ -32,6 +32,7 @@ class RestCreateOrderRequest(BaseModel):
     """ # noqa: E501
     notes: Optional[StrictStr] = Field(default=None, description="Internal notes")
     terms: Optional[StrictStr] = Field(default=None, description="Order terms")
+    title: Optional[StrictStr] = Field(default=None, description="A title for the invoice")
     contact_id: StrictStr = Field(description="ID of the contact for this order")
     order_items: Optional[List[CreateOrderItemRequest]] = Field(default=None, description="List of items to include in the order")
     order_title: StrictStr = Field(description="Title for the order")
@@ -42,8 +43,14 @@ class RestCreateOrderRequest(BaseModel):
     sales_affiliate_id: Optional[StrictStr] = Field(default=None, description="Sales affiliate ID")
     shipping_address: Optional[AddressInformation] = Field(default=None, description="Shipping address for the order")
     custom_fields: Optional[List[CustomFieldValue]] = Field(default=None, description="List of custom field values to apply to this order")
+    sent_time: Optional[datetime] = Field(default=None, description="The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+    due_time: Optional[datetime] = Field(default=None, description="The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+    invoice_number: Optional[StrictStr] = Field(default=None, description="Invoice number")
+    external_create_user: Optional[StrictStr] = Field(default=None, description="The external system user that created this order.")
+    external_create_time: Optional[datetime] = Field(default=None, description="The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+    external_update_time: Optional[datetime] = Field(default=None, description="The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["notes", "terms", "contact_id", "order_items", "order_title", "order_time", "order_type", "promo_codes", "lead_affiliate_id", "sales_affiliate_id", "shipping_address", "custom_fields"]
+    __properties: ClassVar[List[str]] = ["notes", "terms", "title", "contact_id", "order_items", "order_title", "order_time", "order_type", "promo_codes", "lead_affiliate_id", "sales_affiliate_id", "shipping_address", "custom_fields", "sent_time", "due_time", "invoice_number", "external_create_user", "external_create_time", "external_update_time"]
 
     @field_validator('order_type')
     def order_type_validate_enum(cls, value):
@@ -129,6 +136,7 @@ class RestCreateOrderRequest(BaseModel):
         _obj = cls.model_validate({
             "notes": obj.get("notes"),
             "terms": obj.get("terms"),
+            "title": obj.get("title"),
             "contact_id": obj.get("contact_id"),
             "order_items": [CreateOrderItemRequest.from_dict(_item) for _item in obj["order_items"]] if obj.get("order_items") is not None else None,
             "order_title": obj.get("order_title"),
@@ -138,7 +146,13 @@ class RestCreateOrderRequest(BaseModel):
             "lead_affiliate_id": obj.get("lead_affiliate_id"),
             "sales_affiliate_id": obj.get("sales_affiliate_id"),
             "shipping_address": AddressInformation.from_dict(obj["shipping_address"]) if obj.get("shipping_address") is not None else None,
-            "custom_fields": [CustomFieldValue.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None
+            "custom_fields": [CustomFieldValue.from_dict(_item) for _item in obj["custom_fields"]] if obj.get("custom_fields") is not None else None,
+            "sent_time": obj.get("sent_time"),
+            "due_time": obj.get("due_time"),
+            "invoice_number": obj.get("invoice_number"),
+            "external_create_user": obj.get("external_create_user"),
+            "external_create_time": obj.get("external_create_time"),
+            "external_update_time": obj.get("external_update_time")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

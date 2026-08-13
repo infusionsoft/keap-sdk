@@ -131,8 +131,8 @@ Class | Method | HTTP request | Description
 *AutomationApi* | [**getAutomation**](docs/Api/AutomationApi.md#getautomation) | **GET** /rest/v2/automations/{automation_id} | Retrieve an Automation
 *AutomationApi* | [**listAllAutomationIds**](docs/Api/AutomationApi.md#listallautomationids) | **GET** /rest/v2/automations/ids | List Automations Ids
 *AutomationApi* | [**listAutomations**](docs/Api/AutomationApi.md#listautomations) | **GET** /rest/v2/automations | List Automations
+*AutomationApi* | [**renameAutomationV2**](docs/Api/AutomationApi.md#renameautomationv2) | **PATCH** /rest/v2/easy-automations/{automation_id} | Renames an Easy Automation.
 *AutomationApi* | [**unpublishAutomation**](docs/Api/AutomationApi.md#unpublishautomation) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation
-*AutomationApi* | [**updateState**](docs/Api/AutomationApi.md#updatestate) | **PUT** /rest/v2/easy-automations/{automation_id}/state | Update the state of an Easy Automation
 *AutomationCategoryApi* | [**createCategory**](docs/Api/AutomationCategoryApi.md#createcategory) | **POST** /rest/v2/automationCategory | Create automation category
 *AutomationCategoryApi* | [**deleteCategories**](docs/Api/AutomationCategoryApi.md#deletecategories) | **DELETE** /rest/v2/automationCategory | Delete automation category
 *AutomationCategoryApi* | [**listCategories**](docs/Api/AutomationCategoryApi.md#listcategories) | **GET** /rest/v2/automationCategory | List automation categories
@@ -146,7 +146,9 @@ Class | Method | HTTP request | Description
 *CampaignApi* | [**listCampaigns**](docs/Api/CampaignApi.md#listcampaigns) | **GET** /rest/v2/campaigns | List Campaigns
 *CampaignApi* | [**removeContactsFromCampaignSequence**](docs/Api/CampaignApi.md#removecontactsfromcampaignsequence) | **POST** /rest/v2/campaigns/{campaign_id}/sequences/{sequence_id}:removeContacts | Remove Contacts from Campaign Sequence
 *CategoryDiscountsApi* | [**createCategoryDiscount**](docs/Api/CategoryDiscountsApi.md#createcategorydiscount) | **POST** /rest/v2/discounts/productCategories | Create a Category Discount
+*CategoryDiscountsApi* | [**createCategoryDiscountCriteria**](docs/Api/CategoryDiscountsApi.md#createcategorydiscountcriteria) | **POST** /rest/v2/discounts/productCategories/{discount_id}/criteria | Create a Category Discount Criteria
 *CategoryDiscountsApi* | [**deleteCategoryDiscount**](docs/Api/CategoryDiscountsApi.md#deletecategorydiscount) | **DELETE** /rest/v2/discounts/productCategories/{discount_id} | Delete a Category Discount
+*CategoryDiscountsApi* | [**deleteCategoryDiscountCriteria**](docs/Api/CategoryDiscountsApi.md#deletecategorydiscountcriteria) | **DELETE** /rest/v2/discounts/productCategories/{discount_id}/criteria/{criteria_id} | Delete a Category Discount Criteria
 *CategoryDiscountsApi* | [**getCategoryDiscount**](docs/Api/CategoryDiscountsApi.md#getcategorydiscount) | **GET** /rest/v2/discounts/productCategories/{discount_id} | Retrieve a Category Discount
 *CategoryDiscountsApi* | [**listCategoryDiscounts**](docs/Api/CategoryDiscountsApi.md#listcategorydiscounts) | **GET** /rest/v2/discounts/productCategories | List Category Discounts
 *CategoryDiscountsApi* | [**updateCategoryDiscount**](docs/Api/CategoryDiscountsApi.md#updatecategorydiscount) | **PATCH** /rest/v2/discounts/productCategories/{discount_id} | Update a Category Discount
@@ -438,7 +440,6 @@ Class | Method | HTTP request | Description
 *TagsApi* | [**getCategory**](docs/Api/TagsApi.md#getcategory) | **GET** /rest/v2/tags/categories/{tag_category_id} | Retrieve a Tag Category
 *TagsApi* | [**getTag**](docs/Api/TagsApi.md#gettag) | **GET** /rest/v2/tags/{tag_id} | Retrieve a Tag
 *TagsApi* | [**listCompaniesForTagId**](docs/Api/TagsApi.md#listcompaniesfortagid) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies
-*TagsApi* | [**listContactsAcrossTags**](docs/Api/TagsApi.md#listcontactsacrosstags) | **GET** /rest/v2/tags/-/contacts | List Contacts Across Tags
 *TagsApi* | [**listContactsWithTagId**](docs/Api/TagsApi.md#listcontactswithtagid) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts
 *TagsApi* | [**listTagCategories**](docs/Api/TagsApi.md#listtagcategories) | **GET** /rest/v2/tags/categories | List Tag Categories
 *TagsApi* | [**listTags**](docs/Api/TagsApi.md#listtags) | **GET** /rest/v2/tags | List Tags
@@ -528,7 +529,6 @@ Class | Method | HTTP request | Description
 - [Automation](docs/Model/Automation.md)
 - [AutomationCategory](docs/Model/AutomationCategory.md)
 - [AutomationLockStatus](docs/Model/AutomationLockStatus.md)
-- [AutomationStateRequest](docs/Model/AutomationStateRequest.md)
 - [BasicCompany](docs/Model/BasicCompany.md)
 - [BasicContact](docs/Model/BasicContact.md)
 - [BasicUser](docs/Model/BasicUser.md)
@@ -555,6 +555,7 @@ Class | Method | HTTP request | Description
 - [CountryCodes](docs/Model/CountryCodes.md)
 - [CreateAffiliateRequest](docs/Model/CreateAffiliateRequest.md)
 - [CreateAutomationCategoryRequest](docs/Model/CreateAutomationCategoryRequest.md)
+- [CreateCategoryDiscountCriteria](docs/Model/CreateCategoryDiscountCriteria.md)
 - [CreateCategoryDiscountRequest](docs/Model/CreateCategoryDiscountRequest.md)
 - [CreateCommissionProgramRequest](docs/Model/CreateCommissionProgramRequest.md)
 - [CreateCompanyRequest](docs/Model/CreateCompanyRequest.md)
@@ -724,7 +725,6 @@ Class | Method | HTTP request | Description
 - [ListSubscriptionPlansResponse](docs/Model/ListSubscriptionPlansResponse.md)
 - [ListSubscriptionsResponse](docs/Model/ListSubscriptionsResponse.md)
 - [ListTagCategoriesResponse](docs/Model/ListTagCategoriesResponse.md)
-- [ListTagContactAssociationsResponse](docs/Model/ListTagContactAssociationsResponse.md)
 - [ListTaggedCompaniesResponse](docs/Model/ListTaggedCompaniesResponse.md)
 - [ListTaggedContactsResponse](docs/Model/ListTaggedContactsResponse.md)
 - [ListTagsResponse](docs/Model/ListTagsResponse.md)
@@ -773,6 +773,7 @@ Class | Method | HTTP request | Description
 - [Referral](docs/Model/Referral.md)
 - [RemoveContactsFromSequenceRequest](docs/Model/RemoveContactsFromSequenceRequest.md)
 - [RemoveContactsFromSequenceResponse](docs/Model/RemoveContactsFromSequenceResponse.md)
+- [RenameEasyAutomationCommand](docs/Model/RenameEasyAutomationCommand.md)
 - [Report](docs/Model/Report.md)
 - [ReportEntryRecord](docs/Model/ReportEntryRecord.md)
 - [ReportEntryValue](docs/Model/ReportEntryValue.md)
@@ -805,7 +806,6 @@ Class | Method | HTTP request | Description
 - [SubscriptionPlanList](docs/Model/SubscriptionPlanList.md)
 - [Tag](docs/Model/Tag.md)
 - [TagCategory](docs/Model/TagCategory.md)
-- [TagContactAssociation](docs/Model/TagContactAssociation.md)
 - [TaggedCompany](docs/Model/TaggedCompany.md)
 - [TaggedContact](docs/Model/TaggedContact.md)
 - [Task](docs/Model/Task.md)
@@ -889,6 +889,6 @@ api.keap@thryv.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `v2`
-    - Package version: `2.0.19`
+    - Package version: `2.0.20`
     - Generator version: `7.13.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

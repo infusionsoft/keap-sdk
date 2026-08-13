@@ -3992,7 +3992,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **orderId** | **String**|  | |
 | **updateOrderRequest** | [**UpdateOrderRequest**](UpdateOrderRequest.md)|  | |
-| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: contact_id, order_items, order_title, order_time, order_type, promo_codes, lead_affiliate_id, sales_affiliate_id, shipping_address, notes, terms, payment_plan, custom_fields] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: contact_id, order_items, order_title, order_time, order_type, promo_codes, lead_affiliate_id, sales_affiliate_id, shipping_address, notes, terms, payment_plan, custom_fields, sent_time, title, due_time, invoice_number, external_create_user, external_create_time, external_update_time] |
 
 ### Return type
 
@@ -4077,7 +4077,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **orderId** | **String**|  | |
 | **updateOrderRequest** | [**UpdateOrderRequest**](UpdateOrderRequest.md)|  | |
-| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: contact_id, order_items, order_title, order_time, order_type, promo_codes, lead_affiliate_id, sales_affiliate_id, shipping_address, notes, terms, payment_plan, custom_fields] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: contact_id, order_items, order_title, order_time, order_type, promo_codes, lead_affiliate_id, sales_affiliate_id, shipping_address, notes, terms, payment_plan, custom_fields, sent_time, title, due_time, invoice_number, external_create_user, external_create_time, external_update_time] |
 
 ### Return type
 

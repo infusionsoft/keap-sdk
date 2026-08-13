@@ -10,6 +10,7 @@ order
 |------------ | ------------- | ------------- | -------------|
 |**notes** | **String** | Internal notes |  [optional] |
 |**terms** | **String** | Order terms |  [optional] |
+|**title** | **String** | A title for the invoice |  [optional] |
 |**contactId** | **String** | ID of the contact for this order |  [optional] |
 |**orderTitle** | **String** | Title for the order |  [optional] |
 |**orderTime** | **ZonedDateTime** | The date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) |  [optional] |
@@ -20,6 +21,12 @@ order
 |**shippingAddress** | [**AddressInformation**](AddressInformation.md) | Shipping address for the order |  [optional] |
 |**paymentPlan** | [**UpdatedPaymentPlan**](UpdatedPaymentPlan.md) | Payment plan details |  [optional] |
 |**customFields** | [**List&lt;CustomFieldValue&gt;**](CustomFieldValue.md) | List of custom field values to apply to this order |  [optional] |
+|**sentTime** | **ZonedDateTime** | The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) |  [optional] |
+|**dueTime** | **ZonedDateTime** | The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) |  [optional] |
+|**invoiceNumber** | **String** | Invoice number |  [optional] |
+|**externalCreateUser** | **String** | The external system user that created this order. |  [optional] |
+|**externalCreateTime** | **ZonedDateTime** | The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) |  [optional] |
+|**externalUpdateTime** | **ZonedDateTime** | The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) |  [optional] |
 
 
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * TagContactAssociation
+ * CreateCategoryDiscountCriteria
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Keap\Core\V2\ObjectSerializer;
 
 /**
- * TagContactAssociation Class Doc Comment
+ * CreateCategoryDiscountCriteria Class Doc Comment
  *
  * @category Class
  * @package  Keap\Core\V2
@@ -40,7 +40,7 @@ use \Keap\Core\V2\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class TagContactAssociation implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateCategoryDiscountCriteria implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class TagContactAssociation implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TagContactAssociation';
+    protected static $openAPIModelName = 'CreateCategoryDiscountCriteria';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,10 @@ class TagContactAssociation implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'contact_id' => 'string',
-        'tag_id' => 'string',
-        'applied_at' => 'string'
+        'type' => 'string',
+        'code' => 'string',
+        'range_start_time' => '\DateTime',
+        'range_end_time' => '\DateTime'
     ];
 
     /**
@@ -70,9 +71,10 @@ class TagContactAssociation implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'contact_id' => null,
-        'tag_id' => null,
-        'applied_at' => null
+        'type' => null,
+        'code' => null,
+        'range_start_time' => 'date-time',
+        'range_end_time' => 'date-time'
     ];
 
     /**
@@ -81,9 +83,10 @@ class TagContactAssociation implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'contact_id' => false,
-        'tag_id' => false,
-        'applied_at' => false
+        'type' => false,
+        'code' => false,
+        'range_start_time' => false,
+        'range_end_time' => false
     ];
 
     /**
@@ -172,9 +175,10 @@ class TagContactAssociation implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'contact_id' => 'contact_id',
-        'tag_id' => 'tag_id',
-        'applied_at' => 'applied_at'
+        'type' => 'type',
+        'code' => 'code',
+        'range_start_time' => 'range_start_time',
+        'range_end_time' => 'range_end_time'
     ];
 
     /**
@@ -183,9 +187,10 @@ class TagContactAssociation implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'contact_id' => 'setContactId',
-        'tag_id' => 'setTagId',
-        'applied_at' => 'setAppliedAt'
+        'type' => 'setType',
+        'code' => 'setCode',
+        'range_start_time' => 'setRangeStartTime',
+        'range_end_time' => 'setRangeEndTime'
     ];
 
     /**
@@ -194,9 +199,10 @@ class TagContactAssociation implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'contact_id' => 'getContactId',
-        'tag_id' => 'getTagId',
-        'applied_at' => 'getAppliedAt'
+        'type' => 'getType',
+        'code' => 'getCode',
+        'range_start_time' => 'getRangeStartTime',
+        'range_end_time' => 'getRangeEndTime'
     ];
 
     /**
@@ -240,6 +246,21 @@ class TagContactAssociation implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
+    public const TYPE_DATE_RANGE = 'DATE_RANGE';
+    public const TYPE_PROMO_CODE = 'PROMO_CODE';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_DATE_RANGE,
+            self::TYPE_PROMO_CODE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -256,9 +277,10 @@ class TagContactAssociation implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('contact_id', $data ?? [], null);
-        $this->setIfExists('tag_id', $data ?? [], null);
-        $this->setIfExists('applied_at', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('range_start_time', $data ?? [], null);
+        $this->setIfExists('range_end_time', $data ?? [], null);
     }
 
     /**
@@ -288,6 +310,15 @@ class TagContactAssociation implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -304,82 +335,119 @@ class TagContactAssociation implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets contact_id
+     * Gets type
      *
      * @return string|null
      */
-    public function getContactId()
+    public function getType()
     {
-        return $this->container['contact_id'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets contact_id
+     * Sets type
      *
-     * @param string|null $contact_id The contact ID
+     * @param string|null $type Type of criteria: DATE_RANGE or PROMO_CODE
      *
      * @return self
      */
-    public function setContactId($contact_id)
+    public function setType($type)
     {
-        if (is_null($contact_id)) {
-            throw new \InvalidArgumentException('non-nullable contact_id cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['contact_id'] = $contact_id;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets tag_id
+     * Gets code
      *
      * @return string|null
      */
-    public function getTagId()
+    public function getCode()
     {
-        return $this->container['tag_id'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets tag_id
+     * Sets code
      *
-     * @param string|null $tag_id The tag ID
+     * @param string|null $code Promotional code for PROMO_CODE criteria
      *
      * @return self
      */
-    public function setTagId($tag_id)
+    public function setCode($code)
     {
-        if (is_null($tag_id)) {
-            throw new \InvalidArgumentException('non-nullable tag_id cannot be null');
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        $this->container['tag_id'] = $tag_id;
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets applied_at
+     * Gets range_start_time
      *
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getAppliedAt()
+    public function getRangeStartTime()
     {
-        return $this->container['applied_at'];
+        return $this->container['range_start_time'];
     }
 
     /**
-     * Sets applied_at
+     * Sets range_start_time
      *
-     * @param string|null $applied_at The time the tag was applied to the contact, in ISO 8601 format.
+     * @param \DateTime|null $range_start_time Start date/time for DATE_RANGE criteria (ISO-8601 format)
      *
      * @return self
      */
-    public function setAppliedAt($applied_at)
+    public function setRangeStartTime($range_start_time)
     {
-        if (is_null($applied_at)) {
-            throw new \InvalidArgumentException('non-nullable applied_at cannot be null');
+        if (is_null($range_start_time)) {
+            throw new \InvalidArgumentException('non-nullable range_start_time cannot be null');
         }
-        $this->container['applied_at'] = $applied_at;
+        $this->container['range_start_time'] = $range_start_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets range_end_time
+     *
+     * @return \DateTime|null
+     */
+    public function getRangeEndTime()
+    {
+        return $this->container['range_end_time'];
+    }
+
+    /**
+     * Sets range_end_time
+     *
+     * @param \DateTime|null $range_end_time End date/time for DATE_RANGE criteria (ISO-8601 format)
+     *
+     * @return self
+     */
+    public function setRangeEndTime($range_end_time)
+    {
+        if (is_null($range_end_time)) {
+            throw new \InvalidArgumentException('non-nullable range_end_time cannot be null');
+        }
+        $this->container['range_end_time'] = $range_end_time;
 
         return $this;
     }

@@ -50,7 +50,6 @@ export * from '../models/AssignedProducts';
 export * from '../models/Automation';
 export * from '../models/AutomationCategory';
 export * from '../models/AutomationLockStatus';
-export * from '../models/AutomationStateRequest';
 export * from '../models/BasicCompany';
 export * from '../models/BasicContact';
 export * from '../models/BasicUser';
@@ -77,6 +76,7 @@ export * from '../models/Country';
 export * from '../models/CountryCodes';
 export * from '../models/CreateAffiliateRequest';
 export * from '../models/CreateAutomationCategoryRequest';
+export * from '../models/CreateCategoryDiscountCriteria';
 export * from '../models/CreateCategoryDiscountRequest';
 export * from '../models/CreateCommissionProgramRequest';
 export * from '../models/CreateCompanyRequest';
@@ -245,7 +245,6 @@ export * from '../models/ListShippingDiscountsResponse';
 export * from '../models/ListSubscriptionPlansResponse';
 export * from '../models/ListSubscriptionsResponse';
 export * from '../models/ListTagCategoriesResponse';
-export * from '../models/ListTagContactAssociationsResponse';
 export * from '../models/ListTaggedCompaniesResponse';
 export * from '../models/ListTaggedContactsResponse';
 export * from '../models/ListTagsResponse';
@@ -295,6 +294,7 @@ export * from '../models/Province';
 export * from '../models/Referral';
 export * from '../models/RemoveContactsFromSequenceRequest';
 export * from '../models/RemoveContactsFromSequenceResponse';
+export * from '../models/RenameEasyAutomationCommand';
 export * from '../models/Report';
 export * from '../models/ReportEntryRecord';
 export * from '../models/ReportEntryValue';
@@ -327,7 +327,6 @@ export * from '../models/SubscriptionPlanDetail';
 export * from '../models/SubscriptionPlanList';
 export * from '../models/Tag';
 export * from '../models/TagCategory';
-export * from '../models/TagContactAssociation';
 export * from '../models/TaggedCompany';
 export * from '../models/TaggedContact';
 export * from '../models/Task';
@@ -435,7 +434,6 @@ import { AssignedProducts } from '../models/AssignedProducts';
 import { Automation   , AutomationStatusEnum          } from '../models/Automation';
 import { AutomationCategory } from '../models/AutomationCategory';
 import { AutomationLockStatus } from '../models/AutomationLockStatus';
-import { AutomationStateRequest, AutomationStateRequestStateEnum   } from '../models/AutomationStateRequest';
 import { BasicCompany } from '../models/BasicCompany';
 import { BasicContact } from '../models/BasicContact';
 import { BasicUser } from '../models/BasicUser';
@@ -462,6 +460,7 @@ import { Country } from '../models/Country';
 import { CountryCodes } from '../models/CountryCodes';
 import { CreateAffiliateRequest , CreateAffiliateRequestStatusEnum           } from '../models/CreateAffiliateRequest';
 import { CreateAutomationCategoryRequest } from '../models/CreateAutomationCategoryRequest';
+import { CreateCategoryDiscountCriteria, CreateCategoryDiscountCriteriaTypeEnum      } from '../models/CreateCategoryDiscountCriteria';
 import { CreateCategoryDiscountRequest } from '../models/CreateCategoryDiscountRequest';
 import { CreateCommissionProgramRequest } from '../models/CreateCommissionProgramRequest';
 import { CreateCompanyRequest } from '../models/CreateCompanyRequest';
@@ -630,7 +629,6 @@ import { ListShippingDiscountsResponse } from '../models/ListShippingDiscountsRe
 import { ListSubscriptionPlansResponse } from '../models/ListSubscriptionPlansResponse';
 import { ListSubscriptionsResponse } from '../models/ListSubscriptionsResponse';
 import { ListTagCategoriesResponse } from '../models/ListTagCategoriesResponse';
-import { ListTagContactAssociationsResponse } from '../models/ListTagContactAssociationsResponse';
 import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesResponse';
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
@@ -651,7 +649,7 @@ import { OpportunityStageMove } from '../models/OpportunityStageMove';
 import { OrderItem         , OrderItemItemTypeEnum      } from '../models/OrderItem';
 import { OrderItemProduct } from '../models/OrderItemProduct';
 import { OrderTotalDiscount     , OrderTotalDiscountDiscountTypeEnum   , OrderTotalDiscountDiscountStrategyEnum   } from '../models/OrderTotalDiscount';
-import { OrderV2  , OrderV2StatusEnum      , OrderV2OrderTypeEnum  , OrderV2SourceTypeEnum                        } from '../models/OrderV2';
+import { OrderV2  , OrderV2StatusEnum      , OrderV2OrderTypeEnum  , OrderV2SourceTypeEnum                             } from '../models/OrderV2';
 import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
 import { PatchAutomationCategoryRequest } from '../models/PatchAutomationCategoryRequest';
@@ -680,6 +678,7 @@ import { Province } from '../models/Province';
 import { Referral        , ReferralReferralTypeEnum   } from '../models/Referral';
 import { RemoveContactsFromSequenceRequest } from '../models/RemoveContactsFromSequenceRequest';
 import { RemoveContactsFromSequenceResponse, RemoveContactsFromSequenceResponseRemoveFromSequenceResultsEnum   } from '../models/RemoveContactsFromSequenceResponse';
+import { RenameEasyAutomationCommand } from '../models/RenameEasyAutomationCommand';
 import { Report } from '../models/Report';
 import { ReportEntryRecord } from '../models/ReportEntryRecord';
 import { ReportEntryValue } from '../models/ReportEntryValue';
@@ -689,7 +688,7 @@ import { ReportModel } from '../models/ReportModel';
 import { ResourceCommissionProgram } from '../models/ResourceCommissionProgram';
 import { RestAffiliate   , RestAffiliateStatusEnum           } from '../models/RestAffiliate';
 import { RestAffiliatePayment    , RestAffiliatePaymentPayTypeEnum    } from '../models/RestAffiliatePayment';
-import { RestCreateOrderRequest      , RestCreateOrderRequestOrderTypeEnum        } from '../models/RestCreateOrderRequest';
+import { RestCreateOrderRequest       , RestCreateOrderRequestOrderTypeEnum              } from '../models/RestCreateOrderRequest';
 import { RestCreatePaymentRequest } from '../models/RestCreatePaymentRequest';
 import { RestEmailAddressStatus  , RestEmailAddressStatusStatusEnum       } from '../models/RestEmailAddressStatus';
 import { RestOpportunityStage } from '../models/RestOpportunityStage';
@@ -712,7 +711,6 @@ import { SubscriptionPlanDetail   , SubscriptionPlanDetailBillingCycleEnum      
 import { SubscriptionPlanList   , SubscriptionPlanListBillingCycleEnum       } from '../models/SubscriptionPlanList';
 import { Tag } from '../models/Tag';
 import { TagCategory } from '../models/TagCategory';
-import { TagContactAssociation } from '../models/TagContactAssociation';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { TaggedContact } from '../models/TaggedContact';
 import { Task    , TaskPriorityEnum       , TaskRemindTimeMinsEnum          } from '../models/Task';
@@ -739,7 +737,7 @@ import { UpdateOpportunityRequestV2 } from '../models/UpdateOpportunityRequestV2
 import { UpdateOpportunityStageChecklistItem } from '../models/UpdateOpportunityStageChecklistItem';
 import { UpdateOpportunityStageRequest } from '../models/UpdateOpportunityStageRequest';
 import { UpdateOrderItemRequest } from '../models/UpdateOrderItemRequest';
-import { UpdateOrderRequest     , UpdateOrderRequestOrderTypeEnum         } from '../models/UpdateOrderRequest';
+import { UpdateOrderRequest      , UpdateOrderRequestOrderTypeEnum               } from '../models/UpdateOrderRequest';
 import { UpdateOrderTotalDiscountCriteria          , UpdateOrderTotalDiscountCriteriaOperatorEnum   } from '../models/UpdateOrderTotalDiscountCriteria';
 import { UpdateOrderTotalDiscountRequest    , UpdateOrderTotalDiscountRequestDiscountTypeEnum   , UpdateOrderTotalDiscountRequestDiscountStrategyEnum   } from '../models/UpdateOrderTotalDiscountRequest';
 import { UpdateProductCategoryRequest } from '../models/UpdateProductCategoryRequest';
@@ -789,12 +787,12 @@ let enumsMap: Set<string> = new Set<string>([
     "AffiliateProgramResourceTypeEnum",
     "ApplyCommissionRequestPayoutTypeEnum",
     "AutomationStatusEnum",
-    "AutomationStateRequestStateEnum",
     "CardInfoCardTypeEnum",
     "CategoryDiscountCriteriaRequestTypeEnum",
     "CategoryDiscountCriteriaResponseTypeEnum",
     "ContactSourceTypeEnum",
     "CreateAffiliateRequestStatusEnum",
+    "CreateCategoryDiscountCriteriaTypeEnum",
     "CreateCustomFieldRequestFieldTypeEnum",
     "CreateDefaultCommissionProgramRequestPayoutTypeEnum",
     "CreateEmailSentRequestOriginalProviderEnum",
@@ -978,7 +976,6 @@ let typeMap: {[index: string]: any} = {
     "Automation": Automation,
     "AutomationCategory": AutomationCategory,
     "AutomationLockStatus": AutomationLockStatus,
-    "AutomationStateRequest": AutomationStateRequest,
     "BasicCompany": BasicCompany,
     "BasicContact": BasicContact,
     "BasicUser": BasicUser,
@@ -1005,6 +1002,7 @@ let typeMap: {[index: string]: any} = {
     "CountryCodes": CountryCodes,
     "CreateAffiliateRequest": CreateAffiliateRequest,
     "CreateAutomationCategoryRequest": CreateAutomationCategoryRequest,
+    "CreateCategoryDiscountCriteria": CreateCategoryDiscountCriteria,
     "CreateCategoryDiscountRequest": CreateCategoryDiscountRequest,
     "CreateCommissionProgramRequest": CreateCommissionProgramRequest,
     "CreateCompanyRequest": CreateCompanyRequest,
@@ -1173,7 +1171,6 @@ let typeMap: {[index: string]: any} = {
     "ListSubscriptionPlansResponse": ListSubscriptionPlansResponse,
     "ListSubscriptionsResponse": ListSubscriptionsResponse,
     "ListTagCategoriesResponse": ListTagCategoriesResponse,
-    "ListTagContactAssociationsResponse": ListTagContactAssociationsResponse,
     "ListTaggedCompaniesResponse": ListTaggedCompaniesResponse,
     "ListTaggedContactsResponse": ListTaggedContactsResponse,
     "ListTagsResponse": ListTagsResponse,
@@ -1223,6 +1220,7 @@ let typeMap: {[index: string]: any} = {
     "Referral": Referral,
     "RemoveContactsFromSequenceRequest": RemoveContactsFromSequenceRequest,
     "RemoveContactsFromSequenceResponse": RemoveContactsFromSequenceResponse,
+    "RenameEasyAutomationCommand": RenameEasyAutomationCommand,
     "Report": Report,
     "ReportEntryRecord": ReportEntryRecord,
     "ReportEntryValue": ReportEntryValue,
@@ -1255,7 +1253,6 @@ let typeMap: {[index: string]: any} = {
     "SubscriptionPlanList": SubscriptionPlanList,
     "Tag": Tag,
     "TagCategory": TagCategory,
-    "TagContactAssociation": TagContactAssociation,
     "TaggedCompany": TaggedCompany,
     "TaggedContact": TaggedContact,
     "Task": Task,

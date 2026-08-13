@@ -36,6 +36,7 @@
 | DISCOUNT_PRODUCT_CATEGORY | &quot;DISCOUNT_PRODUCT_CATEGORY&quot; |
 | DISCOUNT_SHIPPING | &quot;DISCOUNT_SHIPPING&quot; |
 | OTHER | &quot;OTHER&quot; |
+| FEE | &quot;FEE&quot; |
 | UNKNOWN_COULD_NOT_DESERIALIZE | &quot;unknown_default_open_api&quot; |
 
 

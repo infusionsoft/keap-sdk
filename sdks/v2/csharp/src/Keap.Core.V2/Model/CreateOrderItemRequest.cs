@@ -109,7 +109,13 @@ namespace Keap.Core.V2.Model
             /// Enum OTHER for value: OTHER
             /// </summary>
             [EnumMember(Value = "OTHER")]
-            OTHER = 12
+            OTHER = 12,
+
+            /// <summary>
+            /// Enum FEE for value: FEE
+            /// </summary>
+            [EnumMember(Value = "FEE")]
+            FEE = 13
         }
 
         /// <summary>

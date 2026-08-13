@@ -54,7 +54,6 @@ import { AssignedProducts } from '../models/AssignedProducts';
 import { Automation } from '../models/Automation';
 import { AutomationCategory } from '../models/AutomationCategory';
 import { AutomationLockStatus } from '../models/AutomationLockStatus';
-import { AutomationStateRequest } from '../models/AutomationStateRequest';
 import { BasicCompany } from '../models/BasicCompany';
 import { BasicContact } from '../models/BasicContact';
 import { BasicUser } from '../models/BasicUser';
@@ -81,6 +80,7 @@ import { Country } from '../models/Country';
 import { CountryCodes } from '../models/CountryCodes';
 import { CreateAffiliateRequest } from '../models/CreateAffiliateRequest';
 import { CreateAutomationCategoryRequest } from '../models/CreateAutomationCategoryRequest';
+import { CreateCategoryDiscountCriteria } from '../models/CreateCategoryDiscountCriteria';
 import { CreateCategoryDiscountRequest } from '../models/CreateCategoryDiscountRequest';
 import { CreateCommissionProgramRequest } from '../models/CreateCommissionProgramRequest';
 import { CreateCompanyRequest } from '../models/CreateCompanyRequest';
@@ -249,7 +249,6 @@ import { ListShippingDiscountsResponse } from '../models/ListShippingDiscountsRe
 import { ListSubscriptionPlansResponse } from '../models/ListSubscriptionPlansResponse';
 import { ListSubscriptionsResponse } from '../models/ListSubscriptionsResponse';
 import { ListTagCategoriesResponse } from '../models/ListTagCategoriesResponse';
-import { ListTagContactAssociationsResponse } from '../models/ListTagContactAssociationsResponse';
 import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesResponse';
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
@@ -299,6 +298,7 @@ import { Province } from '../models/Province';
 import { Referral } from '../models/Referral';
 import { RemoveContactsFromSequenceRequest } from '../models/RemoveContactsFromSequenceRequest';
 import { RemoveContactsFromSequenceResponse } from '../models/RemoveContactsFromSequenceResponse';
+import { RenameEasyAutomationCommand } from '../models/RenameEasyAutomationCommand';
 import { Report } from '../models/Report';
 import { ReportEntryRecord } from '../models/ReportEntryRecord';
 import { ReportEntryValue } from '../models/ReportEntryValue';
@@ -331,7 +331,6 @@ import { SubscriptionPlanDetail } from '../models/SubscriptionPlanDetail';
 import { SubscriptionPlanList } from '../models/SubscriptionPlanList';
 import { Tag } from '../models/Tag';
 import { TagCategory } from '../models/TagCategory';
-import { TagContactAssociation } from '../models/TagContactAssociation';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { TaggedContact } from '../models/TaggedContact';
 import { Task } from '../models/Task';
@@ -1764,6 +1763,30 @@ export class PromiseAutomationApi {
     }
 
     /**
+     * Updates the name of a single easy automation.
+     * Renames an Easy Automation.
+     * @param automationId automation_id
+     * @param renameEasyAutomationCommand
+     */
+    public renameAutomationV2WithHttpInfo(automationId: string, renameEasyAutomationCommand: RenameEasyAutomationCommand, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.renameAutomationV2WithHttpInfo(automationId, renameEasyAutomationCommand, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates the name of a single easy automation.
+     * Renames an Easy Automation.
+     * @param automationId automation_id
+     * @param renameEasyAutomationCommand
+     */
+    public renameAutomationV2(automationId: string, renameEasyAutomationCommand: RenameEasyAutomationCommand, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.renameAutomationV2(automationId, renameEasyAutomationCommand, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Unpublishes a single automation
      * Unpublish an Automation
      * @param automationId
@@ -1784,30 +1807,6 @@ export class PromiseAutomationApi {
     public unpublishAutomation(automationId: string, unpublishAutomationRequest: UnpublishAutomationRequest, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.unpublishAutomation(automationId, unpublishAutomationRequest, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Updates the lifecycle state of an existing Easy Automation. Supported states: `disabled`, `enabled`.
-     * Update the state of an Easy Automation
-     * @param automationId
-     * @param automationStateRequest
-     */
-    public updateStateWithHttpInfo(automationId: string, automationStateRequest: AutomationStateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.updateStateWithHttpInfo(automationId, automationStateRequest, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Updates the lifecycle state of an existing Easy Automation. Supported states: `disabled`, `enabled`.
-     * Update the state of an Easy Automation
-     * @param automationId
-     * @param automationStateRequest
-     */
-    public updateState(automationId: string, automationStateRequest: AutomationStateRequest, _options?: PromiseConfigurationOptions): Promise<void> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.updateState(automationId, automationStateRequest, observableOptions);
         return result.toPromise();
     }
 
@@ -2188,6 +2187,30 @@ export class PromiseCategoryDiscountsApi {
     }
 
     /**
+     * Creates a Category Discount Criteria
+     * Create a Category Discount Criteria
+     * @param discountId
+     * @param createCategoryDiscountCriteria
+     */
+    public createCategoryDiscountCriteriaWithHttpInfo(discountId: string, createCategoryDiscountCriteria: CreateCategoryDiscountCriteria, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DiscountCriteria>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createCategoryDiscountCriteriaWithHttpInfo(discountId, createCategoryDiscountCriteria, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a Category Discount Criteria
+     * Create a Category Discount Criteria
+     * @param discountId
+     * @param createCategoryDiscountCriteria
+     */
+    public createCategoryDiscountCriteria(discountId: string, createCategoryDiscountCriteria: CreateCategoryDiscountCriteria, _options?: PromiseConfigurationOptions): Promise<DiscountCriteria> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createCategoryDiscountCriteria(discountId, createCategoryDiscountCriteria, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Deletes a specified Category Discount
      * Delete a Category Discount
      * @param discountId
@@ -2206,6 +2229,30 @@ export class PromiseCategoryDiscountsApi {
     public deleteCategoryDiscount(discountId: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteCategoryDiscount(discountId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Category Discount Criteria
+     * Delete a Category Discount Criteria
+     * @param discountId
+     * @param criteriaId
+     */
+    public deleteCategoryDiscountCriteriaWithHttpInfo(discountId: string, criteriaId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteCategoryDiscountCriteriaWithHttpInfo(discountId, criteriaId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a specified Category Discount Criteria
+     * Delete a Category Discount Criteria
+     * @param discountId
+     * @param criteriaId
+     */
+    public deleteCategoryDiscountCriteria(discountId: string, criteriaId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteCategoryDiscountCriteria(discountId, criteriaId, observableOptions);
         return result.toPromise();
     }
 
@@ -4419,7 +4466,7 @@ export class PromiseLeadSourceCategoriesApi {
     /**
      * Retrieves a list of Lead Source Categories
      * List Lead Source Categories
-     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here is an example:  - &#x60;filter&#x3D;name%3D%3Dexample&#x60;
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;description&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for prefix matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dexample&#x60; - &#x60;filter&#x3D;name%3D%3Dexam*&#x60; (starts with \&quot;exam\&quot;) - &#x60;filter&#x3D;description%3D%3Dexample&#x60; - &#x60;filter&#x3D;description%3D%3Dexam*&#x60; (starts with \&quot;exam\&quot;) - &#x60;filter&#x3D;name%3D%3Dexam*%3Bdescription%3D%3Dsales&#x60; (multiple filters combined)
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -4433,7 +4480,7 @@ export class PromiseLeadSourceCategoriesApi {
     /**
      * Retrieves a list of Lead Source Categories
      * List Lead Source Categories
-     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;name&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here is an example:  - &#x60;filter&#x3D;name%3D%3Dexample&#x60;
+     * @param [filter] Filter to apply, allowed fields are:  - (String) &#x60;name&#x60; - Wildcard matching allowed - (String) &#x60;description&#x60; - Wildcard matching allowed  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for prefix matching on text fields. Example of a valid pattern of wildcard usage: - &#x60;field&#x3D;&#x3D;foo*&#x60; finds anything in &#x60;field&#x60; that begins with &#x60;foo&#x60;  For the filters listed above, here are some examples:  - &#x60;filter&#x3D;name%3D%3Dexample&#x60; - &#x60;filter&#x3D;name%3D%3Dexam*&#x60; (starts with \&quot;exam\&quot;) - &#x60;filter&#x3D;description%3D%3Dexample&#x60; - &#x60;filter&#x3D;description%3D%3Dexam*&#x60; (starts with \&quot;exam\&quot;) - &#x60;filter&#x3D;name%3D%3Dexam*%3Bdescription%3D%3Dsales&#x60; (multiple filters combined)
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;name&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
      * @param [pageToken] Page token
@@ -7024,7 +7071,7 @@ export class PromiseOrdersApi {
      * @param updateOrderRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderWithHttpInfo(orderId: string, updateOrderRequest: UpdateOrderRequest, updateMask?: Set<'contact_id' | 'order_items' | 'order_title' | 'order_time' | 'order_type' | 'promo_codes' | 'lead_affiliate_id' | 'sales_affiliate_id' | 'shipping_address' | 'notes' | 'terms' | 'payment_plan' | 'custom_fields'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderV2>> {
+    public updateOrderWithHttpInfo(orderId: string, updateOrderRequest: UpdateOrderRequest, updateMask?: Set<'contact_id' | 'order_items' | 'order_title' | 'order_time' | 'order_type' | 'promo_codes' | 'lead_affiliate_id' | 'sales_affiliate_id' | 'shipping_address' | 'notes' | 'terms' | 'payment_plan' | 'custom_fields' | 'sent_time' | 'title' | 'due_time' | 'invoice_number' | 'external_create_user' | 'external_create_time' | 'external_update_time'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderV2>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOrderWithHttpInfo(orderId, updateOrderRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -7037,7 +7084,7 @@ export class PromiseOrdersApi {
      * @param updateOrderRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrder(orderId: string, updateOrderRequest: UpdateOrderRequest, updateMask?: Set<'contact_id' | 'order_items' | 'order_title' | 'order_time' | 'order_type' | 'promo_codes' | 'lead_affiliate_id' | 'sales_affiliate_id' | 'shipping_address' | 'notes' | 'terms' | 'payment_plan' | 'custom_fields'>, _options?: PromiseConfigurationOptions): Promise<OrderV2> {
+    public updateOrder(orderId: string, updateOrderRequest: UpdateOrderRequest, updateMask?: Set<'contact_id' | 'order_items' | 'order_title' | 'order_time' | 'order_type' | 'promo_codes' | 'lead_affiliate_id' | 'sales_affiliate_id' | 'shipping_address' | 'notes' | 'terms' | 'payment_plan' | 'custom_fields' | 'sent_time' | 'title' | 'due_time' | 'invoice_number' | 'external_create_user' | 'external_create_time' | 'external_update_time'>, _options?: PromiseConfigurationOptions): Promise<OrderV2> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOrder(orderId, updateOrderRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -8597,7 +8644,7 @@ export class PromiseSalesApi {
     /**
      * Retrieves a list of payments
      * List Payments
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - (List[String]) &#x60;ids&#x60; - (String) &#x60;amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;order_id&#x60; - (List[String]) &#x60;order_ids&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;merchant_account_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;order_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;order_ids%3D%3D1,2,3&#x60;
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&gt;\&quot;,\&quot;&gt;&#x3D;\&quot;,\&quot;&lt;\&quot;,\&quot;&lt;&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;order_id&#x60; - (List[String]) &#x60;order_ids&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;merchant_account_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;order_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;order_ids%3D%3D1,2,3&#x60;
      * @param [pageToken] Page token
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;amount&#x60; - &#x60;payment_time&#x60; - &#x60;contact_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -8611,7 +8658,7 @@ export class PromiseSalesApi {
     /**
      * Retrieves a list of payments
      * List Payments
-     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - (List[String]) &#x60;ids&#x60; - (String) &#x60;amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;order_id&#x60; - (List[String]) &#x60;order_ids&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;merchant_account_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;order_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;order_ids%3D%3D1,2,3&#x60;
+     * @param [filter] Filter to apply, allowed fields are: - (String) &#x60;id&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&gt;\&quot;,\&quot;&gt;&#x3D;\&quot;,\&quot;&lt;\&quot;,\&quot;&lt;&#x3D;\&quot; - (List[String]) &#x60;ids&#x60; - (String) &#x60;amount&#x60; - Allowable operators: \&quot;&#x3D;&#x3D;\&quot;,\&quot;&lt;&#x3D;\&quot;, \&quot;&lt;\&quot;, \&quot;&gt;&#x3D;\&quot;, \&quot;&gt;\&quot;, \&quot;!&#x3D;\&quot; - (String) &#x60;order_id&#x60; - (List[String]) &#x60;order_ids&#x60; - (String) &#x60;contact_id&#x60; - (String) &#x60;since_time&#x60; - (String) &#x60;until_time&#x60; - (String) &#x60;merchant_account_id&#x60; - (String) &#x60;merchant_account_type&#x60;  You will need to apply the &#x60;&#x3D;&#x3D;&#x60; operator to check the equality of one of the filters with your searched word, in the encoded form &#x60;%3D%3D&#x60;. For the filters listed above, here are some examples: - &#x60;filter&#x3D;id%3D%3D123&#x60; - &#x60;filter&#x3D;ids%3D%3D1,10,4,24&#x60; - &#x60;filter&#x3D;order_id%3D%3D123%3Bcontact_id%3D%3D567&#x60; - &#x60;filter&#x3D;order_ids%3D%3D1,2,3&#x60;
      * @param [pageToken] Page token
      * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;id&#x60; - &#x60;amount&#x60; - &#x60;payment_time&#x60; - &#x60;contact_id&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;
      * @param [pageSize] Total number of items to return per page
@@ -9809,34 +9856,6 @@ export class PromiseTagsApi {
     public listCompaniesForTagId(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListTaggedCompaniesResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listCompaniesForTagId(tagId, filter, orderBy, pageSize, pageToken, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Retrieves tag-contact associations across the tag collection (AEP-159), using the `-` wildcard in place of a single tag id. At least one filter is required. Returns association tuples (contact_id, tag_id, applied_at) only.
-     * List Contacts Across Tags
-     * @param [filter] Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;tag_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60; 
-     * @param [pageToken] Page token
-     * @param [orderBy] Attribute and direction to order items (best-effort for cross-collection reads). Field: - &#x60;applied_time&#x60;  Direction: - &#x60;asc&#x60; - &#x60;desc&#x60;
-     * @param [pageSize] Total number of items to return per page
-     */
-    public listContactsAcrossTagsWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListTagContactAssociationsResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.listContactsAcrossTagsWithHttpInfo(filter, pageToken, orderBy, pageSize, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Retrieves tag-contact associations across the tag collection (AEP-159), using the `-` wildcard in place of a single tag id. At least one filter is required. Returns association tuples (contact_id, tag_id, applied_at) only.
-     * List Contacts Across Tags
-     * @param [filter] Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;tag_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60; 
-     * @param [pageToken] Page token
-     * @param [orderBy] Attribute and direction to order items (best-effort for cross-collection reads). Field: - &#x60;applied_time&#x60;  Direction: - &#x60;asc&#x60; - &#x60;desc&#x60;
-     * @param [pageSize] Total number of items to return per page
-     */
-    public listContactsAcrossTags(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<ListTagContactAssociationsResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.listContactsAcrossTags(filter, pageToken, orderBy, pageSize, observableOptions);
         return result.toPromise();
     }
 

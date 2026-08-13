@@ -37,6 +37,30 @@ export class RestCreatePaymentRequest {
     * Whether to apply this payment to commissions.
     */
     'applyToCommissions': boolean;
+    /**
+    * The external source type of this payment.
+    */
+    'externalSource'?: string;
+    /**
+    * The external source value of this payment.
+    */
+    'externalSourceValue'?: string;
+    /**
+    * The external status value of this payment.
+    */
+    'externalStatusValue'?: string;
+    /**
+    * The external creation timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+    */
+    'externalCreateTime'?: Date;
+    /**
+    * The external update timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+    */
+    'externalUpdateTime'?: Date;
+    /**
+    * The user who created this payment externally.
+    */
+    'externalCreateUser'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -77,6 +101,42 @@ export class RestCreatePaymentRequest {
             "name": "applyToCommissions",
             "baseName": "apply_to_commissions",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "externalSource",
+            "baseName": "external_source",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "externalSourceValue",
+            "baseName": "external_source_value",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "externalStatusValue",
+            "baseName": "external_status_value",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "externalCreateTime",
+            "baseName": "external_create_time",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
+            "name": "externalUpdateTime",
+            "baseName": "external_update_time",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
+            "name": "externalCreateUser",
+            "baseName": "external_create_user",
+            "type": "string",
             "format": ""
         }    ];
 

@@ -294,6 +294,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
     public const ITEM_TYPE_DISCOUNT_PRODUCT_CATEGORY = 'DISCOUNT_PRODUCT_CATEGORY';
     public const ITEM_TYPE_DISCOUNT_SHIPPING = 'DISCOUNT_SHIPPING';
     public const ITEM_TYPE_OTHER = 'OTHER';
+    public const ITEM_TYPE_FEE = 'FEE';
 
     /**
      * Gets allowable values of the enum
@@ -315,6 +316,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
             self::ITEM_TYPE_DISCOUNT_PRODUCT_CATEGORY,
             self::ITEM_TYPE_DISCOUNT_SHIPPING,
             self::ITEM_TYPE_OTHER,
+            self::ITEM_TYPE_FEE,
         ];
     }
 

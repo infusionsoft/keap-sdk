@@ -33,8 +33,14 @@ class RestCreatePaymentRequest(BaseModel):
     payment_time: Optional[datetime] = Field(default=None, description="The date and time of payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
     payment_amount: Union[StrictFloat, StrictInt] = Field(description="The amount to pay. Must not exceed the current balance of the order. Must be greater than 0 if charging with a payment_method_id")
     apply_to_commissions: StrictBool = Field(description="Whether to apply this payment to commissions.")
+    external_source: Optional[StrictStr] = Field(default=None, description="The external source type of this payment.")
+    external_source_value: Optional[StrictStr] = Field(default=None, description="The external source value of this payment.")
+    external_status_value: Optional[StrictStr] = Field(default=None, description="The external status value of this payment.")
+    external_create_time: Optional[datetime] = Field(default=None, description="The external creation timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+    external_update_time: Optional[datetime] = Field(default=None, description="The external update timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+    external_create_user: Optional[StrictStr] = Field(default=None, description="The user who created this payment externally.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["notes", "payment_method_id", "payment_method_type", "payment_time", "payment_amount", "apply_to_commissions"]
+    __properties: ClassVar[List[str]] = ["notes", "payment_method_id", "payment_method_type", "payment_time", "payment_amount", "apply_to_commissions", "external_source", "external_source_value", "external_status_value", "external_create_time", "external_update_time", "external_create_user"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -99,7 +105,13 @@ class RestCreatePaymentRequest(BaseModel):
             "payment_method_type": obj.get("payment_method_type"),
             "payment_time": obj.get("payment_time"),
             "payment_amount": obj.get("payment_amount"),
-            "apply_to_commissions": obj.get("apply_to_commissions")
+            "apply_to_commissions": obj.get("apply_to_commissions"),
+            "external_source": obj.get("external_source"),
+            "external_source_value": obj.get("external_source_value"),
+            "external_status_value": obj.get("external_status_value"),
+            "external_create_time": obj.get("external_create_time"),
+            "external_update_time": obj.get("external_update_time"),
+            "external_create_user": obj.get("external_create_user")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

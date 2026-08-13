@@ -14,10 +14,10 @@ import { AddToAutomationSequenceRequest } from '../models/AddToAutomationSequenc
 import { AddToAutomationSequenceResponse } from '../models/AddToAutomationSequenceResponse';
 import { AssignAutomationCategoryRequest } from '../models/AssignAutomationCategoryRequest';
 import { Automation } from '../models/Automation';
-import { AutomationStateRequest } from '../models/AutomationStateRequest';
 import { BatchUnpublishAutomationRequest } from '../models/BatchUnpublishAutomationRequest';
 import { ListAutomationIdsResponse } from '../models/ListAutomationIdsResponse';
 import { ListAutomationResponse } from '../models/ListAutomationResponse';
+import { RenameEasyAutomationCommand } from '../models/RenameEasyAutomationCommand';
 import { UnpublishAutomationRequest } from '../models/UnpublishAutomationRequest';
 
 /**
@@ -433,6 +433,62 @@ export class AutomationApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Updates the name of a single easy automation.
+     * Renames an Easy Automation.
+     * @param automationId automation_id
+     * @param renameEasyAutomationCommand 
+     */
+    public async renameAutomationV2(automationId: string, renameEasyAutomationCommand: RenameEasyAutomationCommand, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'automationId' is not null or undefined
+        if (automationId === null || automationId === undefined) {
+            throw new RequiredError("AutomationApi", "renameAutomationV2", "automationId");
+        }
+
+
+        // verify required parameter 'renameEasyAutomationCommand' is not null or undefined
+        if (renameEasyAutomationCommand === null || renameEasyAutomationCommand === undefined) {
+            throw new RequiredError("AutomationApi", "renameAutomationV2", "renameEasyAutomationCommand");
+        }
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/easy-automations/{automation_id}'
+            .replace('{' + 'automation_id' + '}', encodeURIComponent(String(automationId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(renameEasyAutomationCommand, "RenameEasyAutomationCommand", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Unpublishes a single automation
      * Unpublish an Automation
      * @param automationId 
@@ -469,62 +525,6 @@ export class AutomationApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(unpublishAutomationRequest, "UnpublishAutomationRequest", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["oauth2"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Updates the lifecycle state of an existing Easy Automation. Supported states: `disabled`, `enabled`.
-     * Update the state of an Easy Automation
-     * @param automationId 
-     * @param automationStateRequest 
-     */
-    public async updateState(automationId: string, automationStateRequest: AutomationStateRequest, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'automationId' is not null or undefined
-        if (automationId === null || automationId === undefined) {
-            throw new RequiredError("AutomationApi", "updateState", "automationId");
-        }
-
-
-        // verify required parameter 'automationStateRequest' is not null or undefined
-        if (automationStateRequest === null || automationStateRequest === undefined) {
-            throw new RequiredError("AutomationApi", "updateState", "automationStateRequest");
-        }
-
-
-        // Path Params
-        const localVarPath = '/rest/v2/easy-automations/{automation_id}/state'
-            .replace('{' + 'automation_id' + '}', encodeURIComponent(String(automationId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PUT);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(automationStateRequest, "AutomationStateRequest", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -1220,12 +1220,12 @@ export class AutomationApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to unpublishAutomation
+     * @params response Response returned by the server for a request to renameAutomationV2
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async unpublishAutomationWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async renameAutomationV2WithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
+        if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -1301,12 +1301,12 @@ export class AutomationApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to updateState
+     * @params response Response returned by the server for a request to unpublishAutomation
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateStateWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async unpublishAutomationWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("204", response.httpStatusCode)) {
+        if (isCodeInRange("200", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {

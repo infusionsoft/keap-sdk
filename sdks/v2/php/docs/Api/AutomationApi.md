@@ -12,8 +12,8 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**getAutomation()**](AutomationApi.md#getAutomation) | **GET** /rest/v2/automations/{automation_id} | Retrieve an Automation |
 | [**listAllAutomationIds()**](AutomationApi.md#listAllAutomationIds) | **GET** /rest/v2/automations/ids | List Automations Ids |
 | [**listAutomations()**](AutomationApi.md#listAutomations) | **GET** /rest/v2/automations | List Automations |
+| [**renameAutomationV2()**](AutomationApi.md#renameAutomationV2) | **PATCH** /rest/v2/easy-automations/{automation_id} | Renames an Easy Automation. |
 | [**unpublishAutomation()**](AutomationApi.md#unpublishAutomation) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation |
-| [**updateState()**](AutomationApi.md#updateState) | **PUT** /rest/v2/easy-automations/{automation_id}/state | Update the state of an Easy Automation |
 
 
 ## `achieveGoal()`
@@ -501,6 +501,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `renameAutomationV2()`
+
+```php
+renameAutomationV2($automation_id, $rename_easy_automation_command)
+```
+
+Renames an Easy Automation.
+
+Updates the name of a single easy automation.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\AutomationApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$automation_id = HWv0fbDNDbWg6cFKY027; // string | automation_id
+$rename_easy_automation_command = new \Keap\Core\V2\Model\RenameEasyAutomationCommand(); // \Keap\Core\V2\Model\RenameEasyAutomationCommand
+
+try {
+    $apiInstance->renameAutomationV2($automation_id, $rename_easy_automation_command);
+} catch (Exception $e) {
+    echo 'Exception when calling AutomationApi->renameAutomationV2: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **automation_id** | **string**| automation_id | |
+| **rename_easy_automation_command** | [**\Keap\Core\V2\Model\RenameEasyAutomationCommand**](../Model/RenameEasyAutomationCommand.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `unpublishAutomation()`
 
 ```php
@@ -543,66 +603,6 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **automation_id** | **string**|  | |
 | **unpublish_automation_request** | [**\Keap\Core\V2\Model\UnpublishAutomationRequest**](../Model/UnpublishAutomationRequest.md)|  | |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `updateState()`
-
-```php
-updateState($automation_id, $automation_state_request)
-```
-
-Update the state of an Easy Automation
-
-Updates the lifecycle state of an existing Easy Automation. Supported states: `disabled`, `enabled`.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-$apiInstance = new Keap\Core\V2\Api\AutomationApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$automation_id = 'automation_id_example'; // string
-$automation_state_request = new \Keap\Core\V2\Model\AutomationStateRequest(); // \Keap\Core\V2\Model\AutomationStateRequest
-
-try {
-    $apiInstance->updateState($automation_id, $automation_state_request);
-} catch (Exception $e) {
-    echo 'Exception when calling AutomationApi->updateState: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **automation_id** | **string**|  | |
-| **automation_state_request** | [**\Keap\Core\V2\Model\AutomationStateRequest**](../Model/AutomationStateRequest.md)|  | |
 
 ### Return type
 

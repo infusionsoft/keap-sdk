@@ -46,7 +46,13 @@ namespace Keap.Core.V2.Model
         /// <param name="paymentTime">The date and time of payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z).</param>
         /// <param name="paymentAmount">The amount to pay. Must not exceed the current balance of the order. Must be greater than 0 if charging with a payment_method_id (required).</param>
         /// <param name="applyToCommissions">Whether to apply this payment to commissions. (required).</param>
-        public RestCreatePaymentRequest(string notes = default, string paymentMethodId = default, string paymentMethodType = default, DateTime paymentTime = default, double paymentAmount = default, bool applyToCommissions = default)
+        /// <param name="externalSource">The external source type of this payment..</param>
+        /// <param name="externalSourceValue">The external source value of this payment..</param>
+        /// <param name="externalStatusValue">The external status value of this payment..</param>
+        /// <param name="externalCreateTime">The external creation timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z).</param>
+        /// <param name="externalUpdateTime">The external update timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z).</param>
+        /// <param name="externalCreateUser">The user who created this payment externally..</param>
+        public RestCreatePaymentRequest(string notes = default, string paymentMethodId = default, string paymentMethodType = default, DateTime paymentTime = default, double paymentAmount = default, bool applyToCommissions = default, string externalSource = default, string externalSourceValue = default, string externalStatusValue = default, DateTime externalCreateTime = default, DateTime externalUpdateTime = default, string externalCreateUser = default)
         {
             this.PaymentAmount = paymentAmount;
             this.ApplyToCommissions = applyToCommissions;
@@ -54,6 +60,12 @@ namespace Keap.Core.V2.Model
             this.PaymentMethodId = paymentMethodId;
             this.PaymentMethodType = paymentMethodType;
             this.PaymentTime = paymentTime;
+            this.ExternalSource = externalSource;
+            this.ExternalSourceValue = externalSourceValue;
+            this.ExternalStatusValue = externalStatusValue;
+            this.ExternalCreateTime = externalCreateTime;
+            this.ExternalUpdateTime = externalUpdateTime;
+            this.ExternalCreateUser = externalCreateUser;
         }
 
         /// <summary>
@@ -102,6 +114,54 @@ namespace Keap.Core.V2.Model
         public bool ApplyToCommissions { get; set; }
 
         /// <summary>
+        /// The external source type of this payment.
+        /// </summary>
+        /// <value>The external source type of this payment.</value>
+        [DataMember(Name = "external_source", EmitDefaultValue = false)]
+        public string ExternalSource { get; set; }
+
+        /// <summary>
+        /// The external source value of this payment.
+        /// </summary>
+        /// <value>The external source value of this payment.</value>
+        [DataMember(Name = "external_source_value", EmitDefaultValue = false)]
+        public string ExternalSourceValue { get; set; }
+
+        /// <summary>
+        /// The external status value of this payment.
+        /// </summary>
+        /// <value>The external status value of this payment.</value>
+        [DataMember(Name = "external_status_value", EmitDefaultValue = false)]
+        public string ExternalStatusValue { get; set; }
+
+        /// <summary>
+        /// The external creation timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+        /// </summary>
+        /// <value>The external creation timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)</value>
+        /*
+        <example>2024-05-21T14:30:00Z</example>
+        */
+        [DataMember(Name = "external_create_time", EmitDefaultValue = false)]
+        public DateTime ExternalCreateTime { get; set; }
+
+        /// <summary>
+        /// The external update timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+        /// </summary>
+        /// <value>The external update timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)</value>
+        /*
+        <example>2024-05-21T14:30:00Z</example>
+        */
+        [DataMember(Name = "external_update_time", EmitDefaultValue = false)]
+        public DateTime ExternalUpdateTime { get; set; }
+
+        /// <summary>
+        /// The user who created this payment externally.
+        /// </summary>
+        /// <value>The user who created this payment externally.</value>
+        [DataMember(Name = "external_create_user", EmitDefaultValue = false)]
+        public string ExternalCreateUser { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -115,6 +175,12 @@ namespace Keap.Core.V2.Model
             sb.Append("  PaymentTime: ").Append(PaymentTime).Append("\n");
             sb.Append("  PaymentAmount: ").Append(PaymentAmount).Append("\n");
             sb.Append("  ApplyToCommissions: ").Append(ApplyToCommissions).Append("\n");
+            sb.Append("  ExternalSource: ").Append(ExternalSource).Append("\n");
+            sb.Append("  ExternalSourceValue: ").Append(ExternalSourceValue).Append("\n");
+            sb.Append("  ExternalStatusValue: ").Append(ExternalStatusValue).Append("\n");
+            sb.Append("  ExternalCreateTime: ").Append(ExternalCreateTime).Append("\n");
+            sb.Append("  ExternalUpdateTime: ").Append(ExternalUpdateTime).Append("\n");
+            sb.Append("  ExternalCreateUser: ").Append(ExternalCreateUser).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

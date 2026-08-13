@@ -60,6 +60,7 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPITypes = [
         'notes' => 'string',
         'terms' => 'string',
+        'title' => 'string',
         'contact_id' => 'string',
         'order_title' => 'string',
         'order_time' => '\DateTime',
@@ -69,7 +70,13 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'sales_affiliate_id' => 'string',
         'shipping_address' => '\Keap\Core\V2\Model\AddressInformation',
         'payment_plan' => '\Keap\Core\V2\Model\UpdatedPaymentPlan',
-        'custom_fields' => '\Keap\Core\V2\Model\CustomFieldValue[]'
+        'custom_fields' => '\Keap\Core\V2\Model\CustomFieldValue[]',
+        'sent_time' => '\DateTime',
+        'due_time' => '\DateTime',
+        'invoice_number' => 'string',
+        'external_create_user' => 'string',
+        'external_create_time' => '\DateTime',
+        'external_update_time' => '\DateTime'
     ];
 
     /**
@@ -82,6 +89,7 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPIFormats = [
         'notes' => null,
         'terms' => null,
+        'title' => null,
         'contact_id' => null,
         'order_title' => null,
         'order_time' => 'date-time',
@@ -91,7 +99,13 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'sales_affiliate_id' => null,
         'shipping_address' => null,
         'payment_plan' => null,
-        'custom_fields' => null
+        'custom_fields' => null,
+        'sent_time' => 'date-time',
+        'due_time' => 'date-time',
+        'invoice_number' => null,
+        'external_create_user' => null,
+        'external_create_time' => 'date-time',
+        'external_update_time' => 'date-time'
     ];
 
     /**
@@ -102,6 +116,7 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static array $openAPINullables = [
         'notes' => false,
         'terms' => false,
+        'title' => false,
         'contact_id' => false,
         'order_title' => false,
         'order_time' => false,
@@ -111,7 +126,13 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'sales_affiliate_id' => false,
         'shipping_address' => false,
         'payment_plan' => false,
-        'custom_fields' => false
+        'custom_fields' => false,
+        'sent_time' => false,
+        'due_time' => false,
+        'invoice_number' => false,
+        'external_create_user' => false,
+        'external_create_time' => false,
+        'external_update_time' => false
     ];
 
     /**
@@ -202,6 +223,7 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $attributeMap = [
         'notes' => 'notes',
         'terms' => 'terms',
+        'title' => 'title',
         'contact_id' => 'contact_id',
         'order_title' => 'order_title',
         'order_time' => 'order_time',
@@ -211,7 +233,13 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'sales_affiliate_id' => 'sales_affiliate_id',
         'shipping_address' => 'shipping_address',
         'payment_plan' => 'payment_plan',
-        'custom_fields' => 'custom_fields'
+        'custom_fields' => 'custom_fields',
+        'sent_time' => 'sent_time',
+        'due_time' => 'due_time',
+        'invoice_number' => 'invoice_number',
+        'external_create_user' => 'external_create_user',
+        'external_create_time' => 'external_create_time',
+        'external_update_time' => 'external_update_time'
     ];
 
     /**
@@ -222,6 +250,7 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $setters = [
         'notes' => 'setNotes',
         'terms' => 'setTerms',
+        'title' => 'setTitle',
         'contact_id' => 'setContactId',
         'order_title' => 'setOrderTitle',
         'order_time' => 'setOrderTime',
@@ -231,7 +260,13 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'sales_affiliate_id' => 'setSalesAffiliateId',
         'shipping_address' => 'setShippingAddress',
         'payment_plan' => 'setPaymentPlan',
-        'custom_fields' => 'setCustomFields'
+        'custom_fields' => 'setCustomFields',
+        'sent_time' => 'setSentTime',
+        'due_time' => 'setDueTime',
+        'invoice_number' => 'setInvoiceNumber',
+        'external_create_user' => 'setExternalCreateUser',
+        'external_create_time' => 'setExternalCreateTime',
+        'external_update_time' => 'setExternalUpdateTime'
     ];
 
     /**
@@ -242,6 +277,7 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $getters = [
         'notes' => 'getNotes',
         'terms' => 'getTerms',
+        'title' => 'getTitle',
         'contact_id' => 'getContactId',
         'order_title' => 'getOrderTitle',
         'order_time' => 'getOrderTime',
@@ -251,7 +287,13 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'sales_affiliate_id' => 'getSalesAffiliateId',
         'shipping_address' => 'getShippingAddress',
         'payment_plan' => 'getPaymentPlan',
-        'custom_fields' => 'getCustomFields'
+        'custom_fields' => 'getCustomFields',
+        'sent_time' => 'getSentTime',
+        'due_time' => 'getDueTime',
+        'invoice_number' => 'getInvoiceNumber',
+        'external_create_user' => 'getExternalCreateUser',
+        'external_create_time' => 'getExternalCreateTime',
+        'external_update_time' => 'getExternalUpdateTime'
     ];
 
     /**
@@ -328,6 +370,7 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $this->setIfExists('notes', $data ?? [], null);
         $this->setIfExists('terms', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('contact_id', $data ?? [], null);
         $this->setIfExists('order_title', $data ?? [], null);
         $this->setIfExists('order_time', $data ?? [], null);
@@ -338,6 +381,12 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('shipping_address', $data ?? [], null);
         $this->setIfExists('payment_plan', $data ?? [], null);
         $this->setIfExists('custom_fields', $data ?? [], null);
+        $this->setIfExists('sent_time', $data ?? [], null);
+        $this->setIfExists('due_time', $data ?? [], null);
+        $this->setIfExists('invoice_number', $data ?? [], null);
+        $this->setIfExists('external_create_user', $data ?? [], null);
+        $this->setIfExists('external_create_time', $data ?? [], null);
+        $this->setIfExists('external_update_time', $data ?? [], null);
     }
 
     /**
@@ -441,6 +490,33 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable terms cannot be null');
         }
         $this->container['terms'] = $terms;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title A title for the invoice
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        }
+        $this->container['title'] = $title;
 
         return $this;
     }
@@ -721,6 +797,168 @@ class UpdateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable custom_fields cannot be null');
         }
         $this->container['custom_fields'] = $custom_fields;
+
+        return $this;
+    }
+
+    /**
+     * Gets sent_time
+     *
+     * @return \DateTime|null
+     */
+    public function getSentTime()
+    {
+        return $this->container['sent_time'];
+    }
+
+    /**
+     * Sets sent_time
+     *
+     * @param \DateTime|null $sent_time The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+     *
+     * @return self
+     */
+    public function setSentTime($sent_time)
+    {
+        if (is_null($sent_time)) {
+            throw new \InvalidArgumentException('non-nullable sent_time cannot be null');
+        }
+        $this->container['sent_time'] = $sent_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets due_time
+     *
+     * @return \DateTime|null
+     */
+    public function getDueTime()
+    {
+        return $this->container['due_time'];
+    }
+
+    /**
+     * Sets due_time
+     *
+     * @param \DateTime|null $due_time The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+     *
+     * @return self
+     */
+    public function setDueTime($due_time)
+    {
+        if (is_null($due_time)) {
+            throw new \InvalidArgumentException('non-nullable due_time cannot be null');
+        }
+        $this->container['due_time'] = $due_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets invoice_number
+     *
+     * @return string|null
+     */
+    public function getInvoiceNumber()
+    {
+        return $this->container['invoice_number'];
+    }
+
+    /**
+     * Sets invoice_number
+     *
+     * @param string|null $invoice_number Invoice number
+     *
+     * @return self
+     */
+    public function setInvoiceNumber($invoice_number)
+    {
+        if (is_null($invoice_number)) {
+            throw new \InvalidArgumentException('non-nullable invoice_number cannot be null');
+        }
+        $this->container['invoice_number'] = $invoice_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_create_user
+     *
+     * @return string|null
+     */
+    public function getExternalCreateUser()
+    {
+        return $this->container['external_create_user'];
+    }
+
+    /**
+     * Sets external_create_user
+     *
+     * @param string|null $external_create_user The external system user that created this order.
+     *
+     * @return self
+     */
+    public function setExternalCreateUser($external_create_user)
+    {
+        if (is_null($external_create_user)) {
+            throw new \InvalidArgumentException('non-nullable external_create_user cannot be null');
+        }
+        $this->container['external_create_user'] = $external_create_user;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_create_time
+     *
+     * @return \DateTime|null
+     */
+    public function getExternalCreateTime()
+    {
+        return $this->container['external_create_time'];
+    }
+
+    /**
+     * Sets external_create_time
+     *
+     * @param \DateTime|null $external_create_time The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+     *
+     * @return self
+     */
+    public function setExternalCreateTime($external_create_time)
+    {
+        if (is_null($external_create_time)) {
+            throw new \InvalidArgumentException('non-nullable external_create_time cannot be null');
+        }
+        $this->container['external_create_time'] = $external_create_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_update_time
+     *
+     * @return \DateTime|null
+     */
+    public function getExternalUpdateTime()
+    {
+        return $this->container['external_update_time'];
+    }
+
+    /**
+     * Sets external_update_time
+     *
+     * @param \DateTime|null $external_update_time The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+     *
+     * @return self
+     */
+    public function setExternalUpdateTime($external_update_time)
+    {
+        if (is_null($external_update_time)) {
+            throw new \InvalidArgumentException('non-nullable external_update_time cannot be null');
+        }
+        $this->container['external_update_time'] = $external_update_time;
 
         return $this;
     }

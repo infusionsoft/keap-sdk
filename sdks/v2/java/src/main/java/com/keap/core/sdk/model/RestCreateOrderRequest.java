@@ -41,6 +41,7 @@ import jakarta.validation.Valid;
 @JsonPropertyOrder({
   RestCreateOrderRequest.JSON_PROPERTY_NOTES,
   RestCreateOrderRequest.JSON_PROPERTY_TERMS,
+  RestCreateOrderRequest.JSON_PROPERTY_TITLE,
   RestCreateOrderRequest.JSON_PROPERTY_CONTACT_ID,
   RestCreateOrderRequest.JSON_PROPERTY_ORDER_ITEMS,
   RestCreateOrderRequest.JSON_PROPERTY_ORDER_TITLE,
@@ -50,7 +51,13 @@ import jakarta.validation.Valid;
   RestCreateOrderRequest.JSON_PROPERTY_LEAD_AFFILIATE_ID,
   RestCreateOrderRequest.JSON_PROPERTY_SALES_AFFILIATE_ID,
   RestCreateOrderRequest.JSON_PROPERTY_SHIPPING_ADDRESS,
-  RestCreateOrderRequest.JSON_PROPERTY_CUSTOM_FIELDS
+  RestCreateOrderRequest.JSON_PROPERTY_CUSTOM_FIELDS,
+  RestCreateOrderRequest.JSON_PROPERTY_SENT_TIME,
+  RestCreateOrderRequest.JSON_PROPERTY_DUE_TIME,
+  RestCreateOrderRequest.JSON_PROPERTY_INVOICE_NUMBER,
+  RestCreateOrderRequest.JSON_PROPERTY_EXTERNAL_CREATE_USER,
+  RestCreateOrderRequest.JSON_PROPERTY_EXTERNAL_CREATE_TIME,
+  RestCreateOrderRequest.JSON_PROPERTY_EXTERNAL_UPDATE_TIME
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class RestCreateOrderRequest implements Serializable {
@@ -61,6 +68,9 @@ public class RestCreateOrderRequest implements Serializable {
 
   public static final String JSON_PROPERTY_TERMS = "terms";
   @jakarta.annotation.Nullable  private String terms;
+
+  public static final String JSON_PROPERTY_TITLE = "title";
+  @jakarta.annotation.Nullable  private String title;
 
   public static final String JSON_PROPERTY_CONTACT_ID = "contact_id";
   @jakarta.annotation.Nonnull  private String contactId;
@@ -128,6 +138,24 @@ public class RestCreateOrderRequest implements Serializable {
   public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
   @jakarta.annotation.Nullable  private List<@Valid CustomFieldValue> customFields = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_SENT_TIME = "sent_time";
+  @jakarta.annotation.Nullable  private ZonedDateTime sentTime;
+
+  public static final String JSON_PROPERTY_DUE_TIME = "due_time";
+  @jakarta.annotation.Nullable  private ZonedDateTime dueTime;
+
+  public static final String JSON_PROPERTY_INVOICE_NUMBER = "invoice_number";
+  @jakarta.annotation.Nullable  private String invoiceNumber;
+
+  public static final String JSON_PROPERTY_EXTERNAL_CREATE_USER = "external_create_user";
+  @jakarta.annotation.Nullable  private String externalCreateUser;
+
+  public static final String JSON_PROPERTY_EXTERNAL_CREATE_TIME = "external_create_time";
+  @jakarta.annotation.Nullable  private ZonedDateTime externalCreateTime;
+
+  public static final String JSON_PROPERTY_EXTERNAL_UPDATE_TIME = "external_update_time";
+  @jakarta.annotation.Nullable  private ZonedDateTime externalUpdateTime;
+
   public RestCreateOrderRequest() { 
   }
 
@@ -176,6 +204,30 @@ public class RestCreateOrderRequest implements Serializable {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTerms(@jakarta.annotation.Nullable String terms) {
     this.terms = terms;
+  }
+
+
+  public RestCreateOrderRequest title(@jakarta.annotation.Nullable String title) {
+    this.title = title;
+    return this;
+  }
+
+  /**
+   * A title for the invoice
+   * @return title
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Monthly subscription invoice", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "A title for the invoice")
+  @JsonProperty(JSON_PROPERTY_TITLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTitle() {
+    return title;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TITLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTitle(@jakarta.annotation.Nullable String title) {
+    this.title = title;
   }
 
 
@@ -450,6 +502,154 @@ public class RestCreateOrderRequest implements Serializable {
     this.customFields = customFields;
   }
 
+
+  public RestCreateOrderRequest sentTime(@jakarta.annotation.Nullable ZonedDateTime sentTime) {
+    this.sentTime = sentTime;
+    return this;
+  }
+
+  /**
+   * The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+   * @return sentTime
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "2024-05-21T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+  @JsonProperty(JSON_PROPERTY_SENT_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ZonedDateTime getSentTime() {
+    return sentTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SENT_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSentTime(@jakarta.annotation.Nullable ZonedDateTime sentTime) {
+    this.sentTime = sentTime;
+  }
+
+
+  public RestCreateOrderRequest dueTime(@jakarta.annotation.Nullable ZonedDateTime dueTime) {
+    this.dueTime = dueTime;
+    return this;
+  }
+
+  /**
+   * The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+   * @return dueTime
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "2024-06-20T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+  @JsonProperty(JSON_PROPERTY_DUE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ZonedDateTime getDueTime() {
+    return dueTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DUE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDueTime(@jakarta.annotation.Nullable ZonedDateTime dueTime) {
+    this.dueTime = dueTime;
+  }
+
+
+  public RestCreateOrderRequest invoiceNumber(@jakarta.annotation.Nullable String invoiceNumber) {
+    this.invoiceNumber = invoiceNumber;
+    return this;
+  }
+
+  /**
+   * Invoice number
+   * @return invoiceNumber
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "1001", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Invoice number")
+  @JsonProperty(JSON_PROPERTY_INVOICE_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getInvoiceNumber() {
+    return invoiceNumber;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INVOICE_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setInvoiceNumber(@jakarta.annotation.Nullable String invoiceNumber) {
+    this.invoiceNumber = invoiceNumber;
+  }
+
+
+  public RestCreateOrderRequest externalCreateUser(@jakarta.annotation.Nullable String externalCreateUser) {
+    this.externalCreateUser = externalCreateUser;
+    return this;
+  }
+
+  /**
+   * The external system user that created this order.
+   * @return externalCreateUser
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "user@example.com", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The external system user that created this order.")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_USER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getExternalCreateUser() {
+    return externalCreateUser;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_USER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalCreateUser(@jakarta.annotation.Nullable String externalCreateUser) {
+    this.externalCreateUser = externalCreateUser;
+  }
+
+
+  public RestCreateOrderRequest externalCreateTime(@jakarta.annotation.Nullable ZonedDateTime externalCreateTime) {
+    this.externalCreateTime = externalCreateTime;
+    return this;
+  }
+
+  /**
+   * The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+   * @return externalCreateTime
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "2024-05-21T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ZonedDateTime getExternalCreateTime() {
+    return externalCreateTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalCreateTime(@jakarta.annotation.Nullable ZonedDateTime externalCreateTime) {
+    this.externalCreateTime = externalCreateTime;
+  }
+
+
+  public RestCreateOrderRequest externalUpdateTime(@jakarta.annotation.Nullable ZonedDateTime externalUpdateTime) {
+    this.externalUpdateTime = externalUpdateTime;
+    return this;
+  }
+
+  /**
+   * The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+   * @return externalUpdateTime
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "2024-05-21T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_UPDATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ZonedDateTime getExternalUpdateTime() {
+    return externalUpdateTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_UPDATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalUpdateTime(@jakarta.annotation.Nullable ZonedDateTime externalUpdateTime) {
+    this.externalUpdateTime = externalUpdateTime;
+  }
+
   /**
    * Return true if this RestCreateOrderRequest object is equal to o.
    */
@@ -464,6 +664,7 @@ public class RestCreateOrderRequest implements Serializable {
     RestCreateOrderRequest restCreateOrderRequest = (RestCreateOrderRequest) o;
     return Objects.equals(this.notes, restCreateOrderRequest.notes) &&
         Objects.equals(this.terms, restCreateOrderRequest.terms) &&
+        Objects.equals(this.title, restCreateOrderRequest.title) &&
         Objects.equals(this.contactId, restCreateOrderRequest.contactId) &&
         Objects.equals(this.orderItems, restCreateOrderRequest.orderItems) &&
         Objects.equals(this.orderTitle, restCreateOrderRequest.orderTitle) &&
@@ -473,12 +674,18 @@ public class RestCreateOrderRequest implements Serializable {
         Objects.equals(this.leadAffiliateId, restCreateOrderRequest.leadAffiliateId) &&
         Objects.equals(this.salesAffiliateId, restCreateOrderRequest.salesAffiliateId) &&
         Objects.equals(this.shippingAddress, restCreateOrderRequest.shippingAddress) &&
-        Objects.equals(this.customFields, restCreateOrderRequest.customFields);
+        Objects.equals(this.customFields, restCreateOrderRequest.customFields) &&
+        Objects.equals(this.sentTime, restCreateOrderRequest.sentTime) &&
+        Objects.equals(this.dueTime, restCreateOrderRequest.dueTime) &&
+        Objects.equals(this.invoiceNumber, restCreateOrderRequest.invoiceNumber) &&
+        Objects.equals(this.externalCreateUser, restCreateOrderRequest.externalCreateUser) &&
+        Objects.equals(this.externalCreateTime, restCreateOrderRequest.externalCreateTime) &&
+        Objects.equals(this.externalUpdateTime, restCreateOrderRequest.externalUpdateTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(notes, terms, contactId, orderItems, orderTitle, orderTime, orderType, promoCodes, leadAffiliateId, salesAffiliateId, shippingAddress, customFields);
+    return Objects.hash(notes, terms, title, contactId, orderItems, orderTitle, orderTime, orderType, promoCodes, leadAffiliateId, salesAffiliateId, shippingAddress, customFields, sentTime, dueTime, invoiceNumber, externalCreateUser, externalCreateTime, externalUpdateTime);
   }
 
   @Override
@@ -487,6 +694,7 @@ public class RestCreateOrderRequest implements Serializable {
     sb.append("class RestCreateOrderRequest {\n");
     sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("    terms: ").append(toIndentedString(terms)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    contactId: ").append(toIndentedString(contactId)).append("\n");
     sb.append("    orderItems: ").append(toIndentedString(orderItems)).append("\n");
     sb.append("    orderTitle: ").append(toIndentedString(orderTitle)).append("\n");
@@ -497,6 +705,12 @@ public class RestCreateOrderRequest implements Serializable {
     sb.append("    salesAffiliateId: ").append(toIndentedString(salesAffiliateId)).append("\n");
     sb.append("    shippingAddress: ").append(toIndentedString(shippingAddress)).append("\n");
     sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
+    sb.append("    sentTime: ").append(toIndentedString(sentTime)).append("\n");
+    sb.append("    dueTime: ").append(toIndentedString(dueTime)).append("\n");
+    sb.append("    invoiceNumber: ").append(toIndentedString(invoiceNumber)).append("\n");
+    sb.append("    externalCreateUser: ").append(toIndentedString(externalCreateUser)).append("\n");
+    sb.append("    externalCreateTime: ").append(toIndentedString(externalCreateTime)).append("\n");
+    sb.append("    externalUpdateTime: ").append(toIndentedString(externalUpdateTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -530,6 +744,10 @@ public class RestCreateOrderRequest implements Serializable {
         }
             public RestCreateOrderRequest.Builder terms(String terms) {
               this.instance.terms = terms;
+          return this;
+        }
+            public RestCreateOrderRequest.Builder title(String title) {
+              this.instance.title = title;
           return this;
         }
             public RestCreateOrderRequest.Builder contactId(String contactId) {
@@ -572,6 +790,30 @@ public class RestCreateOrderRequest implements Serializable {
               this.instance.customFields = customFields;
           return this;
         }
+            public RestCreateOrderRequest.Builder sentTime(ZonedDateTime sentTime) {
+              this.instance.sentTime = sentTime;
+          return this;
+        }
+            public RestCreateOrderRequest.Builder dueTime(ZonedDateTime dueTime) {
+              this.instance.dueTime = dueTime;
+          return this;
+        }
+            public RestCreateOrderRequest.Builder invoiceNumber(String invoiceNumber) {
+              this.instance.invoiceNumber = invoiceNumber;
+          return this;
+        }
+            public RestCreateOrderRequest.Builder externalCreateUser(String externalCreateUser) {
+              this.instance.externalCreateUser = externalCreateUser;
+          return this;
+        }
+            public RestCreateOrderRequest.Builder externalCreateTime(ZonedDateTime externalCreateTime) {
+              this.instance.externalCreateTime = externalCreateTime;
+          return this;
+        }
+            public RestCreateOrderRequest.Builder externalUpdateTime(ZonedDateTime externalUpdateTime) {
+              this.instance.externalUpdateTime = externalUpdateTime;
+          return this;
+        }
         
     
         /**
@@ -608,6 +850,7 @@ public class RestCreateOrderRequest implements Serializable {
         return new RestCreateOrderRequest.Builder()
           .notes(getNotes())
           .terms(getTerms())
+          .title(getTitle())
           .contactId(getContactId())
           .orderItems(getOrderItems())
           .orderTitle(getOrderTitle())
@@ -617,7 +860,13 @@ public class RestCreateOrderRequest implements Serializable {
           .leadAffiliateId(getLeadAffiliateId())
           .salesAffiliateId(getSalesAffiliateId())
           .shippingAddress(getShippingAddress())
-          .customFields(getCustomFields());
+          .customFields(getCustomFields())
+          .sentTime(getSentTime())
+          .dueTime(getDueTime())
+          .invoiceNumber(getInvoiceNumber())
+          .externalCreateUser(getExternalCreateUser())
+          .externalCreateTime(getExternalCreateTime())
+          .externalUpdateTime(getExternalUpdateTime());
       }
 }
 

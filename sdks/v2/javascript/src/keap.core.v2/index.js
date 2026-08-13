@@ -65,7 +65,6 @@ import AssignedProducts from './model/AssignedProducts';
 import Automation from './model/Automation';
 import AutomationCategory from './model/AutomationCategory';
 import AutomationLockStatus from './model/AutomationLockStatus';
-import AutomationStateRequest from './model/AutomationStateRequest';
 import BasicCompany from './model/BasicCompany';
 import BasicContact from './model/BasicContact';
 import BasicUser from './model/BasicUser';
@@ -92,6 +91,7 @@ import Country from './model/Country';
 import CountryCodes from './model/CountryCodes';
 import CreateAffiliateRequest from './model/CreateAffiliateRequest';
 import CreateAutomationCategoryRequest from './model/CreateAutomationCategoryRequest';
+import CreateCategoryDiscountCriteria from './model/CreateCategoryDiscountCriteria';
 import CreateCategoryDiscountRequest from './model/CreateCategoryDiscountRequest';
 import CreateCommissionProgramRequest from './model/CreateCommissionProgramRequest';
 import CreateCompanyRequest from './model/CreateCompanyRequest';
@@ -261,7 +261,6 @@ import ListShippingDiscountsResponse from './model/ListShippingDiscountsResponse
 import ListSubscriptionPlansResponse from './model/ListSubscriptionPlansResponse';
 import ListSubscriptionsResponse from './model/ListSubscriptionsResponse';
 import ListTagCategoriesResponse from './model/ListTagCategoriesResponse';
-import ListTagContactAssociationsResponse from './model/ListTagContactAssociationsResponse';
 import ListTaggedCompaniesResponse from './model/ListTaggedCompaniesResponse';
 import ListTaggedContactsResponse from './model/ListTaggedContactsResponse';
 import ListTagsResponse from './model/ListTagsResponse';
@@ -310,6 +309,7 @@ import Province from './model/Province';
 import Referral from './model/Referral';
 import RemoveContactsFromSequenceRequest from './model/RemoveContactsFromSequenceRequest';
 import RemoveContactsFromSequenceResponse from './model/RemoveContactsFromSequenceResponse';
+import RenameEasyAutomationCommand from './model/RenameEasyAutomationCommand';
 import Report from './model/Report';
 import ReportEntryRecord from './model/ReportEntryRecord';
 import ReportEntryValue from './model/ReportEntryValue';
@@ -342,7 +342,6 @@ import SubscriptionPlanDetail from './model/SubscriptionPlanDetail';
 import SubscriptionPlanList from './model/SubscriptionPlanList';
 import Tag from './model/Tag';
 import TagCategory from './model/TagCategory';
-import TagContactAssociation from './model/TagContactAssociation';
 import TaggedCompany from './model/TaggedCompany';
 import TaggedContact from './model/TaggedContact';
 import Task from './model/Task';
@@ -471,7 +470,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.19
+* @version 2.0.20
 */
 export {
     /**
@@ -793,12 +792,6 @@ export {
     AutomationLockStatus,
 
     /**
-     * The AutomationStateRequest model constructor.
-     * @property {module:keap.core.v2/model/AutomationStateRequest}
-     */
-    AutomationStateRequest,
-
-    /**
      * The BasicCompany model constructor.
      * @property {module:keap.core.v2/model/BasicCompany}
      */
@@ -953,6 +946,12 @@ export {
      * @property {module:keap.core.v2/model/CreateAutomationCategoryRequest}
      */
     CreateAutomationCategoryRequest,
+
+    /**
+     * The CreateCategoryDiscountCriteria model constructor.
+     * @property {module:keap.core.v2/model/CreateCategoryDiscountCriteria}
+     */
+    CreateCategoryDiscountCriteria,
 
     /**
      * The CreateCategoryDiscountRequest model constructor.
@@ -1969,12 +1968,6 @@ export {
     ListTagCategoriesResponse,
 
     /**
-     * The ListTagContactAssociationsResponse model constructor.
-     * @property {module:keap.core.v2/model/ListTagContactAssociationsResponse}
-     */
-    ListTagContactAssociationsResponse,
-
-    /**
      * The ListTaggedCompaniesResponse model constructor.
      * @property {module:keap.core.v2/model/ListTaggedCompaniesResponse}
      */
@@ -2263,6 +2256,12 @@ export {
     RemoveContactsFromSequenceResponse,
 
     /**
+     * The RenameEasyAutomationCommand model constructor.
+     * @property {module:keap.core.v2/model/RenameEasyAutomationCommand}
+     */
+    RenameEasyAutomationCommand,
+
+    /**
      * The Report model constructor.
      * @property {module:keap.core.v2/model/Report}
      */
@@ -2453,12 +2452,6 @@ export {
      * @property {module:keap.core.v2/model/TagCategory}
      */
     TagCategory,
-
-    /**
-     * The TagContactAssociation model constructor.
-     * @property {module:keap.core.v2/model/TagContactAssociation}
-     */
-    TagContactAssociation,
 
     /**
      * The TaggedCompany model constructor.

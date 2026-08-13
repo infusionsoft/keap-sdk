@@ -118,6 +118,8 @@ public class OrderItem implements Serializable {
     
     OTHER(String.valueOf("OTHER")),
     
+    FEE(String.valueOf("FEE")),
+    
     UNKNOWN(String.valueOf("UNKNOWN")),
     
     UNKNOWN_COULD_NOT_DESERIALIZE(String.valueOf("unknown_default_open_api"));

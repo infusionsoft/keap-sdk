@@ -34,5 +34,10 @@ Name | Type | Description | Notes
 **synced** | **bool** | Whether order is synced with external systems | [optional]
 **invoice_id** | **string** | Associated invoice ID | [optional]
 **custom_fields** | [**\Keap\Core\V2\Model\CustomFieldValue[]**](CustomFieldValue.md) | List of custom field values applied to this order | [optional]
+**sent_time** | **\DateTime** | The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional]
+**due_time** | **\DateTime** | The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional]
+**external_create_user** | **string** | The external system user that created this order. | [optional]
+**external_create_time** | **\DateTime** | The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional]
+**external_update_time** | **\DateTime** | The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

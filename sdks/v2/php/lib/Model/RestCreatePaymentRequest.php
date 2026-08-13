@@ -62,7 +62,13 @@ class RestCreatePaymentRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'payment_method_type' => 'string',
         'payment_time' => '\DateTime',
         'payment_amount' => 'float',
-        'apply_to_commissions' => 'bool'
+        'apply_to_commissions' => 'bool',
+        'external_source' => 'string',
+        'external_source_value' => 'string',
+        'external_status_value' => 'string',
+        'external_create_time' => '\DateTime',
+        'external_update_time' => '\DateTime',
+        'external_create_user' => 'string'
     ];
 
     /**
@@ -78,7 +84,13 @@ class RestCreatePaymentRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'payment_method_type' => null,
         'payment_time' => 'date-time',
         'payment_amount' => 'double',
-        'apply_to_commissions' => null
+        'apply_to_commissions' => null,
+        'external_source' => null,
+        'external_source_value' => null,
+        'external_status_value' => null,
+        'external_create_time' => 'date-time',
+        'external_update_time' => 'date-time',
+        'external_create_user' => null
     ];
 
     /**
@@ -92,7 +104,13 @@ class RestCreatePaymentRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'payment_method_type' => false,
         'payment_time' => false,
         'payment_amount' => false,
-        'apply_to_commissions' => false
+        'apply_to_commissions' => false,
+        'external_source' => false,
+        'external_source_value' => false,
+        'external_status_value' => false,
+        'external_create_time' => false,
+        'external_update_time' => false,
+        'external_create_user' => false
     ];
 
     /**
@@ -186,7 +204,13 @@ class RestCreatePaymentRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'payment_method_type' => 'payment_method_type',
         'payment_time' => 'payment_time',
         'payment_amount' => 'payment_amount',
-        'apply_to_commissions' => 'apply_to_commissions'
+        'apply_to_commissions' => 'apply_to_commissions',
+        'external_source' => 'external_source',
+        'external_source_value' => 'external_source_value',
+        'external_status_value' => 'external_status_value',
+        'external_create_time' => 'external_create_time',
+        'external_update_time' => 'external_update_time',
+        'external_create_user' => 'external_create_user'
     ];
 
     /**
@@ -200,7 +224,13 @@ class RestCreatePaymentRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'payment_method_type' => 'setPaymentMethodType',
         'payment_time' => 'setPaymentTime',
         'payment_amount' => 'setPaymentAmount',
-        'apply_to_commissions' => 'setApplyToCommissions'
+        'apply_to_commissions' => 'setApplyToCommissions',
+        'external_source' => 'setExternalSource',
+        'external_source_value' => 'setExternalSourceValue',
+        'external_status_value' => 'setExternalStatusValue',
+        'external_create_time' => 'setExternalCreateTime',
+        'external_update_time' => 'setExternalUpdateTime',
+        'external_create_user' => 'setExternalCreateUser'
     ];
 
     /**
@@ -214,7 +244,13 @@ class RestCreatePaymentRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'payment_method_type' => 'getPaymentMethodType',
         'payment_time' => 'getPaymentTime',
         'payment_amount' => 'getPaymentAmount',
-        'apply_to_commissions' => 'getApplyToCommissions'
+        'apply_to_commissions' => 'getApplyToCommissions',
+        'external_source' => 'getExternalSource',
+        'external_source_value' => 'getExternalSourceValue',
+        'external_status_value' => 'getExternalStatusValue',
+        'external_create_time' => 'getExternalCreateTime',
+        'external_update_time' => 'getExternalUpdateTime',
+        'external_create_user' => 'getExternalCreateUser'
     ];
 
     /**
@@ -280,6 +316,12 @@ class RestCreatePaymentRequest implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('payment_time', $data ?? [], null);
         $this->setIfExists('payment_amount', $data ?? [], null);
         $this->setIfExists('apply_to_commissions', $data ?? [], null);
+        $this->setIfExists('external_source', $data ?? [], null);
+        $this->setIfExists('external_source_value', $data ?? [], null);
+        $this->setIfExists('external_status_value', $data ?? [], null);
+        $this->setIfExists('external_create_time', $data ?? [], null);
+        $this->setIfExists('external_update_time', $data ?? [], null);
+        $this->setIfExists('external_create_user', $data ?? [], null);
     }
 
     /**
@@ -488,6 +530,168 @@ class RestCreatePaymentRequest implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable apply_to_commissions cannot be null');
         }
         $this->container['apply_to_commissions'] = $apply_to_commissions;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_source
+     *
+     * @return string|null
+     */
+    public function getExternalSource()
+    {
+        return $this->container['external_source'];
+    }
+
+    /**
+     * Sets external_source
+     *
+     * @param string|null $external_source The external source type of this payment.
+     *
+     * @return self
+     */
+    public function setExternalSource($external_source)
+    {
+        if (is_null($external_source)) {
+            throw new \InvalidArgumentException('non-nullable external_source cannot be null');
+        }
+        $this->container['external_source'] = $external_source;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_source_value
+     *
+     * @return string|null
+     */
+    public function getExternalSourceValue()
+    {
+        return $this->container['external_source_value'];
+    }
+
+    /**
+     * Sets external_source_value
+     *
+     * @param string|null $external_source_value The external source value of this payment.
+     *
+     * @return self
+     */
+    public function setExternalSourceValue($external_source_value)
+    {
+        if (is_null($external_source_value)) {
+            throw new \InvalidArgumentException('non-nullable external_source_value cannot be null');
+        }
+        $this->container['external_source_value'] = $external_source_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_status_value
+     *
+     * @return string|null
+     */
+    public function getExternalStatusValue()
+    {
+        return $this->container['external_status_value'];
+    }
+
+    /**
+     * Sets external_status_value
+     *
+     * @param string|null $external_status_value The external status value of this payment.
+     *
+     * @return self
+     */
+    public function setExternalStatusValue($external_status_value)
+    {
+        if (is_null($external_status_value)) {
+            throw new \InvalidArgumentException('non-nullable external_status_value cannot be null');
+        }
+        $this->container['external_status_value'] = $external_status_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_create_time
+     *
+     * @return \DateTime|null
+     */
+    public function getExternalCreateTime()
+    {
+        return $this->container['external_create_time'];
+    }
+
+    /**
+     * Sets external_create_time
+     *
+     * @param \DateTime|null $external_create_time The external creation timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+     *
+     * @return self
+     */
+    public function setExternalCreateTime($external_create_time)
+    {
+        if (is_null($external_create_time)) {
+            throw new \InvalidArgumentException('non-nullable external_create_time cannot be null');
+        }
+        $this->container['external_create_time'] = $external_create_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_update_time
+     *
+     * @return \DateTime|null
+     */
+    public function getExternalUpdateTime()
+    {
+        return $this->container['external_update_time'];
+    }
+
+    /**
+     * Sets external_update_time
+     *
+     * @param \DateTime|null $external_update_time The external update timestamp of this payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+     *
+     * @return self
+     */
+    public function setExternalUpdateTime($external_update_time)
+    {
+        if (is_null($external_update_time)) {
+            throw new \InvalidArgumentException('non-nullable external_update_time cannot be null');
+        }
+        $this->container['external_update_time'] = $external_update_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_create_user
+     *
+     * @return string|null
+     */
+    public function getExternalCreateUser()
+    {
+        return $this->container['external_create_user'];
+    }
+
+    /**
+     * Sets external_create_user
+     *
+     * @param string|null $external_create_user The user who created this payment externally.
+     *
+     * @return self
+     */
+    public function setExternalCreateUser($external_create_user)
+    {
+        if (is_null($external_create_user)) {
+            throw new \InvalidArgumentException('non-nullable external_create_user cannot be null');
+        }
+        $this->container['external_create_user'] = $external_create_user;
 
         return $this;
     }

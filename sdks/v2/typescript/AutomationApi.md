@@ -12,8 +12,8 @@ Method | HTTP request | Description
 [**getAutomation**](AutomationApi.md#getAutomation) | **GET** /rest/v2/automations/{automation_id} | Retrieve an Automation
 [**listAllAutomationIds**](AutomationApi.md#listAllAutomationIds) | **GET** /rest/v2/automations/ids | List Automations Ids
 [**listAutomations**](AutomationApi.md#listAutomations) | **GET** /rest/v2/automations | List Automations
+[**renameAutomationV2**](AutomationApi.md#renameAutomationV2) | **PATCH** /rest/v2/easy-automations/{automation_id} | Renames an Easy Automation.
 [**unpublishAutomation**](AutomationApi.md#unpublishAutomation) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation
-[**updateState**](AutomationApi.md#updateState) | **PUT** /rest/v2/easy-automations/{automation_id}/state | Update the state of an Easy Automation
 
 
 # **achieveGoal**
@@ -545,6 +545,72 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **renameAutomationV2**
+> void renameAutomationV2(renameEasyAutomationCommand)
+
+Updates the name of a single easy automation.
+
+### Example
+
+
+```typescript
+import { createConfiguration, AutomationApi } from '';
+import type { AutomationApiRenameAutomationV2Request } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AutomationApi(configuration);
+
+const request: AutomationApiRenameAutomationV2Request = {
+    // automation_id
+  automationId: "HWv0fbDNDbWg6cFKY027",
+  
+  renameEasyAutomationCommand: {
+    name: "Welcome new customer (Fall 26)",
+  },
+};
+
+const data = await apiInstance.renameAutomationV2(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **renameEasyAutomationCommand** | **RenameEasyAutomationCommand**|  |
+ **automationId** | [**string**] | automation_id | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **unpublishAutomation**
 > void unpublishAutomation(unpublishAutomationRequest)
 
@@ -600,72 +666,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**405** | Method Not Allowed |  -  |
-**409** | Conflict |  -  |
-**500** | Internal Server Error |  -  |
-**501** | Method Not Implemented |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **updateState**
-> void updateState(automationStateRequest)
-
-Updates the lifecycle state of an existing Easy Automation. Supported states: `disabled`, `enabled`.
-
-### Example
-
-
-```typescript
-import { createConfiguration, AutomationApi } from '';
-import type { AutomationApiUpdateStateRequest } from '';
-
-const configuration = createConfiguration();
-const apiInstance = new AutomationApi(configuration);
-
-const request: AutomationApiUpdateStateRequest = {
-  
-  automationId: "automation_id_example",
-  
-  automationStateRequest: {
-    state: "enabled",
-  },
-};
-
-const data = await apiInstance.updateState(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **automationStateRequest** | **AutomationStateRequest**|  |
- **automationId** | [**string**] |  | defaults to undefined
-
-
-### Return type
-
-**void**
-
-### Authorization
-
-[oauth2](README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** | No Content |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

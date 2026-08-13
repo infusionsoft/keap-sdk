@@ -25,6 +25,10 @@ export class RestCreateOrderRequest {
     */
     'terms'?: string;
     /**
+    * A title for the invoice
+    */
+    'title'?: string;
+    /**
     * ID of the contact for this order
     */
     'contactId': string;
@@ -64,6 +68,30 @@ export class RestCreateOrderRequest {
     * List of custom field values to apply to this order
     */
     'customFields'?: Array<CustomFieldValue>;
+    /**
+    * The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+    */
+    'sentTime'?: Date;
+    /**
+    * The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+    */
+    'dueTime'?: Date;
+    /**
+    * Invoice number
+    */
+    'invoiceNumber'?: string;
+    /**
+    * The external system user that created this order.
+    */
+    'externalCreateUser'?: string;
+    /**
+    * The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+    */
+    'externalCreateTime'?: Date;
+    /**
+    * The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+    */
+    'externalUpdateTime'?: Date;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -79,6 +107,12 @@ export class RestCreateOrderRequest {
         {
             "name": "terms",
             "baseName": "terms",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "title",
+            "baseName": "title",
             "type": "string",
             "format": ""
         },
@@ -141,6 +175,42 @@ export class RestCreateOrderRequest {
             "baseName": "custom_fields",
             "type": "Array<CustomFieldValue>",
             "format": ""
+        },
+        {
+            "name": "sentTime",
+            "baseName": "sent_time",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
+            "name": "dueTime",
+            "baseName": "due_time",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
+            "name": "invoiceNumber",
+            "baseName": "invoice_number",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "externalCreateUser",
+            "baseName": "external_create_user",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "externalCreateTime",
+            "baseName": "external_create_time",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
+            "name": "externalUpdateTime",
+            "baseName": "external_update_time",
+            "type": "Date",
+            "format": "date-time"
         }    ];
 
     static getAttributeTypeMap() {

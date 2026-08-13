@@ -1142,7 +1142,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateOrderRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateOrder(orderId: string, updateOrderRequest: UpdateOrderRequest, updateMask?: Set<'contact_id' | 'order_items' | 'order_title' | 'order_time' | 'order_type' | 'promo_codes' | 'lead_affiliate_id' | 'sales_affiliate_id' | 'shipping_address' | 'notes' | 'terms' | 'payment_plan' | 'custom_fields'>, _options?: Configuration): Promise<RequestContext> {
+    public async updateOrder(orderId: string, updateOrderRequest: UpdateOrderRequest, updateMask?: Set<'contact_id' | 'order_items' | 'order_title' | 'order_time' | 'order_type' | 'promo_codes' | 'lead_affiliate_id' | 'sales_affiliate_id' | 'shipping_address' | 'notes' | 'terms' | 'payment_plan' | 'custom_fields' | 'sent_time' | 'title' | 'due_time' | 'invoice_number' | 'external_create_user' | 'external_create_time' | 'external_update_time'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'orderId' is not null or undefined
@@ -1168,7 +1168,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'contact_id' | 'order_items' | 'order_title' | 'order_time' | 'order_type' | 'promo_codes' | 'lead_affiliate_id' | 'sales_affiliate_id' | 'shipping_address' | 'notes' | 'terms' | 'payment_plan' | 'custom_fields'>", "");
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'contact_id' | 'order_items' | 'order_title' | 'order_time' | 'order_type' | 'promo_codes' | 'lead_affiliate_id' | 'sales_affiliate_id' | 'shipping_address' | 'notes' | 'terms' | 'payment_plan' | 'custom_fields' | 'sent_time' | 'title' | 'due_time' | 'invoice_number' | 'external_create_user' | 'external_create_time' | 'external_update_time'>", "");
             for (const serializedParam of serializedParams) {
                 requestContext.appendQueryParam("update_mask", serializedParam);
             }

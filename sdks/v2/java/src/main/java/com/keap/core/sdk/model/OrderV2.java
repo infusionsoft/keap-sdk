@@ -72,7 +72,12 @@ import jakarta.validation.Valid;
   OrderV2.JSON_PROPERTY_REFUND_STATUS,
   OrderV2.JSON_PROPERTY_SYNCED,
   OrderV2.JSON_PROPERTY_INVOICE_ID,
-  OrderV2.JSON_PROPERTY_CUSTOM_FIELDS
+  OrderV2.JSON_PROPERTY_CUSTOM_FIELDS,
+  OrderV2.JSON_PROPERTY_SENT_TIME,
+  OrderV2.JSON_PROPERTY_DUE_TIME,
+  OrderV2.JSON_PROPERTY_EXTERNAL_CREATE_USER,
+  OrderV2.JSON_PROPERTY_EXTERNAL_CREATE_TIME,
+  OrderV2.JSON_PROPERTY_EXTERNAL_UPDATE_TIME
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OrderV2 implements Serializable {
@@ -287,6 +292,21 @@ public class OrderV2 implements Serializable {
 
   public static final String JSON_PROPERTY_CUSTOM_FIELDS = "custom_fields";
   @jakarta.annotation.Nullable  private List<@Valid CustomFieldValue> customFields = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_SENT_TIME = "sent_time";
+  @jakarta.annotation.Nullable  private ZonedDateTime sentTime;
+
+  public static final String JSON_PROPERTY_DUE_TIME = "due_time";
+  @jakarta.annotation.Nullable  private ZonedDateTime dueTime;
+
+  public static final String JSON_PROPERTY_EXTERNAL_CREATE_USER = "external_create_user";
+  @jakarta.annotation.Nullable  private String externalCreateUser;
+
+  public static final String JSON_PROPERTY_EXTERNAL_CREATE_TIME = "external_create_time";
+  @jakarta.annotation.Nullable  private ZonedDateTime externalCreateTime;
+
+  public static final String JSON_PROPERTY_EXTERNAL_UPDATE_TIME = "external_update_time";
+  @jakarta.annotation.Nullable  private ZonedDateTime externalUpdateTime;
 
   public OrderV2() { 
   }
@@ -1047,6 +1067,130 @@ public class OrderV2 implements Serializable {
     this.customFields = customFields;
   }
 
+
+  public OrderV2 sentTime(@jakarta.annotation.Nullable ZonedDateTime sentTime) {
+    this.sentTime = sentTime;
+    return this;
+  }
+
+  /**
+   * The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+   * @return sentTime
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "2024-05-21T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The date and time the invoice was sent. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+  @JsonProperty(JSON_PROPERTY_SENT_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ZonedDateTime getSentTime() {
+    return sentTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SENT_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSentTime(@jakarta.annotation.Nullable ZonedDateTime sentTime) {
+    this.sentTime = sentTime;
+  }
+
+
+  public OrderV2 dueTime(@jakarta.annotation.Nullable ZonedDateTime dueTime) {
+    this.dueTime = dueTime;
+    return this;
+  }
+
+  /**
+   * The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+   * @return dueTime
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "2024-06-20T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The date and time the invoice is due. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+  @JsonProperty(JSON_PROPERTY_DUE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ZonedDateTime getDueTime() {
+    return dueTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DUE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDueTime(@jakarta.annotation.Nullable ZonedDateTime dueTime) {
+    this.dueTime = dueTime;
+  }
+
+
+  public OrderV2 externalCreateUser(@jakarta.annotation.Nullable String externalCreateUser) {
+    this.externalCreateUser = externalCreateUser;
+    return this;
+  }
+
+  /**
+   * The external system user that created this order.
+   * @return externalCreateUser
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "user@example.com", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The external system user that created this order.")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_USER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getExternalCreateUser() {
+    return externalCreateUser;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_USER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalCreateUser(@jakarta.annotation.Nullable String externalCreateUser) {
+    this.externalCreateUser = externalCreateUser;
+  }
+
+
+  public OrderV2 externalCreateTime(@jakarta.annotation.Nullable ZonedDateTime externalCreateTime) {
+    this.externalCreateTime = externalCreateTime;
+    return this;
+  }
+
+  /**
+   * The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+   * @return externalCreateTime
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "2024-05-21T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The date and time the order was created in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ZonedDateTime getExternalCreateTime() {
+    return externalCreateTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_CREATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalCreateTime(@jakarta.annotation.Nullable ZonedDateTime externalCreateTime) {
+    this.externalCreateTime = externalCreateTime;
+  }
+
+
+  public OrderV2 externalUpdateTime(@jakarta.annotation.Nullable ZonedDateTime externalUpdateTime) {
+    this.externalUpdateTime = externalUpdateTime;
+    return this;
+  }
+
+  /**
+   * The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)
+   * @return externalUpdateTime
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(example = "2024-05-21T14:30:00Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The date and time the order was last updated in the external system. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_UPDATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ZonedDateTime getExternalUpdateTime() {
+    return externalUpdateTime;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_UPDATE_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalUpdateTime(@jakarta.annotation.Nullable ZonedDateTime externalUpdateTime) {
+    this.externalUpdateTime = externalUpdateTime;
+  }
+
   /**
    * Return true if this OrderV2 object is equal to o.
    */
@@ -1088,12 +1232,17 @@ public class OrderV2 implements Serializable {
         Objects.equals(this.refundStatus, orderV2.refundStatus) &&
         Objects.equals(this.synced, orderV2.synced) &&
         Objects.equals(this.invoiceId, orderV2.invoiceId) &&
-        Objects.equals(this.customFields, orderV2.customFields);
+        Objects.equals(this.customFields, orderV2.customFields) &&
+        Objects.equals(this.sentTime, orderV2.sentTime) &&
+        Objects.equals(this.dueTime, orderV2.dueTime) &&
+        Objects.equals(this.externalCreateUser, orderV2.externalCreateUser) &&
+        Objects.equals(this.externalCreateTime, orderV2.externalCreateTime) &&
+        Objects.equals(this.externalUpdateTime, orderV2.externalUpdateTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, status, total, contact, notes, terms, orderType, sourceType, creationTime, modificationTime, orderTime, leadAffiliateId, salesAffiliateId, totalPaid, totalDue, shippingInformation, refundTotal, allowPayment, allowPaypal, orderItems, paymentPlan, invoiceNumber, files, creditStatus, promoCode, refundStatus, synced, invoiceId, customFields);
+    return Objects.hash(id, title, status, total, contact, notes, terms, orderType, sourceType, creationTime, modificationTime, orderTime, leadAffiliateId, salesAffiliateId, totalPaid, totalDue, shippingInformation, refundTotal, allowPayment, allowPaypal, orderItems, paymentPlan, invoiceNumber, files, creditStatus, promoCode, refundStatus, synced, invoiceId, customFields, sentTime, dueTime, externalCreateUser, externalCreateTime, externalUpdateTime);
   }
 
   @Override
@@ -1130,6 +1279,11 @@ public class OrderV2 implements Serializable {
     sb.append("    synced: ").append(toIndentedString(synced)).append("\n");
     sb.append("    invoiceId: ").append(toIndentedString(invoiceId)).append("\n");
     sb.append("    customFields: ").append(toIndentedString(customFields)).append("\n");
+    sb.append("    sentTime: ").append(toIndentedString(sentTime)).append("\n");
+    sb.append("    dueTime: ").append(toIndentedString(dueTime)).append("\n");
+    sb.append("    externalCreateUser: ").append(toIndentedString(externalCreateUser)).append("\n");
+    sb.append("    externalCreateTime: ").append(toIndentedString(externalCreateTime)).append("\n");
+    sb.append("    externalUpdateTime: ").append(toIndentedString(externalUpdateTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1277,6 +1431,26 @@ public class OrderV2 implements Serializable {
               this.instance.customFields = customFields;
           return this;
         }
+            public OrderV2.Builder sentTime(ZonedDateTime sentTime) {
+              this.instance.sentTime = sentTime;
+          return this;
+        }
+            public OrderV2.Builder dueTime(ZonedDateTime dueTime) {
+              this.instance.dueTime = dueTime;
+          return this;
+        }
+            public OrderV2.Builder externalCreateUser(String externalCreateUser) {
+              this.instance.externalCreateUser = externalCreateUser;
+          return this;
+        }
+            public OrderV2.Builder externalCreateTime(ZonedDateTime externalCreateTime) {
+              this.instance.externalCreateTime = externalCreateTime;
+          return this;
+        }
+            public OrderV2.Builder externalUpdateTime(ZonedDateTime externalUpdateTime) {
+              this.instance.externalUpdateTime = externalUpdateTime;
+          return this;
+        }
         
     
         /**
@@ -1340,7 +1514,12 @@ public class OrderV2 implements Serializable {
           .refundStatus(getRefundStatus())
           .synced(getSynced())
           .invoiceId(getInvoiceId())
-          .customFields(getCustomFields());
+          .customFields(getCustomFields())
+          .sentTime(getSentTime())
+          .dueTime(getDueTime())
+          .externalCreateUser(getExternalCreateUser())
+          .externalCreateTime(getExternalCreateTime())
+          .externalUpdateTime(getExternalUpdateTime());
       }
 }
 

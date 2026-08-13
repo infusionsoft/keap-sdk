@@ -342,6 +342,12 @@ OrderItem['ItemTypeEnum'] = {
     "OTHER": "OTHER",
 
     /**
+     * value: "FEE"
+     * @const
+     */
+    "FEE": "FEE",
+
+    /**
      * value: "UNKNOWN"
      * @const
      */

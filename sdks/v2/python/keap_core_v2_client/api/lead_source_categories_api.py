@@ -912,7 +912,7 @@ class LeadSourceCategoriesApi:
     @validate_call
     def list_lead_source_categories(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are:  - (String) `name`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here is an example:  - `filter=name%3D%3Dexample`")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are:  - (String) `name` - Wildcard matching allowed - (String) `description` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for prefix matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples:  - `filter=name%3D%3Dexample` - `filter=name%3D%3Dexam*` (starts with \"exam\") - `filter=description%3D%3Dexample` - `filter=description%3D%3Dexam*` (starts with \"exam\") - `filter=name%3D%3Dexam*%3Bdescription%3D%3Dsales` (multiple filters combined)")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `name`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -933,7 +933,7 @@ class LeadSourceCategoriesApi:
 
         Retrieves a list of Lead Source Categories
 
-        :param filter: Filter to apply, allowed fields are:  - (String) `name`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here is an example:  - `filter=name%3D%3Dexample`
+        :param filter: Filter to apply, allowed fields are:  - (String) `name` - Wildcard matching allowed - (String) `description` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for prefix matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples:  - `filter=name%3D%3Dexample` - `filter=name%3D%3Dexam*` (starts with \"exam\") - `filter=description%3D%3Dexample` - `filter=description%3D%3Dexam*` (starts with \"exam\") - `filter=name%3D%3Dexam*%3Bdescription%3D%3Dsales` (multiple filters combined)
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `name`  One of the following directions: - `asc` - `desc`
         :type order_by: str
@@ -999,7 +999,7 @@ class LeadSourceCategoriesApi:
     @validate_call
     def list_lead_source_categories_with_http_info(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are:  - (String) `name`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here is an example:  - `filter=name%3D%3Dexample`")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are:  - (String) `name` - Wildcard matching allowed - (String) `description` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for prefix matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples:  - `filter=name%3D%3Dexample` - `filter=name%3D%3Dexam*` (starts with \"exam\") - `filter=description%3D%3Dexample` - `filter=description%3D%3Dexam*` (starts with \"exam\") - `filter=name%3D%3Dexam*%3Bdescription%3D%3Dsales` (multiple filters combined)")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `name`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -1020,7 +1020,7 @@ class LeadSourceCategoriesApi:
 
         Retrieves a list of Lead Source Categories
 
-        :param filter: Filter to apply, allowed fields are:  - (String) `name`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here is an example:  - `filter=name%3D%3Dexample`
+        :param filter: Filter to apply, allowed fields are:  - (String) `name` - Wildcard matching allowed - (String) `description` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for prefix matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples:  - `filter=name%3D%3Dexample` - `filter=name%3D%3Dexam*` (starts with \"exam\") - `filter=description%3D%3Dexample` - `filter=description%3D%3Dexam*` (starts with \"exam\") - `filter=name%3D%3Dexam*%3Bdescription%3D%3Dsales` (multiple filters combined)
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `name`  One of the following directions: - `asc` - `desc`
         :type order_by: str
@@ -1086,7 +1086,7 @@ class LeadSourceCategoriesApi:
     @validate_call
     def list_lead_source_categories_without_preload_content(
         self,
-        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are:  - (String) `name`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here is an example:  - `filter=name%3D%3Dexample`")] = None,
+        filter: Annotated[Optional[StrictStr], Field(description="Filter to apply, allowed fields are:  - (String) `name` - Wildcard matching allowed - (String) `description` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for prefix matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples:  - `filter=name%3D%3Dexample` - `filter=name%3D%3Dexam*` (starts with \"exam\") - `filter=description%3D%3Dexample` - `filter=description%3D%3Dexam*` (starts with \"exam\") - `filter=name%3D%3Dexam*%3Bdescription%3D%3Dsales` (multiple filters combined)")] = None,
         order_by: Annotated[Optional[StrictStr], Field(description="Attribute and direction to order items. One of the following fields: - `name`  One of the following directions: - `asc` - `desc`")] = None,
         page_size: Annotated[Optional[Annotated[int, Field(le=1000, strict=True, ge=0)]], Field(description="Total number of items to return per page")] = None,
         page_token: Annotated[Optional[StrictStr], Field(description="Page token")] = None,
@@ -1107,7 +1107,7 @@ class LeadSourceCategoriesApi:
 
         Retrieves a list of Lead Source Categories
 
-        :param filter: Filter to apply, allowed fields are:  - (String) `name`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. For the filters listed above, here is an example:  - `filter=name%3D%3Dexample`
+        :param filter: Filter to apply, allowed fields are:  - (String) `name` - Wildcard matching allowed - (String) `description` - Wildcard matching allowed  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`.  For fields which allow wildcard matching, you may use the * wildcard character (or its encoded form %2A) for prefix matching on text fields. Example of a valid pattern of wildcard usage: - `field==foo*` finds anything in `field` that begins with `foo`  For the filters listed above, here are some examples:  - `filter=name%3D%3Dexample` - `filter=name%3D%3Dexam*` (starts with \"exam\") - `filter=description%3D%3Dexample` - `filter=description%3D%3Dexam*` (starts with \"exam\") - `filter=name%3D%3Dexam*%3Bdescription%3D%3Dsales` (multiple filters combined)
         :type filter: str
         :param order_by: Attribute and direction to order items. One of the following fields: - `name`  One of the following directions: - `asc` - `desc`
         :type order_by: str
