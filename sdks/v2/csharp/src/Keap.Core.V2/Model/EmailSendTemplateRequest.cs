@@ -43,7 +43,7 @@ namespace Keap.Core.V2.Model
         /// <param name="templateId">Template ID (required).</param>
         /// <param name="contactIds">List of contact IDs to send the email to (required).</param>
         /// <param name="userId">The user ID to send the email on behalf of (required).</param>
-        /// <param name="addressField">Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email.</param>
+        /// <param name="addressField">Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email. Values are case-sensitive..</param>
         public EmailSendTemplateRequest(string templateId = default, List<string> contactIds = default, string userId = default, string addressField = default)
         {
             // to ensure "templateId" is required (not null)
@@ -98,11 +98,11 @@ namespace Keap.Core.V2.Model
         public string UserId { get; set; }
 
         /// <summary>
-        /// Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email
+        /// Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email. Values are case-sensitive.
         /// </summary>
-        /// <value>Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email</value>
+        /// <value>Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email. Values are case-sensitive.</value>
         /*
-        <example>EMAIL1</example>
+        <example>Email</example>
         */
         [DataMember(Name = "address_field", EmitDefaultValue = false)]
         public string AddressField { get; set; }

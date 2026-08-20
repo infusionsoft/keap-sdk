@@ -412,7 +412,7 @@ class RestCreatePaymentRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets payment_method_id
      *
-     * @param string|null $payment_method_id The payment method id to charge immediately against this order. Omit if you want to add a payment record instead.
+     * @param string|null $payment_method_id The payment method id to charge immediately against this order. At least one of payment_method_id or payment_method_type is required. If payment_method_id is provided, payment_method_type is ignored. Omit if you want to add a payment record instead.
      *
      * @return self
      */
@@ -439,7 +439,7 @@ class RestCreatePaymentRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets payment_method_type
      *
-     * @param string|null $payment_method_type The manual payment method type for manually recording a payment. Value must match against the list of types defined under your application's Order Settings. Ignored if payment_method_id is provided.
+     * @param string|null $payment_method_type The manual payment method type for manually recording a payment. At least one of payment_method_id or payment_method_type is required. Ignored if payment_method_id is provided. Value must exactly match one of the Manual Payment Types configured for your application under Ecommerce Settings > Orders (e.g. 'Credit Card (Manual)', 'Check', 'Cash', 'Money Order', 'Adjustment'); unrecognized values will be rejected. Add custom types there if the one you need isn't listed.
      *
      * @return self
      */

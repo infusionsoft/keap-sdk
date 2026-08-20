@@ -120,10 +120,10 @@ public class RestCreatePaymentRequest implements Serializable {
   }
 
   /**
-   * The payment method id to charge immediately against this order. Omit if you want to add a payment record instead.
+   * The payment method id to charge immediately against this order. At least one of payment_method_id or payment_method_type is required. If payment_method_id is provided, payment_method_type is ignored. Omit if you want to add a payment record instead.
    * @return paymentMethodId
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The payment method id to charge immediately against this order. Omit if you want to add a payment record instead.")
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The payment method id to charge immediately against this order. At least one of payment_method_id or payment_method_type is required. If payment_method_id is provided, payment_method_type is ignored. Omit if you want to add a payment record instead.")
   @JsonProperty(JSON_PROPERTY_PAYMENT_METHOD_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPaymentMethodId() {
@@ -144,10 +144,10 @@ public class RestCreatePaymentRequest implements Serializable {
   }
 
   /**
-   * The manual payment method type for manually recording a payment. Value must match against the list of types defined under your application&#39;s Order Settings. Ignored if payment_method_id is provided.
+   * The manual payment method type for manually recording a payment. At least one of payment_method_id or payment_method_type is required. Ignored if payment_method_id is provided. Value must exactly match one of the Manual Payment Types configured for your application under Ecommerce Settings &gt; Orders (e.g. &#39;Credit Card (Manual)&#39;, &#39;Check&#39;, &#39;Cash&#39;, &#39;Money Order&#39;, &#39;Adjustment&#39;); unrecognized values will be rejected. Add custom types there if the one you need isn&#39;t listed.
    * @return paymentMethodType
    */
-  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The manual payment method type for manually recording a payment. Value must match against the list of types defined under your application's Order Settings. Ignored if payment_method_id is provided.")
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The manual payment method type for manually recording a payment. At least one of payment_method_id or payment_method_type is required. Ignored if payment_method_id is provided. Value must exactly match one of the Manual Payment Types configured for your application under Ecommerce Settings > Orders (e.g. 'Credit Card (Manual)', 'Check', 'Cash', 'Money Order', 'Adjustment'); unrecognized values will be rejected. Add custom types there if the one you need isn't listed.")
   @JsonProperty(JSON_PROPERTY_PAYMENT_METHOD_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPaymentMethodType() {

@@ -594,7 +594,7 @@ const request: EmailApiSendEmailRequest = {
     fromAddress: "sales@example.com",
     htmlContent: "PGgxPldlbGNvbWU8L2gxPg==",
     plainContent: "V2VsY29tZSB0byBvdXIgbmV3c2xldHRlcg==",
-    addressField: "EMAIL1",
+    addressField: "Email",
   },
 };
 
@@ -660,7 +660,7 @@ const request: EmailApiSendEmailTemplateRequest = {
     templateId: "123",
     contactIds: [1, 2, 3],
     userId: "1",
-    addressField: "EMAIL1",
+    addressField: "Email",
   },
 };
 

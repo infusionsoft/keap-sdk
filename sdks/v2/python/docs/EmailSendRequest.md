@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **from_address** | **str** | The authenticated sender email address to send from. Exactly one of user_id or from_address is required. | [optional] 
 **html_content** | **str** | The HTML-formatted content of the email, encoded in Base64 | [optional] 
 **plain_content** | **str** | The plain-text content of the email, encoded in Base64 | [optional] 
-**address_field** | **str** | Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email | [optional] 
+**address_field** | **str** | Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email. Values are case-sensitive. | [optional] 
 
 ## Example
 

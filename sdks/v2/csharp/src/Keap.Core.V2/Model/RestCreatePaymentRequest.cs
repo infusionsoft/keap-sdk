@@ -41,8 +41,8 @@ namespace Keap.Core.V2.Model
         /// Initializes a new instance of the <see cref="RestCreatePaymentRequest" /> class.
         /// </summary>
         /// <param name="notes">The notes for this payment..</param>
-        /// <param name="paymentMethodId">The payment method id to charge immediately against this order. Omit if you want to add a payment record instead..</param>
-        /// <param name="paymentMethodType">The manual payment method type for manually recording a payment. Value must match against the list of types defined under your application&#39;s Order Settings. Ignored if payment_method_id is provided..</param>
+        /// <param name="paymentMethodId">The payment method id to charge immediately against this order. At least one of payment_method_id or payment_method_type is required. If payment_method_id is provided, payment_method_type is ignored. Omit if you want to add a payment record instead..</param>
+        /// <param name="paymentMethodType">The manual payment method type for manually recording a payment. At least one of payment_method_id or payment_method_type is required. Ignored if payment_method_id is provided. Value must exactly match one of the Manual Payment Types configured for your application under Ecommerce Settings &gt; Orders (e.g. &#39;Credit Card (Manual)&#39;, &#39;Check&#39;, &#39;Cash&#39;, &#39;Money Order&#39;, &#39;Adjustment&#39;); unrecognized values will be rejected. Add custom types there if the one you need isn&#39;t listed..</param>
         /// <param name="paymentTime">The date and time of payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z).</param>
         /// <param name="paymentAmount">The amount to pay. Must not exceed the current balance of the order. Must be greater than 0 if charging with a payment_method_id (required).</param>
         /// <param name="applyToCommissions">Whether to apply this payment to commissions. (required).</param>
@@ -76,16 +76,16 @@ namespace Keap.Core.V2.Model
         public string Notes { get; set; }
 
         /// <summary>
-        /// The payment method id to charge immediately against this order. Omit if you want to add a payment record instead.
+        /// The payment method id to charge immediately against this order. At least one of payment_method_id or payment_method_type is required. If payment_method_id is provided, payment_method_type is ignored. Omit if you want to add a payment record instead.
         /// </summary>
-        /// <value>The payment method id to charge immediately against this order. Omit if you want to add a payment record instead.</value>
+        /// <value>The payment method id to charge immediately against this order. At least one of payment_method_id or payment_method_type is required. If payment_method_id is provided, payment_method_type is ignored. Omit if you want to add a payment record instead.</value>
         [DataMember(Name = "payment_method_id", EmitDefaultValue = false)]
         public string PaymentMethodId { get; set; }
 
         /// <summary>
-        /// The manual payment method type for manually recording a payment. Value must match against the list of types defined under your application&#39;s Order Settings. Ignored if payment_method_id is provided.
+        /// The manual payment method type for manually recording a payment. At least one of payment_method_id or payment_method_type is required. Ignored if payment_method_id is provided. Value must exactly match one of the Manual Payment Types configured for your application under Ecommerce Settings &gt; Orders (e.g. &#39;Credit Card (Manual)&#39;, &#39;Check&#39;, &#39;Cash&#39;, &#39;Money Order&#39;, &#39;Adjustment&#39;); unrecognized values will be rejected. Add custom types there if the one you need isn&#39;t listed.
         /// </summary>
-        /// <value>The manual payment method type for manually recording a payment. Value must match against the list of types defined under your application&#39;s Order Settings. Ignored if payment_method_id is provided.</value>
+        /// <value>The manual payment method type for manually recording a payment. At least one of payment_method_id or payment_method_type is required. Ignored if payment_method_id is provided. Value must exactly match one of the Manual Payment Types configured for your application under Ecommerce Settings &gt; Orders (e.g. &#39;Credit Card (Manual)&#39;, &#39;Check&#39;, &#39;Cash&#39;, &#39;Money Order&#39;, &#39;Adjustment&#39;); unrecognized values will be rejected. Add custom types there if the one you need isn&#39;t listed.</value>
         [DataMember(Name = "payment_method_type", EmitDefaultValue = false)]
         public string PaymentMethodType { get; set; }
 

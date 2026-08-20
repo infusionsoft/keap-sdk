@@ -274,10 +274,10 @@ public class EmailSendRequest implements Serializable {
   }
 
   /**
-   * Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email
+   * Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email. Values are case-sensitive.
    * @return addressField
    */
-  @jakarta.annotation.Nullable  @Schema(example = "EMAIL1", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Email field of each Contact record to address the email to, such as 'Email', 'EmailAddress2', 'EmailAddress3' or '_CustomFieldName', defaulting to the contact's primary email")
+  @jakarta.annotation.Nullable  @Schema(example = "Email", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Email field of each Contact record to address the email to, such as 'Email', 'EmailAddress2', 'EmailAddress3' or '_CustomFieldName', defaulting to the contact's primary email. Values are case-sensitive.")
   @JsonProperty(JSON_PROPERTY_ADDRESS_FIELD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAddressField() {

@@ -28,8 +28,8 @@ class RestCreatePaymentRequest(BaseModel):
     RestCreatePaymentRequest
     """ # noqa: E501
     notes: Optional[StrictStr] = Field(default=None, description="The notes for this payment.")
-    payment_method_id: Optional[StrictStr] = Field(default=None, description="The payment method id to charge immediately against this order. Omit if you want to add a payment record instead.")
-    payment_method_type: Optional[StrictStr] = Field(default=None, description="The manual payment method type for manually recording a payment. Value must match against the list of types defined under your application's Order Settings. Ignored if payment_method_id is provided.")
+    payment_method_id: Optional[StrictStr] = Field(default=None, description="The payment method id to charge immediately against this order. At least one of payment_method_id or payment_method_type is required. If payment_method_id is provided, payment_method_type is ignored. Omit if you want to add a payment record instead.")
+    payment_method_type: Optional[StrictStr] = Field(default=None, description="The manual payment method type for manually recording a payment. At least one of payment_method_id or payment_method_type is required. Ignored if payment_method_id is provided. Value must exactly match one of the Manual Payment Types configured for your application under Ecommerce Settings > Orders (e.g. 'Credit Card (Manual)', 'Check', 'Cash', 'Money Order', 'Adjustment'); unrecognized values will be rejected. Add custom types there if the one you need isn't listed.")
     payment_time: Optional[datetime] = Field(default=None, description="The date and time of payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z)")
     payment_amount: Union[StrictFloat, StrictInt] = Field(description="The amount to pay. Must not exceed the current balance of the order. Must be greater than 0 if charging with a payment_method_id")
     apply_to_commissions: StrictBool = Field(description="Whether to apply this payment to commissions.")

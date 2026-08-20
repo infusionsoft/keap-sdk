@@ -125,7 +125,7 @@ EmailSendTemplateRequest.prototype['contact_ids'] = undefined;
 EmailSendTemplateRequest.prototype['user_id'] = undefined;
 
 /**
- * Email field of each Contact record to address the email to, such as 'Email', 'EmailAddress2', 'EmailAddress3' or '_CustomFieldName', defaulting to the contact's primary email
+ * Email field of each Contact record to address the email to, such as 'Email', 'EmailAddress2', 'EmailAddress3' or '_CustomFieldName', defaulting to the contact's primary email. Values are case-sensitive.
  * @member {String} address_field
  */
 EmailSendTemplateRequest.prototype['address_field'] = undefined;

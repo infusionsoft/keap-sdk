@@ -34335,12 +34335,18 @@ components:
         payment_method_id:
           type: string
           description: The payment method id to charge immediately against this order.
-            Omit if you want to add a payment record instead.
+            At least one of payment_method_id or payment_method_type is required.
+            If payment_method_id is provided, payment_method_type is ignored. Omit
+            if you want to add a payment record instead.
         payment_method_type:
           type: string
           description: The manual payment method type for manually recording a payment.
-            Value must match against the list of types defined under your application's
-            Order Settings. Ignored if payment_method_id is provided.
+            At least one of payment_method_id or payment_method_type is required.
+            Ignored if payment_method_id is provided. Value must exactly match one
+            of the Manual Payment Types configured for your application under Ecommerce
+            Settings > Orders (e.g. 'Credit Card (Manual)', 'Check', 'Cash', 'Money
+            Order', 'Adjustment'); unrecognized values will be rejected. Add custom
+            types there if the one you need isn't listed.
         payment_time:
           type: string
           format: date-time
@@ -35470,8 +35476,8 @@ components:
           type: string
           description: Email field of each Contact record to address the email to,
             such as 'Email', 'EmailAddress2', 'EmailAddress3' or '_CustomFieldName',
-            defaulting to the contact's primary email
-          example: EMAIL1
+            defaulting to the contact's primary email. Values are case-sensitive.
+          example: Email
       required:
       - contacts
       - subject
@@ -35584,8 +35590,8 @@ components:
           type: string
           description: Email field of each Contact record to address the email to,
             such as 'Email', 'EmailAddress2', 'EmailAddress3' or '_CustomFieldName',
-            defaulting to the contact's primary email
-          example: EMAIL1
+            defaulting to the contact's primary email. Values are case-sensitive.
+          example: Email
       required:
       - contact_ids
       - template_id

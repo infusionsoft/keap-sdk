@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **template_id** | **str** | Template ID | 
 **contact_ids** | **List[str]** | List of contact IDs to send the email to | 
 **user_id** | **str** | The user ID to send the email on behalf of | 
-**address_field** | **str** | Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email | [optional] 
+**address_field** | **str** | Email field of each Contact record to address the email to, such as &#39;Email&#39;, &#39;EmailAddress2&#39;, &#39;EmailAddress3&#39; or &#39;_CustomFieldName&#39;, defaulting to the contact&#39;s primary email. Values are case-sensitive. | [optional] 
 
 ## Example
 

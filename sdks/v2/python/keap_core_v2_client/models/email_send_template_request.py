@@ -29,7 +29,7 @@ class EmailSendTemplateRequest(BaseModel):
     template_id: StrictStr = Field(description="Template ID")
     contact_ids: List[StrictStr] = Field(description="List of contact IDs to send the email to")
     user_id: StrictStr = Field(description="The user ID to send the email on behalf of")
-    address_field: Optional[StrictStr] = Field(default=None, description="Email field of each Contact record to address the email to, such as 'Email', 'EmailAddress2', 'EmailAddress3' or '_CustomFieldName', defaulting to the contact's primary email")
+    address_field: Optional[StrictStr] = Field(default=None, description="Email field of each Contact record to address the email to, such as 'Email', 'EmailAddress2', 'EmailAddress3' or '_CustomFieldName', defaulting to the contact's primary email. Values are case-sensitive.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["template_id", "contact_ids", "user_id", "address_field"]
 

@@ -549,7 +549,7 @@ class EmailSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets address_field
      *
-     * @param string|null $address_field Email field of each Contact record to address the email to, such as 'Email', 'EmailAddress2', 'EmailAddress3' or '_CustomFieldName', defaulting to the contact's primary email
+     * @param string|null $address_field Email field of each Contact record to address the email to, such as 'Email', 'EmailAddress2', 'EmailAddress3' or '_CustomFieldName', defaulting to the contact's primary email. Values are case-sensitive.
      *
      * @return self
      */

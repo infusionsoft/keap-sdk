@@ -34,7 +34,7 @@ class EmailSendRequest(BaseModel):
     from_address: Optional[StrictStr] = Field(default=None, description="The authenticated sender email address to send from. Exactly one of user_id or from_address is required.")
     html_content: Optional[StrictStr] = Field(default=None, description="The HTML-formatted content of the email, encoded in Base64")
     plain_content: Optional[StrictStr] = Field(default=None, description="The plain-text content of the email, encoded in Base64")
-    address_field: Optional[StrictStr] = Field(default=None, description="Email field of each Contact record to address the email to, such as 'Email', 'EmailAddress2', 'EmailAddress3' or '_CustomFieldName', defaulting to the contact's primary email")
+    address_field: Optional[StrictStr] = Field(default=None, description="Email field of each Contact record to address the email to, such as 'Email', 'EmailAddress2', 'EmailAddress3' or '_CustomFieldName', defaulting to the contact's primary email. Values are case-sensitive.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["contacts", "subject", "attachments", "user_id", "from_address", "html_content", "plain_content", "address_field"]
 

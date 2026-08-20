@@ -29,7 +29,7 @@ export class EmailSendTemplateRequest {
     */
     'userId': string;
     /**
-    * Email field of each Contact record to address the email to, such as \'Email\', \'EmailAddress2\', \'EmailAddress3\' or \'_CustomFieldName\', defaulting to the contact\'s primary email
+    * Email field of each Contact record to address the email to, such as \'Email\', \'EmailAddress2\', \'EmailAddress3\' or \'_CustomFieldName\', defaulting to the contact\'s primary email. Values are case-sensitive.
     */
     'addressField'?: string;
 
