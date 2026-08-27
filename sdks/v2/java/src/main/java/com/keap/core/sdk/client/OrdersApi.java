@@ -27,6 +27,7 @@ import com.keap.core.sdk.model.CustomFieldMetaData;
 import com.keap.core.sdk.model.CustomFieldTab;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.FileOperationRequest;
+import com.keap.core.sdk.model.InvoiceOrderPayment;
 import com.keap.core.sdk.model.ListCustomFieldGroupsResponse;
 import com.keap.core.sdk.model.ListCustomFieldTabsResponse;
 import com.keap.core.sdk.model.ListOrderPaymentsResponse;
@@ -37,6 +38,7 @@ import com.keap.core.sdk.model.OrderV2;
 import com.keap.core.sdk.model.PaymentResult;
 import com.keap.core.sdk.model.RestCreateOrderRequest;
 import com.keap.core.sdk.model.RestCreatePaymentRequest;
+import com.keap.core.sdk.model.RestUpdatePaymentRequest;
 import java.util.Set;
 import com.keap.core.sdk.model.UpdateCustomFieldGroupRequest;
 import com.keap.core.sdk.model.UpdateCustomFieldMetaDataRequest;
@@ -2927,6 +2929,128 @@ import io.github.resilience4j.retry.Retry;
 
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(updateOrderItemRequest);
+      localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update a Payment
+   * Updates a payment record with external source information and status
+   * @param orderId  (required)
+   * @param paymentId  (required)
+   * @param restUpdatePaymentRequest  (required)
+   * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+   * @return InvoiceOrderPayment
+   * @throws ApiException if fails to make API call
+   */
+  public InvoiceOrderPayment updatePayment(String orderId, String paymentId, RestUpdatePaymentRequest restUpdatePaymentRequest, Set<String> updateMask) throws ApiException {
+    ApiResponse<InvoiceOrderPayment> localVarResponse = updatePaymentWithHttpInfo(orderId, paymentId, restUpdatePaymentRequest, updateMask);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Update a Payment
+   * Updates a payment record with external source information and status
+   * @param orderId  (required)
+   * @param paymentId  (required)
+   * @param restUpdatePaymentRequest  (required)
+   * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+   * @return ApiResponse&lt;InvoiceOrderPayment&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<InvoiceOrderPayment> updatePaymentWithHttpInfo(String orderId, String paymentId, RestUpdatePaymentRequest restUpdatePaymentRequest, Set<String> updateMask) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updatePaymentRequestBuilder(orderId, paymentId, restUpdatePaymentRequest, updateMask);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updatePayment", localVarResponse);
+        }
+        return new ApiResponse<InvoiceOrderPayment>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<InvoiceOrderPayment>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updatePaymentRequestBuilder(String orderId, String paymentId, RestUpdatePaymentRequest restUpdatePaymentRequest, Set<String> updateMask) throws ApiException {
+    // verify the required parameter 'orderId' is set
+    if (orderId == null) {
+      throw new ApiException(400, "Missing the required parameter 'orderId' when calling updatePayment");
+    }
+    // verify the required parameter 'paymentId' is set
+    if (paymentId == null) {
+      throw new ApiException(400, "Missing the required parameter 'paymentId' when calling updatePayment");
+    }
+    // verify the required parameter 'restUpdatePaymentRequest' is set
+    if (restUpdatePaymentRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'restUpdatePaymentRequest' when calling updatePayment");
+    }
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/orders/{order_id}/payments/{payment_id}"
+        .replace("{order_id}", ApiClient.urlEncode(orderId.toString()))
+        .replace("{payment_id}", ApiClient.urlEncode(paymentId.toString()));
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "update_mask";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "update_mask", updateMask));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(restUpdatePaymentRequest);
       localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

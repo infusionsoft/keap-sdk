@@ -33,6 +33,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**updateOrderCustomFieldGroup()**](OrdersApi.md#updateOrderCustomFieldGroup) | **PATCH** /rest/v2/orders/model/customFields/groups/{group_id} | Update an Order Custom Field Group |
 | [**updateOrderCustomFieldTab()**](OrdersApi.md#updateOrderCustomFieldTab) | **PATCH** /rest/v2/orders/model/customFields/tabs/{tab_id} | Update an Order Custom Field Tab |
 | [**updateOrderItem()**](OrdersApi.md#updateOrderItem) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item |
+| [**updatePayment()**](OrdersApi.md#updatePayment) | **PATCH** /rest/v2/orders/{order_id}/payments/{payment_id} | Update a Payment |
 
 
 ## `applyCommissionOnOrderItems()`
@@ -1773,6 +1774,71 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\OrderItem**](../Model/OrderItem.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updatePayment()`
+
+```php
+updatePayment($order_id, $payment_id, $rest_update_payment_request, $update_mask): \Keap\Core\V2\Model\InvoiceOrderPayment
+```
+
+Update a Payment
+
+Updates a payment record with external source information and status
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\OrdersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$order_id = 'order_id_example'; // string
+$payment_id = 'payment_id_example'; // string
+$rest_update_payment_request = new \Keap\Core\V2\Model\RestUpdatePaymentRequest(); // \Keap\Core\V2\Model\RestUpdatePaymentRequest
+$update_mask = array('update_mask_example'); // string[] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+
+try {
+    $result = $apiInstance->updatePayment($order_id, $payment_id, $rest_update_payment_request, $update_mask);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling OrdersApi->updatePayment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **order_id** | **string**|  | |
+| **payment_id** | **string**|  | |
+| **rest_update_payment_request** | [**\Keap\Core\V2\Model\RestUpdatePaymentRequest**](../Model/RestUpdatePaymentRequest.md)|  | |
+| **update_mask** | [**string[]**](../Model/string.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] |
+
+### Return type
+
+[**\Keap\Core\V2\Model\InvoiceOrderPayment**](../Model/InvoiceOrderPayment.md)
 
 ### Authorization
 

@@ -33,6 +33,7 @@ Method | HTTP request | Description
 [**updateOrderCustomFieldGroup**](OrdersApi.md#updateOrderCustomFieldGroup) | **PATCH** /rest/v2/orders/model/customFields/groups/{group_id} | Update an Order Custom Field Group
 [**updateOrderCustomFieldTab**](OrdersApi.md#updateOrderCustomFieldTab) | **PATCH** /rest/v2/orders/model/customFields/tabs/{tab_id} | Update an Order Custom Field Tab
 [**updateOrderItem**](OrdersApi.md#updateOrderItem) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item
+[**updatePayment**](OrdersApi.md#updatePayment) | **PATCH** /rest/v2/orders/{order_id}/payments/{payment_id} | Update a Payment
 
 
 
@@ -1473,6 +1474,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OrderItem**](OrderItem.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## updatePayment
+
+> InvoiceOrderPayment updatePayment(orderId, paymentId, restUpdatePaymentRequest, opts)
+
+Update a Payment
+
+Updates a payment record with external source information and status
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.OrdersApi();
+let orderId = "orderId_example"; // String | 
+let paymentId = "paymentId_example"; // String | 
+let restUpdatePaymentRequest = new KeapCoreServiceV2Sdk.RestUpdatePaymentRequest(); // RestUpdatePaymentRequest | 
+let opts = {
+  'updateMask': ["null"] // [String] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+};
+apiInstance.updatePayment(orderId, paymentId, restUpdatePaymentRequest, opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderId** | **String**|  | 
+ **paymentId** | **String**|  | 
+ **restUpdatePaymentRequest** | [**RestUpdatePaymentRequest**](RestUpdatePaymentRequest.md)|  | 
+ **updateMask** | [**[String]**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+
+### Return type
+
+[**InvoiceOrderPayment**](InvoiceOrderPayment.md)
 
 ### Authorization
 

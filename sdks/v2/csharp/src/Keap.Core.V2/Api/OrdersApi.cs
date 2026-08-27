@@ -743,6 +743,35 @@ namespace Keap.Core.V2.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of OrderItem</returns>
         ApiResponse<OrderItem> UpdateOrderItemWithHttpInfo(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, List<string>? updateMask = default, int operationIndex = 0);
+        /// <summary>
+        /// Update a Payment
+        /// </summary>
+        /// <remarks>
+        /// Updates a payment record with external source information and status
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="paymentId"></param>
+        /// <param name="restUpdatePaymentRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>InvoiceOrderPayment</returns>
+        InvoiceOrderPayment UpdatePayment(string orderId, string paymentId, RestUpdatePaymentRequest restUpdatePaymentRequest, List<string>? updateMask = default, int operationIndex = 0);
+
+        /// <summary>
+        /// Update a Payment
+        /// </summary>
+        /// <remarks>
+        /// Updates a payment record with external source information and status
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="paymentId"></param>
+        /// <param name="restUpdatePaymentRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of InvoiceOrderPayment</returns>
+        ApiResponse<InvoiceOrderPayment> UpdatePaymentWithHttpInfo(string orderId, string paymentId, RestUpdatePaymentRequest restUpdatePaymentRequest, List<string>? updateMask = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -1525,6 +1554,37 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderItem)</returns>
         System.Threading.Tasks.Task<ApiResponse<OrderItem>> UpdateOrderItemWithHttpInfoAsync(string orderId, string orderItemId, UpdateOrderItemRequest updateOrderItemRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Update a Payment
+        /// </summary>
+        /// <remarks>
+        /// Updates a payment record with external source information and status
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="paymentId"></param>
+        /// <param name="restUpdatePaymentRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of InvoiceOrderPayment</returns>
+        System.Threading.Tasks.Task<InvoiceOrderPayment> UpdatePaymentAsync(string orderId, string paymentId, RestUpdatePaymentRequest restUpdatePaymentRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Update a Payment
+        /// </summary>
+        /// <remarks>
+        /// Updates a payment record with external source information and status
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="paymentId"></param>
+        /// <param name="restUpdatePaymentRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (InvoiceOrderPayment)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InvoiceOrderPayment>> UpdatePaymentWithHttpInfoAsync(string orderId, string paymentId, RestUpdatePaymentRequest restUpdatePaymentRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -7147,6 +7207,233 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateOrderItem", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update a Payment Updates a payment record with external source information and status
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="paymentId"></param>
+        /// <param name="restUpdatePaymentRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>InvoiceOrderPayment</returns>
+        public InvoiceOrderPayment UpdatePayment(string orderId, string paymentId, RestUpdatePaymentRequest restUpdatePaymentRequest, List<string>? updateMask = default, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<InvoiceOrderPayment> localVarResponse = UpdatePaymentWithHttpInfo(orderId, paymentId, restUpdatePaymentRequest, updateMask);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update a Payment Updates a payment record with external source information and status
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="paymentId"></param>
+        /// <param name="restUpdatePaymentRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of InvoiceOrderPayment</returns>
+        public Keap.Core.V2.Client.ApiResponse<InvoiceOrderPayment> UpdatePaymentWithHttpInfo(string orderId, string paymentId, RestUpdatePaymentRequest restUpdatePaymentRequest, List<string>? updateMask = default, int operationIndex = 0)
+        {
+            // verify the required parameter 'orderId' is set
+            if (orderId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'orderId' when calling OrdersApi->UpdatePayment");
+            }
+
+            // verify the required parameter 'paymentId' is set
+            if (paymentId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'paymentId' when calling OrdersApi->UpdatePayment");
+            }
+
+            // verify the required parameter 'restUpdatePaymentRequest' is set
+            if (restUpdatePaymentRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'restUpdatePaymentRequest' when calling OrdersApi->UpdatePayment");
+            }
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("order_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(orderId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("payment_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(paymentId)); // path parameter
+            if (updateMask != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+            }
+            localVarRequestOptions.Data = restUpdatePaymentRequest;
+
+            localVarRequestOptions.Operation = "OrdersApi.UpdatePayment";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<InvoiceOrderPayment>("/rest/v2/orders/{order_id}/payments/{payment_id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdatePayment", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update a Payment Updates a payment record with external source information and status
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="paymentId"></param>
+        /// <param name="restUpdatePaymentRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of InvoiceOrderPayment</returns>
+        public async System.Threading.Tasks.Task<InvoiceOrderPayment> UpdatePaymentAsync(string orderId, string paymentId, RestUpdatePaymentRequest restUpdatePaymentRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<InvoiceOrderPayment> localVarResponse = await UpdatePaymentWithHttpInfoAsync(orderId, paymentId, restUpdatePaymentRequest, updateMask, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update a Payment Updates a payment record with external source information and status
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"></param>
+        /// <param name="paymentId"></param>
+        /// <param name="restUpdatePaymentRequest"></param>
+        /// <param name="updateMask">An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (InvoiceOrderPayment)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<InvoiceOrderPayment>> UpdatePaymentWithHttpInfoAsync(string orderId, string paymentId, RestUpdatePaymentRequest restUpdatePaymentRequest, List<string>? updateMask = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'orderId' is set
+            if (orderId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'orderId' when calling OrdersApi->UpdatePayment");
+            }
+
+            // verify the required parameter 'paymentId' is set
+            if (paymentId == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'paymentId' when calling OrdersApi->UpdatePayment");
+            }
+
+            // verify the required parameter 'restUpdatePaymentRequest' is set
+            if (restUpdatePaymentRequest == null)
+            {
+                throw new Keap.Core.V2.Client.ApiException(400, "Missing required parameter 'restUpdatePaymentRequest' when calling OrdersApi->UpdatePayment");
+            }
+
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("order_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(orderId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("payment_id", Keap.Core.V2.Client.ClientUtils.ParameterToString(paymentId)); // path parameter
+            if (updateMask != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("multi", "update_mask", updateMask));
+            }
+            localVarRequestOptions.Data = restUpdatePaymentRequest;
+
+            localVarRequestOptions.Operation = "OrdersApi.UpdatePayment";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<InvoiceOrderPayment>("/rest/v2/orders/{order_id}/payments/{payment_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdatePayment", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

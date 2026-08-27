@@ -62,6 +62,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**updateOrderCustomFieldTabWithHttpInfo**](OrdersApi.md#updateOrderCustomFieldTabWithHttpInfo) | **PATCH** /rest/v2/orders/model/customFields/tabs/{tab_id} | Update an Order Custom Field Tab |
 | [**updateOrderItem**](OrdersApi.md#updateOrderItem) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item |
 | [**updateOrderItemWithHttpInfo**](OrdersApi.md#updateOrderItemWithHttpInfo) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item |
+| [**updatePayment**](OrdersApi.md#updatePayment) | **PATCH** /rest/v2/orders/{order_id}/payments/{payment_id} | Update a Payment |
+| [**updatePaymentWithHttpInfo**](OrdersApi.md#updatePaymentWithHttpInfo) | **PATCH** /rest/v2/orders/{order_id}/payments/{payment_id} | Update a Payment |
 
 
 
@@ -4758,6 +4760,178 @@ public class Example {
 ### Return type
 
 ApiResponse<[**OrderItem**](OrderItem.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## updatePayment
+
+> InvoiceOrderPayment updatePayment(orderId, paymentId, restUpdatePaymentRequest, updateMask)
+
+Update a Payment
+
+Updates a payment record with external source information and status
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrdersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrdersApi apiInstance = new OrdersApi(defaultClient);
+        String orderId = "orderId_example"; // String | 
+        String paymentId = "paymentId_example"; // String | 
+        RestUpdatePaymentRequest restUpdatePaymentRequest = new RestUpdatePaymentRequest(); // RestUpdatePaymentRequest | 
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        try {
+            InvoiceOrderPayment result = apiInstance.updatePayment(orderId, paymentId, restUpdatePaymentRequest, updateMask);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrdersApi#updatePayment");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **orderId** | **String**|  | |
+| **paymentId** | **String**|  | |
+| **restUpdatePaymentRequest** | [**RestUpdatePaymentRequest**](RestUpdatePaymentRequest.md)|  | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: external_source, external_source_value, external_status_value, external_create_time, external_update_time, external_create_user, notes, payment_time, payment_amount] |
+
+### Return type
+
+[**InvoiceOrderPayment**](InvoiceOrderPayment.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## updatePaymentWithHttpInfo
+
+> ApiResponse<InvoiceOrderPayment> updatePayment updatePaymentWithHttpInfo(orderId, paymentId, restUpdatePaymentRequest, updateMask)
+
+Update a Payment
+
+Updates a payment record with external source information and status
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.OrdersApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        OrdersApi apiInstance = new OrdersApi(defaultClient);
+        String orderId = "orderId_example"; // String | 
+        String paymentId = "paymentId_example"; // String | 
+        RestUpdatePaymentRequest restUpdatePaymentRequest = new RestUpdatePaymentRequest(); // RestUpdatePaymentRequest | 
+        Set<String> updateMask = Arrays.asList(); // Set<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+        try {
+            ApiResponse<InvoiceOrderPayment> response = apiInstance.updatePaymentWithHttpInfo(orderId, paymentId, restUpdatePaymentRequest, updateMask);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrdersApi#updatePayment");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **orderId** | **String**|  | |
+| **paymentId** | **String**|  | |
+| **restUpdatePaymentRequest** | [**RestUpdatePaymentRequest**](RestUpdatePaymentRequest.md)|  | |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: external_source, external_source_value, external_status_value, external_create_time, external_update_time, external_create_user, notes, payment_time, payment_amount] |
+
+### Return type
+
+ApiResponse<[**InvoiceOrderPayment**](InvoiceOrderPayment.md)>
 
 
 ### Authorization

@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.21</version>
+  <version>2.0.22</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.21"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.22"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.21.jar`
+- `target/core-service-v2-java-sdk-2.0.22.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -640,6 +640,8 @@ Class | Method | HTTP request | Description
 *OrdersApi* | [**updateOrderCustomFieldTabWithHttpInfo**](docs/OrdersApi.md#updateOrderCustomFieldTabWithHttpInfo) | **PATCH** /rest/v2/orders/model/customFields/tabs/{tab_id} | Update an Order Custom Field Tab
 *OrdersApi* | [**updateOrderItem**](docs/OrdersApi.md#updateOrderItem) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item
 *OrdersApi* | [**updateOrderItemWithHttpInfo**](docs/OrdersApi.md#updateOrderItemWithHttpInfo) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item
+*OrdersApi* | [**updatePayment**](docs/OrdersApi.md#updatePayment) | **PATCH** /rest/v2/orders/{order_id}/payments/{payment_id} | Update a Payment
+*OrdersApi* | [**updatePaymentWithHttpInfo**](docs/OrdersApi.md#updatePaymentWithHttpInfo) | **PATCH** /rest/v2/orders/{order_id}/payments/{payment_id} | Update a Payment
 *PaymentMethodConfigsApi* | [**createPaymentMethodConfig**](docs/PaymentMethodConfigsApi.md#createPaymentMethodConfig) | **POST** /rest/v2/paymentMethodConfigs | Create Payment Method Configuration
 *PaymentMethodConfigsApi* | [**createPaymentMethodConfigWithHttpInfo**](docs/PaymentMethodConfigsApi.md#createPaymentMethodConfigWithHttpInfo) | **POST** /rest/v2/paymentMethodConfigs | Create Payment Method Configuration
 *PaymentMethodsApi* | [**deactivatePaymentMethod**](docs/PaymentMethodsApi.md#deactivatePaymentMethod) | **POST** /rest/v2/contacts/{contact_id}/paymentMethods/{payment_method_id}:deactivate | Deactivate a Contact Payment Method
@@ -1220,6 +1222,7 @@ Class | Method | HTTP request | Description
  - [RestCreatePaymentRequest](docs/RestCreatePaymentRequest.md)
  - [RestEmailAddressStatus](docs/RestEmailAddressStatus.md)
  - [RestOpportunityStage](docs/RestOpportunityStage.md)
+ - [RestUpdatePaymentRequest](docs/RestUpdatePaymentRequest.md)
  - [RestV2Opportunity](docs/RestV2Opportunity.md)
  - [RestV2ProductDetail](docs/RestV2ProductDetail.md)
  - [RestV2ProductList](docs/RestV2ProductList.md)

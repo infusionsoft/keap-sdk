@@ -33,6 +33,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**UpdateOrderCustomFieldGroup**](OrdersApi.md#updateordercustomfieldgroup) | **PATCH** /rest/v2/orders/model/customFields/groups/{group_id} | Update an Order Custom Field Group |
 | [**UpdateOrderCustomFieldTab**](OrdersApi.md#updateordercustomfieldtab) | **PATCH** /rest/v2/orders/model/customFields/tabs/{tab_id} | Update an Order Custom Field Tab |
 | [**UpdateOrderItem**](OrdersApi.md#updateorderitem) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item |
+| [**UpdatePayment**](OrdersApi.md#updatepayment) | **PATCH** /rest/v2/orders/{order_id}/payments/{payment_id} | Update a Payment |
 
 <a id="applycommissiononorderitems"></a>
 # **ApplyCommissionOnOrderItems**
@@ -2988,6 +2989,114 @@ catch (ApiException e)
 ### Return type
 
 [**OrderItem**](OrderItem.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updatepayment"></a>
+# **UpdatePayment**
+> InvoiceOrderPayment UpdatePayment (string orderId, string paymentId, RestUpdatePaymentRequest restUpdatePaymentRequest, List<string>? updateMask = null)
+
+Update a Payment
+
+Updates a payment record with external source information and status
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class UpdatePaymentExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new OrdersApi(config);
+            var orderId = "orderId_example";  // string | 
+            var paymentId = "paymentId_example";  // string | 
+            var restUpdatePaymentRequest = new RestUpdatePaymentRequest(); // RestUpdatePaymentRequest | 
+            var updateMask = new List<string>?(); // List<string>? | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional) 
+
+            try
+            {
+                // Update a Payment
+                InvoiceOrderPayment result = apiInstance.UpdatePayment(orderId, paymentId, restUpdatePaymentRequest, updateMask);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OrdersApi.UpdatePayment: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdatePaymentWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update a Payment
+    ApiResponse<InvoiceOrderPayment> response = apiInstance.UpdatePaymentWithHttpInfo(orderId, paymentId, restUpdatePaymentRequest, updateMask);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OrdersApi.UpdatePaymentWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **orderId** | **string** |  |  |
+| **paymentId** | **string** |  |  |
+| **restUpdatePaymentRequest** | [**RestUpdatePaymentRequest**](RestUpdatePaymentRequest.md) |  |  |
+| **updateMask** | [**List&lt;string&gt;?**](string.md) | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]  |
+
+### Return type
+
+[**InvoiceOrderPayment**](InvoiceOrderPayment.md)
 
 ### Authorization
 

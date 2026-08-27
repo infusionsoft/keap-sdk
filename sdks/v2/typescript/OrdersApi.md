@@ -33,6 +33,7 @@ Method | HTTP request | Description
 [**updateOrderCustomFieldGroup**](OrdersApi.md#updateOrderCustomFieldGroup) | **PATCH** /rest/v2/orders/model/customFields/groups/{group_id} | Update an Order Custom Field Group
 [**updateOrderCustomFieldTab**](OrdersApi.md#updateOrderCustomFieldTab) | **PATCH** /rest/v2/orders/model/customFields/tabs/{tab_id} | Update an Order Custom Field Tab
 [**updateOrderItem**](OrdersApi.md#updateOrderItem) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item
+[**updatePayment**](OrdersApi.md#updatePayment) | **PATCH** /rest/v2/orders/{order_id}/payments/{payment_id} | Update a Payment
 
 
 # **applyCommissionOnOrderItems**
@@ -2029,6 +2030,88 @@ Name | Type | Description  | Notes
 ### Return type
 
 **OrderItem**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **updatePayment**
+> InvoiceOrderPayment updatePayment(restUpdatePaymentRequest)
+
+Updates a payment record with external source information and status
+
+### Example
+
+
+```typescript
+import { createConfiguration, OrdersApi } from '';
+import type { OrdersApiUpdatePaymentRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new OrdersApi(configuration);
+
+const request: OrdersApiUpdatePaymentRequest = {
+  
+  orderId: "order_id_example",
+  
+  paymentId: "payment_id_example",
+  
+  restUpdatePaymentRequest: {
+    externalSource: "externalSource_example",
+    externalSourceValue: "externalSourceValue_example",
+    externalStatusValue: "externalStatusValue_example",
+    externalCreateTime: new Date('2024-05-21T14:30:00Z'),
+    externalUpdateTime: new Date('2024-05-21T14:30:00Z'),
+    externalCreateUser: "externalCreateUser_example",
+    notes: "notes_example",
+    paymentTime: new Date('2024-05-21T14:30:00Z'),
+    paymentAmount: 3.14,
+  },
+    // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+  updateMask: [
+    "external_source",
+  ],
+};
+
+const data = await apiInstance.updatePayment(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **restUpdatePaymentRequest** | **RestUpdatePaymentRequest**|  |
+ **orderId** | [**string**] |  | defaults to undefined
+ **paymentId** | [**string**] |  | defaults to undefined
+ **updateMask** | **Array<&#39;external_source&#39; &#124; &#39;external_source_value&#39; &#124; &#39;external_status_value&#39; &#124; &#39;external_create_time&#39; &#124; &#39;external_update_time&#39; &#124; &#39;external_create_user&#39; &#124; &#39;notes&#39; &#124; &#39;payment_time&#39; &#124; &#39;payment_amount&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+
+
+### Return type
+
+**InvoiceOrderPayment**
 
 ### Authorization
 

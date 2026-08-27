@@ -9102,7 +9102,7 @@ paths:
           - (Set[String]) `ids` — accepts a list of contact IDs (e.g. `ids==1,2,3`)
           - (String) `start_update_time`
           - (String) `end_update_time`
-          - (String) `phone_number` — the phone number to search for. Requires `phone_fields` to be specified; only the specified phone fields are searched.
+          - (String) `phone_number` — the phone number to search for; supports prefix wildcard (e.g. `phone_number==555*`, "starts with"). Wildcard prefix must be at least 3 characters (e.g. `phone_number==55*` is rejected). Requires `phone_fields` to be specified; only the specified phone fields are searched.
           - (Set[String]) `phone_fields` — restricts which phone fields to search (e.g. PHONE1, PHONE2, or comma-separated list PHONE1,PHONE2,PHONE3,PHONE4,PHONE5). Required when `phone_number` is supplied.
           - (String) `billing_address_line1`
           - (String) `billing_address_locality`
@@ -17341,6 +17341,105 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OrderV2'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /rest/v2/orders/{order_id}/payments/{payment_id}:
+    patch:
+      tags:
+      - Orders
+      summary: Update a Payment
+      description: Updates a payment record with external source information and status
+      operationId: updatePayment
+      parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: payment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: update_mask
+        in: query
+        description: An optional list of properties to be updated. If set, only the
+          provided properties will be updated and others will be skipped.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - external_source
+            - external_source_value
+            - external_status_value
+            - external_create_time
+            - external_update_time
+            - external_create_user
+            - notes
+            - payment_time
+            - payment_amount
+          uniqueItems: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestUpdatePaymentRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceOrderPayment'
         '400':
           description: Bad Request
           content:
@@ -39248,6 +39347,101 @@ components:
           format: int64
           description: Days between each payment
           example: 30
+    RestUpdatePaymentRequest:
+      type: object
+      properties:
+        external_source:
+          type: string
+          description: The external source type of this payment.
+        external_source_value:
+          type: string
+          description: The external source value of this payment.
+        external_status_value:
+          type: string
+          description: The external status value of this payment.
+        external_create_time:
+          type: string
+          format: date-time
+          description: The external creation timestamp of this payment. In ISO-8601
+            format (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
+        external_update_time:
+          type: string
+          format: date-time
+          description: The external update timestamp of this payment. In ISO-8601
+            format (e.g. 2024-05-21T23:00:00Z)
+          example: '2024-05-21T14:30:00Z'
+        external_create_user:
+          type: string
+          description: The user who created this payment externally.
+        notes:
+          type: string
+          description: Notes or description for the payment.
+        payment_time:
+          type: string
+          format: date-time
+          description: The date and time of payment. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z).
+            Can only be modified for manually recorded payments.
+          example: '2024-05-21T14:30:00Z'
+        payment_amount:
+          type: number
+          format: double
+          description: The payment amount. Can only be modified for manually recorded
+            payments.
+    InvoiceOrderPayment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The invoice order payment ID.
+          example: 123
+        amount:
+          type: number
+          description: The payment amount.
+          example: 10000
+        note:
+          type: string
+          description: A note about the payment.
+          example: Monthly payment
+        invoice_id:
+          type: string
+          description: The invoice ID.
+          example: 456
+        payment_id:
+          type: string
+          description: The payment ID.
+          example: 789
+        pay_time:
+          type: string
+          format: date-time
+          description: The date and time of payment.
+          example: '2024-05-21T23:00:00Z'
+        pay_status:
+          type: string
+          description: The payment status.
+          enum:
+          - MANUAL_PAID
+          - REFUNDED
+          - VOIDED
+          - PAYPAL_PAID
+          - APPROVED
+          - FAILED
+          - ERROR
+          - PENDING
+          example: APPROVED
+        last_updated_time:
+          type: string
+          format: date-time
+          description: When this payment record was last updated.
+          example: '2024-05-21T23:00:00Z'
+        skip_commission:
+          type: boolean
+          description: Whether to skip commission for this payment.
+          example: false
+        refund_invoice_payment_id:
+          type: string
+          description: The refund invoice payment ID, if this is a refund.
+          example: 101
     UpdateOrderItemRequest:
       type: object
       description: order
@@ -41752,60 +41946,6 @@ components:
             $ref: '#/components/schemas/OrderV2'
         next_page_token:
           type: string
-    InvoiceOrderPayment:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The invoice order payment ID.
-          example: 123
-        amount:
-          type: number
-          description: The payment amount.
-          example: 10000
-        note:
-          type: string
-          description: A note about the payment.
-          example: Monthly payment
-        invoice_id:
-          type: string
-          description: The invoice ID.
-          example: 456
-        payment_id:
-          type: string
-          description: The payment ID.
-          example: 789
-        pay_time:
-          type: string
-          format: date-time
-          description: The date and time of payment.
-          example: '2024-05-21T23:00:00Z'
-        pay_status:
-          type: string
-          description: The payment status.
-          enum:
-          - MANUAL_PAID
-          - REFUNDED
-          - VOIDED
-          - PAYPAL_PAID
-          - APPROVED
-          - FAILED
-          - ERROR
-          - PENDING
-          example: APPROVED
-        last_updated_time:
-          type: string
-          format: date-time
-          description: When this payment record was last updated.
-          example: '2024-05-21T23:00:00Z'
-        skip_commission:
-          type: boolean
-          description: Whether to skip commission for this payment.
-          example: false
-        refund_invoice_payment_id:
-          type: string
-          description: The refund invoice payment ID, if this is a refund.
-          example: 101
     ListOrderPaymentsResponse:
       type: object
       properties:

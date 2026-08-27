@@ -17,6 +17,7 @@ import { CustomFieldGroup } from '../models/CustomFieldGroup';
 import { CustomFieldMetaData } from '../models/CustomFieldMetaData';
 import { CustomFieldTab } from '../models/CustomFieldTab';
 import { FileOperationRequest } from '../models/FileOperationRequest';
+import { InvoiceOrderPayment } from '../models/InvoiceOrderPayment';
 import { ListCustomFieldGroupsResponse } from '../models/ListCustomFieldGroupsResponse';
 import { ListCustomFieldTabsResponse } from '../models/ListCustomFieldTabsResponse';
 import { ListOrderPaymentsResponse } from '../models/ListOrderPaymentsResponse';
@@ -27,6 +28,7 @@ import { OrderV2 } from '../models/OrderV2';
 import { PaymentResult } from '../models/PaymentResult';
 import { RestCreateOrderRequest } from '../models/RestCreateOrderRequest';
 import { RestCreatePaymentRequest } from '../models/RestCreatePaymentRequest';
+import { RestUpdatePaymentRequest } from '../models/RestUpdatePaymentRequest';
 import { UpdateCustomFieldGroupRequest } from '../models/UpdateCustomFieldGroupRequest';
 import { UpdateCustomFieldMetaDataRequest } from '../models/UpdateCustomFieldMetaDataRequest';
 import { UpdateCustomFieldTabRequest } from '../models/UpdateCustomFieldTabRequest';
@@ -1464,6 +1466,80 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(updateOrderItemRequest, "UpdateOrderItemRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Updates a payment record with external source information and status
+     * Update a Payment
+     * @param orderId 
+     * @param paymentId 
+     * @param restUpdatePaymentRequest 
+     * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     */
+    public async updatePayment(orderId: string, paymentId: string, restUpdatePaymentRequest: RestUpdatePaymentRequest, updateMask?: Set<'external_source' | 'external_source_value' | 'external_status_value' | 'external_create_time' | 'external_update_time' | 'external_create_user' | 'notes' | 'payment_time' | 'payment_amount'>, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'orderId' is not null or undefined
+        if (orderId === null || orderId === undefined) {
+            throw new RequiredError("OrdersApi", "updatePayment", "orderId");
+        }
+
+
+        // verify required parameter 'paymentId' is not null or undefined
+        if (paymentId === null || paymentId === undefined) {
+            throw new RequiredError("OrdersApi", "updatePayment", "paymentId");
+        }
+
+
+        // verify required parameter 'restUpdatePaymentRequest' is not null or undefined
+        if (restUpdatePaymentRequest === null || restUpdatePaymentRequest === undefined) {
+            throw new RequiredError("OrdersApi", "updatePayment", "restUpdatePaymentRequest");
+        }
+
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/orders/{order_id}/payments/{payment_id}'
+            .replace('{' + 'order_id' + '}', encodeURIComponent(String(orderId)))
+            .replace('{' + 'payment_id' + '}', encodeURIComponent(String(paymentId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (updateMask !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'external_source' | 'external_source_value' | 'external_status_value' | 'external_create_time' | 'external_update_time' | 'external_create_user' | 'notes' | 'payment_time' | 'payment_amount'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("update_mask", serializedParam);
+            }
+        }
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(restUpdatePaymentRequest, "RestUpdatePaymentRequest", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -3926,6 +4002,91 @@ export class OrdersApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "OrderItem", ""
             ) as OrderItem;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to updatePayment
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async updatePaymentWithHttpInfo(response: ResponseContext): Promise<HttpInfo<InvoiceOrderPayment >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: InvoiceOrderPayment = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "InvoiceOrderPayment", ""
+            ) as InvoiceOrderPayment;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: InvoiceOrderPayment = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "InvoiceOrderPayment", ""
+            ) as InvoiceOrderPayment;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

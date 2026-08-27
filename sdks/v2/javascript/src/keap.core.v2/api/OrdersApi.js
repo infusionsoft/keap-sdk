@@ -23,6 +23,7 @@ import CustomFieldMetaData from '../model/CustomFieldMetaData';
 import CustomFieldTab from '../model/CustomFieldTab';
 import Error from '../model/Error';
 import FileOperationRequest from '../model/FileOperationRequest';
+import InvoiceOrderPayment from '../model/InvoiceOrderPayment';
 import ListCustomFieldGroupsResponse from '../model/ListCustomFieldGroupsResponse';
 import ListCustomFieldTabsResponse from '../model/ListCustomFieldTabsResponse';
 import ListOrderPaymentsResponse from '../model/ListOrderPaymentsResponse';
@@ -33,6 +34,7 @@ import OrderV2 from '../model/OrderV2';
 import PaymentResult from '../model/PaymentResult';
 import RestCreateOrderRequest from '../model/RestCreateOrderRequest';
 import RestCreatePaymentRequest from '../model/RestCreatePaymentRequest';
+import RestUpdatePaymentRequest from '../model/RestUpdatePaymentRequest';
 import UpdateCustomFieldGroupRequest from '../model/UpdateCustomFieldGroupRequest';
 import UpdateCustomFieldMetaDataRequest from '../model/UpdateCustomFieldMetaDataRequest';
 import UpdateCustomFieldTabRequest from '../model/UpdateCustomFieldTabRequest';
@@ -1568,6 +1570,73 @@ export default class OrdersApi {
      */
     updateOrderItem(orderId, orderItemId, updateOrderItemRequest, opts) {
       return this.updateOrderItemWithHttpInfo(orderId, orderItemId, updateOrderItemRequest, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update a Payment
+     * Updates a payment record with external source information and status
+     * @param {String} orderId 
+     * @param {String} paymentId 
+     * @param {module:keap.core.v2/model/RestUpdatePaymentRequest} restUpdatePaymentRequest 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:keap.core.v2/model/String>} [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/InvoiceOrderPayment} and HTTP response
+     */
+    updatePaymentWithHttpInfo(orderId, paymentId, restUpdatePaymentRequest, opts) {
+      opts = opts || {};
+      let postBody = restUpdatePaymentRequest;
+      // verify the required parameter 'orderId' is set
+      if (orderId === undefined || orderId === null) {
+        throw new Error("Missing the required parameter 'orderId' when calling updatePayment");
+      }
+      // verify the required parameter 'paymentId' is set
+      if (paymentId === undefined || paymentId === null) {
+        throw new Error("Missing the required parameter 'paymentId' when calling updatePayment");
+      }
+      // verify the required parameter 'restUpdatePaymentRequest' is set
+      if (restUpdatePaymentRequest === undefined || restUpdatePaymentRequest === null) {
+        throw new Error("Missing the required parameter 'restUpdatePaymentRequest' when calling updatePayment");
+      }
+
+      let pathParams = {
+        'order_id': orderId,
+        'payment_id': paymentId
+      };
+      let queryParams = {
+        'update_mask': this.apiClient.buildCollectionParam(opts['updateMask'], 'multi')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = InvoiceOrderPayment;
+      return this.apiClient.callApi(
+        '/rest/v2/orders/{order_id}/payments/{payment_id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Update a Payment
+     * Updates a payment record with external source information and status
+     * @param {String} orderId 
+     * @param {String} paymentId 
+     * @param {module:keap.core.v2/model/RestUpdatePaymentRequest} restUpdatePaymentRequest 
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:keap.core.v2/model/String>} opts.updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/InvoiceOrderPayment}
+     */
+    updatePayment(orderId, paymentId, restUpdatePaymentRequest, opts) {
+      return this.updatePaymentWithHttpInfo(orderId, paymentId, restUpdatePaymentRequest, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

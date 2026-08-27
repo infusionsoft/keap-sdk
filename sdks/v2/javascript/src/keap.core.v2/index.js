@@ -323,6 +323,7 @@ import RestCreateOrderRequest from './model/RestCreateOrderRequest';
 import RestCreatePaymentRequest from './model/RestCreatePaymentRequest';
 import RestEmailAddressStatus from './model/RestEmailAddressStatus';
 import RestOpportunityStage from './model/RestOpportunityStage';
+import RestUpdatePaymentRequest from './model/RestUpdatePaymentRequest';
 import RestV2Opportunity from './model/RestV2Opportunity';
 import RestV2ProductDetail from './model/RestV2ProductDetail';
 import RestV2ProductList from './model/RestV2ProductList';
@@ -470,7 +471,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.21
+* @version 2.0.22
 */
 export {
     /**
@@ -2338,6 +2339,12 @@ export {
      * @property {module:keap.core.v2/model/RestOpportunityStage}
      */
     RestOpportunityStage,
+
+    /**
+     * The RestUpdatePaymentRequest model constructor.
+     * @property {module:keap.core.v2/model/RestUpdatePaymentRequest}
+     */
+    RestUpdatePaymentRequest,
 
     /**
      * The RestV2Opportunity model constructor.

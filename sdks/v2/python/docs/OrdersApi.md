@@ -33,6 +33,7 @@ Method | HTTP request | Description
 [**update_order_custom_field_group**](OrdersApi.md#update_order_custom_field_group) | **PATCH** /rest/v2/orders/model/customFields/groups/{group_id} | Update an Order Custom Field Group
 [**update_order_custom_field_tab**](OrdersApi.md#update_order_custom_field_tab) | **PATCH** /rest/v2/orders/model/customFields/tabs/{tab_id} | Update an Order Custom Field Tab
 [**update_order_item**](OrdersApi.md#update_order_item) | **PATCH** /rest/v2/orders/{order_id}/items/{order_item_id} | Update an Order Item
+[**update_payment**](OrdersApi.md#update_payment) | **PATCH** /rest/v2/orders/{order_id}/payments/{payment_id} | Update a Payment
 
 
 # **apply_commission_on_order_items**
@@ -2403,6 +2404,94 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OrderItem**](OrderItem.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_payment**
+> InvoiceOrderPayment update_payment(order_id, payment_id, rest_update_payment_request, update_mask=update_mask)
+
+Update a Payment
+
+Updates a payment record with external source information and status
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.invoice_order_payment import InvoiceOrderPayment
+from keap_core_v2_client.models.rest_update_payment_request import RestUpdatePaymentRequest
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.OrdersApi(api_client)
+    order_id = 'order_id_example' # str | 
+    payment_id = 'payment_id_example' # str | 
+    rest_update_payment_request = keap_core_v2_client.RestUpdatePaymentRequest() # RestUpdatePaymentRequest | 
+    update_mask = ['update_mask_example'] # List[str] | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
+
+    try:
+        # Update a Payment
+        api_response = api_instance.update_payment(order_id, payment_id, rest_update_payment_request, update_mask=update_mask)
+        print("The response of OrdersApi->update_payment:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OrdersApi->update_payment: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **str**|  | 
+ **payment_id** | **str**|  | 
+ **rest_update_payment_request** | [**RestUpdatePaymentRequest**](RestUpdatePaymentRequest.md)|  | 
+ **update_mask** | [**List[str]**](str.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] 
+
+### Return type
+
+[**InvoiceOrderPayment**](InvoiceOrderPayment.md)
 
 ### Authorization
 

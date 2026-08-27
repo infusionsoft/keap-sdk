@@ -308,6 +308,7 @@ export * from '../models/RestCreateOrderRequest';
 export * from '../models/RestCreatePaymentRequest';
 export * from '../models/RestEmailAddressStatus';
 export * from '../models/RestOpportunityStage';
+export * from '../models/RestUpdatePaymentRequest';
 export * from '../models/RestV2Opportunity';
 export * from '../models/RestV2ProductDetail';
 export * from '../models/RestV2ProductList';
@@ -692,6 +693,7 @@ import { RestCreateOrderRequest       , RestCreateOrderRequestOrderTypeEnum     
 import { RestCreatePaymentRequest } from '../models/RestCreatePaymentRequest';
 import { RestEmailAddressStatus  , RestEmailAddressStatusStatusEnum       } from '../models/RestEmailAddressStatus';
 import { RestOpportunityStage } from '../models/RestOpportunityStage';
+import { RestUpdatePaymentRequest } from '../models/RestUpdatePaymentRequest';
 import { RestV2Opportunity } from '../models/RestV2Opportunity';
 import { RestV2ProductDetail } from '../models/RestV2ProductDetail';
 import { RestV2ProductList } from '../models/RestV2ProductList';
@@ -1234,6 +1236,7 @@ let typeMap: {[index: string]: any} = {
     "RestCreatePaymentRequest": RestCreatePaymentRequest,
     "RestEmailAddressStatus": RestEmailAddressStatus,
     "RestOpportunityStage": RestOpportunityStage,
+    "RestUpdatePaymentRequest": RestUpdatePaymentRequest,
     "RestV2Opportunity": RestV2Opportunity,
     "RestV2ProductDetail": RestV2ProductDetail,
     "RestV2ProductList": RestV2ProductList,

@@ -14,7 +14,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-__version__ = "2.0.21"
+__version__ = "2.0.22"
 
 # import apis into sdk package
 from keap_core_v2_client.api.affiliate_api import AffiliateApi
@@ -383,6 +383,7 @@ from keap_core_v2_client.models.rest_create_order_request import RestCreateOrder
 from keap_core_v2_client.models.rest_create_payment_request import RestCreatePaymentRequest
 from keap_core_v2_client.models.rest_email_address_status import RestEmailAddressStatus
 from keap_core_v2_client.models.rest_opportunity_stage import RestOpportunityStage
+from keap_core_v2_client.models.rest_update_payment_request import RestUpdatePaymentRequest
 from keap_core_v2_client.models.rest_v2_opportunity import RestV2Opportunity
 from keap_core_v2_client.models.rest_v2_product_detail import RestV2ProductDetail
 from keap_core_v2_client.models.rest_v2_product_list import RestV2ProductList
