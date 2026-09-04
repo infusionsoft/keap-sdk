@@ -328,6 +328,7 @@ export * from '../models/SubscriptionPlanDetail';
 export * from '../models/SubscriptionPlanList';
 export * from '../models/Tag';
 export * from '../models/TagCategory';
+export * from '../models/TagContactCount';
 export * from '../models/TaggedCompany';
 export * from '../models/TaggedContact';
 export * from '../models/Task';
@@ -713,6 +714,7 @@ import { SubscriptionPlanDetail   , SubscriptionPlanDetailBillingCycleEnum      
 import { SubscriptionPlanList   , SubscriptionPlanListBillingCycleEnum       } from '../models/SubscriptionPlanList';
 import { Tag } from '../models/Tag';
 import { TagCategory } from '../models/TagCategory';
+import { TagContactCount } from '../models/TagContactCount';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { TaggedContact } from '../models/TaggedContact';
 import { Task    , TaskPriorityEnum       , TaskRemindTimeMinsEnum          } from '../models/Task';
@@ -1256,6 +1258,7 @@ let typeMap: {[index: string]: any} = {
     "SubscriptionPlanList": SubscriptionPlanList,
     "Tag": Tag,
     "TagCategory": TagCategory,
+    "TagContactCount": TagContactCount,
     "TaggedCompany": TaggedCompany,
     "TaggedContact": TaggedContact,
     "Task": Task,

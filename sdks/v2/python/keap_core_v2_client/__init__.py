@@ -14,7 +14,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-__version__ = "2.0.22"
+__version__ = "2.0.23"
 
 # import apis into sdk package
 from keap_core_v2_client.api.affiliate_api import AffiliateApi
@@ -403,6 +403,7 @@ from keap_core_v2_client.models.subscription_plan_detail import SubscriptionPlan
 from keap_core_v2_client.models.subscription_plan_list import SubscriptionPlanList
 from keap_core_v2_client.models.tag import Tag
 from keap_core_v2_client.models.tag_category import TagCategory
+from keap_core_v2_client.models.tag_contact_count import TagContactCount
 from keap_core_v2_client.models.tagged_company import TaggedCompany
 from keap_core_v2_client.models.tagged_contact import TaggedContact
 from keap_core_v2_client.models.task import Task

@@ -25,6 +25,7 @@ import ListTaggedContactsResponse from '../model/ListTaggedContactsResponse';
 import ListTagsResponse from '../model/ListTagsResponse';
 import Tag from '../model/Tag';
 import TagCategory from '../model/TagCategory';
+import TagContactCount from '../model/TagContactCount';
 import UpdateTagCategoryResponse from '../model/UpdateTagCategoryResponse';
 import UpdateTagResponse from '../model/UpdateTagResponse';
 
@@ -95,6 +96,60 @@ export default class TagsApi {
      */
     applyTags(tagId, applyRemoveTagRequest) {
       return this.applyTagsWithHttpInfo(tagId, applyRemoveTagRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Tag Contact Count
+     * Returns the total number of contacts associated with the given tag.
+     * @param {String} tagId The ID of the tag whose contacts are counted
+     * @param {Object} opts Optional parameters
+     * @param {String} [filter] Filter to apply, allowed fields are: - (String) `given_name` - (String) `family_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, `given_name`, or `family_name`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=given_name%3D%3DJohn` - `filter=family_name%3D%3DSmith` - `filter=email%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;`  Omit the filter to count every contact associated with the tag.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/TagContactCount} and HTTP response
+     */
+    countContactsForTagWithHttpInfo(tagId, opts) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'tagId' is set
+      if (tagId === undefined || tagId === null) {
+        throw new Error("Missing the required parameter 'tagId' when calling countContactsForTag");
+      }
+
+      let pathParams = {
+        'tag_id': tagId
+      };
+      let queryParams = {
+        'filter': opts['filter']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = TagContactCount;
+      return this.apiClient.callApi(
+        '/rest/v2/tags/{tag_id}/contacts/count', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * Tag Contact Count
+     * Returns the total number of contacts associated with the given tag.
+     * @param {String} tagId The ID of the tag whose contacts are counted
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.filter Filter to apply, allowed fields are: - (String) `given_name` - (String) `family_name` - (String) `email` - (String) `since_applied_time` - (String) `until_applied_time`  You will need to apply the `==` operator to check the equality of one of the filters with your searched word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, `given_name`, or `family_name`, it will check for the non-existence of that field. For the filters listed above, here are some examples: - `filter=given_name%3D%3DJohn` - `filter=family_name%3D%3DSmith` - `filter=email%3D%3DNONE` - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;`  Omit the filter to count every contact associated with the tag.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/TagContactCount}
+     */
+    countContactsForTag(tagId, opts) {
+      return this.countContactsForTagWithHttpInfo(tagId, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

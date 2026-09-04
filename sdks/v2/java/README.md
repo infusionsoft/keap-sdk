@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.22</version>
+  <version>2.0.23</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.22"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.23"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.22.jar`
+- `target/core-service-v2-java-sdk-2.0.23.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -826,6 +826,8 @@ Class | Method | HTTP request | Description
 *SubscriptionsApi* | [**updateSubscriptionCustomFieldTabWithHttpInfo**](docs/SubscriptionsApi.md#updateSubscriptionCustomFieldTabWithHttpInfo) | **PATCH** /rest/v2/subscriptions/model/customFields/tabs/{tab_id} | Update a Subscription Custom Field Tab
 *TagsApi* | [**applyTags**](docs/TagsApi.md#applyTags) | **POST** /rest/v2/tags/{tag_id}/contacts:applyTags | Apply Tag
 *TagsApi* | [**applyTagsWithHttpInfo**](docs/TagsApi.md#applyTagsWithHttpInfo) | **POST** /rest/v2/tags/{tag_id}/contacts:applyTags | Apply Tag
+*TagsApi* | [**countContactsForTag**](docs/TagsApi.md#countContactsForTag) | **GET** /rest/v2/tags/{tag_id}/contacts/count | Tag Contact Count
+*TagsApi* | [**countContactsForTagWithHttpInfo**](docs/TagsApi.md#countContactsForTagWithHttpInfo) | **GET** /rest/v2/tags/{tag_id}/contacts/count | Tag Contact Count
 *TagsApi* | [**createTag**](docs/TagsApi.md#createTag) | **POST** /rest/v2/tags | Create Tag
 *TagsApi* | [**createTagWithHttpInfo**](docs/TagsApi.md#createTagWithHttpInfo) | **POST** /rest/v2/tags | Create Tag
 *TagsApi* | [**createTagCategory**](docs/TagsApi.md#createTagCategory) | **POST** /rest/v2/tags/categories | Create Tag Category
@@ -1242,6 +1244,7 @@ Class | Method | HTTP request | Description
  - [SubscriptionPlanList](docs/SubscriptionPlanList.md)
  - [Tag](docs/Tag.md)
  - [TagCategory](docs/TagCategory.md)
+ - [TagContactCount](docs/TagContactCount.md)
  - [TaggedCompany](docs/TaggedCompany.md)
  - [TaggedContact](docs/TaggedContact.md)
  - [Task](docs/Task.md)

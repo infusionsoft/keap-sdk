@@ -343,6 +343,7 @@ import SubscriptionPlanDetail from './model/SubscriptionPlanDetail';
 import SubscriptionPlanList from './model/SubscriptionPlanList';
 import Tag from './model/Tag';
 import TagCategory from './model/TagCategory';
+import TagContactCount from './model/TagContactCount';
 import TaggedCompany from './model/TaggedCompany';
 import TaggedContact from './model/TaggedContact';
 import Task from './model/Task';
@@ -471,7 +472,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.22
+* @version 2.0.23
 */
 export {
     /**
@@ -2459,6 +2460,12 @@ export {
      * @property {module:keap.core.v2/model/TagCategory}
      */
     TagCategory,
+
+    /**
+     * The TagContactCount model constructor.
+     * @property {module:keap.core.v2/model/TagContactCount}
+     */
+    TagContactCount,
 
     /**
      * The TaggedCompany model constructor.

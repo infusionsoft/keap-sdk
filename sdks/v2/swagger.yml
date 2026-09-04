@@ -11729,7 +11729,7 @@ paths:
           - (String) `contact_id`
           - (String) `referral_contact_id`
           - (String) `status`
-          - (String) `code`
+          - (String) `code` - Wildcard matching allowed
           - (Custom) Custom field names - Reference by field name (e.g., `tier`, `region`)
 
           You will need to apply the `==` operator to check the equality of one of the filters with the
@@ -11764,7 +11764,8 @@ paths:
           - `filter=name%3D%3DBob%3Btier%3D%3DGold` - Combine standard and custom fields
 
           Note: Leading wildcards (e.g., `*value`) are not supported for performance reasons.
-          Only prefix wildcards (e.g., `value*`) are allowed.
+          Only prefix wildcards (e.g., `value*`) are allowed. Any other characters in the value,
+          including `%`, `_`, and `\`, are matched literally and are not treated as wildcards.
         required: false
         schema:
           type: string
@@ -26545,6 +26546,98 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /rest/v2/tags/{tag_id}/contacts/count:
+    get:
+      tags:
+      - Tags
+      summary: Tag Contact Count
+      description: Returns the total number of contacts associated with the given
+        tag.
+      operationId: countContactsForTag
+      parameters:
+      - name: tag_id
+        in: path
+        description: The ID of the tag whose contacts are counted
+        required: true
+        schema:
+          type: string
+      - name: filter
+        in: query
+        description: |-
+          Filter to apply, allowed fields are:
+          - (String) `given_name`
+          - (String) `family_name`
+          - (String) `email`
+          - (String) `since_applied_time`
+          - (String) `until_applied_time`
+
+          You will need to apply the `==` operator to check the equality of one of the filters with your searched
+          word, in the encoded form `%3D%3D`. If NONE is passed in for `email`, `given_name`, or `family_name`, it
+          will check for the non-existence of that field. For the filters listed above, here are some examples:
+          - `filter=given_name%3D%3DJohn`
+          - `filter=family_name%3D%3DSmith`
+          - `filter=email%3D%3DNONE`
+          - `filter=since_applied_time%3D%3D2025-04-16T20:33:02.321Z;until_applied_time%3D%3D2025-08-16T20:33:02.321Z;`
+
+          Omit the filter to count every contact associated with the tag.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagContactCount'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '501':
+          description: Method Not Implemented
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rest/v2/tags/{tag_id}/companies:
     get:
       tags:
@@ -40908,6 +41001,15 @@ components:
           format: date-time
           description: The time the tag was applied to the contact, in ISO 8601 format.
           example: '2023-10-01T12:00:00Z'
+    TagContactCount:
+      type: object
+      description: The count of Contacts associated with a Tag
+      properties:
+        count:
+          type: integer
+          format: int64
+          description: Number of Contacts for the Tag matching the active filters.
+          example: 12500
     ListTaggedCompaniesResponse:
       type: object
       properties:
