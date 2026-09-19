@@ -23,6 +23,7 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**ListContactLinkTypes**](ContactApi.md#listcontactlinktypes) | **GET** /rest/v2/contacts/links/types | List Contact Link types |
 | [**ListContactLinks**](ContactApi.md#listcontactlinks) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts |
 | [**ListContacts**](ContactApi.md#listcontacts) | **GET** /rest/v2/contacts | List Contacts |
+| [**ListTagsAcrossContacts**](ContactApi.md#listtagsacrosscontacts) | **GET** /rest/v2/contacts/-/tags | List Contact&#39;s Tags |
 | [**ListTagsForContact**](ContactApi.md#listtagsforcontact) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags |
 | [**MergeContacts**](ContactApi.md#mergecontacts) | **POST** /rest/v2/contacts:merge | Merge two Contacts |
 | [**RetrieveContactModel**](ContactApi.md#retrievecontactmodel) | **GET** /rest/v2/contacts/model | Retrieve Contact Model |
@@ -1940,6 +1941,114 @@ catch (ApiException e)
 ### Return type
 
 [**ListContactsResponse**](ListContactsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="listtagsacrosscontacts"></a>
+# **ListTagsAcrossContacts**
+> ListContactTagAssociationsResponse ListTagsAcrossContacts (string? filter = null, string? pageToken = null, string? orderBy = null, int? pageSize = null)
+
+List Contact's Tags
+
+Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the `-` wildcard in place of a single contact id and pass the contact IDs in the `filter`.  Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.  **Filters** (`filter=key==value`, semicolon-separated; `contact_ids` is required): - `contact_ids` — **required**; comma-separated contact IDs, max 100 (e.g. `contact_ids==1,2,3`) - `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time - `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/contacts/-/tags?filter=contact_ids==1,2,3;since_applied_time==2024-06-01T00:00:00Z`
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Keap.Core.V2.Api;
+using Keap.Core.V2.Client;
+using Keap.Core.V2.Model;
+
+namespace Example
+{
+    public class ListTagsAcrossContactsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.keap.com/crm";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ContactApi(config);
+            var filter = "filter_example";  // string? | Filter to apply (at least one is required). Allowed fields: - (List[String]) `contact_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time`  (optional) 
+            var pageToken = "pageToken_example";  // string? | Page token (optional) 
+            var orderBy = "orderBy_example";  // string? | Attribute and direction to order items. One of the following fields: - `applied_time`  One of the following directions: - `asc` - `desc`  Field and direction are space-separated, e.g. `applied_time desc`. (optional) 
+            var pageSize = 0;  // int? | Total number of items to return per page (optional) 
+
+            try
+            {
+                // List Contact's Tags
+                ListContactTagAssociationsResponse result = apiInstance.ListTagsAcrossContacts(filter, pageToken, orderBy, pageSize);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ContactApi.ListTagsAcrossContacts: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ListTagsAcrossContactsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // List Contact's Tags
+    ApiResponse<ListContactTagAssociationsResponse> response = apiInstance.ListTagsAcrossContactsWithHttpInfo(filter, pageToken, orderBy, pageSize);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ContactApi.ListTagsAcrossContactsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **filter** | **string?** | Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  | [optional]  |
+| **pageToken** | **string?** | Page token | [optional]  |
+| **orderBy** | **string?** | Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. | [optional]  |
+| **pageSize** | **int?** | Total number of items to return per page | [optional]  |
+
+### Return type
+
+[**ListContactTagAssociationsResponse**](ListContactTagAssociationsResponse.md)
 
 ### Authorization
 

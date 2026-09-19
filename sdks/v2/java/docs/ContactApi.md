@@ -42,6 +42,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**listContactLinksWithHttpInfo**](ContactApi.md#listContactLinksWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts |
 | [**listContacts**](ContactApi.md#listContacts) | **GET** /rest/v2/contacts | List Contacts |
 | [**listContactsWithHttpInfo**](ContactApi.md#listContactsWithHttpInfo) | **GET** /rest/v2/contacts | List Contacts |
+| [**listTagsAcrossContacts**](ContactApi.md#listTagsAcrossContacts) | **GET** /rest/v2/contacts/-/tags | List Contact&#39;s Tags |
+| [**listTagsAcrossContactsWithHttpInfo**](ContactApi.md#listTagsAcrossContactsWithHttpInfo) | **GET** /rest/v2/contacts/-/tags | List Contact&#39;s Tags |
 | [**listTagsForContact**](ContactApi.md#listTagsForContact) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags |
 | [**listTagsForContactWithHttpInfo**](ContactApi.md#listTagsForContactWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags |
 | [**mergeContacts**](ContactApi.md#mergeContacts) | **POST** /rest/v2/contacts:merge | Merge two Contacts |
@@ -3125,6 +3127,178 @@ ApiResponse<[**ListContactsResponse**](ListContactsResponse.md)>
 | **501** | Method Not Implemented |  -  |
 
 
+## listTagsAcrossContacts
+
+> ListContactTagAssociationsResponse listTagsAcrossContacts(filter, pageToken, orderBy, pageSize)
+
+List Contact&#39;s Tags
+
+Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the &#x60;-&#x60; wildcard in place of a single contact id and pass the contact IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;contact_ids&#x60; is required): - &#x60;contact_ids&#x60; — **required**; comma-separated contact IDs, max 100 (e.g. &#x60;contact_ids&#x3D;&#x3D;1,2,3&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/contacts/-/tags?filter&#x3D;contact_ids&#x3D;&#x3D;1,2,3;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ContactApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ContactApi apiInstance = new ContactApi(defaultClient);
+        String filter = "filter_example"; // String | Filter to apply (at least one is required). Allowed fields: - (List[String]) `contact_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time` 
+        String pageToken = "pageToken_example"; // String | Page token
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `applied_time`  One of the following directions: - `asc` - `desc`  Field and direction are space-separated, e.g. `applied_time desc`.
+        Integer pageSize = 0; // Integer | Total number of items to return per page
+        try {
+            ListContactTagAssociationsResponse result = apiInstance.listTagsAcrossContacts(filter, pageToken, orderBy, pageSize);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ContactApi#listTagsAcrossContacts");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **filter** | **String**| Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  | [optional] |
+| **pageToken** | **String**| Page token | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. | [optional] |
+| **pageSize** | **Integer**| Total number of items to return per page | [optional] |
+
+### Return type
+
+[**ListContactTagAssociationsResponse**](ListContactTagAssociationsResponse.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## listTagsAcrossContactsWithHttpInfo
+
+> ApiResponse<ListContactTagAssociationsResponse> listTagsAcrossContacts listTagsAcrossContactsWithHttpInfo(filter, pageToken, orderBy, pageSize)
+
+List Contact&#39;s Tags
+
+Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the &#x60;-&#x60; wildcard in place of a single contact id and pass the contact IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;contact_ids&#x60; is required): - &#x60;contact_ids&#x60; — **required**; comma-separated contact IDs, max 100 (e.g. &#x60;contact_ids&#x3D;&#x3D;1,2,3&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/contacts/-/tags?filter&#x3D;contact_ids&#x3D;&#x3D;1,2,3;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.ContactApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        ContactApi apiInstance = new ContactApi(defaultClient);
+        String filter = "filter_example"; // String | Filter to apply (at least one is required). Allowed fields: - (List[String]) `contact_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time` 
+        String pageToken = "pageToken_example"; // String | Page token
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items. One of the following fields: - `applied_time`  One of the following directions: - `asc` - `desc`  Field and direction are space-separated, e.g. `applied_time desc`.
+        Integer pageSize = 0; // Integer | Total number of items to return per page
+        try {
+            ApiResponse<ListContactTagAssociationsResponse> response = apiInstance.listTagsAcrossContactsWithHttpInfo(filter, pageToken, orderBy, pageSize);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ContactApi#listTagsAcrossContacts");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **filter** | **String**| Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  | [optional] |
+| **pageToken** | **String**| Page token | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. | [optional] |
+| **pageSize** | **Integer**| Total number of items to return per page | [optional] |
+
+### Return type
+
+ApiResponse<[**ListContactTagAssociationsResponse**](ListContactTagAssociationsResponse.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
 ## listTagsForContact
 
 > ListContactTagsResponse listTagsForContact(contactId, filter, pageToken, orderBy, pageSize)
@@ -3829,7 +4003,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **contactId** | **String**|  | |
 | **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | |
-| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: addresses, anniversary_date, birth_date, company, contact_type, create_time, custom_fields, email_addresses, family_name, fax_numbers, given_name, id, job_title, leadsource_id, links, middle_name, notes, origin, owner_id, phone_numbers, preferred_locale, preferred_name, prefix, referral_code, score_value, social_accounts, source_type, spouse_name, suffix, tag_ids, time_zone, update_time, utm_parameters, website, account_id, assistant_name, assistant_phone, billing_information, created_by, groups, last_updated_by] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: addresses, anniversary_date, birth_date, company, contact_type, create_time, custom_fields, email_addresses, family_name, fax_numbers, given_name, id, job_title, leadsource_id, links, middle_name, notes, origin, owner_id, phone_numbers, preferred_locale, preferred_name, prefix, referral_code, score_value, social_accounts, source_type, spouse_name, suffix, time_zone, update_time, utm_parameters, website, account_id, assistant_name, assistant_phone, billing_information, created_by, groups, last_updated_by] |
 | **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) | [optional] |
 
 ### Return type
@@ -3916,7 +4090,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **contactId** | **String**|  | |
 | **createUpdateContactRequest** | [**CreateUpdateContactRequest**](CreateUpdateContactRequest.md)|  | |
-| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: addresses, anniversary_date, birth_date, company, contact_type, create_time, custom_fields, email_addresses, family_name, fax_numbers, given_name, id, job_title, leadsource_id, links, middle_name, notes, origin, owner_id, phone_numbers, preferred_locale, preferred_name, prefix, referral_code, score_value, social_accounts, source_type, spouse_name, suffix, tag_ids, time_zone, update_time, utm_parameters, website, account_id, assistant_name, assistant_phone, billing_information, created_by, groups, last_updated_by] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: addresses, anniversary_date, birth_date, company, contact_type, create_time, custom_fields, email_addresses, family_name, fax_numbers, given_name, id, job_title, leadsource_id, links, middle_name, notes, origin, owner_id, phone_numbers, preferred_locale, preferred_name, prefix, referral_code, score_value, social_accounts, source_type, spouse_name, suffix, time_zone, update_time, utm_parameters, website, account_id, assistant_name, assistant_phone, billing_information, created_by, groups, last_updated_by] |
 | **fields** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) | [optional] |
 
 ### Return type

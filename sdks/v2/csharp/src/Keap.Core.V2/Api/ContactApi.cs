@@ -484,6 +484,35 @@ namespace Keap.Core.V2.Api
         /// <returns>ApiResponse of ListContactsResponse</returns>
         ApiResponse<ListContactsResponse> ListContactsWithHttpInfo(List<string>? fields = default, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0);
         /// <summary>
+        /// List Contact&#39;s Tags
+        /// </summary>
+        /// <remarks>
+        /// Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the &#x60;-&#x60; wildcard in place of a single contact id and pass the contact IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;contact_ids&#x60; is required): - &#x60;contact_ids&#x60; — **required**; comma-separated contact IDs, max 100 (e.g. &#x60;contact_ids&#x3D;&#x3D;1,2,3&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/contacts/-/tags?filter&#x3D;contact_ids&#x3D;&#x3D;1,2,3;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListContactTagAssociationsResponse</returns>
+        ListContactTagAssociationsResponse ListTagsAcrossContacts(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0);
+
+        /// <summary>
+        /// List Contact&#39;s Tags
+        /// </summary>
+        /// <remarks>
+        /// Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the &#x60;-&#x60; wildcard in place of a single contact id and pass the contact IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;contact_ids&#x60; is required): - &#x60;contact_ids&#x60; — **required**; comma-separated contact IDs, max 100 (e.g. &#x60;contact_ids&#x3D;&#x3D;1,2,3&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/contacts/-/tags?filter&#x3D;contact_ids&#x3D;&#x3D;1,2,3;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListContactTagAssociationsResponse</returns>
+        ApiResponse<ListContactTagAssociationsResponse> ListTagsAcrossContactsWithHttpInfo(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0);
+        /// <summary>
         /// List Applied Tags
         /// </summary>
         /// <remarks>
@@ -1195,6 +1224,37 @@ namespace Keap.Core.V2.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListContactsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListContactsResponse>> ListContactsWithHttpInfoAsync(List<string>? fields = default, string? filter = default, string? orderBy = default, int? pageSize = default, string? pageToken = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// List Contact&#39;s Tags
+        /// </summary>
+        /// <remarks>
+        /// Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the &#x60;-&#x60; wildcard in place of a single contact id and pass the contact IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;contact_ids&#x60; is required): - &#x60;contact_ids&#x60; — **required**; comma-separated contact IDs, max 100 (e.g. &#x60;contact_ids&#x3D;&#x3D;1,2,3&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/contacts/-/tags?filter&#x3D;contact_ids&#x3D;&#x3D;1,2,3;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListContactTagAssociationsResponse</returns>
+        System.Threading.Tasks.Task<ListContactTagAssociationsResponse> ListTagsAcrossContactsAsync(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// List Contact&#39;s Tags
+        /// </summary>
+        /// <remarks>
+        /// Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the &#x60;-&#x60; wildcard in place of a single contact id and pass the contact IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;contact_ids&#x60; is required): - &#x60;contact_ids&#x60; — **required**; comma-separated contact IDs, max 100 (e.g. &#x60;contact_ids&#x3D;&#x3D;1,2,3&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/contacts/-/tags?filter&#x3D;contact_ids&#x3D;&#x3D;1,2,3;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+        /// </remarks>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListContactTagAssociationsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListContactTagAssociationsResponse>> ListTagsAcrossContactsWithHttpInfoAsync(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List Applied Tags
         /// </summary>
@@ -4981,6 +5041,213 @@ namespace Keap.Core.V2.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListContacts", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List Contact&#39;s Tags Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the &#x60;-&#x60; wildcard in place of a single contact id and pass the contact IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;contact_ids&#x60; is required): - &#x60;contact_ids&#x60; — **required**; comma-separated contact IDs, max 100 (e.g. &#x60;contact_ids&#x3D;&#x3D;1,2,3&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/contacts/-/tags?filter&#x3D;contact_ids&#x3D;&#x3D;1,2,3;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ListContactTagAssociationsResponse</returns>
+        public ListContactTagAssociationsResponse ListTagsAcrossContacts(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListContactTagAssociationsResponse> localVarResponse = ListTagsAcrossContactsWithHttpInfo(filter, pageToken, orderBy, pageSize);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Contact&#39;s Tags Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the &#x60;-&#x60; wildcard in place of a single contact id and pass the contact IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;contact_ids&#x60; is required): - &#x60;contact_ids&#x60; — **required**; comma-separated contact IDs, max 100 (e.g. &#x60;contact_ids&#x3D;&#x3D;1,2,3&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/contacts/-/tags?filter&#x3D;contact_ids&#x3D;&#x3D;1,2,3;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ListContactTagAssociationsResponse</returns>
+        public Keap.Core.V2.Client.ApiResponse<ListContactTagAssociationsResponse> ListTagsAcrossContactsWithHttpInfo(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0)
+        {
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (pageToken != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
+            }
+            if (orderBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "order_by", orderBy));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
+
+            localVarRequestOptions.Operation = "ContactApi.ListTagsAcrossContacts";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListContactTagAssociationsResponse>("/rest/v2/contacts/-/tags", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTagsAcrossContacts", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List Contact&#39;s Tags Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the &#x60;-&#x60; wildcard in place of a single contact id and pass the contact IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;contact_ids&#x60; is required): - &#x60;contact_ids&#x60; — **required**; comma-separated contact IDs, max 100 (e.g. &#x60;contact_ids&#x3D;&#x3D;1,2,3&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/contacts/-/tags?filter&#x3D;contact_ids&#x3D;&#x3D;1,2,3;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListContactTagAssociationsResponse</returns>
+        public async System.Threading.Tasks.Task<ListContactTagAssociationsResponse> ListTagsAcrossContactsAsync(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Keap.Core.V2.Client.ApiResponse<ListContactTagAssociationsResponse> localVarResponse = await ListTagsAcrossContactsWithHttpInfoAsync(filter, pageToken, orderBy, pageSize, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List Contact&#39;s Tags Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the &#x60;-&#x60; wildcard in place of a single contact id and pass the contact IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;contact_ids&#x60; is required): - &#x60;contact_ids&#x60; — **required**; comma-separated contact IDs, max 100 (e.g. &#x60;contact_ids&#x3D;&#x3D;1,2,3&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/contacts/-/tags?filter&#x3D;contact_ids&#x3D;&#x3D;1,2,3;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+        /// </summary>
+        /// <exception cref="Keap.Core.V2.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="filter">Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  (optional)</param>
+        /// <param name="pageToken">Page token (optional)</param>
+        /// <param name="orderBy">Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. (optional)</param>
+        /// <param name="pageSize">Total number of items to return per page (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListContactTagAssociationsResponse)</returns>
+        public async System.Threading.Tasks.Task<Keap.Core.V2.Client.ApiResponse<ListContactTagAssociationsResponse>> ListTagsAcrossContactsWithHttpInfoAsync(string? filter = default, string? pageToken = default, string? orderBy = default, int? pageSize = default, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            Keap.Core.V2.Client.RequestOptions localVarRequestOptions = new Keap.Core.V2.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Keap.Core.V2.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Keap.Core.V2.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (pageToken != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_token", pageToken));
+            }
+            if (orderBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "order_by", orderBy));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Keap.Core.V2.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
+
+            localVarRequestOptions.Operation = "ContactApi.ListTagsAcrossContacts";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListContactTagAssociationsResponse>("/rest/v2/contacts/-/tags", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTagsAcrossContacts", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

@@ -14,7 +14,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-__version__ = "2.0.23"
+__version__ = "2.0.24"
 
 # import apis into sdk package
 from keap_core_v2_client.api.affiliate_api import AffiliateApi
@@ -280,6 +280,7 @@ from keap_core_v2_client.models.list_company_tags_response import ListCompanyTag
 from keap_core_v2_client.models.list_contact_link_types_response import ListContactLinkTypesResponse
 from keap_core_v2_client.models.list_contact_links_response import ListContactLinksResponse
 from keap_core_v2_client.models.list_contact_payment_methods_response import ListContactPaymentMethodsResponse
+from keap_core_v2_client.models.list_contact_tag_associations_response import ListContactTagAssociationsResponse
 from keap_core_v2_client.models.list_contact_tags_response import ListContactTagsResponse
 from keap_core_v2_client.models.list_contacts_response import ListContactsResponse
 from keap_core_v2_client.models.list_countries_response import ListCountriesResponse
@@ -321,6 +322,7 @@ from keap_core_v2_client.models.list_shipping_discounts_response import ListShip
 from keap_core_v2_client.models.list_subscription_plans_response import ListSubscriptionPlansResponse
 from keap_core_v2_client.models.list_subscriptions_response import ListSubscriptionsResponse
 from keap_core_v2_client.models.list_tag_categories_response import ListTagCategoriesResponse
+from keap_core_v2_client.models.list_tag_contact_associations_response import ListTagContactAssociationsResponse
 from keap_core_v2_client.models.list_tagged_companies_response import ListTaggedCompaniesResponse
 from keap_core_v2_client.models.list_tagged_contacts_response import ListTaggedContactsResponse
 from keap_core_v2_client.models.list_tags_response import ListTagsResponse
@@ -403,6 +405,7 @@ from keap_core_v2_client.models.subscription_plan_detail import SubscriptionPlan
 from keap_core_v2_client.models.subscription_plan_list import SubscriptionPlanList
 from keap_core_v2_client.models.tag import Tag
 from keap_core_v2_client.models.tag_category import TagCategory
+from keap_core_v2_client.models.tag_contact_association import TagContactAssociation
 from keap_core_v2_client.models.tag_contact_count import TagContactCount
 from keap_core_v2_client.models.tagged_company import TaggedCompany
 from keap_core_v2_client.models.tagged_contact import TaggedContact

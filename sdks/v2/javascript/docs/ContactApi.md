@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**listContactLinkTypes**](ContactApi.md#listContactLinkTypes) | **GET** /rest/v2/contacts/links/types | List Contact Link types
 [**listContactLinks**](ContactApi.md#listContactLinks) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts
 [**listContacts**](ContactApi.md#listContacts) | **GET** /rest/v2/contacts | List Contacts
+[**listTagsAcrossContacts**](ContactApi.md#listTagsAcrossContacts) | **GET** /rest/v2/contacts/-/tags | List Contact&#39;s Tags
 [**listTagsForContact**](ContactApi.md#listTagsForContact) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags
 [**mergeContacts**](ContactApi.md#mergeContacts) | **POST** /rest/v2/contacts:merge | Merge two Contacts
 [**retrieveContactModel**](ContactApi.md#retrieveContactModel) | **GET** /rest/v2/contacts/model | Retrieve Contact Model
@@ -961,6 +962,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListContactsResponse**](ListContactsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## listTagsAcrossContacts
+
+> ListContactTagAssociationsResponse listTagsAcrossContacts(opts)
+
+List Contact&#39;s Tags
+
+Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the &#x60;-&#x60; wildcard in place of a single contact id and pass the contact IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;contact_ids&#x60; is required): - &#x60;contact_ids&#x60; — **required**; comma-separated contact IDs, max 100 (e.g. &#x60;contact_ids&#x3D;&#x3D;1,2,3&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/contacts/-/tags?filter&#x3D;contact_ids&#x3D;&#x3D;1,2,3;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.ContactApi();
+let opts = {
+  'filter': "filter_example", // String | Filter to apply (at least one is required). Allowed fields: - (List[String]) `contact_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time` 
+  'pageToken': "pageToken_example", // String | Page token
+  'orderBy': "orderBy_example", // String | Attribute and direction to order items. One of the following fields: - `applied_time`  One of the following directions: - `asc` - `desc`  Field and direction are space-separated, e.g. `applied_time desc`.
+  'pageSize': 0 // Number | Total number of items to return per page
+};
+apiInstance.listTagsAcrossContacts(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | **String**| Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  | [optional] 
+ **pageToken** | **String**| Page token | [optional] 
+ **orderBy** | **String**| Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. | [optional] 
+ **pageSize** | **Number**| Total number of items to return per page | [optional] 
+
+### Return type
+
+[**ListContactTagAssociationsResponse**](ListContactTagAssociationsResponse.md)
 
 ### Authorization
 

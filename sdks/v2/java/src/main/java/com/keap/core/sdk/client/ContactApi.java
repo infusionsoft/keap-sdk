@@ -32,6 +32,7 @@ import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.LinkContactsRequest;
 import com.keap.core.sdk.model.ListContactLinkTypesResponse;
 import com.keap.core.sdk.model.ListContactLinksResponse;
+import com.keap.core.sdk.model.ListContactTagAssociationsResponse;
 import com.keap.core.sdk.model.ListContactTagsResponse;
 import com.keap.core.sdk.model.ListContactsResponse;
 import com.keap.core.sdk.model.ListCustomFieldGroupsResponse;
@@ -1859,6 +1860,114 @@ import io.github.resilience4j.retry.Retry;
     localVarQueryParams.addAll(ApiClient.parameterToPairs("page_size", pageSize));
     localVarQueryParameterBaseName = "page_token";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("page_token", pageToken));
+
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
+
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * List Contact&#39;s Tags
+   * Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the &#x60;-&#x60; wildcard in place of a single contact id and pass the contact IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;contact_ids&#x60; is required): - &#x60;contact_ids&#x60; — **required**; comma-separated contact IDs, max 100 (e.g. &#x60;contact_ids&#x3D;&#x3D;1,2,3&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/contacts/-/tags?filter&#x3D;contact_ids&#x3D;&#x3D;1,2,3;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+   * @param filter Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  (optional)
+   * @param pageToken Page token (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. (optional)
+   * @param pageSize Total number of items to return per page (optional)
+   * @return ListContactTagAssociationsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ListContactTagAssociationsResponse listTagsAcrossContacts(String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+    ApiResponse<ListContactTagAssociationsResponse> localVarResponse = listTagsAcrossContactsWithHttpInfo(filter, pageToken, orderBy, pageSize);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * List Contact&#39;s Tags
+   * Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the &#x60;-&#x60; wildcard in place of a single contact id and pass the contact IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;contact_ids&#x60; is required): - &#x60;contact_ids&#x60; — **required**; comma-separated contact IDs, max 100 (e.g. &#x60;contact_ids&#x3D;&#x3D;1,2,3&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/contacts/-/tags?filter&#x3D;contact_ids&#x3D;&#x3D;1,2,3;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+   * @param filter Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  (optional)
+   * @param pageToken Page token (optional)
+   * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. (optional)
+   * @param pageSize Total number of items to return per page (optional)
+   * @return ApiResponse&lt;ListContactTagAssociationsResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<ListContactTagAssociationsResponse> listTagsAcrossContactsWithHttpInfo(String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listTagsAcrossContactsRequestBuilder(filter, pageToken, orderBy, pageSize);
+
+    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
+      memberVarHttpClient.send(
+        localVarRequestBuilder.build(),
+        HttpResponse.BodyHandlers.ofInputStream());
+
+    try {
+      HttpResponse<InputStream> localVarResponse =
+          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
+              .get();
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listTagsAcrossContacts", localVarResponse);
+        }
+        return new ApiResponse<ListContactTagAssociationsResponse>(
+          localVarResponse.statusCode(),
+          localVarResponse.headers().map(),
+          localVarResponse.body() == null ? null : memberVarObjectMapper.readValue(localVarResponse.body(), new TypeReference<ListContactTagAssociationsResponse>() {}) // closes the InputStream
+        );
+      } finally {
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    } catch (Throwable e) {
+      if (e instanceof ApiException) {
+        throw (ApiException) e;
+      }
+      // Not collapsing exceptions so we can see this in the stack trace.
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listTagsAcrossContactsRequestBuilder(String filter, String pageToken, String orderBy, Integer pageSize) throws ApiException {
+
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+
+    String localVarPath = "/rest/v2/contacts/-/tags";
+
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "filter";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("filter", filter));
+    localVarQueryParameterBaseName = "page_token";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_token", pageToken));
+    localVarQueryParameterBaseName = "order_by";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("order_by", orderBy));
+    localVarQueryParameterBaseName = "page_size";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page_size", pageSize));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");

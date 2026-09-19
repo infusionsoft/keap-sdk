@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**getCategory**](TagsApi.md#getCategory) | **GET** /rest/v2/tags/categories/{tag_category_id} | Retrieve a Tag Category
 [**getTag**](TagsApi.md#getTag) | **GET** /rest/v2/tags/{tag_id} | Retrieve a Tag
 [**listCompaniesForTagId**](TagsApi.md#listCompaniesForTagId) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies
+[**listContactsAcrossTags**](TagsApi.md#listContactsAcrossTags) | **GET** /rest/v2/tags/-/contacts | List Tag&#39;s Contacts
 [**listContactsWithTagId**](TagsApi.md#listContactsWithTagId) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts
 [**listTagCategories**](TagsApi.md#listTagCategories) | **GET** /rest/v2/tags/categories | List Tag Categories
 [**listTags**](TagsApi.md#listTags) | **GET** /rest/v2/tags | List Tags
@@ -459,6 +460,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListTaggedCompaniesResponse**](ListTaggedCompaniesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## listContactsAcrossTags
+
+> ListTagContactAssociationsResponse listContactsAcrossTags(opts)
+
+List Tag&#39;s Contacts
+
+Bulk-retrieves tag-contact associations across multiple tags in a single request. Use the &#x60;-&#x60; wildcard in place of a single tag id and pass the tag IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;tag_ids&#x60; is required): - &#x60;tag_ids&#x60; — **required**; comma-separated tag IDs, max 100 (e.g. &#x60;tag_ids&#x3D;&#x3D;101,102,103&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/tags/-/contacts?filter&#x3D;tag_ids&#x3D;&#x3D;101,102;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+
+### Example
+
+```javascript
+import KeapCoreServiceV2Sdk from 'keap-core-service-v2-sdk';
+let defaultClient = KeapCoreServiceV2Sdk.ApiClient.instance;
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = 'YOUR ACCESS TOKEN';
+
+let apiInstance = new KeapCoreServiceV2Sdk.TagsApi();
+let opts = {
+  'filter': "filter_example", // String | Filter to apply (at least one is required). Allowed fields: - (List[String]) `tag_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time` 
+  'pageToken': "pageToken_example", // String | Page token
+  'orderBy': "orderBy_example", // String | Attribute and direction to order items (best-effort for cross-collection reads). Field: - `applied_time`  Direction: - `asc` - `desc`  Field and direction are space-separated, e.g. `applied_time desc`.
+  'pageSize': 0 // Number | Total number of items to return per page
+};
+apiInstance.listContactsAcrossTags(opts).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | **String**| Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;tag_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  | [optional] 
+ **pageToken** | **String**| Page token | [optional] 
+ **orderBy** | **String**| Attribute and direction to order items (best-effort for cross-collection reads). Field: - &#x60;applied_time&#x60;  Direction: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. | [optional] 
+ **pageSize** | **Number**| Total number of items to return per page | [optional] 
+
+### Return type
+
+[**ListTagContactAssociationsResponse**](ListTagContactAssociationsResponse.md)
 
 ### Authorization
 

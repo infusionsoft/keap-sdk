@@ -28,6 +28,7 @@ import Error from '../model/Error';
 import LinkContactsRequest from '../model/LinkContactsRequest';
 import ListContactLinkTypesResponse from '../model/ListContactLinkTypesResponse';
 import ListContactLinksResponse from '../model/ListContactLinksResponse';
+import ListContactTagAssociationsResponse from '../model/ListContactTagAssociationsResponse';
 import ListContactTagsResponse from '../model/ListContactTagsResponse';
 import ListContactsResponse from '../model/ListContactsResponse';
 import ListCustomFieldGroupsResponse from '../model/ListCustomFieldGroupsResponse';
@@ -983,6 +984,62 @@ export default class ContactApi {
      */
     listContacts(opts) {
       return this.listContactsWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * List Contact's Tags
+     * Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the `-` wildcard in place of a single contact id and pass the contact IDs in the `filter`.  Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.  **Filters** (`filter=key==value`, semicolon-separated; `contact_ids` is required): - `contact_ids` — **required**; comma-separated contact IDs, max 100 (e.g. `contact_ids==1,2,3`) - `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time - `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/contacts/-/tags?filter=contact_ids==1,2,3;since_applied_time==2024-06-01T00:00:00Z`
+     * @param {Object} opts Optional parameters
+     * @param {String} [filter] Filter to apply (at least one is required). Allowed fields: - (List[String]) `contact_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time` 
+     * @param {String} [pageToken] Page token
+     * @param {String} [orderBy] Attribute and direction to order items. One of the following fields: - `applied_time`  One of the following directions: - `asc` - `desc`  Field and direction are space-separated, e.g. `applied_time desc`.
+     * @param {Number} [pageSize] Total number of items to return per page
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:keap.core.v2/model/ListContactTagAssociationsResponse} and HTTP response
+     */
+    listTagsAcrossContactsWithHttpInfo(opts) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'filter': opts['filter'],
+        'page_token': opts['pageToken'],
+        'order_by': opts['orderBy'],
+        'page_size': opts['pageSize']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ListContactTagAssociationsResponse;
+      return this.apiClient.callApi(
+        '/rest/v2/contacts/-/tags', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * List Contact's Tags
+     * Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the `-` wildcard in place of a single contact id and pass the contact IDs in the `filter`.  Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.  **Filters** (`filter=key==value`, semicolon-separated; `contact_ids` is required): - `contact_ids` — **required**; comma-separated contact IDs, max 100 (e.g. `contact_ids==1,2,3`) - `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time - `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/contacts/-/tags?filter=contact_ids==1,2,3;since_applied_time==2024-06-01T00:00:00Z`
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.filter Filter to apply (at least one is required). Allowed fields: - (List[String]) `contact_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time` 
+     * @param {String} opts.pageToken Page token
+     * @param {String} opts.orderBy Attribute and direction to order items. One of the following fields: - `applied_time`  One of the following directions: - `asc` - `desc`  Field and direction are space-separated, e.g. `applied_time desc`.
+     * @param {Number} opts.pageSize Total number of items to return per page
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:keap.core.v2/model/ListContactTagAssociationsResponse}
+     */
+    listTagsAcrossContacts(opts) {
+      return this.listTagsAcrossContactsWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

@@ -22,6 +22,7 @@ import { CustomFieldTab } from '../models/CustomFieldTab';
 import { LinkContactsRequest } from '../models/LinkContactsRequest';
 import { ListContactLinkTypesResponse } from '../models/ListContactLinkTypesResponse';
 import { ListContactLinksResponse } from '../models/ListContactLinksResponse';
+import { ListContactTagAssociationsResponse } from '../models/ListContactTagAssociationsResponse';
 import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCustomFieldGroupsResponse } from '../models/ListCustomFieldGroupsResponse';
@@ -879,6 +880,64 @@ export class ContactApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the `-` wildcard in place of a single contact id and pass the contact IDs in the `filter`.  Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.  **Filters** (`filter=key==value`, semicolon-separated; `contact_ids` is required): - `contact_ids` — **required**; comma-separated contact IDs, max 100 (e.g. `contact_ids==1,2,3`) - `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time - `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/contacts/-/tags?filter=contact_ids==1,2,3;since_applied_time==2024-06-01T00:00:00Z`
+     * List Contact\'s Tags
+     * @param filter Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60; 
+     * @param pageToken Page token
+     * @param orderBy Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;.
+     * @param pageSize Total number of items to return per page
+     */
+    public async listTagsAcrossContacts(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+
+
+
+
+        // Path Params
+        const localVarPath = '/rest/v2/contacts/-/tags';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (filter !== undefined) {
+            requestContext.setQueryParam("filter", ObjectSerializer.serialize(filter, "string", ""));
+        }
+
+        // Query Params
+        if (pageToken !== undefined) {
+            requestContext.setQueryParam("page_token", ObjectSerializer.serialize(pageToken, "string", ""));
+        }
+
+        // Query Params
+        if (orderBy !== undefined) {
+            requestContext.setQueryParam("order_by", ObjectSerializer.serialize(orderBy, "string", ""));
+        }
+
+        // Query Params
+        if (pageSize !== undefined) {
+            requestContext.setQueryParam("page_size", ObjectSerializer.serialize(pageSize, "number", "int32"));
+        }
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["oauth2"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Retrieves a list of tags applied to the specified Contact
      * List Applied Tags
      * @param contactId Contact identifier
@@ -1085,7 +1144,7 @@ export class ContactApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param fields Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      */
-    public async updateContact(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: Set<'addresses' | 'anniversary_date' | 'birth_date' | 'company' | 'contact_type' | 'create_time' | 'custom_fields' | 'email_addresses' | 'family_name' | 'fax_numbers' | 'given_name' | 'id' | 'job_title' | 'leadsource_id' | 'links' | 'middle_name' | 'notes' | 'origin' | 'owner_id' | 'phone_numbers' | 'preferred_locale' | 'preferred_name' | 'prefix' | 'referral_code' | 'score_value' | 'social_accounts' | 'source_type' | 'spouse_name' | 'suffix' | 'tag_ids' | 'time_zone' | 'update_time' | 'utm_parameters' | 'website' | 'account_id' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'created_by' | 'groups' | 'last_updated_by'>, fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async updateContact(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: Set<'addresses' | 'anniversary_date' | 'birth_date' | 'company' | 'contact_type' | 'create_time' | 'custom_fields' | 'email_addresses' | 'family_name' | 'fax_numbers' | 'given_name' | 'id' | 'job_title' | 'leadsource_id' | 'links' | 'middle_name' | 'notes' | 'origin' | 'owner_id' | 'phone_numbers' | 'preferred_locale' | 'preferred_name' | 'prefix' | 'referral_code' | 'score_value' | 'social_accounts' | 'source_type' | 'spouse_name' | 'suffix' | 'time_zone' | 'update_time' | 'utm_parameters' | 'website' | 'account_id' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'created_by' | 'groups' | 'last_updated_by'>, fields?: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'contactId' is not null or undefined
@@ -1112,7 +1171,7 @@ export class ContactApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'addresses' | 'anniversary_date' | 'birth_date' | 'company' | 'contact_type' | 'create_time' | 'custom_fields' | 'email_addresses' | 'family_name' | 'fax_numbers' | 'given_name' | 'id' | 'job_title' | 'leadsource_id' | 'links' | 'middle_name' | 'notes' | 'origin' | 'owner_id' | 'phone_numbers' | 'preferred_locale' | 'preferred_name' | 'prefix' | 'referral_code' | 'score_value' | 'social_accounts' | 'source_type' | 'spouse_name' | 'suffix' | 'tag_ids' | 'time_zone' | 'update_time' | 'utm_parameters' | 'website' | 'account_id' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'created_by' | 'groups' | 'last_updated_by'>", "");
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'addresses' | 'anniversary_date' | 'birth_date' | 'company' | 'contact_type' | 'create_time' | 'custom_fields' | 'email_addresses' | 'family_name' | 'fax_numbers' | 'given_name' | 'id' | 'job_title' | 'leadsource_id' | 'links' | 'middle_name' | 'notes' | 'origin' | 'owner_id' | 'phone_numbers' | 'preferred_locale' | 'preferred_name' | 'prefix' | 'referral_code' | 'score_value' | 'social_accounts' | 'source_type' | 'spouse_name' | 'suffix' | 'time_zone' | 'update_time' | 'utm_parameters' | 'website' | 'account_id' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'created_by' | 'groups' | 'last_updated_by'>", "");
             for (const serializedParam of serializedParams) {
                 requestContext.appendQueryParam("update_mask", serializedParam);
             }
@@ -2963,6 +3022,91 @@ export class ContactApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "ListContactsResponse", ""
             ) as ListContactsResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to listTagsAcrossContacts
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async listTagsAcrossContactsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListContactTagAssociationsResponse >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: ListContactTagAssociationsResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListContactTagAssociationsResponse", ""
+            ) as ListContactTagAssociationsResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("405", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+        if (isCodeInRange("501", response.httpStatusCode)) {
+            const body: Error = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Error", ""
+            ) as Error;
+            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: ListContactTagAssociationsResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListContactTagAssociationsResponse", ""
+            ) as ListContactTagAssociationsResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

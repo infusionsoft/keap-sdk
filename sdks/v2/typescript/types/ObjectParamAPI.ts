@@ -208,6 +208,7 @@ import { ListCompanyTagsResponse } from '../models/ListCompanyTagsResponse';
 import { ListContactLinkTypesResponse } from '../models/ListContactLinkTypesResponse';
 import { ListContactLinksResponse } from '../models/ListContactLinksResponse';
 import { ListContactPaymentMethodsResponse } from '../models/ListContactPaymentMethodsResponse';
+import { ListContactTagAssociationsResponse } from '../models/ListContactTagAssociationsResponse';
 import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
@@ -249,6 +250,7 @@ import { ListShippingDiscountsResponse } from '../models/ListShippingDiscountsRe
 import { ListSubscriptionPlansResponse } from '../models/ListSubscriptionPlansResponse';
 import { ListSubscriptionsResponse } from '../models/ListSubscriptionsResponse';
 import { ListTagCategoriesResponse } from '../models/ListTagCategoriesResponse';
+import { ListTagContactAssociationsResponse } from '../models/ListTagContactAssociationsResponse';
 import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesResponse';
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
@@ -332,6 +334,7 @@ import { SubscriptionPlanDetail } from '../models/SubscriptionPlanDetail';
 import { SubscriptionPlanList } from '../models/SubscriptionPlanList';
 import { Tag } from '../models/Tag';
 import { TagCategory } from '../models/TagCategory';
+import { TagContactAssociation } from '../models/TagContactAssociation';
 import { TagContactCount } from '../models/TagContactCount';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { TaggedContact } from '../models/TaggedContact';
@@ -4101,6 +4104,39 @@ export interface ContactApiListContactsRequest {
     pageToken?: string
 }
 
+export interface ContactApiListTagsAcrossContactsRequest {
+    /**
+     * Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApilistTagsAcrossContacts
+     */
+    filter?: string
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApilistTagsAcrossContacts
+     */
+    pageToken?: string
+    /**
+     * Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;.
+     * Defaults to: undefined
+     * @type string
+     * @memberof ContactApilistTagsAcrossContacts
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 0
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof ContactApilistTagsAcrossContacts
+     */
+    pageSize?: number
+}
+
 export interface ContactApiListTagsForContactRequest {
     /**
      * Contact identifier
@@ -4186,10 +4222,10 @@ export interface ContactApiUpdateContactRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Set&lt;&#39;addresses&#39; | &#39;anniversary_date&#39; | &#39;birth_date&#39; | &#39;company&#39; | &#39;contact_type&#39; | &#39;create_time&#39; | &#39;custom_fields&#39; | &#39;email_addresses&#39; | &#39;family_name&#39; | &#39;fax_numbers&#39; | &#39;given_name&#39; | &#39;id&#39; | &#39;job_title&#39; | &#39;leadsource_id&#39; | &#39;links&#39; | &#39;middle_name&#39; | &#39;notes&#39; | &#39;origin&#39; | &#39;owner_id&#39; | &#39;phone_numbers&#39; | &#39;preferred_locale&#39; | &#39;preferred_name&#39; | &#39;prefix&#39; | &#39;referral_code&#39; | &#39;score_value&#39; | &#39;social_accounts&#39; | &#39;source_type&#39; | &#39;spouse_name&#39; | &#39;suffix&#39; | &#39;tag_ids&#39; | &#39;time_zone&#39; | &#39;update_time&#39; | &#39;utm_parameters&#39; | &#39;website&#39; | &#39;account_id&#39; | &#39;assistant_name&#39; | &#39;assistant_phone&#39; | &#39;billing_information&#39; | &#39;created_by&#39; | &#39;groups&#39; | &#39;last_updated_by&#39;&gt;
+     * @type Set&lt;&#39;addresses&#39; | &#39;anniversary_date&#39; | &#39;birth_date&#39; | &#39;company&#39; | &#39;contact_type&#39; | &#39;create_time&#39; | &#39;custom_fields&#39; | &#39;email_addresses&#39; | &#39;family_name&#39; | &#39;fax_numbers&#39; | &#39;given_name&#39; | &#39;id&#39; | &#39;job_title&#39; | &#39;leadsource_id&#39; | &#39;links&#39; | &#39;middle_name&#39; | &#39;notes&#39; | &#39;origin&#39; | &#39;owner_id&#39; | &#39;phone_numbers&#39; | &#39;preferred_locale&#39; | &#39;preferred_name&#39; | &#39;prefix&#39; | &#39;referral_code&#39; | &#39;score_value&#39; | &#39;social_accounts&#39; | &#39;source_type&#39; | &#39;spouse_name&#39; | &#39;suffix&#39; | &#39;time_zone&#39; | &#39;update_time&#39; | &#39;utm_parameters&#39; | &#39;website&#39; | &#39;account_id&#39; | &#39;assistant_name&#39; | &#39;assistant_phone&#39; | &#39;billing_information&#39; | &#39;created_by&#39; | &#39;groups&#39; | &#39;last_updated_by&#39;&gt;
      * @memberof ContactApiupdateContact
      */
-    updateMask?: Set<'addresses' | 'anniversary_date' | 'birth_date' | 'company' | 'contact_type' | 'create_time' | 'custom_fields' | 'email_addresses' | 'family_name' | 'fax_numbers' | 'given_name' | 'id' | 'job_title' | 'leadsource_id' | 'links' | 'middle_name' | 'notes' | 'origin' | 'owner_id' | 'phone_numbers' | 'preferred_locale' | 'preferred_name' | 'prefix' | 'referral_code' | 'score_value' | 'social_accounts' | 'source_type' | 'spouse_name' | 'suffix' | 'tag_ids' | 'time_zone' | 'update_time' | 'utm_parameters' | 'website' | 'account_id' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'created_by' | 'groups' | 'last_updated_by'>
+    updateMask?: Set<'addresses' | 'anniversary_date' | 'birth_date' | 'company' | 'contact_type' | 'create_time' | 'custom_fields' | 'email_addresses' | 'family_name' | 'fax_numbers' | 'given_name' | 'id' | 'job_title' | 'leadsource_id' | 'links' | 'middle_name' | 'notes' | 'origin' | 'owner_id' | 'phone_numbers' | 'preferred_locale' | 'preferred_name' | 'prefix' | 'referral_code' | 'score_value' | 'social_accounts' | 'source_type' | 'spouse_name' | 'suffix' | 'time_zone' | 'update_time' | 'utm_parameters' | 'website' | 'account_id' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'created_by' | 'groups' | 'last_updated_by'>
     /**
      * Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      * Defaults to: undefined
@@ -4615,6 +4651,24 @@ export class ObjectContactApi {
      */
     public listContacts(param: ContactApiListContactsRequest = {}, options?: ConfigurationOptions): Promise<ListContactsResponse> {
         return this.api.listContacts(param.fields, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the `-` wildcard in place of a single contact id and pass the contact IDs in the `filter`.  Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.  **Filters** (`filter=key==value`, semicolon-separated; `contact_ids` is required): - `contact_ids` — **required**; comma-separated contact IDs, max 100 (e.g. `contact_ids==1,2,3`) - `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time - `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/contacts/-/tags?filter=contact_ids==1,2,3;since_applied_time==2024-06-01T00:00:00Z`
+     * List Contact\'s Tags
+     * @param param the request object
+     */
+    public listTagsAcrossContactsWithHttpInfo(param: ContactApiListTagsAcrossContactsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListContactTagAssociationsResponse>> {
+        return this.api.listTagsAcrossContactsWithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
+    }
+
+    /**
+     * Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the `-` wildcard in place of a single contact id and pass the contact IDs in the `filter`.  Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.  **Filters** (`filter=key==value`, semicolon-separated; `contact_ids` is required): - `contact_ids` — **required**; comma-separated contact IDs, max 100 (e.g. `contact_ids==1,2,3`) - `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time - `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/contacts/-/tags?filter=contact_ids==1,2,3;since_applied_time==2024-06-01T00:00:00Z`
+     * List Contact\'s Tags
+     * @param param the request object
+     */
+    public listTagsAcrossContacts(param: ContactApiListTagsAcrossContactsRequest = {}, options?: ConfigurationOptions): Promise<ListContactTagAssociationsResponse> {
+        return this.api.listTagsAcrossContacts(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
     }
 
     /**
@@ -13420,6 +13474,39 @@ export interface TagsApiListCompaniesForTagIdRequest {
     pageToken?: string
 }
 
+export interface TagsApiListContactsAcrossTagsRequest {
+    /**
+     * Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;tag_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60; 
+     * Defaults to: undefined
+     * @type string
+     * @memberof TagsApilistContactsAcrossTags
+     */
+    filter?: string
+    /**
+     * Page token
+     * Defaults to: undefined
+     * @type string
+     * @memberof TagsApilistContactsAcrossTags
+     */
+    pageToken?: string
+    /**
+     * Attribute and direction to order items (best-effort for cross-collection reads). Field: - &#x60;applied_time&#x60;  Direction: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;.
+     * Defaults to: undefined
+     * @type string
+     * @memberof TagsApilistContactsAcrossTags
+     */
+    orderBy?: string
+    /**
+     * Total number of items to return per page
+     * Minimum: 0
+     * Maximum: 1000
+     * Defaults to: undefined
+     * @type number
+     * @memberof TagsApilistContactsAcrossTags
+     */
+    pageSize?: number
+}
+
 export interface TagsApiListContactsWithTagIdRequest {
     /**
      * 
@@ -13755,6 +13842,24 @@ export class ObjectTagsApi {
      */
     public listCompaniesForTagId(param: TagsApiListCompaniesForTagIdRequest, options?: ConfigurationOptions): Promise<ListTaggedCompaniesResponse> {
         return this.api.listCompaniesForTagId(param.tagId, param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
+    }
+
+    /**
+     * Bulk-retrieves tag-contact associations across multiple tags in a single request. Use the `-` wildcard in place of a single tag id and pass the tag IDs in the `filter`.  Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.  **Filters** (`filter=key==value`, semicolon-separated; `tag_ids` is required): - `tag_ids` — **required**; comma-separated tag IDs, max 100 (e.g. `tag_ids==101,102,103`) - `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time - `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/tags/-/contacts?filter=tag_ids==101,102;since_applied_time==2024-06-01T00:00:00Z`
+     * List Tag\'s Contacts
+     * @param param the request object
+     */
+    public listContactsAcrossTagsWithHttpInfo(param: TagsApiListContactsAcrossTagsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListTagContactAssociationsResponse>> {
+        return this.api.listContactsAcrossTagsWithHttpInfo(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
+    }
+
+    /**
+     * Bulk-retrieves tag-contact associations across multiple tags in a single request. Use the `-` wildcard in place of a single tag id and pass the tag IDs in the `filter`.  Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.  **Filters** (`filter=key==value`, semicolon-separated; `tag_ids` is required): - `tag_ids` — **required**; comma-separated tag IDs, max 100 (e.g. `tag_ids==101,102,103`) - `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time - `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/tags/-/contacts?filter=tag_ids==101,102;since_applied_time==2024-06-01T00:00:00Z`
+     * List Tag\'s Contacts
+     * @param param the request object
+     */
+    public listContactsAcrossTags(param: TagsApiListContactsAcrossTagsRequest = {}, options?: ConfigurationOptions): Promise<ListTagContactAssociationsResponse> {
+        return this.api.listContactsAcrossTags(param.filter, param.pageToken, param.orderBy, param.pageSize,  options).toPromise();
     }
 
     /**

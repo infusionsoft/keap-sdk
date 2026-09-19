@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.23</version>
+  <version>2.0.24</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.23"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.24"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.23.jar`
+- `target/core-service-v2-java-sdk-2.0.24.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -344,6 +344,8 @@ Class | Method | HTTP request | Description
 *ContactApi* | [**listContactLinksWithHttpInfo**](docs/ContactApi.md#listContactLinksWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts
 *ContactApi* | [**listContacts**](docs/ContactApi.md#listContacts) | **GET** /rest/v2/contacts | List Contacts
 *ContactApi* | [**listContactsWithHttpInfo**](docs/ContactApi.md#listContactsWithHttpInfo) | **GET** /rest/v2/contacts | List Contacts
+*ContactApi* | [**listTagsAcrossContacts**](docs/ContactApi.md#listTagsAcrossContacts) | **GET** /rest/v2/contacts/-/tags | List Contact&#39;s Tags
+*ContactApi* | [**listTagsAcrossContactsWithHttpInfo**](docs/ContactApi.md#listTagsAcrossContactsWithHttpInfo) | **GET** /rest/v2/contacts/-/tags | List Contact&#39;s Tags
 *ContactApi* | [**listTagsForContact**](docs/ContactApi.md#listTagsForContact) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags
 *ContactApi* | [**listTagsForContactWithHttpInfo**](docs/ContactApi.md#listTagsForContactWithHttpInfo) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags
 *ContactApi* | [**mergeContacts**](docs/ContactApi.md#mergeContacts) | **POST** /rest/v2/contacts:merge | Merge two Contacts
@@ -842,6 +844,8 @@ Class | Method | HTTP request | Description
 *TagsApi* | [**getTagWithHttpInfo**](docs/TagsApi.md#getTagWithHttpInfo) | **GET** /rest/v2/tags/{tag_id} | Retrieve a Tag
 *TagsApi* | [**listCompaniesForTagId**](docs/TagsApi.md#listCompaniesForTagId) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies
 *TagsApi* | [**listCompaniesForTagIdWithHttpInfo**](docs/TagsApi.md#listCompaniesForTagIdWithHttpInfo) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies
+*TagsApi* | [**listContactsAcrossTags**](docs/TagsApi.md#listContactsAcrossTags) | **GET** /rest/v2/tags/-/contacts | List Tag&#39;s Contacts
+*TagsApi* | [**listContactsAcrossTagsWithHttpInfo**](docs/TagsApi.md#listContactsAcrossTagsWithHttpInfo) | **GET** /rest/v2/tags/-/contacts | List Tag&#39;s Contacts
 *TagsApi* | [**listContactsWithTagId**](docs/TagsApi.md#listContactsWithTagId) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts
 *TagsApi* | [**listContactsWithTagIdWithHttpInfo**](docs/TagsApi.md#listContactsWithTagIdWithHttpInfo) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts
 *TagsApi* | [**listTagCategories**](docs/TagsApi.md#listTagCategories) | **GET** /rest/v2/tags/categories | List Tag Categories
@@ -1121,6 +1125,7 @@ Class | Method | HTTP request | Description
  - [ListContactLinkTypesResponse](docs/ListContactLinkTypesResponse.md)
  - [ListContactLinksResponse](docs/ListContactLinksResponse.md)
  - [ListContactPaymentMethodsResponse](docs/ListContactPaymentMethodsResponse.md)
+ - [ListContactTagAssociationsResponse](docs/ListContactTagAssociationsResponse.md)
  - [ListContactTagsResponse](docs/ListContactTagsResponse.md)
  - [ListContactsResponse](docs/ListContactsResponse.md)
  - [ListCountriesResponse](docs/ListCountriesResponse.md)
@@ -1162,6 +1167,7 @@ Class | Method | HTTP request | Description
  - [ListSubscriptionPlansResponse](docs/ListSubscriptionPlansResponse.md)
  - [ListSubscriptionsResponse](docs/ListSubscriptionsResponse.md)
  - [ListTagCategoriesResponse](docs/ListTagCategoriesResponse.md)
+ - [ListTagContactAssociationsResponse](docs/ListTagContactAssociationsResponse.md)
  - [ListTaggedCompaniesResponse](docs/ListTaggedCompaniesResponse.md)
  - [ListTaggedContactsResponse](docs/ListTaggedContactsResponse.md)
  - [ListTagsResponse](docs/ListTagsResponse.md)
@@ -1244,6 +1250,7 @@ Class | Method | HTTP request | Description
  - [SubscriptionPlanList](docs/SubscriptionPlanList.md)
  - [Tag](docs/Tag.md)
  - [TagCategory](docs/TagCategory.md)
+ - [TagContactAssociation](docs/TagContactAssociation.md)
  - [TagContactCount](docs/TagContactCount.md)
  - [TaggedCompany](docs/TaggedCompany.md)
  - [TaggedContact](docs/TaggedContact.md)

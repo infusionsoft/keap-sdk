@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**listContactLinkTypes**](ContactApi.md#listContactLinkTypes) | **GET** /rest/v2/contacts/links/types | List Contact Link types
 [**listContactLinks**](ContactApi.md#listContactLinks) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts
 [**listContacts**](ContactApi.md#listContacts) | **GET** /rest/v2/contacts | List Contacts
+[**listTagsAcrossContacts**](ContactApi.md#listTagsAcrossContacts) | **GET** /rest/v2/contacts/-/tags | List Contact\&#39;s Tags
 [**listTagsForContact**](ContactApi.md#listTagsForContact) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags
 [**mergeContacts**](ContactApi.md#mergeContacts) | **POST** /rest/v2/contacts:merge | Merge two Contacts
 [**retrieveContactModel**](ContactApi.md#retrieveContactModel) | **GET** /rest/v2/contacts/model | Retrieve Contact Model
@@ -1331,6 +1332,76 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **listTagsAcrossContacts**
+> ListContactTagAssociationsResponse listTagsAcrossContacts()
+
+Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the `-` wildcard in place of a single contact id and pass the contact IDs in the `filter`.  Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.  **Filters** (`filter=key==value`, semicolon-separated; `contact_ids` is required): - `contact_ids` — **required**; comma-separated contact IDs, max 100 (e.g. `contact_ids==1,2,3`) - `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time - `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/contacts/-/tags?filter=contact_ids==1,2,3;since_applied_time==2024-06-01T00:00:00Z`
+
+### Example
+
+
+```typescript
+import { createConfiguration, ContactApi } from '';
+import type { ContactApiListTagsAcrossContactsRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new ContactApi(configuration);
+
+const request: ContactApiListTagsAcrossContactsRequest = {
+    // Filter to apply (at least one is required). Allowed fields: - (List[String]) `contact_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time`  (optional)
+  filter: "filter_example",
+    // Page token (optional)
+  pageToken: "page_token_example",
+    // Attribute and direction to order items. One of the following fields: - `applied_time`  One of the following directions: - `asc` - `desc`  Field and direction are space-separated, e.g. `applied_time desc`. (optional)
+  orderBy: "order_by_example",
+    // Total number of items to return per page (optional)
+  pageSize: 0,
+};
+
+const data = await apiInstance.listTagsAcrossContacts(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | [**string**] | Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  | (optional) defaults to undefined
+ **pageToken** | [**string**] | Page token | (optional) defaults to undefined
+ **orderBy** | [**string**] | Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. | (optional) defaults to undefined
+ **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
+
+
+### Return type
+
+**ListContactTagAssociationsResponse**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **listTagsForContact**
 > ListContactTagsResponse listTagsForContact()
 
@@ -1720,7 +1791,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **createUpdateContactRequest** | **CreateUpdateContactRequest**|  |
  **contactId** | [**string**] |  | defaults to undefined
- **updateMask** | **Array<&#39;addresses&#39; &#124; &#39;anniversary_date&#39; &#124; &#39;birth_date&#39; &#124; &#39;company&#39; &#124; &#39;contact_type&#39; &#124; &#39;create_time&#39; &#124; &#39;custom_fields&#39; &#124; &#39;email_addresses&#39; &#124; &#39;family_name&#39; &#124; &#39;fax_numbers&#39; &#124; &#39;given_name&#39; &#124; &#39;id&#39; &#124; &#39;job_title&#39; &#124; &#39;leadsource_id&#39; &#124; &#39;links&#39; &#124; &#39;middle_name&#39; &#124; &#39;notes&#39; &#124; &#39;origin&#39; &#124; &#39;owner_id&#39; &#124; &#39;phone_numbers&#39; &#124; &#39;preferred_locale&#39; &#124; &#39;preferred_name&#39; &#124; &#39;prefix&#39; &#124; &#39;referral_code&#39; &#124; &#39;score_value&#39; &#124; &#39;social_accounts&#39; &#124; &#39;source_type&#39; &#124; &#39;spouse_name&#39; &#124; &#39;suffix&#39; &#124; &#39;tag_ids&#39; &#124; &#39;time_zone&#39; &#124; &#39;update_time&#39; &#124; &#39;utm_parameters&#39; &#124; &#39;website&#39; &#124; &#39;account_id&#39; &#124; &#39;assistant_name&#39; &#124; &#39;assistant_phone&#39; &#124; &#39;billing_information&#39; &#124; &#39;created_by&#39; &#124; &#39;groups&#39; &#124; &#39;last_updated_by&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;addresses&#39; &#124; &#39;anniversary_date&#39; &#124; &#39;birth_date&#39; &#124; &#39;company&#39; &#124; &#39;contact_type&#39; &#124; &#39;create_time&#39; &#124; &#39;custom_fields&#39; &#124; &#39;email_addresses&#39; &#124; &#39;family_name&#39; &#124; &#39;fax_numbers&#39; &#124; &#39;given_name&#39; &#124; &#39;id&#39; &#124; &#39;job_title&#39; &#124; &#39;leadsource_id&#39; &#124; &#39;links&#39; &#124; &#39;middle_name&#39; &#124; &#39;notes&#39; &#124; &#39;origin&#39; &#124; &#39;owner_id&#39; &#124; &#39;phone_numbers&#39; &#124; &#39;preferred_locale&#39; &#124; &#39;preferred_name&#39; &#124; &#39;prefix&#39; &#124; &#39;referral_code&#39; &#124; &#39;score_value&#39; &#124; &#39;social_accounts&#39; &#124; &#39;source_type&#39; &#124; &#39;spouse_name&#39; &#124; &#39;suffix&#39; &#124; &#39;time_zone&#39; &#124; &#39;update_time&#39; &#124; &#39;utm_parameters&#39; &#124; &#39;website&#39; &#124; &#39;account_id&#39; &#124; &#39;assistant_name&#39; &#124; &#39;assistant_phone&#39; &#124; &#39;billing_information&#39; &#124; &#39;created_by&#39; &#124; &#39;groups&#39; &#124; &#39;last_updated_by&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
  **fields** | **Array&lt;string&gt;** | Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by) | (optional) defaults to undefined
 
 

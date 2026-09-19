@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**getCategory**](TagsApi.md#getCategory) | **GET** /rest/v2/tags/categories/{tag_category_id} | Retrieve a Tag Category
 [**getTag**](TagsApi.md#getTag) | **GET** /rest/v2/tags/{tag_id} | Retrieve a Tag
 [**listCompaniesForTagId**](TagsApi.md#listCompaniesForTagId) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies
+[**listContactsAcrossTags**](TagsApi.md#listContactsAcrossTags) | **GET** /rest/v2/tags/-/contacts | List Tag\&#39;s Contacts
 [**listContactsWithTagId**](TagsApi.md#listContactsWithTagId) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts
 [**listTagCategories**](TagsApi.md#listTagCategories) | **GET** /rest/v2/tags/categories | List Tag Categories
 [**listTags**](TagsApi.md#listTags) | **GET** /rest/v2/tags | List Tags
@@ -573,6 +574,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 **ListTaggedCompaniesResponse**
+
+### Authorization
+
+[oauth2](README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listContactsAcrossTags**
+> ListTagContactAssociationsResponse listContactsAcrossTags()
+
+Bulk-retrieves tag-contact associations across multiple tags in a single request. Use the `-` wildcard in place of a single tag id and pass the tag IDs in the `filter`.  Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.  **Filters** (`filter=key==value`, semicolon-separated; `tag_ids` is required): - `tag_ids` — **required**; comma-separated tag IDs, max 100 (e.g. `tag_ids==101,102,103`) - `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time - `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/tags/-/contacts?filter=tag_ids==101,102;since_applied_time==2024-06-01T00:00:00Z`
+
+### Example
+
+
+```typescript
+import { createConfiguration, TagsApi } from '';
+import type { TagsApiListContactsAcrossTagsRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new TagsApi(configuration);
+
+const request: TagsApiListContactsAcrossTagsRequest = {
+    // Filter to apply (at least one is required). Allowed fields: - (List[String]) `tag_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time`  (optional)
+  filter: "filter_example",
+    // Page token (optional)
+  pageToken: "page_token_example",
+    // Attribute and direction to order items (best-effort for cross-collection reads). Field: - `applied_time`  Direction: - `asc` - `desc`  Field and direction are space-separated, e.g. `applied_time desc`. (optional)
+  orderBy: "order_by_example",
+    // Total number of items to return per page (optional)
+  pageSize: 0,
+};
+
+const data = await apiInstance.listContactsAcrossTags(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | [**string**] | Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;tag_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  | (optional) defaults to undefined
+ **pageToken** | [**string**] | Page token | (optional) defaults to undefined
+ **orderBy** | [**string**] | Attribute and direction to order items (best-effort for cross-collection reads). Field: - &#x60;applied_time&#x60;  Direction: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. | (optional) defaults to undefined
+ **pageSize** | [**number**] | Total number of items to return per page | (optional) defaults to undefined
+
+
+### Return type
+
+**ListTagContactAssociationsResponse**
 
 ### Authorization
 

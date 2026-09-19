@@ -220,6 +220,7 @@ import ListCompanyTagsResponse from './model/ListCompanyTagsResponse';
 import ListContactLinkTypesResponse from './model/ListContactLinkTypesResponse';
 import ListContactLinksResponse from './model/ListContactLinksResponse';
 import ListContactPaymentMethodsResponse from './model/ListContactPaymentMethodsResponse';
+import ListContactTagAssociationsResponse from './model/ListContactTagAssociationsResponse';
 import ListContactTagsResponse from './model/ListContactTagsResponse';
 import ListContactsResponse from './model/ListContactsResponse';
 import ListCountriesResponse from './model/ListCountriesResponse';
@@ -261,6 +262,7 @@ import ListShippingDiscountsResponse from './model/ListShippingDiscountsResponse
 import ListSubscriptionPlansResponse from './model/ListSubscriptionPlansResponse';
 import ListSubscriptionsResponse from './model/ListSubscriptionsResponse';
 import ListTagCategoriesResponse from './model/ListTagCategoriesResponse';
+import ListTagContactAssociationsResponse from './model/ListTagContactAssociationsResponse';
 import ListTaggedCompaniesResponse from './model/ListTaggedCompaniesResponse';
 import ListTaggedContactsResponse from './model/ListTaggedContactsResponse';
 import ListTagsResponse from './model/ListTagsResponse';
@@ -343,6 +345,7 @@ import SubscriptionPlanDetail from './model/SubscriptionPlanDetail';
 import SubscriptionPlanList from './model/SubscriptionPlanList';
 import Tag from './model/Tag';
 import TagCategory from './model/TagCategory';
+import TagContactAssociation from './model/TagContactAssociation';
 import TagContactCount from './model/TagContactCount';
 import TaggedCompany from './model/TaggedCompany';
 import TaggedContact from './model/TaggedContact';
@@ -472,7 +475,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.23
+* @version 2.0.24
 */
 export {
     /**
@@ -1724,6 +1727,12 @@ export {
     ListContactPaymentMethodsResponse,
 
     /**
+     * The ListContactTagAssociationsResponse model constructor.
+     * @property {module:keap.core.v2/model/ListContactTagAssociationsResponse}
+     */
+    ListContactTagAssociationsResponse,
+
+    /**
      * The ListContactTagsResponse model constructor.
      * @property {module:keap.core.v2/model/ListContactTagsResponse}
      */
@@ -1968,6 +1977,12 @@ export {
      * @property {module:keap.core.v2/model/ListTagCategoriesResponse}
      */
     ListTagCategoriesResponse,
+
+    /**
+     * The ListTagContactAssociationsResponse model constructor.
+     * @property {module:keap.core.v2/model/ListTagContactAssociationsResponse}
+     */
+    ListTagContactAssociationsResponse,
 
     /**
      * The ListTaggedCompaniesResponse model constructor.
@@ -2460,6 +2475,12 @@ export {
      * @property {module:keap.core.v2/model/TagCategory}
      */
     TagCategory,
+
+    /**
+     * The TagContactAssociation model constructor.
+     * @property {module:keap.core.v2/model/TagContactAssociation}
+     */
+    TagContactAssociation,
 
     /**
      * The TagContactCount model constructor.

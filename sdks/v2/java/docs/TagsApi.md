@@ -22,6 +22,8 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**getTagWithHttpInfo**](TagsApi.md#getTagWithHttpInfo) | **GET** /rest/v2/tags/{tag_id} | Retrieve a Tag |
 | [**listCompaniesForTagId**](TagsApi.md#listCompaniesForTagId) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies |
 | [**listCompaniesForTagIdWithHttpInfo**](TagsApi.md#listCompaniesForTagIdWithHttpInfo) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies |
+| [**listContactsAcrossTags**](TagsApi.md#listContactsAcrossTags) | **GET** /rest/v2/tags/-/contacts | List Tag&#39;s Contacts |
+| [**listContactsAcrossTagsWithHttpInfo**](TagsApi.md#listContactsAcrossTagsWithHttpInfo) | **GET** /rest/v2/tags/-/contacts | List Tag&#39;s Contacts |
 | [**listContactsWithTagId**](TagsApi.md#listContactsWithTagId) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts |
 | [**listContactsWithTagIdWithHttpInfo**](TagsApi.md#listContactsWithTagIdWithHttpInfo) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts |
 | [**listTagCategories**](TagsApi.md#listTagCategories) | **GET** /rest/v2/tags/categories | List Tag Categories |
@@ -1472,6 +1474,178 @@ public class Example {
 ### Return type
 
 ApiResponse<[**ListTaggedCompaniesResponse**](ListTaggedCompaniesResponse.md)>
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+
+## listContactsAcrossTags
+
+> ListTagContactAssociationsResponse listContactsAcrossTags(filter, pageToken, orderBy, pageSize)
+
+List Tag&#39;s Contacts
+
+Bulk-retrieves tag-contact associations across multiple tags in a single request. Use the &#x60;-&#x60; wildcard in place of a single tag id and pass the tag IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;tag_ids&#x60; is required): - &#x60;tag_ids&#x60; — **required**; comma-separated tag IDs, max 100 (e.g. &#x60;tag_ids&#x3D;&#x3D;101,102,103&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/tags/-/contacts?filter&#x3D;tag_ids&#x3D;&#x3D;101,102;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.TagsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        TagsApi apiInstance = new TagsApi(defaultClient);
+        String filter = "filter_example"; // String | Filter to apply (at least one is required). Allowed fields: - (List[String]) `tag_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time` 
+        String pageToken = "pageToken_example"; // String | Page token
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items (best-effort for cross-collection reads). Field: - `applied_time`  Direction: - `asc` - `desc`  Field and direction are space-separated, e.g. `applied_time desc`.
+        Integer pageSize = 0; // Integer | Total number of items to return per page
+        try {
+            ListTagContactAssociationsResponse result = apiInstance.listContactsAcrossTags(filter, pageToken, orderBy, pageSize);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TagsApi#listContactsAcrossTags");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **filter** | **String**| Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;tag_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  | [optional] |
+| **pageToken** | **String**| Page token | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items (best-effort for cross-collection reads). Field: - &#x60;applied_time&#x60;  Direction: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. | [optional] |
+| **pageSize** | **Integer**| Total number of items to return per page | [optional] |
+
+### Return type
+
+[**ListTagContactAssociationsResponse**](ListTagContactAssociationsResponse.md)
+
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **405** | Method Not Allowed |  -  |
+| **409** | Conflict |  -  |
+| **500** | Internal Server Error |  -  |
+| **501** | Method Not Implemented |  -  |
+
+## listContactsAcrossTagsWithHttpInfo
+
+> ApiResponse<ListTagContactAssociationsResponse> listContactsAcrossTags listContactsAcrossTagsWithHttpInfo(filter, pageToken, orderBy, pageSize)
+
+List Tag&#39;s Contacts
+
+Bulk-retrieves tag-contact associations across multiple tags in a single request. Use the &#x60;-&#x60; wildcard in place of a single tag id and pass the tag IDs in the &#x60;filter&#x60;.  Returns lightweight association tuples (&#x60;contact_id&#x60;, &#x60;tag_id&#x60;, &#x60;applied_at&#x60;) — not full contact or tag entities. Results are cursor-paginated via &#x60;page_token&#x60;.  **Filters** (&#x60;filter&#x3D;key&#x3D;&#x3D;value&#x60;, semicolon-separated; &#x60;tag_ids&#x60; is required): - &#x60;tag_ids&#x60; — **required**; comma-separated tag IDs, max 100 (e.g. &#x60;tag_ids&#x3D;&#x3D;101,102,103&#x60;) - &#x60;since_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/after this time - &#x60;until_applied_time&#x60; — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: &#x60;GET /rest/v2/tags/-/contacts?filter&#x3D;tag_ids&#x3D;&#x3D;101,102;since_applied_time&#x3D;&#x3D;2024-06-01T00:00:00Z&#x60;
+
+### Example
+
+```java
+// Import classes:
+import com.keap.core.sdk.ApiClient;
+import com.keap.core.sdk.ApiException;
+import com.keap.core.sdk.ApiResponse;
+import com.keap.core.sdk.Configuration;
+import com.keap.core.sdk.auth.*;
+import com.keap.core.sdk.models.*;
+import com.keap.core.sdk.client.TagsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.keap.com/crm");
+        
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        TagsApi apiInstance = new TagsApi(defaultClient);
+        String filter = "filter_example"; // String | Filter to apply (at least one is required). Allowed fields: - (List[String]) `tag_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time` 
+        String pageToken = "pageToken_example"; // String | Page token
+        String orderBy = "orderBy_example"; // String | Attribute and direction to order items (best-effort for cross-collection reads). Field: - `applied_time`  Direction: - `asc` - `desc`  Field and direction are space-separated, e.g. `applied_time desc`.
+        Integer pageSize = 0; // Integer | Total number of items to return per page
+        try {
+            ApiResponse<ListTagContactAssociationsResponse> response = apiInstance.listContactsAcrossTagsWithHttpInfo(filter, pageToken, orderBy, pageSize);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TagsApi#listContactsAcrossTags");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **filter** | **String**| Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;tag_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  | [optional] |
+| **pageToken** | **String**| Page token | [optional] |
+| **orderBy** | **String**| Attribute and direction to order items (best-effort for cross-collection reads). Field: - &#x60;applied_time&#x60;  Direction: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. | [optional] |
+| **pageSize** | **Integer**| Total number of items to return per page | [optional] |
+
+### Return type
+
+ApiResponse<[**ListTagContactAssociationsResponse**](ListTagContactAssociationsResponse.md)>
 
 
 ### Authorization

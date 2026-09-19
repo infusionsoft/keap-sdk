@@ -209,6 +209,7 @@ import { ListCompanyTagsResponse } from '../models/ListCompanyTagsResponse';
 import { ListContactLinkTypesResponse } from '../models/ListContactLinkTypesResponse';
 import { ListContactLinksResponse } from '../models/ListContactLinksResponse';
 import { ListContactPaymentMethodsResponse } from '../models/ListContactPaymentMethodsResponse';
+import { ListContactTagAssociationsResponse } from '../models/ListContactTagAssociationsResponse';
 import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
@@ -250,6 +251,7 @@ import { ListShippingDiscountsResponse } from '../models/ListShippingDiscountsRe
 import { ListSubscriptionPlansResponse } from '../models/ListSubscriptionPlansResponse';
 import { ListSubscriptionsResponse } from '../models/ListSubscriptionsResponse';
 import { ListTagCategoriesResponse } from '../models/ListTagCategoriesResponse';
+import { ListTagContactAssociationsResponse } from '../models/ListTagContactAssociationsResponse';
 import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesResponse';
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
@@ -333,6 +335,7 @@ import { SubscriptionPlanDetail } from '../models/SubscriptionPlanDetail';
 import { SubscriptionPlanList } from '../models/SubscriptionPlanList';
 import { Tag } from '../models/Tag';
 import { TagCategory } from '../models/TagCategory';
+import { TagContactAssociation } from '../models/TagContactAssociation';
 import { TagContactCount } from '../models/TagContactCount';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { TaggedContact } from '../models/TaggedContact';
@@ -4740,6 +4743,46 @@ export class ObservableContactApi {
     }
 
     /**
+     * Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the `-` wildcard in place of a single contact id and pass the contact IDs in the `filter`.  Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.  **Filters** (`filter=key==value`, semicolon-separated; `contact_ids` is required): - `contact_ids` — **required**; comma-separated contact IDs, max 100 (e.g. `contact_ids==1,2,3`) - `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time - `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/contacts/-/tags?filter=contact_ids==1,2,3;since_applied_time==2024-06-01T00:00:00Z`
+     * List Contact\'s Tags
+     * @param [filter] Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60; 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;.
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listTagsAcrossContactsWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<ListContactTagAssociationsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listTagsAcrossContacts(filter, pageToken, orderBy, pageSize, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listTagsAcrossContactsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the `-` wildcard in place of a single contact id and pass the contact IDs in the `filter`.  Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.  **Filters** (`filter=key==value`, semicolon-separated; `contact_ids` is required): - `contact_ids` — **required**; comma-separated contact IDs, max 100 (e.g. `contact_ids==1,2,3`) - `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time - `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/contacts/-/tags?filter=contact_ids==1,2,3;since_applied_time==2024-06-01T00:00:00Z`
+     * List Contact\'s Tags
+     * @param [filter] Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60; 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;.
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listTagsAcrossContacts(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<ListContactTagAssociationsResponse> {
+        return this.listTagsAcrossContactsWithHttpInfo(filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<ListContactTagAssociationsResponse>) => apiResponse.data));
+    }
+
+    /**
      * Retrieves a list of tags applied to the specified Contact
      * List Applied Tags
      * @param contactId Contact identifier
@@ -4891,7 +4934,7 @@ export class ObservableContactApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      */
-    public updateContactWithHttpInfo(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: Set<'addresses' | 'anniversary_date' | 'birth_date' | 'company' | 'contact_type' | 'create_time' | 'custom_fields' | 'email_addresses' | 'family_name' | 'fax_numbers' | 'given_name' | 'id' | 'job_title' | 'leadsource_id' | 'links' | 'middle_name' | 'notes' | 'origin' | 'owner_id' | 'phone_numbers' | 'preferred_locale' | 'preferred_name' | 'prefix' | 'referral_code' | 'score_value' | 'social_accounts' | 'source_type' | 'spouse_name' | 'suffix' | 'tag_ids' | 'time_zone' | 'update_time' | 'utm_parameters' | 'website' | 'account_id' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'created_by' | 'groups' | 'last_updated_by'>, fields?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<Contact>> {
+    public updateContactWithHttpInfo(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: Set<'addresses' | 'anniversary_date' | 'birth_date' | 'company' | 'contact_type' | 'create_time' | 'custom_fields' | 'email_addresses' | 'family_name' | 'fax_numbers' | 'given_name' | 'id' | 'job_title' | 'leadsource_id' | 'links' | 'middle_name' | 'notes' | 'origin' | 'owner_id' | 'phone_numbers' | 'preferred_locale' | 'preferred_name' | 'prefix' | 'referral_code' | 'score_value' | 'social_accounts' | 'source_type' | 'spouse_name' | 'suffix' | 'time_zone' | 'update_time' | 'utm_parameters' | 'website' | 'account_id' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'created_by' | 'groups' | 'last_updated_by'>, fields?: Array<string>, _options?: ConfigurationOptions): Observable<HttpInfo<Contact>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateContact(contactId, createUpdateContactRequest, updateMask, fields, _config);
@@ -4919,7 +4962,7 @@ export class ObservableContactApi {
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * @param [fields] Comma-delimited list of Contact properties to include in the response. (Available fields are: addresses,anniversary_date,birth_date,company,contact_type,create_time, custom_fields,email_addresses,family_name,fax_numbers,given_name,id,job_title,leadsource_id, links,middle_name,notes,origin,owner_id,phone_numbers,preferred_locale,preferred_name,prefix, referral_code,score_value,social_accounts,source_type,spouse_name,suffix,tag_ids,time_zone, update_time,utm_parameters,website,account_id,assistant_name,assistant_phone, billing_information,created_by,groups,last_updated_by)
      */
-    public updateContact(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: Set<'addresses' | 'anniversary_date' | 'birth_date' | 'company' | 'contact_type' | 'create_time' | 'custom_fields' | 'email_addresses' | 'family_name' | 'fax_numbers' | 'given_name' | 'id' | 'job_title' | 'leadsource_id' | 'links' | 'middle_name' | 'notes' | 'origin' | 'owner_id' | 'phone_numbers' | 'preferred_locale' | 'preferred_name' | 'prefix' | 'referral_code' | 'score_value' | 'social_accounts' | 'source_type' | 'spouse_name' | 'suffix' | 'tag_ids' | 'time_zone' | 'update_time' | 'utm_parameters' | 'website' | 'account_id' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'created_by' | 'groups' | 'last_updated_by'>, fields?: Array<string>, _options?: ConfigurationOptions): Observable<Contact> {
+    public updateContact(contactId: string, createUpdateContactRequest: CreateUpdateContactRequest, updateMask?: Set<'addresses' | 'anniversary_date' | 'birth_date' | 'company' | 'contact_type' | 'create_time' | 'custom_fields' | 'email_addresses' | 'family_name' | 'fax_numbers' | 'given_name' | 'id' | 'job_title' | 'leadsource_id' | 'links' | 'middle_name' | 'notes' | 'origin' | 'owner_id' | 'phone_numbers' | 'preferred_locale' | 'preferred_name' | 'prefix' | 'referral_code' | 'score_value' | 'social_accounts' | 'source_type' | 'spouse_name' | 'suffix' | 'time_zone' | 'update_time' | 'utm_parameters' | 'website' | 'account_id' | 'assistant_name' | 'assistant_phone' | 'billing_information' | 'created_by' | 'groups' | 'last_updated_by'>, fields?: Array<string>, _options?: ConfigurationOptions): Observable<Contact> {
         return this.updateContactWithHttpInfo(contactId, createUpdateContactRequest, updateMask, fields, _options).pipe(map((apiResponse: HttpInfo<Contact>) => apiResponse.data));
     }
 
@@ -14281,6 +14324,46 @@ export class ObservableTagsApi {
      */
     public listCompaniesForTagId(tagId: string, filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: ConfigurationOptions): Observable<ListTaggedCompaniesResponse> {
         return this.listCompaniesForTagIdWithHttpInfo(tagId, filter, orderBy, pageSize, pageToken, _options).pipe(map((apiResponse: HttpInfo<ListTaggedCompaniesResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Bulk-retrieves tag-contact associations across multiple tags in a single request. Use the `-` wildcard in place of a single tag id and pass the tag IDs in the `filter`.  Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.  **Filters** (`filter=key==value`, semicolon-separated; `tag_ids` is required): - `tag_ids` — **required**; comma-separated tag IDs, max 100 (e.g. `tag_ids==101,102,103`) - `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time - `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/tags/-/contacts?filter=tag_ids==101,102;since_applied_time==2024-06-01T00:00:00Z`
+     * List Tag\'s Contacts
+     * @param [filter] Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;tag_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60; 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items (best-effort for cross-collection reads). Field: - &#x60;applied_time&#x60;  Direction: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;.
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listContactsAcrossTagsWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<ListTagContactAssociationsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listContactsAcrossTags(filter, pageToken, orderBy, pageSize, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listContactsAcrossTagsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Bulk-retrieves tag-contact associations across multiple tags in a single request. Use the `-` wildcard in place of a single tag id and pass the tag IDs in the `filter`.  Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.  **Filters** (`filter=key==value`, semicolon-separated; `tag_ids` is required): - `tag_ids` — **required**; comma-separated tag IDs, max 100 (e.g. `tag_ids==101,102,103`) - `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time - `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/tags/-/contacts?filter=tag_ids==101,102;since_applied_time==2024-06-01T00:00:00Z`
+     * List Tag\'s Contacts
+     * @param [filter] Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;tag_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60; 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items (best-effort for cross-collection reads). Field: - &#x60;applied_time&#x60;  Direction: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;.
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listContactsAcrossTags(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<ListTagContactAssociationsResponse> {
+        return this.listContactsAcrossTagsWithHttpInfo(filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<ListTagContactAssociationsResponse>) => apiResponse.data));
     }
 
     /**

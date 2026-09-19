@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**get_category**](TagsApi.md#get_category) | **GET** /rest/v2/tags/categories/{tag_category_id} | Retrieve a Tag Category
 [**get_tag**](TagsApi.md#get_tag) | **GET** /rest/v2/tags/{tag_id} | Retrieve a Tag
 [**list_companies_for_tag_id**](TagsApi.md#list_companies_for_tag_id) | **GET** /rest/v2/tags/{tag_id}/companies | List Tagged Companies
+[**list_contacts_across_tags**](TagsApi.md#list_contacts_across_tags) | **GET** /rest/v2/tags/-/contacts | List Tag&#39;s Contacts
 [**list_contacts_with_tag_id**](TagsApi.md#list_contacts_with_tag_id) | **GET** /rest/v2/tags/{tag_id}/contacts | List Tagged Contacts
 [**list_tag_categories**](TagsApi.md#list_tag_categories) | **GET** /rest/v2/tags/categories | List Tag Categories
 [**list_tags**](TagsApi.md#list_tags) | **GET** /rest/v2/tags | List Tags
@@ -734,6 +735,102 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListTaggedCompaniesResponse**](ListTaggedCompaniesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_contacts_across_tags**
+> ListTagContactAssociationsResponse list_contacts_across_tags(filter=filter, page_token=page_token, order_by=order_by, page_size=page_size)
+
+List Tag's Contacts
+
+Bulk-retrieves tag-contact associations across multiple tags in a single request. Use the `-` wildcard in place of a single tag id and pass the tag IDs in the `filter`.
+
+Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.
+
+**Filters** (`filter=key==value`, semicolon-separated; `tag_ids` is required):
+- `tag_ids` — **required**; comma-separated tag IDs, max 100 (e.g. `tag_ids==101,102,103`)
+- `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time
+- `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time
+
+Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/tags/-/contacts?filter=tag_ids==101,102;since_applied_time==2024-06-01T00:00:00Z`
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_tag_contact_associations_response import ListTagContactAssociationsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.TagsApi(api_client)
+    filter = 'filter_example' # str | Filter to apply (at least one is required). Allowed fields: - (List[String]) `tag_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time`  (optional)
+    page_token = 'page_token_example' # str | Page token (optional)
+    order_by = 'order_by_example' # str | Attribute and direction to order items (best-effort for cross-collection reads). Field: - `applied_time`  Direction: - `asc` - `desc`  Field and direction are space-separated, e.g. `applied_time desc`. (optional)
+    page_size = 0 # int | Total number of items to return per page (optional)
+
+    try:
+        # List Tag's Contacts
+        api_response = api_instance.list_contacts_across_tags(filter=filter, page_token=page_token, order_by=order_by, page_size=page_size)
+        print("The response of TagsApi->list_contacts_across_tags:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TagsApi->list_contacts_across_tags: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | **str**| Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;tag_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  | [optional] 
+ **page_token** | **str**| Page token | [optional] 
+ **order_by** | **str**| Attribute and direction to order items (best-effort for cross-collection reads). Field: - &#x60;applied_time&#x60;  Direction: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. | [optional] 
+ **page_size** | **int**| Total number of items to return per page | [optional] 
+
+### Return type
+
+[**ListTagContactAssociationsResponse**](ListTagContactAssociationsResponse.md)
 
 ### Authorization
 

@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**list_contact_link_types**](ContactApi.md#list_contact_link_types) | **GET** /rest/v2/contacts/links/types | List Contact Link types
 [**list_contact_links**](ContactApi.md#list_contact_links) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts
 [**list_contacts**](ContactApi.md#list_contacts) | **GET** /rest/v2/contacts | List Contacts
+[**list_tags_across_contacts**](ContactApi.md#list_tags_across_contacts) | **GET** /rest/v2/contacts/-/tags | List Contact&#39;s Tags
 [**list_tags_for_contact**](ContactApi.md#list_tags_for_contact) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags
 [**merge_contacts**](ContactApi.md#merge_contacts) | **POST** /rest/v2/contacts:merge | Merge two Contacts
 [**retrieve_contact_model**](ContactApi.md#retrieve_contact_model) | **GET** /rest/v2/contacts/model | Retrieve Contact Model
@@ -1556,6 +1557,102 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListContactsResponse**](ListContactsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**405** | Method Not Allowed |  -  |
+**409** | Conflict |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Method Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_tags_across_contacts**
+> ListContactTagAssociationsResponse list_tags_across_contacts(filter=filter, page_token=page_token, order_by=order_by, page_size=page_size)
+
+List Contact's Tags
+
+Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the `-` wildcard in place of a single contact id and pass the contact IDs in the `filter`.
+
+Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.
+
+**Filters** (`filter=key==value`, semicolon-separated; `contact_ids` is required):
+- `contact_ids` — **required**; comma-separated contact IDs, max 100 (e.g. `contact_ids==1,2,3`)
+- `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time
+- `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time
+
+Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/contacts/-/tags?filter=contact_ids==1,2,3;since_applied_time==2024-06-01T00:00:00Z`
+
+### Example
+
+* OAuth Authentication (oauth2):
+
+```python
+import keap_core_v2_client
+from keap_core_v2_client.models.list_contact_tag_associations_response import ListContactTagAssociationsResponse
+from keap_core_v2_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.keap.com/crm
+# See configuration.py for a list of all supported configuration parameters.
+configuration = keap_core_v2_client.Configuration(
+    host = "https://api.keap.com/crm"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Enter a context with an instance of the API client
+with keap_core_v2_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = keap_core_v2_client.ContactApi(api_client)
+    filter = 'filter_example' # str | Filter to apply (at least one is required). Allowed fields: - (List[String]) `contact_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time`  (optional)
+    page_token = 'page_token_example' # str | Page token (optional)
+    order_by = 'order_by_example' # str | Attribute and direction to order items. One of the following fields: - `applied_time`  One of the following directions: - `asc` - `desc`  Field and direction are space-separated, e.g. `applied_time desc`. (optional)
+    page_size = 0 # int | Total number of items to return per page (optional)
+
+    try:
+        # List Contact's Tags
+        api_response = api_instance.list_tags_across_contacts(filter=filter, page_token=page_token, order_by=order_by, page_size=page_size)
+        print("The response of ContactApi->list_tags_across_contacts:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContactApi->list_tags_across_contacts: %s\n" % e)
+```
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | **str**| Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60;  | [optional] 
+ **page_token** | **str**| Page token | [optional] 
+ **order_by** | **str**| Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. | [optional] 
+ **page_size** | **int**| Total number of items to return per page | [optional] 
+
+### Return type
+
+[**ListContactTagAssociationsResponse**](ListContactTagAssociationsResponse.md)
 
 ### Authorization
 

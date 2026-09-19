@@ -204,6 +204,7 @@ export * from '../models/ListCompanyTagsResponse';
 export * from '../models/ListContactLinkTypesResponse';
 export * from '../models/ListContactLinksResponse';
 export * from '../models/ListContactPaymentMethodsResponse';
+export * from '../models/ListContactTagAssociationsResponse';
 export * from '../models/ListContactTagsResponse';
 export * from '../models/ListContactsResponse';
 export * from '../models/ListCountriesResponse';
@@ -245,6 +246,7 @@ export * from '../models/ListShippingDiscountsResponse';
 export * from '../models/ListSubscriptionPlansResponse';
 export * from '../models/ListSubscriptionsResponse';
 export * from '../models/ListTagCategoriesResponse';
+export * from '../models/ListTagContactAssociationsResponse';
 export * from '../models/ListTaggedCompaniesResponse';
 export * from '../models/ListTaggedContactsResponse';
 export * from '../models/ListTagsResponse';
@@ -328,6 +330,7 @@ export * from '../models/SubscriptionPlanDetail';
 export * from '../models/SubscriptionPlanList';
 export * from '../models/Tag';
 export * from '../models/TagCategory';
+export * from '../models/TagContactAssociation';
 export * from '../models/TagContactCount';
 export * from '../models/TaggedCompany';
 export * from '../models/TaggedContact';
@@ -590,6 +593,7 @@ import { ListCompanyTagsResponse } from '../models/ListCompanyTagsResponse';
 import { ListContactLinkTypesResponse } from '../models/ListContactLinkTypesResponse';
 import { ListContactLinksResponse } from '../models/ListContactLinksResponse';
 import { ListContactPaymentMethodsResponse } from '../models/ListContactPaymentMethodsResponse';
+import { ListContactTagAssociationsResponse } from '../models/ListContactTagAssociationsResponse';
 import { ListContactTagsResponse } from '../models/ListContactTagsResponse';
 import { ListContactsResponse } from '../models/ListContactsResponse';
 import { ListCountriesResponse } from '../models/ListCountriesResponse';
@@ -631,6 +635,7 @@ import { ListShippingDiscountsResponse } from '../models/ListShippingDiscountsRe
 import { ListSubscriptionPlansResponse } from '../models/ListSubscriptionPlansResponse';
 import { ListSubscriptionsResponse } from '../models/ListSubscriptionsResponse';
 import { ListTagCategoriesResponse } from '../models/ListTagCategoriesResponse';
+import { ListTagContactAssociationsResponse } from '../models/ListTagContactAssociationsResponse';
 import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesResponse';
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
@@ -714,6 +719,7 @@ import { SubscriptionPlanDetail   , SubscriptionPlanDetailBillingCycleEnum      
 import { SubscriptionPlanList   , SubscriptionPlanListBillingCycleEnum       } from '../models/SubscriptionPlanList';
 import { Tag } from '../models/Tag';
 import { TagCategory } from '../models/TagCategory';
+import { TagContactAssociation } from '../models/TagContactAssociation';
 import { TagContactCount } from '../models/TagContactCount';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { TaggedContact } from '../models/TaggedContact';
@@ -1134,6 +1140,7 @@ let typeMap: {[index: string]: any} = {
     "ListContactLinkTypesResponse": ListContactLinkTypesResponse,
     "ListContactLinksResponse": ListContactLinksResponse,
     "ListContactPaymentMethodsResponse": ListContactPaymentMethodsResponse,
+    "ListContactTagAssociationsResponse": ListContactTagAssociationsResponse,
     "ListContactTagsResponse": ListContactTagsResponse,
     "ListContactsResponse": ListContactsResponse,
     "ListCountriesResponse": ListCountriesResponse,
@@ -1175,6 +1182,7 @@ let typeMap: {[index: string]: any} = {
     "ListSubscriptionPlansResponse": ListSubscriptionPlansResponse,
     "ListSubscriptionsResponse": ListSubscriptionsResponse,
     "ListTagCategoriesResponse": ListTagCategoriesResponse,
+    "ListTagContactAssociationsResponse": ListTagContactAssociationsResponse,
     "ListTaggedCompaniesResponse": ListTaggedCompaniesResponse,
     "ListTaggedContactsResponse": ListTaggedContactsResponse,
     "ListTagsResponse": ListTagsResponse,
@@ -1258,6 +1266,7 @@ let typeMap: {[index: string]: any} = {
     "SubscriptionPlanList": SubscriptionPlanList,
     "Tag": Tag,
     "TagCategory": TagCategory,
+    "TagContactAssociation": TagContactAssociation,
     "TagContactCount": TagContactCount,
     "TaggedCompany": TaggedCompany,
     "TaggedContact": TaggedContact,

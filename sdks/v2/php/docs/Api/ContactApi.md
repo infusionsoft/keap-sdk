@@ -23,6 +23,7 @@ All URIs are relative to https://api.keap.com/crm, except if the operation defin
 | [**listContactLinkTypes()**](ContactApi.md#listContactLinkTypes) | **GET** /rest/v2/contacts/links/types | List Contact Link types |
 | [**listContactLinks()**](ContactApi.md#listContactLinks) | **GET** /rest/v2/contacts/{contact_id}/links | List Linked Contacts |
 | [**listContacts()**](ContactApi.md#listContacts) | **GET** /rest/v2/contacts | List Contacts |
+| [**listTagsAcrossContacts()**](ContactApi.md#listTagsAcrossContacts) | **GET** /rest/v2/contacts/-/tags | List Contact&#39;s Tags |
 | [**listTagsForContact()**](ContactApi.md#listTagsForContact) | **GET** /rest/v2/contacts/{contact_id}/tags | List Applied Tags |
 | [**mergeContacts()**](ContactApi.md#mergeContacts) | **POST** /rest/v2/contacts:merge | Merge two Contacts |
 | [**retrieveContactModel()**](ContactApi.md#retrieveContactModel) | **GET** /rest/v2/contacts/model | Retrieve Contact Model |
@@ -1152,6 +1153,71 @@ try {
 ### Return type
 
 [**\Keap\Core\V2\Model\ListContactsResponse**](../Model/ListContactsResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listTagsAcrossContacts()`
+
+```php
+listTagsAcrossContacts($filter, $page_token, $order_by, $page_size): \Keap\Core\V2\Model\ListContactTagAssociationsResponse
+```
+
+List Contact's Tags
+
+Bulk-retrieves tag-contact associations across multiple contacts in a single request. Use the `-` wildcard in place of a single contact id and pass the contact IDs in the `filter`.  Returns lightweight association tuples (`contact_id`, `tag_id`, `applied_at`) — not full contact or tag entities. Results are cursor-paginated via `page_token`.  **Filters** (`filter=key==value`, semicolon-separated; `contact_ids` is required): - `contact_ids` — **required**; comma-separated contact IDs, max 100 (e.g. `contact_ids==1,2,3`) - `since_applied_time` — optional; ISO-8601 datetime; associations applied at/after this time - `until_applied_time` — optional; ISO-8601 datetime; associations applied at/before this time  Results are scoped to the contacts the caller is permitted to see. Example: `GET /rest/v2/contacts/-/tags?filter=contact_ids==1,2,3;since_applied_time==2024-06-01T00:00:00Z`
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Keap\Core\V2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Keap\Core\V2\Api\ContactApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$filter = 'filter_example'; // string | Filter to apply (at least one is required). Allowed fields: - (List[String]) `contact_ids` (max 100) - (ISO-8601) `since_applied_time` - (ISO-8601) `until_applied_time`
+$page_token = 'page_token_example'; // string | Page token
+$order_by = 'order_by_example'; // string | Attribute and direction to order items. One of the following fields: - `applied_time`  One of the following directions: - `asc` - `desc`  Field and direction are space-separated, e.g. `applied_time desc`.
+$page_size = 0; // int | Total number of items to return per page
+
+try {
+    $result = $apiInstance->listTagsAcrossContacts($filter, $page_token, $order_by, $page_size);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContactApi->listTagsAcrossContacts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **filter** | **string**| Filter to apply (at least one is required). Allowed fields: - (List[String]) &#x60;contact_ids&#x60; (max 100) - (ISO-8601) &#x60;since_applied_time&#x60; - (ISO-8601) &#x60;until_applied_time&#x60; | [optional] |
+| **page_token** | **string**| Page token | [optional] |
+| **order_by** | **string**| Attribute and direction to order items. One of the following fields: - &#x60;applied_time&#x60;  One of the following directions: - &#x60;asc&#x60; - &#x60;desc&#x60;  Field and direction are space-separated, e.g. &#x60;applied_time desc&#x60;. | [optional] |
+| **page_size** | **int**| Total number of items to return per page | [optional] |
+
+### Return type
+
+[**\Keap\Core\V2\Model\ListContactTagAssociationsResponse**](../Model/ListContactTagAssociationsResponse.md)
 
 ### Authorization
 
