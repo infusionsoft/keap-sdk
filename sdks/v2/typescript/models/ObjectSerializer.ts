@@ -296,7 +296,6 @@ export * from '../models/Province';
 export * from '../models/Referral';
 export * from '../models/RemoveContactsFromSequenceRequest';
 export * from '../models/RemoveContactsFromSequenceResponse';
-export * from '../models/RenameEasyAutomationCommand';
 export * from '../models/Report';
 export * from '../models/ReportEntryRecord';
 export * from '../models/ReportEntryValue';
@@ -685,7 +684,6 @@ import { Province } from '../models/Province';
 import { Referral        , ReferralReferralTypeEnum   } from '../models/Referral';
 import { RemoveContactsFromSequenceRequest } from '../models/RemoveContactsFromSequenceRequest';
 import { RemoveContactsFromSequenceResponse, RemoveContactsFromSequenceResponseRemoveFromSequenceResultsEnum   } from '../models/RemoveContactsFromSequenceResponse';
-import { RenameEasyAutomationCommand } from '../models/RenameEasyAutomationCommand';
 import { Report } from '../models/Report';
 import { ReportEntryRecord } from '../models/ReportEntryRecord';
 import { ReportEntryValue } from '../models/ReportEntryValue';
@@ -1232,7 +1230,6 @@ let typeMap: {[index: string]: any} = {
     "Referral": Referral,
     "RemoveContactsFromSequenceRequest": RemoveContactsFromSequenceRequest,
     "RemoveContactsFromSequenceResponse": RemoveContactsFromSequenceResponse,
-    "RenameEasyAutomationCommand": RenameEasyAutomationCommand,
     "Report": Report,
     "ReportEntryRecord": ReportEntryRecord,
     "ReportEntryValue": ReportEntryValue,

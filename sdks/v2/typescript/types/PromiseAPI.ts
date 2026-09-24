@@ -300,7 +300,6 @@ import { Province } from '../models/Province';
 import { Referral } from '../models/Referral';
 import { RemoveContactsFromSequenceRequest } from '../models/RemoveContactsFromSequenceRequest';
 import { RemoveContactsFromSequenceResponse } from '../models/RemoveContactsFromSequenceResponse';
-import { RenameEasyAutomationCommand } from '../models/RenameEasyAutomationCommand';
 import { Report } from '../models/Report';
 import { ReportEntryRecord } from '../models/ReportEntryRecord';
 import { ReportEntryValue } from '../models/ReportEntryValue';
@@ -1764,30 +1763,6 @@ export class PromiseAutomationApi {
     public listAutomations(filter?: string, orderBy?: string, pageSize?: number, pageToken?: string, _options?: PromiseConfigurationOptions): Promise<ListAutomationResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listAutomations(filter, orderBy, pageSize, pageToken, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Updates the name of a single easy automation.
-     * Renames an Easy Automation.
-     * @param automationId automation_id
-     * @param renameEasyAutomationCommand
-     */
-    public renameAutomationV2WithHttpInfo(automationId: string, renameEasyAutomationCommand: RenameEasyAutomationCommand, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.renameAutomationV2WithHttpInfo(automationId, renameEasyAutomationCommand, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Updates the name of a single easy automation.
-     * Renames an Easy Automation.
-     * @param automationId automation_id
-     * @param renameEasyAutomationCommand
-     */
-    public renameAutomationV2(automationId: string, renameEasyAutomationCommand: RenameEasyAutomationCommand, _options?: PromiseConfigurationOptions): Promise<void> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.renameAutomationV2(automationId, renameEasyAutomationCommand, observableOptions);
         return result.toPromise();
     }
 

@@ -21092,78 +21092,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /rest/v2/easy-automations/{automation_id}:
-    patch:
-      tags:
-      - Automation
-      summary: Renames an Easy Automation.
-      description: Updates the name of a single easy automation.
-      operationId: renameAutomationV2
-      parameters:
-      - name: automation_id
-        in: path
-        description: automation_id
-        required: true
-        schema:
-          type: string
-        example: HWv0fbDNDbWg6cFKY027
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RenameEasyAutomationCommand'
-        required: true
-      responses:
-        '204':
-          description: No Content
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '405':
-          description: Method Not Allowed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '409':
-          description: Conflict
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '500':
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        '501':
-          description: Method Not Implemented
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
   /rest/v2/discounts/shipping/{discount_id}:
     get:
       tags:
@@ -40044,17 +39972,6 @@ components:
       - email
       - opted_in
       - status
-    RenameEasyAutomationCommand:
-      type: object
-      description: An object used to rename an automation.
-      properties:
-        name:
-          type: string
-          description: Name of the easy automation
-          example: Welcome new customer (Fall 26)
-          minLength: 1
-      required:
-      - name
     UpdateShippingDiscountCriteria:
       type: object
       properties:

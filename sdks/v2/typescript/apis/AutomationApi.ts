@@ -17,7 +17,6 @@ import { Automation } from '../models/Automation';
 import { BatchUnpublishAutomationRequest } from '../models/BatchUnpublishAutomationRequest';
 import { ListAutomationIdsResponse } from '../models/ListAutomationIdsResponse';
 import { ListAutomationResponse } from '../models/ListAutomationResponse';
-import { RenameEasyAutomationCommand } from '../models/RenameEasyAutomationCommand';
 import { UnpublishAutomationRequest } from '../models/UnpublishAutomationRequest';
 
 /**
@@ -416,62 +415,6 @@ export class AutomationApiRequestFactory extends BaseAPIRequestFactory {
             requestContext.setQueryParam("page_token", ObjectSerializer.serialize(pageToken, "string", ""));
         }
 
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["oauth2"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Updates the name of a single easy automation.
-     * Renames an Easy Automation.
-     * @param automationId automation_id
-     * @param renameEasyAutomationCommand 
-     */
-    public async renameAutomationV2(automationId: string, renameEasyAutomationCommand: RenameEasyAutomationCommand, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'automationId' is not null or undefined
-        if (automationId === null || automationId === undefined) {
-            throw new RequiredError("AutomationApi", "renameAutomationV2", "automationId");
-        }
-
-
-        // verify required parameter 'renameEasyAutomationCommand' is not null or undefined
-        if (renameEasyAutomationCommand === null || renameEasyAutomationCommand === undefined) {
-            throw new RequiredError("AutomationApi", "renameAutomationV2", "renameEasyAutomationCommand");
-        }
-
-
-        // Path Params
-        const localVarPath = '/rest/v2/easy-automations/{automation_id}'
-            .replace('{' + 'automation_id' + '}', encodeURIComponent(String(automationId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(renameEasyAutomationCommand, "RenameEasyAutomationCommand", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
 
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
@@ -1210,87 +1153,6 @@ export class AutomationApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "ListAutomationResponse", ""
             ) as ListAutomationResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to renameAutomationV2
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async renameAutomationV2WithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("204", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
-        }
-        if (isCodeInRange("400", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Bad Request", body, response.headers);
-        }
-        if (isCodeInRange("401", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Unauthorized", body, response.headers);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Not Found", body, response.headers);
-        }
-        if (isCodeInRange("405", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Method Not Allowed", body, response.headers);
-        }
-        if (isCodeInRange("409", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Conflict", body, response.headers);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Internal Server Error", body, response.headers);
-        }
-        if (isCodeInRange("501", response.httpStatusCode)) {
-            const body: Error = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "Error", ""
-            ) as Error;
-            throw new ApiException<Error>(response.httpStatusCode, "Method Not Implemented", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

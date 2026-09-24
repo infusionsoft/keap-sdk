@@ -14,7 +14,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-__version__ = "2.0.24"
+__version__ = "2.0.25"
 
 # import apis into sdk package
 from keap_core_v2_client.api.affiliate_api import AffiliateApi
@@ -371,7 +371,6 @@ from keap_core_v2_client.models.province import Province
 from keap_core_v2_client.models.referral import Referral
 from keap_core_v2_client.models.remove_contacts_from_sequence_request import RemoveContactsFromSequenceRequest
 from keap_core_v2_client.models.remove_contacts_from_sequence_response import RemoveContactsFromSequenceResponse
-from keap_core_v2_client.models.rename_easy_automation_command import RenameEasyAutomationCommand
 from keap_core_v2_client.models.report import Report
 from keap_core_v2_client.models.report_entry_record import ReportEntryRecord
 from keap_core_v2_client.models.report_entry_value import ReportEntryValue

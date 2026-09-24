@@ -300,7 +300,6 @@ import { Province } from '../models/Province';
 import { Referral } from '../models/Referral';
 import { RemoveContactsFromSequenceRequest } from '../models/RemoveContactsFromSequenceRequest';
 import { RemoveContactsFromSequenceResponse } from '../models/RemoveContactsFromSequenceResponse';
-import { RenameEasyAutomationCommand } from '../models/RenameEasyAutomationCommand';
 import { Report } from '../models/Report';
 import { ReportEntryRecord } from '../models/ReportEntryRecord';
 import { ReportEntryValue } from '../models/ReportEntryValue';
@@ -2212,22 +2211,6 @@ export interface AutomationApiListAutomationsRequest {
     pageToken?: string
 }
 
-export interface AutomationApiRenameAutomationV2Request {
-    /**
-     * automation_id
-     * Defaults to: undefined
-     * @type string
-     * @memberof AutomationApirenameAutomationV2
-     */
-    automationId: string
-    /**
-     * 
-     * @type RenameEasyAutomationCommand
-     * @memberof AutomationApirenameAutomationV2
-     */
-    renameEasyAutomationCommand: RenameEasyAutomationCommand
-}
-
 export interface AutomationApiUnpublishAutomationRequest {
     /**
      * 
@@ -2393,24 +2376,6 @@ export class ObjectAutomationApi {
      */
     public listAutomations(param: AutomationApiListAutomationsRequest = {}, options?: ConfigurationOptions): Promise<ListAutomationResponse> {
         return this.api.listAutomations(param.filter, param.orderBy, param.pageSize, param.pageToken,  options).toPromise();
-    }
-
-    /**
-     * Updates the name of a single easy automation.
-     * Renames an Easy Automation.
-     * @param param the request object
-     */
-    public renameAutomationV2WithHttpInfo(param: AutomationApiRenameAutomationV2Request, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.renameAutomationV2WithHttpInfo(param.automationId, param.renameEasyAutomationCommand,  options).toPromise();
-    }
-
-    /**
-     * Updates the name of a single easy automation.
-     * Renames an Easy Automation.
-     * @param param the request object
-     */
-    public renameAutomationV2(param: AutomationApiRenameAutomationV2Request, options?: ConfigurationOptions): Promise<void> {
-        return this.api.renameAutomationV2(param.automationId, param.renameEasyAutomationCommand,  options).toPromise();
     }
 
     /**

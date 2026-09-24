@@ -12,7 +12,6 @@ All URIs are relative to *https://api.keap.com/crm*
 | [**GetAutomation**](AutomationApi.md#getautomation) | **GET** /rest/v2/automations/{automation_id} | Retrieve an Automation |
 | [**ListAllAutomationIds**](AutomationApi.md#listallautomationids) | **GET** /rest/v2/automations/ids | List Automations Ids |
 | [**ListAutomations**](AutomationApi.md#listautomations) | **GET** /rest/v2/automations | List Automations |
-| [**RenameAutomationV2**](AutomationApi.md#renameautomationv2) | **PATCH** /rest/v2/easy-automations/{automation_id} | Renames an Easy Automation. |
 | [**UnpublishAutomation**](AutomationApi.md#unpublishautomation) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation |
 
 <a id="achievegoal"></a>
@@ -824,106 +823,6 @@ catch (ApiException e)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **405** | Method Not Allowed |  -  |
-| **409** | Conflict |  -  |
-| **500** | Internal Server Error |  -  |
-| **501** | Method Not Implemented |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a id="renameautomationv2"></a>
-# **RenameAutomationV2**
-> void RenameAutomationV2 (string automationId, RenameEasyAutomationCommand renameEasyAutomationCommand)
-
-Renames an Easy Automation.
-
-Updates the name of a single easy automation.
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Keap.Core.V2.Api;
-using Keap.Core.V2.Client;
-using Keap.Core.V2.Model;
-
-namespace Example
-{
-    public class RenameAutomationV2Example
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.keap.com/crm";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new AutomationApi(config);
-            var automationId = HWv0fbDNDbWg6cFKY027;  // string | automation_id
-            var renameEasyAutomationCommand = new RenameEasyAutomationCommand(); // RenameEasyAutomationCommand | 
-
-            try
-            {
-                // Renames an Easy Automation.
-                apiInstance.RenameAutomationV2(automationId, renameEasyAutomationCommand);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling AutomationApi.RenameAutomationV2: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the RenameAutomationV2WithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Renames an Easy Automation.
-    apiInstance.RenameAutomationV2WithHttpInfo(automationId, renameEasyAutomationCommand);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling AutomationApi.RenameAutomationV2WithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **automationId** | **string** | automation_id |  |
-| **renameEasyAutomationCommand** | [**RenameEasyAutomationCommand**](RenameEasyAutomationCommand.md) |  |  |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | No Content |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **403** | Forbidden |  -  |

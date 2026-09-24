@@ -311,7 +311,6 @@ import Province from './model/Province';
 import Referral from './model/Referral';
 import RemoveContactsFromSequenceRequest from './model/RemoveContactsFromSequenceRequest';
 import RemoveContactsFromSequenceResponse from './model/RemoveContactsFromSequenceResponse';
-import RenameEasyAutomationCommand from './model/RenameEasyAutomationCommand';
 import Report from './model/Report';
 import ReportEntryRecord from './model/ReportEntryRecord';
 import ReportEntryValue from './model/ReportEntryValue';
@@ -475,7 +474,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.24
+* @version 2.0.25
 */
 export {
     /**
@@ -2271,12 +2270,6 @@ export {
      * @property {module:keap.core.v2/model/RemoveContactsFromSequenceResponse}
      */
     RemoveContactsFromSequenceResponse,
-
-    /**
-     * The RenameEasyAutomationCommand model constructor.
-     * @property {module:keap.core.v2/model/RenameEasyAutomationCommand}
-     */
-    RenameEasyAutomationCommand,
 
     /**
      * The Report model constructor.

@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.24</version>
+  <version>2.0.25</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.24"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.25"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.24.jar`
+- `target/core-service-v2-java-sdk-2.0.25.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -220,8 +220,6 @@ Class | Method | HTTP request | Description
 *AutomationApi* | [**listAllAutomationIdsWithHttpInfo**](docs/AutomationApi.md#listAllAutomationIdsWithHttpInfo) | **GET** /rest/v2/automations/ids | List Automations Ids
 *AutomationApi* | [**listAutomations**](docs/AutomationApi.md#listAutomations) | **GET** /rest/v2/automations | List Automations
 *AutomationApi* | [**listAutomationsWithHttpInfo**](docs/AutomationApi.md#listAutomationsWithHttpInfo) | **GET** /rest/v2/automations | List Automations
-*AutomationApi* | [**renameAutomationV2**](docs/AutomationApi.md#renameAutomationV2) | **PATCH** /rest/v2/easy-automations/{automation_id} | Renames an Easy Automation.
-*AutomationApi* | [**renameAutomationV2WithHttpInfo**](docs/AutomationApi.md#renameAutomationV2WithHttpInfo) | **PATCH** /rest/v2/easy-automations/{automation_id} | Renames an Easy Automation.
 *AutomationApi* | [**unpublishAutomation**](docs/AutomationApi.md#unpublishAutomation) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation
 *AutomationApi* | [**unpublishAutomationWithHttpInfo**](docs/AutomationApi.md#unpublishAutomationWithHttpInfo) | **PUT** /rest/v2/automations/{automation_id}/unpublish | Unpublish an Automation
 *AutomationCategoryApi* | [**createCategory**](docs/AutomationCategoryApi.md#createCategory) | **POST** /rest/v2/automationCategory | Create automation category
@@ -1216,7 +1214,6 @@ Class | Method | HTTP request | Description
  - [Referral](docs/Referral.md)
  - [RemoveContactsFromSequenceRequest](docs/RemoveContactsFromSequenceRequest.md)
  - [RemoveContactsFromSequenceResponse](docs/RemoveContactsFromSequenceResponse.md)
- - [RenameEasyAutomationCommand](docs/RenameEasyAutomationCommand.md)
  - [Report](docs/Report.md)
  - [ReportEntryRecord](docs/ReportEntryRecord.md)
  - [ReportEntryValue](docs/ReportEntryValue.md)

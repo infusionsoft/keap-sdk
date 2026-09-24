@@ -27,7 +27,6 @@ import com.keap.core.sdk.model.BatchUnpublishAutomationRequest;
 import com.keap.core.sdk.model.Error;
 import com.keap.core.sdk.model.ListAutomationIdsResponse;
 import com.keap.core.sdk.model.ListAutomationResponse;
-import com.keap.core.sdk.model.RenameEasyAutomationCommand;
 import com.keap.core.sdk.model.UnpublishAutomationRequest;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -883,107 +882,6 @@ import io.github.resilience4j.retry.Retry;
     localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
 
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
-    if (memberVarReadTimeout != null) {
-      localVarRequestBuilder.timeout(memberVarReadTimeout);
-    }
-    if (memberVarInterceptor != null) {
-      memberVarInterceptor.accept(localVarRequestBuilder);
-    }
-    return localVarRequestBuilder;
-  }
-
-  /**
-   * Renames an Easy Automation.
-   * Updates the name of a single easy automation.
-   * @param automationId automation_id (required)
-   * @param renameEasyAutomationCommand  (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void renameAutomationV2(String automationId, RenameEasyAutomationCommand renameEasyAutomationCommand) throws ApiException {
-    renameAutomationV2WithHttpInfo(automationId, renameEasyAutomationCommand);
-  }
-
-  /**
-   * Renames an Easy Automation.
-   * Updates the name of a single easy automation.
-   * @param automationId automation_id (required)
-   * @param renameEasyAutomationCommand  (required)
-   * @return ApiResponse&lt;Void&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<Void> renameAutomationV2WithHttpInfo(String automationId, RenameEasyAutomationCommand renameEasyAutomationCommand) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = renameAutomationV2RequestBuilder(automationId, renameEasyAutomationCommand);
-
-    CheckedSupplier<HttpResponse<InputStream>> responseSupplier = () ->
-      memberVarHttpClient.send(
-        localVarRequestBuilder.build(),
-        HttpResponse.BodyHandlers.ofInputStream());
-
-    try {
-      HttpResponse<InputStream> localVarResponse =
-          Retry.decorateCheckedSupplier(ApiClient.getRetry(), responseSupplier)
-              .get();
-      if (memberVarResponseInterceptor != null) {
-        memberVarResponseInterceptor.accept(localVarResponse);
-      }
-      try {
-        if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("renameAutomationV2", localVarResponse);
-        }
-        return new ApiResponse<Void>(
-          localVarResponse.statusCode(),
-          localVarResponse.headers().map(),
-          null
-        );
-      } finally {
-        // Drain the InputStream
-        while (localVarResponse.body().read() != -1) {
-            // Ignore
-        }
-        localVarResponse.body().close();
-      }
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ApiException(e);
-    } catch (Throwable e) {
-      if (e instanceof ApiException) {
-        throw (ApiException) e;
-      }
-      // Not collapsing exceptions so we can see this in the stack trace.
-      throw new ApiException(e);
-    }
-  }
-
-  private HttpRequest.Builder renameAutomationV2RequestBuilder(String automationId, RenameEasyAutomationCommand renameEasyAutomationCommand) throws ApiException {
-    // verify the required parameter 'automationId' is set
-    if (automationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'automationId' when calling renameAutomationV2");
-    }
-    // verify the required parameter 'renameEasyAutomationCommand' is set
-    if (renameEasyAutomationCommand == null) {
-      throw new ApiException(400, "Missing the required parameter 'renameEasyAutomationCommand' when calling renameAutomationV2");
-    }
-
-    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-
-    String localVarPath = "/rest/v2/easy-automations/{automation_id}"
-        .replace("{automation_id}", ApiClient.urlEncode(automationId.toString()));
-
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-
-    localVarRequestBuilder.header("Content-Type", "application/json");
-    localVarRequestBuilder.header("Accept", "application/json");
-    localVarRequestBuilder.header("Authorization", "Bearer " + this.accessTokenSupplier.get());
-
-    try {
-      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(renameEasyAutomationCommand);
-      localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }

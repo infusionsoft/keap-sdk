@@ -23,7 +23,6 @@ import BatchUnpublishAutomationRequest from '../model/BatchUnpublishAutomationRe
 import Error from '../model/Error';
 import ListAutomationIdsResponse from '../model/ListAutomationIdsResponse';
 import ListAutomationResponse from '../model/ListAutomationResponse';
-import RenameEasyAutomationCommand from '../model/RenameEasyAutomationCommand';
 import UnpublishAutomationRequest from '../model/UnpublishAutomationRequest';
 
 /**
@@ -449,60 +448,6 @@ export default class AutomationApi {
      */
     listAutomations(opts) {
       return this.listAutomationsWithHttpInfo(opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Renames an Easy Automation.
-     * Updates the name of a single easy automation.
-     * @param {String} automationId automation_id
-     * @param {module:keap.core.v2/model/RenameEasyAutomationCommand} renameEasyAutomationCommand 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
-     */
-    renameAutomationV2WithHttpInfo(automationId, renameEasyAutomationCommand) {
-      let postBody = renameEasyAutomationCommand;
-      // verify the required parameter 'automationId' is set
-      if (automationId === undefined || automationId === null) {
-        throw new Error("Missing the required parameter 'automationId' when calling renameAutomationV2");
-      }
-      // verify the required parameter 'renameEasyAutomationCommand' is set
-      if (renameEasyAutomationCommand === undefined || renameEasyAutomationCommand === null) {
-        throw new Error("Missing the required parameter 'renameEasyAutomationCommand' when calling renameAutomationV2");
-      }
-
-      let pathParams = {
-        'automation_id': automationId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = null;
-      return this.apiClient.callApi(
-        '/rest/v2/easy-automations/{automation_id}', 'PATCH',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null
-      );
-    }
-
-    /**
-     * Renames an Easy Automation.
-     * Updates the name of a single easy automation.
-     * @param {String} automationId automation_id
-     * @param {module:keap.core.v2/model/RenameEasyAutomationCommand} renameEasyAutomationCommand 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
-     */
-    renameAutomationV2(automationId, renameEasyAutomationCommand) {
-      return this.renameAutomationV2WithHttpInfo(automationId, renameEasyAutomationCommand)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
