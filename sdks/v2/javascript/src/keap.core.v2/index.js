@@ -266,6 +266,7 @@ import ListTagContactAssociationsResponse from './model/ListTagContactAssociatio
 import ListTaggedCompaniesResponse from './model/ListTaggedCompaniesResponse';
 import ListTaggedContactsResponse from './model/ListTaggedContactsResponse';
 import ListTagsResponse from './model/ListTagsResponse';
+import ListTaskAppointmentsResponse from './model/ListTaskAppointmentsResponse';
 import ListTasksResponse from './model/ListTasksResponse';
 import ListTransactions from './model/ListTransactions';
 import ListUserGroupsResponse from './model/ListUserGroupsResponse';
@@ -324,6 +325,7 @@ import RestCreateOrderRequest from './model/RestCreateOrderRequest';
 import RestCreatePaymentRequest from './model/RestCreatePaymentRequest';
 import RestEmailAddressStatus from './model/RestEmailAddressStatus';
 import RestOpportunityStage from './model/RestOpportunityStage';
+import RestTaskAppointment from './model/RestTaskAppointment';
 import RestUpdatePaymentRequest from './model/RestUpdatePaymentRequest';
 import RestV2Opportunity from './model/RestV2Opportunity';
 import RestV2ProductDetail from './model/RestV2ProductDetail';
@@ -440,6 +442,7 @@ import SubscriptionPlansApi from './api/SubscriptionPlansApi';
 import SubscriptionsApi from './api/SubscriptionsApi';
 import TagsApi from './api/TagsApi';
 import TaskApi from './api/TaskApi';
+import TaskAppointmentsApi from './api/TaskAppointmentsApi';
 import UserGroupsApi from './api/UserGroupsApi';
 import UsersApi from './api/UsersApi';
 import WebformsApi from './api/WebformsApi';
@@ -474,7 +477,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.25
+* @version 2.0.26
 */
 export {
     /**
@@ -2002,6 +2005,12 @@ export {
     ListTagsResponse,
 
     /**
+     * The ListTaskAppointmentsResponse model constructor.
+     * @property {module:keap.core.v2/model/ListTaskAppointmentsResponse}
+     */
+    ListTaskAppointmentsResponse,
+
+    /**
      * The ListTasksResponse model constructor.
      * @property {module:keap.core.v2/model/ListTasksResponse}
      */
@@ -2348,6 +2357,12 @@ export {
      * @property {module:keap.core.v2/model/RestOpportunityStage}
      */
     RestOpportunityStage,
+
+    /**
+     * The RestTaskAppointment model constructor.
+     * @property {module:keap.core.v2/model/RestTaskAppointment}
+     */
+    RestTaskAppointment,
 
     /**
      * The RestUpdatePaymentRequest model constructor.
@@ -3044,6 +3059,12 @@ export {
     * @property {module:keap.core.v2/api/TaskApi}
     */
     TaskApi,
+
+    /**
+    * The TaskAppointmentsApi service constructor.
+    * @property {module:keap.core.v2/api/TaskAppointmentsApi}
+    */
+    TaskAppointmentsApi,
 
     /**
     * The UserGroupsApi service constructor.

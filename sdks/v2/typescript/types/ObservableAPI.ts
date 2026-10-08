@@ -255,6 +255,7 @@ import { ListTagContactAssociationsResponse } from '../models/ListTagContactAsso
 import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesResponse';
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
+import { ListTaskAppointmentsResponse } from '../models/ListTaskAppointmentsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
 import { ListTransactions } from '../models/ListTransactions';
 import { ListUserGroupsResponse } from '../models/ListUserGroupsResponse';
@@ -314,6 +315,7 @@ import { RestCreateOrderRequest } from '../models/RestCreateOrderRequest';
 import { RestCreatePaymentRequest } from '../models/RestCreatePaymentRequest';
 import { RestEmailAddressStatus } from '../models/RestEmailAddressStatus';
 import { RestOpportunityStage } from '../models/RestOpportunityStage';
+import { RestTaskAppointment } from '../models/RestTaskAppointment';
 import { RestUpdatePaymentRequest } from '../models/RestUpdatePaymentRequest';
 import { RestV2Opportunity } from '../models/RestV2Opportunity';
 import { RestV2ProductDetail } from '../models/RestV2ProductDetail';
@@ -15251,6 +15253,64 @@ export class ObservableTaskApi {
      */
     public updateTaskCustomFieldTab(tabId: string, updateMask: Set<'name' | 'order'>, updateCustomFieldTabRequest: UpdateCustomFieldTabRequest, _options?: ConfigurationOptions): Observable<CustomFieldTab> {
         return this.updateTaskCustomFieldTabWithHttpInfo(tabId, updateMask, updateCustomFieldTabRequest, _options).pipe(map((apiResponse: HttpInfo<CustomFieldTab>) => apiResponse.data));
+    }
+
+}
+
+import { TaskAppointmentsApiRequestFactory, TaskAppointmentsApiResponseProcessor} from "../apis/TaskAppointmentsApi";
+export class ObservableTaskAppointmentsApi {
+    private requestFactory: TaskAppointmentsApiRequestFactory;
+    private responseProcessor: TaskAppointmentsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: TaskAppointmentsApiRequestFactory,
+        responseProcessor?: TaskAppointmentsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new TaskAppointmentsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new TaskAppointmentsApiResponseProcessor();
+    }
+
+    /**
+     * Retrieves a paginated list of Task Appointments
+     * List Task Appointments
+     * @param [filter] Filter to apply. Allowed fields:  - &#x60;contact_id&#x60;, &#x60;user_id&#x60; - &#x60;start_time&#x60;, &#x60;end_time&#x60;, &#x60;create_time&#x60;, &#x60;update_time&#x60; - ISO 8601 date/time - Custom field names - reference a custom field by its name (e.g. &#x60;priority&#x60;, &#x60;location_type&#x60;).   Standard field names take precedence over a custom field sharing the same name.  Allowable operators: - &#x60;contact_id&#x60;, &#x60;user_id&#x60;: &#x60;&#x3D;&#x3D;&#x60; - time fields, and numeric/date custom fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&lt;&#x60;, &#x60;&lt;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&gt;&#x3D;&#x60; - text/choice/multi-select custom fields: &#x60;&#x3D;&#x3D;&#x60; (prefix wildcard supported, e.g. &#x60;value*&#x60;)  URL-encode operators (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;) and combine filters with &#x60;;&#x60; (AND).  Examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;start_time%3E%3D2024-01-01T00:00:00Z%3Bend_time%3C2024-02-01T00:00:00Z&#x60; - &#x60;filter&#x3D;priority%3D%3DHigh&#x60; (custom field) 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions:  - &#x60;asc&#x60; - &#x60;desc&#x60;  Example: &#x60;order_by&#x3D;start_time asc&#x60;  If omitted, appointments are returned in a stable default order (ascending by internal sequence) so that pagination remains consistent across pages. 
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listAppointmentsWithHttpInfo(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<ListTaskAppointmentsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listAppointments(filter, pageToken, orderBy, pageSize, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listAppointmentsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Retrieves a paginated list of Task Appointments
+     * List Task Appointments
+     * @param [filter] Filter to apply. Allowed fields:  - &#x60;contact_id&#x60;, &#x60;user_id&#x60; - &#x60;start_time&#x60;, &#x60;end_time&#x60;, &#x60;create_time&#x60;, &#x60;update_time&#x60; - ISO 8601 date/time - Custom field names - reference a custom field by its name (e.g. &#x60;priority&#x60;, &#x60;location_type&#x60;).   Standard field names take precedence over a custom field sharing the same name.  Allowable operators: - &#x60;contact_id&#x60;, &#x60;user_id&#x60;: &#x60;&#x3D;&#x3D;&#x60; - time fields, and numeric/date custom fields: &#x60;&#x3D;&#x3D;&#x60;, &#x60;&lt;&#x60;, &#x60;&lt;&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&gt;&#x3D;&#x60; - text/choice/multi-select custom fields: &#x60;&#x3D;&#x3D;&#x60; (prefix wildcard supported, e.g. &#x60;value*&#x60;)  URL-encode operators (&#x60;&#x3D;&#x3D;&#x60; → &#x60;%3D%3D&#x60;, &#x60;&gt;&#x60; → &#x60;%3E&#x60;, &#x60;&lt;&#x60; → &#x60;%3C&#x60;) and combine filters with &#x60;;&#x60; (AND).  Examples: - &#x60;filter&#x3D;contact_id%3D%3D123&#x60; - &#x60;filter&#x3D;start_time%3E%3D2024-01-01T00:00:00Z%3Bend_time%3C2024-02-01T00:00:00Z&#x60; - &#x60;filter&#x3D;priority%3D%3DHigh&#x60; (custom field) 
+     * @param [pageToken] Page token
+     * @param [orderBy] Attribute and direction to order items. One of the following fields:  - &#x60;start_time&#x60; - &#x60;end_time&#x60; - &#x60;create_time&#x60; - &#x60;update_time&#x60;  One of the following directions:  - &#x60;asc&#x60; - &#x60;desc&#x60;  Example: &#x60;order_by&#x3D;start_time asc&#x60;  If omitted, appointments are returned in a stable default order (ascending by internal sequence) so that pagination remains consistent across pages. 
+     * @param [pageSize] Total number of items to return per page
+     */
+    public listAppointments(filter?: string, pageToken?: string, orderBy?: string, pageSize?: number, _options?: ConfigurationOptions): Observable<ListTaskAppointmentsResponse> {
+        return this.listAppointmentsWithHttpInfo(filter, pageToken, orderBy, pageSize, _options).pipe(map((apiResponse: HttpInfo<ListTaskAppointmentsResponse>) => apiResponse.data));
     }
 
 }

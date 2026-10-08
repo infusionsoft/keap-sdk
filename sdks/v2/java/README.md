@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.25</version>
+  <version>2.0.26</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.25"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.26"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.25.jar`
+- `target/core-service-v2-java-sdk-2.0.26.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -894,6 +894,8 @@ Class | Method | HTTP request | Description
 *TaskApi* | [**updateTaskCustomFieldGroupWithHttpInfo**](docs/TaskApi.md#updateTaskCustomFieldGroupWithHttpInfo) | **PATCH** /rest/v2/tasks/model/customFields/groups/{group_id} | Update a Task Custom Field Group
 *TaskApi* | [**updateTaskCustomFieldTab**](docs/TaskApi.md#updateTaskCustomFieldTab) | **PATCH** /rest/v2/tasks/model/customFields/tabs/{tab_id} | Update a Task Custom Field Tab
 *TaskApi* | [**updateTaskCustomFieldTabWithHttpInfo**](docs/TaskApi.md#updateTaskCustomFieldTabWithHttpInfo) | **PATCH** /rest/v2/tasks/model/customFields/tabs/{tab_id} | Update a Task Custom Field Tab
+*TaskAppointmentsApi* | [**listAppointments**](docs/TaskAppointmentsApi.md#listAppointments) | **GET** /rest/v2/taskAppointments | List Task Appointments
+*TaskAppointmentsApi* | [**listAppointmentsWithHttpInfo**](docs/TaskAppointmentsApi.md#listAppointmentsWithHttpInfo) | **GET** /rest/v2/taskAppointments | List Task Appointments
 *UserGroupsApi* | [**getUserGroup**](docs/UserGroupsApi.md#getUserGroup) | **GET** /rest/v2/userGroups/{user_group_id} | Retrieve a User Group
 *UserGroupsApi* | [**getUserGroupWithHttpInfo**](docs/UserGroupsApi.md#getUserGroupWithHttpInfo) | **GET** /rest/v2/userGroups/{user_group_id} | Retrieve a User Group
 *UserGroupsApi* | [**listUserGroups**](docs/UserGroupsApi.md#listUserGroups) | **GET** /rest/v2/userGroups | List User Groups
@@ -1169,6 +1171,7 @@ Class | Method | HTTP request | Description
  - [ListTaggedCompaniesResponse](docs/ListTaggedCompaniesResponse.md)
  - [ListTaggedContactsResponse](docs/ListTaggedContactsResponse.md)
  - [ListTagsResponse](docs/ListTagsResponse.md)
+ - [ListTaskAppointmentsResponse](docs/ListTaskAppointmentsResponse.md)
  - [ListTasksResponse](docs/ListTasksResponse.md)
  - [ListTransactions](docs/ListTransactions.md)
  - [ListUserGroupsResponse](docs/ListUserGroupsResponse.md)
@@ -1227,6 +1230,7 @@ Class | Method | HTTP request | Description
  - [RestCreatePaymentRequest](docs/RestCreatePaymentRequest.md)
  - [RestEmailAddressStatus](docs/RestEmailAddressStatus.md)
  - [RestOpportunityStage](docs/RestOpportunityStage.md)
+ - [RestTaskAppointment](docs/RestTaskAppointment.md)
  - [RestUpdatePaymentRequest](docs/RestUpdatePaymentRequest.md)
  - [RestV2Opportunity](docs/RestV2Opportunity.md)
  - [RestV2ProductDetail](docs/RestV2ProductDetail.md)

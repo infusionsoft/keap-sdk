@@ -14,7 +14,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-__version__ = "2.0.25"
+__version__ = "2.0.26"
 
 # import apis into sdk package
 from keap_core_v2_client.api.affiliate_api import AffiliateApi
@@ -57,6 +57,7 @@ from keap_core_v2_client.api.subscription_plans_api import SubscriptionPlansApi
 from keap_core_v2_client.api.subscriptions_api import SubscriptionsApi
 from keap_core_v2_client.api.tags_api import TagsApi
 from keap_core_v2_client.api.task_api import TaskApi
+from keap_core_v2_client.api.task_appointments_api import TaskAppointmentsApi
 from keap_core_v2_client.api.user_groups_api import UserGroupsApi
 from keap_core_v2_client.api.users_api import UsersApi
 from keap_core_v2_client.api.webforms_api import WebformsApi
@@ -326,6 +327,7 @@ from keap_core_v2_client.models.list_tag_contact_associations_response import Li
 from keap_core_v2_client.models.list_tagged_companies_response import ListTaggedCompaniesResponse
 from keap_core_v2_client.models.list_tagged_contacts_response import ListTaggedContactsResponse
 from keap_core_v2_client.models.list_tags_response import ListTagsResponse
+from keap_core_v2_client.models.list_task_appointments_response import ListTaskAppointmentsResponse
 from keap_core_v2_client.models.list_tasks_response import ListTasksResponse
 from keap_core_v2_client.models.list_transactions import ListTransactions
 from keap_core_v2_client.models.list_user_groups_response import ListUserGroupsResponse
@@ -384,6 +386,7 @@ from keap_core_v2_client.models.rest_create_order_request import RestCreateOrder
 from keap_core_v2_client.models.rest_create_payment_request import RestCreatePaymentRequest
 from keap_core_v2_client.models.rest_email_address_status import RestEmailAddressStatus
 from keap_core_v2_client.models.rest_opportunity_stage import RestOpportunityStage
+from keap_core_v2_client.models.rest_task_appointment import RestTaskAppointment
 from keap_core_v2_client.models.rest_update_payment_request import RestUpdatePaymentRequest
 from keap_core_v2_client.models.rest_v2_opportunity import RestV2Opportunity
 from keap_core_v2_client.models.rest_v2_product_detail import RestV2ProductDetail

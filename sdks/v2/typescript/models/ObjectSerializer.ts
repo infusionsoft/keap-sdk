@@ -250,6 +250,7 @@ export * from '../models/ListTagContactAssociationsResponse';
 export * from '../models/ListTaggedCompaniesResponse';
 export * from '../models/ListTaggedContactsResponse';
 export * from '../models/ListTagsResponse';
+export * from '../models/ListTaskAppointmentsResponse';
 export * from '../models/ListTasksResponse';
 export * from '../models/ListTransactions';
 export * from '../models/ListUserGroupsResponse';
@@ -309,6 +310,7 @@ export * from '../models/RestCreateOrderRequest';
 export * from '../models/RestCreatePaymentRequest';
 export * from '../models/RestEmailAddressStatus';
 export * from '../models/RestOpportunityStage';
+export * from '../models/RestTaskAppointment';
 export * from '../models/RestUpdatePaymentRequest';
 export * from '../models/RestV2Opportunity';
 export * from '../models/RestV2ProductDetail';
@@ -638,6 +640,7 @@ import { ListTagContactAssociationsResponse } from '../models/ListTagContactAsso
 import { ListTaggedCompaniesResponse } from '../models/ListTaggedCompaniesResponse';
 import { ListTaggedContactsResponse } from '../models/ListTaggedContactsResponse';
 import { ListTagsResponse } from '../models/ListTagsResponse';
+import { ListTaskAppointmentsResponse } from '../models/ListTaskAppointmentsResponse';
 import { ListTasksResponse } from '../models/ListTasksResponse';
 import { ListTransactions } from '../models/ListTransactions';
 import { ListUserGroupsResponse } from '../models/ListUserGroupsResponse';
@@ -697,6 +700,7 @@ import { RestCreateOrderRequest       , RestCreateOrderRequestOrderTypeEnum     
 import { RestCreatePaymentRequest } from '../models/RestCreatePaymentRequest';
 import { RestEmailAddressStatus  , RestEmailAddressStatusStatusEnum       } from '../models/RestEmailAddressStatus';
 import { RestOpportunityStage } from '../models/RestOpportunityStage';
+import { RestTaskAppointment } from '../models/RestTaskAppointment';
 import { RestUpdatePaymentRequest } from '../models/RestUpdatePaymentRequest';
 import { RestV2Opportunity } from '../models/RestV2Opportunity';
 import { RestV2ProductDetail } from '../models/RestV2ProductDetail';
@@ -1184,6 +1188,7 @@ let typeMap: {[index: string]: any} = {
     "ListTaggedCompaniesResponse": ListTaggedCompaniesResponse,
     "ListTaggedContactsResponse": ListTaggedContactsResponse,
     "ListTagsResponse": ListTagsResponse,
+    "ListTaskAppointmentsResponse": ListTaskAppointmentsResponse,
     "ListTasksResponse": ListTasksResponse,
     "ListTransactions": ListTransactions,
     "ListUserGroupsResponse": ListUserGroupsResponse,
@@ -1243,6 +1248,7 @@ let typeMap: {[index: string]: any} = {
     "RestCreatePaymentRequest": RestCreatePaymentRequest,
     "RestEmailAddressStatus": RestEmailAddressStatus,
     "RestOpportunityStage": RestOpportunityStage,
+    "RestTaskAppointment": RestTaskAppointment,
     "RestUpdatePaymentRequest": RestUpdatePaymentRequest,
     "RestV2Opportunity": RestV2Opportunity,
     "RestV2ProductDetail": RestV2ProductDetail,
