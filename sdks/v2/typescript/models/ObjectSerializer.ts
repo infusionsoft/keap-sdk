@@ -491,7 +491,7 @@ import { CreateOpportunityRequest } from '../models/CreateOpportunityRequest';
 import { CreateOpportunityStageChecklistItem } from '../models/CreateOpportunityStageChecklistItem';
 import { CreateOpportunityStageRequest } from '../models/CreateOpportunityStageRequest';
 import { CreateOrUpdateAffiliateLinkRequest } from '../models/CreateOrUpdateAffiliateLinkRequest';
-import { CreateOrderItemRequest       , CreateOrderItemRequestItemTypeEnum     } from '../models/CreateOrderItemRequest';
+import { CreateOrderItemRequest        , CreateOrderItemRequestItemTypeEnum     } from '../models/CreateOrderItemRequest';
 import { CreateOrderTotalDiscountCriteria, CreateOrderTotalDiscountCriteriaTypeEnum           , CreateOrderTotalDiscountCriteriaOperatorEnum   } from '../models/CreateOrderTotalDiscountCriteria';
 import { CreateOrderTotalDiscountRequest    , CreateOrderTotalDiscountRequestDiscountTypeEnum   , CreateOrderTotalDiscountRequestDiscountStrategyEnum   } from '../models/CreateOrderTotalDiscountRequest';
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';

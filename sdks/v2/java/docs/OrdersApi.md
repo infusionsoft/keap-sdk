@@ -4668,7 +4668,7 @@ public class Example {
 | **orderId** | **String**|  | |
 | **orderItemId** | **String**|  | |
 | **updateOrderItemRequest** | [**UpdateOrderItemRequest**](UpdateOrderItemRequest.md)|  | |
-| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, notes, quantity, price_per_unit, cost_per_unit, product_id, subscription_plan_id, subscription_plan_description] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, notes, quantity, price_per_unit, cost_per_unit, product_id, subscription_plan_id, subscription_plan_description, discount] |
 
 ### Return type
 
@@ -4755,7 +4755,7 @@ public class Example {
 | **orderId** | **String**|  | |
 | **orderItemId** | **String**|  | |
 | **updateOrderItemRequest** | [**UpdateOrderItemRequest**](UpdateOrderItemRequest.md)|  | |
-| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, notes, quantity, price_per_unit, cost_per_unit, product_id, subscription_plan_id, subscription_plan_description] |
+| **updateMask** | [**Set&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional] [enum: name, description, notes, quantity, price_per_unit, cost_per_unit, product_id, subscription_plan_id, subscription_plan_description, discount] |
 
 ### Return type
 

@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.keap.core.sdk.model.Discount;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Arrays;
 import java.io.Serializable;
@@ -38,6 +39,7 @@ import jakarta.validation.Valid;
   UpdateOrderItemRequest.JSON_PROPERTY_DESCRIPTION,
   UpdateOrderItemRequest.JSON_PROPERTY_QUANTITY,
   UpdateOrderItemRequest.JSON_PROPERTY_NOTES,
+  UpdateOrderItemRequest.JSON_PROPERTY_DISCOUNT,
   UpdateOrderItemRequest.JSON_PROPERTY_PRODUCT_ID,
   UpdateOrderItemRequest.JSON_PROPERTY_SUBSCRIPTION_PLAN_ID,
   UpdateOrderItemRequest.JSON_PROPERTY_SUBSCRIPTION_PLAN_DESCRIPTION,
@@ -59,6 +61,9 @@ public class UpdateOrderItemRequest implements Serializable {
 
   public static final String JSON_PROPERTY_NOTES = "notes";
   @jakarta.annotation.Nullable  private String notes;
+
+  public static final String JSON_PROPERTY_DISCOUNT = "discount";
+  @jakarta.annotation.Nullable  private Discount discount;
 
   public static final String JSON_PROPERTY_PRODUCT_ID = "product_id";
   @jakarta.annotation.Nullable  private String productId;
@@ -171,6 +176,31 @@ public class UpdateOrderItemRequest implements Serializable {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNotes(@jakarta.annotation.Nullable String notes) {
     this.notes = notes;
+  }
+
+
+  public UpdateOrderItemRequest discount(@jakarta.annotation.Nullable Discount discount) {
+    this.discount = discount;
+    return this;
+  }
+
+  /**
+   * The discount details. Used only for discount item types; ignored for every other type.
+   * @return discount
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The discount details. Used only for discount item types; ignored for every other type.")
+  @JsonProperty(JSON_PROPERTY_DISCOUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Discount getDiscount() {
+    return discount;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DISCOUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDiscount(@jakarta.annotation.Nullable Discount discount) {
+    this.discount = discount;
   }
 
 
@@ -309,6 +339,7 @@ public class UpdateOrderItemRequest implements Serializable {
         Objects.equals(this.description, updateOrderItemRequest.description) &&
         Objects.equals(this.quantity, updateOrderItemRequest.quantity) &&
         Objects.equals(this.notes, updateOrderItemRequest.notes) &&
+        Objects.equals(this.discount, updateOrderItemRequest.discount) &&
         Objects.equals(this.productId, updateOrderItemRequest.productId) &&
         Objects.equals(this.subscriptionPlanId, updateOrderItemRequest.subscriptionPlanId) &&
         Objects.equals(this.subscriptionPlanDescription, updateOrderItemRequest.subscriptionPlanDescription) &&
@@ -318,7 +349,7 @@ public class UpdateOrderItemRequest implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, quantity, notes, productId, subscriptionPlanId, subscriptionPlanDescription, pricePerUnit, costPerUnit);
+    return Objects.hash(name, description, quantity, notes, discount, productId, subscriptionPlanId, subscriptionPlanDescription, pricePerUnit, costPerUnit);
   }
 
   @Override
@@ -329,6 +360,7 @@ public class UpdateOrderItemRequest implements Serializable {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
+    sb.append("    discount: ").append(toIndentedString(discount)).append("\n");
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
     sb.append("    subscriptionPlanId: ").append(toIndentedString(subscriptionPlanId)).append("\n");
     sb.append("    subscriptionPlanDescription: ").append(toIndentedString(subscriptionPlanDescription)).append("\n");
@@ -375,6 +407,10 @@ public class UpdateOrderItemRequest implements Serializable {
         }
             public UpdateOrderItemRequest.Builder notes(String notes) {
               this.instance.notes = notes;
+          return this;
+        }
+            public UpdateOrderItemRequest.Builder discount(Discount discount) {
+              this.instance.discount = discount;
           return this;
         }
             public UpdateOrderItemRequest.Builder productId(String productId) {
@@ -435,6 +471,7 @@ public class UpdateOrderItemRequest implements Serializable {
           .description(getDescription())
           .quantity(getQuantity())
           .notes(getNotes())
+          .discount(getDiscount())
           .productId(getProductId())
           .subscriptionPlanId(getSubscriptionPlanId())
           .subscriptionPlanDescription(getSubscriptionPlanDescription())

@@ -10347,7 +10347,7 @@ export class ObservableOrdersApi {
      * @param updateOrderItemRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderItemWithHttpInfo(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description'>, _options?: ConfigurationOptions): Observable<HttpInfo<OrderItem>> {
+    public updateOrderItemWithHttpInfo(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description' | 'discount'>, _options?: ConfigurationOptions): Observable<HttpInfo<OrderItem>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateOrderItem(orderId, orderItemId, updateOrderItemRequest, updateMask, _config);
@@ -10375,7 +10375,7 @@ export class ObservableOrdersApi {
      * @param updateOrderItemRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderItem(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description'>, _options?: ConfigurationOptions): Observable<OrderItem> {
+    public updateOrderItem(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description' | 'discount'>, _options?: ConfigurationOptions): Observable<OrderItem> {
         return this.updateOrderItemWithHttpInfo(orderId, orderItemId, updateOrderItemRequest, updateMask, _options).pipe(map((apiResponse: HttpInfo<OrderItem>) => apiResponse.data));
     }
 

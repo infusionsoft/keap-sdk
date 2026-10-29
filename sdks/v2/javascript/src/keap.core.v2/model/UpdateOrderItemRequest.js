@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import Discount from './Discount';
 
 /**
  * The UpdateOrderItemRequest model module.
@@ -59,6 +60,9 @@ class UpdateOrderItemRequest {
             if (data.hasOwnProperty('notes')) {
                 obj['notes'] = ApiClient.convertToType(data['notes'], 'String');
             }
+            if (data.hasOwnProperty('discount')) {
+                obj['discount'] = Discount.constructFromObject(data['discount']);
+            }
             if (data.hasOwnProperty('product_id')) {
                 obj['product_id'] = ApiClient.convertToType(data['product_id'], 'String');
             }
@@ -95,6 +99,10 @@ class UpdateOrderItemRequest {
         // ensure the json data is a string
         if (data['notes'] && !(typeof data['notes'] === 'string' || data['notes'] instanceof String)) {
             throw new Error("Expected the field `notes` to be a primitive type in the JSON string but got " + data['notes']);
+        }
+        // validate the optional field `discount`
+        if (data['discount']) { // data not null
+          Discount.validateJSON(data['discount']);
         }
         // ensure the json data is a string
         if (data['product_id'] && !(typeof data['product_id'] === 'string' || data['product_id'] instanceof String)) {
@@ -140,6 +148,12 @@ UpdateOrderItemRequest.prototype['quantity'] = undefined;
  * @member {String} notes
  */
 UpdateOrderItemRequest.prototype['notes'] = undefined;
+
+/**
+ * The discount details. Used only for discount item types; ignored for every other type.
+ * @member {module:keap.core.v2/model/Discount} discount
+ */
+UpdateOrderItemRequest.prototype['discount'] = undefined;
 
 /**
  * The id of the product. Must be a valid product id. Used only for item_type PRODUCT or SUBSCRIPTION.

@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { Discount } from '../models/Discount';
 import { HttpFile } from '../http/http';
 
 /**
@@ -32,6 +33,10 @@ export class UpdateOrderItemRequest {
     * The notes for the order item. Must not be whitespace.
     */
     'notes'?: string;
+    /**
+    * The discount details. Used only for discount item types; ignored for every other type.
+    */
+    'discount'?: Discount;
     /**
     * The id of the product. Must be a valid product id. Used only for item_type PRODUCT or SUBSCRIPTION.
     */
@@ -80,6 +85,12 @@ export class UpdateOrderItemRequest {
             "name": "notes",
             "baseName": "notes",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "discount",
+            "baseName": "discount",
+            "type": "Discount",
             "format": ""
         },
         {

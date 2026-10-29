@@ -33,7 +33,7 @@ export class OrderV2 {
     */
     'status'?: OrderV2StatusEnum;
     /**
-    * The total amount of the order.
+    * The full amount of the order (the sum of all order items, including any discounts, taxes and shipping). This value does not change as payments are made or as payment plan installments come due. The remaining balance of the order can be calculated as total - total_paid.
     */
     'total'?: CurrencyValue;
     /**
@@ -77,11 +77,11 @@ export class OrderV2 {
     */
     'salesAffiliateId'?: string;
     /**
-    * The total amount paid to the order.
+    * The sum of all payments applied to the order, regardless of whether the order has a payment plan.
     */
     'totalPaid'?: CurrencyValue;
     /**
-    * The total amount of the order that is due. This is not current balance.
+    * The portion of the order total that has come due, before any payments are subtracted. This is not the current balance. Without a payment plan, this is equal to total. With a payment plan, this is the sum of the payment plan installments whose due date has passed (never more than total), as of the last time the order amounts were recalculated. The amount currently owed (past due) can be calculated as total_due - total_paid. Omitted when zero.
     */
     'totalDue'?: CurrencyValue;
     /**

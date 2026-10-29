@@ -1419,7 +1419,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
      * @param updateOrderItemRequest 
      * @param updateMask An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public async updateOrderItem(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description'>, _options?: Configuration): Promise<RequestContext> {
+    public async updateOrderItem(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description' | 'discount'>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'orderId' is not null or undefined
@@ -1452,7 +1452,7 @@ export class OrdersApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (updateMask !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description'>", "");
+            const serializedParams = ObjectSerializer.serialize(updateMask, "Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description' | 'discount'>", "");
             for (const serializedParam of serializedParams) {
                 requestContext.appendQueryParam("update_mask", serializedParam);
             }

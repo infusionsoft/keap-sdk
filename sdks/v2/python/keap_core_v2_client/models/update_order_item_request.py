@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
+from keap_core_v2_client.models.discount import Discount
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,13 +31,14 @@ class UpdateOrderItemRequest(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="The description of the order item. Must not be whitespace.")
     quantity: Optional[StrictInt] = Field(default=None, description="The quantity. Must be greater than or equal to 1.")
     notes: Optional[StrictStr] = Field(default=None, description="The notes for the order item. Must not be whitespace.")
+    discount: Optional[Discount] = Field(default=None, description="The discount details. Used only for discount item types; ignored for every other type.")
     product_id: Optional[StrictStr] = Field(default=None, description="The id of the product. Must be a valid product id. Used only for item_type PRODUCT or SUBSCRIPTION.")
     subscription_plan_id: Optional[StrictStr] = Field(default=None, description="The id of the subscription plan. Must be a valid subscription plan id. Used only for item_type SUBSCRIPTION.")
     subscription_plan_description: Optional[StrictStr] = Field(default=None, description="A short description of the subscription's schedule. Used only for item_type SUBSCRIPTION. Must not be whitespace.")
     price_per_unit: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price per unit.")
     cost_per_unit: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The cost per unit. Used for item_type PRODUCT or SUBSCRIPTION.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["name", "description", "quantity", "notes", "product_id", "subscription_plan_id", "subscription_plan_description", "price_per_unit", "cost_per_unit"]
+    __properties: ClassVar[List[str]] = ["name", "description", "quantity", "notes", "discount", "product_id", "subscription_plan_id", "subscription_plan_description", "price_per_unit", "cost_per_unit"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -79,6 +81,9 @@ class UpdateOrderItemRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of discount
+        if self.discount:
+            _dict['discount'] = self.discount.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -100,6 +105,7 @@ class UpdateOrderItemRequest(BaseModel):
             "description": obj.get("description"),
             "quantity": obj.get("quantity"),
             "notes": obj.get("notes"),
+            "discount": Discount.from_dict(obj["discount"]) if obj.get("discount") is not None else None,
             "product_id": obj.get("product_id"),
             "subscription_plan_id": obj.get("subscription_plan_id"),
             "subscription_plan_description": obj.get("subscription_plan_description"),

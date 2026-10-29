@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { Discount } from '../models/Discount';
 import { HttpFile } from '../http/http';
 
 export class CreateOrderItemRequest {
@@ -29,6 +30,10 @@ export class CreateOrderItemRequest {
     * The notes for the order item. Must not be whitespace.
     */
     'notes'?: string;
+    /**
+    * The discount details. Used only for discount item types; ignored for every other type. When omitted, discount_method defaults to AMOUNT and amount to 0.
+    */
+    'discount'?: Discount;
     /**
     * The id of the product to be added to the order. Must be a valid product id. Required for item_type PRODUCT or SUBSCRIPTION.
     */
@@ -81,6 +86,12 @@ export class CreateOrderItemRequest {
             "name": "notes",
             "baseName": "notes",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "discount",
+            "baseName": "discount",
+            "type": "Discount",
             "format": ""
         },
         {

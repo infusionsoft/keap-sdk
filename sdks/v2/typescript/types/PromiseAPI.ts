@@ -7186,7 +7186,7 @@ export class PromiseOrdersApi {
      * @param updateOrderItemRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderItemWithHttpInfo(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderItem>> {
+    public updateOrderItemWithHttpInfo(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description' | 'discount'>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderItem>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOrderItemWithHttpInfo(orderId, orderItemId, updateOrderItemRequest, updateMask, observableOptions);
         return result.toPromise();
@@ -7200,7 +7200,7 @@ export class PromiseOrdersApi {
      * @param updateOrderItemRequest
      * @param [updateMask] An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      */
-    public updateOrderItem(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description'>, _options?: PromiseConfigurationOptions): Promise<OrderItem> {
+    public updateOrderItem(orderId: string, orderItemId: string, updateOrderItemRequest: UpdateOrderItemRequest, updateMask?: Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description' | 'discount'>, _options?: PromiseConfigurationOptions): Promise<OrderItem> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateOrderItem(orderId, orderItemId, updateOrderItemRequest, updateMask, observableOptions);
         return result.toPromise();

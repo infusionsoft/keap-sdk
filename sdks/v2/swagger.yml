@@ -17666,6 +17666,7 @@ paths:
             - product_id
             - subscription_plan_id
             - subscription_plan_description
+            - discount
           uniqueItems: true
       requestBody:
         content:
@@ -33351,7 +33352,10 @@ components:
           example: PAID
         total:
           $ref: '#/components/schemas/CurrencyValue'
-          description: The total amount of the order.
+          description: The full amount of the order (the sum of all order items, including
+            any discounts, taxes and shipping). This value does not change as payments
+            are made or as payment plan installments come due. The remaining balance
+            of the order can be calculated as total - total_paid.
         contact:
           $ref: '#/components/schemas/BasicContact'
           description: Contact associated with this order
@@ -33408,11 +33412,17 @@ components:
           example: 789
         total_paid:
           $ref: '#/components/schemas/CurrencyValue'
-          description: The total amount paid to the order.
+          description: The sum of all payments applied to the order, regardless of
+            whether the order has a payment plan.
         total_due:
           $ref: '#/components/schemas/CurrencyValue'
-          description: The total amount of the order that is due. This is not current
-            balance.
+          description: The portion of the order total that has come due, before any
+            payments are subtracted. This is not the current balance. Without a payment
+            plan, this is equal to total. With a payment plan, this is the sum of
+            the payment plan installments whose due date has passed (never more than
+            total), as of the last time the order amounts were recalculated. The amount
+            currently owed (past due) can be calculated as total_due - total_paid.
+            Omitted when zero.
         shipping_information:
           $ref: '#/components/schemas/ShippingInformation'
           description: Shipping details for the order
@@ -34637,6 +34647,11 @@ components:
           type: string
           description: The notes for the order item. Must not be whitespace.
           example: Gift wrap
+        discount:
+          $ref: '#/components/schemas/Discount'
+          description: The discount details. Used only for discount item types; ignored
+            for every other type. When omitted, discount_method defaults to AMOUNT
+            and amount to 0.
         product_id:
           type: string
           description: The id of the product to be added to the order. Must be a valid
@@ -39838,6 +39853,10 @@ components:
           type: string
           description: The notes for the order item. Must not be whitespace.
           example: Gift wrap requested
+        discount:
+          $ref: '#/components/schemas/Discount'
+          description: The discount details. Used only for discount item types; ignored
+            for every other type.
         product_id:
           type: string
           description: The id of the product. Must be a valid product id. Used only

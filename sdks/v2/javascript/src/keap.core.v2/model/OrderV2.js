@@ -314,7 +314,7 @@ OrderV2.prototype['title'] = undefined;
 OrderV2.prototype['status'] = undefined;
 
 /**
- * The total amount of the order.
+ * The full amount of the order (the sum of all order items, including any discounts, taxes and shipping). This value does not change as payments are made or as payment plan installments come due. The remaining balance of the order can be calculated as total - total_paid.
  * @member {module:keap.core.v2/model/CurrencyValue} total
  */
 OrderV2.prototype['total'] = undefined;
@@ -380,13 +380,13 @@ OrderV2.prototype['lead_affiliate_id'] = undefined;
 OrderV2.prototype['sales_affiliate_id'] = undefined;
 
 /**
- * The total amount paid to the order.
+ * The sum of all payments applied to the order, regardless of whether the order has a payment plan.
  * @member {module:keap.core.v2/model/CurrencyValue} total_paid
  */
 OrderV2.prototype['total_paid'] = undefined;
 
 /**
- * The total amount of the order that is due. This is not current balance.
+ * The portion of the order total that has come due, before any payments are subtracted. This is not the current balance. Without a payment plan, this is equal to total. With a payment plan, this is the sum of the payment plan installments whose due date has passed (never more than total), as of the last time the order amounts were recalculated. The amount currently owed (past due) can be calculated as total_due - total_paid. Omitted when zero.
  * @member {module:keap.core.v2/model/CurrencyValue} total_due
  */
 OrderV2.prototype['total_due'] = undefined;

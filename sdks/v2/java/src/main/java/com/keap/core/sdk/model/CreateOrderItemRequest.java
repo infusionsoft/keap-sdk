@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.keap.core.sdk.model.Discount;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Arrays;
 import java.io.Serializable;
@@ -37,6 +38,7 @@ import jakarta.validation.Valid;
   CreateOrderItemRequest.JSON_PROPERTY_DESCRIPTION,
   CreateOrderItemRequest.JSON_PROPERTY_QUANTITY,
   CreateOrderItemRequest.JSON_PROPERTY_NOTES,
+  CreateOrderItemRequest.JSON_PROPERTY_DISCOUNT,
   CreateOrderItemRequest.JSON_PROPERTY_PRODUCT_ID,
   CreateOrderItemRequest.JSON_PROPERTY_SUBSCRIPTION_PLAN_ID,
   CreateOrderItemRequest.JSON_PROPERTY_SUBSCRIPTION_PLAN_DESCRIPTION,
@@ -59,6 +61,9 @@ public class CreateOrderItemRequest implements Serializable {
 
   public static final String JSON_PROPERTY_NOTES = "notes";
   @jakarta.annotation.Nullable  private String notes;
+
+  public static final String JSON_PROPERTY_DISCOUNT = "discount";
+  @jakarta.annotation.Nullable  private Discount discount;
 
   public static final String JSON_PROPERTY_PRODUCT_ID = "product_id";
   @jakarta.annotation.Nullable  private String productId;
@@ -236,6 +241,31 @@ public class CreateOrderItemRequest implements Serializable {
   }
 
 
+  public CreateOrderItemRequest discount(@jakarta.annotation.Nullable Discount discount) {
+    this.discount = discount;
+    return this;
+  }
+
+  /**
+   * The discount details. Used only for discount item types; ignored for every other type. When omitted, discount_method defaults to AMOUNT and amount to 0.
+   * @return discount
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The discount details. Used only for discount item types; ignored for every other type. When omitted, discount_method defaults to AMOUNT and amount to 0.")
+  @JsonProperty(JSON_PROPERTY_DISCOUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Discount getDiscount() {
+    return discount;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DISCOUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDiscount(@jakarta.annotation.Nullable Discount discount) {
+    this.discount = discount;
+  }
+
+
   public CreateOrderItemRequest productId(@jakarta.annotation.Nullable String productId) {
     this.productId = productId;
     return this;
@@ -395,6 +425,7 @@ public class CreateOrderItemRequest implements Serializable {
         Objects.equals(this.description, createOrderItemRequest.description) &&
         Objects.equals(this.quantity, createOrderItemRequest.quantity) &&
         Objects.equals(this.notes, createOrderItemRequest.notes) &&
+        Objects.equals(this.discount, createOrderItemRequest.discount) &&
         Objects.equals(this.productId, createOrderItemRequest.productId) &&
         Objects.equals(this.subscriptionPlanId, createOrderItemRequest.subscriptionPlanId) &&
         Objects.equals(this.subscriptionPlanDescription, createOrderItemRequest.subscriptionPlanDescription) &&
@@ -405,7 +436,7 @@ public class CreateOrderItemRequest implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, quantity, notes, productId, subscriptionPlanId, subscriptionPlanDescription, itemType, pricePerUnit, costPerUnit);
+    return Objects.hash(name, description, quantity, notes, discount, productId, subscriptionPlanId, subscriptionPlanDescription, itemType, pricePerUnit, costPerUnit);
   }
 
   @Override
@@ -416,6 +447,7 @@ public class CreateOrderItemRequest implements Serializable {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
+    sb.append("    discount: ").append(toIndentedString(discount)).append("\n");
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
     sb.append("    subscriptionPlanId: ").append(toIndentedString(subscriptionPlanId)).append("\n");
     sb.append("    subscriptionPlanDescription: ").append(toIndentedString(subscriptionPlanDescription)).append("\n");
@@ -463,6 +495,10 @@ public class CreateOrderItemRequest implements Serializable {
         }
             public CreateOrderItemRequest.Builder notes(String notes) {
               this.instance.notes = notes;
+          return this;
+        }
+            public CreateOrderItemRequest.Builder discount(Discount discount) {
+              this.instance.discount = discount;
           return this;
         }
             public CreateOrderItemRequest.Builder productId(String productId) {
@@ -527,6 +563,7 @@ public class CreateOrderItemRequest implements Serializable {
           .description(getDescription())
           .quantity(getQuantity())
           .notes(getNotes())
+          .discount(getDiscount())
           .productId(getProductId())
           .subscriptionPlanId(getSubscriptionPlanId())
           .subscriptionPlanDescription(getSubscriptionPlanDescription())

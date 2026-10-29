@@ -139,18 +139,20 @@ namespace Keap.Core.V2.Model
         /// <param name="description">The description of the order item. Must not be whitespace..</param>
         /// <param name="quantity">The quantity. Must be greater than or equal to 1. (required).</param>
         /// <param name="notes">The notes for the order item. Must not be whitespace..</param>
+        /// <param name="discount">The discount details. Used only for discount item types; ignored for every other type. When omitted, discount_method defaults to AMOUNT and amount to 0..</param>
         /// <param name="productId">The id of the product to be added to the order. Must be a valid product id. Required for item_type PRODUCT or SUBSCRIPTION..</param>
         /// <param name="subscriptionPlanId">The id of the subscription plan to be added to the order. Must be a valid subscription plan id. Required only when the item_type is SUBSCRIPTION..</param>
         /// <param name="subscriptionPlanDescription">A short description of the subscription&#39;s schedule. Used only for item_type SUBSCRIPTION. Must not be whitespace..</param>
         /// <param name="itemType">The type of this order item. Will default to [PRODUCT] if omitted. (default to ItemTypeEnum.PRODUCT).</param>
         /// <param name="pricePerUnit">The price per unit. For item_type PRODUCT or SUBSCRIPTION, if not specified, the product price will be used..</param>
         /// <param name="costPerUnit">The cost per unit. Used only for item_type PRODUCT or SUBSCRIPTION. If not specified, the product cost will be used..</param>
-        public CreateOrderItemRequest(string name = default, string description = default, int quantity = default, string notes = default, string productId = default, string subscriptionPlanId = default, string subscriptionPlanDescription = default, ItemTypeEnum? itemType = ItemTypeEnum.PRODUCT, double pricePerUnit = default, double costPerUnit = default)
+        public CreateOrderItemRequest(string name = default, string description = default, int quantity = default, string notes = default, Discount discount = default, string productId = default, string subscriptionPlanId = default, string subscriptionPlanDescription = default, ItemTypeEnum? itemType = ItemTypeEnum.PRODUCT, double pricePerUnit = default, double costPerUnit = default)
         {
             this.Quantity = quantity;
             this.Name = name;
             this.Description = description;
             this.Notes = notes;
+            this.Discount = discount;
             this.ProductId = productId;
             this.SubscriptionPlanId = subscriptionPlanId;
             this.SubscriptionPlanDescription = subscriptionPlanDescription;
@@ -198,6 +200,13 @@ namespace Keap.Core.V2.Model
         */
         [DataMember(Name = "notes", EmitDefaultValue = false)]
         public string Notes { get; set; }
+
+        /// <summary>
+        /// The discount details. Used only for discount item types; ignored for every other type. When omitted, discount_method defaults to AMOUNT and amount to 0.
+        /// </summary>
+        /// <value>The discount details. Used only for discount item types; ignored for every other type. When omitted, discount_method defaults to AMOUNT and amount to 0.</value>
+        [DataMember(Name = "discount", EmitDefaultValue = false)]
+        public Discount Discount { get; set; }
 
         /// <summary>
         /// The id of the product to be added to the order. Must be a valid product id. Required for item_type PRODUCT or SUBSCRIPTION.
@@ -261,6 +270,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
+            sb.Append("  Discount: ").Append(Discount).Append("\n");
             sb.Append("  ProductId: ").Append(ProductId).Append("\n");
             sb.Append("  SubscriptionPlanId: ").Append(SubscriptionPlanId).Append("\n");
             sb.Append("  SubscriptionPlanDescription: ").Append(SubscriptionPlanDescription).Append("\n");

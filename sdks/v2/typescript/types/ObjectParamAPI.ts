@@ -9346,10 +9346,10 @@ export interface OrdersApiUpdateOrderItemRequest {
     /**
      * An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
      * Defaults to: undefined
-     * @type Set&lt;&#39;name&#39; | &#39;description&#39; | &#39;notes&#39; | &#39;quantity&#39; | &#39;price_per_unit&#39; | &#39;cost_per_unit&#39; | &#39;product_id&#39; | &#39;subscription_plan_id&#39; | &#39;subscription_plan_description&#39;&gt;
+     * @type Set&lt;&#39;name&#39; | &#39;description&#39; | &#39;notes&#39; | &#39;quantity&#39; | &#39;price_per_unit&#39; | &#39;cost_per_unit&#39; | &#39;product_id&#39; | &#39;subscription_plan_id&#39; | &#39;subscription_plan_description&#39; | &#39;discount&#39;&gt;
      * @memberof OrdersApiupdateOrderItem
      */
-    updateMask?: Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description'>
+    updateMask?: Set<'name' | 'description' | 'notes' | 'quantity' | 'price_per_unit' | 'cost_per_unit' | 'product_id' | 'subscription_plan_id' | 'subscription_plan_description' | 'discount'>
 }
 
 export interface OrdersApiUpdatePaymentRequest {

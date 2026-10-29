@@ -11,6 +11,7 @@
 |**description** | **String** | The description of the order item. Must not be whitespace. |  [optional] |
 |**quantity** | **Integer** | The quantity. Must be greater than or equal to 1. |  |
 |**notes** | **String** | The notes for the order item. Must not be whitespace. |  [optional] |
+|**discount** | [**Discount**](Discount.md) | The discount details. Used only for discount item types; ignored for every other type. When omitted, discount_method defaults to AMOUNT and amount to 0. |  [optional] |
 |**productId** | **String** | The id of the product to be added to the order. Must be a valid product id. Required for item_type PRODUCT or SUBSCRIPTION. |  [optional] |
 |**subscriptionPlanId** | **String** | The id of the subscription plan to be added to the order. Must be a valid subscription plan id. Required only when the item_type is SUBSCRIPTION. |  [optional] |
 |**subscriptionPlanDescription** | **String** | A short description of the subscription&#39;s schedule. Used only for item_type SUBSCRIPTION. Must not be whitespace. |  [optional] |

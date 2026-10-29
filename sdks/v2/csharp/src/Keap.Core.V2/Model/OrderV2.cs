@@ -161,7 +161,7 @@ namespace Keap.Core.V2.Model
         /// <param name="id">Unique identifier for the order.</param>
         /// <param name="title">Title of the order.</param>
         /// <param name="status">The order status..</param>
-        /// <param name="total">The total amount of the order..</param>
+        /// <param name="total">The full amount of the order (the sum of all order items, including any discounts, taxes and shipping). This value does not change as payments are made or as payment plan installments come due. The remaining balance of the order can be calculated as total - total_paid..</param>
         /// <param name="contact">Contact associated with this order.</param>
         /// <param name="notes">Internal notes for the order.</param>
         /// <param name="terms">Order terms and conditions.</param>
@@ -172,8 +172,8 @@ namespace Keap.Core.V2.Model
         /// <param name="orderTime">A user-defined date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z).</param>
         /// <param name="leadAffiliateId">ID of the lead affiliate.</param>
         /// <param name="salesAffiliateId">ID of the sales affiliate.</param>
-        /// <param name="totalPaid">The total amount paid to the order..</param>
-        /// <param name="totalDue">The total amount of the order that is due. This is not current balance..</param>
+        /// <param name="totalPaid">The sum of all payments applied to the order, regardless of whether the order has a payment plan..</param>
+        /// <param name="totalDue">The portion of the order total that has come due, before any payments are subtracted. This is not the current balance. Without a payment plan, this is equal to total. With a payment plan, this is the sum of the payment plan installments whose due date has passed (never more than total), as of the last time the order amounts were recalculated. The amount currently owed (past due) can be calculated as total_due - total_paid. Omitted when zero..</param>
         /// <param name="shippingInformation">Shipping details for the order.</param>
         /// <param name="refundTotal">Total amount refunded.</param>
         /// <param name="allowPayment">Whether or not card-related payments should be allowed on this order. Applies only to Keap Pro/Max edition..</param>
@@ -253,9 +253,9 @@ namespace Keap.Core.V2.Model
         public string Title { get; set; }
 
         /// <summary>
-        /// The total amount of the order.
+        /// The full amount of the order (the sum of all order items, including any discounts, taxes and shipping). This value does not change as payments are made or as payment plan installments come due. The remaining balance of the order can be calculated as total - total_paid.
         /// </summary>
-        /// <value>The total amount of the order.</value>
+        /// <value>The full amount of the order (the sum of all order items, including any discounts, taxes and shipping). This value does not change as payments are made or as payment plan installments come due. The remaining balance of the order can be calculated as total - total_paid.</value>
         [DataMember(Name = "total", EmitDefaultValue = false)]
         public CurrencyValue Total { get; set; }
 
@@ -337,16 +337,16 @@ namespace Keap.Core.V2.Model
         public string SalesAffiliateId { get; set; }
 
         /// <summary>
-        /// The total amount paid to the order.
+        /// The sum of all payments applied to the order, regardless of whether the order has a payment plan.
         /// </summary>
-        /// <value>The total amount paid to the order.</value>
+        /// <value>The sum of all payments applied to the order, regardless of whether the order has a payment plan.</value>
         [DataMember(Name = "total_paid", EmitDefaultValue = false)]
         public CurrencyValue TotalPaid { get; set; }
 
         /// <summary>
-        /// The total amount of the order that is due. This is not current balance.
+        /// The portion of the order total that has come due, before any payments are subtracted. This is not the current balance. Without a payment plan, this is equal to total. With a payment plan, this is the sum of the payment plan installments whose due date has passed (never more than total), as of the last time the order amounts were recalculated. The amount currently owed (past due) can be calculated as total_due - total_paid. Omitted when zero.
         /// </summary>
-        /// <value>The total amount of the order that is due. This is not current balance.</value>
+        /// <value>The portion of the order total that has come due, before any payments are subtracted. This is not the current balance. Without a payment plan, this is equal to total. With a payment plan, this is the sum of the payment plan installments whose due date has passed (never more than total), as of the last time the order amounts were recalculated. The amount currently owed (past due) can be calculated as total_due - total_paid. Omitted when zero.</value>
         [DataMember(Name = "total_due", EmitDefaultValue = false)]
         public CurrencyValue TotalDue { get; set; }
 

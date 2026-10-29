@@ -10,7 +10,7 @@
 |**id** | **String** | Unique identifier for the order |  [optional] |
 |**title** | **String** | Title of the order |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) | The order status. |  [optional] |
-|**total** | [**CurrencyValue**](CurrencyValue.md) | The total amount of the order. |  [optional] |
+|**total** | [**CurrencyValue**](CurrencyValue.md) | The full amount of the order (the sum of all order items, including any discounts, taxes and shipping). This value does not change as payments are made or as payment plan installments come due. The remaining balance of the order can be calculated as total - total_paid. |  [optional] |
 |**contact** | [**BasicContact**](BasicContact.md) | Contact associated with this order |  [optional] |
 |**notes** | **String** | Internal notes for the order |  [optional] |
 |**terms** | **String** | Order terms and conditions |  [optional] |
@@ -21,8 +21,8 @@
 |**orderTime** | **ZonedDateTime** | A user-defined date and time of the order. In ISO-8601 format (e.g. 2024-05-21T23:00:00Z) |  [optional] |
 |**leadAffiliateId** | **String** | ID of the lead affiliate |  [optional] |
 |**salesAffiliateId** | **String** | ID of the sales affiliate |  [optional] |
-|**totalPaid** | [**CurrencyValue**](CurrencyValue.md) | The total amount paid to the order. |  [optional] |
-|**totalDue** | [**CurrencyValue**](CurrencyValue.md) | The total amount of the order that is due. This is not current balance. |  [optional] |
+|**totalPaid** | [**CurrencyValue**](CurrencyValue.md) | The sum of all payments applied to the order, regardless of whether the order has a payment plan. |  [optional] |
+|**totalDue** | [**CurrencyValue**](CurrencyValue.md) | The portion of the order total that has come due, before any payments are subtracted. This is not the current balance. Without a payment plan, this is equal to total. With a payment plan, this is the sum of the payment plan installments whose due date has passed (never more than total), as of the last time the order amounts were recalculated. The amount currently owed (past due) can be calculated as total_due - total_paid. Omitted when zero. |  [optional] |
 |**shippingInformation** | [**ShippingInformation**](ShippingInformation.md) | Shipping details for the order |  [optional] |
 |**refundTotal** | [**CurrencyValue**](CurrencyValue.md) | Total amount refunded |  [optional] |
 |**allowPayment** | **Boolean** | Whether or not card-related payments should be allowed on this order. Applies only to Keap Pro/Max edition. |  [optional] |

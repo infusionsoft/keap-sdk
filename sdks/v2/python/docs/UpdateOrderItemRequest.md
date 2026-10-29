@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **description** | **str** | The description of the order item. Must not be whitespace. | [optional] 
 **quantity** | **int** | The quantity. Must be greater than or equal to 1. | [optional] 
 **notes** | **str** | The notes for the order item. Must not be whitespace. | [optional] 
+**discount** | [**Discount**](Discount.md) | The discount details. Used only for discount item types; ignored for every other type. | [optional] 
 **product_id** | **str** | The id of the product. Must be a valid product id. Used only for item_type PRODUCT or SUBSCRIPTION. | [optional] 
 **subscription_plan_id** | **str** | The id of the subscription plan. Must be a valid subscription plan id. Used only for item_type SUBSCRIPTION. | [optional] 
 **subscription_plan_description** | **str** | A short description of the subscription&#39;s schedule. Used only for item_type SUBSCRIPTION. Must not be whitespace. | [optional] 

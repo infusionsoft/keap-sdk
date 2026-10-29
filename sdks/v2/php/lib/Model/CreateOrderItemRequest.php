@@ -61,6 +61,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'description' => 'string',
         'quantity' => 'int',
         'notes' => 'string',
+        'discount' => '\Keap\Core\V2\Model\Discount',
         'product_id' => 'string',
         'subscription_plan_id' => 'string',
         'subscription_plan_description' => 'string',
@@ -81,6 +82,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'description' => null,
         'quantity' => 'int32',
         'notes' => null,
+        'discount' => null,
         'product_id' => null,
         'subscription_plan_id' => null,
         'subscription_plan_description' => null,
@@ -99,6 +101,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'description' => false,
         'quantity' => false,
         'notes' => false,
+        'discount' => false,
         'product_id' => false,
         'subscription_plan_id' => false,
         'subscription_plan_description' => false,
@@ -197,6 +200,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'description' => 'description',
         'quantity' => 'quantity',
         'notes' => 'notes',
+        'discount' => 'discount',
         'product_id' => 'product_id',
         'subscription_plan_id' => 'subscription_plan_id',
         'subscription_plan_description' => 'subscription_plan_description',
@@ -215,6 +219,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'description' => 'setDescription',
         'quantity' => 'setQuantity',
         'notes' => 'setNotes',
+        'discount' => 'setDiscount',
         'product_id' => 'setProductId',
         'subscription_plan_id' => 'setSubscriptionPlanId',
         'subscription_plan_description' => 'setSubscriptionPlanDescription',
@@ -233,6 +238,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'description' => 'getDescription',
         'quantity' => 'getQuantity',
         'notes' => 'getNotes',
+        'discount' => 'getDiscount',
         'product_id' => 'getProductId',
         'subscription_plan_id' => 'getSubscriptionPlanId',
         'subscription_plan_description' => 'getSubscriptionPlanDescription',
@@ -339,6 +345,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('notes', $data ?? [], null);
+        $this->setIfExists('discount', $data ?? [], null);
         $this->setIfExists('product_id', $data ?? [], null);
         $this->setIfExists('subscription_plan_id', $data ?? [], null);
         $this->setIfExists('subscription_plan_description', $data ?? [], null);
@@ -505,6 +512,33 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable notes cannot be null');
         }
         $this->container['notes'] = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Gets discount
+     *
+     * @return \Keap\Core\V2\Model\Discount|null
+     */
+    public function getDiscount()
+    {
+        return $this->container['discount'];
+    }
+
+    /**
+     * Sets discount
+     *
+     * @param \Keap\Core\V2\Model\Discount|null $discount The discount details. Used only for discount item types; ignored for every other type. When omitted, discount_method defaults to AMOUNT and amount to 0.
+     *
+     * @return self
+     */
+    public function setDiscount($discount)
+    {
+        if (is_null($discount)) {
+            throw new \InvalidArgumentException('non-nullable discount cannot be null');
+        }
+        $this->container['discount'] = $discount;
 
         return $this;
     }

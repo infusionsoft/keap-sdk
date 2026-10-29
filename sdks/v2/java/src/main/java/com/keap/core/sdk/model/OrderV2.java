@@ -389,11 +389,11 @@ public class OrderV2 implements Serializable {
   }
 
   /**
-   * The total amount of the order.
+   * The full amount of the order (the sum of all order items, including any discounts, taxes and shipping). This value does not change as payments are made or as payment plan installments come due. The remaining balance of the order can be calculated as total - total_paid.
    * @return total
    */
   @jakarta.annotation.Nullable  @Valid
-  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The total amount of the order.")
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The full amount of the order (the sum of all order items, including any discounts, taxes and shipping). This value does not change as payments are made or as payment plan installments come due. The remaining balance of the order can be calculated as total - total_paid.")
   @JsonProperty(JSON_PROPERTY_TOTAL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CurrencyValue getTotal() {
@@ -658,11 +658,11 @@ public class OrderV2 implements Serializable {
   }
 
   /**
-   * The total amount paid to the order.
+   * The sum of all payments applied to the order, regardless of whether the order has a payment plan.
    * @return totalPaid
    */
   @jakarta.annotation.Nullable  @Valid
-  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The total amount paid to the order.")
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The sum of all payments applied to the order, regardless of whether the order has a payment plan.")
   @JsonProperty(JSON_PROPERTY_TOTAL_PAID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CurrencyValue getTotalPaid() {
@@ -683,11 +683,11 @@ public class OrderV2 implements Serializable {
   }
 
   /**
-   * The total amount of the order that is due. This is not current balance.
+   * The portion of the order total that has come due, before any payments are subtracted. This is not the current balance. Without a payment plan, this is equal to total. With a payment plan, this is the sum of the payment plan installments whose due date has passed (never more than total), as of the last time the order amounts were recalculated. The amount currently owed (past due) can be calculated as total_due - total_paid. Omitted when zero.
    * @return totalDue
    */
   @jakarta.annotation.Nullable  @Valid
-  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The total amount of the order that is due. This is not current balance.")
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The portion of the order total that has come due, before any payments are subtracted. This is not the current balance. Without a payment plan, this is equal to total. With a payment plan, this is the sum of the payment plan installments whose due date has passed (never more than total), as of the last time the order amounts were recalculated. The amount currently owed (past due) can be calculated as total_due - total_paid. Omitted when zero.")
   @JsonProperty(JSON_PROPERTY_TOTAL_DUE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CurrencyValue getTotalDue() {

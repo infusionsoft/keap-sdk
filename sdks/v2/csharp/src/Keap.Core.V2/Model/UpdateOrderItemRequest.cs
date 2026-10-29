@@ -39,17 +39,19 @@ namespace Keap.Core.V2.Model
         /// <param name="description">The description of the order item. Must not be whitespace..</param>
         /// <param name="quantity">The quantity. Must be greater than or equal to 1..</param>
         /// <param name="notes">The notes for the order item. Must not be whitespace..</param>
+        /// <param name="discount">The discount details. Used only for discount item types; ignored for every other type..</param>
         /// <param name="productId">The id of the product. Must be a valid product id. Used only for item_type PRODUCT or SUBSCRIPTION..</param>
         /// <param name="subscriptionPlanId">The id of the subscription plan. Must be a valid subscription plan id. Used only for item_type SUBSCRIPTION..</param>
         /// <param name="subscriptionPlanDescription">A short description of the subscription&#39;s schedule. Used only for item_type SUBSCRIPTION. Must not be whitespace..</param>
         /// <param name="pricePerUnit">The price per unit..</param>
         /// <param name="costPerUnit">The cost per unit. Used for item_type PRODUCT or SUBSCRIPTION..</param>
-        public UpdateOrderItemRequest(string name = default, string description = default, int quantity = default, string notes = default, string productId = default, string subscriptionPlanId = default, string subscriptionPlanDescription = default, double pricePerUnit = default, double costPerUnit = default)
+        public UpdateOrderItemRequest(string name = default, string description = default, int quantity = default, string notes = default, Discount discount = default, string productId = default, string subscriptionPlanId = default, string subscriptionPlanDescription = default, double pricePerUnit = default, double costPerUnit = default)
         {
             this.Name = name;
             this.Description = description;
             this.Quantity = quantity;
             this.Notes = notes;
+            this.Discount = discount;
             this.ProductId = productId;
             this.SubscriptionPlanId = subscriptionPlanId;
             this.SubscriptionPlanDescription = subscriptionPlanDescription;
@@ -96,6 +98,13 @@ namespace Keap.Core.V2.Model
         */
         [DataMember(Name = "notes", EmitDefaultValue = false)]
         public string Notes { get; set; }
+
+        /// <summary>
+        /// The discount details. Used only for discount item types; ignored for every other type.
+        /// </summary>
+        /// <value>The discount details. Used only for discount item types; ignored for every other type.</value>
+        [DataMember(Name = "discount", EmitDefaultValue = false)]
+        public Discount Discount { get; set; }
 
         /// <summary>
         /// The id of the product. Must be a valid product id. Used only for item_type PRODUCT or SUBSCRIPTION.
@@ -159,6 +168,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
+            sb.Append("  Discount: ").Append(Discount).Append("\n");
             sb.Append("  ProductId: ").Append(ProductId).Append("\n");
             sb.Append("  SubscriptionPlanId: ").Append(SubscriptionPlanId).Append("\n");
             sb.Append("  SubscriptionPlanDescription: ").Append(SubscriptionPlanDescription).Append("\n");
