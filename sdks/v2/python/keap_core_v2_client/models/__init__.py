@@ -352,6 +352,7 @@ from keap_core_v2_client.models.tag_contact_count import TagContactCount
 from keap_core_v2_client.models.tagged_company import TaggedCompany
 from keap_core_v2_client.models.tagged_contact import TaggedContact
 from keap_core_v2_client.models.task import Task
+from keap_core_v2_client.models.tax import Tax
 from keap_core_v2_client.models.text_option import TextOption
 from keap_core_v2_client.models.transaction_v2 import TransactionV2
 from keap_core_v2_client.models.unpublish_automation_request import UnpublishAutomationRequest

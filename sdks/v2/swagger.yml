@@ -17667,6 +17667,8 @@ paths:
             - subscription_plan_id
             - subscription_plan_description
             - discount
+            - tax_name
+            - tax_rate
           uniqueItems: true
       requestBody:
         content:
@@ -33265,6 +33267,9 @@ components:
         product:
           $ref: '#/components/schemas/OrderItemProduct'
           description: Product details
+        tax:
+          $ref: '#/components/schemas/Tax'
+          description: If the order item is a tax type, the details about the tax.
         subscription_id:
           type: string
           description: If the order item is a subscription type, this refers to the
@@ -33677,6 +33682,20 @@ components:
             against other plans. Smaller number indicates plan will be displayed higher
             in the list.
           example: 1
+    Tax:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name/label of the tax being applied. Defaults to the order
+            item's name if not specified. Cannot be blank.
+          example: Sales tax
+        rate:
+          type: number
+          format: double
+          description: The tax rate in percent. Must be greater than 0 and less than
+            or equal to 100.
+          example: 3.55
     CancelSubscriptionRequest:
       type: object
       properties:
@@ -34652,6 +34671,10 @@ components:
           description: The discount details. Used only for discount item types; ignored
             for every other type. When omitted, discount_method defaults to AMOUNT
             and amount to 0.
+        tax:
+          $ref: '#/components/schemas/Tax'
+          description: The tax details. Only considered when item_type is TAX; ignored
+            for every other type.
         product_id:
           type: string
           description: The id of the product to be added to the order. Must be a valid
@@ -39882,6 +39905,17 @@ components:
           format: double
           description: The cost per unit. Used for item_type PRODUCT or SUBSCRIPTION.
           example: 15
+        tax_name:
+          type: string
+          description: Name/label of the tax being applied. Used only for item_type
+            TAX. Must not be whitespace.
+          example: Sales tax
+        tax_rate:
+          type: number
+          format: double
+          description: The tax rate in percent. Used only for item_type TAX. Must
+            be greater than 0 and less than or equal to 100.
+          example: 3.55
     UpdateOpportunityRequestV2:
       type: object
       properties:
@@ -41815,7 +41849,16 @@ components:
           type: string
           description: Status of the payment method. Fow now, only EXPIRED is supported.
           enum:
+          - ACTIVE
           - EXPIRED
+          - INVALID
+          - UNKNOWN
+          - INACTIVE
+          - DEACTIVATED
+        status_message:
+          type: string
+          description: Additional status details when the payment method status is
+            invalid or otherwise requires explanation.
     TransactionV2:
       type: object
       properties:

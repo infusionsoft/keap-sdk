@@ -74,6 +74,9 @@ class PaymentMethod {
             if (data.hasOwnProperty('status')) {
                 obj['status'] = ApiClient.convertToType(data['status'], 'String');
             }
+            if (data.hasOwnProperty('status_message')) {
+                obj['status_message'] = ApiClient.convertToType(data['status_message'], 'String');
+            }
         }
         return obj;
     }
@@ -115,6 +118,10 @@ class PaymentMethod {
         // ensure the json data is a string
         if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
             throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
+        }
+        // ensure the json data is a string
+        if (data['status_message'] && !(typeof data['status_message'] === 'string' || data['status_message'] instanceof String)) {
+            throw new Error("Expected the field `status_message` to be a primitive type in the JSON string but got " + data['status_message']);
         }
 
         return true;
@@ -178,6 +185,12 @@ PaymentMethod.prototype['card_info'] = undefined;
  * @member {module:keap.core.v2/model/PaymentMethod.StatusEnum} status
  */
 PaymentMethod.prototype['status'] = undefined;
+
+/**
+ * Additional status details when the payment method status is invalid or otherwise requires explanation.
+ * @member {String} status_message
+ */
+PaymentMethod.prototype['status_message'] = undefined;
 
 
 
@@ -267,10 +280,40 @@ PaymentMethod['PaymentMethodTypeEnum'] = {
 PaymentMethod['StatusEnum'] = {
 
     /**
+     * value: "ACTIVE"
+     * @const
+     */
+    "ACTIVE": "ACTIVE",
+
+    /**
      * value: "EXPIRED"
      * @const
      */
     "EXPIRED": "EXPIRED",
+
+    /**
+     * value: "INVALID"
+     * @const
+     */
+    "INVALID": "INVALID",
+
+    /**
+     * value: "UNKNOWN"
+     * @const
+     */
+    "UNKNOWN": "UNKNOWN",
+
+    /**
+     * value: "INACTIVE"
+     * @const
+     */
+    "INACTIVE": "INACTIVE",
+
+    /**
+     * value: "DEACTIVATED"
+     * @const
+     */
+    "DEACTIVATED": "DEACTIVATED",
 
     /**
      * value: "unknown_default_open_api"

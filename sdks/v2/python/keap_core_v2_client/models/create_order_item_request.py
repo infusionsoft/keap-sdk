@@ -20,6 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from keap_core_v2_client.models.discount import Discount
+from keap_core_v2_client.models.tax import Tax
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,6 +33,7 @@ class CreateOrderItemRequest(BaseModel):
     quantity: StrictInt = Field(description="The quantity. Must be greater than or equal to 1.")
     notes: Optional[StrictStr] = Field(default=None, description="The notes for the order item. Must not be whitespace.")
     discount: Optional[Discount] = Field(default=None, description="The discount details. Used only for discount item types; ignored for every other type. When omitted, discount_method defaults to AMOUNT and amount to 0.")
+    tax: Optional[Tax] = Field(default=None, description="The tax details. Only considered when item_type is TAX; ignored for every other type.")
     product_id: Optional[StrictStr] = Field(default=None, description="The id of the product to be added to the order. Must be a valid product id. Required for item_type PRODUCT or SUBSCRIPTION.")
     subscription_plan_id: Optional[StrictStr] = Field(default=None, description="The id of the subscription plan to be added to the order. Must be a valid subscription plan id. Required only when the item_type is SUBSCRIPTION.")
     subscription_plan_description: Optional[StrictStr] = Field(default=None, description="A short description of the subscription's schedule. Used only for item_type SUBSCRIPTION. Must not be whitespace.")
@@ -39,7 +41,7 @@ class CreateOrderItemRequest(BaseModel):
     price_per_unit: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price per unit. For item_type PRODUCT or SUBSCRIPTION, if not specified, the product price will be used.")
     cost_per_unit: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The cost per unit. Used only for item_type PRODUCT or SUBSCRIPTION. If not specified, the product cost will be used.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["name", "description", "quantity", "notes", "discount", "product_id", "subscription_plan_id", "subscription_plan_description", "item_type", "price_per_unit", "cost_per_unit"]
+    __properties: ClassVar[List[str]] = ["name", "description", "quantity", "notes", "discount", "tax", "product_id", "subscription_plan_id", "subscription_plan_description", "item_type", "price_per_unit", "cost_per_unit"]
 
     @field_validator('item_type')
     def item_type_validate_enum(cls, value):
@@ -95,6 +97,9 @@ class CreateOrderItemRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of discount
         if self.discount:
             _dict['discount'] = self.discount.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of tax
+        if self.tax:
+            _dict['tax'] = self.tax.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -117,6 +122,7 @@ class CreateOrderItemRequest(BaseModel):
             "quantity": obj.get("quantity"),
             "notes": obj.get("notes"),
             "discount": Discount.from_dict(obj["discount"]) if obj.get("discount") is not None else None,
+            "tax": Tax.from_dict(obj["tax"]) if obj.get("tax") is not None else None,
             "product_id": obj.get("product_id"),
             "subscription_plan_id": obj.get("subscription_plan_id"),
             "subscription_plan_description": obj.get("subscription_plan_description"),

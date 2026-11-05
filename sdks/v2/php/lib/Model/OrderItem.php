@@ -65,6 +65,7 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'discount' => '\Keap\Core\V2\Model\CurrencyValue',
         'special' => '\Keap\Core\V2\Model\Discount',
         'product' => '\Keap\Core\V2\Model\OrderItemProduct',
+        'tax' => '\Keap\Core\V2\Model\Tax',
         'subscription_id' => 'string',
         'item_type' => 'string',
         'cost_per_unit' => '\Keap\Core\V2\Model\CurrencyValue',
@@ -88,6 +89,7 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'discount' => null,
         'special' => null,
         'product' => null,
+        'tax' => null,
         'subscription_id' => null,
         'item_type' => null,
         'cost_per_unit' => null,
@@ -109,6 +111,7 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'discount' => false,
         'special' => false,
         'product' => false,
+        'tax' => false,
         'subscription_id' => false,
         'item_type' => false,
         'cost_per_unit' => false,
@@ -210,6 +213,7 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'discount' => 'discount',
         'special' => 'special',
         'product' => 'product',
+        'tax' => 'tax',
         'subscription_id' => 'subscription_id',
         'item_type' => 'item_type',
         'cost_per_unit' => 'cost_per_unit',
@@ -231,6 +235,7 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'discount' => 'setDiscount',
         'special' => 'setSpecial',
         'product' => 'setProduct',
+        'tax' => 'setTax',
         'subscription_id' => 'setSubscriptionId',
         'item_type' => 'setItemType',
         'cost_per_unit' => 'setCostPerUnit',
@@ -252,6 +257,7 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'discount' => 'getDiscount',
         'special' => 'getSpecial',
         'product' => 'getProduct',
+        'tax' => 'getTax',
         'subscription_id' => 'getSubscriptionId',
         'item_type' => 'getItemType',
         'cost_per_unit' => 'getCostPerUnit',
@@ -371,6 +377,7 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('discount', $data ?? [], null);
         $this->setIfExists('special', $data ?? [], null);
         $this->setIfExists('product', $data ?? [], null);
+        $this->setIfExists('tax', $data ?? [], null);
         $this->setIfExists('subscription_id', $data ?? [], null);
         $this->setIfExists('item_type', $data ?? [], null);
         $this->setIfExists('cost_per_unit', $data ?? [], null);
@@ -641,6 +648,33 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable product cannot be null');
         }
         $this->container['product'] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax
+     *
+     * @return \Keap\Core\V2\Model\Tax|null
+     */
+    public function getTax()
+    {
+        return $this->container['tax'];
+    }
+
+    /**
+     * Sets tax
+     *
+     * @param \Keap\Core\V2\Model\Tax|null $tax If the order item is a tax type, the details about the tax.
+     *
+     * @return self
+     */
+    public function setTax($tax)
+    {
+        if (is_null($tax)) {
+            throw new \InvalidArgumentException('non-nullable tax cannot be null');
+        }
+        $this->container['tax'] = $tax;
 
         return $this;
     }

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **createdTime** | **Date** | When this payment method was made. In ISO-8601 format. | [optional] 
 **cardInfo** | [**CardInfo**](CardInfo.md) | If present, it provides additional details for payment methods of payment_method_type CARD. | [optional] 
 **status** | **String** | Status of the payment method. Fow now, only EXPIRED is supported. | [optional] 
+**statusMessage** | **String** | Additional status details when the payment method status is invalid or otherwise requires explanation. | [optional] 
 
 
 
@@ -53,7 +54,17 @@ Name | Type | Description | Notes
 ## Enum: StatusEnum
 
 
+* `ACTIVE` (value: `"ACTIVE"`)
+
 * `EXPIRED` (value: `"EXPIRED"`)
+
+* `INVALID` (value: `"INVALID"`)
+
+* `UNKNOWN` (value: `"UNKNOWN"`)
+
+* `INACTIVE` (value: `"INACTIVE"`)
+
+* `DEACTIVATED` (value: `"DEACTIVATED"`)
 
 * `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 

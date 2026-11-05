@@ -37,8 +37,10 @@ class UpdateOrderItemRequest(BaseModel):
     subscription_plan_description: Optional[StrictStr] = Field(default=None, description="A short description of the subscription's schedule. Used only for item_type SUBSCRIPTION. Must not be whitespace.")
     price_per_unit: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price per unit.")
     cost_per_unit: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The cost per unit. Used for item_type PRODUCT or SUBSCRIPTION.")
+    tax_name: Optional[StrictStr] = Field(default=None, description="Name/label of the tax being applied. Used only for item_type TAX. Must not be whitespace.")
+    tax_rate: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The tax rate in percent. Used only for item_type TAX. Must be greater than 0 and less than or equal to 100.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["name", "description", "quantity", "notes", "discount", "product_id", "subscription_plan_id", "subscription_plan_description", "price_per_unit", "cost_per_unit"]
+    __properties: ClassVar[List[str]] = ["name", "description", "quantity", "notes", "discount", "product_id", "subscription_plan_id", "subscription_plan_description", "price_per_unit", "cost_per_unit", "tax_name", "tax_rate"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -110,7 +112,9 @@ class UpdateOrderItemRequest(BaseModel):
             "subscription_plan_id": obj.get("subscription_plan_id"),
             "subscription_plan_description": obj.get("subscription_plan_description"),
             "price_per_unit": obj.get("price_per_unit"),
-            "cost_per_unit": obj.get("cost_per_unit")
+            "cost_per_unit": obj.get("cost_per_unit"),
+            "tax_name": obj.get("tax_name"),
+            "tax_rate": obj.get("tax_rate")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

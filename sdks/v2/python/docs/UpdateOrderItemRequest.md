@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **subscription_plan_description** | **str** | A short description of the subscription&#39;s schedule. Used only for item_type SUBSCRIPTION. Must not be whitespace. | [optional] 
 **price_per_unit** | **float** | The price per unit. | [optional] 
 **cost_per_unit** | **float** | The cost per unit. Used for item_type PRODUCT or SUBSCRIPTION. | [optional] 
+**tax_name** | **str** | Name/label of the tax being applied. Used only for item_type TAX. Must not be whitespace. | [optional] 
+**tax_rate** | **float** | The tax rate in percent. Used only for item_type TAX. Must be greater than 0 and less than or equal to 100. | [optional] 
 
 ## Example
 

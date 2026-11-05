@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **quantity** | **int** | The quantity. Must be greater than or equal to 1. |
 **notes** | **string** | The notes for the order item. Must not be whitespace. | [optional]
 **discount** | [**\Keap\Core\V2\Model\Discount**](Discount.md) | The discount details. Used only for discount item types; ignored for every other type. When omitted, discount_method defaults to AMOUNT and amount to 0. | [optional]
+**tax** | [**\Keap\Core\V2\Model\Tax**](Tax.md) | The tax details. Only considered when item_type is TAX; ignored for every other type. | [optional]
 **product_id** | **string** | The id of the product to be added to the order. Must be a valid product id. Required for item_type PRODUCT or SUBSCRIPTION. | [optional]
 **subscription_plan_id** | **string** | The id of the subscription plan to be added to the order. Must be a valid subscription plan id. Required only when the item_type is SUBSCRIPTION. | [optional]
 **subscription_plan_description** | **string** | A short description of the subscription&#39;s schedule. Used only for item_type SUBSCRIPTION. Must not be whitespace. | [optional]

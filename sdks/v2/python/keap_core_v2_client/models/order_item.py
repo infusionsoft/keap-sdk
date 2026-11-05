@@ -23,6 +23,7 @@ from keap_core_v2_client.models.currency_value import CurrencyValue
 from keap_core_v2_client.models.discount import Discount
 from keap_core_v2_client.models.order_item_product import OrderItemProduct
 from keap_core_v2_client.models.subscription_plan import SubscriptionPlan
+from keap_core_v2_client.models.tax import Tax
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -38,13 +39,14 @@ class OrderItem(BaseModel):
     discount: Optional[CurrencyValue] = Field(default=None, description="If the order item is a discount type, this is the amount of the discount.")
     special: Optional[Discount] = Field(default=None, description="If the line item is a discount type, the details about the discount.")
     product: Optional[OrderItemProduct] = Field(default=None, description="Product details")
+    tax: Optional[Tax] = Field(default=None, description="If the order item is a tax type, the details about the tax.")
     subscription_id: Optional[StrictStr] = Field(default=None, description="If the order item is a subscription type, this refers to the subscription id that generated the order.")
     item_type: Optional[StrictStr] = Field(default=None, description="The type of order item.")
     cost_per_unit: Optional[CurrencyValue] = Field(default=None, description="Cost per unit")
     price_per_unit: Optional[CurrencyValue] = Field(default=None, description="Price per unit charged to customer")
     subscription_plan: Optional[SubscriptionPlan] = Field(default=None, description="If the order item is a subscription type, the details of the subscription plan.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "name", "description", "notes", "quantity", "discount", "special", "product", "subscription_id", "item_type", "cost_per_unit", "price_per_unit", "subscription_plan"]
+    __properties: ClassVar[List[str]] = ["id", "name", "description", "notes", "quantity", "discount", "special", "product", "tax", "subscription_id", "item_type", "cost_per_unit", "price_per_unit", "subscription_plan"]
 
     @field_validator('item_type')
     def item_type_validate_enum(cls, value):
@@ -106,6 +108,9 @@ class OrderItem(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of product
         if self.product:
             _dict['product'] = self.product.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of tax
+        if self.tax:
+            _dict['tax'] = self.tax.to_dict()
         # override the default output from pydantic by calling `to_dict()` of cost_per_unit
         if self.cost_per_unit:
             _dict['cost_per_unit'] = self.cost_per_unit.to_dict()
@@ -140,6 +145,7 @@ class OrderItem(BaseModel):
             "discount": CurrencyValue.from_dict(obj["discount"]) if obj.get("discount") is not None else None,
             "special": Discount.from_dict(obj["special"]) if obj.get("special") is not None else None,
             "product": OrderItemProduct.from_dict(obj["product"]) if obj.get("product") is not None else None,
+            "tax": Tax.from_dict(obj["tax"]) if obj.get("tax") is not None else None,
             "subscription_id": obj.get("subscription_id"),
             "item_type": obj.get("item_type"),
             "cost_per_unit": CurrencyValue.from_dict(obj["cost_per_unit"]) if obj.get("cost_per_unit") is not None else None,

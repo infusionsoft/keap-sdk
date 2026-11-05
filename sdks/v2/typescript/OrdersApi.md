@@ -270,6 +270,10 @@ const request: OrdersApiCreateOrderRequest = {
           specialItemId: "123",
           discountMethod: "PERCENT",
         },
+        tax: {
+          name: "Sales tax",
+          rate: 3.55,
+        },
         productId: "123",
         subscriptionPlanId: "456",
         subscriptionPlanDescription: "Monthly subscription plan",
@@ -581,6 +585,10 @@ const request: OrdersApiCreateOrderItemRequest = {
       amount: 10,
       specialItemId: "123",
       discountMethod: "PERCENT",
+    },
+    tax: {
+      name: "Sales tax",
+      rate: 3.55,
     },
     productId: "123",
     subscriptionPlanId: "456",
@@ -2020,6 +2028,8 @@ const request: OrdersApiUpdateOrderItemRequest = {
     subscriptionPlanDescription: "Monthly billing",
     pricePerUnit: 29.99,
     costPerUnit: 15,
+    taxName: "Sales tax",
+    taxRate: 3.55,
   },
     // An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. (optional)
   updateMask: [
@@ -2039,7 +2049,7 @@ Name | Type | Description  | Notes
  **updateOrderItemRequest** | **UpdateOrderItemRequest**|  |
  **orderId** | [**string**] |  | defaults to undefined
  **orderItemId** | [**string**] |  | defaults to undefined
- **updateMask** | **Array<&#39;name&#39; &#124; &#39;description&#39; &#124; &#39;notes&#39; &#124; &#39;quantity&#39; &#124; &#39;price_per_unit&#39; &#124; &#39;cost_per_unit&#39; &#124; &#39;product_id&#39; &#124; &#39;subscription_plan_id&#39; &#124; &#39;subscription_plan_description&#39; &#124; &#39;discount&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
+ **updateMask** | **Array<&#39;name&#39; &#124; &#39;description&#39; &#124; &#39;notes&#39; &#124; &#39;quantity&#39; &#124; &#39;price_per_unit&#39; &#124; &#39;cost_per_unit&#39; &#124; &#39;product_id&#39; &#124; &#39;subscription_plan_id&#39; &#124; &#39;subscription_plan_description&#39; &#124; &#39;discount&#39; &#124; &#39;tax_name&#39; &#124; &#39;tax_rate&#39;>** | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | (optional) defaults to undefined
 
 
 ### Return type

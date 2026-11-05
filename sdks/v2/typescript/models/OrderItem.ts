@@ -14,6 +14,7 @@ import { CurrencyValue } from '../models/CurrencyValue';
 import { Discount } from '../models/Discount';
 import { OrderItemProduct } from '../models/OrderItemProduct';
 import { SubscriptionPlan } from '../models/SubscriptionPlan';
+import { Tax } from '../models/Tax';
 import { HttpFile } from '../http/http';
 
 export class OrderItem {
@@ -49,6 +50,10 @@ export class OrderItem {
     * Product details
     */
     'product'?: OrderItemProduct;
+    /**
+    * If the order item is a tax type, the details about the tax.
+    */
+    'tax'?: Tax;
     /**
     * If the order item is a subscription type, this refers to the subscription id that generated the order.
     */
@@ -121,6 +126,12 @@ export class OrderItem {
             "name": "product",
             "baseName": "product",
             "type": "OrderItemProduct",
+            "format": ""
+        },
+        {
+            "name": "tax",
+            "baseName": "tax",
+            "type": "Tax",
             "format": ""
         },
         {

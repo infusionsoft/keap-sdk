@@ -37,8 +37,9 @@ class PaymentMethod(BaseModel):
     created_time: Optional[datetime] = Field(default=None, description="When this payment method was made. In ISO-8601 format.")
     card_info: Optional[CardInfo] = Field(default=None, description="If present, it provides additional details for payment methods of payment_method_type CARD.")
     status: Optional[StrictStr] = Field(default=None, description="Status of the payment method. Fow now, only EXPIRED is supported.")
+    status_message: Optional[StrictStr] = Field(default=None, description="Additional status details when the payment method status is invalid or otherwise requires explanation.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["contact_id", "payment_method_id", "credit_card_id", "merchant_account_type", "merchant_account_id", "payment_method_type", "created_time", "card_info", "status"]
+    __properties: ClassVar[List[str]] = ["contact_id", "payment_method_id", "credit_card_id", "merchant_account_type", "merchant_account_id", "payment_method_type", "created_time", "card_info", "status", "status_message"]
 
     @field_validator('merchant_account_type')
     def merchant_account_type_validate_enum(cls, value):
@@ -66,8 +67,8 @@ class PaymentMethod(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['EXPIRED']):
-            raise ValueError("must be one of enum values ('EXPIRED')")
+        if value not in set(['ACTIVE', 'EXPIRED', 'INVALID', 'UNKNOWN', 'INACTIVE', 'DEACTIVATED']):
+            raise ValueError("must be one of enum values ('ACTIVE', 'EXPIRED', 'INVALID', 'UNKNOWN', 'INACTIVE', 'DEACTIVATED')")
         return value
 
     model_config = ConfigDict(
@@ -139,7 +140,8 @@ class PaymentMethod(BaseModel):
             "payment_method_type": obj.get("payment_method_type"),
             "created_time": obj.get("created_time"),
             "card_info": CardInfo.from_dict(obj["card_info"]) if obj.get("card_info") is not None else None,
-            "status": obj.get("status")
+            "status": obj.get("status"),
+            "status_message": obj.get("status_message")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

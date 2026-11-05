@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **discount** | [**\Keap\Core\V2\Model\CurrencyValue**](CurrencyValue.md) | If the order item is a discount type, this is the amount of the discount. | [optional]
 **special** | [**\Keap\Core\V2\Model\Discount**](Discount.md) | If the line item is a discount type, the details about the discount. | [optional]
 **product** | [**\Keap\Core\V2\Model\OrderItemProduct**](OrderItemProduct.md) | Product details | [optional]
+**tax** | [**\Keap\Core\V2\Model\Tax**](Tax.md) | If the order item is a tax type, the details about the tax. | [optional]
 **subscription_id** | **string** | If the order item is a subscription type, this refers to the subscription id that generated the order. | [optional]
 **item_type** | **string** | The type of order item. | [optional]
 **cost_per_unit** | [**\Keap\Core\V2\Model\CurrencyValue**](CurrencyValue.md) | Cost per unit | [optional]

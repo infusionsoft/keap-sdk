@@ -43,7 +43,8 @@ import jakarta.validation.Valid;
   PaymentMethod.JSON_PROPERTY_PAYMENT_METHOD_TYPE,
   PaymentMethod.JSON_PROPERTY_CREATED_TIME,
   PaymentMethod.JSON_PROPERTY_CARD_INFO,
-  PaymentMethod.JSON_PROPERTY_STATUS
+  PaymentMethod.JSON_PROPERTY_STATUS,
+  PaymentMethod.JSON_PROPERTY_STATUS_MESSAGE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PaymentMethod implements Serializable {
@@ -157,7 +158,17 @@ public class PaymentMethod implements Serializable {
    * Status of the payment method. Fow now, only EXPIRED is supported.
    */
   public enum StatusEnum {
+    ACTIVE(String.valueOf("ACTIVE")),
+    
     EXPIRED(String.valueOf("EXPIRED")),
+    
+    INVALID(String.valueOf("INVALID")),
+    
+    UNKNOWN(String.valueOf("UNKNOWN")),
+    
+    INACTIVE(String.valueOf("INACTIVE")),
+    
+    DEACTIVATED(String.valueOf("DEACTIVATED")),
     
     UNKNOWN_COULD_NOT_DESERIALIZE(String.valueOf("unknown_default_open_api"));
 
@@ -189,6 +200,9 @@ public class PaymentMethod implements Serializable {
   }
   public static final String JSON_PROPERTY_STATUS = "status";
   @jakarta.annotation.Nullable  private StatusEnum status;
+
+  public static final String JSON_PROPERTY_STATUS_MESSAGE = "status_message";
+  @jakarta.annotation.Nullable  private String statusMessage;
 
   public PaymentMethod() { 
   }
@@ -410,6 +424,30 @@ public class PaymentMethod implements Serializable {
     this.status = status;
   }
 
+
+  public PaymentMethod statusMessage(@jakarta.annotation.Nullable String statusMessage) {
+    this.statusMessage = statusMessage;
+    return this;
+  }
+
+  /**
+   * Additional status details when the payment method status is invalid or otherwise requires explanation.
+   * @return statusMessage
+   */
+  @jakarta.annotation.Nullable  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Additional status details when the payment method status is invalid or otherwise requires explanation.")
+  @JsonProperty(JSON_PROPERTY_STATUS_MESSAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getStatusMessage() {
+    return statusMessage;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_STATUS_MESSAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setStatusMessage(@jakarta.annotation.Nullable String statusMessage) {
+    this.statusMessage = statusMessage;
+  }
+
   /**
    * Return true if this PaymentMethod object is equal to o.
    */
@@ -430,12 +468,13 @@ public class PaymentMethod implements Serializable {
         Objects.equals(this.paymentMethodType, paymentMethod.paymentMethodType) &&
         Objects.equals(this.createdTime, paymentMethod.createdTime) &&
         Objects.equals(this.cardInfo, paymentMethod.cardInfo) &&
-        Objects.equals(this.status, paymentMethod.status);
+        Objects.equals(this.status, paymentMethod.status) &&
+        Objects.equals(this.statusMessage, paymentMethod.statusMessage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactId, paymentMethodId, creditCardId, merchantAccountType, merchantAccountId, paymentMethodType, createdTime, cardInfo, status);
+    return Objects.hash(contactId, paymentMethodId, creditCardId, merchantAccountType, merchantAccountId, paymentMethodType, createdTime, cardInfo, status, statusMessage);
   }
 
   @Override
@@ -451,6 +490,7 @@ public class PaymentMethod implements Serializable {
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    cardInfo: ").append(toIndentedString(cardInfo)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    statusMessage: ").append(toIndentedString(statusMessage)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -514,6 +554,10 @@ public class PaymentMethod implements Serializable {
               this.instance.status = status;
           return this;
         }
+            public PaymentMethod.Builder statusMessage(String statusMessage) {
+              this.instance.statusMessage = statusMessage;
+          return this;
+        }
         
     
         /**
@@ -556,7 +600,8 @@ public class PaymentMethod implements Serializable {
           .paymentMethodType(getPaymentMethodType())
           .createdTime(getCreatedTime())
           .cardInfo(getCardInfo())
-          .status(getStatus());
+          .status(getStatus())
+          .statusMessage(getStatusMessage());
       }
 }
 

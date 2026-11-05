@@ -16,6 +16,7 @@
 |**createdTime** | **ZonedDateTime** | When this payment method was made. In ISO-8601 format. |  [optional] |
 |**cardInfo** | [**CardInfo**](CardInfo.md) | If present, it provides additional details for payment methods of payment_method_type CARD. |  [optional] |
 |**status** | [**StatusEnum**](#StatusEnum) | Status of the payment method. Fow now, only EXPIRED is supported. |  [optional] |
+|**statusMessage** | **String** | Additional status details when the payment method status is invalid or otherwise requires explanation. |  [optional] |
 
 
 
@@ -47,7 +48,12 @@
 
 | Name | Value |
 |---- | -----|
+| ACTIVE | &quot;ACTIVE&quot; |
 | EXPIRED | &quot;EXPIRED&quot; |
+| INVALID | &quot;INVALID&quot; |
+| UNKNOWN | &quot;UNKNOWN&quot; |
+| INACTIVE | &quot;INACTIVE&quot; |
+| DEACTIVATED | &quot;DEACTIVATED&quot; |
 | UNKNOWN_COULD_NOT_DESERIALIZE | &quot;unknown_default_open_api&quot; |
 
 

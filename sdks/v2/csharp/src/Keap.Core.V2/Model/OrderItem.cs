@@ -168,12 +168,13 @@ namespace Keap.Core.V2.Model
         /// <param name="discount">If the order item is a discount type, this is the amount of the discount..</param>
         /// <param name="special">If the line item is a discount type, the details about the discount..</param>
         /// <param name="product">Product details.</param>
+        /// <param name="tax">If the order item is a tax type, the details about the tax..</param>
         /// <param name="subscriptionId">If the order item is a subscription type, this refers to the subscription id that generated the order..</param>
         /// <param name="itemType">The type of order item..</param>
         /// <param name="costPerUnit">Cost per unit.</param>
         /// <param name="pricePerUnit">Price per unit charged to customer.</param>
         /// <param name="subscriptionPlan">If the order item is a subscription type, the details of the subscription plan..</param>
-        public OrderItem(string id = default, string name = default, string description = default, string notes = default, int quantity = default, CurrencyValue discount = default, Discount special = default, OrderItemProduct product = default, string subscriptionId = default, ItemTypeEnum? itemType = default, CurrencyValue costPerUnit = default, CurrencyValue pricePerUnit = default, SubscriptionPlan subscriptionPlan = default)
+        public OrderItem(string id = default, string name = default, string description = default, string notes = default, int quantity = default, CurrencyValue discount = default, Discount special = default, OrderItemProduct product = default, Tax tax = default, string subscriptionId = default, ItemTypeEnum? itemType = default, CurrencyValue costPerUnit = default, CurrencyValue pricePerUnit = default, SubscriptionPlan subscriptionPlan = default)
         {
             this.Id = id;
             this.Name = name;
@@ -183,6 +184,7 @@ namespace Keap.Core.V2.Model
             this.Discount = discount;
             this.Special = special;
             this.Product = product;
+            this.Tax = tax;
             this.SubscriptionId = subscriptionId;
             this.ItemType = itemType;
             this.CostPerUnit = costPerUnit;
@@ -262,6 +264,13 @@ namespace Keap.Core.V2.Model
         public OrderItemProduct Product { get; set; }
 
         /// <summary>
+        /// If the order item is a tax type, the details about the tax.
+        /// </summary>
+        /// <value>If the order item is a tax type, the details about the tax.</value>
+        [DataMember(Name = "tax", EmitDefaultValue = false)]
+        public Tax Tax { get; set; }
+
+        /// <summary>
         /// If the order item is a subscription type, this refers to the subscription id that generated the order.
         /// </summary>
         /// <value>If the order item is a subscription type, this refers to the subscription id that generated the order.</value>
@@ -308,6 +317,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  Discount: ").Append(Discount).Append("\n");
             sb.Append("  Special: ").Append(Special).Append("\n");
             sb.Append("  Product: ").Append(Product).Append("\n");
+            sb.Append("  Tax: ").Append(Tax).Append("\n");
             sb.Append("  SubscriptionId: ").Append(SubscriptionId).Append("\n");
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("  CostPerUnit: ").Append(CostPerUnit).Append("\n");

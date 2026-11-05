@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **SubscriptionPlanDescription** | **string** | A short description of the subscription&#39;s schedule. Used only for item_type SUBSCRIPTION. Must not be whitespace. | [optional] 
 **PricePerUnit** | **double** | The price per unit. | [optional] 
 **CostPerUnit** | **double** | The cost per unit. Used for item_type PRODUCT or SUBSCRIPTION. | [optional] 
+**TaxName** | **string** | Name/label of the tax being applied. Used only for item_type TAX. Must not be whitespace. | [optional] 
+**TaxRate** | **double** | The tax rate in percent. Used only for item_type TAX. Must be greater than 0 and less than or equal to 100. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

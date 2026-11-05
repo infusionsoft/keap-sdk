@@ -62,6 +62,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'quantity' => 'int',
         'notes' => 'string',
         'discount' => '\Keap\Core\V2\Model\Discount',
+        'tax' => '\Keap\Core\V2\Model\Tax',
         'product_id' => 'string',
         'subscription_plan_id' => 'string',
         'subscription_plan_description' => 'string',
@@ -83,6 +84,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'quantity' => 'int32',
         'notes' => null,
         'discount' => null,
+        'tax' => null,
         'product_id' => null,
         'subscription_plan_id' => null,
         'subscription_plan_description' => null,
@@ -102,6 +104,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'quantity' => false,
         'notes' => false,
         'discount' => false,
+        'tax' => false,
         'product_id' => false,
         'subscription_plan_id' => false,
         'subscription_plan_description' => false,
@@ -201,6 +204,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'quantity' => 'quantity',
         'notes' => 'notes',
         'discount' => 'discount',
+        'tax' => 'tax',
         'product_id' => 'product_id',
         'subscription_plan_id' => 'subscription_plan_id',
         'subscription_plan_description' => 'subscription_plan_description',
@@ -220,6 +224,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'quantity' => 'setQuantity',
         'notes' => 'setNotes',
         'discount' => 'setDiscount',
+        'tax' => 'setTax',
         'product_id' => 'setProductId',
         'subscription_plan_id' => 'setSubscriptionPlanId',
         'subscription_plan_description' => 'setSubscriptionPlanDescription',
@@ -239,6 +244,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'quantity' => 'getQuantity',
         'notes' => 'getNotes',
         'discount' => 'getDiscount',
+        'tax' => 'getTax',
         'product_id' => 'getProductId',
         'subscription_plan_id' => 'getSubscriptionPlanId',
         'subscription_plan_description' => 'getSubscriptionPlanDescription',
@@ -346,6 +352,7 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('notes', $data ?? [], null);
         $this->setIfExists('discount', $data ?? [], null);
+        $this->setIfExists('tax', $data ?? [], null);
         $this->setIfExists('product_id', $data ?? [], null);
         $this->setIfExists('subscription_plan_id', $data ?? [], null);
         $this->setIfExists('subscription_plan_description', $data ?? [], null);
@@ -539,6 +546,33 @@ class CreateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable discount cannot be null');
         }
         $this->container['discount'] = $discount;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax
+     *
+     * @return \Keap\Core\V2\Model\Tax|null
+     */
+    public function getTax()
+    {
+        return $this->container['tax'];
+    }
+
+    /**
+     * Sets tax
+     *
+     * @param \Keap\Core\V2\Model\Tax|null $tax The tax details. Only considered when item_type is TAX; ignored for every other type.
+     *
+     * @return self
+     */
+    public function setTax($tax)
+    {
+        if (is_null($tax)) {
+            throw new \InvalidArgumentException('non-nullable tax cannot be null');
+        }
+        $this->container['tax'] = $tax;
 
         return $this;
     }

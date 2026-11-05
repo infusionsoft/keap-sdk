@@ -78,6 +78,12 @@ class UpdateOrderItemRequest {
             if (data.hasOwnProperty('cost_per_unit')) {
                 obj['cost_per_unit'] = ApiClient.convertToType(data['cost_per_unit'], 'Number');
             }
+            if (data.hasOwnProperty('tax_name')) {
+                obj['tax_name'] = ApiClient.convertToType(data['tax_name'], 'String');
+            }
+            if (data.hasOwnProperty('tax_rate')) {
+                obj['tax_rate'] = ApiClient.convertToType(data['tax_rate'], 'Number');
+            }
         }
         return obj;
     }
@@ -115,6 +121,10 @@ class UpdateOrderItemRequest {
         // ensure the json data is a string
         if (data['subscription_plan_description'] && !(typeof data['subscription_plan_description'] === 'string' || data['subscription_plan_description'] instanceof String)) {
             throw new Error("Expected the field `subscription_plan_description` to be a primitive type in the JSON string but got " + data['subscription_plan_description']);
+        }
+        // ensure the json data is a string
+        if (data['tax_name'] && !(typeof data['tax_name'] === 'string' || data['tax_name'] instanceof String)) {
+            throw new Error("Expected the field `tax_name` to be a primitive type in the JSON string but got " + data['tax_name']);
         }
 
         return true;
@@ -184,6 +194,18 @@ UpdateOrderItemRequest.prototype['price_per_unit'] = undefined;
  * @member {Number} cost_per_unit
  */
 UpdateOrderItemRequest.prototype['cost_per_unit'] = undefined;
+
+/**
+ * Name/label of the tax being applied. Used only for item_type TAX. Must not be whitespace.
+ * @member {String} tax_name
+ */
+UpdateOrderItemRequest.prototype['tax_name'] = undefined;
+
+/**
+ * The tax rate in percent. Used only for item_type TAX. Must be greater than 0 and less than or equal to 100.
+ * @member {Number} tax_rate
+ */
+UpdateOrderItemRequest.prototype['tax_rate'] = undefined;
 
 
 

@@ -119,10 +119,40 @@ namespace Keap.Core.V2.Model
         public enum StatusEnum
         {
             /// <summary>
+            /// Enum ACTIVE for value: ACTIVE
+            /// </summary>
+            [EnumMember(Value = "ACTIVE")]
+            ACTIVE = 1,
+
+            /// <summary>
             /// Enum EXPIRED for value: EXPIRED
             /// </summary>
             [EnumMember(Value = "EXPIRED")]
-            EXPIRED = 1
+            EXPIRED = 2,
+
+            /// <summary>
+            /// Enum INVALID for value: INVALID
+            /// </summary>
+            [EnumMember(Value = "INVALID")]
+            INVALID = 3,
+
+            /// <summary>
+            /// Enum UNKNOWN for value: UNKNOWN
+            /// </summary>
+            [EnumMember(Value = "UNKNOWN")]
+            UNKNOWN = 4,
+
+            /// <summary>
+            /// Enum INACTIVE for value: INACTIVE
+            /// </summary>
+            [EnumMember(Value = "INACTIVE")]
+            INACTIVE = 5,
+
+            /// <summary>
+            /// Enum DEACTIVATED for value: DEACTIVATED
+            /// </summary>
+            [EnumMember(Value = "DEACTIVATED")]
+            DEACTIVATED = 6
         }
 
         /// <summary>
@@ -143,7 +173,8 @@ namespace Keap.Core.V2.Model
         /// <param name="createdTime">When this payment method was made. In ISO-8601 format..</param>
         /// <param name="cardInfo">If present, it provides additional details for payment methods of payment_method_type CARD..</param>
         /// <param name="status">Status of the payment method. Fow now, only EXPIRED is supported..</param>
-        public PaymentMethod(string contactId = default, string paymentMethodId = default, string creditCardId = default, MerchantAccountTypeEnum? merchantAccountType = default, string merchantAccountId = default, PaymentMethodTypeEnum? paymentMethodType = default, DateTime createdTime = default, CardInfo cardInfo = default, StatusEnum? status = default)
+        /// <param name="statusMessage">Additional status details when the payment method status is invalid or otherwise requires explanation..</param>
+        public PaymentMethod(string contactId = default, string paymentMethodId = default, string creditCardId = default, MerchantAccountTypeEnum? merchantAccountType = default, string merchantAccountId = default, PaymentMethodTypeEnum? paymentMethodType = default, DateTime createdTime = default, CardInfo cardInfo = default, StatusEnum? status = default, string statusMessage = default)
         {
             this.ContactId = contactId;
             this.PaymentMethodId = paymentMethodId;
@@ -154,6 +185,7 @@ namespace Keap.Core.V2.Model
             this.CreatedTime = createdTime;
             this.CardInfo = cardInfo;
             this.Status = status;
+            this.StatusMessage = statusMessage;
         }
 
         /// <summary>
@@ -208,6 +240,13 @@ namespace Keap.Core.V2.Model
         public CardInfo CardInfo { get; set; }
 
         /// <summary>
+        /// Additional status details when the payment method status is invalid or otherwise requires explanation.
+        /// </summary>
+        /// <value>Additional status details when the payment method status is invalid or otherwise requires explanation.</value>
+        [DataMember(Name = "status_message", EmitDefaultValue = false)]
+        public string StatusMessage { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -224,6 +263,7 @@ namespace Keap.Core.V2.Model
             sb.Append("  CreatedTime: ").Append(CreatedTime).Append("\n");
             sb.Append("  CardInfo: ").Append(CardInfo).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  StatusMessage: ").Append(StatusMessage).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

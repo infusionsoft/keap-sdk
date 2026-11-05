@@ -65,7 +65,8 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         'payment_method_type' => 'string',
         'created_time' => '\DateTime',
         'card_info' => '\Keap\Core\V2\Model\CardInfo',
-        'status' => 'string'
+        'status' => 'string',
+        'status_message' => 'string'
     ];
 
     /**
@@ -84,7 +85,8 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         'payment_method_type' => null,
         'created_time' => 'date-time',
         'card_info' => null,
-        'status' => null
+        'status' => null,
+        'status_message' => null
     ];
 
     /**
@@ -101,7 +103,8 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         'payment_method_type' => false,
         'created_time' => false,
         'card_info' => false,
-        'status' => false
+        'status' => false,
+        'status_message' => false
     ];
 
     /**
@@ -198,7 +201,8 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         'payment_method_type' => 'payment_method_type',
         'created_time' => 'created_time',
         'card_info' => 'card_info',
-        'status' => 'status'
+        'status' => 'status',
+        'status_message' => 'status_message'
     ];
 
     /**
@@ -215,7 +219,8 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         'payment_method_type' => 'setPaymentMethodType',
         'created_time' => 'setCreatedTime',
         'card_info' => 'setCardInfo',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'status_message' => 'setStatusMessage'
     ];
 
     /**
@@ -232,7 +237,8 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         'payment_method_type' => 'getPaymentMethodType',
         'created_time' => 'getCreatedTime',
         'card_info' => 'getCardInfo',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'status_message' => 'getStatusMessage'
     ];
 
     /**
@@ -284,7 +290,12 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     public const MERCHANT_ACCOUNT_TYPE_STRIPE = 'STRIPE';
     public const MERCHANT_ACCOUNT_TYPE_KEAP_PAY = 'KEAP_PAY';
     public const PAYMENT_METHOD_TYPE_CARD = 'CARD';
+    public const STATUS_ACTIVE = 'ACTIVE';
     public const STATUS_EXPIRED = 'EXPIRED';
+    public const STATUS_INVALID = 'INVALID';
+    public const STATUS_UNKNOWN = 'UNKNOWN';
+    public const STATUS_INACTIVE = 'INACTIVE';
+    public const STATUS_DEACTIVATED = 'DEACTIVATED';
 
     /**
      * Gets allowable values of the enum
@@ -324,7 +335,12 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getStatusAllowableValues()
     {
         return [
+            self::STATUS_ACTIVE,
             self::STATUS_EXPIRED,
+            self::STATUS_INVALID,
+            self::STATUS_UNKNOWN,
+            self::STATUS_INACTIVE,
+            self::STATUS_DEACTIVATED,
         ];
     }
 
@@ -352,6 +368,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('created_time', $data ?? [], null);
         $this->setIfExists('card_info', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('status_message', $data ?? [], null);
     }
 
     /**
@@ -692,6 +709,33 @@ class PaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_message
+     *
+     * @return string|null
+     */
+    public function getStatusMessage()
+    {
+        return $this->container['status_message'];
+    }
+
+    /**
+     * Sets status_message
+     *
+     * @param string|null $status_message Additional status details when the payment method status is invalid or otherwise requires explanation.
+     *
+     * @return self
+     */
+    public function setStatusMessage($status_message)
+    {
+        if (is_null($status_message)) {
+            throw new \InvalidArgumentException('non-nullable status_message cannot be null');
+        }
+        $this->container['status_message'] = $status_message;
 
         return $this;
     }

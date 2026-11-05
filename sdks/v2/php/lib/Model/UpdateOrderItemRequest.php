@@ -67,7 +67,9 @@ class UpdateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'subscription_plan_id' => 'string',
         'subscription_plan_description' => 'string',
         'price_per_unit' => 'float',
-        'cost_per_unit' => 'float'
+        'cost_per_unit' => 'float',
+        'tax_name' => 'string',
+        'tax_rate' => 'float'
     ];
 
     /**
@@ -87,7 +89,9 @@ class UpdateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'subscription_plan_id' => null,
         'subscription_plan_description' => null,
         'price_per_unit' => 'double',
-        'cost_per_unit' => 'double'
+        'cost_per_unit' => 'double',
+        'tax_name' => null,
+        'tax_rate' => 'double'
     ];
 
     /**
@@ -105,7 +109,9 @@ class UpdateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'subscription_plan_id' => false,
         'subscription_plan_description' => false,
         'price_per_unit' => false,
-        'cost_per_unit' => false
+        'cost_per_unit' => false,
+        'tax_name' => false,
+        'tax_rate' => false
     ];
 
     /**
@@ -203,7 +209,9 @@ class UpdateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'subscription_plan_id' => 'subscription_plan_id',
         'subscription_plan_description' => 'subscription_plan_description',
         'price_per_unit' => 'price_per_unit',
-        'cost_per_unit' => 'cost_per_unit'
+        'cost_per_unit' => 'cost_per_unit',
+        'tax_name' => 'tax_name',
+        'tax_rate' => 'tax_rate'
     ];
 
     /**
@@ -221,7 +229,9 @@ class UpdateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'subscription_plan_id' => 'setSubscriptionPlanId',
         'subscription_plan_description' => 'setSubscriptionPlanDescription',
         'price_per_unit' => 'setPricePerUnit',
-        'cost_per_unit' => 'setCostPerUnit'
+        'cost_per_unit' => 'setCostPerUnit',
+        'tax_name' => 'setTaxName',
+        'tax_rate' => 'setTaxRate'
     ];
 
     /**
@@ -239,7 +249,9 @@ class UpdateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'subscription_plan_id' => 'getSubscriptionPlanId',
         'subscription_plan_description' => 'getSubscriptionPlanDescription',
         'price_per_unit' => 'getPricePerUnit',
-        'cost_per_unit' => 'getCostPerUnit'
+        'cost_per_unit' => 'getCostPerUnit',
+        'tax_name' => 'getTaxName',
+        'tax_rate' => 'getTaxRate'
     ];
 
     /**
@@ -309,6 +321,8 @@ class UpdateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('subscription_plan_description', $data ?? [], null);
         $this->setIfExists('price_per_unit', $data ?? [], null);
         $this->setIfExists('cost_per_unit', $data ?? [], null);
+        $this->setIfExists('tax_name', $data ?? [], null);
+        $this->setIfExists('tax_rate', $data ?? [], null);
     }
 
     /**
@@ -619,6 +633,60 @@ class UpdateOrderItemRequest implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable cost_per_unit cannot be null');
         }
         $this->container['cost_per_unit'] = $cost_per_unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_name
+     *
+     * @return string|null
+     */
+    public function getTaxName()
+    {
+        return $this->container['tax_name'];
+    }
+
+    /**
+     * Sets tax_name
+     *
+     * @param string|null $tax_name Name/label of the tax being applied. Used only for item_type TAX. Must not be whitespace.
+     *
+     * @return self
+     */
+    public function setTaxName($tax_name)
+    {
+        if (is_null($tax_name)) {
+            throw new \InvalidArgumentException('non-nullable tax_name cannot be null');
+        }
+        $this->container['tax_name'] = $tax_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_rate
+     *
+     * @return float|null
+     */
+    public function getTaxRate()
+    {
+        return $this->container['tax_rate'];
+    }
+
+    /**
+     * Sets tax_rate
+     *
+     * @param float|null $tax_rate The tax rate in percent. Used only for item_type TAX. Must be greater than 0 and less than or equal to 100.
+     *
+     * @return self
+     */
+    public function setTaxRate($tax_rate)
+    {
+        if (is_null($tax_rate)) {
+            throw new \InvalidArgumentException('non-nullable tax_rate cannot be null');
+        }
+        $this->container['tax_rate'] = $tax_rate;
 
         return $this;
     }

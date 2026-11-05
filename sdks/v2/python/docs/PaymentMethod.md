@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **created_time** | **datetime** | When this payment method was made. In ISO-8601 format. | [optional] 
 **card_info** | [**CardInfo**](CardInfo.md) | If present, it provides additional details for payment methods of payment_method_type CARD. | [optional] 
 **status** | **str** | Status of the payment method. Fow now, only EXPIRED is supported. | [optional] 
+**status_message** | **str** | Additional status details when the payment method status is invalid or otherwise requires explanation. | [optional] 
 
 ## Example
 

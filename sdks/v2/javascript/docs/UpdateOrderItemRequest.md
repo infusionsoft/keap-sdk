@@ -14,5 +14,7 @@ Name | Type | Description | Notes
 **subscriptionPlanDescription** | **String** | A short description of the subscription&#39;s schedule. Used only for item_type SUBSCRIPTION. Must not be whitespace. | [optional] 
 **pricePerUnit** | **Number** | The price per unit. | [optional] 
 **costPerUnit** | **Number** | The cost per unit. Used for item_type PRODUCT or SUBSCRIPTION. | [optional] 
+**taxName** | **String** | Name/label of the tax being applied. Used only for item_type TAX. Must not be whitespace. | [optional] 
+**taxRate** | **Number** | The tax rate in percent. Used only for item_type TAX. Must be greater than 0 and less than or equal to 100. | [optional] 
 
 

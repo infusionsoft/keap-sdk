@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **discount** | [**CurrencyValue**](CurrencyValue.md) | If the order item is a discount type, this is the amount of the discount. | [optional] 
 **special** | [**Discount**](Discount.md) | If the line item is a discount type, the details about the discount. | [optional] 
 **product** | [**OrderItemProduct**](OrderItemProduct.md) | Product details | [optional] 
+**tax** | [**Tax**](Tax.md) | If the order item is a tax type, the details about the tax. | [optional] 
 **subscription_id** | **str** | If the order item is a subscription type, this refers to the subscription id that generated the order. | [optional] 
 **item_type** | **str** | The type of order item. | [optional] 
 **cost_per_unit** | [**CurrencyValue**](CurrencyValue.md) | Cost per unit | [optional] 

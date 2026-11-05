@@ -25,6 +25,7 @@ import com.keap.core.sdk.model.CurrencyValue;
 import com.keap.core.sdk.model.Discount;
 import com.keap.core.sdk.model.OrderItemProduct;
 import com.keap.core.sdk.model.SubscriptionPlan;
+import com.keap.core.sdk.model.Tax;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Arrays;
 import java.io.Serializable;
@@ -45,6 +46,7 @@ import jakarta.validation.Valid;
   OrderItem.JSON_PROPERTY_DISCOUNT,
   OrderItem.JSON_PROPERTY_SPECIAL,
   OrderItem.JSON_PROPERTY_PRODUCT,
+  OrderItem.JSON_PROPERTY_TAX,
   OrderItem.JSON_PROPERTY_SUBSCRIPTION_ID,
   OrderItem.JSON_PROPERTY_ITEM_TYPE,
   OrderItem.JSON_PROPERTY_COST_PER_UNIT,
@@ -78,6 +80,9 @@ public class OrderItem implements Serializable {
 
   public static final String JSON_PROPERTY_PRODUCT = "product";
   @jakarta.annotation.Nullable  private OrderItemProduct product;
+
+  public static final String JSON_PROPERTY_TAX = "tax";
+  @jakarta.annotation.Nullable  private Tax tax;
 
   public static final String JSON_PROPERTY_SUBSCRIPTION_ID = "subscription_id";
   @jakarta.annotation.Nullable  private String subscriptionId;
@@ -360,6 +365,31 @@ public class OrderItem implements Serializable {
   }
 
 
+  public OrderItem tax(@jakarta.annotation.Nullable Tax tax) {
+    this.tax = tax;
+    return this;
+  }
+
+  /**
+   * If the order item is a tax type, the details about the tax.
+   * @return tax
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "If the order item is a tax type, the details about the tax.")
+  @JsonProperty(JSON_PROPERTY_TAX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Tax getTax() {
+    return tax;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTax(@jakarta.annotation.Nullable Tax tax) {
+    this.tax = tax;
+  }
+
+
   public OrderItem subscriptionId(@jakarta.annotation.Nullable String subscriptionId) {
     this.subscriptionId = subscriptionId;
     return this;
@@ -502,6 +532,7 @@ public class OrderItem implements Serializable {
         Objects.equals(this.discount, orderItem.discount) &&
         Objects.equals(this.special, orderItem.special) &&
         Objects.equals(this.product, orderItem.product) &&
+        Objects.equals(this.tax, orderItem.tax) &&
         Objects.equals(this.subscriptionId, orderItem.subscriptionId) &&
         Objects.equals(this.itemType, orderItem.itemType) &&
         Objects.equals(this.costPerUnit, orderItem.costPerUnit) &&
@@ -511,7 +542,7 @@ public class OrderItem implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, notes, quantity, discount, special, product, subscriptionId, itemType, costPerUnit, pricePerUnit, subscriptionPlan);
+    return Objects.hash(id, name, description, notes, quantity, discount, special, product, tax, subscriptionId, itemType, costPerUnit, pricePerUnit, subscriptionPlan);
   }
 
   @Override
@@ -526,6 +557,7 @@ public class OrderItem implements Serializable {
     sb.append("    discount: ").append(toIndentedString(discount)).append("\n");
     sb.append("    special: ").append(toIndentedString(special)).append("\n");
     sb.append("    product: ").append(toIndentedString(product)).append("\n");
+    sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
     sb.append("    subscriptionId: ").append(toIndentedString(subscriptionId)).append("\n");
     sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
     sb.append("    costPerUnit: ").append(toIndentedString(costPerUnit)).append("\n");
@@ -590,6 +622,10 @@ public class OrderItem implements Serializable {
               this.instance.product = product;
           return this;
         }
+            public OrderItem.Builder tax(Tax tax) {
+              this.instance.tax = tax;
+          return this;
+        }
             public OrderItem.Builder subscriptionId(String subscriptionId) {
               this.instance.subscriptionId = subscriptionId;
           return this;
@@ -652,6 +688,7 @@ public class OrderItem implements Serializable {
           .discount(getDiscount())
           .special(getSpecial())
           .product(getProduct())
+          .tax(getTax())
           .subscriptionId(getSubscriptionId())
           .itemType(getItemType())
           .costPerUnit(getCostPerUnit())

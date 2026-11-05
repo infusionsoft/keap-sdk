@@ -57,6 +57,14 @@ export class UpdateOrderItemRequest {
     * The cost per unit. Used for item_type PRODUCT or SUBSCRIPTION.
     */
     'costPerUnit'?: number;
+    /**
+    * Name/label of the tax being applied. Used only for item_type TAX. Must not be whitespace.
+    */
+    'taxName'?: string;
+    /**
+    * The tax rate in percent. Used only for item_type TAX. Must be greater than 0 and less than or equal to 100.
+    */
+    'taxRate'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -120,6 +128,18 @@ export class UpdateOrderItemRequest {
         {
             "name": "costPerUnit",
             "baseName": "cost_per_unit",
+            "type": "number",
+            "format": "double"
+        },
+        {
+            "name": "taxName",
+            "baseName": "tax_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "taxRate",
+            "baseName": "tax_rate",
             "type": "number",
             "format": "double"
         }    ];

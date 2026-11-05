@@ -11,6 +11,7 @@
  */
 
 import { Discount } from '../models/Discount';
+import { Tax } from '../models/Tax';
 import { HttpFile } from '../http/http';
 
 export class CreateOrderItemRequest {
@@ -34,6 +35,10 @@ export class CreateOrderItemRequest {
     * The discount details. Used only for discount item types; ignored for every other type. When omitted, discount_method defaults to AMOUNT and amount to 0.
     */
     'discount'?: Discount;
+    /**
+    * The tax details. Only considered when item_type is TAX; ignored for every other type.
+    */
+    'tax'?: Tax;
     /**
     * The id of the product to be added to the order. Must be a valid product id. Required for item_type PRODUCT or SUBSCRIPTION.
     */
@@ -92,6 +97,12 @@ export class CreateOrderItemRequest {
             "name": "discount",
             "baseName": "discount",
             "type": "Discount",
+            "format": ""
+        },
+        {
+            "name": "tax",
+            "baseName": "tax",
+            "type": "Tax",
             "format": ""
         },
         {

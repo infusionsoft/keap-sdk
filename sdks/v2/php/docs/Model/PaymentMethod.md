@@ -13,5 +13,6 @@ Name | Type | Description | Notes
 **created_time** | **\DateTime** | When this payment method was made. In ISO-8601 format. | [optional]
 **card_info** | [**\Keap\Core\V2\Model\CardInfo**](CardInfo.md) | If present, it provides additional details for payment methods of payment_method_type CARD. | [optional]
 **status** | **string** | Status of the payment method. Fow now, only EXPIRED is supported. | [optional]
+**status_message** | **string** | Additional status details when the payment method status is invalid or otherwise requires explanation. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **CreatedTime** | **DateTime** | When this payment method was made. In ISO-8601 format. | [optional] 
 **CardInfo** | [**CardInfo**](CardInfo.md) | If present, it provides additional details for payment methods of payment_method_type CARD. | [optional] 
 **Status** | **string** | Status of the payment method. Fow now, only EXPIRED is supported. | [optional] 
+**StatusMessage** | **string** | Additional status details when the payment method status is invalid or otherwise requires explanation. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

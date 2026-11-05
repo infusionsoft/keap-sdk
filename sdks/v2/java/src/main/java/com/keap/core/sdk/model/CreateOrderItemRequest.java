@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.keap.core.sdk.model.Discount;
+import com.keap.core.sdk.model.Tax;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Arrays;
 import java.io.Serializable;
@@ -39,6 +40,7 @@ import jakarta.validation.Valid;
   CreateOrderItemRequest.JSON_PROPERTY_QUANTITY,
   CreateOrderItemRequest.JSON_PROPERTY_NOTES,
   CreateOrderItemRequest.JSON_PROPERTY_DISCOUNT,
+  CreateOrderItemRequest.JSON_PROPERTY_TAX,
   CreateOrderItemRequest.JSON_PROPERTY_PRODUCT_ID,
   CreateOrderItemRequest.JSON_PROPERTY_SUBSCRIPTION_PLAN_ID,
   CreateOrderItemRequest.JSON_PROPERTY_SUBSCRIPTION_PLAN_DESCRIPTION,
@@ -64,6 +66,9 @@ public class CreateOrderItemRequest implements Serializable {
 
   public static final String JSON_PROPERTY_DISCOUNT = "discount";
   @jakarta.annotation.Nullable  private Discount discount;
+
+  public static final String JSON_PROPERTY_TAX = "tax";
+  @jakarta.annotation.Nullable  private Tax tax;
 
   public static final String JSON_PROPERTY_PRODUCT_ID = "product_id";
   @jakarta.annotation.Nullable  private String productId;
@@ -266,6 +271,31 @@ public class CreateOrderItemRequest implements Serializable {
   }
 
 
+  public CreateOrderItemRequest tax(@jakarta.annotation.Nullable Tax tax) {
+    this.tax = tax;
+    return this;
+  }
+
+  /**
+   * The tax details. Only considered when item_type is TAX; ignored for every other type.
+   * @return tax
+   */
+  @jakarta.annotation.Nullable  @Valid
+  @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The tax details. Only considered when item_type is TAX; ignored for every other type.")
+  @JsonProperty(JSON_PROPERTY_TAX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Tax getTax() {
+    return tax;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTax(@jakarta.annotation.Nullable Tax tax) {
+    this.tax = tax;
+  }
+
+
   public CreateOrderItemRequest productId(@jakarta.annotation.Nullable String productId) {
     this.productId = productId;
     return this;
@@ -426,6 +456,7 @@ public class CreateOrderItemRequest implements Serializable {
         Objects.equals(this.quantity, createOrderItemRequest.quantity) &&
         Objects.equals(this.notes, createOrderItemRequest.notes) &&
         Objects.equals(this.discount, createOrderItemRequest.discount) &&
+        Objects.equals(this.tax, createOrderItemRequest.tax) &&
         Objects.equals(this.productId, createOrderItemRequest.productId) &&
         Objects.equals(this.subscriptionPlanId, createOrderItemRequest.subscriptionPlanId) &&
         Objects.equals(this.subscriptionPlanDescription, createOrderItemRequest.subscriptionPlanDescription) &&
@@ -436,7 +467,7 @@ public class CreateOrderItemRequest implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, quantity, notes, discount, productId, subscriptionPlanId, subscriptionPlanDescription, itemType, pricePerUnit, costPerUnit);
+    return Objects.hash(name, description, quantity, notes, discount, tax, productId, subscriptionPlanId, subscriptionPlanDescription, itemType, pricePerUnit, costPerUnit);
   }
 
   @Override
@@ -448,6 +479,7 @@ public class CreateOrderItemRequest implements Serializable {
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("    discount: ").append(toIndentedString(discount)).append("\n");
+    sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
     sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
     sb.append("    subscriptionPlanId: ").append(toIndentedString(subscriptionPlanId)).append("\n");
     sb.append("    subscriptionPlanDescription: ").append(toIndentedString(subscriptionPlanDescription)).append("\n");
@@ -499,6 +531,10 @@ public class CreateOrderItemRequest implements Serializable {
         }
             public CreateOrderItemRequest.Builder discount(Discount discount) {
               this.instance.discount = discount;
+          return this;
+        }
+            public CreateOrderItemRequest.Builder tax(Tax tax) {
+              this.instance.tax = tax;
           return this;
         }
             public CreateOrderItemRequest.Builder productId(String productId) {
@@ -564,6 +600,7 @@ public class CreateOrderItemRequest implements Serializable {
           .quantity(getQuantity())
           .notes(getNotes())
           .discount(getDiscount())
+          .tax(getTax())
           .productId(getProductId())
           .subscriptionPlanId(getSubscriptionPlanId())
           .subscriptionPlanDescription(getSubscriptionPlanDescription())

@@ -336,6 +336,7 @@ export * from '../models/TagContactCount';
 export * from '../models/TaggedCompany';
 export * from '../models/TaggedContact';
 export * from '../models/Task';
+export * from '../models/Tax';
 export * from '../models/TextOption';
 export * from '../models/TransactionV2';
 export * from '../models/UnpublishAutomationRequest';
@@ -491,7 +492,7 @@ import { CreateOpportunityRequest } from '../models/CreateOpportunityRequest';
 import { CreateOpportunityStageChecklistItem } from '../models/CreateOpportunityStageChecklistItem';
 import { CreateOpportunityStageRequest } from '../models/CreateOpportunityStageRequest';
 import { CreateOrUpdateAffiliateLinkRequest } from '../models/CreateOrUpdateAffiliateLinkRequest';
-import { CreateOrderItemRequest        , CreateOrderItemRequestItemTypeEnum     } from '../models/CreateOrderItemRequest';
+import { CreateOrderItemRequest         , CreateOrderItemRequestItemTypeEnum     } from '../models/CreateOrderItemRequest';
 import { CreateOrderTotalDiscountCriteria, CreateOrderTotalDiscountCriteriaTypeEnum           , CreateOrderTotalDiscountCriteriaOperatorEnum   } from '../models/CreateOrderTotalDiscountCriteria';
 import { CreateOrderTotalDiscountRequest    , CreateOrderTotalDiscountRequestDiscountTypeEnum   , CreateOrderTotalDiscountRequestDiscountStrategyEnum   } from '../models/CreateOrderTotalDiscountRequest';
 import { CreatePaymentMethodConfigRequest } from '../models/CreatePaymentMethodConfigRequest';
@@ -655,7 +656,7 @@ import { ObjectModel } from '../models/ObjectModel';
 import { OpportunityContact } from '../models/OpportunityContact';
 import { OpportunityStage } from '../models/OpportunityStage';
 import { OpportunityStageMove } from '../models/OpportunityStageMove';
-import { OrderItem         , OrderItemItemTypeEnum      } from '../models/OrderItem';
+import { OrderItem          , OrderItemItemTypeEnum      } from '../models/OrderItem';
 import { OrderItemProduct } from '../models/OrderItemProduct';
 import { OrderTotalDiscount     , OrderTotalDiscountDiscountTypeEnum   , OrderTotalDiscountDiscountStrategyEnum   } from '../models/OrderTotalDiscount';
 import { OrderV2  , OrderV2StatusEnum      , OrderV2OrderTypeEnum  , OrderV2SourceTypeEnum                             } from '../models/OrderV2';
@@ -663,7 +664,7 @@ import { Origin } from '../models/Origin';
 import { OriginRequest } from '../models/OriginRequest';
 import { PatchAutomationCategoryRequest } from '../models/PatchAutomationCategoryRequest';
 import { Payment    , PaymentStatusEnum           , PaymentMerchantAccountTypeEnum    } from '../models/Payment';
-import { PaymentMethod   , PaymentMethodMerchantAccountTypeEnum   , PaymentMethodPaymentMethodTypeEnum    , PaymentMethodStatusEnum   } from '../models/PaymentMethod';
+import { PaymentMethod   , PaymentMethodMerchantAccountTypeEnum   , PaymentMethodPaymentMethodTypeEnum    , PaymentMethodStatusEnum    } from '../models/PaymentMethod';
 import { PaymentMethodConfig } from '../models/PaymentMethodConfig';
 import { PaymentPlan } from '../models/PaymentPlan';
 import { PaymentPlanItem, PaymentPlanItemStatusEnum      } from '../models/PaymentPlanItem';
@@ -726,6 +727,7 @@ import { TagContactCount } from '../models/TagContactCount';
 import { TaggedCompany } from '../models/TaggedCompany';
 import { TaggedContact } from '../models/TaggedContact';
 import { Task    , TaskPriorityEnum       , TaskRemindTimeMinsEnum          } from '../models/Task';
+import { Tax } from '../models/Tax';
 import { TextOption   , TextOptionOnlyStartsWithEnum  , TextOptionOnlyEndsWithEnum  , TextOptionOnlyContainsEnum    } from '../models/TextOption';
 import { TransactionV2 , TransactionV2StatusEnum      , TransactionV2TransactionMethodEnum         , TransactionV2MerchantAccountTypeEnum    } from '../models/TransactionV2';
 import { UnpublishAutomationRequest } from '../models/UnpublishAutomationRequest';
@@ -1274,6 +1276,7 @@ let typeMap: {[index: string]: any} = {
     "TaggedCompany": TaggedCompany,
     "TaggedContact": TaggedContact,
     "Task": Task,
+    "Tax": Tax,
     "TextOption": TextOption,
     "TransactionV2": TransactionV2,
     "UnpublishAutomationRequest": UnpublishAutomationRequest,

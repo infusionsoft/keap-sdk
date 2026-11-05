@@ -45,7 +45,9 @@ namespace Keap.Core.V2.Model
         /// <param name="subscriptionPlanDescription">A short description of the subscription&#39;s schedule. Used only for item_type SUBSCRIPTION. Must not be whitespace..</param>
         /// <param name="pricePerUnit">The price per unit..</param>
         /// <param name="costPerUnit">The cost per unit. Used for item_type PRODUCT or SUBSCRIPTION..</param>
-        public UpdateOrderItemRequest(string name = default, string description = default, int quantity = default, string notes = default, Discount discount = default, string productId = default, string subscriptionPlanId = default, string subscriptionPlanDescription = default, double pricePerUnit = default, double costPerUnit = default)
+        /// <param name="taxName">Name/label of the tax being applied. Used only for item_type TAX. Must not be whitespace..</param>
+        /// <param name="taxRate">The tax rate in percent. Used only for item_type TAX. Must be greater than 0 and less than or equal to 100..</param>
+        public UpdateOrderItemRequest(string name = default, string description = default, int quantity = default, string notes = default, Discount discount = default, string productId = default, string subscriptionPlanId = default, string subscriptionPlanDescription = default, double pricePerUnit = default, double costPerUnit = default, string taxName = default, double taxRate = default)
         {
             this.Name = name;
             this.Description = description;
@@ -57,6 +59,8 @@ namespace Keap.Core.V2.Model
             this.SubscriptionPlanDescription = subscriptionPlanDescription;
             this.PricePerUnit = pricePerUnit;
             this.CostPerUnit = costPerUnit;
+            this.TaxName = taxName;
+            this.TaxRate = taxRate;
         }
 
         /// <summary>
@@ -157,6 +161,26 @@ namespace Keap.Core.V2.Model
         public double CostPerUnit { get; set; }
 
         /// <summary>
+        /// Name/label of the tax being applied. Used only for item_type TAX. Must not be whitespace.
+        /// </summary>
+        /// <value>Name/label of the tax being applied. Used only for item_type TAX. Must not be whitespace.</value>
+        /*
+        <example>Sales tax</example>
+        */
+        [DataMember(Name = "tax_name", EmitDefaultValue = false)]
+        public string TaxName { get; set; }
+
+        /// <summary>
+        /// The tax rate in percent. Used only for item_type TAX. Must be greater than 0 and less than or equal to 100.
+        /// </summary>
+        /// <value>The tax rate in percent. Used only for item_type TAX. Must be greater than 0 and less than or equal to 100.</value>
+        /*
+        <example>3.55</example>
+        */
+        [DataMember(Name = "tax_rate", EmitDefaultValue = false)]
+        public double TaxRate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -174,6 +198,8 @@ namespace Keap.Core.V2.Model
             sb.Append("  SubscriptionPlanDescription: ").Append(SubscriptionPlanDescription).Append("\n");
             sb.Append("  PricePerUnit: ").Append(PricePerUnit).Append("\n");
             sb.Append("  CostPerUnit: ").Append(CostPerUnit).Append("\n");
+            sb.Append("  TaxName: ").Append(TaxName).Append("\n");
+            sb.Append("  TaxRate: ").Append(TaxRate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

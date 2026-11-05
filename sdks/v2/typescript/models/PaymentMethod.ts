@@ -50,6 +50,10 @@ export class PaymentMethod {
     * Status of the payment method. Fow now, only EXPIRED is supported.
     */
     'status'?: PaymentMethodStatusEnum;
+    /**
+    * Additional status details when the payment method status is invalid or otherwise requires explanation.
+    */
+    'statusMessage'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -109,6 +113,12 @@ export class PaymentMethod {
             "baseName": "status",
             "type": "PaymentMethodStatusEnum",
             "format": ""
+        },
+        {
+            "name": "statusMessage",
+            "baseName": "status_message",
+            "type": "string",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
@@ -132,6 +142,11 @@ export enum PaymentMethodPaymentMethodTypeEnum {
     Card = 'CARD'
 }
 export enum PaymentMethodStatusEnum {
-    Expired = 'EXPIRED'
+    Active = 'ACTIVE',
+    Expired = 'EXPIRED',
+    Invalid = 'INVALID',
+    Unknown = 'UNKNOWN',
+    Inactive = 'INACTIVE',
+    Deactivated = 'DEACTIVATED'
 }
 

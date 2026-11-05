@@ -43,7 +43,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.keap.core</groupId>
   <artifactId>core-service-v2-java-sdk</artifactId>
-  <version>2.0.27</version>
+  <version>2.0.28</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -53,7 +53,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.keap.core:core-service-v2-java-sdk:2.0.27"
+compile "com.keap.core:core-service-v2-java-sdk:2.0.28"
 ```
 
 ### Others
@@ -66,7 +66,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/core-service-v2-java-sdk-2.0.27.jar`
+- `target/core-service-v2-java-sdk-2.0.28.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -1256,6 +1256,7 @@ Class | Method | HTTP request | Description
  - [TaggedCompany](docs/TaggedCompany.md)
  - [TaggedContact](docs/TaggedContact.md)
  - [Task](docs/Task.md)
+ - [Tax](docs/Tax.md)
  - [TextOption](docs/TextOption.md)
  - [TransactionV2](docs/TransactionV2.md)
  - [UnpublishAutomationRequest](docs/UnpublishAutomationRequest.md)

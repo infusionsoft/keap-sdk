@@ -16,6 +16,7 @@ import CurrencyValue from './CurrencyValue';
 import Discount from './Discount';
 import OrderItemProduct from './OrderItemProduct';
 import SubscriptionPlan from './SubscriptionPlan';
+import Tax from './Tax';
 
 /**
  * The OrderItem model module.
@@ -74,6 +75,9 @@ class OrderItem {
             if (data.hasOwnProperty('product')) {
                 obj['product'] = OrderItemProduct.constructFromObject(data['product']);
             }
+            if (data.hasOwnProperty('tax')) {
+                obj['tax'] = Tax.constructFromObject(data['tax']);
+            }
             if (data.hasOwnProperty('subscription_id')) {
                 obj['subscription_id'] = ApiClient.convertToType(data['subscription_id'], 'String');
             }
@@ -126,6 +130,10 @@ class OrderItem {
         // validate the optional field `product`
         if (data['product']) { // data not null
           OrderItemProduct.validateJSON(data['product']);
+        }
+        // validate the optional field `tax`
+        if (data['tax']) { // data not null
+          Tax.validateJSON(data['tax']);
         }
         // ensure the json data is a string
         if (data['subscription_id'] && !(typeof data['subscription_id'] === 'string' || data['subscription_id'] instanceof String)) {
@@ -203,6 +211,12 @@ OrderItem.prototype['special'] = undefined;
  * @member {module:keap.core.v2/model/OrderItemProduct} product
  */
 OrderItem.prototype['product'] = undefined;
+
+/**
+ * If the order item is a tax type, the details about the tax.
+ * @member {module:keap.core.v2/model/Tax} tax
+ */
+OrderItem.prototype['tax'] = undefined;
 
 /**
  * If the order item is a subscription type, this refers to the subscription id that generated the order.

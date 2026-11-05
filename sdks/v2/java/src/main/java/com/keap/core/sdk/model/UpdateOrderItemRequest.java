@@ -44,7 +44,9 @@ import jakarta.validation.Valid;
   UpdateOrderItemRequest.JSON_PROPERTY_SUBSCRIPTION_PLAN_ID,
   UpdateOrderItemRequest.JSON_PROPERTY_SUBSCRIPTION_PLAN_DESCRIPTION,
   UpdateOrderItemRequest.JSON_PROPERTY_PRICE_PER_UNIT,
-  UpdateOrderItemRequest.JSON_PROPERTY_COST_PER_UNIT
+  UpdateOrderItemRequest.JSON_PROPERTY_COST_PER_UNIT,
+  UpdateOrderItemRequest.JSON_PROPERTY_TAX_NAME,
+  UpdateOrderItemRequest.JSON_PROPERTY_TAX_RATE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateOrderItemRequest implements Serializable {
@@ -79,6 +81,12 @@ public class UpdateOrderItemRequest implements Serializable {
 
   public static final String JSON_PROPERTY_COST_PER_UNIT = "cost_per_unit";
   @jakarta.annotation.Nullable  private Double costPerUnit;
+
+  public static final String JSON_PROPERTY_TAX_NAME = "tax_name";
+  @jakarta.annotation.Nullable  private String taxName;
+
+  public static final String JSON_PROPERTY_TAX_RATE = "tax_rate";
+  @jakarta.annotation.Nullable  private Double taxRate;
 
   public UpdateOrderItemRequest() { 
   }
@@ -323,6 +331,54 @@ public class UpdateOrderItemRequest implements Serializable {
     this.costPerUnit = costPerUnit;
   }
 
+
+  public UpdateOrderItemRequest taxName(@jakarta.annotation.Nullable String taxName) {
+    this.taxName = taxName;
+    return this;
+  }
+
+  /**
+   * Name/label of the tax being applied. Used only for item_type TAX. Must not be whitespace.
+   * @return taxName
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "Sales tax", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "Name/label of the tax being applied. Used only for item_type TAX. Must not be whitespace.")
+  @JsonProperty(JSON_PROPERTY_TAX_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTaxName() {
+    return taxName;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAX_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTaxName(@jakarta.annotation.Nullable String taxName) {
+    this.taxName = taxName;
+  }
+
+
+  public UpdateOrderItemRequest taxRate(@jakarta.annotation.Nullable Double taxRate) {
+    this.taxRate = taxRate;
+    return this;
+  }
+
+  /**
+   * The tax rate in percent. Used only for item_type TAX. Must be greater than 0 and less than or equal to 100.
+   * @return taxRate
+   */
+  @jakarta.annotation.Nullable  @Schema(example = "3.55", requiredMode = Schema.RequiredMode.NOT_REQUIRED, description = "The tax rate in percent. Used only for item_type TAX. Must be greater than 0 and less than or equal to 100.")
+  @JsonProperty(JSON_PROPERTY_TAX_RATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Double getTaxRate() {
+    return taxRate;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TAX_RATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTaxRate(@jakarta.annotation.Nullable Double taxRate) {
+    this.taxRate = taxRate;
+  }
+
   /**
    * Return true if this UpdateOrderItemRequest object is equal to o.
    */
@@ -344,12 +400,14 @@ public class UpdateOrderItemRequest implements Serializable {
         Objects.equals(this.subscriptionPlanId, updateOrderItemRequest.subscriptionPlanId) &&
         Objects.equals(this.subscriptionPlanDescription, updateOrderItemRequest.subscriptionPlanDescription) &&
         Objects.equals(this.pricePerUnit, updateOrderItemRequest.pricePerUnit) &&
-        Objects.equals(this.costPerUnit, updateOrderItemRequest.costPerUnit);
+        Objects.equals(this.costPerUnit, updateOrderItemRequest.costPerUnit) &&
+        Objects.equals(this.taxName, updateOrderItemRequest.taxName) &&
+        Objects.equals(this.taxRate, updateOrderItemRequest.taxRate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, quantity, notes, discount, productId, subscriptionPlanId, subscriptionPlanDescription, pricePerUnit, costPerUnit);
+    return Objects.hash(name, description, quantity, notes, discount, productId, subscriptionPlanId, subscriptionPlanDescription, pricePerUnit, costPerUnit, taxName, taxRate);
   }
 
   @Override
@@ -366,6 +424,8 @@ public class UpdateOrderItemRequest implements Serializable {
     sb.append("    subscriptionPlanDescription: ").append(toIndentedString(subscriptionPlanDescription)).append("\n");
     sb.append("    pricePerUnit: ").append(toIndentedString(pricePerUnit)).append("\n");
     sb.append("    costPerUnit: ").append(toIndentedString(costPerUnit)).append("\n");
+    sb.append("    taxName: ").append(toIndentedString(taxName)).append("\n");
+    sb.append("    taxRate: ").append(toIndentedString(taxRate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -433,6 +493,14 @@ public class UpdateOrderItemRequest implements Serializable {
               this.instance.costPerUnit = costPerUnit;
           return this;
         }
+            public UpdateOrderItemRequest.Builder taxName(String taxName) {
+              this.instance.taxName = taxName;
+          return this;
+        }
+            public UpdateOrderItemRequest.Builder taxRate(Double taxRate) {
+              this.instance.taxRate = taxRate;
+          return this;
+        }
         
     
         /**
@@ -476,7 +544,9 @@ public class UpdateOrderItemRequest implements Serializable {
           .subscriptionPlanId(getSubscriptionPlanId())
           .subscriptionPlanDescription(getSubscriptionPlanDescription())
           .pricePerUnit(getPricePerUnit())
-          .costPerUnit(getCostPerUnit());
+          .costPerUnit(getCostPerUnit())
+          .taxName(getTaxName())
+          .taxRate(getTaxRate());
       }
 }
 

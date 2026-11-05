@@ -13,6 +13,7 @@
 
 import ApiClient from '../ApiClient';
 import Discount from './Discount';
+import Tax from './Tax';
 
 /**
  * The CreateOrderItemRequest model module.
@@ -65,6 +66,9 @@ class CreateOrderItemRequest {
             if (data.hasOwnProperty('discount')) {
                 obj['discount'] = Discount.constructFromObject(data['discount']);
             }
+            if (data.hasOwnProperty('tax')) {
+                obj['tax'] = Tax.constructFromObject(data['tax']);
+            }
             if (data.hasOwnProperty('product_id')) {
                 obj['product_id'] = ApiClient.convertToType(data['product_id'], 'String');
             }
@@ -114,6 +118,10 @@ class CreateOrderItemRequest {
         // validate the optional field `discount`
         if (data['discount']) { // data not null
           Discount.validateJSON(data['discount']);
+        }
+        // validate the optional field `tax`
+        if (data['tax']) { // data not null
+          Tax.validateJSON(data['tax']);
         }
         // ensure the json data is a string
         if (data['product_id'] && !(typeof data['product_id'] === 'string' || data['product_id'] instanceof String)) {
@@ -169,6 +177,12 @@ CreateOrderItemRequest.prototype['notes'] = undefined;
  * @member {module:keap.core.v2/model/Discount} discount
  */
 CreateOrderItemRequest.prototype['discount'] = undefined;
+
+/**
+ * The tax details. Only considered when item_type is TAX; ignored for every other type.
+ * @member {module:keap.core.v2/model/Tax} tax
+ */
+CreateOrderItemRequest.prototype['tax'] = undefined;
 
 /**
  * The id of the product to be added to the order. Must be a valid product id. Required for item_type PRODUCT or SUBSCRIPTION.

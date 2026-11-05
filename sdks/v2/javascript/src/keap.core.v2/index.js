@@ -351,6 +351,7 @@ import TagContactCount from './model/TagContactCount';
 import TaggedCompany from './model/TaggedCompany';
 import TaggedContact from './model/TaggedContact';
 import Task from './model/Task';
+import Tax from './model/Tax';
 import TextOption from './model/TextOption';
 import TransactionV2 from './model/TransactionV2';
 import UnpublishAutomationRequest from './model/UnpublishAutomationRequest';
@@ -477,7 +478,7 @@ import WebformsApi from './api/WebformsApi';
 * </pre>
 * </p>
 * @module keap.core.v2/index
-* @version 2.0.27
+* @version 2.0.28
 */
 export {
     /**
@@ -2513,6 +2514,12 @@ export {
      * @property {module:keap.core.v2/model/Task}
      */
     Task,
+
+    /**
+     * The Tax model constructor.
+     * @property {module:keap.core.v2/model/Tax}
+     */
+    Tax,
 
     /**
      * The TextOption model constructor.
